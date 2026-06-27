@@ -115,6 +115,10 @@
       color: var(--sand);
     }
 
+    nav a.is-active {
+      color: var(--sand);
+    }
+
     .menu-lines {
       width: 48px;
       height: 24px;
@@ -212,6 +216,7 @@
       text-decoration: none;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .work-card::before {
@@ -261,6 +266,11 @@
       border-color: var(--line);
     }
 
+    .work-card.is-active {
+      border-color: rgba(200, 157, 132, 0.58);
+      box-shadow: 0 18px 38px rgba(143, 111, 95, 0.08);
+    }
+
     .work-card h2 {
       margin: 0;
       color: var(--ink);
@@ -292,8 +302,13 @@
     }
 
     .section {
+      display: none;
       padding: 80px 0;
       border-top: 1px solid var(--line);
+    }
+
+    .section.is-active {
+      display: block;
     }
 
     .section-layout {
@@ -333,7 +348,7 @@
     }
 
     .lesson {
-      margin-top: 34px;
+      margin-top: 0;
       padding: 30px;
       border: 1px solid rgba(200, 157, 132, 0.24);
       border-radius: 6px;
@@ -343,13 +358,78 @@
       box-shadow: 0 18px 42px rgba(143, 111, 95, 0.06);
     }
 
-    .lesson-title {
-      margin: 0 0 16px;
+    .training-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .training-item {
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 6px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
+        rgba(255, 250, 248, 0.72);
+      box-shadow: 0 18px 42px rgba(143, 111, 95, 0.05);
+      overflow: hidden;
+    }
+
+    .training-item summary {
+      position: relative;
+      display: grid;
+      gap: 8px;
+      padding: 24px 64px 24px 26px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .training-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .training-item summary::after {
+      content: "+";
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      color: var(--sand);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .training-item[open] summary::after {
+      content: "-";
+    }
+
+    .summary-meta {
+      color: var(--sand);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .summary-title {
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(28px, 4vw, 42px);
+      font-size: clamp(26px, 3.3vw, 38px);
       line-height: 1.08;
-      letter-spacing: -0.02em;
+    }
+
+    .summary-note {
+      color: #7b655c;
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .training-item .lesson {
+      border-width: 1px 0 0;
+      border-radius: 0;
+      box-shadow: none;
+      background:
+        repeating-radial-gradient(circle at 12% 18%, rgba(54,42,42,0.016) 0 1px, transparent 1px 4px),
+        rgba(255, 250, 248, 0.54);
     }
 
     .lesson h4 {
@@ -392,7 +472,7 @@
     }
 
     .flow-step::after {
-      content: "↓";
+      content: "\2193";
       display: block;
       margin-top: 8px;
       color: var(--sand);
@@ -471,10 +551,10 @@
         <img src="assets/yian-group-founder-logo.png" alt="YIAN GROUP">
       </a>
       <nav aria-label="Main navigation">
-        <a href="#about">ABOUT</a>
-        <a href="#training">TRAINING</a>
-        <a href="#resources">RESOURCES</a>
-        <a href="#contact">CONTACT</a>
+        <a href="#about" data-panel-link="about">ABOUT</a>
+        <a href="#training" data-panel-link="training">TRAINING</a>
+        <a href="#resources" data-panel-link="resources">RESOURCES</a>
+        <a href="#contact" data-panel-link="contact">CONTACT</a>
         <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
       </nav>
     </header>
@@ -495,21 +575,21 @@
       </section>
 
       <section class="work-grid" aria-label="Website sections">
-        <a class="work-card card-about" href="#about">
+        <a class="work-card card-about" href="#about" data-panel-link="about">
           <span class="card-number">01</span>
           <div>
             <h2>ABOUT<br>US</h2>
             <p>Who we are and what YIAN GROUP is building.</p>
           </div>
         </a>
-        <a class="work-card card-training" href="#training">
+        <a class="work-card card-training" href="#training" data-panel-link="training">
           <span class="card-number">02</span>
           <div>
             <h2>FREE<br>TRAINING</h2>
-            <p>Lesson 1 is now available for new statistical programming learners.</p>
+            <p>Start with a practical guide to clinical research context and compliance.</p>
           </div>
         </a>
-        <a class="work-card card-resources" href="#resources">
+        <a class="work-card card-resources" href="#resources" data-panel-link="resources">
           <span class="card-number">03</span>
           <div>
             <h2>LEARNING<br>RESOURCES</h2>
@@ -541,15 +621,21 @@
         <div class="section-layout">
           <h2>Training</h2>
           <div class="copy">
-            <div class="tiny-label">Lesson 1</div>
-            <h3 class="lesson-title">Clinical Research Environment &amp; Regulatory Compliance</h3>
+            <div class="tiny-label">Training Library</div>
             <p>
-              Before learning code, a statistical programmer needs to understand the clinical
-              research environment, regulatory expectations, and the documents that drive every
-              programming decision.
+              Open each guide below to read the full content. More topics will be added as the
+              training library grows.
             </p>
 
-            <article class="lesson">
+            <div class="training-list">
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Starter Guide</span>
+                  <span class="summary-title">Clinical Research Environment &amp; Regulatory Compliance</span>
+                  <span class="summary-note">Clinical context, compliance expectations, core documents, data flow, and programming standards.</span>
+                </summary>
+
+                <article class="lesson">
               <h4>1. Regulatory Framework &amp; Red Lines</h4>
               <p>
                 Clinical trials involve patient safety, data integrity, and evidence used for
@@ -605,8 +691,8 @@
 
               <h4>4. SOPs &amp; Coding Standards</h4>
               <p>
-                Large clinical research organizations rely on Standard Operating Procedures and
-                coding standards to keep work consistent, traceable, and transferable across teams.
+                Regulated programming teams rely on Standard Operating Procedures and coding
+                standards to keep work consistent, traceable, and transferable across projects.
               </p>
               <ul>
                 <li>
@@ -623,8 +709,8 @@
               <div class="workshop">
                 <h4>Suggested Workshop: Document Review Challenge</h4>
                 <p>
-                  For Lesson 1, the best exercise is not a programming task. Instead, review a
-                  short mock protocol and a sample eCRF page.
+                  For a first practice activity, the best exercise is not a programming task.
+                  Instead, review a short mock protocol and a sample eCRF page.
                 </p>
                 <ol>
                   <li>Identify the visit where the primary blood pressure endpoint is collected.</li>
@@ -632,11 +718,13 @@
                   <li>Write a short note explaining which document supports each answer.</li>
                 </ol>
                 <p>
-                  This builds a core enterprise programming skill: reading clinical specifications
-                  carefully before touching the keyboard.
+                  This builds a core programming skill in clinical research: reading clinical
+                  specifications carefully before touching the keyboard.
                 </p>
               </div>
-            </article>
+                </article>
+              </details>
+            </div>
           </div>
         </div>
       </section>
@@ -669,5 +757,35 @@
       <span>Biostatistics & Statistical Programming Training</span>
     </footer>
   </div>
+  <script>
+    const panelLinks = document.querySelectorAll("[data-panel-link]");
+    const sections = document.querySelectorAll(".section");
+
+    function openPanel(panelId, updateUrl = true) {
+      sections.forEach((section) => {
+        section.classList.toggle("is-active", section.id === panelId);
+      });
+
+      panelLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.dataset.panelLink === panelId);
+      });
+
+      if (updateUrl) {
+        history.replaceState(null, "", `#${panelId}`);
+      }
+    }
+
+    panelLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openPanel(link.dataset.panelLink);
+      });
+    });
+
+    const initialPanel = window.location.hash.replace("#", "");
+    if (initialPanel && document.getElementById(initialPanel)) {
+      openPanel(initialPanel, false);
+    }
+  </script>
 </body>
 </html>
