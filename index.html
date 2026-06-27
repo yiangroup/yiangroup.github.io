@@ -45,8 +45,7 @@
     span,
     h2,
     h3,
-    .logo-text,
-    .logo-mark {
+    .logo img {
       filter: url("#pencil-text") contrast(0.98);
     }
 
@@ -80,39 +79,16 @@
     .logo {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
       color: var(--ink);
       text-decoration: none;
     }
 
-    .logo-mark {
-      width: 54px;
-      height: 54px;
-      border: 2px solid var(--ink);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--rose);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 26px;
-      line-height: 1;
-      transform: rotate(-8deg);
-      text-shadow:
-        0.6px 0.4px 0 rgba(203, 126, 145, 0.28),
-        -0.4px 0.5px 0 rgba(123, 155, 184, 0.16),
-        1.2px -0.7px 0 rgba(54, 42, 42, 0.05);
-    }
-
-    .logo-text {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      text-shadow:
-        0.7px 0.5px 0 rgba(54, 42, 42, 0.12),
-        -0.5px 0.3px 0 rgba(200, 157, 132, 0.16),
-        1.4px -0.8px 0 rgba(54, 42, 42, 0.045);
+    .logo img {
+      display: block;
+      width: 128px;
+      height: auto;
+      mix-blend-mode: multiply;
+      filter: saturate(0.88) contrast(1.02);
     }
 
     nav {
@@ -152,7 +128,7 @@
       background: var(--ink);
     }
 
-    .logo-text,
+    .logo img,
     nav a,
     h2,
     h3,
@@ -255,7 +231,7 @@
 
     .work-card > div {
       display: grid;
-      grid-template-rows: 96px auto;
+      grid-template-rows: 78px auto;
       align-content: end;
       gap: 22px;
     }
@@ -289,10 +265,10 @@
       margin: 0;
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 34px;
+      font-size: 28px;
       font-weight: 700;
-      line-height: 0.98;
-      letter-spacing: -0.03em;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
       text-shadow:
         0.7px 0.5px 0 rgba(54, 42, 42, 0.1),
         -0.5px 0.4px 0 rgba(200, 157, 132, 0.13),
@@ -330,9 +306,9 @@
     .section h2 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 6vw, 78px);
-      line-height: 0.96;
-      letter-spacing: -0.05em;
+      font-size: clamp(32px, 4.4vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
       text-shadow:
         0.8px 0.5px 0 rgba(54, 42, 42, 0.11),
         -0.5px 0.5px 0 rgba(200, 157, 132, 0.14),
@@ -405,8 +381,7 @@
   <div class="page">
     <header>
       <a class="logo" href="#top" aria-label="YIAN GROUP home">
-        <span class="logo-mark">Y</span>
-        <span class="logo-text">YIAN<br>GROUP</span>
+        <img src="assets/yian-group-logo.png" alt="YIAN GROUP">
       </a>
       <nav aria-label="Main navigation">
         <a href="#about">ABOUT</a>
