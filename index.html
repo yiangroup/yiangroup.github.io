@@ -303,12 +303,23 @@
 
     .section {
       display: none;
-      padding: 80px 0;
+      min-height: calc(100vh - 206px);
+      padding: 54px 0 86px;
       border-top: 1px solid var(--line);
     }
 
     .section.is-active {
       display: block;
+    }
+
+    body.panel-open .hero,
+    body.panel-open .work-grid {
+      display: none;
+    }
+
+    body.panel-open header {
+      min-height: 92px;
+      border-bottom: 1px solid var(--line);
     }
 
     .section-layout {
@@ -497,6 +508,94 @@
       border: 1px solid rgba(203, 126, 145, 0.18);
     }
 
+    .practice-materials {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 22px 0;
+    }
+
+    .mock-document,
+    .answer-key {
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 6px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 7px),
+        rgba(255, 253, 249, 0.74);
+      padding: 18px;
+    }
+
+    .mock-document h5,
+    .answer-key h5 {
+      margin: 0 0 12px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .mock-document dl {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      color: #6f5b52;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .mock-document dt {
+      color: #4b3a36;
+      font-weight: 800;
+    }
+
+    .mock-document dd {
+      margin: 0;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    .soa-table,
+    .crf-table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #6f5b52;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .soa-table th,
+    .soa-table td,
+    .crf-table th,
+    .crf-table td {
+      padding: 9px 8px;
+      border-bottom: 1px solid rgba(200, 157, 132, 0.22);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .soa-table th,
+    .crf-table th {
+      color: #4b3a36;
+      font-weight: 800;
+    }
+
+    .soa-table td:not(:first-child),
+    .soa-table th:not(:first-child) {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .answer-key {
+      margin-top: 16px;
+      background: rgba(242, 248, 244, 0.62);
+    }
+
+    .answer-key ol {
+      margin-bottom: 0;
+    }
+
     .tiny-label {
       margin-bottom: 18px;
       color: var(--sand);
@@ -535,6 +634,10 @@
       .work-grid {
         grid-template-columns: 1fr;
       }
+
+      .practice-materials {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -547,7 +650,7 @@
   </svg>
   <div class="page">
     <header>
-      <a class="logo" href="#top" aria-label="YIAN GROUP home">
+      <a class="logo" href="#top" aria-label="YIAN GROUP home" data-home-link>
         <img src="assets/yian-group-founder-logo.png" alt="YIAN GROUP">
       </a>
       <nav aria-label="Main navigation">
@@ -710,13 +813,124 @@
                 <h4>Suggested Workshop: Document Review Challenge</h4>
                 <p>
                   For a first practice activity, the best exercise is not a programming task.
-                  Instead, review a short mock protocol and a sample eCRF page.
+                  Instead, review a mock Schedule of Assessments and a sample eCRF page.
                 </p>
+
+                <div class="practice-materials" aria-label="Mock protocol and sample eCRF">
+                  <div class="mock-document">
+                    <h5>Mock Schedule of Assessments</h5>
+                    <div class="table-scroll">
+                      <table class="soa-table" aria-label="Mock schedule of assessments">
+                        <thead>
+                          <tr>
+                            <th>Assessment</th>
+                            <th>Screening</th>
+                            <th>Baseline</th>
+                            <th>Week 4</th>
+                            <th>Week 8</th>
+                            <th>Week 12</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Informed Consent</td>
+                            <td>X</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>Eligibility Review</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>Seated Blood Pressure</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X*</td>
+                          </tr>
+                          <tr>
+                            <td>Safety Laboratory Tests</td>
+                            <td>X</td>
+                            <td></td>
+                            <td>X</td>
+                            <td></td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td>Adverse Event Review</td>
+                            <td></td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p>
+                      *Primary endpoint: Change from Baseline to Week 12 in seated systolic blood pressure.
+                    </p>
+                  </div>
+
+                  <div class="mock-document">
+                    <h5>Sample eCRF Page</h5>
+                    <table class="crf-table" aria-label="Sample vital signs eCRF fields">
+                      <thead>
+                        <tr>
+                          <th>Field Label</th>
+                          <th>Variable</th>
+                          <th>Entry</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Visit</td>
+                          <td>VISIT</td>
+                          <td>Week 12</td>
+                        </tr>
+                        <tr>
+                          <td>Seated Systolic Blood Pressure</td>
+                          <td>SYSBP</td>
+                          <td>128 mmHg</td>
+                        </tr>
+                        <tr>
+                          <td>Seated Diastolic Blood Pressure</td>
+                          <td>DIABP</td>
+                          <td>82 mmHg</td>
+                        </tr>
+                        <tr>
+                          <td>Blood Pressure Assessment Date</td>
+                          <td>BPDT</td>
+                          <td>2026-05-14</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
                 <ol>
                   <li>Identify the visit where the primary blood pressure endpoint is collected.</li>
                   <li>Find the eCRF fields where systolic and diastolic blood pressure are recorded.</li>
                   <li>Write a short note explaining which document supports each answer.</li>
                 </ol>
+
+                <div class="answer-key">
+                  <h5>Answer Key</h5>
+                  <ol>
+                    <li>The primary blood pressure endpoint is collected at Week 12.</li>
+                    <li>Systolic blood pressure is recorded in SYSBP; diastolic blood pressure is recorded in DIABP.</li>
+                    <li>The Schedule of Assessments supports the endpoint timing, and the eCRF supports the variable names and data entry fields.</li>
+                  </ol>
+                </div>
+
                 <p>
                   This builds a core programming skill in clinical research: reading clinical
                   specifications carefully before touching the keyboard.
@@ -760,8 +974,11 @@
   <script>
     const panelLinks = document.querySelectorAll("[data-panel-link]");
     const sections = document.querySelectorAll(".section");
+    const homeLink = document.querySelector("[data-home-link]");
 
     function openPanel(panelId, updateUrl = true) {
+      document.body.classList.add("panel-open");
+
       sections.forEach((section) => {
         section.classList.toggle("is-active", section.id === panelId);
       });
@@ -775,11 +992,26 @@
       }
     }
 
+    function openHome(updateUrl = true) {
+      document.body.classList.remove("panel-open");
+      sections.forEach((section) => section.classList.remove("is-active"));
+      panelLinks.forEach((link) => link.classList.remove("is-active"));
+
+      if (updateUrl) {
+        history.replaceState(null, "", window.location.pathname);
+      }
+    }
+
     panelLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
         openPanel(link.dataset.panelLink);
       });
+    });
+
+    homeLink?.addEventListener("click", (event) => {
+      event.preventDefault();
+      openHome();
     });
 
     const initialPanel = window.location.hash.replace("#", "");
