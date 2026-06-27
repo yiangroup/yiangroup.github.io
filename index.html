@@ -6,17 +6,16 @@
   <title>YIAN GROUP</title>
   <style>
     :root {
-      --rose-50: #fff8fa;
-      --rose-100: #fdecef;
-      --rose-200: #f7d8df;
-      --rose-300: #edbcc8;
-      --rose-400: #d99aaa;
-      --rose-700: #7d4656;
-      --ink: #34262c;
-      --muted: #735d65;
-      --white: #ffffff;
-      --line: rgba(125, 70, 86, 0.14);
-      --shadow: rgba(125, 70, 86, 0.13);
+      --cream: #fffaf8;
+      --rose-50: #fff3f5;
+      --rose-100: #f9e1e6;
+      --rose-200: #efc3cc;
+      --rose-400: #cb7e91;
+      --ink: #33272a;
+      --muted: #786267;
+      --blue: #7d96b4;
+      --line: rgba(203, 126, 145, 0.22);
+      --card: rgba(255, 255, 255, 0.74);
     }
 
     * {
@@ -29,22 +28,21 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--ink);
       background:
-        radial-gradient(circle at 18% 10%, rgba(247, 216, 223, 0.85), transparent 30%),
-        radial-gradient(circle at 90% 18%, rgba(253, 236, 239, 0.95), transparent 32%),
-        linear-gradient(135deg, var(--rose-50) 0%, var(--rose-100) 52%, #fffdfd 100%);
+        radial-gradient(circle at 16% 8%, rgba(249, 225, 230, 0.88), transparent 28%),
+        radial-gradient(circle at 88% 16%, rgba(239, 195, 204, 0.42), transparent 30%),
+        linear-gradient(135deg, var(--cream) 0%, var(--rose-50) 48%, #fffefd 100%);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     .page {
-      width: min(1120px, 92%);
+      width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
     }
 
     header {
-      padding: 30px 0 22px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -52,369 +50,343 @@
     }
 
     .brand {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: 0.14em;
-      color: var(--ink);
+      letter-spacing: 0.16em;
     }
 
     nav {
       display: flex;
+      align-items: center;
       gap: 24px;
       flex-wrap: wrap;
-      font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
       font-weight: 700;
     }
 
     nav a {
-      color: var(--rose-700);
+      color: var(--muted);
       text-decoration: none;
     }
 
+    nav a:hover {
+      color: var(--rose-400);
+    }
+
     .hero {
-      min-height: 72vh;
+      min-height: calc(100vh - 76px);
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
       align-items: center;
-      gap: 48px;
-      padding: 42px 0 70px;
+      gap: clamp(30px, 7vw, 86px);
+      padding: 34px 0 72px;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 15px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.62);
-      color: var(--rose-700);
-      font-family: Arial, Helvetica, sans-serif;
+      color: var(--rose-400);
       font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.02em;
-      box-shadow: 0 14px 38px var(--shadow);
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: var(--rose-300);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
     }
 
     h1 {
-      margin: 24px 0 16px;
-      font-size: clamp(48px, 8vw, 92px);
-      line-height: 0.95;
-      letter-spacing: 0.01em;
-      color: var(--ink);
+      margin: 18px 0 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(54px, 9vw, 112px);
       font-weight: 500;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
     }
 
     .subtitle {
       margin: 0;
-      max-width: 720px;
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1.25;
-      color: var(--rose-700);
+      max-width: 700px;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 3.3vw, 38px);
+      line-height: 1.18;
     }
 
     .intro {
+      max-width: 620px;
       margin: 24px 0 0;
-      max-width: 660px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 17px;
-      line-height: 1.85;
       color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
     }
 
-    .actions {
+    .hero-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
       margin-top: 34px;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 800;
-      border: 1px solid transparent;
-    }
-
-    .primary {
-      background: var(--rose-700);
-      color: white;
-      box-shadow: 0 18px 42px rgba(125, 70, 86, 0.24);
-    }
-
-    .secondary {
-      background: rgba(255, 255, 255, 0.72);
-      color: var(--rose-700);
-      border-color: var(--line);
-    }
-
-    .rose-card {
-      position: relative;
-      min-height: 430px;
-      border-radius: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      background:
-        linear-gradient(150deg, rgba(255,255,255,0.86), rgba(253,236,239,0.62)),
-        radial-gradient(circle at 50% 36%, rgba(237,188,200,0.62), transparent 42%);
-      box-shadow: 0 28px 80px var(--shadow);
-      overflow: hidden;
-    }
-
-    .rose-card::before,
-    .rose-card::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      border: 1px solid rgba(125, 70, 86, 0.12);
-      background: rgba(255, 255, 255, 0.22);
-    }
-
-    .rose-card::before {
-      width: 280px;
-      height: 280px;
-      right: -68px;
-      top: -58px;
-    }
-
-    .rose-card::after {
-      width: 220px;
-      height: 220px;
-      left: -66px;
-      bottom: -62px;
-    }
-
-    .card-content {
-      position: relative;
-      z-index: 1;
-      padding: 36px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .card-content h2 {
-      margin: 0 0 16px;
-      font-size: 30px;
-      font-weight: 500;
-      color: var(--ink);
-    }
-
-    .card-content p {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .tag {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      color: var(--rose-700);
+      min-height: 46px;
+      padding: 0 20px;
       border: 1px solid var(--line);
-      font-size: 13px;
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.64);
+      text-decoration: none;
+      font-size: 14px;
       font-weight: 800;
     }
 
-    section {
-      padding: 46px 0;
+    .button.primary {
+      color: white;
+      background: var(--rose-400);
+      border-color: transparent;
+      box-shadow: 0 16px 34px rgba(203, 126, 145, 0.23);
+    }
+
+    .hero-art {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 440px;
+    }
+
+    .hero-art img {
+      width: min(100%, 650px);
+      height: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+
+    .section {
+      padding: 78px 0;
       border-top: 1px solid var(--line);
     }
 
-    .section-grid {
+    .section-heading {
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
+      grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
       gap: 44px;
       align-items: start;
     }
 
-    section h2 {
+    h2 {
       margin: 0;
-      font-size: clamp(30px, 4vw, 46px);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 5vw, 64px);
       font-weight: 500;
-      color: var(--ink);
+      line-height: 1.02;
     }
 
-    section p {
+    .copy-card {
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: 0 18px 52px rgba(120, 98, 103, 0.08);
+    }
+
+    p {
       margin: 0 0 18px;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.85;
       color: var(--muted);
       font-size: 16px;
+      line-height: 1.82;
     }
 
-    .soft-box {
-      padding: 26px;
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.58);
-      border: 1px solid rgba(255, 255, 255, 0.76);
-      box-shadow: 0 18px 48px rgba(125, 70, 86, 0.08);
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .tile {
+      min-height: 178px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .tile h3 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .tile p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .note {
+      color: var(--blue);
+      font-weight: 800;
     }
 
     footer {
-      padding: 32px 0 46px;
+      padding: 34px 0 44px;
       border-top: 1px solid var(--line);
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--muted);
-      font-size: 14px;
       display: flex;
       justify-content: space-between;
       gap: 18px;
       flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    @media (max-width: 820px) {
+    @media (max-width: 860px) {
       header {
         align-items: flex-start;
         flex-direction: column;
+        padding: 24px 0;
       }
 
       .hero,
-      .section-grid {
+      .section-heading {
         grid-template-columns: 1fr;
       }
 
       .hero {
         min-height: auto;
-        padding-top: 24px;
       }
 
-      .rose-card {
-        min-height: 340px;
+      .hero-art {
+        min-height: 280px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
     <header>
       <div class="brand">YIAN GROUP</div>
-      <nav>
-        <a href="#about">About</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About Us</a>
         <a href="#training">Training</a>
-        <a href="#chinese">中文</a>
+        <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
+        <a href="#chinese">中文</a>
       </nav>
     </header>
 
     <main>
-      <div class="hero">
+      <section class="hero" aria-labelledby="site-title">
         <div>
-          <span class="eyebrow">Free Online Training Coming Soon</span>
-          <h1>YIAN GROUP</h1>
+          <div class="eyebrow">Free Online Training Coming Soon</div>
+          <h1 id="site-title">YIAN GROUP</h1>
           <p class="subtitle">Biostatistics & Statistical Programming Training</p>
           <p class="intro">
-            A bilingual learning space for biostatistics, statistical programming,
-            clinical research data, and practical analytical thinking.
+            A fresh bilingual learning space for biostatistics, statistical programming,
+            clinical research data, and practical analytical skills.
           </p>
-          <div class="actions">
-            <a class="button primary" href="#training">View Training</a>
-            <a class="button secondary" href="#chinese">中文介绍</a>
+          <div class="hero-actions">
+            <a class="button primary" href="#about">About Us</a>
+            <a class="button" href="#training">View Training</a>
           </div>
         </div>
 
-        <aside class="rose-card">
-          <div class="card-content">
-            <h2>Practical. Clear. Accessible.</h2>
-            <p>
-              YIAN GROUP is preparing free online training resources for learners and
-              professionals working with clinical, public health, and research data.
-            </p>
-            <div class="tags">
-              <span class="tag">Biostatistics</span>
-              <span class="tag">SAS</span>
-              <span class="tag">R</span>
-              <span class="tag">Python</span>
-              <span class="tag">Clinical Data</span>
-              <span class="tag">CDISC</span>
-            </div>
-          </div>
-        </aside>
-      </div>
+        <div class="hero-art" aria-label="Two friendly book characters with a laptop and data charts">
+          <img src="assets/founders-books.png" alt="Two friendly book characters with a laptop and small data charts">
+        </div>
+      </section>
 
-      <section id="about">
-        <div class="section-grid">
-          <h2>About YIAN GROUP</h2>
-          <div class="soft-box">
+      <section id="about" class="section">
+        <div class="section-heading">
+          <h2>About Us<br>关于我们</h2>
+          <div class="copy-card">
             <p>
-              YIAN GROUP is building a professional bilingual training website focused on
-              biostatistics and statistical programming.
+              YIAN GROUP is a bilingual learning initiative focused on biostatistics and
+              statistical programming. We are building a professional online space where learners,
+              researchers, analysts, and working professionals can access practical training
+              resources.
             </p>
             <p>
-              Our goal is to make practical knowledge easier to access, easier to understand,
-              and more useful for students, researchers, analysts, and professionals.
+              Our focus includes biostatistics, statistical programming, clinical research data,
+              SAS, R, Python, CDISC, and applied data analysis.
+            </p>
+            <p>
+              YIAN GROUP 是一个专注于生物统计与统计编程的中英双语学习项目。我们正在建立一个专业的线上学习空间，
+              为学习者、研究人员、数据分析师和相关专业人士提供实用的培训资源。
+            </p>
+            <p>
+              我们关注的方向包括生物统计、统计编程、临床研究数据、SAS、R、Python、CDISC 以及应用数据分析。
             </p>
           </div>
         </div>
       </section>
 
-      <section id="training">
-        <div class="section-grid">
+      <section id="training" class="section">
+        <div class="section-heading">
           <h2>Training</h2>
-          <div class="soft-box">
+          <div>
             <p>
               Free online training articles are coming soon. Future topics may include
               biostatistics basics, clinical trial statistics, SAS programming, R programming,
               Python data analysis, CDISC, and clinical research data.
             </p>
+            <div class="grid">
+              <article class="tile">
+                <h3>Biostatistics</h3>
+                <p>Clear introductions to core statistical concepts used in research and clinical data.</p>
+              </article>
+              <article class="tile">
+                <h3>Programming</h3>
+                <p>Practical learning notes for SAS, R, Python, and reproducible analytical workflows.</p>
+              </article>
+              <article class="tile">
+                <h3>Clinical Data</h3>
+                <p>Training resources for clinical research data, CDISC, tables, listings, and figures.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" class="section">
+        <div class="section-heading">
+          <h2>Resources</h2>
+          <div class="copy-card">
             <p>
-              Video lessons and additional learning resources may be added in the future.
+              Resource pages, downloads, and learning notes will be added as the website grows.
+            </p>
+            <p class="note">
+              This website is currently in its early launch stage.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="chinese">
-        <div class="section-grid">
+      <section id="chinese" class="section">
+        <div class="section-heading">
           <h2>中文介绍</h2>
-          <div class="soft-box">
+          <div class="copy-card">
             <p>
-              YIAN GROUP 正在筹备一个中英双语的专业培训网站，内容聚焦生物统计、统计编程、
+              YIAN GROUP 正在筹备免费的线上培训资源，内容聚焦生物统计、统计编程、
               临床研究数据分析以及实用的数据分析技能。
             </p>
             <p>
-              免费线上培训文章即将发布。未来可能增加视频课程、学习资料和更多培训内容。
+              第一批培训文章即将发布。未来可能增加视频课程、学习资料和更多培训内容。
             </p>
           </div>
         </div>
       </section>
 
-      <section id="contact">
-        <div class="section-grid">
+      <section id="contact" class="section">
+        <div class="section-heading">
           <h2>Contact</h2>
-          <div class="soft-box">
-            <p>
-              Contact information will be added soon.
-            </p>
-            <p>
-              联系方式即将更新。
-            </p>
+          <div class="copy-card">
+            <p>Contact information will be added soon.</p>
+            <p>联系方式即将更新。</p>
           </div>
         </div>
       </section>
