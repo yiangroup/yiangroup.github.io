@@ -39,6 +39,17 @@
       font-family: "Trebuchet MS", Arial, sans-serif;
     }
 
+    a,
+    button,
+    p,
+    span,
+    h2,
+    h3,
+    .logo-text,
+    .logo-mark {
+      filter: url("#pencil-text") contrast(0.98);
+    }
+
     body::before {
       content: "";
       position: fixed;
@@ -143,12 +154,16 @@
 
     .logo-text,
     nav a,
-    h1,
+    h2,
+    h3,
+    p,
     .subtitle,
-    .pill,
     .work-card h2,
-    .section h2 {
-      filter: contrast(0.96);
+    .section h2,
+    .card-number,
+    .tiny-label,
+    footer span {
+      filter: url("#pencil-text") contrast(0.96);
       -webkit-font-smoothing: antialiased;
       background-image:
         repeating-linear-gradient(112deg, rgba(255,255,255,0.22) 0 1px, transparent 1px 5px),
@@ -163,19 +178,6 @@
       align-items: center;
       gap: clamp(24px, 6vw, 74px);
       padding: 48px 0 72px;
-    }
-
-    h1 {
-      margin: 0 0 18px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 6vw, 78px);
-      line-height: 1;
-      letter-spacing: -0.025em;
-      color: var(--ink);
-      text-shadow:
-        1px 0.6px 0 rgba(54, 42, 42, 0.12),
-        -0.6px 0.8px 0 rgba(200, 157, 132, 0.15),
-        1.8px -1px 0 rgba(54, 42, 42, 0.05);
     }
 
     .subtitle {
@@ -195,39 +197,6 @@
       color: #775f55;
       font-size: 16px;
       line-height: 1.85;
-    }
-
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 42px;
-      padding: 0 18px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--ink);
-      background: #fff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-shadow:
-        0.35px 0.25px 0 rgba(54, 42, 42, 0.12),
-        -0.25px 0.35px 0 rgba(200, 157, 132, 0.12),
-        0.9px -0.5px 0 rgba(54, 42, 42, 0.045);
-    }
-
-    .pill.primary {
-      border-color: transparent;
-      background: var(--rose-soft);
-      color: #7d4e4e;
     }
 
     .hero-art {
@@ -258,26 +227,58 @@
 
     .work-card {
       min-height: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: grid;
+      grid-template-rows: 34px 1fr auto;
       padding: 26px;
       border: 1px solid transparent;
       border-radius: 4px;
       background: var(--cream);
       text-decoration: none;
+      position: relative;
+      overflow: hidden;
     }
 
-    .work-card:nth-child(2) {
-      background: #fbefef;
+    .work-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-radial-gradient(circle at 18% 22%, rgba(54,42,42,0.025) 0 1px, transparent 1px 4px);
+      pointer-events: none;
+      opacity: 0.55;
     }
 
-    .work-card:nth-child(3) {
-      background: #f2f8f4;
+    .work-card > * {
+      position: relative;
+      z-index: 1;
     }
 
-    .work-card:nth-child(4) {
-      background: #f8f0ea;
+    .work-card > div {
+      display: grid;
+      grid-template-rows: 96px auto;
+      align-content: end;
+      gap: 22px;
+    }
+
+    .card-about {
+      background:
+        linear-gradient(90deg, rgba(255,248,241,0.93) 0%, rgba(255,248,241,0.72) 48%, rgba(255,248,241,0.18) 100%),
+        url("assets/about-us-illustration.png") right 45% bottom 50% / auto 100% no-repeat,
+        var(--cream);
+    }
+
+    .card-training {
+      background:
+        linear-gradient(90deg, rgba(251,239,239,0.94) 0%, rgba(251,239,239,0.72) 48%, rgba(251,239,239,0.18) 100%),
+        url("assets/training-illustration.png") right 45% bottom 50% / auto 100% no-repeat,
+        #fbefef;
+    }
+
+    .card-resources {
+      background:
+        linear-gradient(90deg, rgba(242,248,244,0.95) 0%, rgba(242,248,244,0.74) 48%, rgba(242,248,244,0.18) 100%),
+        url("assets/resources-illustration.png") right 45% bottom 50% / auto 100% no-repeat,
+        #f2f8f4;
     }
 
     .work-card:hover {
@@ -296,19 +297,22 @@
         0.7px 0.5px 0 rgba(54, 42, 42, 0.1),
         -0.5px 0.4px 0 rgba(200, 157, 132, 0.13),
         1.3px -0.7px 0 rgba(54, 42, 42, 0.04);
+      align-self: end;
     }
 
     .work-card p {
-      margin: 26px 0 0;
+      margin: 0;
       color: #80685c;
       font-size: 15px;
       line-height: 1.74;
+      max-width: 280px;
     }
 
     .card-number {
       color: var(--sand);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 20px;
+      align-self: start;
     }
 
     .section {
@@ -392,6 +396,12 @@
   </style>
 </head>
 <body>
+  <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <filter id="pencil-text">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="12" result="grain"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="0.45" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+  </svg>
   <div class="page">
     <header>
       <a class="logo" href="#top" aria-label="YIAN GROUP home">
@@ -403,24 +413,18 @@
         <a href="#training">TRAINING</a>
         <a href="#resources">RESOURCES</a>
         <a href="#contact">CONTACT</a>
-        <a href="#chinese">中文</a>
         <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="site-title">
+      <section class="hero" aria-label="YIAN GROUP introduction">
         <div>
-          <h1 id="site-title">YIAN GROUP</h1>
           <p class="subtitle">Biostatistics & Statistical Programming Training</p>
           <p class="intro-copy">
-            A bilingual learning space for biostatistics, statistical programming,
+            An online learning space for biostatistics, statistical programming,
             clinical research data, and practical analytical skills.
           </p>
-          <div class="hero-links">
-            <a class="pill primary" href="#about">ABOUT US</a>
-            <a class="pill" href="#training">TRAINING COMING SOON</a>
-          </div>
         </div>
 
         <div class="hero-art" aria-label="Two illustrated founders with data charts">
@@ -429,43 +433,36 @@
       </section>
 
       <section class="work-grid" aria-label="Website sections">
-        <a class="work-card" href="#about">
+        <a class="work-card card-about" href="#about">
           <span class="card-number">01</span>
           <div>
-            <h2>about<br>us</h2>
+            <h2>ABOUT<br>US</h2>
             <p>Who we are and what YIAN GROUP is building.</p>
           </div>
         </a>
-        <a class="work-card" href="#training">
+        <a class="work-card card-training" href="#training">
           <span class="card-number">02</span>
           <div>
-            <h2>free<br>training</h2>
+            <h2>FREE<br>TRAINING</h2>
             <p>Biostatistics and statistical programming resources, coming soon.</p>
           </div>
         </a>
-        <a class="work-card" href="#resources">
+        <a class="work-card card-resources" href="#resources">
           <span class="card-number">03</span>
           <div>
-            <h2>learning<br>resources</h2>
+            <h2>LEARNING<br>RESOURCES</h2>
             <p>Future downloads, notes, guides, and learning materials.</p>
-          </div>
-        </a>
-        <a class="work-card" href="#chinese">
-          <span class="card-number">04</span>
-          <div>
-            <h2>中文<br>介绍</h2>
-            <p>中英双语学习空间，聚焦生物统计与统计编程。</p>
           </div>
         </a>
       </section>
 
       <section id="about" class="section">
         <div class="section-layout">
-          <h2>About Us<br>关于我们</h2>
+          <h2>About Us</h2>
           <div class="copy">
             <div class="tiny-label">YIAN GROUP</div>
             <p>
-              YIAN GROUP is a bilingual learning initiative focused on biostatistics and
+              YIAN GROUP is an online learning initiative focused on biostatistics and
               statistical programming. We are building a professional online space where learners,
               researchers, analysts, and working professionals can access practical training
               resources.
@@ -473,13 +470,6 @@
             <p>
               Our focus includes biostatistics, statistical programming, clinical research data,
               SAS, R, Python, CDISC, and applied data analysis.
-            </p>
-            <p>
-              YIAN GROUP 是一个专注于生物统计与统计编程的中英双语学习项目。我们正在建立一个专业的线上学习空间，
-              为学习者、研究人员、数据分析师和相关专业人士提供实用的培训资源。
-            </p>
-            <p>
-              我们关注的方向包括生物统计、统计编程、临床研究数据、SAS、R、Python、CDISC 以及应用数据分析。
             </p>
           </div>
         </div>
@@ -514,29 +504,12 @@
         </div>
       </section>
 
-      <section id="chinese" class="section">
-        <div class="section-layout">
-          <h2>中文介绍</h2>
-          <div class="copy">
-            <div class="tiny-label">中文内容</div>
-            <p>
-              YIAN GROUP 正在筹备免费的线上培训资源，内容聚焦生物统计、统计编程、
-              临床研究数据分析以及实用的数据分析技能。
-            </p>
-            <p>
-              第一批培训文章即将发布。未来可能增加视频课程、学习资料和更多培训内容。
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section id="contact" class="section">
         <div class="section-layout">
           <h2>Contact</h2>
           <div class="copy">
             <div class="tiny-label">Get in touch</div>
             <p>Contact information will be added soon.</p>
-            <p>联系方式即将更新。</p>
           </div>
         </div>
       </section>
