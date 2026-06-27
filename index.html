@@ -332,6 +332,91 @@
       margin-bottom: 0;
     }
 
+    .lesson {
+      margin-top: 34px;
+      padding: 30px;
+      border: 1px solid rgba(200, 157, 132, 0.24);
+      border-radius: 6px;
+      background:
+        repeating-radial-gradient(circle at 12% 18%, rgba(54,42,42,0.018) 0 1px, transparent 1px 4px),
+        rgba(255, 250, 248, 0.66);
+      box-shadow: 0 18px 42px rgba(143, 111, 95, 0.06);
+    }
+
+    .lesson-title {
+      margin: 0 0 16px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .lesson h4 {
+      margin: 30px 0 12px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      line-height: 1.2;
+    }
+
+    .lesson ul,
+    .lesson ol {
+      margin: 0 0 18px;
+      padding-left: 22px;
+      color: #6f5b52;
+      line-height: 1.82;
+      font-size: 16px;
+    }
+
+    .lesson li {
+      margin-bottom: 10px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0 26px;
+    }
+
+    .flow-step {
+      padding: 15px 18px;
+      border: 1px solid rgba(200, 157, 132, 0.32);
+      border-radius: 6px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 6px),
+        rgba(255, 248, 241, 0.72);
+      color: #604e47;
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .flow-step::after {
+      content: "↓";
+      display: block;
+      margin-top: 8px;
+      color: var(--sand);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .flow-step:last-child::after {
+      content: "";
+      margin: 0;
+    }
+
+    .flow-step strong {
+      color: #3f3432;
+    }
+
+    .workshop {
+      margin-top: 26px;
+      padding: 24px;
+      border-radius: 6px;
+      background: rgba(248, 230, 228, 0.48);
+      border: 1px solid rgba(203, 126, 145, 0.18);
+    }
+
     .tiny-label {
       margin-bottom: 18px;
       color: var(--sand);
@@ -421,7 +506,7 @@
           <span class="card-number">02</span>
           <div>
             <h2>FREE<br>TRAINING</h2>
-            <p>Biostatistics and statistical programming resources, coming soon.</p>
+            <p>Lesson 1 is now available for new statistical programming learners.</p>
           </div>
         </a>
         <a class="work-card card-resources" href="#resources">
@@ -456,15 +541,102 @@
         <div class="section-layout">
           <h2>Training</h2>
           <div class="copy">
-            <div class="tiny-label">Coming soon</div>
+            <div class="tiny-label">Lesson 1</div>
+            <h3 class="lesson-title">Clinical Research Environment &amp; Regulatory Compliance</h3>
             <p>
-              Free online training articles are coming soon. Future topics may include
-              biostatistics basics, clinical trial statistics, SAS programming, R programming,
-              Python data analysis, CDISC, and clinical research data.
+              Before learning code, a statistical programmer needs to understand the clinical
+              research environment, regulatory expectations, and the documents that drive every
+              programming decision.
             </p>
-            <p>
-              Video lessons and additional learning resources may be added as the site grows.
-            </p>
+
+            <article class="lesson">
+              <h4>1. Regulatory Framework &amp; Red Lines</h4>
+              <p>
+                Clinical trials involve patient safety, data integrity, and evidence used for
+                regulatory decision-making. For that reason, the work must follow strict quality
+                and compliance expectations.
+              </p>
+              <ul>
+                <li>
+                  <strong>ICH-GCP:</strong> Good Clinical Practice is the international ethical
+                  and quality standard for designing, conducting, recording, and reporting clinical
+                  trials. A programmer should understand the importance of ALCOA+ data principles:
+                  attributable, legible, contemporaneous, original, accurate, and complete.
+                </li>
+                <li>
+                  <strong>21 CFR Part 11:</strong> This FDA regulation addresses electronic records
+                  and electronic signatures. In a regulated environment, code changes, data access,
+                  execution history, and approvals may be traceable through audit trails and system
+                  controls.
+                </li>
+              </ul>
+
+              <h4>2. Core Clinical Documents</h4>
+              <p>
+                Statistical programmers do not program from assumptions. They program from defined
+                study specifications and approved documents.
+              </p>
+              <ul>
+                <li>
+                  <strong>Protocol:</strong> The blueprint of the clinical trial. It defines the
+                  study objectives, design, treatment schedule, visit structure, endpoints, and
+                  inclusion or exclusion criteria.
+                </li>
+                <li>
+                  <strong>Statistical Analysis Plan:</strong> The analysis guide for the study. It
+                  describes statistical methods, derivation rules, analysis populations, endpoint
+                  definitions, and the tables, listings, and figures required for delivery.
+                </li>
+              </ul>
+
+              <h4>3. End-to-End Clinical Data Flow</h4>
+              <p>
+                Before working with datasets, a programmer should understand how clinical data
+                moves from patient visits to analysis outputs.
+              </p>
+              <div class="flow" aria-label="Clinical data flow">
+                <div class="flow-step"><strong>Clinical Site / Hospital</strong><br>Doctors and site staff collect patient data during study visits.</div>
+                <div class="flow-step"><strong>eCRF / EDC</strong><br>Patient data is entered into an electronic data capture system.</div>
+                <div class="flow-step"><strong>Raw Datasets</strong><br>Data management teams clean, query, and export source data.</div>
+                <div class="flow-step"><strong>SDTM Datasets</strong><br>Raw data is standardized according to CDISC SDTM structures.</div>
+                <div class="flow-step"><strong>ADaM Datasets</strong><br>Analysis-ready datasets are derived for statistical analysis.</div>
+                <div class="flow-step"><strong>Tables, Listings, and Figures</strong><br>Final outputs support clinical study reporting and submission packages.</div>
+              </div>
+
+              <h4>4. SOPs &amp; Coding Standards</h4>
+              <p>
+                Large clinical research organizations rely on Standard Operating Procedures and
+                coding standards to keep work consistent, traceable, and transferable across teams.
+              </p>
+              <ul>
+                <li>
+                  <strong>SOP compliance:</strong> Programmers follow documented workflows for data
+                  access, production programming, quality control, validation, and documentation.
+                </li>
+                <li>
+                  <strong>Coding standards:</strong> Code should be readable, maintainable, and
+                  easy for another programmer to review. Program headers, version history, naming
+                  conventions, and standard macros are often part of the programming workflow.
+                </li>
+              </ul>
+
+              <div class="workshop">
+                <h4>Suggested Workshop: Document Review Challenge</h4>
+                <p>
+                  For Lesson 1, the best exercise is not a programming task. Instead, review a
+                  short mock protocol and a sample eCRF page.
+                </p>
+                <ol>
+                  <li>Identify the visit where the primary blood pressure endpoint is collected.</li>
+                  <li>Find the eCRF fields where systolic and diastolic blood pressure are recorded.</li>
+                  <li>Write a short note explaining which document supports each answer.</li>
+                </ol>
+                <p>
+                  This builds a core enterprise programming skill: reading clinical specifications
+                  carefully before touching the keyboard.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
