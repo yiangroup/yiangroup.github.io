@@ -639,6 +639,73 @@
       margin: 0;
     }
 
+    .resource-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      margin-top: 14px;
+      padding: 10px 18px;
+      border: 1px solid rgba(200, 157, 132, 0.38);
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.2) 0 1px, transparent 1px 7px),
+        rgba(255, 253, 249, 0.78);
+      color: #6d554d;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .resource-button:hover {
+      border-color: rgba(203, 126, 145, 0.42);
+      color: #4b3a36;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.2) 0 1px, transparent 1px 7px),
+        rgba(248, 230, 228, 0.62);
+    }
+
+    .document-stack,
+    .document-preview {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .document-stack {
+      margin: 24px 0;
+    }
+
+    .document-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(200, 157, 132, 0.24);
+      border-radius: 6px;
+      background: rgba(255, 253, 249, 0.82);
+      box-shadow: 0 10px 24px rgba(84, 57, 45, 0.06);
+    }
+
+    .document-notes {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-left: 2px solid rgba(203, 126, 145, 0.32);
+      background: rgba(255, 253, 249, 0.5);
+      color: #725d54;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .document-notes p {
+      margin-bottom: 8px;
+    }
+
+    .document-notes p:last-child {
+      margin-bottom: 0;
+    }
+
     .table-scroll {
       overflow-x: auto;
     }
@@ -1037,133 +1104,6 @@
                 </li>
               </ul>
 
-              <div class="workshop">
-                <h4>Suggested Workshop: Document Review Challenge</h4>
-                <p>
-                  For a first practice activity, the best exercise is not a programming task.
-                  Instead, review a mock Schedule of Assessments and a sample eCRF page.
-                </p>
-
-                <div class="practice-materials" aria-label="Mock protocol and sample eCRF">
-                  <div class="mock-document">
-                    <h5>Mock Schedule of Assessments</h5>
-                    <div class="table-scroll">
-                      <table class="soa-table" aria-label="Mock schedule of assessments">
-                        <thead>
-                          <tr>
-                            <th>Assessment</th>
-                            <th>Screening</th>
-                            <th>Baseline</th>
-                            <th>Week 4</th>
-                            <th>Week 8</th>
-                            <th>Week 12</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Informed Consent</td>
-                            <td>X</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td>Eligibility Review</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td>Seated Blood Pressure</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X*</td>
-                          </tr>
-                          <tr>
-                            <td>Safety Laboratory Tests</td>
-                            <td>X</td>
-                            <td></td>
-                            <td>X</td>
-                            <td></td>
-                            <td>X</td>
-                          </tr>
-                          <tr>
-                            <td>Adverse Event Review</td>
-                            <td></td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <p>
-                      *Primary endpoint: Change from Baseline to Week 12 in seated systolic blood pressure.
-                    </p>
-                  </div>
-
-                  <div class="mock-document">
-                    <h5>Sample eCRF Page</h5>
-                    <table class="crf-table" aria-label="Sample vital signs eCRF fields">
-                      <thead>
-                        <tr>
-                          <th>Field Label</th>
-                          <th>Variable</th>
-                          <th>Entry</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Visit</td>
-                          <td>VISIT</td>
-                          <td>Week 12</td>
-                        </tr>
-                        <tr>
-                          <td>Seated Systolic Blood Pressure</td>
-                          <td>SYSBP</td>
-                          <td>128 mmHg</td>
-                        </tr>
-                        <tr>
-                          <td>Seated Diastolic Blood Pressure</td>
-                          <td>DIABP</td>
-                          <td>82 mmHg</td>
-                        </tr>
-                        <tr>
-                          <td>Blood Pressure Assessment Date</td>
-                          <td>BPDT</td>
-                          <td>2026-05-14</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <ol>
-                  <li>Identify the visit where the primary blood pressure endpoint is collected.</li>
-                  <li>Find the eCRF fields where systolic and diastolic blood pressure are recorded.</li>
-                  <li>Write a short note explaining which document supports each answer.</li>
-                </ol>
-
-                <div class="answer-key">
-                  <h5>Answer Key</h5>
-                  <ol>
-                    <li>The primary blood pressure endpoint is collected at Week 12.</li>
-                    <li>Systolic blood pressure is recorded in SYSBP; diastolic blood pressure is recorded in DIABP.</li>
-                    <li>The Schedule of Assessments supports the endpoint timing, and the eCRF supports the variable names and data entry fields.</li>
-                  </ol>
-                </div>
-
-                <p>
-                  This builds a core programming skill in clinical research: reading clinical
-                  specifications carefully before touching the keyboard.
-                </p>
-              </div>
                 </article>
               </details>
 
@@ -1591,47 +1531,51 @@
                   </div>
 
                   <div class="workshop">
-                    <h4>Suggested Workshop: Class-First SDTM Mapping</h4>
+                    <h4>Suggested Workshop: Vital Signs CRF to SDTM VS</h4>
                     <p>
-                      For each mock raw item, first choose the SDTM class, then choose the likely
-                      domain. This mirrors the way many SDTM mapping discussions are handled in
-                      practical programming work.
+                      This practice belongs in the eCRF-to-SDTM section because it connects a
+                      source document, a CRF page, and the first SDTM mapping decision. Review the
+                      Schedule of Assessments below, then use the embedded Vital Signs CRF to decide
+                      how the collected fields should flow into SDTM VS.
                     </p>
-                    <div class="table-scroll">
-                      <table class="crf-table" aria-label="Class-first SDTM mapping exercise">
-                        <thead>
-                          <tr>
-                            <th>Mock Raw Item</th>
-                            <th>Question</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Subject took Metformin 500 mg orally from 2026-03-01 to 2026-04-10.</td>
-                            <td>Which class and domain?</td>
-                          </tr>
-                          <tr>
-                            <td>Subject reported nausea starting on 2026-03-12, mild severity, not serious.</td>
-                            <td>Which class and domain?</td>
-                          </tr>
-                          <tr>
-                            <td>Week 8 systolic blood pressure was 128 mmHg while seated.</td>
-                            <td>Which class and domain?</td>
-                          </tr>
-                          <tr>
-                            <td>Hemoglobin result was 13.2 g/dL with lower normal range 12.0 and upper normal range 16.0.</td>
-                            <td>Which class and domain?</td>
-                          </tr>
-                        </tbody>
-                      </table>
+
+                    <div class="document-stack" aria-label="Protocol and CRF document images">
+                      <div class="mock-document">
+                        <h5>Protocol Schedule of Assessments</h5>
+                        <div class="document-preview" aria-label="Protocol Schedule of Assessments image preview">
+                          <img src="assets/protocol-soa-page-1.png" alt="Protocol Schedule of Assessments page 1">
+                          <img src="assets/protocol-soa-page-2.png" alt="Protocol Schedule of Assessments page 2">
+                        </div>
+                      </div>
+
+                      <div class="mock-document">
+                        <h5>Vital Signs CRF</h5>
+                        <p>
+                          Use the blank CRF page as the source form. Identify the visit, assessment
+                          date, vital signs test names, original results, and units before mapping
+                          anything to SDTM.
+                        </p>
+                        <div class="document-preview" aria-label="Vital Signs CRF image preview">
+                          <img src="assets/vital-signs-crf-page-1.png" alt="Vital Signs CRF page 1 with administrative fields and vital signs measurements">
+                          <img src="assets/vital-signs-crf-page-2.png" alt="Vital Signs CRF page 2 with temperature route, weight, height, clinical significance, and comments">
+                        </div>
+                      </div>
                     </div>
+
+                    <ol>
+                      <li>Identify which visits require systolic and diastolic blood pressure collection.</li>
+                      <li>Find the CRF questions that capture assessment date, time, position, and blood pressure.</li>
+                      <li>Decide which SDTM domain should receive the blood pressure records.</li>
+                      <li>List the key SDTM VS variables needed for the mapping, including original result and unit.</li>
+                    </ol>
+
                     <div class="answer-key">
                       <h5>Answer Key</h5>
                       <ol>
-                        <li>Metformin is an Intervention, usually CM.</li>
-                        <li>Nausea is an Event, usually AE.</li>
-                        <li>Systolic blood pressure is a Finding, usually VS.</li>
-                        <li>Hemoglobin is a Finding, usually LB.</li>
+                        <li>Blood pressure is collected at Visit 1, Visit 2, Visit 3, Visit 4, Visit 5/EOS, and unscheduled Visit X.</li>
+                        <li>Date and time come from Q3 and Q4, subject position from Q5, systolic blood pressure from Q6, and diastolic blood pressure from Q7.</li>
+                        <li>Blood pressure is a Findings assessment, so the SDTM domain is VS.</li>
+                        <li>Typical VS variables include USUBJID, VISIT, VSDTC, VSTESTCD, VSTEST, VSPOS, VSORRES, VSORRESU, and VSSTRESN or VSSTRESC after standardization.</li>
                       </ol>
                     </div>
                   </div>
