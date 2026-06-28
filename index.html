@@ -329,6 +329,15 @@
       align-items: start;
     }
 
+    #training .section-layout {
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    #training .copy {
+      max-width: 1040px;
+    }
+
     .section h2 {
       margin: 0;
       color: #8f6f5f;
@@ -371,8 +380,8 @@
 
     .training-list {
       display: grid;
-      gap: 16px;
-      margin-top: 26px;
+      gap: 8px;
+      margin-top: 12px;
     }
 
     .training-item {
@@ -380,16 +389,20 @@
       border-radius: 6px;
       background:
         repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
-        rgba(255, 250, 248, 0.72);
-      box-shadow: 0 18px 42px rgba(143, 111, 95, 0.05);
+        rgba(255, 250, 248, 0.5);
+      box-shadow: none;
       overflow: hidden;
+    }
+
+    .training-item[open] {
+      border-color: rgba(200, 157, 132, 0.28);
     }
 
     .training-item summary {
       position: relative;
       display: grid;
-      gap: 8px;
-      padding: 24px 64px 24px 26px;
+      gap: 5px;
+      padding: 16px 54px 16px 20px;
       cursor: pointer;
       list-style: none;
     }
@@ -399,18 +412,14 @@
     }
 
     .training-item summary::after {
-      content: "+";
+      content: ">";
       position: absolute;
-      top: 24px;
+      top: 15px;
       right: 28px;
       color: var(--sand);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 30px;
+      font-size: 28px;
       line-height: 1;
-    }
-
-    .training-item[open] summary::after {
-      content: "-";
     }
 
     .summary-meta {
@@ -424,23 +433,63 @@
     .summary-title {
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(26px, 3.3vw, 38px);
+      font-size: clamp(22px, 2.4vw, 31px);
       line-height: 1.08;
     }
 
     .summary-note {
       color: #7b655c;
-      font-size: 15px;
-      line-height: 1.62;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .training-item .lesson {
+      display: none;
       border-width: 1px 0 0;
       border-radius: 0;
       box-shadow: none;
       background:
         repeating-radial-gradient(circle at 12% 18%, rgba(54,42,42,0.016) 0 1px, transparent 1px 4px),
         rgba(255, 250, 248, 0.54);
+    }
+
+    .training-overview.is-hidden {
+      display: none;
+    }
+
+    .lesson-page {
+      display: none;
+    }
+
+    .lesson-page.is-active {
+      display: block;
+    }
+
+    .lesson-page .lesson {
+      display: block;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 22px;
+      padding: 10px 14px;
+      border: 1px solid rgba(200, 157, 132, 0.32);
+      border-radius: 999px;
+      background: rgba(255, 253, 249, 0.68);
+      color: #7b655c;
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .back-button:hover {
+      color: var(--sand);
+      border-color: rgba(200, 157, 132, 0.58);
     }
 
     .lesson h4 {
@@ -506,6 +555,62 @@
       border-radius: 6px;
       background: rgba(248, 230, 228, 0.48);
       border: 1px solid rgba(203, 126, 145, 0.18);
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 190px;
+      gap: 34px;
+      align-items: start;
+      padding: 28px;
+      border: 1px solid rgba(200, 157, 132, 0.22);
+      border-radius: 6px;
+      background:
+        radial-gradient(circle at 92% 14%, rgba(248, 230, 228, 0.58), transparent 34%),
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
+        rgba(255, 253, 249, 0.54);
+    }
+
+    .about-art {
+      display: grid;
+      gap: 14px;
+      justify-items: center;
+      color: #9b7d6d;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .about-art img {
+      width: 168px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      mix-blend-mode: multiply;
+      filter: saturate(0.9) contrast(0.98);
+    }
+
+    .people-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .person-card {
+      padding-left: 18px;
+      border-left: 2px solid rgba(200, 157, 132, 0.42);
+    }
+
+    .person-card h3 {
+      margin: 0 0 8px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .person-card p {
+      margin-bottom: 0;
     }
 
     .practice-materials {
@@ -627,6 +732,10 @@
         grid-template-columns: 1fr;
       }
 
+      #training .section-layout {
+        grid-template-columns: 1fr;
+      }
+
       .hero-art {
         min-height: 280px;
       }
@@ -637,6 +746,27 @@
 
       .practice-materials {
         grid-template-columns: 1fr;
+      }
+
+      .guide-modules li {
+        grid-template-columns: 46px minmax(0, 1fr);
+      }
+
+      .guide-modules {
+        grid-template-columns: 1fr;
+      }
+
+      .guide-modules li::before {
+        font-size: 19px;
+      }
+
+      .about-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .about-art {
+        justify-items: start;
+        text-align: left;
       }
     }
   </style>
@@ -655,8 +785,8 @@
       </a>
       <nav aria-label="Main navigation">
         <a href="#about" data-panel-link="about">ABOUT</a>
-        <a href="#training" data-panel-link="training">TRAINING</a>
-        <a href="#resources" data-panel-link="resources">RESOURCES</a>
+        <a href="#training" data-panel-link="training">STATISTICAL PROGRAMMING</a>
+        <a href="#biostatistics" data-panel-link="biostatistics">BIOSTATISTICS</a>
         <a href="#contact" data-panel-link="contact">CONTACT</a>
         <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
       </nav>
@@ -688,15 +818,15 @@
         <a class="work-card card-training" href="#training" data-panel-link="training">
           <span class="card-number">02</span>
           <div>
-            <h2>FREE<br>TRAINING</h2>
-            <p>Start with a practical guide to clinical research context and compliance.</p>
+            <h2>STATISTICAL<br>PROGRAMMING<br>TRAINING</h2>
+            <p>Start with clinical research programming, SDTM, ADaM, TLFs, and QC workflow.</p>
           </div>
         </a>
-        <a class="work-card card-resources" href="#resources" data-panel-link="resources">
+        <a class="work-card card-resources" href="#biostatistics" data-panel-link="biostatistics">
           <span class="card-number">03</span>
           <div>
-            <h2>LEARNING<br>RESOURCES</h2>
-            <p>Future downloads, notes, guides, and learning materials.</p>
+            <h2>BIOSTATISTICS<br>TRAINING</h2>
+            <p>Core statistical concepts for clinical research will be added soon.</p>
           </div>
         </a>
       </section>
@@ -705,17 +835,41 @@
         <div class="section-layout">
           <h2>About Us</h2>
           <div class="copy">
-            <div class="tiny-label">YIAN GROUP</div>
-            <p>
-              YIAN GROUP is an online learning initiative focused on biostatistics and
-              statistical programming. We are building a professional online space where learners,
-              researchers, analysts, and working professionals can access practical training
-              resources.
-            </p>
-            <p>
-              Our focus includes biostatistics, statistical programming, clinical research data,
-              SAS, R, Python, CDISC, and applied data analysis.
-            </p>
+            <div class="about-panel">
+              <div>
+                <div class="tiny-label">YIAN GROUP</div>
+                <p>
+                  YIAN GROUP is an online learning initiative focused on biostatistics and
+                  statistical programming. We are building a professional online space where learners,
+                  researchers, analysts, and working professionals can access practical training
+                  resources.
+                </p>
+                <p>
+                  Our focus includes biostatistics, statistical programming, clinical research data,
+                  SAS, R, Python, CDISC, and applied data analysis.
+                </p>
+                <div class="people-list" aria-label="YIAN GROUP contributors">
+                  <div class="person-card">
+                    <h3>Jin Shi</h3>
+                    <p>
+                      Contributor for statistical programming and biostatistics-related training
+                      materials.
+                    </p>
+                  </div>
+                  <div class="person-card">
+                    <h3>Jun Ke</h3>
+                    <p>
+                      Reviewer and methodology contributor, with a focus on statistical thinking and
+                      methodological quality.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <aside class="about-art" aria-label="YIAN GROUP illustration">
+                <img src="assets/yian-group-founder-logo.png" alt="Illustrated YIAN GROUP founders">
+                <span>Built with a quiet focus on practical clinical data learning.</span>
+              </aside>
+            </div>
           </div>
         </div>
       </section>
@@ -724,16 +878,17 @@
         <div class="section-layout">
           <h2>Training</h2>
           <div class="copy">
-            <div class="tiny-label">Training Library</div>
-            <p>
-              Open each guide below to read the full content. More topics will be added as the
-              training library grows.
-            </p>
-
-            <div class="training-list">
+            <div class="training-overview">
+              <div class="tiny-label">Training Library</div>
+              <p>
+                Follow the guides in order. Each step builds on the previous one, moving from the
+                clinical research setting to source data, analysis datasets, outputs, and quality
+                control.
+              </p>
+              <div class="training-list">
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Starter Guide</span>
+                  <span class="summary-meta">Step 01</span>
                   <span class="summary-title">Clinical Research Environment &amp; Regulatory Compliance</span>
                   <span class="summary-note">Clinical context, compliance expectations, core documents, data flow, and programming standards.</span>
                 </summary>
@@ -938,18 +1093,747 @@
               </div>
                 </article>
               </details>
+
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Step 02</span>
+                  <span class="summary-title">Clinical Trial Documents Programmers Must Read</span>
+                  <span class="summary-note">Protocol, SAP, TLF shells, annotated CRF, data transfer specifications, and Define.xml.</span>
+                </summary>
+
+                <article class="lesson">
+                  <h4>1. Why Documents Come Before Programming</h4>
+                  <p>
+                    Statistical programming is specification-driven work. Before writing code,
+                    the statistician and programmer need to understand what each document controls,
+                    where definitions come from, and which source should be used when documents
+                    appear to overlap.
+                  </p>
+
+                  <h4>2. Core Documents and What to Look For</h4>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Clinical trial document guide">
+                      <thead>
+                        <tr>
+                          <th>Document</th>
+                          <th>Statistician Focus</th>
+                          <th>Programmer Focus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Protocol</td>
+                          <td>Study objectives, estimands or endpoints, visit schedule, populations, and key clinical rules.</td>
+                          <td>Visit structure, treatment arms, endpoint timing, inclusion/exclusion logic, and assessment schedule.</td>
+                        </tr>
+                        <tr>
+                          <td>SAP</td>
+                          <td>Analysis populations, endpoint definitions, statistical methods, missing data handling, and sensitivity analyses.</td>
+                          <td>Derivation rules, population flags, baseline rules, visit windows, output requirements, and analysis variables.</td>
+                        </tr>
+                        <tr>
+                          <td>TLF Shells</td>
+                          <td>Output intent, population, endpoint, treatment comparison, statistics, and footnote interpretation.</td>
+                          <td>Output layout, row and column structure, formats, titles, footnotes, and QC targets.</td>
+                        </tr>
+                        <tr>
+                          <td>Annotated CRF</td>
+                          <td>How clinical concepts are collected and where source evidence originates.</td>
+                          <td>Source fields, CRF page names, raw variable origin, and SDTM domain mapping clues.</td>
+                        </tr>
+                        <tr>
+                          <td>Data Transfer Spec</td>
+                          <td>Expected vendor data content, transfer frequency, and scope of externally supplied data.</td>
+                          <td>File names, formats, key variables, codelists, units, date formats, and reconciliation checks.</td>
+                        </tr>
+                        <tr>
+                          <td>Define.xml</td>
+                          <td>Submission metadata, dataset purpose, controlled terminology, and reviewer traceability.</td>
+                          <td>Dataset labels, variable attributes, origins, derivations, value-level metadata, and links to codelists.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>3. How to Resolve Document Questions</h4>
+                  <p>
+                    A good programmer does not guess when documents seem unclear. The usual
+                    approach is to identify the controlling document, record the question clearly,
+                    and confirm with the statistician, data manager, or study team as appropriate.
+                  </p>
+                  <ul>
+                    <li><strong>Clinical timing:</strong> Start with the Protocol and Schedule of Assessments.</li>
+                    <li><strong>Analysis rule:</strong> Start with the SAP and programming specifications.</li>
+                    <li><strong>Output layout:</strong> Start with TLF shells and output specifications.</li>
+                    <li><strong>Source field:</strong> Start with annotated CRF, raw data, and data transfer specifications.</li>
+                    <li><strong>Submission metadata:</strong> Check Define.xml and the study metadata package.</li>
+                  </ul>
+
+                  <div class="workshop">
+                    <h4>Suggested Workshop: Shell Review Challenge</h4>
+                    <p>
+                      Review the mock shell below and identify the analysis population, endpoint,
+                      and visit window. This is the kind of reading programmers do before writing
+                      the first line of output code.
+                    </p>
+
+                    <div class="mock-document">
+                      <h5>Mock TLF Shell</h5>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Mock TLF shell review">
+                          <thead>
+                            <tr>
+                              <th colspan="3">Table 14.2.1 Change from Baseline in Seated Systolic Blood Pressure at Week 12</th>
+                            </tr>
+                            <tr>
+                              <th>Statistic</th>
+                              <th>Placebo</th>
+                              <th>YGN-101</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>n</td>
+                              <td>xx</td>
+                              <td>xx</td>
+                            </tr>
+                            <tr>
+                              <td>Mean (SD)</td>
+                              <td>xx.x (xx.x)</td>
+                              <td>xx.x (xx.x)</td>
+                            </tr>
+                            <tr>
+                              <td>Median</td>
+                              <td>xx.x</td>
+                              <td>xx.x</td>
+                            </tr>
+                            <tr>
+                              <td>Min, Max</td>
+                              <td>xx.x, xx.x</td>
+                              <td>xx.x, xx.x</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p>
+                        Population: Full Analysis Set. Endpoint: Change from Baseline in seated
+                        systolic blood pressure. Visit window: Week 12 visit, study day 78 to 98.
+                      </p>
+                    </div>
+
+                    <ol>
+                      <li>What is the analysis population?</li>
+                      <li>What endpoint is being summarized?</li>
+                      <li>What visit window should be used for the Week 12 analysis?</li>
+                    </ol>
+
+                    <div class="answer-key">
+                      <h5>Answer Key</h5>
+                      <ol>
+                        <li>The analysis population is the Full Analysis Set.</li>
+                        <li>The endpoint is Change from Baseline in seated systolic blood pressure at Week 12.</li>
+                        <li>The Week 12 visit window is study day 78 to 98.</li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </details>
+
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Step 03</span>
+                  <span class="summary-title">From eCRF to SDTM</span>
+                  <span class="summary-note">How source fields collected on the eCRF are cleaned, exported, and mapped into standardized SDTM domains.</span>
+                </summary>
+
+                <article class="lesson">
+                  <h4>1. Start With SDTM Domain Classes</h4>
+                  <p>
+                    A strong SDTM mapping process starts by asking what kind of information the
+                    raw data represents. SDTM is organized around general observation classes, so a
+                    programmer should classify the data first, then choose the specific domain.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="SDTM class overview">
+                      <thead>
+                        <tr>
+                          <th>Class</th>
+                          <th>Main Question</th>
+                          <th>Example Domains</th>
+                          <th>Common Source</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Special Purpose</td>
+                          <td>Who is the subject and how is the study organized?</td>
+                          <td>DM, CO, SE, SV</td>
+                          <td>Enrollment, demographics, visits, study design metadata</td>
+                        </tr>
+                        <tr>
+                          <td>Trial Design</td>
+                          <td>What was planned before subjects entered the trial?</td>
+                          <td>TA, TE, TV, TI, TS</td>
+                          <td>Protocol, study design specifications</td>
+                        </tr>
+                        <tr>
+                          <td>Interventions</td>
+                          <td>What treatment, medication, or action was taken?</td>
+                          <td>EX, CM, PR</td>
+                          <td>Exposure, concomitant medication, procedure forms</td>
+                        </tr>
+                        <tr>
+                          <td>Events</td>
+                          <td>What happened to the subject?</td>
+                          <td>AE, MH, DS</td>
+                          <td>Adverse event, medical history, disposition forms</td>
+                        </tr>
+                        <tr>
+                          <td>Findings</td>
+                          <td>What was measured, observed, or tested?</td>
+                          <td>VS, LB, EG, PE, QS</td>
+                          <td>Vital signs, labs, ECG, exams, questionnaires</td>
+                        </tr>
+                        <tr>
+                          <td>Findings About</td>
+                          <td>What additional finding describes another record?</td>
+                          <td>FA</td>
+                          <td>Supplementary assessments about events or interventions</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>2. From eCRF to Raw Dataset to SDTM</h4>
+                  <p>
+                    The eCRF is designed for data entry. Raw datasets are usually exported in a
+                    form-oriented structure. SDTM is a standardized submission structure. Mapping is
+                    the work of translating source fields into the right class, domain, and SDTM
+                    variables while preserving traceability.
+                  </p>
+                  <ul>
+                    <li><strong>Read the annotated CRF:</strong> Identify the form, field labels, and intended domain.</li>
+                    <li><strong>Inspect raw exports:</strong> Confirm field names, values, units, dates, and missing patterns.</li>
+                    <li><strong>Choose the class:</strong> Decide whether the data is an intervention, event, finding, or special-purpose record.</li>
+                    <li><strong>Map to domain variables:</strong> Assign identifiers, topic variables, timing variables, and qualifiers.</li>
+                    <li><strong>Check traceability:</strong> Ensure reviewers can understand where each SDTM record came from.</li>
+                  </ul>
+
+                  <h4>3. Special Purpose and Trial Design</h4>
+                  <p>
+                    These domains provide the structure around the subject and the study. They are
+                    not usually simple form-to-form mappings, but they are essential because other
+                    domains rely on their identifiers, visits, elements, and reference dates.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Special purpose and trial design examples">
+                      <thead>
+                        <tr>
+                          <th>Domain</th>
+                          <th>Purpose</th>
+                          <th>Programmer Focus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>DM</td>
+                          <td>Subject-level demographics and reference information.</td>
+                          <td>USUBJID, treatment arm, sex, age, race, country, RFSTDTC, RFENDTC.</td>
+                        </tr>
+                        <tr>
+                          <td>SV</td>
+                          <td>Subject visits that occurred.</td>
+                          <td>Visit names, visit numbers, actual visit dates, unscheduled visits.</td>
+                        </tr>
+                        <tr>
+                          <td>TA / TE / TV</td>
+                          <td>Planned arms, elements, and visits.</td>
+                          <td>Protocol-defined structure used to interpret actual subject data.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>4. Interventions</h4>
+                  <p>
+                    Interventions describe actions taken for or by the subject. These domains often
+                    answer what was administered, taken, or performed, and when it happened.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Interventions mapping examples">
+                      <thead>
+                        <tr>
+                          <th>Domain</th>
+                          <th>Typical Raw Data</th>
+                          <th>Key Mapping Questions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>EX</td>
+                          <td>Study drug exposure records.</td>
+                          <td>What was administered, dose, unit, route, frequency, start/end date?</td>
+                        </tr>
+                        <tr>
+                          <td>CM</td>
+                          <td>Concomitant medication form.</td>
+                          <td>Medication name, indication, dose, unit, route, start/end date, ongoing flag.</td>
+                        </tr>
+                        <tr>
+                          <td>PR</td>
+                          <td>Procedure records.</td>
+                          <td>Procedure term, date, body system or location, reason performed.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>5. Events</h4>
+                  <p>
+                    Events describe occurrences or incidents. They are not measurements like lab
+                    values; they are things that happened to the subject and need timing, category,
+                    seriousness, or outcome information.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Events mapping examples">
+                      <thead>
+                        <tr>
+                          <th>Domain</th>
+                          <th>Typical Raw Data</th>
+                          <th>Key Mapping Questions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>AE</td>
+                          <td>Adverse event form.</td>
+                          <td>Reported term, start/end date, severity, seriousness, causality, outcome.</td>
+                        </tr>
+                        <tr>
+                          <td>MH</td>
+                          <td>Medical history form.</td>
+                          <td>Condition term, start/end date or year, ongoing status, body system.</td>
+                        </tr>
+                        <tr>
+                          <td>DS</td>
+                          <td>Disposition and completion status.</td>
+                          <td>Completion, discontinuation reason, death, screen failure, milestone date.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>6. Findings</h4>
+                  <p>
+                    Findings are measurements, tests, observations, or questions with results. This
+                    is where programmers often need to reshape data: one raw row with many columns
+                    may become many SDTM records, one record per test or assessment.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Findings mapping examples">
+                      <thead>
+                        <tr>
+                          <th>Domain</th>
+                          <th>Typical Raw Data</th>
+                          <th>Key Mapping Questions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>VS</td>
+                          <td>Vital signs fields such as SYSBP, DIABP, PULSE, WEIGHT.</td>
+                          <td>What test was measured, result, unit, position, visit, date?</td>
+                        </tr>
+                        <tr>
+                          <td>LB</td>
+                          <td>Central lab transfer or local lab data.</td>
+                          <td>Test code, result, unit, normal range, specimen, fasting status, collection date.</td>
+                        </tr>
+                        <tr>
+                          <td>EG</td>
+                          <td>ECG parameters.</td>
+                          <td>Test code, result, unit, method, interpretation, collection date/time.</td>
+                        </tr>
+                        <tr>
+                          <td>QS</td>
+                          <td>Questionnaire items and scores.</td>
+                          <td>Question code, response, score, version, visit, completion date.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>7. Findings About</h4>
+                  <p>
+                    Findings About is used when the result is a finding about another record rather
+                    than a standalone clinical assessment. A common beginner mistake is forcing
+                    every extra value into SUPP--. The programmer should first ask whether the
+                    value is truly supplemental metadata or whether it is a finding about an event
+                    or intervention.
+                  </p>
+                  <ul>
+                    <li><strong>Use FA when:</strong> The data is a finding that describes another event or intervention.</li>
+                    <li><strong>Check the parent:</strong> The finding should connect clearly to a parent domain record.</li>
+                    <li><strong>Avoid guessing:</strong> Confirm study conventions and sponsor standards when FA vs SUPP-- is unclear.</li>
+                  </ul>
+
+                  <h4>8. Mini Mapping Examples</h4>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Class-first mini mapping examples">
+                      <thead>
+                        <tr>
+                          <th>Raw Form / Field</th>
+                          <th>Class</th>
+                          <th>Likely Domain</th>
+                          <th>Mapping Focus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Con Meds: Medication Name, Dose, Start Date</td>
+                          <td>Interventions</td>
+                          <td>CM</td>
+                          <td>CMTRT, CMDOSE, CMDOSU, CMSTDTC.</td>
+                        </tr>
+                        <tr>
+                          <td>Adverse Events: Headache, Moderate, Ongoing</td>
+                          <td>Events</td>
+                          <td>AE</td>
+                          <td>AETERM, AESEV, AEENRF or AEENDTC, seriousness and outcome fields.</td>
+                        </tr>
+                        <tr>
+                          <td>Vital Signs: SYSBP=128 mmHg</td>
+                          <td>Findings</td>
+                          <td>VS</td>
+                          <td>VSTESTCD, VSTEST, VSORRES, VSORRESU, VSDTC, VISIT.</td>
+                        </tr>
+                        <tr>
+                          <td>Lab: Hemoglobin=13.2 g/dL</td>
+                          <td>Findings</td>
+                          <td>LB</td>
+                          <td>LBTESTCD, LBTEST, LBORRES, LBORRESU, LBDTC, normal range variables.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="workshop">
+                    <h4>Suggested Workshop: Class-First SDTM Mapping</h4>
+                    <p>
+                      For each mock raw item, first choose the SDTM class, then choose the likely
+                      domain. This mirrors the way many SDTM mapping discussions are handled in
+                      practical programming work.
+                    </p>
+                    <div class="table-scroll">
+                      <table class="crf-table" aria-label="Class-first SDTM mapping exercise">
+                        <thead>
+                          <tr>
+                            <th>Mock Raw Item</th>
+                            <th>Question</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Subject took Metformin 500 mg orally from 2026-03-01 to 2026-04-10.</td>
+                            <td>Which class and domain?</td>
+                          </tr>
+                          <tr>
+                            <td>Subject reported nausea starting on 2026-03-12, mild severity, not serious.</td>
+                            <td>Which class and domain?</td>
+                          </tr>
+                          <tr>
+                            <td>Week 8 systolic blood pressure was 128 mmHg while seated.</td>
+                            <td>Which class and domain?</td>
+                          </tr>
+                          <tr>
+                            <td>Hemoglobin result was 13.2 g/dL with lower normal range 12.0 and upper normal range 16.0.</td>
+                            <td>Which class and domain?</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="answer-key">
+                      <h5>Answer Key</h5>
+                      <ol>
+                        <li>Metformin is an Intervention, usually CM.</li>
+                        <li>Nausea is an Event, usually AE.</li>
+                        <li>Systolic blood pressure is a Finding, usually VS.</li>
+                        <li>Hemoglobin is a Finding, usually LB.</li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </details>
+
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Step 04</span>
+                  <span class="summary-title">Introduction to ADaM</span>
+                  <span class="summary-note">Why analysis datasets are built from SDTM and how variables such as baseline, change, and flags support analysis.</span>
+                </summary>
+
+                <article class="lesson">
+                  <h4>1. Why ADaM Exists</h4>
+                  <p>
+                    SDTM is designed for standardized tabulation, not always for direct analysis.
+                    ADaM datasets are analysis-ready datasets created to support the Statistical
+                    Analysis Plan and the tables, listings, and figures for a study.
+                  </p>
+                  <ul>
+                    <li><strong>Traceability:</strong> An analysis value should be traceable back to source and SDTM data.</li>
+                    <li><strong>Reproducibility:</strong> Another programmer should be able to understand how the result was derived.</li>
+                    <li><strong>Analysis readiness:</strong> Common derivations are prepared once and reused across outputs.</li>
+                  </ul>
+
+                  <h4>2. Common ADaM Datasets</h4>
+                  <ul>
+                    <li><strong>ADSL:</strong> One record per subject, with treatment, population flags, dates, and key subject-level variables.</li>
+                    <li><strong>ADVS:</strong> Analysis dataset for vital signs, often derived from SDTM VS.</li>
+                    <li><strong>ADAE:</strong> Analysis dataset for adverse events, often derived from SDTM AE and subject-level treatment information.</li>
+                  </ul>
+
+                  <h4>3. Example ADVS Derivations</h4>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Example ADVS derivations">
+                      <thead>
+                        <tr>
+                          <th>Variable</th>
+                          <th>Meaning</th>
+                          <th>Example</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>BASE</td>
+                          <td>Baseline value before treatment or at the baseline visit.</td>
+                          <td>136</td>
+                        </tr>
+                        <tr>
+                          <td>AVAL</td>
+                          <td>Analysis value at the selected visit.</td>
+                          <td>128</td>
+                        </tr>
+                        <tr>
+                          <td>CHG</td>
+                          <td>Change from baseline, usually AVAL - BASE.</td>
+                          <td>-8</td>
+                        </tr>
+                        <tr>
+                          <td>ANL01FL</td>
+                          <td>Analysis flag identifying records included in a planned analysis.</td>
+                          <td>Y</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="workshop">
+                    <h4>Practice Check</h4>
+                    <ol>
+                      <li>If BASE is 136 and AVAL is 128, what is CHG?</li>
+                      <li>Which document usually defines how baseline is selected?</li>
+                      <li>Why is traceability important in ADaM?</li>
+                    </ol>
+                    <div class="answer-key">
+                      <h5>Answer Key</h5>
+                      <ol>
+                        <li>CHG is -8.</li>
+                        <li>The SAP usually defines the baseline rule.</li>
+                        <li>Traceability allows reviewers to understand how analysis values were derived from source data.</li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </details>
+
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Step 05</span>
+                  <span class="summary-title">TLF Basics</span>
+                  <span class="summary-note">How tables, listings, and figures differ, and how shells guide statistical programming outputs.</span>
+                </summary>
+
+                <article class="lesson">
+                  <h4>1. What TLF Means</h4>
+                  <p>
+                    TLF stands for Tables, Listings, and Figures. These outputs summarize and
+                    display clinical trial results for clinical study reports, review packages,
+                    and internal study interpretation.
+                  </p>
+                  <ul>
+                    <li><strong>Tables:</strong> Summarized results, such as counts, percentages, means, medians, and confidence intervals.</li>
+                    <li><strong>Listings:</strong> Subject-level details, often used to review individual data records.</li>
+                    <li><strong>Figures:</strong> Visual displays such as line plots, forest plots, or Kaplan-Meier curves.</li>
+                  </ul>
+
+                  <h4>2. What a Shell Provides</h4>
+                  <p>
+                    A shell is a mock output layout. It tells the programmer what the final output
+                    should look like before real numbers are produced.
+                  </p>
+                  <ul>
+                    <li>Title, numbering, and population.</li>
+                    <li>Rows, columns, treatment groups, and visit structure.</li>
+                    <li>Footnotes, abbreviations, and statistical methods.</li>
+                    <li>Which dataset and variables are expected to support the output.</li>
+                  </ul>
+
+                  <h4>3. Example Shell Reading</h4>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Example TLF shell">
+                      <thead>
+                        <tr>
+                          <th>Row Label</th>
+                          <th>Placebo</th>
+                          <th>YGN-101</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>n</td>
+                          <td>xx</td>
+                          <td>xx</td>
+                        </tr>
+                        <tr>
+                          <td>Mean (SD)</td>
+                          <td>xx.x (xx.x)</td>
+                          <td>xx.x (xx.x)</td>
+                        </tr>
+                        <tr>
+                          <td>Median</td>
+                          <td>xx.x</td>
+                          <td>xx.x</td>
+                        </tr>
+                        <tr>
+                          <td>Min, Max</td>
+                          <td>xx.x, xx.x</td>
+                          <td>xx.x, xx.x</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="workshop">
+                    <h4>Practice Check</h4>
+                    <ol>
+                      <li>Is a listing usually summarized or subject-level?</li>
+                      <li>What does a shell help a programmer confirm before coding?</li>
+                      <li>Why should footnotes be reviewed carefully?</li>
+                    </ol>
+                    <div class="answer-key">
+                      <h5>Answer Key</h5>
+                      <ol>
+                        <li>A listing is usually subject-level.</li>
+                        <li>A shell confirms layout, rows, columns, population, statistics, and footnotes.</li>
+                        <li>Footnotes may define important analysis rules, denominators, or interpretation details.</li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </details>
+
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Step 06</span>
+                  <span class="summary-title">Programming Workflow &amp; QC Mindset</span>
+                  <span class="summary-note">How production programming, independent QC, log review, and documentation help protect analysis quality.</span>
+                </summary>
+
+                <article class="lesson">
+                  <h4>1. The Basic Programming Workflow</h4>
+                  <p>
+                    Clinical statistical programming is not only about producing code that runs.
+                    The work must be organized, reviewable, and reproducible.
+                  </p>
+                  <ul>
+                    <li><strong>Read specifications:</strong> Review the protocol, SAP, shells, and programming specifications.</li>
+                    <li><strong>Build production code:</strong> Create datasets or outputs according to approved requirements.</li>
+                    <li><strong>Run checks:</strong> Review logs, warnings, notes, record counts, and unexpected values.</li>
+                    <li><strong>Perform QC:</strong> Use independent programming or structured review to confirm the result.</li>
+                    <li><strong>Resolve comments:</strong> Document decisions and update code or outputs as needed.</li>
+                  </ul>
+
+                  <h4>2. What QC Is Looking For</h4>
+                  <p>
+                    QC is a mindset. The goal is not simply to match numbers, but to ask whether
+                    the result is supported by the specification and the data.
+                  </p>
+                  <ul>
+                    <li>Are the correct subjects included?</li>
+                    <li>Are visits, dates, and treatment periods handled correctly?</li>
+                    <li>Are missing values, units, and duplicate records handled as specified?</li>
+                    <li>Do output titles, footnotes, and formats match the shell?</li>
+                    <li>Does the program log show warnings, errors, or concerning notes?</li>
+                  </ul>
+
+                  <h4>3. Program Headers and Traceability</h4>
+                  <p>
+                    A program header helps another reviewer understand what the program does and
+                    when it changed. It usually includes the program name, purpose, input datasets,
+                    output files, author, date, and change history.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Example program header fields">
+                      <thead>
+                        <tr>
+                          <th>Header Item</th>
+                          <th>Why It Matters</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Purpose</td>
+                          <td>Explains what the program is intended to create.</td>
+                        </tr>
+                        <tr>
+                          <td>Inputs and Outputs</td>
+                          <td>Supports traceability and reruns.</td>
+                        </tr>
+                        <tr>
+                          <td>Change History</td>
+                          <td>Documents updates made after review or specification changes.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="workshop">
+                    <h4>Practice Check</h4>
+                    <ol>
+                      <li>Why is a clean log not enough by itself?</li>
+                      <li>What is one reason QC should be independent when possible?</li>
+                      <li>What should be documented when a program changes?</li>
+                    </ol>
+                    <div class="answer-key">
+                      <h5>Answer Key</h5>
+                      <ol>
+                        <li>A clean log does not prove the logic matches the specification.</li>
+                        <li>Independent QC can catch assumptions or logic errors made by the production programmer.</li>
+                        <li>The reason for the change, date, author, and affected output or dataset should be documented.</li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </details>
+            </div>
+            </div>
+            <div class="lesson-page" aria-live="polite">
+              <button class="back-button" type="button" data-lesson-back>&lt; Training Library</button>
+              <div class="lesson-page-content"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="resources" class="section">
+      <section id="biostatistics" class="section">
         <div class="section-layout">
-          <h2>Resources</h2>
+          <h2>Biostatistics Training</h2>
           <div class="copy">
-            <div class="tiny-label">Early launch</div>
+            <div class="tiny-label">Coming Soon</div>
             <p>
-              Resource pages, downloads, templates, and study notes will be added in future updates.
+              Biostatistics training materials will be added here, including study design,
+              endpoints, estimation, hypothesis testing, confidence intervals, and clinical trial
+              interpretation.
             </p>
           </div>
         </div>
@@ -975,9 +1859,14 @@
     const panelLinks = document.querySelectorAll("[data-panel-link]");
     const sections = document.querySelectorAll(".section");
     const homeLink = document.querySelector("[data-home-link]");
+    const trainingOverview = document.querySelector(".training-overview");
+    const lessonPage = document.querySelector(".lesson-page");
+    const lessonPageContent = document.querySelector(".lesson-page-content");
+    const lessonBack = document.querySelector("[data-lesson-back]");
 
     function openPanel(panelId, updateUrl = true) {
       document.body.classList.add("panel-open");
+      closeLessonPage();
 
       sections.forEach((section) => {
         section.classList.toggle("is-active", section.id === panelId);
@@ -992,8 +1881,36 @@
       }
     }
 
+    function openLessonPage(item) {
+      const article = item.querySelector(".lesson");
+      if (!article || !trainingOverview || !lessonPage || !lessonPageContent) {
+        return;
+      }
+
+      document.querySelectorAll(".training-item").forEach((trainingItem) => {
+        trainingItem.removeAttribute("open");
+      });
+
+      lessonPageContent.replaceChildren(article.cloneNode(true));
+      trainingOverview.classList.add("is-hidden");
+      lessonPage.classList.add("is-active");
+      history.replaceState(null, "", "#training");
+      document.getElementById("training")?.scrollIntoView({ block: "start" });
+    }
+
+    function closeLessonPage() {
+      if (!trainingOverview || !lessonPage || !lessonPageContent) {
+        return;
+      }
+
+      trainingOverview.classList.remove("is-hidden");
+      lessonPage.classList.remove("is-active");
+      lessonPageContent.replaceChildren();
+    }
+
     function openHome(updateUrl = true) {
       document.body.classList.remove("panel-open");
+      closeLessonPage();
       sections.forEach((section) => section.classList.remove("is-active"));
       panelLinks.forEach((link) => link.classList.remove("is-active"));
 
@@ -1007,6 +1924,17 @@
         event.preventDefault();
         openPanel(link.dataset.panelLink);
       });
+    });
+
+    document.querySelectorAll(".training-item summary").forEach((summary) => {
+      summary.addEventListener("click", (event) => {
+        event.preventDefault();
+        openLessonPage(summary.closest(".training-item"));
+      });
+    });
+
+    lessonBack?.addEventListener("click", () => {
+      closeLessonPage();
     });
 
     homeLink?.addEventListener("click", (event) => {
