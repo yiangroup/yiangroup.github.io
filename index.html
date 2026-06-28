@@ -119,19 +119,6 @@
       color: var(--sand);
     }
 
-    .menu-lines {
-      width: 48px;
-      height: 24px;
-      display: grid;
-      align-content: space-between;
-    }
-
-    .menu-lines span {
-      display: block;
-      height: 2px;
-      background: var(--ink);
-    }
-
     .logo img,
     nav a,
     h2,
@@ -591,26 +578,21 @@
     }
 
     .people-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .person-card {
-      padding-left: 18px;
-      border-left: 2px solid rgba(200, 157, 132, 0.42);
-    }
-
-    .person-card h3 {
-      margin: 0 0 8px;
-      color: #4b3a36;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 22px;
-      line-height: 1.1;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(200, 157, 132, 0.2);
     }
 
     .person-card p {
+      color: #80685c;
+      font-size: 14px;
+      line-height: 1.72;
       margin-bottom: 0;
+    }
+
+    .person-card strong {
+      color: #5b4943;
+      font-weight: 800;
     }
 
     .practice-materials {
@@ -784,11 +766,10 @@
         <img src="assets/yian-group-founder-logo.png" alt="YIAN GROUP">
       </a>
       <nav aria-label="Main navigation">
-        <a href="#about" data-panel-link="about">ABOUT</a>
+        <a href="#about" data-panel-link="about">ABOUT US</a>
         <a href="#training" data-panel-link="training">STATISTICAL PROGRAMMING</a>
         <a href="#biostatistics" data-panel-link="biostatistics">BIOSTATISTICS</a>
         <a href="#contact" data-panel-link="contact">CONTACT</a>
-        <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
       </nav>
     </header>
 
@@ -850,17 +831,10 @@
                 </p>
                 <div class="people-list" aria-label="YIAN GROUP contributors">
                   <div class="person-card">
-                    <h3>Jin Shi</h3>
                     <p>
-                      Contributor for statistical programming and biostatistics-related training
-                      materials.
-                    </p>
-                  </div>
-                  <div class="person-card">
-                    <h3>Jun Ke</h3>
-                    <p>
-                      Reviewer and methodology contributor, with a focus on statistical thinking and
-                      methodological quality.
+                      Contributors include <strong>Jin Shi</strong>, who supports statistical
+                      programming and biostatistics-related training materials, and
+                      <strong>Jun Ke</strong>, who contributes review and methodology perspective.
                     </p>
                   </div>
                 </div>
@@ -1829,12 +1803,136 @@
         <div class="section-layout">
           <h2>Biostatistics Training</h2>
           <div class="copy">
-            <div class="tiny-label">Coming Soon</div>
+            <div class="tiny-label">Lesson 01</div>
             <p>
-              Biostatistics training materials will be added here, including study design,
-              endpoints, estimation, hypothesis testing, confidence intervals, and clinical trial
-              interpretation.
+              The first step in clinical biostatistics is understanding the official guidelines
+              that shape trial design, analysis planning, endpoint interpretation, and regulatory
+              communication.
             </p>
+            <article class="lesson">
+              <h4>Guideline Orientation for Clinical Biostatistics</h4>
+              <p>
+                A biostatistician does not only calculate p-values or build models. In clinical
+                research, statistical work must be aligned with regulatory expectations, the study
+                protocol, and the Statistical Analysis Plan. These guidelines are the starting
+                point.
+              </p>
+
+              <h4>1. ICH Guidelines to Know First</h4>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="Core ICH guidelines for biostatistics">
+                  <thead>
+                    <tr>
+                      <th>Guideline</th>
+                      <th>Why It Matters</th>
+                      <th>What the Statistician Should Notice</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ICH E6(R3) Good Clinical Practice</td>
+                      <td>Defines quality expectations for trial conduct, data integrity, and responsibilities.</td>
+                      <td>How data quality, protocol compliance, documentation, and oversight affect analysis reliability.</td>
+                    </tr>
+                    <tr>
+                      <td>ICH E8(R1) General Considerations for Clinical Studies</td>
+                      <td>Introduces quality by design and critical-to-quality thinking.</td>
+                      <td>How study objectives, design choices, and operational feasibility affect statistical interpretability.</td>
+                    </tr>
+                    <tr>
+                      <td>ICH E9 Statistical Principles for Clinical Trials</td>
+                      <td>The foundational statistical guideline for confirmatory clinical trials.</td>
+                      <td>Bias control, randomization, blinding, sample size, analysis sets, multiplicity, and analysis planning.</td>
+                    </tr>
+                    <tr>
+                      <td>ICH E9(R1) Estimands and Sensitivity Analysis</td>
+                      <td>Clarifies how to define the treatment effect being estimated.</td>
+                      <td>Treatment condition, population, variable, intercurrent events, summary measure, and sensitivity analysis.</td>
+                    </tr>
+                    <tr>
+                      <td>ICH E10 Choice of Control Group</td>
+                      <td>Explains different control group designs and their implications.</td>
+                      <td>Placebo, active control, dose-response, historical control, assay sensitivity, and trial interpretation.</td>
+                    </tr>
+                    <tr>
+                      <td>ICH E17 Multi-Regional Clinical Trials</td>
+                      <td>Guides planning and analysis for trials conducted across regions.</td>
+                      <td>Regional consistency, pooling strategy, sample allocation, and interpretation across populations.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4>2. FDA Guidance Often Used in Statistical Thinking</h4>
+              <p>
+                FDA guidance documents are often more topic-specific. A beginner does not need to
+                memorize all of them, but should recognize the topics that commonly influence SAPs
+                and regulatory review.
+              </p>
+              <ul>
+                <li><strong>Multiple endpoints:</strong> How to control Type I error when more than one endpoint is tested.</li>
+                <li><strong>Adaptive designs:</strong> How planned adaptations can be used while preserving trial validity.</li>
+                <li><strong>Enrichment strategies:</strong> How eligibility or biomarker strategies affect population and interpretation.</li>
+                <li><strong>Data monitoring committees:</strong> How interim safety and efficacy monitoring is governed.</li>
+              </ul>
+
+              <h4>3. How These Guidelines Show Up in Daily Work</h4>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="Guideline concepts in daily biostatistics work">
+                  <thead>
+                    <tr>
+                      <th>Task</th>
+                      <th>Guideline Connection</th>
+                      <th>Practical Question</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Writing endpoint definitions</td>
+                      <td>ICH E9 and E9(R1)</td>
+                      <td>What exactly is the treatment effect we want to estimate?</td>
+                    </tr>
+                    <tr>
+                      <td>Choosing analysis populations</td>
+                      <td>ICH E9</td>
+                      <td>Which subjects support the primary efficacy analysis?</td>
+                    </tr>
+                    <tr>
+                      <td>Planning multiplicity control</td>
+                      <td>ICH E9 and FDA multiple endpoints guidance</td>
+                      <td>How do we protect Type I error across endpoints or hypotheses?</td>
+                    </tr>
+                    <tr>
+                      <td>Handling intercurrent events</td>
+                      <td>ICH E9(R1)</td>
+                      <td>What happens if a subject discontinues treatment, takes rescue medication, or dies?</td>
+                    </tr>
+                    <tr>
+                      <td>Reviewing regional results</td>
+                      <td>ICH E17</td>
+                      <td>Are results consistent enough across regions to support interpretation?</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="workshop">
+                <h4>Practice Check: Match the Guideline to the Question</h4>
+                <ol>
+                  <li>Which guideline should you read first for estimands and intercurrent events?</li>
+                  <li>Which guideline is the foundation for randomization, blinding, sample size, and analysis sets?</li>
+                  <li>Which FDA topic is most relevant when a trial has several primary or key secondary endpoints?</li>
+                </ol>
+                <div class="answer-key">
+                  <h5>Answer Key</h5>
+                  <ol>
+                    <li>ICH E9(R1).</li>
+                    <li>ICH E9.</li>
+                    <li>FDA multiple endpoints guidance.</li>
+                  </ol>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
