@@ -322,7 +322,7 @@
     }
 
     #training .copy {
-      max-width: 1040px;
+      max-width: 1180px;
     }
 
     .section h2 {
@@ -500,6 +500,18 @@
       margin-bottom: 10px;
     }
 
+    .lesson a {
+      color: #8f6f5f;
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(143, 111, 95, 0.28);
+    }
+
+    .lesson a:hover {
+      color: #4b3a36;
+      border-bottom-color: rgba(75, 58, 54, 0.44);
+    }
+
     .flow {
       display: grid;
       gap: 10px;
@@ -542,6 +554,10 @@
       border-radius: 6px;
       background: rgba(248, 230, 228, 0.48);
       border: 1px solid rgba(203, 126, 145, 0.18);
+    }
+
+    .document-workshop {
+      padding: 18px;
     }
 
     .about-panel {
@@ -675,7 +691,12 @@
     }
 
     .document-stack {
-      margin: 24px 0;
+      width: calc(100% + 24px);
+      margin: 24px -12px;
+    }
+
+    .document-stack .mock-document {
+      padding: 12px;
     }
 
     .document-preview img {
@@ -1530,7 +1551,7 @@
                     </table>
                   </div>
 
-                  <div class="workshop">
+                  <div class="workshop document-workshop">
                     <h4>Suggested Workshop: Vital Signs CRF to SDTM VS</h4>
                     <p>
                       This practice belongs in the eCRF-to-SDTM section because it connects a
@@ -1543,8 +1564,8 @@
                       <div class="mock-document">
                         <h5>Protocol Schedule of Assessments</h5>
                         <div class="document-preview" aria-label="Protocol Schedule of Assessments image preview">
-                          <img src="assets/protocol-soa-page-1.png" alt="Protocol Schedule of Assessments page 1">
-                          <img src="assets/protocol-soa-page-2.png" alt="Protocol Schedule of Assessments page 2">
+                          <img src="assets/protocol-soa-page-1.png?v=4x" alt="Protocol Schedule of Assessments page 1">
+                          <img src="assets/protocol-soa-page-2.png?v=4x" alt="Protocol Schedule of Assessments page 2">
                         </div>
                       </div>
 
@@ -1556,8 +1577,8 @@
                           anything to SDTM.
                         </p>
                         <div class="document-preview" aria-label="Vital Signs CRF image preview">
-                          <img src="assets/vital-signs-crf-page-1.png" alt="Vital Signs CRF page 1 with administrative fields and vital signs measurements">
-                          <img src="assets/vital-signs-crf-page-2.png" alt="Vital Signs CRF page 2 with temperature route, weight, height, clinical significance, and comments">
+                          <img src="assets/vital-signs-crf-page-1.png?v=4x" alt="Vital Signs CRF page 1 with administrative fields and vital signs measurements">
+                          <img src="assets/vital-signs-crf-page-2.png?v=4x" alt="Vital Signs CRF page 2 with temperature route, weight, height, clinical significance, and comments">
                         </div>
                       </div>
                     </div>
@@ -1913,13 +1934,138 @@
                 and regulatory review.
               </p>
               <ul>
-                <li><strong>Multiple endpoints:</strong> How to control Type I error when more than one endpoint is tested.</li>
-                <li><strong>Adaptive designs:</strong> How planned adaptations can be used while preserving trial validity.</li>
-                <li><strong>Enrichment strategies:</strong> How eligibility or biomarker strategies affect population and interpretation.</li>
-                <li><strong>Data monitoring committees:</strong> How interim safety and efficacy monitoring is governed.</li>
+                <li><strong>Multiple endpoints:</strong> How to control Type I error when more than one endpoint is tested. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials-guidance-industry" target="_blank" rel="noopener">Reference</a></li>
+                <li><strong>Adaptive designs:</strong> How planned adaptations can be used while preserving trial validity. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry" target="_blank" rel="noopener">Reference</a></li>
+                <li><strong>Enrichment strategies:</strong> How eligibility or biomarker strategies affect population and interpretation. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/enrichment-strategies-clinical-trials-support-approval-human-drugs-and-biological-products" target="_blank" rel="noopener">Reference</a></li>
+                <li><strong>Data monitoring committees:</strong> How interim safety and efficacy monitoring is governed. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/establishment-and-operation-clinical-trial-data-monitoring-committees" target="_blank" rel="noopener">Reference</a></li>
               </ul>
 
-              <h4>3. How These Guidelines Show Up in Daily Work</h4>
+              <h4>3. ECG, QT/QTc, and Cardiac Safety Guidelines</h4>
+              <p>
+                ECG-related guidance is especially important for safety biostatistics. These
+                documents help statisticians understand how to evaluate whether a drug may delay
+                cardiac repolarization, usually through QT/QTc interval analyses.
+              </p>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="ECG and QT guidelines for biostatistics">
+                  <thead>
+                    <tr>
+                      <th>Guideline</th>
+                      <th>Why It Matters</th>
+                      <th>What the Statistician Should Notice</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ICH E14 Clinical Evaluation of QT/QTc Interval Prolongation<br><a href="https://www.ich.org/page/efficacy-guidelines" target="_blank" rel="noopener">ICH reference</a></td>
+                      <td>Provides the clinical framework for evaluating drug effects on cardiac repolarization.</td>
+                      <td>QTc endpoint definition, central tendency analysis, categorical outliers, assay sensitivity, and interpretation of QTc signal.</td>
+                    </tr>
+                    <tr>
+                      <td>ICH S7B Nonclinical Evaluation of Delayed Ventricular Repolarization<br><a href="https://www.ich.org/page/safety-guidelines" target="_blank" rel="noopener">ICH reference</a></td>
+                      <td>Links nonclinical cardiac safety evidence to clinical QT/QTc risk assessment.</td>
+                      <td>How nonclinical findings may support or contextualize clinical ECG planning and interpretation.</td>
+                    </tr>
+                    <tr>
+                      <td>ICH E14/S7B Questions and Answers<br><a href="https://www.ich.org/page/efficacy-guidelines" target="_blank" rel="noopener">ICH reference</a></td>
+                      <td>Clarifies modern approaches, including concentration-QTc analysis and integrated nonclinical-clinical evidence.</td>
+                      <td>Exposure-response modeling, by-timepoint summaries, placebo-adjusted change from baseline, and when a dedicated thorough QT study may or may not be needed.</td>
+                    </tr>
+                    <tr>
+                      <td>Regional adoption by FDA, EMA, and other authorities</td>
+                      <td>Regulators use ICH E14/S7B principles when reviewing ECG/QT evidence in development programs.</td>
+                      <td>How the SAP, cardiac safety review package, and study report explain QTc risk in a way reviewers can trace.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                In practice, ECG analysis often focuses on corrected QT intervals such as QTcF,
+                change from baseline, placebo-adjusted change from baseline, categorical thresholds,
+                heart rate effects, and the relationship between drug concentration and QTc change.
+              </p>
+
+              <h4>4. Other FDA and EMA Guidelines Worth Knowing</h4>
+              <p>
+                Beyond ICH, statisticians often consult FDA and EMA guidance for concrete design
+                and analysis questions. These documents are useful when drafting SAP language,
+                checking assumptions, or preparing for regulatory discussion.
+              </p>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="FDA and EMA guidelines for biostatistics">
+                  <thead>
+                    <tr>
+                      <th>Topic</th>
+                      <th>Official Resource</th>
+                      <th>Why It Matters in Biostatistics</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Multiplicity and endpoint hierarchy</td>
+                      <td>
+                        FDA Multiple Endpoints<br>
+                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials-guidance-industry" target="_blank" rel="noopener">FDA reference</a><br>
+                        EMA Multiplicity Issues<br>
+                        <a href="https://www.ema.europa.eu/en/multiplicity-issues-clinical-trials-scientific-guideline" target="_blank" rel="noopener">EMA reference</a>
+                      </td>
+                      <td>Helps define primary/key secondary endpoint testing, alpha control, gatekeeping, fallback procedures, and interpretation of claims.</td>
+                    </tr>
+                    <tr>
+                      <td>Adaptive design</td>
+                      <td>
+                        FDA Adaptive Designs<br>
+                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry" target="_blank" rel="noopener">FDA reference</a>
+                      </td>
+                      <td>Important for interim looks, sample size re-estimation, adaptive randomization, decision rules, Type I error protection, and operational bias control.</td>
+                    </tr>
+                    <tr>
+                      <td>Missing data</td>
+                      <td>
+                        EMA Missing Data in Confirmatory Clinical Trials<br>
+                        <a href="https://www.ema.europa.eu/en/missing-data-confirmatory-clinical-trials-scientific-guideline" target="_blank" rel="noopener">EMA reference</a>
+                      </td>
+                      <td>Supports planning for estimands, intercurrent events, missingness assumptions, sensitivity analyses, and how much missing data threatens interpretation.</td>
+                    </tr>
+                    <tr>
+                      <td>Covariate adjustment</td>
+                      <td>
+                        FDA Adjusting for Covariates<br>
+                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adjusting-covariates-randomized-clinical-trials-drugs-and-biological-products" target="_blank" rel="noopener">FDA reference</a><br>
+                        EMA Baseline Covariates<br>
+                        <a href="https://www.ema.europa.eu/en/adjustment-baseline-covariates-clinical-trials-scientific-guideline" target="_blank" rel="noopener">EMA reference</a>
+                      </td>
+                      <td>Guides pre-specified adjustment variables, precision gains, model interpretation, subgroup considerations, and avoiding post hoc model shopping.</td>
+                    </tr>
+                    <tr>
+                      <td>Non-inferiority trials</td>
+                      <td>
+                        FDA Non-Inferiority Clinical Trials<br>
+                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/non-inferiority-clinical-trials" target="_blank" rel="noopener">FDA reference</a>
+                      </td>
+                      <td>Useful for margin selection, assay sensitivity, constancy assumption, analysis population choice, and interpretation when superiority is not the goal.</td>
+                    </tr>
+                    <tr>
+                      <td>Enrichment strategies</td>
+                      <td>
+                        FDA Enrichment Strategies<br>
+                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/enrichment-strategies-clinical-trials-support-approval-human-drugs-and-biological-products" target="_blank" rel="noopener">FDA reference</a>
+                      </td>
+                      <td>Helps interpret trials that select patients based on prognosis, predicted response, biomarkers, or risk profile.</td>
+                    </tr>
+                    <tr>
+                      <td>Data monitoring committees</td>
+                      <td>
+                        FDA Data Monitoring Committees<br>
+                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/establishment-and-operation-clinical-trial-data-monitoring-committees" target="_blank" rel="noopener">FDA reference</a>
+                      </td>
+                      <td>Relevant for interim monitoring plans, unblinded data access, stopping boundaries, safety review, and preserving trial integrity.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4>5. How These Guidelines Show Up in Daily Work</h4>
               <div class="table-scroll">
                 <table class="crf-table" aria-label="Guideline concepts in daily biostatistics work">
                   <thead>
@@ -1955,6 +2101,21 @@
                       <td>ICH E17</td>
                       <td>Are results consistent enough across regions to support interpretation?</td>
                     </tr>
+                    <tr>
+                      <td>Planning ECG/QT analyses</td>
+                      <td>ICH E14, ICH S7B, and E14/S7B Q&amp;A</td>
+                      <td>How will QTc change from baseline, categorical outliers, and concentration-QTc relationship be summarized?</td>
+                    </tr>
+                    <tr>
+                      <td>Writing missing data and sensitivity analysis strategy</td>
+                      <td>ICH E9(R1) and EMA missing data guidance</td>
+                      <td>What assumptions are being made, and how will conclusions be challenged?</td>
+                    </tr>
+                    <tr>
+                      <td>Pre-specifying model covariates</td>
+                      <td>FDA and EMA covariate adjustment guidance</td>
+                      <td>Which covariates belong in the primary model, and were they chosen before seeing outcomes?</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -1965,6 +2126,8 @@
                   <li>Which guideline should you read first for estimands and intercurrent events?</li>
                   <li>Which guideline is the foundation for randomization, blinding, sample size, and analysis sets?</li>
                   <li>Which FDA topic is most relevant when a trial has several primary or key secondary endpoints?</li>
+                  <li>Which guideline family should you read first for clinical QT/QTc interval assessment?</li>
+                  <li>Which EMA topic is useful when planning sensitivity analyses for incomplete outcome data?</li>
                 </ol>
                 <div class="answer-key">
                   <h5>Answer Key</h5>
@@ -1972,6 +2135,8 @@
                     <li>ICH E9(R1).</li>
                     <li>ICH E9.</li>
                     <li>FDA multiple endpoints guidance.</li>
+                    <li>ICH E14, together with ICH S7B and the E14/S7B Questions and Answers.</li>
+                    <li>EMA missing data in confirmatory clinical trials.</li>
                   </ol>
                 </div>
               </div>
