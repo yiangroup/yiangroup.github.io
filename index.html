@@ -870,22 +870,121 @@
                 <article class="lesson">
               <h4>1. Regulatory Framework &amp; Red Lines</h4>
               <p>
-                Clinical trials involve patient safety, data integrity, and evidence used for
-                regulatory decision-making. For that reason, the work must follow strict quality
-                and compliance expectations.
+                Clinical trial data collection, programming, analysis, and reporting must follow
+                international quality standards and local regulatory requirements. For statistical
+                programmers, compliance is not separate from programming; it shapes how data is
+                collected, transformed, reviewed, and submitted.
+              </p>
+
+              <h4>1.1 Global Regulatory Framework</h4>
+              <ul>
+                <li>
+                  <strong>ICH-GCP E6(R2/R3):</strong> Good Clinical Practice is the international
+                  ethical and quality standard for designing, conducting, recording, and reporting
+                  clinical trials. In programming work, GCP means that data manipulations, analyses,
+                  and reporting outputs must protect subject safety and preserve trial integrity.
+                </li>
+                <li>
+                  <strong>21 CFR Part 11 and EMA Annex 11:</strong> These regulations address
+                  electronic records, electronic signatures, system access, audit trails, and data
+                  reliability. Programming environments must support controlled access, traceable
+                  changes, secure storage, and reproducible execution.
+                </li>
+                <li>
+                  <strong>Data privacy regulations:</strong> HIPAA in the United States and GDPR in
+                  the European Union protect patient privacy. Protected Health Information should not
+                  appear in analysis-ready programming environments unless specifically permitted
+                  and controlled. De-identification, pseudonymization, date handling, and access
+                  control are part of responsible data handling.
+                </li>
+              </ul>
+
+              <h4>1.2 CDISC Standards: Collection to Analysis</h4>
+              <p>
+                Regulatory submissions commonly require a standardized, traceable data pipeline.
+                CDISC standards help organize that pipeline from data collection through analysis
+                and final outputs.
+              </p>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="CDISC standards relationship">
+                  <thead>
+                    <tr>
+                      <th>Standard</th>
+                      <th>Role</th>
+                      <th>What Programmers Should Understand</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>CDASH</td>
+                      <td>Collection standard</td>
+                      <td>Guides how data is collected at the CRF or EDC level, helping source data start clean and consistent.</td>
+                    </tr>
+                    <tr>
+                      <td>SDTM</td>
+                      <td>Tabulation model</td>
+                      <td>Provides the conceptual architecture for organizing clinical trial tabulation data.</td>
+                    </tr>
+                    <tr>
+                      <td>SDTM IG</td>
+                      <td>Implementation blueprint</td>
+                      <td>Provides domain-specific rules, variables, controlled terminology, assumptions, and examples for domains such as DM, AE, LB, and VS.</td>
+                    </tr>
+                    <tr>
+                      <td>ADaM</td>
+                      <td>Analysis data model</td>
+                      <td>Uses SDTM as a major upstream source to create analysis-ready datasets such as ADSL and ADAE according to the SAP.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                The relationship is important: SDTM and the SDTM Implementation Guide support
+                standardized review of tabulation data, while ADaM is built downstream to support
+                statistical analysis. ADaM datasets must remain traceable back to their source
+                records and derivation rules so reviewers can understand how each analysis value
+                was produced.
+              </p>
+
+              <h4>1.3 Red Lines: Compliance Boundaries</h4>
+              <p>
+                The following red lines are practical boundaries for clinical programming. Crossing
+                them can compromise data integrity, patient privacy, study validity, or regulatory
+                credibility.
               </p>
               <ul>
                 <li>
-                  <strong>ICH-GCP:</strong> Good Clinical Practice is the international ethical
-                  and quality standard for designing, conducting, recording, and reporting clinical
-                  trials. A programmer should understand the importance of ALCOA+ data principles:
-                  attributable, legible, contemporaneous, original, accurate, and complete.
+                  <strong>ALCOA+ data integrity:</strong> Data and programming actions should be
+                  attributable, legible, contemporaneous, original, accurate, complete, consistent,
+                  enduring, and available. Untraceable data changes, back-dated sign-offs, and
+                  undocumented fixes are not acceptable.
                 </li>
                 <li>
-                  <strong>21 CFR Part 11:</strong> This FDA regulation addresses electronic records
-                  and electronic signatures. In a regulated environment, code changes, data access,
-                  execution history, and approvals may be traceable through audit trails and system
-                  controls.
+                  <strong>No hardcoded source data fixes:</strong> Programmers should not directly
+                  correct subject data inside SAS, R, or Python code, such as forcing a single
+                  subject's value to a desired result. Source data corrections should go through
+                  appropriate data management processes and audit trails.
+                </li>
+                <li>
+                  <strong>Blinding integrity:</strong> In blinded studies, programmers should not
+                  access randomization or unblinded treatment information unless formally assigned
+                  to an unblinded role. Premature or unauthorized blind-breaking analyses can
+                  damage the interpretability of the trial.
+                </li>
+                <li>
+                  <strong>Patient privacy:</strong> Names, initials, national IDs, exact addresses,
+                  and other direct identifiers should not be included in SDTM, ADaM, TFLs, or
+                  general analysis environments unless a controlled and approved process requires it.
+                </li>
+                <li>
+                  <strong>Independent QC:</strong> Primary and QC programming should remain
+                  independent where required. Copying production code into QC to force a match
+                  defeats the purpose of validation and can hide logic errors.
+                </li>
+                <li>
+                  <strong>Validated tools and audit trails:</strong> Submission-critical work should
+                  use approved and validated systems, macros, packages, and workflows. Logs should
+                  not be deleted or edited to hide errors, warnings, or important notes.
                 </li>
               </ul>
 
