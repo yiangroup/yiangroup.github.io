@@ -140,11 +140,7 @@
     }
 
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 0.85fr) minmax(340px, 1.15fr);
-      align-items: center;
-      gap: clamp(24px, 6vw, 74px);
-      padding: 48px 0 72px;
+      padding: 58px 0 72px;
     }
 
     .subtitle {
@@ -160,28 +156,10 @@
     }
 
     .intro-copy {
-      max-width: 540px;
+      max-width: 680px;
       color: #775f55;
       font-size: 16px;
       line-height: 1.85;
-    }
-
-    .hero-art {
-      position: relative;
-      display: grid;
-      place-items: center;
-      min-height: 470px;
-    }
-
-    .hero-art img {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 720px);
-      height: auto;
-      display: block;
-      mix-blend-mode: multiply;
-      border-radius: 3px;
-      filter: saturate(0.94) contrast(0.98);
     }
 
     .work-grid {
@@ -317,12 +295,18 @@
     }
 
     #training .section-layout {
-      grid-template-columns: 150px minmax(0, 1fr);
-      gap: 32px;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 38px;
     }
 
-    #training .copy {
+    #training .copy,
+    #biostatistics .copy {
       max-width: 1180px;
+    }
+
+    #biostatistics .section-layout {
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 34px;
     }
 
     .section h2 {
@@ -337,6 +321,7 @@
       text-shadow:
         0.45px 0.3px 0 rgba(143, 111, 95, 0.14),
         -0.3px 0.35px 0 rgba(200, 157, 132, 0.14);
+      overflow-wrap: anywhere;
     }
 
     .copy {
@@ -487,6 +472,13 @@
       line-height: 1.2;
     }
 
+    .lesson h5 {
+      margin: 26px 0 10px;
+      color: #5d4841;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
     .lesson ul,
     .lesson ol {
       margin: 0 0 18px;
@@ -599,16 +591,18 @@
       border-top: 1px solid rgba(200, 157, 132, 0.2);
     }
 
-    .person-card p {
-      color: #80685c;
+    .contributors-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: #5b4943;
       font-size: 14px;
-      line-height: 1.72;
-      margin-bottom: 0;
+      font-weight: 800;
+      line-height: 1.4;
     }
 
-    .person-card strong {
-      color: #5b4943;
-      font-weight: 800;
+    .contributors-mini span {
+      display: inline-block;
     }
 
     .practice-materials {
@@ -653,6 +647,59 @@
 
     .mock-document dd {
       margin: 0;
+    }
+
+    .code-window {
+      margin: 20px 0 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background: #151514;
+      box-shadow: 0 18px 36px rgba(55, 38, 31, 0.2);
+    }
+
+    .code-window-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      color: #f7f1ea;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .code-window pre {
+      margin: 0;
+      padding: 20px 22px 24px;
+      overflow-x: auto;
+      color: #d8d1c8;
+      font-family: Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px;
+      line-height: 1.58;
+      white-space: pre;
+    }
+
+    .code-note {
+      margin: -10px 0 22px;
+      color: #80685c;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .log-chip {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(79, 76, 70, 0.08);
+      color: #6e6a64;
+      font-family: Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.92em;
+      line-height: 1.25;
+      white-space: nowrap;
     }
 
     .resource-button {
@@ -740,6 +787,15 @@
       line-height: 1.45;
     }
 
+    .crf-table caption {
+      margin-bottom: 14px;
+      color: #3f3432;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: left;
+    }
+
     .soa-table th,
     .soa-table td,
     .crf-table th,
@@ -802,12 +858,9 @@
         grid-template-columns: 1fr;
       }
 
-      #training .section-layout {
+      #training .section-layout,
+      #biostatistics .section-layout {
         grid-template-columns: 1fr;
-      }
-
-      .hero-art {
-        min-height: 280px;
       }
 
       .work-grid {
@@ -870,10 +923,6 @@
             clinical research data, and practical analytical skills.
           </p>
         </div>
-
-        <div class="hero-art" aria-label="Two illustrated founders with data charts">
-          <img src="assets/founders-people.png" alt="Two illustrated founders with data charts">
-        </div>
       </section>
 
       <section class="work-grid" aria-label="Website sections">
@@ -913,17 +962,9 @@
                   researchers, analysts, and working professionals can access practical training
                   resources.
                 </p>
-                <p>
-                  Our focus includes biostatistics, statistical programming, clinical research data,
-                  SAS, R, Python, CDISC, and applied data analysis.
-                </p>
                 <div class="people-list" aria-label="YIAN GROUP contributors">
-                  <div class="person-card">
-                    <p>
-                      Contributors include <strong>Jin Shi</strong>, who supports statistical
-                      programming and biostatistics-related training materials, and
-                      <strong>Jun Ke</strong>, who contributes review and methodology perspective.
-                    </p>
+                  <div class="contributors-mini" aria-label="YIAN GROUP contributors">
+                    <span>Jin Shi · Jun Ke</span>
                   </div>
                 </div>
               </div>
@@ -938,7 +979,7 @@
 
       <section id="training" class="section">
         <div class="section-layout">
-          <h2>Training</h2>
+          <h2>Statistical Programming Training</h2>
           <div class="copy">
             <div class="training-overview">
               <div class="tiny-label">Training Library</div>
@@ -987,54 +1028,145 @@
                 </li>
               </ul>
 
-              <h4>1.2 CDISC Standards: Collection to Analysis</h4>
+              <h4>1.2 Electronic Records: 21 CFR Part 11 &amp; EMA Annex 11</h4>
               <p>
-                Regulatory submissions commonly require a standardized, traceable data pipeline.
-                CDISC standards help organize that pipeline from data collection through analysis
-                and final outputs.
+                In a digital clinical trial environment, electronic data, source code, execution
+                logs, dataset timestamps, review comments, and electronic signatures are regulated
+                records. The core expectation is that these records must be authentic, reliable,
+                attributable, protected from unauthorized change, and reproducible during an
+                inspection.
               </p>
-              <div class="table-scroll">
-                <table class="crf-table" aria-label="CDISC standards relationship">
-                  <thead>
-                    <tr>
-                      <th>Standard</th>
-                      <th>Role</th>
-                      <th>What Programmers Should Understand</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>CDASH</td>
-                      <td>Collection standard</td>
-                      <td>Guides how data is collected at the CRF or EDC level, helping source data start clean and consistent.</td>
-                    </tr>
-                    <tr>
-                      <td>SDTM</td>
-                      <td>Tabulation model</td>
-                      <td>Provides the conceptual architecture for organizing clinical trial tabulation data.</td>
-                    </tr>
-                    <tr>
-                      <td>SDTM IG</td>
-                      <td>Implementation blueprint</td>
-                      <td>Provides domain-specific rules, variables, controlled terminology, assumptions, and examples for domains such as DM, AE, LB, and VS.</td>
-                    </tr>
-                    <tr>
-                      <td>ADaM</td>
-                      <td>Analysis data model</td>
-                      <td>Uses SDTM as a major upstream source to create analysis-ready datasets such as ADSL and ADAE according to the SAP.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <ul>
+                <li>
+                  <strong>No manual overwrites:</strong> Programmers should not open a SAS dataset,
+                  R dataframe, CSV file, or Excel listing and directly alter a data point. Even an
+                  obvious typo must be corrected through the proper data management query process,
+                  fixed in the source system when appropriate, and then reprocessed through the
+                  controlled pipeline.
+                </li>
+                <li>
+                  <strong>Traceable code changes:</strong> Code updates must be tracked in a
+                  validated version control or programming environment. A commit message such as
+                  "fixed bug" is not enough for regulated work; the change should explain why it
+                  was made, what logic or output was affected, and which protocol, SAP, shell,
+                  specification, or review finding required the update.
+                </li>
+                <li>
+                  <strong>Unique user accountability:</strong> User IDs and passwords must not be
+                  shared. Server audit trails tie logins, file edits, program executions, and
+                  approvals to a specific person. Programmers should also lock their workstation
+                  whenever they step away, because work performed under their account is attributed
+                  to them.
+                </li>
+                <li>
+                  <strong>Controlled environments:</strong> Production data and production outputs
+                  are usually protected by read-only access, release controls, and validated
+                  execution paths. Programmers should not install unapproved R, Python, or SAS
+                  components on production systems or bypass Dev-to-Prod promotion workflows.
+                </li>
+                <li>
+                  <strong>Clean, retained logs:</strong> SAS logs, R outputs, validation reports,
+                  and execution metadata are inspection evidence. Errors, warnings, automatic type
+                  conversions, uninitialized variables, and unexplained record count changes should
+                  be investigated and resolved rather than hidden or deleted.
+                </li>
+              </ul>
+
+              <h4>1.3 Data Privacy: HIPAA, GDPR, and Patient-Level Data</h4>
               <p>
-                The relationship is important: SDTM and the SDTM Implementation Guide support
-                standardized review of tabulation data, while ADaM is built downstream to support
-                statistical analysis. ADaM datasets must remain traceable back to their source
-                records and derivation rules so reviewers can understand how each analysis value
-                was produced.
+                Statistical programmers are one of the final safeguards against privacy leakage.
+                HIPAA, GDPR, and sponsor policies require patient-level data to be minimized,
+                pseudonymized, access-controlled, and transferred only through approved channels.
+              </p>
+              <ul>
+                <li>
+                  <strong>Remove direct identifiers:</strong> Analysis-ready datasets should not
+                  contain patient names, full addresses, phone numbers, email addresses, national
+                  identifiers, medical record numbers, or other direct identifiers unless a specific
+                  controlled process requires them.
+                </li>
+                <li>
+                  <strong>Use pseudonymized subject keys:</strong> Subjects should be tracked with
+                  consistent study identifiers such as USUBJID, commonly formed from protocol,
+                  site, and subject number. The same pseudonymized key must remain consistent across
+                  SDTM, ADaM, listings, and reconciliation outputs.
+                </li>
+                <li>
+                  <strong>Handle dates carefully:</strong> Exact birth dates and full calendar dates
+                  can become indirect identifiers, especially in rare disease or small studies.
+                  Programmers may need to derive age, study day, or shifted dates according to the
+                  protocol, data transfer agreement, SAP, and privacy requirements, then remove the
+                  unnecessary high-risk source date.
+                </li>
+                <li>
+                  <strong>Audit free text:</strong> Verbatim fields and comment fields can contain
+                  accidental identifiers, such as a patient name inside an adverse event term or a
+                  protocol deviation description. These fields should be reviewed, queried, masked,
+                  or redacted through a controlled process before delivery.
+                </li>
+                <li>
+                  <strong>Keep data inside approved systems:</strong> Patient-level SAS datasets,
+                  XPT files, CSVs, Excel listings, screenshots, and extracts should not be saved to
+                  personal drives, unsecured local folders, external drives, personal email, or chat
+                  attachments. Use secure project directories and permission-controlled file links.
+                </li>
+              </ul>
+
+              <h4>1.4 Where Data Standards Fit</h4>
+              <p>
+                A new programmer does not need to learn every data standard on the first day. The
+                first idea is simpler: clinical trial data cannot stay as a pile of site forms,
+                EDC exports, vendor spreadsheets, and one-off file layouts. Before analysis and
+                submission, the data must be reorganized into a standard path so the study team and
+                regulators can follow where each value came from and how it was used.
+              </p>
+              <p>
+                The standard language behind that path is CDISC. CDISC, the Clinical Data
+                Interchange Standards Consortium, is a global, non-profit organization that defines
+                data standards for clinical research. Think of CDISC as the universal grammar for
+                clinical trials: because of it, a reviewer at the FDA or EMA can open a submission
+                dataset and know where to find a subject's age, adverse events, lab results,
+                exposure records, and analysis variables.
+              </p>
+              <div class="flow" aria-label="CDISC data pipeline">
+                <div class="flow-step"><strong>Raw Data Collected</strong><br>Site forms, EDC exports, and vendor files.</div>
+                <div class="flow-step"><strong>CDASH</strong><br>Input standard for cleaner CRF and EDC collection.</div>
+                <div class="flow-step"><strong>SDTM</strong><br>Tabulation standard showing what happened to the subject.</div>
+                <div class="flow-step"><strong>ADaM</strong><br>Analysis-ready datasets with derivations and population flags.</div>
+                <div class="flow-step"><strong>TFLs</strong><br>Final tables, listings, and figures for reporting.</div>
+              </div>
+              <ul>
+                <li>
+                  <strong>CDASH is the input standard:</strong> It helps design CRF and EDC fields
+                  so data is collected consistently from the beginning.
+                </li>
+                <li>
+                  <strong>SDTM is the tabulation standard:</strong> It organizes collected clinical
+                  data into standard domains such as DM for demographics, AE for adverse events,
+                  LB for labs, and VS for vital signs. At this stage, the goal is to represent what
+                  happened to the subject, not to perform statistical analysis.
+                </li>
+                <li>
+                  <strong>ADaM is the analysis standard:</strong> It uses SDTM and SAP rules to
+                  build analysis-ready datasets, including baseline values, change from baseline,
+                  imputation rules, analysis visits, and population flags. Final TFLs are generated
+                  from ADaM datasets.
+                </li>
+              </ul>
+              <p>
+                This pipeline explains why private shortcuts are forbidden. A shortcut means
+                bypassing part of the approved chain, such as pulling raw EDC data directly into a
+                final table because it feels faster. That may save time today, but it breaks the
+                ability to trace a final number back to ADaM, SDTM, and the original source record.
+              </p>
+              <p>
+                We will introduce the detailed programming specifications for CDASH, SDTM, and
+                ADaM later in the data mapping lessons. For this first compliance lesson, remember
+                the practical rule: respect the pipeline, document every derivation, and protect
+                the chain of custody from source data to final tables.
               </p>
 
-              <h4>1.3 Red Lines: Compliance Boundaries</h4>
+              <h4>1.5 Red Lines: Compliance Boundaries</h4>
               <p>
                 The following red lines are practical boundaries for clinical programming. Crossing
                 them can compromise data integrity, patient privacy, study validity, or regulatory
@@ -1076,23 +1208,40 @@
                 </li>
               </ul>
 
-              <h4>2. Core Clinical Documents</h4>
+              <h4>2. Bridge to the Study Documents</h4>
               <p>
-                Statistical programmers do not program from assumptions. They program from defined
-                study specifications and approved documents.
+                The compliance rules above may sound abstract at first. In daily programming, they
+                become much more concrete because programmers do not make rules from memory. They
+                check approved study documents, then turn those instructions into traceable code.
+              </p>
+              <p>
+                For the first lesson, only remember the basic job of each document. The next lesson
+                will show how to read them in detail.
               </p>
               <ul>
                 <li>
-                  <strong>Protocol:</strong> The blueprint of the clinical trial. It defines the
-                  study objectives, design, treatment schedule, visit structure, endpoints, and
-                  inclusion or exclusion criteria.
+                  <strong>Protocol:</strong> Explains what the trial is trying to study, who can
+                  join, what visits happen, and which assessments are collected.
                 </li>
                 <li>
-                  <strong>Statistical Analysis Plan:</strong> The analysis guide for the study. It
-                  describes statistical methods, derivation rules, analysis populations, endpoint
-                  definitions, and the tables, listings, and figures required for delivery.
+                  <strong>SAP:</strong> Explains how the study will be analyzed, including
+                  populations, baseline rules, endpoints, missing data rules, and statistical
+                  methods.
+                </li>
+                <li>
+                  <strong>TLF shells:</strong> Show what the final tables, listings, and figures
+                  should look like, including titles, rows, columns, and footnotes.
+                </li>
+                <li>
+                  <strong>aCRF and vendor specs:</strong> Help programmers find where source data
+                  came from, whether it was entered in the EDC or transferred from an outside
+                  vendor such as a lab or ECG provider.
                 </li>
               </ul>
+              <p>
+                This is the key transition into Step 02: if Step 01 teaches what not to violate,
+                Step 02 teaches where to find the approved instructions before writing code.
+              </p>
 
               <h4>3. End-to-End Clinical Data Flow</h4>
               <p>
@@ -1110,20 +1259,203 @@
 
               <h4>4. SOPs &amp; Coding Standards</h4>
               <p>
-                Regulated programming teams rely on Standard Operating Procedures and coding
-                standards to keep work consistent, traceable, and transferable across projects.
+                In a regulated industry, code is not just a personal tool. It is a collaborative,
+                permanent corporate asset. If a programmer goes on vacation, leaves the company, or
+                joins another study, a teammate should be able to open the program and understand
+                the purpose, inputs, outputs, assumptions, and review history within minutes.
               </p>
               <ul>
                 <li>
-                  <strong>SOP compliance:</strong> Programmers follow documented workflows for data
-                  access, production programming, quality control, validation, and documentation.
+                  <strong>SOPs control the process:</strong> Standard Operating Procedures define
+                  how study folders are created, who can move files from Development to Production,
+                  how review comments are documented, how data issues are escalated, and how final
+                  deliverables are archived.
                 </li>
                 <li>
-                  <strong>Coding standards:</strong> Code should be readable, maintainable, and
-                  easy for another programmer to review. Program headers, version history, naming
-                  conventions, and standard macros are often part of the programming workflow.
+                  <strong>Training sign-off matters:</strong> Before touching active study data or
+                  production programs, new hires usually complete a training matrix and sign off
+                  that they have read and understood the required programming SOPs.
+                </li>
+                <li>
+                  <strong>Coding standards control the script:</strong> Standards cover headers,
+                  indentation, naming conventions, comments, log checks, output locations, and
+                  version history so code remains readable, reproducible, and reviewable.
                 </li>
               </ul>
+              <p>
+                A compliant program usually begins with a required header block. This is not
+                decoration; it tells the reviewer what the program does, which data it uses, what it
+                creates, who wrote it, and why later changes were made.
+              </p>
+              <div class="code-window" aria-label="SAS program header example">
+                <div class="code-window-header">
+                  <span>SAS Program Header Example</span>
+                  <span>.sas</span>
+                </div>
+<pre><code>/*****************************************************************************
+* Company Name: YIAN GROUP Training
+* Study Protocol: ABC-123
+* Program Name: adae.sas
+* Purpose: Create the Adverse Event Analysis Dataset (ADAE)
+* Inputs: sdtm.ae, sdtm.dm, adam.adsl
+* Outputs: adam.adae
+*-----------------------------------------------------------------------------
+* Author: John Doe (j.doe@company.com)
+* Creation Date: 2026-06-28
+*-----------------------------------------------------------------------------
+* Modification History:
+* Date        Author       Reference      Description of Change
+* ----------  -----------  -------------  ------------------------------------
+* 2026-07-15  Jane Smith   Ticket #442    Updated missing onset date imputation
+*                                         per SAP Amendment 2.
+*****************************************************************************/</code></pre>
+              </div>
+              <p class="code-note">
+                Practical rule: never start functional SAS, R, or Python code on line 1. First give
+                the reviewer a map of the program.
+              </p>
+
+              <h5>4.1 Readable Code Habits</h5>
+              <ul>
+                <li>
+                  <strong>Use consistent layout:</strong> Follow the team standard for indentation,
+                  spacing, dataset names, variable names, and section breaks. A reviewer should not
+                  need to decode your personal style.
+                </li>
+                <li>
+                  <strong>Remove dead code:</strong> Do not leave large blocks of commented-out
+                  experimental code in final production programs. Version control keeps history;
+                  production programs should show the current approved logic.
+                </li>
+                <li>
+                  <strong>Comment the reason, not the obvious action:</strong> Comments should
+                  explain why logic exists, especially for protocol exceptions, SAP rules, data
+                  anomalies, or sponsor decisions.
+                </li>
+              </ul>
+              <div class="code-window" aria-label="SAS comment examples">
+                <div class="code-window-header">
+                  <span>SAS Comment Examples</span>
+                  <span>Good vs Bad</span>
+                </div>
+<pre><code>/* Bad: repeats the code without explaining the reason. */
+/* Substringing the variable */
+age_num = input(substr(ageres, 1, 2), best.);
+
+/* Better: explains the study rule and document source. */
+/* Remove the "YEARS" suffix from AGERES before numeric conversion,
+   per ADaM specification page 12. */
+age_num = input(scan(ageres, 1, " "), best.);</code></pre>
+              </div>
+
+              <h5>4.2 Log Checking: The Ultimate Defense</h5>
+              <p>
+                A program that runs is not automatically correct. The execution log is often the
+                first place where data integrity problems appear. Before submitting work for review,
+                programmers should run the team log-check utility or inspect logs line by line.
+              </p>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="Log checking keywords">
+                  <caption>Critical Keywords to Search and Resolve</caption>
+                  <thead>
+                    <tr>
+                      <th>In SAS Environments</th>
+                      <th>In R / Python Environments</th>
+                      <th>Action Required by the Programmer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="log-chip">ERROR:</span></td>
+                      <td><span class="log-chip">Error:</span></td>
+                      <td>Critical failure. The program stopped executing. Must be fixed immediately.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="log-chip">WARNING:</span></td>
+                      <td><span class="log-chip">Warning:</span></td>
+                      <td>Potential data corruption, such as dropped variables, length mismatches, or failed calculations. Must be resolved.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="log-chip">uninitialized</span></td>
+                      <td><span class="log-chip">NaN</span> / <span class="log-chip">NA</span> creation</td>
+                      <td>A variable was called but does not exist, or a calculation created missing values unexpectedly. Check spelling, input structure, and upstream data changes.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="log-chip">w.d format too small</span></td>
+                      <td>Numerical truncation or coercion warnings</td>
+                      <td>Data values may be clipped, rounded, or converted incorrectly on export. Use explicit formats and verify displayed values.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="log-chip">MERGE statement has repeats</span></td>
+                      <td>Many-to-many merge or join warning</td>
+                      <td>Unexpected data multiplication may have occurred. Confirm unique key variables before merging and compare record counts before and after the join.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="code-window" aria-label="SAS log scan example">
+                <div class="code-window-header">
+                  <span>SAS Log Scan Example</span>
+                  <span>Checklist</span>
+                </div>
+<pre><code>/* Example manual log review checklist:
+   1. Search for ERROR:
+   2. Search for WARNING:
+   3. Search for uninitialized
+   4. Search for converted
+   5. Search for repeats of BY values
+   6. Confirm expected input and output record counts
+*/</code></pre>
+              </div>
+
+              <h5>4.3 Independent QC and Compare</h5>
+              <p>
+                Regulated programming relies on independent validation. The production programmer
+                writes the main program, and a QC programmer independently interprets the same SAP
+                and specifications. The goal is not to copy the production code; the goal is to
+                catch misunderstanding before delivery.
+              </p>
+              <p>
+                Production deliverables should remain as produced and archived. In QC, compare
+                directly against the production dataset and prepare only the independent QC dataset
+                if sorting or key alignment is needed.
+              </p>
+              <div class="flow" aria-label="Production and QC workflow">
+                <div class="flow-step"><strong>Production Programmer</strong><br>Creates the production dataset or output from approved specifications.</div>
+                <div class="flow-step"><strong>QC Programmer</strong><br>Builds an independent QC version from the same documents.</div>
+                <div class="flow-step"><strong>Automated Compare</strong><br>Compares records, variables, labels, formats, values, and types.</div>
+                <div class="flow-step"><strong>Resolution</strong><br>Any mismatch is investigated, documented, corrected, and rerun.</div>
+              </div>
+              <div class="code-window" aria-label="SAS PROC COMPARE example">
+                <div class="code-window-header">
+                  <span>SAS PROC COMPARE Example</span>
+                  <span>QC</span>
+                </div>
+<pre><code>/* Do not modify, overwrite, or pre-sort the production deliverable.
+   Compare directly against adam.adae. */
+data qc_adae;
+  set qc.adae;
+run;
+
+proc sort data=qc_adae;
+  by usubjid aeseq paramcd avisitn;
+run;
+
+proc compare base=adam.adae
+             compare=qc_adae
+             criterion=1e-10
+             listall;
+  id usubjid aeseq paramcd avisitn;
+run;</code></pre>
+              </div>
+              <div class="answer-key">
+                <h5>Onboarding Takeaway</h5>
+                <p>
+                  SOPs protect the company from regulatory findings. Coding standards protect your
+                  teammates from unreadable or unreproducible code. Write every program as if the
+                  next person opening it must defend it during an audit.
+                </p>
+              </div>
 
                 </article>
               </details>
@@ -1138,13 +1470,30 @@
                 <article class="lesson">
                   <h4>1. Why Documents Come Before Programming</h4>
                   <p>
-                    Statistical programming is specification-driven work. Before writing code,
-                    the statistician and programmer need to understand what each document controls,
-                    where definitions come from, and which source should be used when documents
-                    appear to overlap.
+                    Statistical programming is specification-driven work. Every dataset, derived
+                    variable, output title, footnote, population flag, and quality-control check is
+                    governed by approved study documents. These documents are the inputs, rules,
+                    and blueprints for compliant programming.
+                  </p>
+                  <p>
+                    A programmer should not code from memory or from an informal chat message.
+                    When a rule is unclear, the correct response is to identify the controlling
+                    document, record the question, and confirm the decision with the statistician,
+                    data manager, or study team.
                   </p>
 
-                  <h4>2. Core Documents and What to Look For</h4>
+                  <h4>2. Document Dependency Map</h4>
+                  <div class="flow" aria-label="Document dependency map">
+                    <div class="flow-step"><strong>Protocol</strong><br>Clinical intent, visits, assessments, endpoints, eligibility, and trial conduct.</div>
+                    <div class="flow-step"><strong>SAP</strong><br>Analysis populations, estimands, baseline rules, missing data rules, and statistical methods.</div>
+                    <div class="flow-step"><strong>SDTM / ADaM Specs</strong><br>Excel-level programming details: variables, labels, types, origins, derivations, and algorithms.</div>
+                    <div class="flow-step"><strong>aCRF / DTS / Dictionaries</strong><br>Source fields, vendor transfer rules, MedDRA, WHODrug, and coded safety terms.</div>
+                    <div class="flow-step"><strong>Code to SDTM / ADaM / TFLs</strong><br>SAS or R programs create standardized datasets and final outputs.</div>
+                    <div class="flow-step"><strong>P21 Report</strong><br>Automated validation checks identify rejects, errors, warnings, and notices.</div>
+                    <div class="flow-step"><strong>Define.xml + SDRG / ADRG</strong><br>Submission metadata and reviewer guides explain the package to regulators.</div>
+                  </div>
+
+                  <h4>3. Core Documents and What to Look For</h4>
                   <div class="table-scroll">
                     <table class="crf-table" aria-label="Clinical trial document guide">
                       <thead>
@@ -1171,6 +1520,11 @@
                           <td>Output layout, row and column structure, formats, titles, footnotes, and QC targets.</td>
                         </tr>
                         <tr>
+                          <td>SDTM / ADaM Specs</td>
+                          <td>How study rules become dataset-level metadata and variable-level derivations.</td>
+                          <td>Variable names, labels, types, lengths, origins, controlled terminology, and derivation algorithms.</td>
+                        </tr>
+                        <tr>
                           <td>Annotated CRF</td>
                           <td>How clinical concepts are collected and where source evidence originates.</td>
                           <td>Source fields, CRF page names, raw variable origin, and SDTM domain mapping clues.</td>
@@ -1185,11 +1539,302 @@
                           <td>Submission metadata, dataset purpose, controlled terminology, and reviewer traceability.</td>
                           <td>Dataset labels, variable attributes, origins, derivations, value-level metadata, and links to codelists.</td>
                         </tr>
+                        <tr>
+                          <td>SDRG / ADRG</td>
+                          <td>How reviewers should understand unusual SDTM or ADaM data, decisions, and known issues.</td>
+                          <td>Data explanations, standard deviations, unresolved validation issues, reviewer notes, and analysis caveats.</td>
+                        </tr>
+                        <tr>
+                          <td>P21 Report</td>
+                          <td>Which automated validation rules are failing or need explanation.</td>
+                          <td>Rejects, errors, warnings, notices, rule IDs, affected datasets, affected variables, and resolution status.</td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
 
-                  <h4>3. How to Resolve Document Questions</h4>
+                  <h4>4. Clinical Study Protocol: The Master Blueprint</h4>
+                  <p>
+                    The protocol is the legal and operational blueprint of the clinical trial. It
+                    defines why the study is being run, who can enter, what treatment they receive,
+                    which assessments are collected, and what clinical questions the study is meant
+                    to answer.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Schedule of Activities:</strong> Use the SoA to understand which
+                      assessments are expected at Screening, Baseline, treatment visits, follow-up,
+                      and End of Study. It is the first source for visit timing and expected data.
+                    </li>
+                    <li>
+                      <strong>Objectives and endpoints:</strong> Read the primary, secondary, and
+                      exploratory endpoints before building endpoint variables. The endpoint wording
+                      often determines the analysis value, baseline definition, and target visit.
+                    </li>
+                    <li>
+                      <strong>Eligibility rules:</strong> Inclusion and exclusion criteria support
+                      eligibility checks, protocol deviation review, and population definitions.
+                    </li>
+                    <li>
+                      <strong>Programming impact:</strong> The protocol drives visit-window logic,
+                      expected assessment checks, treatment period definitions, unscheduled visit
+                      handling, and questions such as whether an ECG, lab, or vital sign record is
+                      expected at a specific visit.
+                    </li>
+                  </ul>
+
+                  <h4>5. Statistical Analysis Plan: The Daily Programming Rulebook</h4>
+                  <p>
+                    The SAP turns the clinical intent of the protocol into executable analysis
+                    rules. For ADaM and TFL programming, this is usually the most frequently opened
+                    document.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Analysis populations:</strong> Translate population definitions into
+                      precise ADSL flags such as SAFFL, FASFL, ITTFL, PPSFL, or other study-specific
+                      flags. Do not infer a population from the shell alone.
+                    </li>
+                    <li>
+                      <strong>Baseline definitions:</strong> Implement the exact SAP rule, including
+                      date and time logic. If baseline is the last non-missing value before first
+                      dose, a Day 1 post-dose value must not accidentally become baseline.
+                    </li>
+                    <li>
+                      <strong>Missing data and imputation:</strong> Follow the specified approach
+                      for missing efficacy, safety, dates, severity, relationship, or endpoint
+                      values. LOCF, multiple imputation, non-responder imputation, and partial date
+                      imputation are not interchangeable.
+                    </li>
+                    <li>
+                      <strong>Derived variables and windows:</strong> Use SAP rules for study day,
+                      change from baseline, BMI, endpoint derivations, visit windows, analysis
+                      visit assignment, censoring, and sensitivity analyses.
+                    </li>
+                  </ul>
+
+                  <h4>6. TLF Mock Shells: The Target Output Design</h4>
+                  <p>
+                    Mock shells show what the final tables, listings, and figures should look like.
+                    They are not just formatting examples; they contain programming instructions in
+                    titles, subtitles, column headers, row labels, and footnotes.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Titles and headers:</strong> Confirm table number, endpoint, visit,
+                      treatment groups, population, and whether the output is descriptive,
+                      inferential, safety, efficacy, or listing-based.
+                    </li>
+                    <li>
+                      <strong>Rows and columns:</strong> Match grouping, sorting, indentation,
+                      decimal precision, statistics, denominator rules, and treatment comparisons.
+                    </li>
+                    <li>
+                      <strong>Footnotes:</strong> Read every footnote before coding. Footnotes often
+                      define source datasets, analysis populations, statistical models, date cutoffs,
+                      denominator logic, and abbreviation meanings.
+                    </li>
+                    <li>
+                      <strong>Programming impact:</strong> Final output code should match the shell
+                      layout closely, but the source and logic must still be reconciled against the
+                      SAP and specifications.
+                    </li>
+                  </ul>
+
+                  <h4>7. SDTM / ADaM Programming Specifications: The Code Translator</h4>
+                  <p>
+                    The SAP gives the statistical rule, but the programming specification turns
+                    that rule into dataset-level and variable-level instructions. In many projects,
+                    the spec is a large Excel workbook that programmers open constantly while
+                    writing SDTM, ADaM, and TFL code.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Metadata columns:</strong> Learn to read variable name, label, type,
+                      length, format, controlled terminology, role, origin, and comments.
+                    </li>
+                    <li>
+                      <strong>Derivation or algorithm column:</strong> This is the direct bridge to
+                      code. It should explain how each variable is assigned, copied, merged,
+                      derived, imputed, flagged, or populated conditionally.
+                    </li>
+                    <li>
+                      <strong>Spec versus SAP:</strong> The SAP defines the analysis intent. The
+                      spec translates that intent into implementable dataset logic. If they conflict,
+                      stop and raise a question instead of choosing one silently.
+                    </li>
+                    <li>
+                      <strong>Programming impact:</strong> Do not build production code from an
+                      unfinished or unapproved spec unless the team has explicitly authorized that
+                      development stage. Draft specs often change and can cause avoidable rework.
+                    </li>
+                  </ul>
+
+                  <h4>8. Annotated CRF: The Source Data Map</h4>
+                  <p>
+                    The annotated CRF is the bridge between what the site entered in the EDC and how
+                    the data is represented in SDTM. It helps programmers understand where each
+                    source field came from and how it should be interpreted.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Domain markings:</strong> Page and field annotations point to domains
+                      such as DM, AE, CM, LB, VS, ECG, or exposure-related domains.
+                    </li>
+                    <li>
+                      <strong>Variable annotations:</strong> Field-level labels indicate target
+                      SDTM variables or mapping clues, such as DM.SEX, VSORRES, VSPOS, or AETERM.
+                    </li>
+                    <li>
+                      <strong>Origin metadata:</strong> Determine whether a value is collected on
+                      the CRF, derived by the system, assigned by the sponsor, or imported from an
+                      external source.
+                    </li>
+                    <li>
+                      <strong>Programming impact:</strong> If a raw variable is not annotated or an
+                      annotated CRF field has no raw data, flag the discrepancy. Do not silently map
+                      unmapped data or leave collected data behind without explanation.
+                    </li>
+                  </ul>
+
+                  <h4>9. Data Transfer Specifications: Vendor Data Rules</h4>
+                  <p>
+                    Many important data streams do not come directly from the EDC. Central labs,
+                    ECG vendors, PK labs, imaging vendors, ePRO vendors, and biomarker labs often
+                    transfer data using a Data Transfer Specification.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>File structure:</strong> Check file names, file type, delimiter,
+                      encoding, expected worksheets, header rows, required columns, and transfer
+                      frequency.
+                    </li>
+                    <li>
+                      <strong>Merge keys:</strong> Confirm subject ID, site, visit, sample ID,
+                      accession number, specimen collection date/time, and any vendor-specific
+                      identifiers used for reconciliation.
+                    </li>
+                    <li>
+                      <strong>Units and codelists:</strong> Validate units, result codes, normal
+                      ranges, flags, test names, date formats, missing value conventions, and
+                      version-controlled dictionaries.
+                    </li>
+                    <li>
+                      <strong>Programming impact:</strong> Incoming vendor files should be checked
+                      against the DTS before production processing. A changed column name or date
+                      format can silently corrupt study day, visit assignment, or merge results.
+                    </li>
+                  </ul>
+
+                  <h4>10. MedDRA and WHODrug: External Coding Dictionaries</h4>
+                  <p>
+                    Safety programming depends heavily on coded medical terminology. Site-entered
+                    adverse events, medical history terms, and concomitant medications often begin
+                    as verbatim text, then Data Management codes them using controlled external
+                    dictionaries before analysis.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>MedDRA:</strong> Used for adverse events and medical history. It
+                      provides hierarchy such as System Organ Class and Preferred Term, which often
+                      drive safety table grouping and sorting.
+                    </li>
+                    <li>
+                      <strong>WHODrug:</strong> Used for concomitant medications and includes drug
+                      names, ingredients, and ATC classifications.
+                    </li>
+                    <li>
+                      <strong>Programming impact:</strong> ADAE, ADCM, and safety TFLs frequently
+                      rely on coded variables such as AEBODSYS, AEDECOD, CMDECOD, and ATC classes.
+                      Frequency counts and grouping logic should use the approved coded terms, not
+                      raw verbatim text.
+                    </li>
+                    <li>
+                      <strong>Review habit:</strong> If dictionary-coded fields are missing,
+                      inconsistent, or unexpectedly changed between transfers, raise the issue with
+                      Data Management instead of recoding terms manually in analysis code.
+                    </li>
+                  </ul>
+
+                  <h4>11. Define.xml and Submission Metadata</h4>
+                  <p>
+                    Define.xml explains the submitted datasets to reviewers. It documents dataset
+                    purpose, variable labels, variable attributes, origins, derivations, value-level
+                    metadata, controlled terminology, and links to reviewer guides or external
+                    codelists.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Use it as a traceability check:</strong> The final SDTM and ADaM
+                      datasets should agree with the metadata that define.xml describes.
+                    </li>
+                    <li>
+                      <strong>Check variable-level details:</strong> Labels, types, lengths,
+                      codelists, origins, and derivations should be consistent with specifications
+                      and actual datasets.
+                    </li>
+                    <li>
+                      <strong>Programming impact:</strong> If a submitted variable is derived, the
+                      derivation should be understandable from the metadata and traceable to source
+                      records or documented rules.
+                    </li>
+                  </ul>
+
+                  <h4>12. SDRG and ADRG: Reviewer Guides</h4>
+                  <p>
+                    Define.xml is metadata, but it does not tell the whole story. Reviewer guides
+                    explain the study data package in plain language. The SDRG explains SDTM data,
+                    while the ADRG explains ADaM data and analysis-specific decisions.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>SDRG:</strong> The Study Data Reviewer's Guide explains SDTM package
+                      structure, known data issues, conformance notes, special study design
+                      considerations, and unresolved validation findings.
+                    </li>
+                    <li>
+                      <strong>ADRG:</strong> The Analysis Data Reviewer's Guide explains ADaM
+                      datasets, analysis derivations, traceability, departures from standard
+                      expectations, and how analysis results should be interpreted.
+                    </li>
+                    <li>
+                      <strong>Programmer responsibility:</strong> Programmers are often major
+                      contributors to the ADRG. If code intentionally handles unusual data, deviates
+                      from a common standard because of study design, or leaves a validation issue
+                      unresolved with justification, the reviewer guide must explain it.
+                    </li>
+                    <li>
+                      <strong>Practical rule:</strong> Anything that would make a reviewer ask
+                      "Why did the data look like this?" probably belongs in SDRG, ADRG, or a
+                      documented response trail.
+                    </li>
+                  </ul>
+
+                  <h4>13. Pinnacle 21 Validation Report: The Automated Rule Check</h4>
+                  <p>
+                    After datasets and metadata are built, validation tools such as Pinnacle 21 are
+                    used to scan SDTM, ADaM, and Define.xml against conformance rules. The resulting
+                    report is a core review document for programmers, not an afterthought.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Severity levels:</strong> Learn to triage Reject, Error, Warning, and
+                      Notice findings. High-severity findings can block submission readiness, while
+                      lower-severity findings still need review and disposition.
+                    </li>
+                    <li>
+                      <strong>Resolution loop:</strong> Read the P21 rule, identify the affected
+                      dataset or variable, check the spec and code, fix the program when appropriate,
+                      rerun validation, and document any finding that remains by design.
+                    </li>
+                    <li>
+                      <strong>Connection to reviewer guides:</strong> If a finding cannot or should
+                      not be fixed because it reflects the protocol, data reality, or approved
+                      study design, the explanation should be captured in SDRG or ADRG.
+                    </li>
+                  </ul>
+
+                  <h4>14. How to Resolve Document Questions</h4>
                   <p>
                     A good programmer does not guess when documents seem unclear. The usual
                     approach is to identify the controlling document, record the question clearly,
@@ -1200,15 +1845,108 @@
                     <li><strong>Analysis rule:</strong> Start with the SAP and programming specifications.</li>
                     <li><strong>Output layout:</strong> Start with TLF shells and output specifications.</li>
                     <li><strong>Source field:</strong> Start with annotated CRF, raw data, and data transfer specifications.</li>
-                    <li><strong>Submission metadata:</strong> Check Define.xml and the study metadata package.</li>
+                    <li><strong>Safety coding:</strong> Check coded terms, MedDRA, WHODrug, and Data Management coding decisions.</li>
+                    <li><strong>Submission metadata:</strong> Check Define.xml, SDRG, ADRG, and the study metadata package.</li>
+                    <li><strong>Validation finding:</strong> Check the P21 report, rule details, specification, code, and reviewer guide explanation.</li>
                   </ul>
 
+                  <h4>15. Summary of Document Dependencies</h4>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Document dependency summary">
+                      <thead>
+                        <tr>
+                          <th>Document</th>
+                          <th>Primary Question It Answers</th>
+                          <th>When to Open It</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Protocol</td>
+                          <td>What was the clinical intent, timing, and planned conduct of the trial?</td>
+                          <td>When defining visits, windows, endpoints, eligibility checks, or data anomalies.</td>
+                        </tr>
+                        <tr>
+                          <td>SAP</td>
+                          <td>What exact analysis rule or algorithm should be implemented?</td>
+                          <td>Before programming ADaM variables, population flags, endpoints, or analysis outputs.</td>
+                        </tr>
+                        <tr>
+                          <td>SDTM / ADaM Specs</td>
+                          <td>How should each dataset and variable be built in code?</td>
+                          <td>Before writing production SDTM or ADaM programs and whenever derivation logic changes.</td>
+                        </tr>
+                        <tr>
+                          <td>TLF Shells</td>
+                          <td>What should the final report look like, and which source and population does it use?</td>
+                          <td>While planning and programming TFL production and QC outputs.</td>
+                        </tr>
+                        <tr>
+                          <td>Annotated CRF</td>
+                          <td>Where in the source data was the clinical information collected?</td>
+                          <td>When mapping raw EDC fields to SDTM domains and checking source traceability.</td>
+                        </tr>
+                        <tr>
+                          <td>DTS</td>
+                          <td>How should external vendor data be parsed, validated, merged, and reconciled?</td>
+                          <td>When importing lab, ECG, PK, biomarker, imaging, or other non-EDC data.</td>
+                        </tr>
+                        <tr>
+                          <td>MedDRA / WHODrug</td>
+                          <td>How are verbatim safety and medication terms coded for analysis?</td>
+                          <td>When programming ADAE, ADCM, safety summaries, SOC/PT counts, drug classes, or coding checks.</td>
+                        </tr>
+                        <tr>
+                          <td>Define.xml</td>
+                          <td>How will reviewers understand the submitted datasets and variables?</td>
+                          <td>When validating submission metadata, derivations, codelists, and traceability.</td>
+                        </tr>
+                        <tr>
+                          <td>SDRG / ADRG</td>
+                          <td>How should reviewers understand data issues, analysis choices, and validation explanations?</td>
+                          <td>When packaging submission data, explaining nonstandard decisions, or documenting unresolved findings.</td>
+                        </tr>
+                        <tr>
+                          <td>P21 Report</td>
+                          <td>Which automated validation findings must be fixed or explained?</td>
+                          <td>After dataset or metadata creation, before delivery, and after any major code or spec update.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
                   <div class="workshop">
-                    <h4>Suggested Workshop: Shell Review Challenge</h4>
+                    <h4>Project Exercise: Protocol Amendment 02 Chain Reaction</h4>
                     <p>
-                      Review the mock shell below and identify the analysis population, endpoint,
-                      and visit window. This is the kind of reading programmers do before writing
-                      the first line of output code.
+                      A realistic project does not stand still. Imagine the study team releases
+                      Protocol Amendment 02. The Week 12 visit window changes, a new ECG assessment
+                      is added, and the primary efficacy endpoint wording is updated.
+                    </p>
+                    <ol>
+                      <li>Which documents must be checked first?</li>
+                      <li>Which specifications may need updates before programming can safely continue?</li>
+                      <li>Which datasets, outputs, validation reports, and reviewer guides may be affected?</li>
+                    </ol>
+                    <div class="answer-key">
+                      <h5>Suggested Update Order</h5>
+                      <ol>
+                        <li>Read the protocol amendment and confirm the operational changes with the study team.</li>
+                        <li>Check whether the SAP needs an amendment or clarification for endpoints, windows, and analysis rules.</li>
+                        <li>Update or review SDTM and ADaM specs before changing production code.</li>
+                        <li>Confirm aCRF, DTS, and vendor transfer changes for any new ECG or visit data.</li>
+                        <li>Update SDTM, ADaM, and TFL programs, then rerun QC and compare outputs.</li>
+                        <li>Run P21 validation again and review new or changed findings.</li>
+                        <li>Update Define.xml, SDRG, and ADRG if metadata, derivations, validation explanations, or reviewer notes changed.</li>
+                      </ol>
+                    </div>
+                  </div>
+
+                  <div class="workshop">
+                    <h4>Workshop: Advanced Document Traceability Challenge</h4>
+                    <p>
+                      Review the mock TLF shell below. Instead of only reading the layout, solve
+                      the three production-style data anomalies by cross-referencing the Protocol,
+                      SAP, annotated CRF, data specifications, and mock shell.
                     </p>
 
                     <div class="mock-document">
@@ -1217,17 +1955,20 @@
                         <table class="crf-table" aria-label="Mock TLF shell review">
                           <thead>
                             <tr>
-                              <th colspan="3">Table 14.2.1 Change from Baseline in Seated Systolic Blood Pressure at Week 12</th>
+                              <th colspan="3">Protocol: YGN-101-02 | Population: Full Analysis Set (FAS)</th>
+                            </tr>
+                            <tr>
+                              <th colspan="3">Table 14.2.1 Change from Baseline in Seated Systolic Blood Pressure (mmHg) at Week 12</th>
                             </tr>
                             <tr>
                               <th>Statistic</th>
-                              <th>Placebo</th>
-                              <th>YGN-101</th>
+                              <th>Placebo (N=XX)</th>
+                              <th>YGN-101 50mg (N=XX)</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>n</td>
+                              <td><strong>Baseline</strong><br>n</td>
                               <td>xx</td>
                               <td>xx</td>
                             </tr>
@@ -1237,36 +1978,186 @@
                               <td>xx.x (xx.x)</td>
                             </tr>
                             <tr>
-                              <td>Median</td>
-                              <td>xx.x</td>
-                              <td>xx.x</td>
+                              <td><strong>Week 12 (Visit 6)</strong><br>n</td>
+                              <td>xx</td>
+                              <td>xx</td>
                             </tr>
                             <tr>
-                              <td>Min, Max</td>
-                              <td>xx.x, xx.x</td>
-                              <td>xx.x, xx.x</td>
+                              <td>Mean (SD)</td>
+                              <td>xx.x (xx.x)</td>
+                              <td>xx.x (xx.x)</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Change from Baseline at Week 12</strong><br>n</td>
+                              <td>xx</td>
+                              <td>xx</td>
+                            </tr>
+                            <tr>
+                              <td>Mean (SD)</td>
+                              <td>xx.x (xx.x)</td>
+                              <td>xx.x (xx.x)</td>
+                            </tr>
+                            <tr>
+                              <td>p-value [1]</td>
+                              <td>0.xxxx</td>
+                              <td>0.xxxx</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                       <p>
-                        Population: Full Analysis Set. Endpoint: Change from Baseline in seated
-                        systolic blood pressure. Visit window: Week 12 visit, study day 78 to 98.
+                        [1] P-value is calculated using an ANCOVA model with treatment as a factor
+                        and baseline value as a covariate. Footnote: Week 12 visit window is
+                        defined as Study Day 78 to 98.
                       </p>
                     </div>
 
-                    <ol>
-                      <li>What is the analysis population?</li>
-                      <li>What endpoint is being summarized?</li>
-                      <li>What visit window should be used for the Week 12 analysis?</li>
-                    </ol>
+                    <div class="mock-document">
+                      <h5>Challenge Scenario 1: The Dual-Visit Windowing Trap (BDS)</h5>
+                      <p>
+                        Subject <strong>101-002-015</strong> missed the official Week 12 clinic
+                        visit. The raw database shows two unscheduled safety checks: Study Day 80
+                        and Study Day 94. Both contain seated systolic blood pressure, and both fall
+                        inside the Week 12 window of Study Day 78 to 98.
+                      </p>
+                      <ol>
+                        <li>Why can you not include both records in the Week 12 table?</li>
+                        <li>How should the code choose which one record becomes the analytical Week 12 value in ADVS?</li>
+                        <li>Which document contains the exact tie-breaking rule?</li>
+                      </ol>
+                    </div>
+                    <div class="answer-key">
+                      <h5>Trainer Blueprint</h5>
+                      <p>
+                        Look up the SAP section on windowing algorithms and handling multiple
+                        assessments. The usual rule is to select the record closest to the target
+                        study day; if records are equidistant, use the later record.
+                      </p>
+                      <ul>
+                        <li>Week 12 target day is Day 84.</li>
+                        <li>Day 80 distance is |80 - 84| = 4 days.</li>
+                        <li>Day 94 distance is |94 - 84| = 10 days.</li>
+                        <li>Day 80 is selected for Week 12.</li>
+                      </ul>
+                      <div class="code-window" aria-label="SAS ADVS windowing example">
+                        <div class="code-window-header">
+                          <span>SAS Windowing Blueprint</span>
+                          <span>ADVS</span>
+                        </div>
+<pre><code>data advs_window;
+  set advs_candidates;
+  target = 84;
+  dist = abs(ady - target);
+run;
+
+proc sort data=advs_window;
+  by usubjid avisitn dist descending ady;
+run;
+
+data advs_week12;
+  set advs_window;
+  by usubjid avisitn;
+  if first.avisitn;
+run;</code></pre>
+                      </div>
+                    </div>
+
+                    <div class="mock-document">
+                      <h5>Challenge Scenario 2: The Implicit Exclusion Population Trap (ADSL)</h5>
+                      <p>
+                        Subject <strong>101-005-022</strong> was randomized to YGN-101 50mg, but
+                        had a severe panic attack immediately after randomization, refused study
+                        medication, withdrew consent, and left the clinic. They have zero
+                        post-baseline vital signs data. The mock shell uses the Full Analysis Set.
+                      </p>
+                      <ol>
+                        <li>Should this subject be counted in the YGN-101 denominator?</li>
+                        <li>Which document defines the exact FAS boundary?</li>
+                        <li>Which programmatic conditions must be checked before setting FASFL = "Y"?</li>
+                      </ol>
+                    </div>
+                    <div class="answer-key">
+                      <h5>Trainer Blueprint</h5>
+                      <p>
+                        Look up the SAP section on analysis populations. New hires often assume
+                        randomized means FAS, but many SAPs require randomization, at least one dose
+                        of study drug, and at least one post-baseline efficacy assessment.
+                      </p>
+                      <ul>
+                        <li>Do not set FASFL = "Y" from RANDFL alone.</li>
+                        <li>Check EX for actual dosing, such as EXDOSE &gt; 0 or a valid exposure record.</li>
+                        <li>Check VS or ADVS for at least one valid post-baseline assessment.</li>
+                        <li>This subject has no dosing and no post-baseline data, so FASFL should be "N".</li>
+                      </ul>
+                      <div class="code-window" aria-label="SAS ADSL FAS flag example">
+                        <div class="code-window-header">
+                          <span>SAS Population Flag Blueprint</span>
+                          <span>ADSL</span>
+                        </div>
+<pre><code>/* Example logic only. Final rules must follow the study SAP. */
+if randfl = "Y" and dosedfl = "Y" and postbase_vsfl = "Y" then fasfl = "Y";
+else fasfl = "N";</code></pre>
+                      </div>
+                    </div>
+
+                    <div class="mock-document">
+                      <h5>Challenge Scenario 3: The Timing Is Everything Baseline Puzzle</h5>
+                      <p>
+                        Subject <strong>101-001-009</strong> has two vital signs records on Study
+                        Day 1, the first-dose day. Record A has systolic BP 142 mmHg at 08:15 AM.
+                        Record B has systolic BP 135 mmHg at 11:30 AM. Exposure data shows the
+                        first dose was taken at 09:00 AM. The mock shell requires change from
+                        baseline.
+                      </p>
+                      <ol>
+                        <li>Which record is the true baseline value?</li>
+                        <li>What happens if the wrong record is used?</li>
+                        <li>If the raw EDC time is missing, which fallback rule must the program use, and which document authorizes it?</li>
+                      </ol>
+                    </div>
+                    <div class="answer-key">
+                      <h5>Trainer Blueprint</h5>
+                      <p>
+                        Look up the SAP baseline definition and confirm source time variables in the
+                        annotated CRF or data specifications. Record A is baseline because it occurs
+                        before the 09:00 AM dose. Record B is post-dose and using it would corrupt
+                        the change-from-baseline calculation.
+                      </p>
+                      <ul>
+                        <li>Use date-time logic such as VSDTM &lt; EXDTM when both timestamps are available.</li>
+                        <li>If time is missing, use the SAP's missing-time fallback rule.</li>
+                        <li>Many SAPs state that a Day 1 missing-time assessment is assumed pre-dose unless explicitly marked post-dose.</li>
+                        <li>The program should also use VISIT, VSEVAL, or another clinical-intent variable when available.</li>
+                      </ul>
+                      <div class="code-window" aria-label="SAS baseline flag example">
+                        <div class="code-window-header">
+                          <span>SAS Baseline Blueprint</span>
+                          <span>ADVS</span>
+                        </div>
+<pre><code>/* Example logic only. Final missing-time rules must follow the SAP. */
+if not missing(vsdtm) and not missing(exdtm) then pre_dose = (vsdtm &lt; exdtm);
+else if ady = 1 and missing(vstm) and upcase(visit) = "BASELINE" then pre_dose = 1;
+else pre_dose = 0;
+
+if pre_dose then ablfl = "Y";</code></pre>
+                      </div>
+                    </div>
 
                     <div class="answer-key">
-                      <h5>Answer Key</h5>
+                      <h5>Why This Workshop Matters</h5>
                       <ol>
-                        <li>The analysis population is the Full Analysis Set.</li>
-                        <li>The endpoint is Change from Baseline in seated systolic blood pressure at Week 12.</li>
-                        <li>The Week 12 visit window is study day 78 to 98.</li>
+                        <li>
+                          It teaches defensive programming: new hires cannot blindly code if study day
+                          equals 84 then visit equals Week 12.
+                        </li>
+                        <li>
+                          It breaks the habit of guessing: programmers must open the SAP, Protocol,
+                          annotated CRF, and specifications before creating an algorithm.
+                        </li>
+                        <li>
+                          It matches real code: these scenarios map directly to ADSL population flags,
+                          ADVS BDS derivations, baseline flags, analysis visits, and TFL generation.
+                        </li>
                       </ol>
                     </div>
                   </div>
@@ -1276,283 +2167,257 @@
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 03</span>
-                  <span class="summary-title">From eCRF to SDTM</span>
-                  <span class="summary-note">How source fields collected on the eCRF are cleaned, exported, and mapped into standardized SDTM domains.</span>
+                  <span class="summary-title">From eCRF to SDTM (Data Standardization)</span>
+                  <span class="summary-note">How raw eCRF data becomes compliant SDTM through variable roles, aCRF annotations, SUPP--, and controlled terminology.</span>
                 </summary>
 
                 <article class="lesson">
-                  <h4>1. Start With SDTM Domain Classes</h4>
+                  <h4>1. Intro to SDTM: From Raw eCRF Data to Submission Data</h4>
                   <p>
-                    A strong SDTM mapping process starts by asking what kind of information the
-                    raw data represents. SDTM is organized around general observation classes, so a
-                    programmer should classify the data first, then choose the specific domain.
+                    The transition from raw Electronic Case Report Forms to SDTM is where raw
+                    clinical chaos becomes standardized regulatory currency. Raw eCRF exports are
+                    usually shaped by web forms and database design; SDTM reshapes those records
+                    into a submission model that reviewers can navigate consistently.
+                  </p>
+                  <div class="flow" aria-label="Raw eCRF to compliant SDTM pipeline">
+                    <div class="flow-step"><strong>Raw eCRF Data</strong><br>Form-driven exports, vendor files, audit keys, and source fields.</div>
+                    <div class="flow-step"><strong>1. Variable Roles</strong><br>Classify identifiers, topics, qualifiers, and timing variables.</div>
+                    <div class="flow-step"><strong>2. Visual aCRF</strong><br>Read MSG 2.0-style annotations before coding.</div>
+                    <div class="flow-step"><strong>3. Split &amp; SUPP--</strong><br>Handle large domains and nonstandard collected variables correctly.</div>
+                    <div class="flow-step"><strong>4. CT Normalization</strong><br>Clean values, dates, and units into controlled submission form.</div>
+                    <div class="flow-step"><strong>Compliant SDTM</strong><br>Traceable tabulation datasets ready for validation and downstream ADaM.</div>
+                  </div>
+
+                  <h4>2. Variable Structural Roles</h4>
+                  <p>
+                    Raw eCRF data often includes audit keys, web control fields, repeated form
+                    columns, and flat exports. The first SDTM task is not to copy columns; it is to
+                    decide each variable's clinical role according to the SDTMIG.
                   </p>
                   <div class="table-scroll">
-                    <table class="crf-table" aria-label="SDTM class overview">
+                    <table class="crf-table" aria-label="SDTM variable structural roles">
                       <thead>
                         <tr>
-                          <th>Class</th>
-                          <th>Main Question</th>
-                          <th>Example Domains</th>
-                          <th>Common Source</th>
+                          <th>Role</th>
+                          <th>Plain-English Purpose</th>
+                          <th>Examples</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Special Purpose</td>
-                          <td>Who is the subject and how is the study organized?</td>
-                          <td>DM, CO, SE, SV</td>
-                          <td>Enrollment, demographics, visits, study design metadata</td>
+                          <td>Identifier Variables</td>
+                          <td>Build the unique key system for the study and domain.</td>
+                          <td>STUDYID, DOMAIN, USUBJID. Do not rely only on site-level SUBJID.</td>
                         </tr>
                         <tr>
-                          <td>Trial Design</td>
-                          <td>What was planned before subjects entered the trial?</td>
-                          <td>TA, TE, TV, TI, TS</td>
-                          <td>Protocol, study design specifications</td>
+                          <td>Topic Variables</td>
+                          <td>Define what each record is mainly about.</td>
+                          <td>AETERM in AE; VSTESTCD and VSTEST in VS.</td>
                         </tr>
                         <tr>
-                          <td>Interventions</td>
-                          <td>What treatment, medication, or action was taken?</td>
-                          <td>EX, CM, PR</td>
-                          <td>Exposure, concomitant medication, procedure forms</td>
+                          <td>Result Qualifiers</td>
+                          <td>Store original and standardized results.</td>
+                          <td>VSORRES, VSORRESU, VSSTRESN, VSSTRESC.</td>
                         </tr>
                         <tr>
-                          <td>Events</td>
-                          <td>What happened to the subject?</td>
-                          <td>AE, MH, DS</td>
-                          <td>Adverse event, medical history, disposition forms</td>
+                          <td>Synonym Qualifiers</td>
+                          <td>Store coded or dictionary-normalized terms.</td>
+                          <td>AEDECOD, AEBODSYS, MedDRA-coded values.</td>
                         </tr>
                         <tr>
-                          <td>Findings</td>
-                          <td>What was measured, observed, or tested?</td>
-                          <td>VS, LB, EG, PE, QS</td>
-                          <td>Vital signs, labs, ECG, exams, questionnaires</td>
+                          <td>Record Qualifiers</td>
+                          <td>Describe details around the topic record.</td>
+                          <td>AESEV, AESER, AEREL, VSPOS.</td>
                         </tr>
                         <tr>
-                          <td>Findings About</td>
-                          <td>What additional finding describes another record?</td>
-                          <td>FA</td>
-                          <td>Supplementary assessments about events or interventions</td>
+                          <td>Timing Variables</td>
+                          <td>Represent when the event, assessment, or intervention happened.</td>
+                          <td>AEDTC, VSDTC, --STDTC, --ENDTC using ISO 8601 where applicable.</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
 
-                  <h4>2. From eCRF to Raw Dataset to SDTM</h4>
+                  <h4>3. SDTM MSG 2.0 Visual aCRF Specifications</h4>
                   <p>
-                    The eCRF is designed for data entry. Raw datasets are usually exported in a
-                    form-oriented structure. SDTM is a standardized submission structure. Mapping is
-                    the work of translating source fields into the right class, domain, and SDTM
-                    variables while preserving traceability.
+                    Before writing code, new programmers must learn to read the annotated CRF. MSG
+                    2.0-style visual annotations help reviewers understand source, domain, and
+                    variable mapping without immediately opening Define.xml.
                   </p>
                   <ul>
-                    <li><strong>Read the annotated CRF:</strong> Identify the form, field labels, and intended domain.</li>
-                    <li><strong>Inspect raw exports:</strong> Confirm field names, values, units, dates, and missing patterns.</li>
-                    <li><strong>Choose the class:</strong> Decide whether the data is an intervention, event, finding, or special-purpose record.</li>
-                    <li><strong>Map to domain variables:</strong> Assign identifiers, topic variables, timing variables, and qualifiers.</li>
-                    <li><strong>Check traceability:</strong> Ensure reviewers can understand where each SDTM record came from.</li>
+                    <li>
+                      <strong>Domain annotations:</strong> Use black, bold, uppercase domain text
+                      in the pattern CODE (Label), such as DM (Demographics) or AE (Adverse Events).
+                    </li>
+                    <li>
+                      <strong>Variable annotations:</strong> Use black, regular, uppercase variable
+                      names such as BRTHDTC, AESEV, VSTESTCD, or VSORRES.
+                    </li>
+                    <li>
+                      <strong>Solid border:</strong> Indicates CRF-collected data, meaning the site
+                      entered the value directly into the form.
+                    </li>
+                    <li>
+                      <strong>Dashed border:</strong> Indicates non-CRF-collected, assigned, or
+                      derived data such as STUDYID, USUBJID, or standardized values like VSSTRESN.
+                    </li>
                   </ul>
-
-                  <h4>3. Special Purpose and Trial Design</h4>
                   <p>
-                    These domains provide the structure around the subject and the study. They are
-                    not usually simple form-to-form mappings, but they are essential because other
-                    domains rely on their identifiers, visits, elements, and reference dates.
+                    Programmer warning: when an annotation is dashed or marked as derived, do not
+                    waste time searching the raw database for a same-named field. Your job is to
+                    write and document the derivation logic.
                   </p>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="Special purpose and trial design examples">
-                      <thead>
-                        <tr>
-                          <th>Domain</th>
-                          <th>Purpose</th>
-                          <th>Programmer Focus</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>DM</td>
-                          <td>Subject-level demographics and reference information.</td>
-                          <td>USUBJID, treatment arm, sex, age, race, country, RFSTDTC, RFENDTC.</td>
-                        </tr>
-                        <tr>
-                          <td>SV</td>
-                          <td>Subject visits that occurred.</td>
-                          <td>Visit names, visit numbers, actual visit dates, unscheduled visits.</td>
-                        </tr>
-                        <tr>
-                          <td>TA / TE / TV</td>
-                          <td>Planned arms, elements, and visits.</td>
-                          <td>Protocol-defined structure used to interpret actual subject data.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
 
-                  <h4>4. Interventions</h4>
+                  <h4>4. Split Domains and SUPP-- Architecture</h4>
                   <p>
-                    Interventions describe actions taken for or by the subject. These domains often
-                    answer what was administered, taken, or performed, and when it happened.
-                  </p>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="Interventions mapping examples">
-                      <thead>
-                        <tr>
-                          <th>Domain</th>
-                          <th>Typical Raw Data</th>
-                          <th>Key Mapping Questions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>EX</td>
-                          <td>Study drug exposure records.</td>
-                          <td>What was administered, dose, unit, route, frequency, start/end date?</td>
-                        </tr>
-                        <tr>
-                          <td>CM</td>
-                          <td>Concomitant medication form.</td>
-                          <td>Medication name, indication, dose, unit, route, start/end date, ongoing flag.</td>
-                        </tr>
-                        <tr>
-                          <td>PR</td>
-                          <td>Procedure records.</td>
-                          <td>Procedure term, date, body system or location, reason performed.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h4>5. Events</h4>
-                  <p>
-                    Events describe occurrences or incidents. They are not measurements like lab
-                    values; they are things that happened to the subject and need timing, category,
-                    seriousness, or outcome information.
-                  </p>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="Events mapping examples">
-                      <thead>
-                        <tr>
-                          <th>Domain</th>
-                          <th>Typical Raw Data</th>
-                          <th>Key Mapping Questions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>AE</td>
-                          <td>Adverse event form.</td>
-                          <td>Reported term, start/end date, severity, seriousness, causality, outcome.</td>
-                        </tr>
-                        <tr>
-                          <td>MH</td>
-                          <td>Medical history form.</td>
-                          <td>Condition term, start/end date or year, ongoing status, body system.</td>
-                        </tr>
-                        <tr>
-                          <td>DS</td>
-                          <td>Disposition and completion status.</td>
-                          <td>Completion, discontinuation reason, death, screen failure, milestone date.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h4>6. Findings</h4>
-                  <p>
-                    Findings are measurements, tests, observations, or questions with results. This
-                    is where programmers often need to reshape data: one raw row with many columns
-                    may become many SDTM records, one record per test or assessment.
-                  </p>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="Findings mapping examples">
-                      <thead>
-                        <tr>
-                          <th>Domain</th>
-                          <th>Typical Raw Data</th>
-                          <th>Key Mapping Questions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>VS</td>
-                          <td>Vital signs fields such as SYSBP, DIABP, PULSE, WEIGHT.</td>
-                          <td>What test was measured, result, unit, position, visit, date?</td>
-                        </tr>
-                        <tr>
-                          <td>LB</td>
-                          <td>Central lab transfer or local lab data.</td>
-                          <td>Test code, result, unit, normal range, specimen, fasting status, collection date.</td>
-                        </tr>
-                        <tr>
-                          <td>EG</td>
-                          <td>ECG parameters.</td>
-                          <td>Test code, result, unit, method, interpretation, collection date/time.</td>
-                        </tr>
-                        <tr>
-                          <td>QS</td>
-                          <td>Questionnaire items and scores.</td>
-                          <td>Question code, response, score, version, visit, completion date.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <h4>7. Findings About</h4>
-                  <p>
-                    Findings About is used when the result is a finding about another record rather
-                    than a standalone clinical assessment. A common beginner mistake is forcing
-                    every extra value into SUPP--. The programmer should first ask whether the
-                    value is truly supplemental metadata or whether it is a finding about an event
-                    or intervention.
+                    Real studies can produce very large datasets. SDTM supports standard ways to
+                    manage physical dataset size and nonstandard collected variables without
+                    breaking the model.
                   </p>
                   <ul>
-                    <li><strong>Use FA when:</strong> The data is a finding that describes another event or intervention.</li>
-                    <li><strong>Check the parent:</strong> The finding should connect clearly to a parent domain record.</li>
-                    <li><strong>Avoid guessing:</strong> Confirm study conventions and sponsor standards when FA vs SUPP-- is unclear.</li>
+                    <li>
+                      <strong>Split domains:</strong> If a domain such as QS or LB becomes too
+                      large for transport or operational limits, it may be physically split into
+                      datasets such as QSPH and QSSL. On the aCRF, the parent domain should still
+                      be annotated, such as QS (Questionnaires), rather than custom split codes.
+                    </li>
+                    <li>
+                      <strong>Supplemental qualifiers:</strong> If a valuable collected variable
+                      has no standard variable slot in the parent domain, do not add a nonstandard
+                      column to AE, CM, VS, or another domain. Place it in the appropriate SUPP--
+                      dataset, such as SUPPAE.
+                    </li>
+                    <li>
+                      <strong>SUPP-- structure:</strong> Programmers must understand key columns
+                      such as STUDYID, RDOMAIN, USUBJID, IDVAR, IDVARVAL, QNAM, QLABEL, and QVAL,
+                      and know how to transpose between flat source structures and vertical SUPP--
+                      records.
+                    </li>
                   </ul>
 
-                  <h4>8. Mini Mapping Examples</h4>
+                  <h4>5. Controlled Terminology and Cleaning</h4>
+                  <p>
+                    Matching the variable name is not enough. The values must also be normalized so
+                    the dataset can be reviewed, validated, and reused downstream.
+                  </p>
                   <div class="table-scroll">
-                    <table class="crf-table" aria-label="Class-first mini mapping examples">
+                    <table class="crf-table" aria-label="SDTM controlled terminology and cleaning">
                       <thead>
                         <tr>
-                          <th>Raw Form / Field</th>
-                          <th>Class</th>
-                          <th>Likely Domain</th>
-                          <th>Mapping Focus</th>
+                          <th>Task</th>
+                          <th>What the Programmer Does</th>
+                          <th>Common Trap</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Con Meds: Medication Name, Dose, Start Date</td>
-                          <td>Interventions</td>
-                          <td>CM</td>
-                          <td>CMTRT, CMDOSE, CMDOSU, CMSTDTC.</td>
+                          <td>Codelist normalization</td>
+                          <td>Map raw values such as M, Male, or male to the approved CDISC CT value.</td>
+                          <td>Leaving site-specific text values in submission variables.</td>
                         </tr>
                         <tr>
-                          <td>Adverse Events: Headache, Moderate, Ongoing</td>
-                          <td>Events</td>
-                          <td>AE</td>
-                          <td>AETERM, AESEV, AEENRF or AEENDTC, seriousness and outcome fields.</td>
+                          <td>ISO 8601 date handling</td>
+                          <td>Convert dates to --DTC format while preserving partial dates such as 2026-06.</td>
+                          <td>Imputing missing day or month in SDTM instead of waiting for ADaM SAP rules.</td>
                         </tr>
                         <tr>
-                          <td>Vital Signs: SYSBP=128 mmHg</td>
-                          <td>Findings</td>
-                          <td>VS</td>
-                          <td>VSTESTCD, VSTEST, VSORRES, VSORRESU, VSDTC, VISIT.</td>
+                          <td>Standard units</td>
+                          <td>Convert original results into --STRESN and --STRESC using approved standard units.</td>
+                          <td>Forgetting unit conversion, such as lbs to kg or inches to cm.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h5>5.1 SAS Template: Mapping Raw Date Components to --DTC</h5>
+                  <p>
+                    Modern EDC systems often store dates as separate year, month, day, hour, and
+                    minute components. SDTM --DTC variables are character variables, so programmers
+                    must build ISO 8601 strings carefully while preserving partial dates.
+                  </p>
+                  <div class="code-window" aria-label="SAS ISO 8601 DTC mapping template">
+                    <div class="code-window-header">
+                      <span>SAS ISO 8601 Date Template</span>
+                      <span>--DTC</span>
+                    </div>
+<pre><code>/*****************************************************************************
+* Purpose: Build an ISO 8601 compliant SDTM --DTC value from raw eCRF
+*          date/time components.
+* Handles: Complete dates, partial dates, invalid component combinations,
+*          and optional time stamps.
+*****************************************************************************/
+
+data sdtm_ae(drop=_:);
+  set raw_ae;
+  length AEDTC $19;
+  call missing(AEDTC);
+
+  length _yyyy $4 _mm _dd _hh _ii $2 _datepart $10 _timepart $5;
+  call missing(_yyyy, _mm, _dd, _hh, _ii, _datepart, _timepart);
+
+  /* Year is the anchor. If year is missing, the date is unknown. */
+  if not missing(raw_yr) then do;
+    _yyyy = put(raw_yr, z4.);
+
+    if not missing(raw_mo) and 1 <= raw_mo <= 12 then do;
+      _mm = put(raw_mo, z2.);
+
+      if not missing(raw_dy) and 1 <= raw_dy <= 31 then do;
+        _dd = put(raw_dy, z2.);
+        _datepart = catx("-", _yyyy, _mm, _dd);
+
+        if not missing(raw_hr) and 0 <= raw_hr <= 23 and
+           not missing(raw_mn) and 0 <= raw_mn <= 59 then do;
+          _hh = put(raw_hr, z2.);
+          _ii = put(raw_mn, z2.);
+          _timepart = catx(":", _hh, _ii);
+          AEDTC = cats(_datepart, "T", _timepart);
+        end;
+        else AEDTC = _datepart;
+      end;
+      else AEDTC = catx("-", _yyyy, _mm);       /* YYYY-MM */
+    end;
+    else AEDTC = _yyyy;                         /* YYYY */
+  end;
+  else AEDTC = "";
+run;</code></pre>
+                  </div>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="ISO 8601 DTC code review rules">
+                      <thead>
+                        <tr>
+                          <th>Review Rule</th>
+                          <th>Why It Matters</th>
+                          <th>Common Mistake</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Use z2. and z4. formats</td>
+                          <td>ISO 8601 requires two-digit months and days, such as 2026-01-05.</td>
+                          <td>Using a simple PUT format that creates 2026-1-5.</td>
                         </tr>
                         <tr>
-                          <td>Lab: Hemoglobin=13.2 g/dL</td>
-                          <td>Findings</td>
-                          <td>LB</td>
-                          <td>LBTESTCD, LBTEST, LBORRES, LBORRESU, LBDTC, normal range variables.</td>
+                          <td>Use the T separator for time</td>
+                          <td>A full datetime should look like 2026-06-28T14:30.</td>
+                          <td>Joining date and time with a blank, or appending time to a partial date.</td>
+                        </tr>
+                        <tr>
+                          <td>Preserve partial dates in SDTM</td>
+                          <td>SDTM should keep incomplete dates such as 2026 or 2026-06 when the site did not provide full detail.</td>
+                          <td>Guessing missing day or month in SDTM instead of leaving imputation to ADaM rules.</td>
+                        </tr>
+                        <tr>
+                          <td>Reject impossible combinations</td>
+                          <td>A day without a month cannot be placed on a valid timeline.</td>
+                          <td>Creating invalid strings such as 2026--12; the safer output is 2026.</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
 
                   <div class="workshop document-workshop">
-                    <h4>Suggested Workshop: Vital Signs CRF to SDTM VS</h4>
+                    <h4>Practice Workshop: Vital Signs CRF to SDTM VS</h4>
                     <p>
                       This practice belongs in the eCRF-to-SDTM section because it connects a
                       source document, a CRF page, and the first SDTM mapping decision. Review the
@@ -1856,7 +2721,7 @@
             </div>
             </div>
             <div class="lesson-page" aria-live="polite">
-              <button class="back-button" type="button" data-lesson-back>&lt; Training Library</button>
+              <button class="back-button" type="button" data-lesson-back>&lt; Statistical Programming Training</button>
               <div class="lesson-page-content"></div>
             </div>
           </div>
@@ -1899,6 +2764,11 @@
                       <td>How data quality, protocol compliance, documentation, and oversight affect analysis reliability.</td>
                     </tr>
                     <tr>
+                      <td>ICH E3 Structure and Content of Clinical Study Reports</td>
+                      <td>Defines the standard structure of the Clinical Study Report and where efficacy, safety, tables, listings, figures, and appendices fit.</td>
+                      <td>How CSR sections drive TFL shell organization, table numbering, listing placement, and report-ready interpretation.</td>
+                    </tr>
+                    <tr>
                       <td>ICH E8(R1) General Considerations for Clinical Studies</td>
                       <td>Introduces quality by design and critical-to-quality thinking.</td>
                       <td>How study objectives, design choices, and operational feasibility affect statistical interpretability.</td>
@@ -1927,20 +2797,122 @@
                 </table>
               </div>
 
-              <h4>2. FDA Guidance Often Used in Statistical Thinking</h4>
+              <h4>2. ICH E3: CSR Structure and TFL Shell Numbering</h4>
+              <p>
+                ICH E3 is essential for anyone writing or reviewing a Clinical Study Report. It is
+                not mainly a statistical methods guideline; it is the reporting architecture that
+                tells the study team where results belong in the CSR and how tables, listings, and
+                figures should support the clinical narrative.
+              </p>
+              <p>
+                For biostatisticians and statistical programmers, E3 is especially useful when
+                building TFL shells. The shell package should not feel like a random list of
+                outputs. It should map naturally to the CSR: subject disposition and baseline
+                characteristics, efficacy results, safety results, and supporting listings.
+              </p>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="ICH E3 CSR and TFL organization">
+                  <thead>
+                    <tr>
+                      <th>CSR Area</th>
+                      <th>What It Usually Contains</th>
+                      <th>How It Helps Shell Naming</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Section 10: Study Subjects</td>
+                      <td>Disposition, protocol deviations, analysis populations, demographics, baseline characteristics.</td>
+                      <td>Often drives early Table 14.1-style shells such as disposition, demographics, baseline disease characteristics, and analysis set summaries.</td>
+                    </tr>
+                    <tr>
+                      <td>Section 11: Efficacy Evaluation</td>
+                      <td>Primary, secondary, exploratory efficacy endpoints, model results, sensitivity analyses, and subgroup analyses.</td>
+                      <td>Often drives Table 14.2-style efficacy shells, ordered by endpoint hierarchy and SAP testing strategy.</td>
+                    </tr>
+                    <tr>
+                      <td>Section 12: Safety Evaluation</td>
+                      <td>Extent of exposure, adverse events, deaths, serious adverse events, labs, vital signs, ECG, and other safety findings.</td>
+                      <td>Often drives Table 14.3-style safety shells and safety listings grouped by AE, lab, vital sign, ECG, exposure, and concomitant medication topics.</td>
+                    </tr>
+                    <tr>
+                      <td>Section 14: Tables, Figures, and Graphs</td>
+                      <td>In-text or referenced displays that support the CSR interpretation.</td>
+                      <td>Helps keep table and figure numbering aligned with the CSR narrative rather than only with programming convenience.</td>
+                    </tr>
+                    <tr>
+                      <td>Section 16.2: Subject Data Listings</td>
+                      <td>Individual subject data listings and supporting patient-level details.</td>
+                      <td>Often informs Listing 16.2.x-style numbering, especially for disposition, deviations, AE, deaths, labs, vital signs, ECG, and concomitant medications.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                Sponsors may use different numbering conventions, so programmers should always
+                follow the approved shell table of contents. A common pattern is to reserve
+                14.1-series displays for subject disposition and baseline summaries, 14.2-series
+                displays for efficacy, 14.3-series displays for safety, and 16.2-series listings
+                for patient-level listings. The important habit is consistency: titles, numbering,
+                SAP sections, CSR sections, and output file names should all point to the same
+                reporting story.
+              </p>
+              <div class="mock-document">
+                <h5>Example Shell Naming Pattern</h5>
+                <div class="table-scroll">
+                  <table class="crf-table" aria-label="Example E3 shell naming pattern">
+                    <thead>
+                      <tr>
+                        <th>Output</th>
+                        <th>Example Title</th>
+                        <th>CSR Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Table 14.1.1</td>
+                        <td>Subject Disposition</td>
+                        <td>Study Subjects / disposition narrative</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.1.2</td>
+                        <td>Demographic and Baseline Characteristics</td>
+                        <td>Study Subjects / baseline comparability</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.2.1</td>
+                        <td>Primary Efficacy Analysis</td>
+                        <td>Efficacy Evaluation / primary endpoint</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.1</td>
+                        <td>Overview of Treatment-Emergent Adverse Events</td>
+                        <td>Safety Evaluation / adverse events</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.7</td>
+                        <td>Adverse Events</td>
+                        <td>Subject Data Listings / patient-level support</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <h4>3. FDA Guidance Often Used in Statistical Thinking</h4>
               <p>
                 FDA guidance documents are often more topic-specific. A beginner does not need to
                 memorize all of them, but should recognize the topics that commonly influence SAPs
                 and regulatory review.
               </p>
               <ul>
-                <li><strong>Multiple endpoints:</strong> How to control Type I error when more than one endpoint is tested. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials-guidance-industry" target="_blank" rel="noopener">Reference</a></li>
+                <li><strong>Multiple endpoints:</strong> How to control Type I error when more than one endpoint is tested. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials" target="_blank" rel="noopener">Reference</a></li>
                 <li><strong>Adaptive designs:</strong> How planned adaptations can be used while preserving trial validity. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/adaptive-design-clinical-trials-drugs-and-biologics-guidance-industry" target="_blank" rel="noopener">Reference</a></li>
                 <li><strong>Enrichment strategies:</strong> How eligibility or biomarker strategies affect population and interpretation. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/enrichment-strategies-clinical-trials-support-approval-human-drugs-and-biological-products" target="_blank" rel="noopener">Reference</a></li>
                 <li><strong>Data monitoring committees:</strong> How interim safety and efficacy monitoring is governed. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/establishment-and-operation-clinical-trial-data-monitoring-committees" target="_blank" rel="noopener">Reference</a></li>
               </ul>
 
-              <h4>3. ECG, QT/QTc, and Cardiac Safety Guidelines</h4>
+              <h4>4. ECG, QT/QTc, and Cardiac Safety Guidelines</h4>
               <p>
                 ECG-related guidance is especially important for safety biostatistics. These
                 documents help statisticians understand how to evaluate whether a drug may delay
@@ -1985,7 +2957,7 @@
                 heart rate effects, and the relationship between drug concentration and QTc change.
               </p>
 
-              <h4>4. Other FDA and EMA Guidelines Worth Knowing</h4>
+              <h4>5. Other FDA and EMA Guidelines Worth Knowing</h4>
               <p>
                 Beyond ICH, statisticians often consult FDA and EMA guidance for concrete design
                 and analysis questions. These documents are useful when drafting SAP language,
@@ -2005,7 +2977,7 @@
                       <td>Multiplicity and endpoint hierarchy</td>
                       <td>
                         FDA Multiple Endpoints<br>
-                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials-guidance-industry" target="_blank" rel="noopener">FDA reference</a><br>
+                        <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/multiple-endpoints-clinical-trials" target="_blank" rel="noopener">FDA reference</a><br>
                         EMA Multiplicity Issues<br>
                         <a href="https://www.ema.europa.eu/en/multiplicity-issues-clinical-trials-scientific-guideline" target="_blank" rel="noopener">EMA reference</a>
                       </td>
@@ -2065,7 +3037,7 @@
                 </table>
               </div>
 
-              <h4>5. How These Guidelines Show Up in Daily Work</h4>
+              <h4>6. How These Guidelines Show Up in Daily Work</h4>
               <div class="table-scroll">
                 <table class="crf-table" aria-label="Guideline concepts in daily biostatistics work">
                   <thead>
@@ -2076,6 +3048,11 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td>Planning CSR and TFL shell structure</td>
+                      <td>ICH E3</td>
+                      <td>Which CSR section does this table or listing support, and should it be numbered as 14.1, 14.2, 14.3, or 16.2?</td>
+                    </tr>
                     <tr>
                       <td>Writing endpoint definitions</td>
                       <td>ICH E9 and E9(R1)</td>
