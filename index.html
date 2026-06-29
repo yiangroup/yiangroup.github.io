@@ -774,6 +774,249 @@
       margin-bottom: 0;
     }
 
+    .acrf-gallery {
+      display: grid;
+      gap: 18px;
+      margin: 22px 0 28px;
+    }
+
+    .acrf-card {
+      border: 1px solid rgba(200, 157, 132, 0.3);
+      border-radius: 7px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.2) 0 1px, transparent 1px 7px),
+        rgba(255, 253, 249, 0.76);
+      padding: 18px;
+    }
+
+    .acrf-card h5 {
+      margin-top: 0;
+    }
+
+    .acrf-caption {
+      margin: 12px 0 0;
+      color: #80685c;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .acrf-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .acrf-flow span {
+      min-height: 92px;
+      display: grid;
+      place-items: center;
+      padding: 14px 10px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 6px;
+      background: rgba(255, 248, 241, 0.72);
+      color: #5d4c45;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .acrf-pdf-shell {
+      display: grid;
+      grid-template-columns: 155px minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+
+    .acrf-compare {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+
+    .acrf-compare .acrf-field {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      margin: 14px 0;
+    }
+
+    .acrf-bookmarks {
+      border: 1px solid rgba(120, 96, 86, 0.18);
+      border-radius: 6px;
+      background: rgba(247, 241, 232, 0.72);
+      padding: 12px;
+      color: #6b5850;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .acrf-bookmarks strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #4b3a36;
+      font-size: 13px;
+    }
+
+    .acrf-bookmarks span {
+      display: block;
+      margin: 6px 0;
+      padding-left: 10px;
+      border-left: 2px solid rgba(203, 126, 145, 0.28);
+    }
+
+    .acrf-page {
+      position: relative;
+      min-height: 430px;
+      padding: 18px;
+      border: 1px solid rgba(120, 96, 86, 0.2);
+      border-radius: 6px;
+      background: #fffdf8;
+      box-shadow: 0 12px 26px rgba(84, 57, 45, 0.07);
+      color: #302927;
+      font-size: 13px;
+    }
+
+    .acrf-domain-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .acrf-domain {
+      padding: 5px 9px;
+      border: 2px solid rgba(62, 50, 46, 0.78);
+      border-radius: 4px;
+      background: rgba(213, 242, 241, 0.75);
+      color: #211c1a;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .acrf-form-title {
+      margin-bottom: 16px;
+      padding: 8px;
+      border: 1px solid rgba(120, 96, 86, 0.28);
+      background: rgba(248, 230, 228, 0.3);
+      color: #3f3432;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .acrf-field {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.7fr) minmax(95px, 0.45fr) minmax(130px, 0.6fr);
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0;
+    }
+
+    .acrf-input {
+      min-height: 34px;
+      border: 1px solid rgba(62, 50, 46, 0.5);
+      background: #fff;
+    }
+
+    .acrf-input.options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      padding: 6px;
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .acrf-checkbox {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      border: 1px solid rgba(62, 50, 46, 0.52);
+      background: #fff;
+    }
+
+    .acrf-annotation {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      padding: 5px 8px;
+      border: 2px solid rgba(38, 35, 32, 0.78);
+      border-radius: 4px;
+      background: rgba(213, 242, 241, 0.82);
+      color: #22201e;
+      font-family: Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .acrf-annotation.derived {
+      border-style: dashed;
+      background: rgba(252, 239, 209, 0.9);
+    }
+
+    .acrf-annotation.supp {
+      background: rgba(229, 246, 219, 0.88);
+    }
+
+    .acrf-annotation.bad {
+      border-color: rgba(180, 70, 72, 0.75);
+      background: rgba(255, 232, 226, 0.92);
+      color: #9d3d34;
+    }
+
+    .acrf-annotation.not-submitted {
+      background: rgba(238, 238, 232, 0.94);
+      color: #5b5a55;
+    }
+
+    .acrf-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .acrf-mini {
+      min-height: 146px;
+      padding: 14px;
+      border: 1px solid rgba(200, 157, 132, 0.25);
+      border-radius: 6px;
+      background: rgba(255, 248, 241, 0.66);
+      color: #6f5b52;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .acrf-mini strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #4b3a36;
+      font-size: 14px;
+    }
+
+    .acrf-checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .acrf-checklist span {
+      padding: 12px 14px;
+      border-left: 3px solid rgba(203, 126, 145, 0.4);
+      background: rgba(255, 253, 249, 0.68);
+      color: #6f5b52;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
     .table-scroll {
       overflow-x: auto;
     }
@@ -869,6 +1112,22 @@
 
       .practice-materials {
         grid-template-columns: 1fr;
+      }
+
+      .acrf-flow,
+      .acrf-pdf-shell,
+      .acrf-compare,
+      .acrf-mini-grid,
+      .acrf-checklist {
+        grid-template-columns: 1fr;
+      }
+
+      .acrf-field {
+        grid-template-columns: 1fr;
+      }
+
+      .acrf-page {
+        min-height: auto;
       }
 
       .guide-modules li {
@@ -2221,31 +2480,241 @@ if pre_dose then ablfl = "Y";</code></pre>
                     2.0-style visual annotations help reviewers understand source, domain, and
                     variable mapping without immediately opening Define.xml.
                   </p>
-                  <ul>
-                    <li>
-                      <strong>Domain annotations:</strong> Use black, bold, uppercase domain text
-                      in the pattern CODE (Label), such as DM (Demographics) or AE (Adverse Events).
-                    </li>
-                    <li>
-                      <strong>Variable annotations:</strong> Use black, regular, uppercase variable
-                      names such as BRTHDTC, AESEV, VSTESTCD, or VSORRES.
-                    </li>
-                    <li>
-                      <strong>Solid border:</strong> Indicates CRF-collected data, meaning the site
-                      entered the value directly into the form.
-                    </li>
-                    <li>
-                      <strong>Dashed border:</strong> Indicates non-CRF-collected, assigned, or
-                      derived data such as STUDYID, USUBJID, or standardized values like VSSTRESN.
-                    </li>
-                  </ul>
+                  <div class="acrf-gallery">
+                    <div class="acrf-card">
+                      <h5>What the aCRF Connects</h5>
+                      <p>
+                        The aCRF maps clinical data collection fields to the corresponding SDTM
+                        variables or discrete variable values. It is a reviewer-facing map, not a
+                        database extract and not a place for temporary programming notes.
+                      </p>
+                      <div class="acrf-flow" aria-label="aCRF source to SDTM mapping flow">
+                        <span>Blank CRF<br>Question text and choices</span>
+                        <span>Raw EDC<br>Database fields and values</span>
+                        <span>aCRF<br>Visual SDTM annotations</span>
+                        <span>SDTM<br>Submitted domains and variables</span>
+                      </div>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>How Reviewers Navigate an aCRF PDF</h5>
+                      <div class="acrf-pdf-shell">
+                        <div class="acrf-bookmarks" aria-label="Example aCRF PDF bookmarks">
+                          <strong>Bookmarks</strong>
+                          <span>By Visit</span>
+                          <span>Screening</span>
+                          <span>Baseline</span>
+                          <span>Week 4</span>
+                          <span>By Form</span>
+                          <span>Demographics</span>
+                          <span>Adverse Events</span>
+                          <span>Vital Signs</span>
+                        </div>
+                        <div class="acrf-page" aria-label="Example annotated CRF page">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">DM = Demographics</span>
+                            <span class="acrf-domain">SC = Subject Characteristics</span>
+                            <span class="acrf-domain">DS = Disposition</span>
+                          </div>
+                          <div class="acrf-form-title">Enrollment and Demographics Form</div>
+                          <div class="acrf-field">
+                            <span>Date of Birth</span>
+                            <span class="acrf-input"></span>
+                            <span class="acrf-annotation">BRTHDTC</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Sex</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Male <i class="acrf-checkbox"></i> Female</span>
+                            <span class="acrf-annotation">SEX</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Race: check all that apply</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Asian <i class="acrf-checkbox"></i> White <i class="acrf-checkbox"></i> Other</span>
+                            <span class="acrf-annotation supp">RACE / RACE1 in SUPPDM</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Informed consent signed?</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Yes <i class="acrf-checkbox"></i> No</span>
+                            <span class="acrf-annotation">DSDECOD</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="acrf-caption">
+                        A strong aCRF is easy to navigate. It uses bookmarks, clear page-level
+                        domain labels, readable annotation boxes, and enough context for a reviewer
+                        to understand the mapping without guessing.
+                      </p>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>Annotation Patterns Programmers Should Recognize</h5>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="aCRF annotation convention examples">
+                          <thead>
+                            <tr>
+                              <th>Annotation Type</th>
+                              <th>Pattern</th>
+                              <th>Example</th>
+                              <th>How to Read It</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Domain</td>
+                              <td><span class="log-chip">DOMAIN = Domain Label</span></td>
+                              <td><span class="log-chip">AE = Adverse Events</span></td>
+                              <td>This CRF page or section maps to AE.</td>
+                            </tr>
+                            <tr>
+                              <td>Variable</td>
+                              <td><span class="log-chip">VARNAME</span></td>
+                              <td><span class="log-chip">AETERM</span></td>
+                              <td>The collected field maps directly to one SDTM variable.</td>
+                            </tr>
+                            <tr>
+                              <td>Variable + Value</td>
+                              <td><span class="log-chip">VARNAME = VALUE</span></td>
+                              <td><span class="log-chip">DSTERM = "RANDOMIZED"</span></td>
+                              <td>The annotation points to a variable and its expected value.</td>
+                            </tr>
+                            <tr>
+                              <td>Supplemental QVAL</td>
+                              <td><span class="log-chip">QVAL where QNAM = VALUE</span></td>
+                              <td><span class="log-chip">SUPPDM.QVAL where QNAM = "RACE1"</span></td>
+                              <td>The data does not fit a standard variable and goes to SUPP--.</td>
+                            </tr>
+                            <tr>
+                              <td>Value-Level</td>
+                              <td><span class="log-chip">VARNAME where TESTCD = VALUE</span></td>
+                              <td><span class="log-chip">VSORRES where VSTESTCD = SYSBP</span></td>
+                              <td>The same SDTM variable is used for multiple tests or concepts.</td>
+                            </tr>
+                            <tr>
+                              <td>Unsubmitted Data</td>
+                              <td><span class="log-chip">[NOT SUBMITTED]</span></td>
+                              <td><span class="log-chip">[NOT SUBMITTED]</span></td>
+                              <td>The CRF field was collected but intentionally not submitted.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>Solid, Dashed, SUPP, and NOT SUBMITTED</h5>
+                      <div class="acrf-mini-grid">
+                        <div class="acrf-mini">
+                          <strong>Collected Field</strong>
+                          <span class="acrf-annotation">AESEV</span>
+                          <p class="acrf-caption">Solid border: the site entered the severity directly on the CRF.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Assigned or Derived</strong>
+                          <span class="acrf-annotation derived">USUBJID</span>
+                          <p class="acrf-caption">Dashed border: do not hunt for a raw field. Look for derivation logic.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Supplemental Data</strong>
+                          <span class="acrf-annotation supp">AEACN01 in SUPPAE</span>
+                          <p class="acrf-caption">The value is clinically useful but not a standard AE variable.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Not Submitted</strong>
+                          <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          <p class="acrf-caption">The field is collected but omitted from SDTM. The reason belongs in SDRG.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Value-Level Mapping</strong>
+                          <span class="acrf-annotation">VSORRES where VSTESTCD = DIABP</span>
+                          <p class="acrf-caption">One CRF field becomes a VS result record for a specific test.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Bad Annotation</strong>
+                          <span class="acrf-annotation bad">--DTC (IEDTC, DMDTC, SVSTDTC...)</span>
+                          <p class="acrf-caption">Too vague and pseudo-code-like. It does not tell the reviewer the mapping clearly.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>What Not To Do</h5>
+                      <div class="acrf-compare">
+                        <div class="acrf-page" aria-label="Poor aCRF annotation example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">SV = Subject Visits</span>
+                          </div>
+                          <div class="acrf-form-title">Visit Form</div>
+                          <div class="acrf-field">
+                            <span>Visit Date</span>
+                            <span class="acrf-input"></span>
+                            <span class="acrf-annotation bad">--DTC (IEDTC, SVSTDTC, DMDTC, SCDTC)</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Visit Name</span>
+                            <span class="acrf-input">SCREENING</span>
+                            <span class="acrf-annotation bad">raw_visit_label</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Internal page status</span>
+                            <span class="acrf-input"></span>
+                            <span class="acrf-annotation bad">EDC_STATUS</span>
+                          </div>
+                        </div>
+                        <div class="acrf-page" aria-label="Better aCRF annotation example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">SV = Subject Visits</span>
+                            <span class="acrf-domain">DM = Demographics</span>
+                          </div>
+                          <div class="acrf-form-title">Visit Form</div>
+                          <div class="acrf-field">
+                            <span>Visit Date</span>
+                            <span class="acrf-input"></span>
+                            <span class="acrf-annotation">SVSTDTC</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Visit Name</span>
+                            <span class="acrf-input">SCREENING</span>
+                            <span class="acrf-annotation">VISIT</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Internal page status</span>
+                            <span class="acrf-input"></span>
+                            <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="acrf-caption">
+                        The aCRF should not display raw database names as the main annotation, use
+                        pseudo-code as a shortcut, or leave collected fields unexplained. It should
+                        show clean SDTM mapping decisions.
+                      </p>
+                    </div>
+                  </div>
+
+                  <h4>4. FDA-Style PDF and aCRF Quality Checks</h4>
                   <p>
-                    Programmer warning: when an annotation is dashed or marked as derived, do not
-                    waste time searching the raw database for a same-named field. Your job is to
-                    write and document the derivation logic.
+                    A submission aCRF is not only about content. It must also behave like a clean
+                    reviewer document. The PDF should be searchable, bookmarked, readable, and easy
+                    to inspect page by page.
+                  </p>
+                  <div class="acrf-checklist" aria-label="aCRF validation checklist">
+                    <span><strong>File identity:</strong> the submission file is usually named acrf.pdf.</span>
+                    <span><strong>Searchable text:</strong> reviewers can search variable names such as AETERM or VSORRES.</span>
+                    <span><strong>Bookmarks:</strong> navigation works by visit and by form.</span>
+                    <span><strong>No obstruction:</strong> annotations do not cover CRF question text or response choices.</span>
+                    <span><strong>Complete coverage:</strong> all collected data points are annotated or marked NOT SUBMITTED.</span>
+                    <span><strong>Consistent syntax:</strong> annotations follow the same pattern across pages.</span>
+                    <span><strong>Domain clarity:</strong> every represented domain is clear on the page.</span>
+                    <span><strong>No pseudo-code:</strong> aCRF notes should be reviewer-readable, not programmer shorthand.</span>
+                  </div>
+                  <p class="document-notes">
+                    Reference for this section:
+                    <a href="https://help.pinnacle21.certara.net/webinars/Best-Practices-for-Annotated-CRFs.pdf" target="_blank" rel="noreferrer">
+                      Pinnacle 21 Best Practices for Annotated CRFs
+                    </a>.
                   </p>
 
-                  <h4>4. What to Check Before SDTM Mapping</h4>
+                  <h4>5. What to Check Before SDTM Mapping</h4>
                   <ul>
                     <li>
                       <strong>Form context:</strong> Confirm visit, repeat number, assessment name,
@@ -2263,6 +2732,11 @@ if pre_dose then ablfl = "Y";</code></pre>
                     <li>
                       <strong>Annotation type:</strong> Distinguish collected variables from
                       assigned or derived variables before searching the raw database.
+                    </li>
+                    <li>
+                      <strong>Cross-document consistency:</strong> Compare the aCRF against the SDTM
+                      specification, Define.xml, and reviewer guide notes. A visually clean aCRF is
+                      still wrong if its metadata disagree.
                     </li>
                   </ul>
 
