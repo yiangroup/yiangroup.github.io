@@ -907,10 +907,10 @@
         <img src="assets/yian-group-founder-logo.png" alt="YIAN GROUP">
       </a>
       <nav aria-label="Main navigation">
-        <a href="#about" data-panel-link="about">ABOUT US</a>
         <a href="#training" data-panel-link="training">STATISTICAL PROGRAMMING</a>
         <a href="#biostatistics" data-panel-link="biostatistics">BIOSTATISTICS</a>
         <a href="#contact" data-panel-link="contact">CONTACT</a>
+        <a href="#about" data-panel-link="about">ABOUT US</a>
       </nav>
     </header>
 
@@ -926,25 +926,25 @@
       </section>
 
       <section class="work-grid" aria-label="Website sections">
-        <a class="work-card card-about" href="#about" data-panel-link="about">
-          <span class="card-number">01</span>
-          <div>
-            <h2>ABOUT<br>US</h2>
-            <p>Who we are and what YIAN GROUP is building.</p>
-          </div>
-        </a>
         <a class="work-card card-training" href="#training" data-panel-link="training">
-          <span class="card-number">02</span>
+          <span class="card-number">01</span>
           <div>
             <h2>STATISTICAL<br>PROGRAMMING<br>TRAINING</h2>
             <p>Start with clinical research programming, SDTM, ADaM, TLFs, and QC workflow.</p>
           </div>
         </a>
         <a class="work-card card-resources" href="#biostatistics" data-panel-link="biostatistics">
-          <span class="card-number">03</span>
+          <span class="card-number">02</span>
           <div>
             <h2>BIOSTATISTICS<br>TRAINING</h2>
             <p>Core statistical concepts for clinical research will be added soon.</p>
+          </div>
+        </a>
+        <a class="work-card card-about" href="#about" data-panel-link="about">
+          <span class="card-number">03</span>
+          <div>
+            <h2>ABOUT<br>US</h2>
+            <p>Who we are and what YIAN GROUP is building.</p>
           </div>
         </a>
       </section>
@@ -2167,22 +2167,175 @@ if pre_dose then ablfl = "Y";</code></pre>
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 03</span>
-                  <span class="summary-title">From eCRF to SDTM (Data Standardization)</span>
-                  <span class="summary-note">How raw eCRF data becomes compliant SDTM through variable roles, aCRF annotations, SUPP--, and controlled terminology.</span>
+                  <span class="summary-title">Understanding CRF and aCRF</span>
+                  <span class="summary-note">How clinical source data is collected, exported, annotated, and prepared before SDTM mapping begins.</span>
                 </summary>
 
                 <article class="lesson">
-                  <h4>1. Intro to SDTM: From Raw eCRF Data to Submission Data</h4>
+                  <h4>1. What the CRF Controls</h4>
                   <p>
-                    The transition from raw Electronic Case Report Forms to SDTM is where raw
-                    clinical chaos becomes standardized regulatory currency. Raw eCRF exports are
-                    usually shaped by web forms and database design; SDTM reshapes those records
-                    into a submission model that reviewers can navigate consistently.
+                    A Case Report Form is the study's clinical data collection instrument. In an
+                    electronic data capture system, the eCRF is what site staff use to enter visit
+                    data, adverse events, medications, vital signs, labs, and other patient-level
+                    observations.
                   </p>
-                  <div class="flow" aria-label="Raw eCRF to compliant SDTM pipeline">
-                    <div class="flow-step"><strong>Raw eCRF Data</strong><br>Form-driven exports, vendor files, audit keys, and source fields.</div>
+                  <p>
+                    For a programmer, the CRF is not just a screenshot of a form. It explains what
+                    was intended to be collected, which questions belong together, what units or
+                    choices were available, and which values are true site-entered source data.
+                  </p>
+
+                  <h4>2. Raw eCRF Export vs Annotated CRF</h4>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Raw eCRF and annotated CRF comparison">
+                      <thead>
+                        <tr>
+                          <th>Item</th>
+                          <th>What It Shows</th>
+                          <th>Programmer Use</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Blank CRF / eCRF</td>
+                          <td>The question text, field labels, response options, units, and page layout.</td>
+                          <td>Understand the clinical meaning of the data before reading raw variables.</td>
+                        </tr>
+                        <tr>
+                          <td>Raw eCRF export</td>
+                          <td>Database field names, collected values, audit keys, form repeats, and EDC-driven structure.</td>
+                          <td>Inspect actual source variables, missing patterns, units, date components, and repeated records.</td>
+                        </tr>
+                        <tr>
+                          <td>Annotated CRF</td>
+                          <td>Visual mapping notes that connect CRF fields to SDTM domains and variables.</td>
+                          <td>Find where collected fields should flow before writing SDTM mapping code.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>3. SDTM MSG 2.0 Visual aCRF Specifications</h4>
+                  <p>
+                    Before writing code, new programmers must learn to read the annotated CRF. MSG
+                    2.0-style visual annotations help reviewers understand source, domain, and
+                    variable mapping without immediately opening Define.xml.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Domain annotations:</strong> Use black, bold, uppercase domain text
+                      in the pattern CODE (Label), such as DM (Demographics) or AE (Adverse Events).
+                    </li>
+                    <li>
+                      <strong>Variable annotations:</strong> Use black, regular, uppercase variable
+                      names such as BRTHDTC, AESEV, VSTESTCD, or VSORRES.
+                    </li>
+                    <li>
+                      <strong>Solid border:</strong> Indicates CRF-collected data, meaning the site
+                      entered the value directly into the form.
+                    </li>
+                    <li>
+                      <strong>Dashed border:</strong> Indicates non-CRF-collected, assigned, or
+                      derived data such as STUDYID, USUBJID, or standardized values like VSSTRESN.
+                    </li>
+                  </ul>
+                  <p>
+                    Programmer warning: when an annotation is dashed or marked as derived, do not
+                    waste time searching the raw database for a same-named field. Your job is to
+                    write and document the derivation logic.
+                  </p>
+
+                  <h4>4. What to Check Before SDTM Mapping</h4>
+                  <ul>
+                    <li>
+                      <strong>Form context:</strong> Confirm visit, repeat number, assessment name,
+                      and whether a record is scheduled, unscheduled, or conditional.
+                    </li>
+                    <li>
+                      <strong>Question meaning:</strong> Read the CRF prompt and response choices,
+                      not only the raw variable name.
+                    </li>
+                    <li>
+                      <strong>Data type and units:</strong> Check whether results are character,
+                      numeric, coded, free text, unit-bearing, or collected as separate date/time
+                      components.
+                    </li>
+                    <li>
+                      <strong>Annotation type:</strong> Distinguish collected variables from
+                      assigned or derived variables before searching the raw database.
+                    </li>
+                  </ul>
+
+                  <div class="workshop document-workshop">
+                    <h4>Practice Workshop: Vital Signs CRF to SDTM VS</h4>
+                    <p>
+                      This practice belongs in the eCRF-to-SDTM section because it connects a
+                      source document, a CRF page, and the first SDTM mapping decision. Review the
+                      Schedule of Assessments below, then use the embedded Vital Signs CRF to decide
+                      how the collected fields should flow into SDTM VS.
+                    </p>
+
+                    <div class="document-stack" aria-label="Protocol and CRF document images">
+                      <div class="mock-document">
+                        <h5>Protocol Schedule of Assessments</h5>
+                        <div class="document-preview" aria-label="Protocol Schedule of Assessments image preview">
+                          <img src="assets/protocol-soa-page-1.png?v=4x" alt="Protocol Schedule of Assessments page 1">
+                          <img src="assets/protocol-soa-page-2.png?v=4x" alt="Protocol Schedule of Assessments page 2">
+                        </div>
+                      </div>
+
+                      <div class="mock-document">
+                        <h5>Vital Signs CRF</h5>
+                        <p>
+                          Use the blank CRF page as the source form. Identify the visit, assessment
+                          date, vital signs test names, original results, and units before mapping
+                          anything to SDTM.
+                        </p>
+                        <div class="document-preview" aria-label="Vital Signs CRF image preview">
+                          <img src="assets/vital-signs-crf-page-1.png?v=4x" alt="Vital Signs CRF page 1 with administrative fields and vital signs measurements">
+                          <img src="assets/vital-signs-crf-page-2.png?v=4x" alt="Vital Signs CRF page 2 with temperature route, weight, height, clinical significance, and comments">
+                        </div>
+                      </div>
+                    </div>
+
+                    <ol>
+                      <li>Identify which visits require systolic and diastolic blood pressure collection.</li>
+                      <li>Find the CRF questions that capture assessment date, time, position, and blood pressure.</li>
+                      <li>Decide which SDTM domain should receive the blood pressure records.</li>
+                      <li>List the key SDTM VS variables needed for the mapping, including original result and unit.</li>
+                    </ol>
+
+                    <div class="answer-key">
+                      <h5>Answer Key</h5>
+                      <ol>
+                        <li>Blood pressure is collected at Visit 1, Visit 2, Visit 3, Visit 4, Visit 5/EOS, and unscheduled Visit X.</li>
+                        <li>Date and time come from Q3 and Q4, subject position from Q5, systolic blood pressure from Q6, and diastolic blood pressure from Q7.</li>
+                        <li>Blood pressure is a Findings assessment, so the SDTM domain is VS.</li>
+                        <li>Typical VS variables include USUBJID, VISIT, VSDTC, VSTESTCD, VSTEST, VSPOS, VSORRES, VSORRESU, and VSSTRESN or VSSTRESC after standardization.</li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </details>
+
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Step 04</span>
+                  <span class="summary-title">Introduction to SDTM (Data Standardization)</span>
+                  <span class="summary-note">How raw clinical data becomes compliant SDTM through variable roles, SUPP--, controlled terminology, and ISO 8601 dates.</span>
+                </summary>
+
+                <article class="lesson">
+                  <h4>1. Intro to SDTM: From Raw Data to Submission Data</h4>
+                  <p>
+                    SDTM is where raw clinical chaos becomes standardized regulatory currency.
+                    Raw eCRF exports, vendor files, and data management transfers are reshaped into
+                    tabulation datasets that reviewers can navigate consistently across studies.
+                  </p>
+                  <div class="flow" aria-label="Raw data to compliant SDTM pipeline">
+                    <div class="flow-step"><strong>Raw Clinical Data</strong><br>eCRF exports, vendor files, audit keys, and source fields.</div>
                     <div class="flow-step"><strong>1. Variable Roles</strong><br>Classify identifiers, topics, qualifiers, and timing variables.</div>
-                    <div class="flow-step"><strong>2. Visual aCRF</strong><br>Read MSG 2.0-style annotations before coding.</div>
+                    <div class="flow-step"><strong>2. Domain Structure</strong><br>Choose the right SDTM domain and observation class.</div>
                     <div class="flow-step"><strong>3. Split &amp; SUPP--</strong><br>Handle large domains and nonstandard collected variables correctly.</div>
                     <div class="flow-step"><strong>4. CT Normalization</strong><br>Clean values, dates, and units into controlled submission form.</div>
                     <div class="flow-step"><strong>Compliant SDTM</strong><br>Traceable tabulation datasets ready for validation and downstream ADaM.</div>
@@ -2190,9 +2343,8 @@ if pre_dose then ablfl = "Y";</code></pre>
 
                   <h4>2. Variable Structural Roles</h4>
                   <p>
-                    Raw eCRF data often includes audit keys, web control fields, repeated form
-                    columns, and flat exports. The first SDTM task is not to copy columns; it is to
-                    decide each variable's clinical role according to the SDTMIG.
+                    The first SDTM task is not to copy raw columns. It is to decide each variable's
+                    clinical role according to the SDTMIG.
                   </p>
                   <div class="table-scroll">
                     <table class="crf-table" aria-label="SDTM variable structural roles">
@@ -2238,37 +2390,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </table>
                   </div>
 
-                  <h4>3. SDTM MSG 2.0 Visual aCRF Specifications</h4>
-                  <p>
-                    Before writing code, new programmers must learn to read the annotated CRF. MSG
-                    2.0-style visual annotations help reviewers understand source, domain, and
-                    variable mapping without immediately opening Define.xml.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Domain annotations:</strong> Use black, bold, uppercase domain text
-                      in the pattern CODE (Label), such as DM (Demographics) or AE (Adverse Events).
-                    </li>
-                    <li>
-                      <strong>Variable annotations:</strong> Use black, regular, uppercase variable
-                      names such as BRTHDTC, AESEV, VSTESTCD, or VSORRES.
-                    </li>
-                    <li>
-                      <strong>Solid border:</strong> Indicates CRF-collected data, meaning the site
-                      entered the value directly into the form.
-                    </li>
-                    <li>
-                      <strong>Dashed border:</strong> Indicates non-CRF-collected, assigned, or
-                      derived data such as STUDYID, USUBJID, or standardized values like VSSTRESN.
-                    </li>
-                  </ul>
-                  <p>
-                    Programmer warning: when an annotation is dashed or marked as derived, do not
-                    waste time searching the raw database for a same-named field. Your job is to
-                    write and document the derivation logic.
-                  </p>
-
-                  <h4>4. Split Domains and SUPP-- Architecture</h4>
+                  <h4>3. Split Domains and SUPP-- Architecture</h4>
                   <p>
                     Real studies can produce very large datasets. SDTM supports standard ways to
                     manage physical dataset size and nonstandard collected variables without
@@ -2278,8 +2400,8 @@ if pre_dose then ablfl = "Y";</code></pre>
                     <li>
                       <strong>Split domains:</strong> If a domain such as QS or LB becomes too
                       large for transport or operational limits, it may be physically split into
-                      datasets such as QSPH and QSSL. On the aCRF, the parent domain should still
-                      be annotated, such as QS (Questionnaires), rather than custom split codes.
+                      datasets such as QSPH and QSSL. The parent domain remains the conceptual
+                      source.
                     </li>
                     <li>
                       <strong>Supplemental qualifiers:</strong> If a valuable collected variable
@@ -2295,7 +2417,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </li>
                   </ul>
 
-                  <h4>5. Controlled Terminology and Cleaning</h4>
+                  <h4>4. Controlled Terminology and Cleaning</h4>
                   <p>
                     Matching the variable name is not enough. The values must also be normalized so
                     the dataset can be reviewed, validated, and reused downstream.
@@ -2329,7 +2451,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </table>
                   </div>
 
-                  <h5>5.1 SAS Template: Mapping Raw Date Components to --DTC</h5>
+                  <h5>4.1 SAS Template: Mapping Raw Date Components to --DTC</h5>
                   <p>
                     Modern EDC systems often store dates as separate year, month, day, hour, and
                     minute components. SDTM --DTC variables are character variables, so programmers
@@ -2415,62 +2537,12 @@ run;</code></pre>
                       </tbody>
                     </table>
                   </div>
-
-                  <div class="workshop document-workshop">
-                    <h4>Practice Workshop: Vital Signs CRF to SDTM VS</h4>
-                    <p>
-                      This practice belongs in the eCRF-to-SDTM section because it connects a
-                      source document, a CRF page, and the first SDTM mapping decision. Review the
-                      Schedule of Assessments below, then use the embedded Vital Signs CRF to decide
-                      how the collected fields should flow into SDTM VS.
-                    </p>
-
-                    <div class="document-stack" aria-label="Protocol and CRF document images">
-                      <div class="mock-document">
-                        <h5>Protocol Schedule of Assessments</h5>
-                        <div class="document-preview" aria-label="Protocol Schedule of Assessments image preview">
-                          <img src="assets/protocol-soa-page-1.png?v=4x" alt="Protocol Schedule of Assessments page 1">
-                          <img src="assets/protocol-soa-page-2.png?v=4x" alt="Protocol Schedule of Assessments page 2">
-                        </div>
-                      </div>
-
-                      <div class="mock-document">
-                        <h5>Vital Signs CRF</h5>
-                        <p>
-                          Use the blank CRF page as the source form. Identify the visit, assessment
-                          date, vital signs test names, original results, and units before mapping
-                          anything to SDTM.
-                        </p>
-                        <div class="document-preview" aria-label="Vital Signs CRF image preview">
-                          <img src="assets/vital-signs-crf-page-1.png?v=4x" alt="Vital Signs CRF page 1 with administrative fields and vital signs measurements">
-                          <img src="assets/vital-signs-crf-page-2.png?v=4x" alt="Vital Signs CRF page 2 with temperature route, weight, height, clinical significance, and comments">
-                        </div>
-                      </div>
-                    </div>
-
-                    <ol>
-                      <li>Identify which visits require systolic and diastolic blood pressure collection.</li>
-                      <li>Find the CRF questions that capture assessment date, time, position, and blood pressure.</li>
-                      <li>Decide which SDTM domain should receive the blood pressure records.</li>
-                      <li>List the key SDTM VS variables needed for the mapping, including original result and unit.</li>
-                    </ol>
-
-                    <div class="answer-key">
-                      <h5>Answer Key</h5>
-                      <ol>
-                        <li>Blood pressure is collected at Visit 1, Visit 2, Visit 3, Visit 4, Visit 5/EOS, and unscheduled Visit X.</li>
-                        <li>Date and time come from Q3 and Q4, subject position from Q5, systolic blood pressure from Q6, and diastolic blood pressure from Q7.</li>
-                        <li>Blood pressure is a Findings assessment, so the SDTM domain is VS.</li>
-                        <li>Typical VS variables include USUBJID, VISIT, VSDTC, VSTESTCD, VSTEST, VSPOS, VSORRES, VSORRESU, and VSSTRESN or VSSTRESC after standardization.</li>
-                      </ol>
-                    </div>
-                  </div>
                 </article>
               </details>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 04</span>
+                  <span class="summary-meta">Step 05</span>
                   <span class="summary-title">Introduction to ADaM</span>
                   <span class="summary-note">Why analysis datasets are built from SDTM and how variables such as baseline, change, and flags support analysis.</span>
                 </summary>
@@ -2551,7 +2623,7 @@ run;</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 05</span>
+                  <span class="summary-meta">Step 06</span>
                   <span class="summary-title">TLF Basics</span>
                   <span class="summary-note">How tables, listings, and figures differ, and how shells guide statistical programming outputs.</span>
                 </summary>
@@ -2637,7 +2709,7 @@ run;</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 06</span>
+                  <span class="summary-meta">Step 07</span>
                   <span class="summary-title">Programming Workflow &amp; QC Mindset</span>
                   <span class="summary-note">How production programming, independent QC, log review, and documentation help protect analysis quality.</span>
                 </summary>
