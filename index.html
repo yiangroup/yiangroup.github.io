@@ -807,6 +807,10 @@
       margin-top: 14px;
     }
 
+    .acrf-flow.five {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
     .acrf-flow span {
       min-height: 92px;
       display: grid;
@@ -844,6 +848,10 @@
       margin: 14px 0;
     }
 
+    .acrf-note-arrow .acrf-field {
+      grid-template-columns: minmax(130px, 0.8fr) minmax(120px, 0.7fr) minmax(120px, 0.7fr);
+    }
+
     .acrf-bookmarks {
       border: 1px solid rgba(120, 96, 86, 0.18);
       border-radius: 6px;
@@ -870,7 +878,7 @@
 
     .acrf-page {
       position: relative;
-      min-height: 430px;
+      min-height: 0;
       padding: 18px;
       border: 1px solid rgba(120, 96, 86, 0.2);
       border-radius: 6px;
@@ -917,6 +925,9 @@
     }
 
     .acrf-input {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 100%;
       min-height: 34px;
       border: 1px solid rgba(62, 50, 46, 0.5);
       background: #fff;
@@ -945,6 +956,7 @@
       align-items: center;
       justify-content: center;
       min-height: 30px;
+      margin: 2px 4px 2px 0;
       padding: 5px 8px;
       border: 2px solid rgba(38, 35, 32, 0.78);
       border-radius: 4px;
@@ -983,8 +995,20 @@
       margin-top: 14px;
     }
 
+    .acrf-mini-group {
+      grid-column: 1 / -1;
+      margin: 8px 0 0;
+      padding: 8px 10px;
+      border-top: 1px solid rgba(200, 157, 132, 0.26);
+      color: #9b7767;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .acrf-mini {
-      min-height: 146px;
+      min-height: 132px;
       padding: 14px;
       border: 1px solid rgba(200, 157, 132, 0.25);
       border-radius: 6px;
@@ -1001,6 +1025,47 @@
       font-size: 14px;
     }
 
+    .acrf-gallery-grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .acrf-gallery-grid .acrf-page {
+      box-shadow: 0 10px 20px rgba(84, 57, 45, 0.06);
+    }
+
+    .acrf-gallery-grid .acrf-field {
+      grid-template-columns: minmax(180px, 0.8fr) minmax(180px, 0.7fr) minmax(190px, 0.7fr);
+    }
+
+    .acrf-input.textarea {
+      min-height: 62px;
+    }
+
+    .acrf-input.short {
+      min-height: 28px;
+      width: 78px;
+      vertical-align: middle;
+    }
+
+    .acrf-source-note {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 8px;
+      border: 1px dashed rgba(120, 96, 86, 0.45);
+      border-radius: 4px;
+      background: rgba(255, 253, 249, 0.78);
+      color: #6f5b52;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .legacy-hidden {
+      display: none !important;
+    }
+
     .acrf-checklist {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1015,6 +1080,152 @@
       color: #6f5b52;
       font-size: 13px;
       line-height: 1.5;
+    }
+
+    .acrf-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .acrf-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 9px;
+      border: 1px solid rgba(200, 157, 132, 0.32);
+      border-radius: 999px;
+      background: rgba(255, 248, 241, 0.75);
+      color: #604e47;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .acrf-note-arrow {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .acrf-arrow {
+      color: var(--sand);
+      font-size: 22px;
+      font-weight: 900;
+      text-align: center;
+      transform: rotate(90deg);
+    }
+
+    .acrf-overlap-demo {
+      position: relative;
+      min-height: 74px;
+      padding: 14px;
+      border: 1px solid rgba(120, 96, 86, 0.18);
+      border-radius: 6px;
+      background: #fffdf8;
+      color: #4d403b;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .acrf-overlap-demo .acrf-annotation {
+      position: absolute;
+      right: 24px;
+      top: 30px;
+      min-width: 110px;
+    }
+
+    .acrf-overlap-demo.bad-overlap .acrf-annotation {
+      left: 150px;
+      right: auto;
+      top: 31px;
+    }
+
+    .acrf-overlap-demo.good .acrf-annotation {
+      right: 10px;
+      top: 10px;
+    }
+
+    .acrf-leader {
+      display: none;
+    }
+
+    .acrf-self-check {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 24px;
+    }
+
+    .acrf-self-check div {
+      padding: 16px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 6px;
+      background: rgba(255, 253, 249, 0.74);
+      color: #6f5b52;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .acrf-self-check strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #4b3a36;
+      font-size: 15px;
+    }
+
+    .sdtm-module-grid {
+      display: grid;
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .sdtm-module {
+      padding: 20px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 7px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 7px),
+        rgba(255, 253, 249, 0.72);
+    }
+
+    .sdtm-module h5 {
+      margin-top: 0;
+      color: #4b3a36;
+    }
+
+    .sdtm-module h6 {
+      margin: 22px 0 8px;
+      color: #7c5c50;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .sdtm-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+
+    .sdtm-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid rgba(200, 157, 132, 0.34);
+      border-radius: 999px;
+      background: rgba(255, 248, 241, 0.78);
+      color: #604e47;
+      font-family: Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .table-scroll {
@@ -1090,7 +1301,7 @@
       font-size: 14px;
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 1100px) {
       header {
         align-items: flex-start;
         flex-direction: column;
@@ -1115,14 +1326,21 @@
       }
 
       .acrf-flow,
+      .acrf-flow.five,
       .acrf-pdf-shell,
       .acrf-compare,
       .acrf-mini-grid,
-      .acrf-checklist {
+      .acrf-checklist,
+      .acrf-note-arrow,
+      .acrf-self-check {
         grid-template-columns: 1fr;
       }
 
       .acrf-field {
+        grid-template-columns: 1fr;
+      }
+
+      .acrf-note-arrow .acrf-field {
         grid-template-columns: 1fr;
       }
 
@@ -2530,7 +2748,10 @@ if pre_dose then ablfl = "Y";</code></pre>
                           <div class="acrf-field">
                             <span>Race: check all that apply</span>
                             <span class="acrf-input options"><i class="acrf-checkbox"></i> Asian <i class="acrf-checkbox"></i> White <i class="acrf-checkbox"></i> Other</span>
-                            <span class="acrf-annotation supp">RACE / RACE1 in SUPPDM</span>
+                            <span>
+                              <span class="acrf-annotation">RACE</span>
+                              <span class="acrf-annotation supp">RACE1 in SUPPDM</span>
+                            </span>
                           </div>
                           <div class="acrf-field">
                             <span>Informed consent signed?</span>
@@ -2543,6 +2764,501 @@ if pre_dose then ablfl = "Y";</code></pre>
                         A strong aCRF is easy to navigate. It uses bookmarks, clear page-level
                         domain labels, readable annotation boxes, and enough context for a reviewer
                         to understand the mapping without guessing.
+                      </p>
+                      <div class="acrf-gallery-grid" aria-label="Visual aCRF page examples">
+                        <div class="acrf-page" aria-label="Adverse event log annotated CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">AE = Adverse Events</span>
+                            <span class="acrf-domain">SUPPAE = Supplemental AE</span>
+                          </div>
+                          <div class="acrf-form-title">Adverse Event Log Form</div>
+                          <div class="acrf-field">
+                            <span>Adverse event term</span>
+                            <span class="acrf-input textarea"></span>
+                            <span class="acrf-annotation">AETERM</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Start date / start time</span>
+                            <span><span class="acrf-input short"></span> <span class="acrf-input short"></span></span>
+                            <span class="acrf-annotation derived">AESTDTC</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Severity</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Mild <i class="acrf-checkbox"></i> Moderate <i class="acrf-checkbox"></i> Severe</span>
+                            <span class="acrf-annotation">AESEV</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Action taken with study drug: Other, specify</span>
+                            <span class="acrf-input textarea"></span>
+                            <span><span class="acrf-annotation">AEACN = OTHER</span><span class="acrf-annotation supp">AEACNOTH in SUPPAE</span></span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>AE row number on screen</span>
+                            <span class="acrf-source-note">Repeatable form row</span>
+                            <span class="acrf-source-note">Do not annotate AESEQ to CRF</span>
+                          </div>
+                        </div>
+
+                        <div class="acrf-page" aria-label="Concomitant medication annotated CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">CM = Concomitant Medications</span>
+                          </div>
+                          <div class="acrf-form-title">Concomitant Medication Log Form</div>
+                          <div class="acrf-field">
+                            <span>Medication name</span>
+                            <span class="acrf-input"></span>
+                            <span class="acrf-annotation">CMTRT</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Dose / unit / frequency</span>
+                            <span><span class="acrf-input short"></span> <span class="acrf-input short"></span> <span class="acrf-input short"></span></span>
+                            <span><span class="acrf-annotation">CMDOSE</span><span class="acrf-annotation">CMDOSU</span><span class="acrf-annotation">CMDOSFRQ</span></span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Route</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Oral <i class="acrf-checkbox"></i> IV <i class="acrf-checkbox"></i> Other</span>
+                            <span class="acrf-annotation">CMROUTE</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Fixed medication checklist</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Aspirin <i class="acrf-checkbox"></i> Acetaminophen</span>
+                            <span><span class="acrf-annotation">CMTRT = "ASPIRIN"</span><span class="acrf-annotation">CMOCCUR</span></span>
+                          </div>
+                        </div>
+
+                        <div class="acrf-page" aria-label="Vital signs annotated CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">VS = Vital Signs</span>
+                          </div>
+                          <div class="acrf-form-title">Vital Signs Form</div>
+                          <div class="acrf-field">
+                            <span>Systolic blood pressure ____ mmHg</span>
+                            <span class="acrf-source-note">VSTESTCD = SYSBP</span>
+                            <span class="acrf-annotation">VSORRES</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Diastolic blood pressure ____ mmHg</span>
+                            <span class="acrf-source-note">VSTESTCD = DIABP</span>
+                            <span class="acrf-annotation">VSORRES</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Temperature ____ deg C</span>
+                            <span class="acrf-source-note">VSTESTCD = TEMP</span>
+                            <span><span class="acrf-annotation">VSORRES</span><span class="acrf-annotation">VSORRESU</span></span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Position</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Sitting <i class="acrf-checkbox"></i> Supine</span>
+                            <span class="acrf-annotation">VSPOS</span>
+                          </div>
+                        </div>
+
+                        <div class="acrf-page" aria-label="Laboratory external data annotated CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">LB = Laboratory Tests</span>
+                          </div>
+                          <div class="acrf-form-title">Central Laboratory / Local Pregnancy Test</div>
+                          <div class="acrf-badge-row">
+                            <span class="acrf-source-note">External source: central lab transfer</span>
+                            <span class="acrf-source-note">Check Data Transfer Specification</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Was pregnancy test performed?</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Yes <i class="acrf-checkbox"></i> No</span>
+                            <span class="acrf-annotation">LBSTAT / LBREASND</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Pregnancy result</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Positive <i class="acrf-checkbox"></i> Negative</span>
+                            <span><span class="acrf-source-note">LBTESTCD = HCG</span><span class="acrf-annotation">LBORRES</span></span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Central hematology and chemistry results</span>
+                            <span class="acrf-source-note">Not entered on eCRF</span>
+                            <span class="acrf-annotation derived">Origin: central lab transfer</span>
+                          </div>
+                        </div>
+
+                        <div class="acrf-page" aria-label="Questionnaire ePRO annotated CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">QS = Questionnaires</span>
+                          </div>
+                          <div class="acrf-form-title">Daily Symptom Diary</div>
+                          <div class="acrf-badge-row">
+                            <span class="acrf-source-note">External source: ePRO vendor</span>
+                            <span class="acrf-source-note">Not site-entered eCRF data</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Pain severity today</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> 0 <i class="acrf-checkbox"></i> 1 <i class="acrf-checkbox"></i> 2 <i class="acrf-checkbox"></i> 3 <i class="acrf-checkbox"></i> 4</span>
+                            <span><span class="acrf-source-note">QSTESTCD = PAINSEV</span><span class="acrf-annotation">QSORRES</span></span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Diary completion timestamp</span>
+                            <span class="acrf-source-note">Device timestamp</span>
+                            <span class="acrf-annotation">QSDTC</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Missed diary reason</span>
+                            <span class="acrf-input"></span>
+                            <span><span class="acrf-annotation">QSSTAT</span><span class="acrf-annotation">QSREASND</span></span>
+                          </div>
+                        </div>
+
+                        <div class="acrf-page" aria-label="PK sample collection annotated CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">PC = Pharmacokinetic Concentrations</span>
+                            <span class="acrf-domain">PP = Pharmacokinetic Parameters</span>
+                          </div>
+                          <div class="acrf-form-title">PK Sample Collection Form</div>
+                          <div class="acrf-field">
+                            <span>Nominal time point</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Pre-dose <i class="acrf-checkbox"></i> 1h <i class="acrf-checkbox"></i> 2h</span>
+                            <span class="acrf-annotation">PCTPT</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Actual collection date / time</span>
+                            <span><span class="acrf-input short"></span> <span class="acrf-input short"></span></span>
+                            <span class="acrf-annotation derived">PCDTC</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Concentration result</span>
+                            <span class="acrf-source-note">Bioanalytical lab file</span>
+                            <span class="acrf-annotation derived">PCORRES from vendor</span>
+                          </div>
+                        </div>
+
+                        <div class="acrf-page" aria-label="Operational not submitted annotated CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">Operational Fields</span>
+                            <span class="acrf-domain">Not SDTM Observations</span>
+                          </div>
+                          <div class="acrf-form-title">EDC Workflow and Administrative Fields</div>
+                          <div class="acrf-field">
+                            <span>Form complete status</span>
+                            <span class="acrf-input options"><i class="acrf-checkbox"></i> Complete <i class="acrf-checkbox"></i> Incomplete</span>
+                            <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Query opened / query closed timestamp</span>
+                            <span class="acrf-source-note">EDC audit trail</span>
+                            <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Investigator signed date</span>
+                            <span class="acrf-input"></span>
+                            <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          </div>
+                        </div>
+
+                        <div class="acrf-page" aria-label="Trial design not mapped to CRF example">
+                          <div class="acrf-domain-row">
+                            <span class="acrf-domain">Trial Design Metadata</span>
+                          </div>
+                          <div class="acrf-form-title">What Should Not Be Drawn as a CRF Field</div>
+                          <div class="acrf-field">
+                            <span>Protocol arm structure</span>
+                            <span class="acrf-source-note">Protocol schema</span>
+                            <span class="acrf-annotation bad">TA is not mapped to CRF</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Planned elements and epochs</span>
+                            <span class="acrf-source-note">Study design metadata</span>
+                            <span class="acrf-annotation bad">TE is not mapped to CRF</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Planned visit schedule</span>
+                            <span class="acrf-source-note">Schedule of Assessments</span>
+                            <span class="acrf-annotation bad">TV is not mapped to CRF</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="acrf-mini-grid legacy-hidden" aria-label="Common aCRF page mapping examples">
+                        <div class="acrf-mini-group">Subject-level and milestone forms</div>
+                        <div class="acrf-mini">
+                          <strong>DM: Date of Birth</strong>
+                          <span class="acrf-annotation">BRTHDTC</span>
+                          <p class="acrf-caption">Collected birth dates map to SDTM character dates. Do not impute missing month or day in SDTM.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>DM: Sex</strong>
+                          <span class="acrf-annotation">SEX</span>
+                          <p class="acrf-caption">Fixed choices must align to controlled terminology such as M, F, U, or UNDIFFERENTIATED.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>DM / SUPPDM: Race</strong>
+                          <span class="acrf-annotation">RACE</span>
+                          <span class="acrf-annotation supp">RACE1 in SUPPDM</span>
+                          <p class="acrf-caption">A standard race value and extra checked categories are separate mapping concepts.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>SC: Reproductive Status</strong>
+                          <span class="acrf-annotation">SCTESTCD = CHILDPOT</span>
+                          <span class="acrf-annotation">SCORRES</span>
+                          <p class="acrf-caption">Subject characteristics often use test-code plus result annotations.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>IE: Inclusion Criteria</strong>
+                          <span class="acrf-annotation">IETESTCD = I01</span>
+                          <span class="acrf-annotation">IEORRES</span>
+                          <p class="acrf-caption">Each criterion should remain traceable to the exact protocol criterion.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>DS: Informed Consent</strong>
+                          <span class="acrf-annotation">DSDECOD</span>
+                          <span class="acrf-annotation">DSSTDTC</span>
+                          <p class="acrf-caption">Consent, screen failure, randomization, completion, and discontinuation are usually DS concepts.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>DS: Discontinuation</strong>
+                          <span class="acrf-annotation">DSDECOD</span>
+                          <span class="acrf-annotation supp">DSTERM in SUPPDS</span>
+                          <p class="acrf-caption">A standard reason may go to DSDECOD; free-text detail may need supplemental handling.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>SV: Visit Date</strong>
+                          <span class="acrf-annotation">SVSTDTC</span>
+                          <p class="acrf-caption">Visit dates may be collected, while VISITNUM and planned visit structure usually come from metadata.</p>
+                        </div>
+
+                        <div class="acrf-mini-group">Events and history logs</div>
+                        <div class="acrf-mini">
+                          <strong>AE: Event Term</strong>
+                          <span class="acrf-annotation">AETERM</span>
+                          <span class="acrf-annotation">AESTDTC</span>
+                          <p class="acrf-caption">AE rows are repeatable. AESEQ is program-assigned and should not be drawn as a CRF annotation.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>AE: Severity / Seriousness</strong>
+                          <span class="acrf-annotation">AESEV</span>
+                          <span class="acrf-annotation">AESER</span>
+                          <p class="acrf-caption">Severity and seriousness are different; keep response choices visible.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>AE: Relationship / Action</strong>
+                          <span class="acrf-annotation">AEREL</span>
+                          <span class="acrf-annotation">AEACN</span>
+                          <p class="acrf-caption">Causality and action taken often drive safety summaries and reviewer questions.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>AE: Other Specify</strong>
+                          <span class="acrf-annotation">AEACN = OTHER</span>
+                          <span class="acrf-annotation supp">AEACNOTH in SUPPAE</span>
+                          <p class="acrf-caption">The selected category and the free-text specify box are separate targets.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>MH: Medical History</strong>
+                          <span class="acrf-annotation">MHTERM</span>
+                          <span class="acrf-annotation">MHSTDTC</span>
+                          <p class="acrf-caption">Medical history may be MedDRA coded later; the aCRF still shows the SDTM target.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>CE: Clinical Event</strong>
+                          <span class="acrf-annotation">CETERM</span>
+                          <span class="acrf-annotation">CESTDTC</span>
+                          <p class="acrf-caption">Some collected events are clinical events rather than adverse events.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>DV: Protocol Deviation</strong>
+                          <span class="acrf-annotation">DVTERM</span>
+                          <span class="acrf-annotation">DVSTDTC</span>
+                          <p class="acrf-caption">Deviation category, description, date, and source should be easy to inspect.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>HO: Healthcare Encounter</strong>
+                          <span class="acrf-annotation">HOTERM</span>
+                          <span class="acrf-annotation">HOSTDTC</span>
+                          <p class="acrf-caption">Hospitalizations may map to HO when collected as encounters rather than AE attributes.</p>
+                        </div>
+
+                        <div class="acrf-mini-group">Interventions, medications, and exposure</div>
+                        <div class="acrf-mini">
+                          <strong>CM: Medication Log</strong>
+                          <span class="acrf-annotation">CMTRT</span>
+                          <span class="acrf-annotation">CMSTDTC</span>
+                          <p class="acrf-caption">CM forms repeat. CMSEQ is assigned in code and is not mapped from the CRF.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>CM: Dose / Route</strong>
+                          <span class="acrf-annotation">CMDOSE</span>
+                          <span class="acrf-annotation">CMROUTE</span>
+                          <p class="acrf-caption">Dose, unit, frequency, route, indication, and dates should not be squeezed into one box.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>CM: Fixed Drug Checklist</strong>
+                          <span class="acrf-annotation">CMTRT = "ASPIRIN"</span>
+                          <span class="acrf-annotation">CMOCCUR</span>
+                          <p class="acrf-caption">Horizontal Yes/No columns can become one SDTM record per checked medication.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>EX: Dosing Record</strong>
+                          <span class="acrf-annotation">EXTRT</span>
+                          <span class="acrf-annotation">EXSTDTC</span>
+                          <p class="acrf-caption">Exposure may come from EDC, IRT, dispensing, or administration records.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>EC: Exposure as Collected</strong>
+                          <span class="acrf-annotation">ECTRT</span>
+                          <span class="acrf-annotation">ECSTDTC</span>
+                          <p class="acrf-caption">EC can preserve collected exposure before final EX derivations.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>DA: Drug Accountability</strong>
+                          <span class="acrf-annotation">DATESTCD = RETURN</span>
+                          <span class="acrf-annotation">DAORRES</span>
+                          <p class="acrf-caption">Returned kit counts or pill counts often use a findings-style structure.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>PR: Procedures</strong>
+                          <span class="acrf-annotation">PRTRT</span>
+                          <span class="acrf-annotation">PRSTDTC</span>
+                          <p class="acrf-caption">Procedures are interventions. Confirm PR versus findings before mapping.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>SU: Substance Use</strong>
+                          <span class="acrf-annotation">SUTRT</span>
+                          <span class="acrf-annotation">SUOCCUR</span>
+                          <p class="acrf-caption">Smoking, alcohol, or caffeine questions may map to SU when collected as exposure history.</p>
+                        </div>
+
+                        <div class="acrf-mini-group">Findings pages and value-level patterns</div>
+                        <div class="acrf-mini">
+                          <strong>VS: Blood Pressure</strong>
+                          <span class="acrf-annotation">VSTESTCD = SYSBP</span>
+                          <span class="acrf-annotation">VSORRES</span>
+                          <p class="acrf-caption">Show the test identity and result variable separately, like the sample aCRF style.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>VS: Height / Weight</strong>
+                          <span class="acrf-annotation">VSTESTCD = HEIGHT</span>
+                          <span class="acrf-annotation">VSORRES</span>
+                          <p class="acrf-caption">Units such as cm, kg, lb, or inch are source context and must remain visible.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>VS: Temperature</strong>
+                          <span class="acrf-annotation">VSTESTCD = TEMP</span>
+                          <span class="acrf-annotation">VSLOC</span>
+                          <p class="acrf-caption">If location or method is collected, annotate it separately from the numeric result.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>EG: ECG Interval</strong>
+                          <span class="acrf-annotation">EGTESTCD = QTCF</span>
+                          <span class="acrf-annotation">EGORRES</span>
+                          <p class="acrf-caption">ECG pages often combine interval values, interpretation, method, and date/time.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>PE: Physical Exam</strong>
+                          <span class="acrf-annotation">PETESTCD = SKIN</span>
+                          <span class="acrf-annotation">PEORRES</span>
+                          <p class="acrf-caption">Body-system rows are usually value-level findings, not custom variables.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>LB: Hematology</strong>
+                          <span class="acrf-annotation derived">Origin: central lab</span>
+                          <span class="acrf-annotation">LBTESTCD = HGB</span>
+                          <p class="acrf-caption">External lab values may not appear on eCRF pages; point to transfer specs and DTS.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>LB: Pregnancy Test</strong>
+                          <span class="acrf-annotation">LBTESTCD = HCG</span>
+                          <span class="acrf-annotation">LBORRES</span>
+                          <p class="acrf-caption">Pregnancy testing can be local CRF data or vendor data. The origin must be clear.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>FA: Targeted Finding</strong>
+                          <span class="acrf-annotation">FATESTCD = LESION</span>
+                          <span class="acrf-annotation">FAORRES</span>
+                          <p class="acrf-caption">FA can hold targeted assessments that do not fit a standard findings domain cleanly.</p>
+                        </div>
+
+                        <div class="acrf-mini-group">Questionnaires, ePRO, and patient-reported data</div>
+                        <div class="acrf-mini">
+                          <strong>QS: Questionnaire Item</strong>
+                          <span class="acrf-annotation">QSTESTCD = ITEM01</span>
+                          <span class="acrf-annotation">QSORRES</span>
+                          <p class="acrf-caption">Do not write SQL-like "where" annotations; show item code and response target separately.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>QS: Total Score</strong>
+                          <span class="acrf-annotation derived">QSTESTCD = TOTAL</span>
+                          <span class="acrf-annotation derived">QSSTRESN</span>
+                          <p class="acrf-caption">Calculated scores need derived styling and algorithm documentation in specs.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>RS: Response Assessment</strong>
+                          <span class="acrf-annotation">RSTESTCD = OVRLRESP</span>
+                          <span class="acrf-annotation">RSORRES</span>
+                          <p class="acrf-caption">Response assessments should align with the response criteria used in the study.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>ePRO Diary</strong>
+                          <span class="acrf-annotation derived">Origin: ePRO vendor</span>
+                          <span class="acrf-annotation">QSDTC</span>
+                          <p class="acrf-caption">The source may be an ePRO transfer, not a site-entered CRF page.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>ePRO Compliance</strong>
+                          <span class="acrf-annotation">QSSTAT</span>
+                          <span class="acrf-annotation">QSREASND</span>
+                          <p class="acrf-caption">Missed diary entries and not-done reasons need consistent mapping rules.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Wearable Device</strong>
+                          <span class="acrf-annotation derived">Origin: device transfer</span>
+                          <span class="acrf-annotation">FATESTCD = STEPS</span>
+                          <p class="acrf-caption">High-frequency device data may need external data documentation and reviewer notes.</p>
+                        </div>
+
+                        <div class="acrf-mini-group">External data, operations, and non-submitted content</div>
+                        <div class="acrf-mini">
+                          <strong>PK Sample Collection</strong>
+                          <span class="acrf-annotation">PCDTC</span>
+                          <span class="acrf-annotation">PCTPT</span>
+                          <p class="acrf-caption">Collection timing may be CRF-collected while concentration results come from the lab.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Imaging Vendor</strong>
+                          <span class="acrf-annotation derived">Origin: imaging transfer</span>
+                          <span class="acrf-annotation">TRTESTCD</span>
+                          <p class="acrf-caption">Tumor measurements may be outside EDC and tied to an imaging charter and transfer spec.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>IRT Randomization</strong>
+                          <span class="acrf-annotation derived">RANDDT from IRT</span>
+                          <span class="acrf-annotation">ARM</span>
+                          <p class="acrf-caption">Treatment assignment often comes from IRT or randomization metadata, not manual CRF entry.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>EDC Control Status</strong>
+                          <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          <p class="acrf-caption">Form complete status, save status, and page lock flags are usually operational metadata.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Query History</strong>
+                          <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          <p class="acrf-caption">Query open, answer, and close timestamps usually belong to EDC audit trails.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Investigator Signature</strong>
+                          <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          <p class="acrf-caption">Signature workflow fields are operational unless study standards require submission.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Skip-Logic Prompt</strong>
+                          <span class="acrf-annotation not-submitted">[NOT SUBMITTED]</span>
+                          <p class="acrf-caption">A pure navigation prompt can be non-submitted only if it has no independent clinical meaning.</p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Trial Design Domains</strong>
+                          <span class="acrf-annotation bad">Do not map TA / TE / TV / TI / TS to CRF</span>
+                          <p class="acrf-caption">Trial Design domains come from protocol and metadata, not subject-level CRF observations.</p>
+                        </div>
+                      </div>
+                      <p class="document-notes">
+                        Important: Trial Design domains such as TA, TE, TV, TI, and TS are not
+                        mapped from CRF fields. They describe the study design from the protocol
+                        and metadata package. Do not annotate CRF pages as if these domains were
+                        subject-level collected data.
                       </p>
                     </div>
 
@@ -2579,15 +3295,15 @@ if pre_dose then ablfl = "Y";</code></pre>
                             </tr>
                             <tr>
                               <td>Supplemental QVAL</td>
-                              <td><span class="log-chip">QVAL where QNAM = VALUE</span></td>
-                              <td><span class="log-chip">SUPPDM.QVAL where QNAM = "RACE1"</span></td>
-                              <td>The data does not fit a standard variable and goes to SUPP--.</td>
+                              <td><span class="log-chip">Business rule + SUPP-- destination</span></td>
+                              <td><span class="log-chip">RACE = MULTIPLE; RACE1, RACE2 in SUPPDM</span></td>
+                              <td>Use a reviewer-readable note for supplemental values, instead of showing raw QNAM/QVAL mechanics as the main CRF annotation.</td>
                             </tr>
                             <tr>
                               <td>Value-Level</td>
-                              <td><span class="log-chip">VARNAME where TESTCD = VALUE</span></td>
-                              <td><span class="log-chip">VSORRES where VSTESTCD = SYSBP</span></td>
-                              <td>The same SDTM variable is used for multiple tests or concepts.</td>
+                              <td><span class="log-chip">TESTCD note + result variable</span></td>
+                              <td><span class="log-chip">VSTESTCD = SYSBP</span> <span class="log-chip">VSORRES</span></td>
+                              <td>For repeated findings rows, annotate the test identity and the result field separately so the page stays readable.</td>
                             </tr>
                             <tr>
                               <td>Unsubmitted Data</td>
@@ -2625,8 +3341,9 @@ if pre_dose then ablfl = "Y";</code></pre>
                         </div>
                         <div class="acrf-mini">
                           <strong>Value-Level Mapping</strong>
-                          <span class="acrf-annotation">VSORRES where VSTESTCD = DIABP</span>
-                          <p class="acrf-caption">One CRF field becomes a VS result record for a specific test.</p>
+                          <span class="acrf-annotation">VSTESTCD = DIABP</span>
+                          <span class="acrf-annotation">VSORRES</span>
+                          <p class="acrf-caption">Show the test code and result variable as separate annotations, like the sample aCRF.</p>
                         </div>
                         <div class="acrf-mini">
                           <strong>Bad Annotation</strong>
@@ -2689,6 +3406,321 @@ if pre_dose then ablfl = "Y";</code></pre>
                         show clean SDTM mapping decisions.
                       </p>
                     </div>
+
+                    <div class="acrf-card">
+                      <h5>High-Risk Area: Date and Time Handling</h5>
+                      <p>
+                        Dates and times are a common source of mapping errors. The CRF may collect
+                        date and time separately, use a non-ISO display format, or allow partial
+                        dates. The aCRF should point to the SDTM target, while the SDTM program
+                        converts the collected pieces into ISO 8601 character dates.
+                      </p>
+                      <div class="acrf-note-arrow" aria-label="Date and time mapping example">
+                        <div class="acrf-page">
+                          <div class="acrf-form-title">Adverse Event Start</div>
+                          <div class="acrf-field">
+                            <span>Start Date</span>
+                            <span class="acrf-input">28-JUN-2026</span>
+                            <span class="acrf-annotation">AESTDTC</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Start Time</span>
+                            <span class="acrf-input">09:15</span>
+                            <span class="acrf-annotation">AESTDTC</span>
+                          </div>
+                        </div>
+                        <div class="acrf-arrow">→</div>
+                        <div class="acrf-page">
+                          <div class="acrf-form-title">Submitted SDTM Value</div>
+                          <div class="acrf-field">
+                            <span>Combined ISO 8601 target</span>
+                            <span class="acrf-input">2026-06-28T09:15</span>
+                            <span class="acrf-annotation derived">AESTDTC</span>
+                          </div>
+                          <div class="acrf-field">
+                            <span>Partial date stays partial</span>
+                            <span class="acrf-input">2026-06</span>
+                            <span class="acrf-annotation derived">AESTDTC</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="acrf-caption">
+                        Teaching point: the aCRF target is not always copied exactly from the CRF
+                        display. DD-MON-YYYY, split date/time boxes, and partial dates must be
+                        transformed carefully into the SDTM --DTC character variable.
+                      </p>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>Complex Pages: Repeats, Horizontal Forms, and Other Specify</h5>
+                      <div class="acrf-mini-grid">
+                        <div class="acrf-mini">
+                          <strong>Log Lines / Repeatable Forms</strong>
+                          <span class="acrf-badge">Warning: --SEQ is not a CRF annotation</span>
+                          <p class="acrf-caption">
+                            AE, CM, and MH forms repeat. The aCRF maps collected fields such as
+                            AETERM, CMTRT, and MHDECOD. The SDTM program assigns stable --SEQ values.
+                          </p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Horizontal CRF to Vertical SDTM</strong>
+                          <span class="acrf-annotation">CMTRT = "ASPIRIN"</span>
+                          <p class="acrf-caption">
+                            A CRF column such as Aspirin Yes/No may become one CM row with a fixed
+                            treatment value.
+                          </p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>Other, Specify</strong>
+                          <span class="acrf-annotation supp">AETERM = OTHER</span>
+                          <span class="acrf-annotation supp">Specify text in SUPPAE</span>
+                          <p class="acrf-caption">
+                            The checkbox may drive a main topic value, while the free-text specify
+                            field often belongs in SUPP--.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="acrf-page" aria-label="Horizontal CRF transposition example">
+                        <div class="acrf-domain-row">
+                          <span class="acrf-domain">CM = Concomitant Medications</span>
+                        </div>
+                        <div class="acrf-form-title">Common Medications Taken Since Last Visit</div>
+                        <div class="acrf-field">
+                          <span>Aspirin</span>
+                          <span class="acrf-input options"><i class="acrf-checkbox"></i> Yes <i class="acrf-checkbox"></i> No</span>
+                          <span class="acrf-annotation">CMTRT = "ASPIRIN"</span>
+                        </div>
+                        <div class="acrf-field">
+                          <span>Acetaminophen</span>
+                          <span class="acrf-input options"><i class="acrf-checkbox"></i> Yes <i class="acrf-checkbox"></i> No</span>
+                          <span class="acrf-annotation">CMTRT = "ACETAMINOPHEN"</span>
+                        </div>
+                        <div class="acrf-field">
+                          <span>Other, specify</span>
+                          <span class="acrf-input"></span>
+                          <span class="acrf-annotation supp">CMTRT / SUPPCM if needed</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>Controlled Terminology and Standards Awareness</h5>
+                      <p>
+                        Fixed CRF options should not be re-coded by personal preference. If a CRF
+                        shows choices such as sex, race, severity, route, frequency, or Yes/No
+                        responses, the mapping must be checked against the study standard and the
+                        applicable CDISC Controlled Terminology release. The aCRF is often the first
+                        place a reviewer can see whether collected choices are being translated into
+                        standard values consistently.
+                      </p>
+                      <div class="acrf-badge-row" aria-label="Controlled terminology examples">
+                        <span class="acrf-badge">SEX: M / F / U</span>
+                        <span class="acrf-badge">RACE: WHITE / ASIAN / BLACK OR AFRICAN AMERICAN</span>
+                        <span class="acrf-badge">AESEV: MILD / MODERATE / SEVERE</span>
+                        <span class="acrf-badge">NY: Y / N</span>
+                        <span class="acrf-badge">ROUTE: ORAL / INTRAVENOUS / TOPICAL</span>
+                        <span class="acrf-badge">FREQ: QD / BID / TID / PRN</span>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Controlled terminology review examples">
+                          <thead>
+                            <tr>
+                              <th>CRF Choice</th>
+                              <th>SDTM Target</th>
+                              <th>Programmer Check</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Male / Female / Unknown</td>
+                              <td><span class="log-chip">SEX</span></td>
+                              <td>Do not invent values such as MALE or FEMALE if the study standard requires M or F.</td>
+                            </tr>
+                            <tr>
+                              <td>Mild / Moderate / Severe</td>
+                              <td><span class="log-chip">AESEV</span></td>
+                              <td>Keep severity values consistent across aCRF, SDTM spec, Define.xml, and AE tables.</td>
+                            </tr>
+                            <tr>
+                              <td>Yes / No checkbox</td>
+                              <td><span class="log-chip">NY</span> codelist variables</td>
+                              <td>Confirm whether the submitted value should be Y/N, not Yes/No or 1/0.</td>
+                            </tr>
+                            <tr>
+                              <td>Race: multiple selections allowed</td>
+                              <td><span class="log-chip">RACE</span> plus SUPPDM when needed</td>
+                              <td>Follow the study rule for MULTIPLE and supplemental race values. Do not collapse choices silently.</td>
+                            </tr>
+                            <tr>
+                              <td>Route or frequency options</td>
+                              <td><span class="log-chip">--ROUTE</span>, <span class="log-chip">--DOSFRQ</span></td>
+                              <td>Check whether collected wording must be normalized to controlled terminology before submission.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p>
+                        The practical rule for new programmers is simple: the aCRF may show what the
+                        site saw, but SDTM must show what the submission standard expects. If the
+                        CRF says "Male" and SDTM expects "M", the mapping must make that conversion
+                        traceable in the specification and consistent in Define.xml. If P21 later
+                        reports a terminology issue, the first documents to cross-check are the
+                        aCRF, SDTM specification, Define.xml codelist, and the study's terminology
+                        version.
+                      </p>
+                      <p class="acrf-caption">
+                        Industry direction: newer metadata workflows increasingly expect the aCRF,
+                        SDTM specification, Define.xml, and validation rules to align automatically.
+                        New programmers should treat the aCRF as part of a metadata system, not a
+                        standalone PDF decoration.
+                      </p>
+                      <p class="document-notes">
+                        References:
+                        <a href="https://www.cdisc.org/standards/terminology/controlled-terminology" target="_blank" rel="noreferrer">CDISC Controlled Terminology</a>;
+                        <a href="https://evs.nci.nih.gov/ftp1/CDISC/" target="_blank" rel="noreferrer">NCI EVS CDISC Terminology Files</a>;
+                        <a href="https://www.cdisc.org/standards/data-exchange/define-xml" target="_blank" rel="noreferrer">CDISC Define-XML</a>.
+                      </p>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>ePRO and External Data Are Source Data Too</h5>
+                      <p>
+                        Not every source record is entered by site staff on the EDC eCRF. Patient
+                        diaries, ePRO/eCOA instruments, central labs, ECG vendors, PK labs,
+                        imaging vendors, IRT/randomization systems, and wearable devices may all
+                        provide source data through external transfers. New programmers should not
+                        expect every SDTM variable to be visible on an eCRF page.
+                      </p>
+                      <div class="acrf-flow five" aria-label="External data to SDTM flow">
+                        <span>Vendor / ePRO Source<br>Patient or vendor system</span>
+                        <span>DTS<br>File layout and transfer rules</span>
+                        <span>Raw Transfer<br>CSV, SAS, XML, or XPT</span>
+                        <span>SDTM Mapping<br>Domain and variable logic</span>
+                        <span>Define.xml Origin<br>eDT, vendor, or derived</span>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="ePRO and external source data examples">
+                          <thead>
+                            <tr>
+                              <th>Source Type</th>
+                              <th>Common SDTM Domains</th>
+                              <th>Programmer Should Check</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>ePRO / eCOA diary or questionnaire</td>
+                              <td>QS, FA, CE, sometimes custom sponsor mapping</td>
+                              <td>Instrument version, question text, visit/window, time zone, score derivation, and whether source is appended to aCRF or documented separately.</td>
+                            </tr>
+                            <tr>
+                              <td>Central laboratory</td>
+                              <td>LB, MB, PC, PP depending on test type</td>
+                              <td>Lab units, reference ranges, specimen date/time, LOINC or local test codes, normal/abnormal flags, and reconciliation with EDC collection status.</td>
+                            </tr>
+                            <tr>
+                              <td>Central ECG vendor</td>
+                              <td>EG and sometimes SUPPEG</td>
+                              <td>Triplicate readings, measurement number, QT correction method, interpretation text, date/time precision, and vendor algorithm version.</td>
+                            </tr>
+                            <tr>
+                              <td>IRT / randomization or drug supply system</td>
+                              <td>DM, DS, EX, TA-related metadata support</td>
+                              <td>Randomization date, treatment assignment, kit dispensation, exposure reconciliation, and whether data are subject-level or trial-design metadata.</td>
+                            </tr>
+                            <tr>
+                              <td>Imaging, wearable, or device vendor</td>
+                              <td>MI, FA, VS, QS, or study-specific mapping</td>
+                              <td>Acquisition date/time, device ID, algorithm version, repeated measurements, quality flags, and traceability to vendor source files.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p class="document-notes">
+                        Practical rule: if data are not on the eCRF, do not mark them as missing
+                        from the aCRF too quickly. First check the Data Transfer Specification,
+                        vendor sample files, Define.xml origin, SDRG explanation, and whether the
+                        source pages or instrument screenshots should be appended to the aCRF.
+                      </p>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>When Is [NOT SUBMITTED] Appropriate?</h5>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="NOT SUBMITTED decision guide">
+                          <thead>
+                            <tr>
+                              <th>CRF Field Type</th>
+                              <th>Typical Decision</th>
+                              <th>Mentor Warning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>EDC control fields such as form status, page complete flag, query history, or internal audit labels</td>
+                              <td>Often [NOT SUBMITTED]</td>
+                              <td>These usually describe the data capture system, not the subject's clinical condition.</td>
+                            </tr>
+                            <tr>
+                              <td>Operational signatures or system dates used only for workflow control</td>
+                              <td>Often [NOT SUBMITTED]</td>
+                              <td>Confirm with study standards and reviewer guide expectations before omitting.</td>
+                            </tr>
+                            <tr>
+                              <td>Skip-logic questions with no independent clinical meaning</td>
+                              <td>May be [NOT SUBMITTED]</td>
+                              <td>Do not assume. If the response supports interpretation, it may need SDTM or SUPP--.</td>
+                            </tr>
+                            <tr>
+                              <td>Collected clinical data that is not used in analysis</td>
+                              <td>Not automatically [NOT SUBMITTED]</td>
+                              <td>If it is valid clinical data, it may still belong in a standard domain or SUPP--.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>The aCRF Is a Bridge, Not an Isolated Task</h5>
+                      <div class="acrf-flow five" aria-label="Clinical data standards workflow">
+                        <span>Protocol<br>Clinical intent</span>
+                        <span>CRF<br>Data collection</span>
+                        <span>aCRF<br>Visual mapping design</span>
+                        <span>SDTM Spec<br>Detailed metadata</span>
+                        <span>SAS / R Code<br>Implementation</span>
+                      </div>
+                      <p class="acrf-caption">
+                        In real projects, the aCRF and SDTM specification are often developed
+                        together. Before coding, place the aCRF, SDTM spec, and raw data side by
+                        side and cross-check field meaning, domain, variable name, controlled
+                        terminology, and derivation notes.
+                      </p>
+                    </div>
+
+                    <div class="acrf-card">
+                      <h5>Bad vs Better: Annotation Must Not Cover Source Text</h5>
+                      <div class="acrf-compare">
+                        <div class="acrf-overlap-demo bad-overlap">
+                          <strong>Blood Pressure</strong><br>
+                          Systolic result ____ <span>mmHg</span><br>
+                          Diastolic result ____ <span>mmHg</span>
+                          <span class="acrf-annotation bad">VSORRES</span>
+                        </div>
+                        <div class="acrf-overlap-demo good">
+                          <strong>Blood Pressure</strong><br>
+                          Systolic result ____ <span>mmHg</span><br>
+                          Diastolic result ____ <span>mmHg</span>
+                          <span class="acrf-leader"></span>
+                          <span class="acrf-annotation">VSORRES</span>
+                        </div>
+                      </div>
+                      <p class="acrf-caption">
+                        If the annotation box hides a unit, response option, or question stem, the
+                        reviewer loses source context. Move the annotation away and use spacing or a
+                        leader line instead.
+                      </p>
+                    </div>
                   </div>
 
                   <h4>4. FDA-Style PDF and aCRF Quality Checks</h4>
@@ -2706,6 +3738,23 @@ if pre_dose then ablfl = "Y";</code></pre>
                     <span><strong>Consistent syntax:</strong> annotations follow the same pattern across pages.</span>
                     <span><strong>Domain clarity:</strong> every represented domain is clear on the page.</span>
                     <span><strong>No pseudo-code:</strong> aCRF notes should be reviewer-readable, not programmer shorthand.</span>
+                  </div>
+                  <div class="acrf-self-check" aria-label="Programmer self-check for aCRF review">
+                    <div>
+                      <strong>Count It</strong>
+                      Are all blank input fields, checkboxes, and free-text boxes either annotated
+                      or intentionally marked as not submitted?
+                    </div>
+                    <div>
+                      <strong>Search It</strong>
+                      If you search the PDF for AETERM, AESEV, or VSORRES, does the document take
+                      you to the expected CRF page?
+                    </div>
+                    <div>
+                      <strong>Compare It</strong>
+                      Do the aCRF domain names, variable names, and controlled terms match the SDTM
+                      specification and Define.xml metadata?
+                    </div>
                   </div>
                   <p class="document-notes">
                     Reference for this section:
@@ -2795,147 +3844,744 @@ if pre_dose then ablfl = "Y";</code></pre>
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 04</span>
-                  <span class="summary-title">Introduction to SDTM (Data Standardization)</span>
+                  <span class="summary-title">Introduction to SDTM</span>
                   <span class="summary-note">How raw clinical data becomes compliant SDTM through variable roles, SUPP--, controlled terminology, and ISO 8601 dates.</span>
                 </summary>
 
                 <article class="lesson">
-                  <h4>1. Intro to SDTM: From Raw Data to Submission Data</h4>
+                  <h4>SDTM Modules: How Submission Data Is Organized</h4>
                   <p>
                     SDTM is where raw clinical chaos becomes standardized regulatory currency.
                     Raw eCRF exports, vendor files, and data management transfers are reshaped into
                     tabulation datasets that reviewers can navigate consistently across studies.
+                    New programmers should first learn the major domain families before trying to
+                    memorize individual variables.
                   </p>
                   <div class="flow" aria-label="Raw data to compliant SDTM pipeline">
                     <div class="flow-step"><strong>Raw Clinical Data</strong><br>eCRF exports, vendor files, audit keys, and source fields.</div>
-                    <div class="flow-step"><strong>1. Variable Roles</strong><br>Classify identifiers, topics, qualifiers, and timing variables.</div>
-                    <div class="flow-step"><strong>2. Domain Structure</strong><br>Choose the right SDTM domain and observation class.</div>
-                    <div class="flow-step"><strong>3. Split &amp; SUPP--</strong><br>Handle large domains and nonstandard collected variables correctly.</div>
-                    <div class="flow-step"><strong>4. CT Normalization</strong><br>Clean values, dates, and units into controlled submission form.</div>
+                    <div class="flow-step"><strong>Domain Family</strong><br>Trial Design, Special Purpose, Interventions, Events, Findings, and Relationship/SUPP datasets.</div>
+                    <div class="flow-step"><strong>Variable Roles</strong><br>Identifiers, topics, qualifiers, timing variables, and controlled terminology.</div>
+                    <div class="flow-step"><strong>Mapping Rules</strong><br>aCRF, DTS, SDTM spec, raw data, and Define.xml must agree.</div>
                     <div class="flow-step"><strong>Compliant SDTM</strong><br>Traceable tabulation datasets ready for validation and downstream ADaM.</div>
                   </div>
 
-                  <h4>2. Variable Structural Roles</h4>
-                  <p>
-                    The first SDTM task is not to copy raw columns. It is to decide each variable's
-                    clinical role according to the SDTMIG.
-                  </p>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="SDTM variable structural roles">
-                      <thead>
-                        <tr>
-                          <th>Role</th>
-                          <th>Plain-English Purpose</th>
-                          <th>Examples</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Identifier Variables</td>
-                          <td>Build the unique key system for the study and domain.</td>
-                          <td>STUDYID, DOMAIN, USUBJID. Do not rely only on site-level SUBJID.</td>
-                        </tr>
-                        <tr>
-                          <td>Topic Variables</td>
-                          <td>Define what each record is mainly about.</td>
-                          <td>AETERM in AE; VSTESTCD and VSTEST in VS.</td>
-                        </tr>
-                        <tr>
-                          <td>Result Qualifiers</td>
-                          <td>Store original and standardized results.</td>
-                          <td>VSORRES, VSORRESU, VSSTRESN, VSSTRESC.</td>
-                        </tr>
-                        <tr>
-                          <td>Synonym Qualifiers</td>
-                          <td>Store coded or dictionary-normalized terms.</td>
-                          <td>AEDECOD, AEBODSYS, MedDRA-coded values.</td>
-                        </tr>
-                        <tr>
-                          <td>Record Qualifiers</td>
-                          <td>Describe details around the topic record.</td>
-                          <td>AESEV, AESER, AEREL, VSPOS.</td>
-                        </tr>
-                        <tr>
-                          <td>Timing Variables</td>
-                          <td>Represent when the event, assessment, or intervention happened.</td>
-                          <td>AEDTC, VSDTC, --STDTC, --ENDTC using ISO 8601 where applicable.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <div class="sdtm-module-grid" aria-label="SDTM teaching modules">
+                    <section class="sdtm-module">
+                      <h5>Module 1. Trial Design Domains</h5>
+                      <p>
+                        Trial Design domains describe the planned structure of the study. They are
+                        built from the protocol, schedule of assessments, treatment plan, inclusion
+                        and exclusion criteria, and study metadata. They are not subject-level CRF
+                        records and should not be annotated on CRF pages as if they were collected
+                        fields.
+                      </p>
+                      <div class="sdtm-tag-row">
+                        <span class="sdtm-tag">TA</span>
+                        <span class="sdtm-tag">TE</span>
+                        <span class="sdtm-tag">TV</span>
+                        <span class="sdtm-tag">TI</span>
+                        <span class="sdtm-tag">TS</span>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="SDTM trial design domains">
+                          <thead>
+                            <tr>
+                              <th>Domain</th>
+                              <th>What It Represents</th>
+                              <th>Source</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>TA</td>
+                              <td>Trial Arms: planned treatment arms and study paths.</td>
+                              <td>Protocol design, not CRF collection.</td>
+                            </tr>
+                            <tr>
+                              <td>TE</td>
+                              <td>Trial Elements: planned periods such as screening, treatment, follow-up.</td>
+                              <td>Protocol and study design metadata.</td>
+                            </tr>
+                            <tr>
+                              <td>TV</td>
+                              <td>Trial Visits: planned visit schedule and visit timing.</td>
+                              <td>Schedule of Assessments and protocol visit plan.</td>
+                            </tr>
+                            <tr>
+                              <td>TI</td>
+                              <td>Trial Inclusion/Exclusion Criteria.</td>
+                              <td>Protocol eligibility criteria.</td>
+                            </tr>
+                            <tr>
+                              <td>TS</td>
+                              <td>Trial Summary: study-level characteristics and parameters.</td>
+                              <td>Study metadata and submission package.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h6>Protocol-to-TDM Thinking</h6>
+                      <p>
+                        Trial Design domains are not a copy of operational data. They are a
+                        structured description of the planned study design. The programmer must
+                        read the protocol like a map, identify the planned study periods, arms,
+                        visits, and eligibility rules, then encode those concepts into standard
+                        SDTM metadata.
+                      </p>
+                      <div class="acrf-flow five" aria-label="Protocol to Trial Design Model workflow">
+                        <span>Protocol<br>Study schema</span>
+                        <span>Elements<br>Planned periods</span>
+                        <span>Arms<br>Allowed paths</span>
+                        <span>Visits<br>Schedule</span>
+                        <span>TDM<br>TA / TE / TV / TI / TS</span>
+                      </div>
+                      <h6>The Core Idea: Planned Design vs. Subject Reality</h6>
+                      <p>
+                        Trial Design Model is the planned architecture of the trial. It answers
+                        questions such as: What paths can a subject take? What elements make up
+                        each path? Which visits are planned? What criteria determine eligibility?
+                        What study-level parameters describe the submission? Subject-level datasets
+                        then show what actually happened to each subject.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Planned trial design versus actual subject data">
+                          <thead>
+                            <tr>
+                              <th>Concept</th>
+                              <th>Planned Design Metadata</th>
+                              <th>Actual Subject Data</th>
+                              <th>Plain-English Difference</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Arm</td>
+                              <td>TA describes the planned arm path.</td>
+                              <td>DM may store assigned arm or actual arm information.</td>
+                              <td>TA is what the protocol allows; DM is what happened to a subject.</td>
+                            </tr>
+                            <tr>
+                              <td>Element</td>
+                              <td>TE defines planned elements such as Screening, Treatment, Washout, Follow-up.</td>
+                              <td>SE records the subject's actual entry into elements and dates.</td>
+                              <td>TE is the menu of planned periods; SE is the subject's timeline.</td>
+                            </tr>
+                            <tr>
+                              <td>Visit</td>
+                              <td>TV defines planned visits and timing windows.</td>
+                              <td>SV records actual visits, including missed or unscheduled visits.</td>
+                              <td>TV is the schedule; SV is attendance history.</td>
+                            </tr>
+                            <tr>
+                              <td>Eligibility</td>
+                              <td>TI defines the planned inclusion/exclusion criteria text.</td>
+                              <td>IE records subject-level answers or failures against criteria.</td>
+                              <td>TI is the rule; IE is the subject's result against the rule.</td>
+                            </tr>
+                            <tr>
+                              <td>Study Parameters</td>
+                              <td>TS stores submission-level study characteristics.</td>
+                              <td>Subject datasets usually do not repeat these study-level parameters.</td>
+                              <td>TS describes the trial as a whole, not individual observations.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h6>TDM Vocabulary New Programmers Must Learn</h6>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Trial Design Model vocabulary">
+                          <thead>
+                            <tr>
+                              <th>Term</th>
+                              <th>Meaning</th>
+                              <th>Where It Appears</th>
+                              <th>Example</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Element</td>
+                              <td>A basic planned period of the study.</td>
+                              <td>TE and TA</td>
+                              <td>Screening, Treatment A, Treatment B, Washout, Safety Follow-up.</td>
+                            </tr>
+                            <tr>
+                              <td>Arm</td>
+                              <td>A planned path through one or more elements.</td>
+                              <td>TA</td>
+                              <td>Placebo arm, Drug A arm, Drug A then Drug B crossover sequence.</td>
+                            </tr>
+                            <tr>
+                              <td>Epoch</td>
+                              <td>A broad phase grouping elements for interpretation.</td>
+                              <td>TA/TE and often SE alignment</td>
+                              <td>Screening, Treatment, Follow-up.</td>
+                            </tr>
+                            <tr>
+                              <td>Transition Rule</td>
+                              <td>The rule for entering or leaving an element.</td>
+                              <td>TE start and end rules</td>
+                              <td>Start treatment after randomization; end follow-up after final safety contact.</td>
+                            </tr>
+                            <tr>
+                              <td>Planned Visit</td>
+                              <td>A visit expected by the protocol schedule.</td>
+                              <td>TV</td>
+                              <td>Screening, Day 1, Week 4, End of Treatment, Safety Follow-up.</td>
+                            </tr>
+                            <tr>
+                              <td>Eligibility Criterion</td>
+                              <td>A protocol rule that determines inclusion or exclusion.</td>
+                              <td>TI</td>
+                              <td>Age at least 18 years; no prohibited prior therapy.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h6>Domain-by-Domain Build Detail</h6>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Detailed Trial Design domain build guide">
+                          <thead>
+                            <tr>
+                              <th>Domain</th>
+                              <th>Main Job</th>
+                              <th>Typical Variables or Concepts</th>
+                              <th>Programming Source</th>
+                              <th>Quality Check</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>TE</td>
+                              <td>Define the planned building blocks of the study.</td>
+                              <td>Element code, element name, start rule, end rule, planned duration.</td>
+                              <td>Protocol schema, treatment plan, follow-up rules, schedule of assessments.</td>
+                              <td>Every element used in TA should be defined clearly in TE.</td>
+                            </tr>
+                            <tr>
+                              <td>TA</td>
+                              <td>Define each planned arm as an ordered path through elements.</td>
+                              <td>Arm code, arm name, element order, element code, epoch.</td>
+                              <td>Protocol study design diagram and randomization/treatment sections.</td>
+                              <td>Each arm path should be readable without opening subject-level data.</td>
+                            </tr>
+                            <tr>
+                              <td>TV</td>
+                              <td>Define planned visits and their timing.</td>
+                              <td>Visit number, visit name, planned study day or timing window.</td>
+                              <td>Schedule of Assessments, visit window table, protocol visit definitions.</td>
+                              <td>Visit names and numbering should align with SV and downstream ADaM visit logic.</td>
+                            </tr>
+                            <tr>
+                              <td>TI</td>
+                              <td>Store the planned inclusion and exclusion criteria.</td>
+                              <td>Criterion code, criterion text, inclusion/exclusion category.</td>
+                              <td>Protocol eligibility section.</td>
+                              <td>Criterion text should match the approved protocol and should not be rewritten casually.</td>
+                            </tr>
+                            <tr>
+                              <td>TS</td>
+                              <td>Store study-level summary parameters.</td>
+                              <td>Study phase, blinding, randomization, therapeutic area, indication, design descriptors.</td>
+                              <td>Protocol synopsis, registry metadata, study standards, submission metadata.</td>
+                              <td>Use controlled terminology where required; do not invent parameter values casually.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h6>Mini Example: Parallel Two-Arm Study</h6>
+                      <p>
+                        Suppose the protocol has a screening period, randomization on Day 1, a
+                        treatment period, and a safety follow-up visit. The planned study has two
+                        treatment arms: Placebo and Drug A. A clean TDM build separates the shared
+                        elements from the two arm paths.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Parallel study Trial Design example">
+                          <thead>
+                            <tr>
+                              <th>Piece</th>
+                              <th>Example Records or Values</th>
+                              <th>Teaching Point</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>TE</td>
+                              <td>SCRN = Screening; PBO = Placebo Treatment; DRUGA = Drug A Treatment; FU = Safety Follow-up.</td>
+                              <td>Elements are reusable building blocks. Screening and Follow-up may be shared by both arms.</td>
+                            </tr>
+                            <tr>
+                              <td>TA</td>
+                              <td>Placebo arm path: SCRN -> PBO -> FU. Drug A arm path: SCRN -> DRUGA -> FU.</td>
+                              <td>TA orders the elements for each arm. It does not say which subject actually followed the path.</td>
+                            </tr>
+                            <tr>
+                              <td>TV</td>
+                              <td>Screening, Day 1, Week 2, Week 4, End of Treatment, Follow-up.</td>
+                              <td>TV comes from the planned visit schedule, not from what any one subject attended.</td>
+                            </tr>
+                            <tr>
+                              <td>TI</td>
+                              <td>Inclusion 01: subject is at least 18 years old. Exclusion 01: prior prohibited therapy.</td>
+                              <td>TI stores the criteria; IE stores each subject's criterion-level result.</td>
+                            </tr>
+                            <tr>
+                              <td>TS</td>
+                              <td>Randomized, double-blind, parallel-group, Phase 2, therapeutic area and indication values.</td>
+                              <td>TS describes the study as submitted, using standard metadata values.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Trial Design Model construction checklist">
+                          <thead>
+                            <tr>
+                              <th>Step</th>
+                              <th>What to Extract from the Protocol</th>
+                              <th>Where It Usually Goes</th>
+                              <th>New Programmer Warning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1. Identify Elements</td>
+                              <td>Distinct planned periods such as Screening, Run-in, Treatment A, Treatment B, Washout, Follow-up.</td>
+                              <td>TE</td>
+                              <td>Do not create an element just because a site collected a form. Elements describe planned design periods.</td>
+                            </tr>
+                            <tr>
+                              <td>2. Identify Epochs</td>
+                              <td>High-level study phases used to organize subject experience, such as Screening, Treatment, Follow-up.</td>
+                              <td>TE / TA support and SE alignment</td>
+                              <td>Epoch is broader than a single visit. It helps connect planned design to actual subject elements.</td>
+                            </tr>
+                            <tr>
+                              <td>3. Build Arms</td>
+                              <td>Permitted treatment paths, sequences, crossover paths, or add-on therapy paths.</td>
+                              <td>TA</td>
+                              <td>TA is the planned route. Actual subject movement is represented later through subject-level data such as SE and disposition.</td>
+                            </tr>
+                            <tr>
+                              <td>4. Define Visits</td>
+                              <td>Visit names, planned timing, visit windows, and whether visits are screening, treatment, or follow-up.</td>
+                              <td>TV</td>
+                              <td>Do not rely only on raw visit labels. Protocol visit timing and naming must drive TV.</td>
+                            </tr>
+                            <tr>
+                              <td>5. Encode Criteria</td>
+                              <td>Inclusion and exclusion criteria exactly as used to determine eligibility.</td>
+                              <td>TI</td>
+                              <td>IE contains subject responses; TI contains the planned eligibility criteria from the protocol.</td>
+                            </tr>
+                            <tr>
+                              <td>6. Add Study Parameters</td>
+                              <td>Study title, phase, design, blinding, therapeutic area, randomization, and other submission-level descriptors.</td>
+                              <td>TS</td>
+                              <td>TS is often built from protocol metadata and controlled terminology, not from eCRF rows.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h6>Complex Designs: What Changes?</h6>
+                      <p>
+                        Simple parallel studies are easier because each arm usually follows one
+                        clean path. Complex trials require more careful TDM thinking. The same
+                        planned element may appear in multiple arms, and a subject's actual path
+                        may differ from the planned arm because of discontinuation, rescue therapy,
+                        crossover, re-randomization, or extension phases.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Complex trial design examples for Trial Design Model">
+                          <thead>
+                            <tr>
+                              <th>Design Situation</th>
+                              <th>What to Read in the Protocol</th>
+                              <th>How to Build the TDM</th>
+                              <th>How Subject Data Connects Later</th>
+                              <th>Common Programming Trap</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Crossover study</td>
+                              <td>Look for treatment sequences such as A then B, B then A, washout duration, period definitions, and period-specific visits.</td>
+                              <td>Define separate TE elements for each treatment period and washout. TA should show the allowed planned paths and the order of elements for each arm.</td>
+                              <td>SE later records which elements the subject actually entered and the actual dates. EX records what treatment was actually received.</td>
+                              <td>Do not create one generic "Treatment" element if the protocol distinguishes Treatment A, Washout, and Treatment B.</td>
+                            </tr>
+                            <tr>
+                              <td>Dose escalation / dose cohort study</td>
+                              <td>Find planned cohorts, dose levels, sentinel dosing, dose escalation rules, expansion cohorts, and stopping rules.</td>
+                              <td>Represent planned cohort or dose-level paths clearly in TA/TE. TS may describe study design, phase, and dose-escalation characteristics.</td>
+                              <td>DM/SE/EX show actual subject assignment and exposure. A subject assigned to a cohort is not the same thing as a new Trial Arm unless the protocol defines it that way.</td>
+                              <td>Do not let raw cohort labels drive TA blindly; confirm whether cohort is a design arm, treatment group, analysis group, or operational enrollment label.</td>
+                            </tr>
+                            <tr>
+                              <td>Rescue or add-on therapy</td>
+                              <td>Find criteria for rescue, add-on treatment, switch treatment, background therapy, or treatment intensification.</td>
+                              <td>If the rescue/add-on path is planned by protocol, represent it as a possible element or path. If it is simply medication use, it may remain subject-level CM/EX.</td>
+                              <td>Actual rescue use is reflected in EX, CM, SE, DS, or analysis flags depending on study standards.</td>
+                              <td>Do not force every subject-level rescue event into Trial Design. TDM describes planned structure, not every event that happened.</td>
+                            </tr>
+                            <tr>
+                              <td>Open-label extension</td>
+                              <td>Check whether the extension is optional, separate protocol, separate part, rollover, or same study continuation.</td>
+                              <td>Create extension elements and visits only if the extension is part of the planned study design being submitted.</td>
+                              <td>SE shows whether a subject actually entered the extension; DS may show completion or discontinuation of core and extension periods.</td>
+                              <td>Do not mix core-study visits and extension visits without clear naming. Reviewers need to see which period each visit belongs to.</td>
+                            </tr>
+                            <tr>
+                              <td>Adaptive or re-randomized design</td>
+                              <td>Find decision points, interim criteria, re-randomization rules, response-based assignment, and amendment-driven design changes.</td>
+                              <td>Represent planned decision structure as clearly as possible. Use TA/TE/TV consistently and document assumptions in study specifications.</td>
+                              <td>Subject-level data show the actual decision outcome, actual element entry dates, and actual treatment received.</td>
+                              <td>Do not hide adaptive complexity in vague arm labels like "Treatment Arm 1". The planned paths need reviewer-readable meaning.</td>
+                            </tr>
+                            <tr>
+                              <td>Randomized withdrawal</td>
+                              <td>Look for an initial open-label or stabilization period followed by randomization to continue treatment or withdraw/placebo.</td>
+                              <td>Use TE for run-in/stabilization, randomized treatment, withdrawal/placebo, and follow-up periods. TA should show the planned post-randomization paths.</td>
+                              <td>SE connects a subject's actual entry into stabilization and withdrawal elements. DS captures discontinuation or completion events.</td>
+                              <td>Do not treat the stabilization period as subject-level noise. If it is planned for all subjects, it belongs in the design structure.</td>
+                            </tr>
+                            <tr>
+                              <td>Run-in or screening enrichment</td>
+                              <td>Identify placebo run-in, active run-in, washout, baseline stabilization, or enrichment criteria before randomization.</td>
+                              <td>TE should include the planned run-in or washout element. TV should include run-in visits and timing windows.</td>
+                              <td>IE/DS/SE help show whether subjects passed criteria, entered randomized treatment, or discontinued before randomization.</td>
+                              <td>Do not skip the run-in just because it occurs before treatment. It often explains who reached the randomized population.</td>
+                            </tr>
+                            <tr>
+                              <td>Multi-part study</td>
+                              <td>Look for Part A/Part B, dose finding versus dose expansion, core versus extension, adult versus adolescent parts.</td>
+                              <td>Decide whether parts are represented as separate arms, elements, epochs, or TS parameters based on protocol structure.</td>
+                              <td>Subject-level assignment may appear in DM, SE, DS, and EX. Analysis datasets may later derive part-specific flags.</td>
+                              <td>Do not make every "Part" an arm automatically. Sometimes part is a study-level or cohort-level descriptor.</td>
+                            </tr>
+                            <tr>
+                              <td>Basket, umbrella, or substudy design</td>
+                              <td>Read how disease cohorts, biomarkers, subprotocols, and treatment assignments are defined.</td>
+                              <td>Keep the main study design, substudy paths, and treatment arms clear. TS may need study-level descriptors; TA/TE should reflect planned treatment paths.</td>
+                              <td>Subject-level domains show biomarker status, cohort assignment, treatment received, and actual participation.</td>
+                              <td>Do not confuse biomarker group, disease cohort, treatment arm, and analysis subgroup. They may be different concepts.</td>
+                            </tr>
+                            <tr>
+                              <td>Protocol amendment changes design</td>
+                              <td>Check whether amendments added visits, changed treatment duration, opened new arms, closed arms, or changed eligibility.</td>
+                              <td>TDM should reflect the submitted study design with clear handling of amendment-driven paths or visit schedules.</td>
+                              <td>Subject-level data may show subjects enrolled under different protocol versions, handled through dates, visits, and reviewer explanations.</td>
+                              <td>Do not silently overwrite old design assumptions. If the amendment changes metadata, specs, TV, TA, TI, and reviewer notes may all need updates.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Trial Design Model mentor checklist">
+                          <thead>
+                            <tr>
+                              <th>Mentor Question</th>
+                              <th>Why It Matters</th>
+                              <th>Likely Domain Impact</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Is this concept planned by the protocol, or did it happen to one subject?</td>
+                              <td>This separates Trial Design metadata from subject-level observations.</td>
+                              <td>Planned: TA/TE/TV/TI/TS. Actual: SE/SV/DS/EX/AE/CM and other subject domains.</td>
+                            </tr>
+                            <tr>
+                              <td>Can two arms share the same element?</td>
+                              <td>Many designs reuse Screening, Follow-up, Washout, or Extension elements across arms.</td>
+                              <td>TE can define shared elements; TA orders them differently by arm.</td>
+                            </tr>
+                            <tr>
+                              <td>Does the visit exist because it was planned, or because the subject had an unscheduled assessment?</td>
+                              <td>TV is planned visit metadata; SV contains actual subject visits.</td>
+                              <td>TV for planned visits; SV for actual visits including unscheduled visits.</td>
+                            </tr>
+                            <tr>
+                              <td>Is the eligibility text the criterion itself, or the subject's answer?</td>
+                              <td>Protocol criteria and subject responses are different data concepts.</td>
+                              <td>TI for planned criteria; IE for subject-level inclusion/exclusion assessment.</td>
+                            </tr>
+                            <tr>
+                              <td>Would a reviewer understand the subject path from TA alone?</td>
+                              <td>TA describes the planned path, but SE often explains actual movement through elements.</td>
+                              <td>TA/TE for plan; SE for actual element history.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p class="document-notes">
+                        Mentor warning: Trial Design domains are metadata about the planned trial,
+                        not subject observations. If a new programmer tries to map TA, TE, TV, TI,
+                        or TS from a CRF field, pause and check the protocol and SDTM specification.
+                      </p>
+                    </section>
 
-                  <h4>3. Split Domains and SUPP-- Architecture</h4>
-                  <p>
-                    Real studies can produce very large datasets. SDTM supports standard ways to
-                    manage physical dataset size and nonstandard collected variables without
-                    breaking the model.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Split domains:</strong> If a domain such as QS or LB becomes too
-                      large for transport or operational limits, it may be physically split into
-                      datasets such as QSPH and QSSL. The parent domain remains the conceptual
-                      source.
-                    </li>
-                    <li>
-                      <strong>Supplemental qualifiers:</strong> If a valuable collected variable
-                      has no standard variable slot in the parent domain, do not add a nonstandard
-                      column to AE, CM, VS, or another domain. Place it in the appropriate SUPP--
-                      dataset, such as SUPPAE.
-                    </li>
-                    <li>
-                      <strong>SUPP-- structure:</strong> Programmers must understand key columns
-                      such as STUDYID, RDOMAIN, USUBJID, IDVAR, IDVARVAL, QNAM, QLABEL, and QVAL,
-                      and know how to transpose between flat source structures and vertical SUPP--
-                      records.
-                    </li>
-                  </ul>
+                    <section class="sdtm-module">
+                      <h5>Module 2. Special Purpose Domains</h5>
+                      <p>
+                        Special Purpose domains hold records that do not fit the ordinary
+                        Interventions, Events, or Findings pattern. They often provide the backbone
+                        for subject identity, comments, subject-level participation, and study
+                        visit structure.
+                      </p>
+                      <div class="sdtm-tag-row">
+                        <span class="sdtm-tag">DM</span>
+                        <span class="sdtm-tag">CO</span>
+                        <span class="sdtm-tag">SE</span>
+                        <span class="sdtm-tag">SV</span>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="SDTM special purpose domains">
+                          <thead>
+                            <tr>
+                              <th>Domain</th>
+                              <th>Plain-English Meaning</th>
+                              <th>Programmer Focus</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>DM</td>
+                              <td>Demographics: one record per subject.</td>
+                              <td>USUBJID, treatment assignment, RFSTDTC, RFENDTC, age, sex, race, country.</td>
+                            </tr>
+                            <tr>
+                              <td>CO</td>
+                              <td>Comments: free-text comments that need submission context.</td>
+                              <td>Do not overuse CO when a standard variable or SUPP-- structure is more appropriate.</td>
+                            </tr>
+                            <tr>
+                              <td>SE</td>
+                              <td>Subject Elements: actual subject progress through planned trial elements.</td>
+                              <td>Connect actual subject dates to TE elements; useful for complex designs.</td>
+                            </tr>
+                            <tr>
+                              <td>SV</td>
+                              <td>Subject Visits: actual visits and visit-level timing.</td>
+                              <td>Distinguish actual subject visits from planned TV metadata.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
 
-                  <h4>4. Controlled Terminology and Cleaning</h4>
-                  <p>
-                    Matching the variable name is not enough. The values must also be normalized so
-                    the dataset can be reviewed, validated, and reused downstream.
-                  </p>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="SDTM controlled terminology and cleaning">
-                      <thead>
-                        <tr>
-                          <th>Task</th>
-                          <th>What the Programmer Does</th>
-                          <th>Common Trap</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Codelist normalization</td>
-                          <td>Map raw values such as M, Male, or male to the approved CDISC CT value.</td>
-                          <td>Leaving site-specific text values in submission variables.</td>
-                        </tr>
-                        <tr>
-                          <td>ISO 8601 date handling</td>
-                          <td>Convert dates to --DTC format while preserving partial dates such as 2026-06.</td>
-                          <td>Imputing missing day or month in SDTM instead of waiting for ADaM SAP rules.</td>
-                        </tr>
-                        <tr>
-                          <td>Standard units</td>
-                          <td>Convert original results into --STRESN and --STRESC using approved standard units.</td>
-                          <td>Forgetting unit conversion, such as lbs to kg or inches to cm.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                    <section class="sdtm-module">
+                      <h5>Module 3. Interventions Domains</h5>
+                      <p>
+                        Interventions describe treatments, medications, exposures, or procedures
+                        administered to the subject. These domains usually answer: what was given,
+                        when it started, when it ended, how much, and by what route.
+                      </p>
+                      <div class="sdtm-tag-row">
+                        <span class="sdtm-tag">EX</span>
+                        <span class="sdtm-tag">EC</span>
+                        <span class="sdtm-tag">CM</span>
+                        <span class="sdtm-tag">PR</span>
+                      </div>
+                      <p>
+                        Common programming issues include partial medication dates, ongoing
+                        medications, dose unit conversion, route/frequency controlled terminology,
+                        IRT reconciliation, and duplicate medication rows.
+                      </p>
+                    </section>
 
-                  <h5>4.1 SAS Template: Mapping Raw Date Components to --DTC</h5>
-                  <p>
-                    Modern EDC systems often store dates as separate year, month, day, hour, and
-                    minute components. SDTM --DTC variables are character variables, so programmers
-                    must build ISO 8601 strings carefully while preserving partial dates.
-                  </p>
-                  <div class="code-window" aria-label="SAS ISO 8601 DTC mapping template">
-                    <div class="code-window-header">
-                      <span>SAS ISO 8601 Date Template</span>
-                      <span>--DTC</span>
-                    </div>
+                    <section class="sdtm-module">
+                      <h5>Module 4. Events Domains</h5>
+                      <p>
+                        Events describe things that happened to the subject, such as adverse
+                        events, medical history, disposition events, and protocol deviations.
+                        These domains usually have a topic term, start and end timing, seriousness
+                        or category qualifiers, and sometimes dictionary coding.
+                      </p>
+                      <div class="sdtm-tag-row">
+                        <span class="sdtm-tag">AE</span>
+                        <span class="sdtm-tag">MH</span>
+                        <span class="sdtm-tag">DS</span>
+                        <span class="sdtm-tag">DV</span>
+                        <span class="sdtm-tag">CE</span>
+                      </div>
+                      <p>
+                        AE and MH often depend on MedDRA coding. DS can include informed consent,
+                        randomization, completion, discontinuation, and death-related disposition
+                        records. Do not assume all DS records come from a single CRF page.
+                      </p>
+                    </section>
+
+                    <section class="sdtm-module">
+                      <h5>Module 5. Findings Domains</h5>
+                      <p>
+                        Findings domains store measurements, tests, questionnaire responses, and
+                        assessments. They usually follow a test/result structure: the test code
+                        identifies what was measured and result variables store what was observed.
+                      </p>
+                      <div class="sdtm-tag-row">
+                        <span class="sdtm-tag">LB</span>
+                        <span class="sdtm-tag">VS</span>
+                        <span class="sdtm-tag">EG</span>
+                        <span class="sdtm-tag">QS</span>
+                        <span class="sdtm-tag">FA</span>
+                        <span class="sdtm-tag">PC</span>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Findings test result pattern">
+                          <thead>
+                            <tr>
+                              <th>Concept</th>
+                              <th>Common Variables</th>
+                              <th>Example</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Test identity</td>
+                              <td>--TESTCD, --TEST</td>
+                              <td>VSTESTCD = SYSBP; VSTEST = Systolic Blood Pressure</td>
+                            </tr>
+                            <tr>
+                              <td>Original result</td>
+                              <td>--ORRES, --ORRESU</td>
+                              <td>VSORRES = 120; VSORRESU = mmHg</td>
+                            </tr>
+                            <tr>
+                              <td>Standardized result</td>
+                              <td>--STRESC, --STRESN, --STRESU</td>
+                              <td>LBSTRESN after unit normalization</td>
+                            </tr>
+                            <tr>
+                              <td>Timing</td>
+                              <td>--DTC, VISIT, VISITNUM</td>
+                              <td>VSDTC = 2026-06-28T09:15</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+
+                    <section class="sdtm-module">
+                      <h5>Module 6. Relationship and Supplemental Datasets</h5>
+                      <p>
+                        Relationship and supplemental datasets preserve traceability when the
+                        standard domain structure is not enough. They should solve a real metadata
+                        problem, not become a place to hide messy mapping.
+                      </p>
+                      <div class="sdtm-tag-row">
+                        <span class="sdtm-tag">SUPP--</span>
+                        <span class="sdtm-tag">RELREC</span>
+                        <span class="sdtm-tag">FA</span>
+                      </div>
+                      <ul>
+                        <li><strong>SUPP--:</strong> Store nonstandard qualifiers linked back to a parent domain record.</li>
+                        <li><strong>RELREC:</strong> Describe relationships between records across domains or within a domain.</li>
+                        <li><strong>FA:</strong> Findings About can describe findings about an event or intervention when appropriate.</li>
+                      </ul>
+                    </section>
+
+                    <section class="sdtm-module">
+                      <h5>Module 7. Variable Structural Roles</h5>
+                      <p>
+                        The first SDTM task is not to copy raw columns. It is to decide each
+                        variable's clinical role according to the SDTMIG.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="SDTM variable structural roles">
+                          <thead>
+                            <tr>
+                              <th>Role</th>
+                              <th>Plain-English Purpose</th>
+                              <th>Examples</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Identifier Variables</td>
+                              <td>Build the unique key system for the study and domain.</td>
+                              <td>STUDYID, DOMAIN, USUBJID. Do not rely only on site-level SUBJID.</td>
+                            </tr>
+                            <tr>
+                              <td>Topic Variables</td>
+                              <td>Define what each record is mainly about.</td>
+                              <td>AETERM in AE; VSTESTCD and VSTEST in VS.</td>
+                            </tr>
+                            <tr>
+                              <td>Result Qualifiers</td>
+                              <td>Store original and standardized results.</td>
+                              <td>VSORRES, VSORRESU, VSSTRESN, VSSTRESC.</td>
+                            </tr>
+                            <tr>
+                              <td>Synonym Qualifiers</td>
+                              <td>Store coded or dictionary-normalized terms.</td>
+                              <td>AEDECOD, AEBODSYS, MedDRA-coded values.</td>
+                            </tr>
+                            <tr>
+                              <td>Record Qualifiers</td>
+                              <td>Describe details around the topic record.</td>
+                              <td>AESEV, AESER, AEREL, VSPOS.</td>
+                            </tr>
+                            <tr>
+                              <td>Timing Variables</td>
+                              <td>Represent when the event, assessment, or intervention happened.</td>
+                              <td>AEDTC, VSDTC, --STDTC, --ENDTC using ISO 8601 where applicable.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+
+                    <section class="sdtm-module">
+                      <h5>Module 8. Controlled Terminology, Units, and Dates</h5>
+                      <p>
+                        Matching the variable name is not enough. Values must be normalized so the
+                        dataset can be reviewed, validated, and reused downstream.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="SDTM controlled terminology and cleaning">
+                          <thead>
+                            <tr>
+                              <th>Task</th>
+                              <th>What the Programmer Does</th>
+                              <th>Common Trap</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Codelist normalization</td>
+                              <td>Map raw values such as M, Male, or male to the approved CDISC CT value.</td>
+                              <td>Leaving site-specific text values in submission variables.</td>
+                            </tr>
+                            <tr>
+                              <td>ISO 8601 date handling</td>
+                              <td>Convert dates to --DTC format while preserving partial dates such as 2026-06.</td>
+                              <td>Imputing missing day or month in SDTM instead of waiting for ADaM SAP rules.</td>
+                            </tr>
+                            <tr>
+                              <td>Standard units</td>
+                              <td>Convert original results into --STRESN and --STRESC using approved standard units.</td>
+                              <td>Forgetting unit conversion, such as lbs to kg or inches to cm.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+
+                    <section class="sdtm-module">
+                      <h5>Module 9. SAS Template: Mapping Raw Date Components to --DTC</h5>
+                      <p>
+                        Modern EDC systems often store dates as separate year, month, day, hour,
+                        and minute components. SDTM --DTC variables are character variables, so
+                        programmers must build ISO 8601 strings carefully while preserving partial
+                        dates.
+                      </p>
+                      <div class="code-window" aria-label="SAS ISO 8601 DTC mapping template">
+                        <div class="code-window-header">
+                          <span>SAS ISO 8601 Date Template</span>
+                          <span>--DTC</span>
+                        </div>
 <pre><code>/*****************************************************************************
 * Purpose: Build an ISO 8601 compliant SDTM --DTC value from raw eCRF
 *          date/time components.
@@ -2977,39 +4623,41 @@ data sdtm_ae(drop=_:);
   end;
   else AEDTC = "";
 run;</code></pre>
-                  </div>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="ISO 8601 DTC code review rules">
-                      <thead>
-                        <tr>
-                          <th>Review Rule</th>
-                          <th>Why It Matters</th>
-                          <th>Common Mistake</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Use z2. and z4. formats</td>
-                          <td>ISO 8601 requires two-digit months and days, such as 2026-01-05.</td>
-                          <td>Using a simple PUT format that creates 2026-1-5.</td>
-                        </tr>
-                        <tr>
-                          <td>Use the T separator for time</td>
-                          <td>A full datetime should look like 2026-06-28T14:30.</td>
-                          <td>Joining date and time with a blank, or appending time to a partial date.</td>
-                        </tr>
-                        <tr>
-                          <td>Preserve partial dates in SDTM</td>
-                          <td>SDTM should keep incomplete dates such as 2026 or 2026-06 when the site did not provide full detail.</td>
-                          <td>Guessing missing day or month in SDTM instead of leaving imputation to ADaM rules.</td>
-                        </tr>
-                        <tr>
-                          <td>Reject impossible combinations</td>
-                          <td>A day without a month cannot be placed on a valid timeline.</td>
-                          <td>Creating invalid strings such as 2026--12; the safer output is 2026.</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                      </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="ISO 8601 DTC code review rules">
+                          <thead>
+                            <tr>
+                              <th>Review Rule</th>
+                              <th>Why It Matters</th>
+                              <th>Common Mistake</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Use z2. and z4. formats</td>
+                              <td>ISO 8601 requires two-digit months and days, such as 2026-01-05.</td>
+                              <td>Using a simple PUT format that creates 2026-1-5.</td>
+                            </tr>
+                            <tr>
+                              <td>Use the T separator for time</td>
+                              <td>A full datetime should look like 2026-06-28T14:30.</td>
+                              <td>Joining date and time with a blank, or appending time to a partial date.</td>
+                            </tr>
+                            <tr>
+                              <td>Preserve partial dates in SDTM</td>
+                              <td>SDTM should keep incomplete dates such as 2026 or 2026-06 when the site did not provide full detail.</td>
+                              <td>Guessing missing day or month in SDTM instead of leaving imputation to ADaM rules.</td>
+                            </tr>
+                            <tr>
+                              <td>Reject impossible combinations</td>
+                              <td>A day without a month cannot be placed on a valid timeline.</td>
+                              <td>Creating invalid strings such as 2026--12; the safer output is 2026.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
                   </div>
                 </article>
               </details>
@@ -3404,7 +5052,7 @@ run;</code></pre>
                 reporting story.
               </p>
               <div class="mock-document">
-                <h5>Example Shell Naming Pattern</h5>
+                <h5>Example ICH E3 Appendix and Shell Naming Pattern</h5>
                 <div class="table-scroll">
                   <table class="crf-table" aria-label="Example E3 shell naming pattern">
                     <thead>
@@ -3426,9 +5074,49 @@ run;</code></pre>
                         <td>Study Subjects / baseline comparability</td>
                       </tr>
                       <tr>
+                        <td>Table 14.1.3</td>
+                        <td>Analysis Populations</td>
+                        <td>Study Subjects / population definition support</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.1.4</td>
+                        <td>Important Protocol Deviations</td>
+                        <td>Study Subjects / protocol compliance support</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.1.5</td>
+                        <td>Medical History and Baseline Disease Characteristics</td>
+                        <td>Study Subjects / disease context and baseline comparability</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.1.6</td>
+                        <td>Prior and Concomitant Medications</td>
+                        <td>Study Subjects or Safety Evaluation / medication context</td>
+                      </tr>
+                      <tr>
                         <td>Table 14.2.1</td>
                         <td>Primary Efficacy Analysis</td>
                         <td>Efficacy Evaluation / primary endpoint</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.2.2</td>
+                        <td>Secondary Efficacy Analysis</td>
+                        <td>Efficacy Evaluation / key secondary endpoints</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.2.3</td>
+                        <td>Sensitivity Analysis of the Primary Endpoint</td>
+                        <td>Efficacy Evaluation / robustness of primary conclusion</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.2.4</td>
+                        <td>Subgroup Analysis of the Primary Endpoint</td>
+                        <td>Efficacy Evaluation / consistency across clinically important subgroups</td>
+                      </tr>
+                      <tr>
+                        <td>Figure 14.2.x</td>
+                        <td>Forest Plot or Time-Course Plot for Efficacy Endpoint</td>
+                        <td>Efficacy Evaluation / graphical endpoint interpretation</td>
                       </tr>
                       <tr>
                         <td>Table 14.3.1</td>
@@ -3436,13 +5124,265 @@ run;</code></pre>
                         <td>Safety Evaluation / adverse events</td>
                       </tr>
                       <tr>
+                        <td>Table 14.3.2</td>
+                        <td>Extent of Exposure</td>
+                        <td>Safety Evaluation / treatment exposure</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.3</td>
+                        <td>Treatment-Emergent Adverse Events by System Organ Class and Preferred Term</td>
+                        <td>Safety Evaluation / AE body-system and term summary</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.4</td>
+                        <td>Treatment-Related Adverse Events</td>
+                        <td>Safety Evaluation / investigator causality assessment</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.5</td>
+                        <td>Serious Adverse Events</td>
+                        <td>Safety Evaluation / serious safety events</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.6</td>
+                        <td>Adverse Events Leading to Study Drug Discontinuation</td>
+                        <td>Safety Evaluation / tolerability and discontinuation support</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.7</td>
+                        <td>Deaths</td>
+                        <td>Safety Evaluation / mortality support</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.8</td>
+                        <td>Laboratory Test Results: Summary and Change from Baseline</td>
+                        <td>Safety Evaluation / laboratory safety interpretation</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.9</td>
+                        <td>Potentially Clinically Significant Laboratory Abnormalities</td>
+                        <td>Safety Evaluation / laboratory outlier support</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.10</td>
+                        <td>Vital Signs: Summary and Change from Baseline</td>
+                        <td>Safety Evaluation / vital sign safety interpretation</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.11</td>
+                        <td>ECG Parameters: Summary and Change from Baseline</td>
+                        <td>Safety Evaluation / cardiac safety support</td>
+                      </tr>
+                      <tr>
+                        <td>Table 14.3.12</td>
+                        <td>QTc Categorical Outliers</td>
+                        <td>Safety Evaluation / QT and cardiac repolarization support</td>
+                      </tr>
+                      <tr>
+                        <td>Figure 14.3.x</td>
+                        <td>Mean Change from Baseline in QTc Over Time</td>
+                        <td>Safety Evaluation / graphical cardiac safety interpretation</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.1</td>
+                        <td>Protocol and Protocol Amendments</td>
+                        <td>Study information / approved study design</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.2</td>
+                        <td>Sample Case Report Form, Unique Pages Only</td>
+                        <td>Study information / source data collection design</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.3</td>
+                        <td>List of IECs or IRBs and Patient Information or Consent Forms</td>
+                        <td>Study information / ethics documentation</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.4</td>
+                        <td>Investigators and Other Important Participants</td>
+                        <td>Study information / site and investigator documentation</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.5</td>
+                        <td>Signatures of Principal or Coordinating Investigator or Sponsor Medical Officer</td>
+                        <td>Study information / report accountability</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.1.6</td>
+                        <td>Patients Receiving Test Drug from Specific Batches, Where More Than One Batch Was Used</td>
+                        <td>Study information / investigational product traceability</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.7</td>
+                        <td>Randomization Scheme and Codes</td>
+                        <td>Study information / treatment assignment support</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.8</td>
+                        <td>Audit Certificates, If Available</td>
+                        <td>Study information / audit documentation</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.9</td>
+                        <td>Documentation of Statistical Methods</td>
+                        <td>Study information / statistical programming and analysis support</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.10</td>
+                        <td>Inter-Laboratory Standardization Methods and Quality Assurance Procedures, If Used</td>
+                        <td>Study information / lab comparability and data quality</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.11</td>
+                        <td>Publications Based on the Study</td>
+                        <td>Study information / publication support</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.1.12</td>
+                        <td>Important Publications Referenced in the Report</td>
+                        <td>Study information / reference support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.1</td>
+                        <td>Discontinued Subjects</td>
+                        <td>Subject Data Listings / disposition support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.2</td>
+                        <td>Protocol Deviations</td>
+                        <td>Subject Data Listings / protocol compliance support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.3</td>
+                        <td>Subjects Excluded from Efficacy Analysis</td>
+                        <td>Subject Data Listings / analysis set support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.4</td>
+                        <td>Demographic and Baseline Data</td>
+                        <td>Subject Data Listings / baseline support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.5</td>
+                        <td>Treatment Compliance or Drug Concentration Data</td>
+                        <td>Subject Data Listings / exposure and compliance support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.6</td>
+                        <td>Individual Efficacy Response Data</td>
+                        <td>Subject Data Listings / efficacy support</td>
+                      </tr>
+                      <tr>
                         <td>Listing 16.2.7</td>
                         <td>Adverse Events</td>
-                        <td>Subject Data Listings / patient-level support</td>
+                        <td>Subject Data Listings / safety support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.8</td>
+                        <td>Laboratory Measurements and Abnormal Laboratory Values</td>
+                        <td>Subject Data Listings / laboratory safety support</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.3.1</td>
+                        <td>CRFs for Deaths, Other Serious Adverse Events, and Withdrawals for AE</td>
+                        <td>Case Report Forms / selected source record support</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.3.2</td>
+                        <td>Other CRFs Submitted</td>
+                        <td>Case Report Forms / additional submitted source records</td>
+                      </tr>
+                      <tr>
+                        <td>Appendix 16.4</td>
+                        <td>Individual Patient Data Listings, US Archival Listings</td>
+                        <td>Regional appendix / complete patient-level archival listings</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.x</td>
+                        <td>Vital Signs</td>
+                        <td>Subject Data Listings / additional safety support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.x</td>
+                        <td>ECG Findings</td>
+                        <td>Subject Data Listings / cardiac safety support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.x</td>
+                        <td>Exposure</td>
+                        <td>Subject Data Listings / treatment exposure support</td>
+                      </tr>
+                      <tr>
+                        <td>Listing 16.2.x</td>
+                        <td>Concomitant Medications</td>
+                        <td>Subject Data Listings / concomitant therapy support</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
+                <p class="document-notes">
+                  Appendix 16.1, 16.2, 16.3, and 16.4 are from the ICH E3 appendix structure.
+                  The 16.2.x rows at the end are common study-specific extensions, not fixed ICH
+                  E3 item numbers. Always follow the approved sponsor shell table of contents.
+                </p>
+              </div>
+
+              <div class="mock-document">
+                <h5>Official Guidance Behind Common Table Shells</h5>
+                <div class="table-scroll">
+                  <table class="crf-table" aria-label="Official guidance behind statistical table shells">
+                    <thead>
+                      <tr>
+                        <th>Official Source</th>
+                        <th>What It Influences</th>
+                        <th>Common Table or Figure Impact</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>ICH E3 Structure and Content of Clinical Study Reports</td>
+                        <td>CSR organization, efficacy and safety narrative, Section 14 displays, and Appendix 16 materials.</td>
+                        <td>Disposition, demographics, efficacy, safety, listings, CRFs, and appendix support.</td>
+                      </tr>
+                      <tr>
+                        <td>ICH E9 Statistical Principles for Clinical Trials</td>
+                        <td>Analysis sets, multiplicity, sample size, bias control, endpoint interpretation, and planned analyses.</td>
+                        <td>Analysis population tables, primary and secondary endpoint tables, multiplicity-controlled testing tables.</td>
+                      </tr>
+                      <tr>
+                        <td>ICH E9(R1) Estimands and Sensitivity Analysis</td>
+                        <td>Treatment condition, population, variable, intercurrent events, summary measure, and sensitivity strategy.</td>
+                        <td>Estimand-aligned primary analysis, sensitivity analysis, supplementary analysis, and subgroup displays.</td>
+                      </tr>
+                      <tr>
+                        <td>ICH E14 QT/QTc Evaluation</td>
+                        <td>Cardiac repolarization safety, QTc central tendency, categorical outliers, and time-course interpretation.</td>
+                        <td>QTc summary tables, categorical QTc outlier tables, and mean change from baseline QTc figures.</td>
+                      </tr>
+                      <tr>
+                        <td>FDA Multiple Endpoints in Clinical Trials Guidance</td>
+                        <td>Type I error control and endpoint hierarchy when multiple endpoints support conclusions.</td>
+                        <td>Endpoint hierarchy tables, adjusted p-value tables, gatekeeping summaries, and family-wise testing displays.</td>
+                      </tr>
+                      <tr>
+                        <td>FDA Adaptive Design Clinical Trials Guidance</td>
+                        <td>Preplanned adaptations, interim decision rules, operating characteristics, and trial integrity.</td>
+                        <td>Interim/adaptation summary tables, simulation summaries, and analysis integrity documentation.</td>
+                      </tr>
+                      <tr>
+                        <td>FDA Enrichment Strategies Guidance</td>
+                        <td>Eligibility enrichment, biomarker-defined populations, and interpretation of treatment effect.</td>
+                        <td>Screening disposition, biomarker subgroup, enriched population, and subgroup consistency tables.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="document-notes">
+                  These official documents do not dictate every sponsor's exact shell number.
+                  They explain why specific tables are needed and what scientific or regulatory
+                  question each table should answer.
+                </p>
               </div>
 
               <h4>3. FDA Guidance Often Used in Statistical Thinking</h4>
