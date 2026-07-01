@@ -356,6 +356,78 @@
       margin-top: 12px;
     }
 
+    .acronym-panel {
+      margin: 22px 0 26px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
+        rgba(255, 250, 248, 0.58);
+      overflow: hidden;
+    }
+
+    .acronym-panel > summary {
+      position: relative;
+      display: grid;
+      gap: 5px;
+      padding: 16px 54px 16px 20px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .acronym-panel > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .acronym-panel > summary::after {
+      content: ">";
+      position: absolute;
+      top: 16px;
+      right: 28px;
+      color: var(--sand);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1;
+      transform: rotate(90deg);
+      transition: transform 0.2s ease;
+    }
+
+    .acronym-panel[open] > summary::after {
+      transform: rotate(-90deg);
+    }
+
+    .acronym-title {
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 2.4vw, 32px);
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .acronym-note {
+      color: #80695f;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .acronym-content {
+      padding: 0 20px 22px;
+    }
+
+    .acronym-content h5 {
+      margin: 20px 0 10px;
+      color: #4b3a36;
+      font-size: 16px;
+    }
+
+    .acronym-table td:first-child,
+    .acronym-table th:first-child {
+      width: 18%;
+      white-space: nowrap;
+      font-weight: 800;
+      color: #435e5b;
+    }
+
     .training-item {
       border: 1px solid rgba(200, 157, 132, 0.28);
       border-radius: 6px;
@@ -1320,6 +1392,59 @@
       color: #435e5b;
     }
 
+    .mini-crossover-svg {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      margin-top: 8px;
+      overflow: visible;
+    }
+
+    .mini-crossover-svg .mini-design-line {
+      fill: none;
+      stroke: #435e5b;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .mini-crossover-svg marker path {
+      fill: #435e5b;
+    }
+
+    .mini-crossover-svg .mini-random {
+      fill: #fffdf7;
+      stroke: #435e5b;
+      stroke-width: 2;
+    }
+
+    .mini-crossover-svg .mini-random-text,
+    .mini-crossover-svg .mini-arm-text,
+    .mini-crossover-svg .mini-washout-text {
+      font-family: inherit;
+      font-weight: 800;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .mini-crossover-svg .mini-random-text,
+    .mini-crossover-svg .mini-arm-text {
+      fill: #435e5b;
+      font-size: 15px;
+    }
+
+    .mini-crossover-svg .mini-washout-box {
+      fill: #1f5579;
+      stroke: #243634;
+      stroke-width: 2;
+    }
+
+    .mini-crossover-svg .mini-washout-text {
+      fill: #fffdf7;
+      font-size: 14px;
+    }
+
     .branch-stack {
       display: grid;
       gap: 8px;
@@ -2099,6 +2224,214 @@
                 clinical research setting to source data, analysis datasets, outputs, and quality
                 control.
               </p>
+              <details class="acronym-panel">
+                <summary>
+                  <span class="acronym-title">List of Acronyms</span>
+                  <span class="acronym-note">Use this as a quick reference while reading the lessons. Core abbreviations are expanded at first use, then reused in their short form.</span>
+                </summary>
+                <div class="acronym-content">
+                  <h5>Regulatory, Submission, and Programming Workflow</h5>
+                  <div class="table-scroll">
+                    <table class="crf-table acronym-table" aria-label="Regulatory and workflow acronyms">
+                      <thead>
+                        <tr>
+                          <th>Acronym</th>
+                          <th>Full Term</th>
+                          <th>What New Programmers Should Remember</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>21 CFR</td><td>Title 21 of the Code of Federal Regulations</td><td>U.S. regulation framework; Part 11 is about electronic records and electronic signatures.</td></tr>
+                        <tr><td>ADRG</td><td>Analysis Data Reviewer's Guide</td><td>Explains ADaM datasets, analysis choices, validation issues, and reviewer context.</td></tr>
+                        <tr><td>CSR</td><td>Clinical Study Report</td><td>The final study report where TFL outputs support efficacy, safety, and interpretation.</td></tr>
+                        <tr><td>EMA</td><td>European Medicines Agency</td><td>European regulatory agency; often referenced with Annex 11 and submission expectations.</td></tr>
+                        <tr><td>FDA</td><td>U.S. Food and Drug Administration</td><td>Major regulatory reviewer for U.S. submissions.</td></tr>
+                        <tr><td>GCP</td><td>Good Clinical Practice</td><td>Quality and ethics standard for clinical trial conduct, data integrity, and reporting.</td></tr>
+                        <tr><td>GDPR</td><td>General Data Protection Regulation</td><td>European privacy regulation for personal data protection.</td></tr>
+                        <tr><td>HIPAA</td><td>Health Insurance Portability and Accountability Act</td><td>U.S. privacy regulation relevant to protected health information.</td></tr>
+                        <tr><td>ICH</td><td>International Council for Harmonisation</td><td>Global guideline body; E3, E6, E8, E9, and E14 appear throughout clinical work.</td></tr>
+                        <tr><td>P21</td><td>Pinnacle 21</td><td>Validation tool used to check SDTM, ADaM, Define.xml, and submission metadata rules.</td></tr>
+                        <tr><td>PHI</td><td>Protected Health Information</td><td>Patient-identifying information that requires strict privacy and access controls.</td></tr>
+                        <tr><td>QC</td><td>Quality Control</td><td>Independent checks, log review, compare checks, and review processes that protect output quality.</td></tr>
+                        <tr><td>SDRG</td><td>Study Data Reviewer's Guide</td><td>Explains SDTM datasets, data issues, standards decisions, and validation explanations.</td></tr>
+                        <tr><td>SOP</td><td>Standard Operating Procedure</td><td>Company-controlled procedure that governs how regulated work must be done.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h5>Core Documents, Systems, and Output Terms</h5>
+                  <div class="table-scroll">
+                    <table class="crf-table acronym-table" aria-label="Clinical document acronyms">
+                      <thead>
+                        <tr>
+                          <th>Acronym</th>
+                          <th>Full Term</th>
+                          <th>What New Programmers Should Remember</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>aCRF</td><td>Annotated Case Report Form</td><td>Visual map from collected CRF fields to SDTM variables and domains.</td></tr>
+                        <tr><td>CRF</td><td>Case Report Form</td><td>The form used to collect clinical study data from sites or study systems.</td></tr>
+                        <tr><td>DTS</td><td>Data Transfer Specification</td><td>Vendor file specification describing layout, variables, formats, timing, and transfer rules.</td></tr>
+                        <tr><td>eCRF</td><td>Electronic Case Report Form</td><td>Electronic version of the CRF used in an EDC system.</td></tr>
+                        <tr><td>EDC</td><td>Electronic Data Capture</td><td>System used by sites and data management to collect clinical data.</td></tr>
+                        <tr><td>ePRO</td><td>Electronic Patient-Reported Outcome</td><td>Patient-entered source data, often transferred from a vendor instead of collected in EDC.</td></tr>
+                        <tr><td>PRO</td><td>Patient-Reported Outcome</td><td>Assessment reported directly by the patient.</td></tr>
+                        <tr><td>SAP</td><td>Statistical Analysis Plan</td><td>Study-level analysis rulebook for populations, endpoints, methods, and output planning.</td></tr>
+                        <tr><td>TFL / TLF</td><td>Tables, Figures, and Listings / Tables, Listings, and Figures</td><td>Final reporting outputs. Some teams say TFL, others say TLF; this site uses both where context requires.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h5>CDISC Standards and Controlled Terminology</h5>
+                  <div class="table-scroll">
+                    <table class="crf-table acronym-table" aria-label="CDISC standards acronyms">
+                      <thead>
+                        <tr>
+                          <th>Acronym</th>
+                          <th>Full Term</th>
+                          <th>What New Programmers Should Remember</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>ADaM</td><td>Analysis Data Model</td><td>CDISC standard for analysis-ready datasets used to generate TFLs.</td></tr>
+                        <tr><td>BDS</td><td>Basic Data Structure</td><td>Common ADaM structure used for many analysis parameter datasets.</td></tr>
+                        <tr><td>CDASH</td><td>Clinical Data Acquisition Standards Harmonization</td><td>CDISC collection standard for CRF data capture.</td></tr>
+                        <tr><td>CDISC</td><td>Clinical Data Interchange Standards Consortium</td><td>Standards organization behind CDASH, SDTM, ADaM, controlled terminology, and metadata standards.</td></tr>
+                        <tr><td>CT</td><td>Controlled Terminology</td><td>Approved terms and codelists that prevent private recoding.</td></tr>
+                        <tr><td>ISO 8601</td><td>International date/time representation standard</td><td>Standard format used for SDTM character dates such as YYYY-MM-DD and partial dates.</td></tr>
+                        <tr><td>MedDRA</td><td>Medical Dictionary for Regulatory Activities</td><td>Coding dictionary for adverse events and medical history.</td></tr>
+                        <tr><td>MSG</td><td>Metadata Submission Guideline</td><td>CDISC guidance for metadata submission and aCRF annotation expectations.</td></tr>
+                        <tr><td>SDTM</td><td>Study Data Tabulation Model</td><td>CDISC standard for tabulation datasets describing what happened in the trial.</td></tr>
+                        <tr><td>SDTMIG</td><td>SDTM Implementation Guide</td><td>Domain-specific implementation rules for SDTM datasets.</td></tr>
+                        <tr><td>WHODrug</td><td>World Health Organization Drug Dictionary</td><td>Coding dictionary commonly used for concomitant medications.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h5>Common SDTM Domains and Trial Design Domains</h5>
+                  <div class="table-scroll">
+                    <table class="crf-table acronym-table" aria-label="SDTM domain acronyms">
+                      <thead>
+                        <tr>
+                          <th>Acronym</th>
+                          <th>Full Term</th>
+                          <th>What New Programmers Should Remember</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>AE</td><td>Adverse Events</td><td>Safety event domain; common source for ADAE and safety tables.</td></tr>
+                        <tr><td>CM</td><td>Concomitant Medications</td><td>Medication domain usually supported by WHODrug coding.</td></tr>
+                        <tr><td>DM</td><td>Demographics</td><td>Special-purpose subject-level domain with one record per subject.</td></tr>
+                        <tr><td>DS</td><td>Disposition</td><td>Subject disposition events such as completion, discontinuation, or informed consent milestones.</td></tr>
+                        <tr><td>EX</td><td>Exposure</td><td>Actual treatment administration records.</td></tr>
+                        <tr><td>IE</td><td>Inclusion/Exclusion Criteria Not Met</td><td>Subject-level eligibility exceptions.</td></tr>
+                        <tr><td>LB</td><td>Laboratory Tests</td><td>Lab findings domain; often transferred from a central lab vendor.</td></tr>
+                        <tr><td>MH</td><td>Medical History</td><td>Medical history domain, often coded with MedDRA.</td></tr>
+                        <tr><td>QS</td><td>Questionnaires</td><td>Questionnaire findings, including some patient-reported outcomes.</td></tr>
+                        <tr><td>SC</td><td>Subject Characteristics</td><td>Subject-level characteristics that are not core DM variables.</td></tr>
+                        <tr><td>SE</td><td>Subject Elements</td><td>Actual subject movement through planned trial elements.</td></tr>
+                        <tr><td>SV</td><td>Subject Visits</td><td>Actual subject visits, including missed or unscheduled visits.</td></tr>
+                        <tr><td>SUPP--</td><td>Supplemental Qualifiers</td><td>Vertical structure for non-standard qualifiers that do not fit a parent SDTM domain.</td></tr>
+                        <tr><td>TA</td><td>Trial Arms</td><td>Planned arm paths through elements and epochs. Trial design domains are not mapped from CRF fields.</td></tr>
+                        <tr><td>TDM</td><td>Trial Design Model</td><td>SDTM design package describing planned elements, arms, visits, criteria, and study metadata.</td></tr>
+                        <tr><td>TE</td><td>Trial Elements</td><td>Planned study elements such as screening, run-in, treatment, washout, and follow-up.</td></tr>
+                        <tr><td>TI</td><td>Trial Inclusion/Exclusion Criteria</td><td>Protocol-defined eligibility criteria.</td></tr>
+                        <tr><td>TS</td><td>Trial Summary</td><td>Study-level summary parameters for submission metadata.</td></tr>
+                        <tr><td>TV</td><td>Trial Visits</td><td>Planned visit structure and timing windows.</td></tr>
+                        <tr><td>VS</td><td>Vital Signs</td><td>Findings domain for measurements such as blood pressure, weight, height, and temperature.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h5>ADaM Datasets and Frequent Analysis Variables</h5>
+                  <div class="table-scroll">
+                    <table class="crf-table acronym-table" aria-label="ADaM dataset and variable acronyms">
+                      <thead>
+                        <tr>
+                          <th>Acronym</th>
+                          <th>Full Term</th>
+                          <th>What New Programmers Should Remember</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>ADAE</td><td>ADaM Adverse Events</td><td>Analysis-ready adverse event dataset.</td></tr>
+                        <tr><td>ADAEDIFF</td><td>ADaM Adverse Event Difference Dataset</td><td>Custom or study-specific analysis dataset for AE difference-style summaries.</td></tr>
+                        <tr><td>ADEG</td><td>ADaM Electrocardiogram Dataset</td><td>Analysis-ready ECG dataset, often used for QT/QTc analyses.</td></tr>
+                        <tr><td>ADLB</td><td>ADaM Laboratory Dataset</td><td>Analysis-ready lab dataset.</td></tr>
+                        <tr><td>ADSL</td><td>Subject-Level Analysis Dataset</td><td>One record per subject; foundation for populations, treatment, and key dates.</td></tr>
+                        <tr><td>ADVS</td><td>ADaM Vital Signs Dataset</td><td>Analysis-ready vital signs dataset.</td></tr>
+                        <tr><td>ABLFL</td><td>Analysis Baseline Flag</td><td>Marks the record selected as analysis baseline.</td></tr>
+                        <tr><td>ADT</td><td>Analysis Date</td><td>Numeric SAS analysis date used in ADaM derivations.</td></tr>
+                        <tr><td>APHASE</td><td>Analysis Phase</td><td>Broad analysis phase such as screening, treatment, or follow-up.</td></tr>
+                        <tr><td>APERIOD / APERIODC</td><td>Analysis Period / Analysis Period Character</td><td>Period assignment used heavily in crossover and multi-period studies.</td></tr>
+                        <tr><td>ASPER / ASPERC</td><td>Analysis Subperiod / Analysis Subperiod Character</td><td>Finer assignment inside an analysis period.</td></tr>
+                        <tr><td>AVAL / AVALC</td><td>Analysis Value / Analysis Value Character</td><td>Numeric and character analysis result variables.</td></tr>
+                        <tr><td>AVISIT</td><td>Analysis Visit</td><td>Analysis-facing visit label, which may differ from raw visit names.</td></tr>
+                        <tr><td>BASE</td><td>Baseline Value</td><td>Baseline used for change-from-baseline calculations.</td></tr>
+                        <tr><td>CHG</td><td>Change from Baseline</td><td>Derived value commonly calculated as AVAL minus BASE.</td></tr>
+                        <tr><td>PARAM / PARAMCD</td><td>Parameter / Parameter Code</td><td>Analysis parameter label and short code.</td></tr>
+                        <tr><td>TRTA / TRTxxA</td><td>Actual Treatment / Actual Treatment by Period</td><td>Treatment actually received or assigned for analysis.</td></tr>
+                        <tr><td>TRTxxP</td><td>Planned Treatment by Period</td><td>Planned treatment for period xx, such as TRT01P and TRT02P.</td></tr>
+                        <tr><td>TRTSEQA / TRTSEQP</td><td>Actual / Planned Treatment Sequence</td><td>Treatment sequence variables often used in crossover designs.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h5>Common SDTM Variable Fragments and Safety Terms</h5>
+                  <div class="table-scroll">
+                    <table class="crf-table acronym-table" aria-label="Common variable acronyms">
+                      <thead>
+                        <tr>
+                          <th>Acronym</th>
+                          <th>Full Term</th>
+                          <th>What New Programmers Should Remember</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>--DTC</td><td>Character Date/Time</td><td>SDTM ISO 8601 character date/time variable pattern, such as AEDTC or VSDTC.</td></tr>
+                        <tr><td>--ORRES</td><td>Original Result</td><td>Collected result before standardization, such as VSORRES or LBORRES.</td></tr>
+                        <tr><td>--SEQ</td><td>Sequence Number</td><td>Program-derived record sequence within a subject and domain; not mapped from CRF fields.</td></tr>
+                        <tr><td>--STRESC / --STRESN</td><td>Standardized Result Character / Numeric</td><td>Standardized result values after unit conversion or controlled format rules.</td></tr>
+                        <tr><td>AEDECOD</td><td>Dictionary-Derived Term</td><td>MedDRA preferred term for an adverse event.</td></tr>
+                        <tr><td>AEBODSYS</td><td>Body System or Organ Class</td><td>MedDRA system organ class used for AE grouping.</td></tr>
+                        <tr><td>AESER</td><td>Serious Event Flag</td><td>Indicates whether an adverse event is serious.</td></tr>
+                        <tr><td>AESEV</td><td>Severity / Intensity</td><td>Adverse event severity, usually controlled terminology.</td></tr>
+                        <tr><td>AETERM</td><td>Reported Term for the Adverse Event</td><td>Verbatim or collected adverse event term.</td></tr>
+                        <tr><td>DOMAIN</td><td>Domain Abbreviation</td><td>Two-letter SDTM domain code such as AE, DM, LB, or VS.</td></tr>
+                        <tr><td>IDVAR / IDVARVAL</td><td>Identifying Variable / Identifying Variable Value</td><td>SUPP-- variables that point back to the parent domain record.</td></tr>
+                        <tr><td>QNAM / QLABEL / QVAL</td><td>Qualifier Name / Label / Value</td><td>SUPP-- variables used to store supplemental qualifiers.</td></tr>
+                        <tr><td>SOC / PT</td><td>System Organ Class / Preferred Term</td><td>MedDRA hierarchy levels used in safety summaries.</td></tr>
+                        <tr><td>STUDYID</td><td>Study Identifier</td><td>Study-level identifier in SDTM and ADaM datasets.</td></tr>
+                        <tr><td>TRTEMFL</td><td>Treatment-Emergent Analysis Flag</td><td>ADaM flag identifying treatment-emergent adverse events.</td></tr>
+                        <tr><td>USUBJID</td><td>Unique Subject Identifier</td><td>Study-wide unique subject key used across SDTM and ADaM.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h5>Other Clinical and Safety Terms</h5>
+                  <div class="table-scroll">
+                    <table class="crf-table acronym-table" aria-label="Other clinical acronyms">
+                      <thead>
+                        <tr>
+                          <th>Acronym</th>
+                          <th>Full Term</th>
+                          <th>What New Programmers Should Remember</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>ATC</td><td>Anatomical Therapeutic Chemical Classification</td><td>WHODrug-related medication classification often used for concomitant medication summaries.</td></tr>
+                        <tr><td>DHT</td><td>Digital Health Technology</td><td>Device or technology source that may produce external clinical data.</td></tr>
+                        <tr><td>ECG</td><td>Electrocardiogram</td><td>Cardiac safety data source used in EG/ADEG and QT analyses.</td></tr>
+                        <tr><td>MAD</td><td>Multiple Ascending Dose</td><td>Early-phase design with escalating repeated doses.</td></tr>
+                        <tr><td>QT / QTc / QTcF</td><td>QT Interval / Corrected QT / Fridericia-Corrected QT</td><td>Cardiac repolarization measures often analyzed under ICH E14 thinking.</td></tr>
+                        <tr><td>SAD</td><td>Single Ascending Dose</td><td>Early-phase design with escalating single doses.</td></tr>
+                        <tr><td>SMART</td><td>Sequential Multiple Assignment Randomized Trial</td><td>Adaptive design where later treatment paths may depend on earlier response.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
               <div class="training-list">
               <details class="training-item">
                 <summary>
@@ -5382,8 +5715,30 @@ run;</code></pre>
                       </div>
                       <div class="design-card">
                         <strong>Crossover Study Design</strong>
-                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">A</span><span class="epoch-pill pill-rest">Washout</span><span class="arm-label">B</span></div>
-                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">B</span><span class="epoch-pill pill-rest">Washout</span><span class="arm-label">A</span></div>
+                        <svg class="mini-crossover-svg" viewBox="0 0 330 120" role="img" aria-label="Crossover design: A crosses to B after washout, and B crosses to A after washout">
+                          <defs>
+                            <marker id="miniArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                              <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                            </marker>
+                          </defs>
+                          <circle class="mini-random" cx="25" cy="60" r="17"></circle>
+                          <text class="mini-random-text" x="25" y="65">R</text>
+                          <path class="mini-design-line" d="M42 60 H74"></path>
+                          <path class="mini-design-line" d="M74 60 V34"></path>
+                          <path class="mini-design-line" d="M74 60 V86"></path>
+                          <path class="mini-design-line" d="M74 34 H118" marker-end="url(#miniArrow)"></path>
+                          <path class="mini-design-line" d="M74 86 H118" marker-end="url(#miniArrow)"></path>
+                          <text class="mini-arm-text" x="128" y="39">A</text>
+                          <text class="mini-arm-text" x="128" y="91">B</text>
+                          <rect class="mini-washout-box" x="186" y="43" width="78" height="34" rx="4"></rect>
+                          <text class="mini-washout-text" x="225" y="65">Wash-out</text>
+                          <path class="mini-design-line" d="M148 35 C165 35 170 48 186 54"></path>
+                          <path class="mini-design-line" d="M148 86 C165 86 170 72 186 66"></path>
+                          <path class="mini-design-line" d="M264 54 C280 48 285 35 304 35" marker-end="url(#miniArrow)"></path>
+                          <path class="mini-design-line" d="M264 66 C280 72 285 86 304 86" marker-end="url(#miniArrow)"></path>
+                          <text class="mini-arm-text" x="313" y="39">B</text>
+                          <text class="mini-arm-text" x="313" y="91">A</text>
+                        </svg>
                       </div>
                     </div>
                     <p class="native-note">The programming problem is not only which treatment a subject receives. It is also when masking changes, whether the subject crosses over, whether treatment paths are conditional, and which planned element or epoch each record belongs to.</p>
@@ -5706,10 +6061,10 @@ run;</code></pre>
                           <path class="flow-link" d="M350 132 L396 132"></path>
                           <path class="flow-link" d="M350 182 L396 182"></path>
                           <polygon class="flow-arrow-head" points="146,132 138,127 138,137"></polygon>
-                          <polygon class="flow-arrow-head" points="266,88 258,83 258,93"></polygon>
+                          <polygon class="flow-arrow-head" points="266,88 262,99 255,91"></polygon>
                           <polygon class="flow-arrow-head" points="268,132 260,127 260,137"></polygon>
-                          <polygon class="flow-arrow-head" points="266,176 258,171 258,181"></polygon>
-                          <polygon class="flow-arrow-head" points="396,124 388,119 388,129"></polygon>
+                          <polygon class="flow-arrow-head" points="266,176 255,173 262,165"></polygon>
+                          <polygon class="flow-arrow-head" points="396,124 385,122 391,114"></polygon>
                           <polygon class="flow-arrow-head" points="396,132 388,127 388,137"></polygon>
                           <polygon class="flow-arrow-head" points="396,182 388,177 388,187"></polygon>
                           <ellipse class="flow-node-gold" cx="64" cy="132" rx="38" ry="24"></ellipse>
@@ -5792,11 +6147,11 @@ run;</code></pre>
                           <path class="flow-link" d="M242 105 L431 124"></path>
                           <path class="flow-link" d="M242 160 L302 138"></path>
                           <path class="flow-link" d="M376 132 L431 138"></path>
-                          <polygon class="flow-arrow-head" points="166,112 156,106 156,118"></polygon>
-                          <polygon class="flow-arrow-head" points="166,153 156,147 156,159"></polygon>
-                          <polygon class="flow-arrow-head" points="431,124 421,118 421,130"></polygon>
-                          <polygon class="flow-arrow-head" points="302,138 292,132 292,144"></polygon>
-                          <polygon class="flow-arrow-head" points="431,138 421,132 421,144"></polygon>
+                          <polygon class="flow-arrow-head" points="166,112 158,121 155,111"></polygon>
+                          <polygon class="flow-arrow-head" points="166,153 155,153 159,144"></polygon>
+                          <polygon class="flow-arrow-head" points="431,124 421,128 422,118"></polygon>
+                          <polygon class="flow-arrow-head" points="302,138 294,146 291,136"></polygon>
+                          <polygon class="flow-arrow-head" points="431,138 421,143 422,132"></polygon>
                           <ellipse class="flow-node-gold" cx="66" cy="132" rx="38" ry="24"></ellipse>
                           <text class="flow-node-text" x="66" y="132">SCRN</text>
                           <ellipse class="flow-node-svg" cx="201" cy="105" rx="34" ry="22"></ellipse>
