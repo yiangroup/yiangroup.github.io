@@ -1180,21 +1180,655 @@
     .sdtm-module-grid {
       display: grid;
       gap: 18px;
-      margin: 24px 0;
+      margin: 14px 0 24px;
+    }
+
+    .sdtm-overview {
+      margin-bottom: 30px;
+    }
+
+    .sdtm-overview .flow {
+      margin-bottom: 0;
+    }
+
+    .sdtm-module-intro {
+      margin: 28px 0 14px;
+      padding: 18px 20px;
+      border-top: 1px solid rgba(200, 157, 132, 0.28);
+      border-bottom: 1px solid rgba(200, 157, 132, 0.2);
+      color: #6f5b52;
+    }
+
+    .sdtm-module-intro strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 2.4vw, 30px);
+      line-height: 1.1;
+    }
+
+    .sdtm-module-intro span {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .complex-design-lesson .pdf-slide-figure {
+      display: none;
+    }
+
+    .complex-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 28px;
+      padding: 14px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 253, 246, 0.72);
+    }
+
+    .complex-flow span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border: 1px solid rgba(80, 95, 85, 0.28);
+      border-radius: 999px;
+      background: rgba(238, 246, 239, 0.78);
+      color: #4b3a36;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .design-board,
+    .native-figure {
+      margin: 20px 0 28px;
+      padding: 18px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(255, 253, 246, 0.94), rgba(247, 251, 242, 0.8));
+    }
+
+    .design-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .design-card {
+      padding: 14px;
+      border: 1px solid rgba(80, 95, 85, 0.2);
+      border-radius: 8px;
+      background: rgba(255, 255, 251, 0.78);
+    }
+
+    .design-card strong,
+    .native-figure strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #4b3a36;
+      font-size: 15px;
+    }
+
+    .mini-path {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      margin: 8px 0;
+      overflow: hidden;
+    }
+
+    .rand-node {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 2px solid #435e5b;
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 800;
+      color: #435e5b;
+      background: #fffdf7;
+      flex: 0 0 auto;
+    }
+
+    .arm-line {
+      position: relative;
+      flex: 1;
+      height: 2px;
+      min-width: 44px;
+      background: #435e5b;
+    }
+
+    .arm-line::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -5px;
+      border-left: 9px solid #435e5b;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+
+    .arm-label {
+      min-width: 58px;
+      font-weight: 800;
+      color: #435e5b;
+    }
+
+    .branch-stack {
+      display: grid;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .epoch-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border: 2px solid #243634;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .pill-screen { background: #9fcac3; }
+    .pill-runin,
+    .pill-rest { background: #174f7a; }
+    .pill-placebo { background: #45afd5; }
+    .pill-drug-a,
+    .pill-drug-x { background: #e9ad00; }
+    .pill-drug-b,
+    .pill-follow { background: #c94743; }
+
+    .timeline-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 150px repeat(5, minmax(82px, 1fr));
+      gap: 8px;
+      align-items: center;
+    }
+
+    .timeline-row.six {
+      grid-template-columns: 150px repeat(6, minmax(74px, 1fr));
+    }
+
+    .timeline-label {
+      color: #7c5c50;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .visit-row span {
+      color: #a64a45;
+      font-size: 13px;
+      font-weight: 750;
+      text-align: center;
+    }
+
+    .native-note {
+      margin: 12px 0 0;
+      color: #6d5b53;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0 28px;
+    }
+
+    .case-card {
+      padding: 16px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 255, 251, 0.78);
+    }
+
+    .case-card h5 {
+      margin: 0 0 10px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+    }
+
+    .tdm-slide {
+      margin: 24px 0 34px;
+      padding: 22px;
+      border: 1px solid rgba(25, 82, 116, 0.18);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 0 12%, rgba(25, 82, 116, 0.08) 0 2px, transparent 3px) 0 0 / 22px 22px,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(248, 252, 249, 0.92));
+      overflow-x: auto;
+      overflow-y: hidden;
+      cursor: grab;
+      scrollbar-color: #2f746b rgba(220, 235, 229, 0.9);
+      scrollbar-width: thin;
+      user-select: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tdm-slide.is-dragging {
+      cursor: grabbing;
+    }
+
+    .tdm-slide::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    .tdm-slide::-webkit-scrollbar-track {
+      background: rgba(220, 235, 229, 0.9);
+      border-radius: 999px;
+    }
+
+    .tdm-slide::-webkit-scrollbar-thumb {
+      background: #2f746b;
+      border: 2px solid rgba(220, 235, 229, 0.9);
+      border-radius: 999px;
+    }
+
+    .tdm-slide-title {
+      margin: 0 0 22px;
+      color: #114a78;
+      font-family: Inter, Arial, sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    .tdm-slide-grid {
+      display: grid;
+      grid-template-columns: 660px 390px;
+      gap: 22px;
+      align-items: start;
+      width: 1072px;
+      max-width: none;
+    }
+
+    .tdm-panel-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 10px;
+      color: #0aa8df;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .tdm-panel-title.te {
+      color: #114a78;
+    }
+
+    .tdm-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: currentColor;
+      flex: 0 0 auto;
+    }
+
+    .tdm-data {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 4px solid #0d5b78;
+      color: #07366b;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 15px;
+      text-align: center;
+      background: #e7f1f7;
+      table-layout: fixed;
+    }
+
+    .tdm-data.compact {
+      border-color: #2e7568;
+    }
+
+    .tdm-data:not(.compact) th:nth-child(1),
+    .tdm-data:not(.compact) td:nth-child(1) {
+      width: 12%;
+    }
+
+    .tdm-data:not(.compact) th:nth-child(2),
+    .tdm-data:not(.compact) td:nth-child(2) {
+      width: 13%;
+    }
+
+    .tdm-data:not(.compact) th:nth-child(3),
+    .tdm-data:not(.compact) td:nth-child(3) {
+      width: 22%;
+    }
+
+    .tdm-data:not(.compact) th:nth-child(4),
+    .tdm-data:not(.compact) td:nth-child(4) {
+      width: 13%;
+    }
+
+    .tdm-data:not(.compact) th:nth-child(5),
+    .tdm-data:not(.compact) td:nth-child(5) {
+      width: 12%;
+    }
+
+    .tdm-data.compact th:nth-child(1),
+    .tdm-data.compact td:nth-child(1) {
+      width: 30%;
+    }
+
+    .tdm-data.compact th:nth-child(2),
+    .tdm-data.compact td:nth-child(2) {
+      width: 24%;
+    }
+
+    .tdm-data th {
+      padding: 8px 6px;
+      color: #fff;
+      background: #43add0;
+      border-right: 2px solid #fff;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .tdm-data.compact th {
+      background: #3c8276;
+    }
+
+    .tdm-data th:last-child,
+    .tdm-data td:last-child {
+      border-right: 0;
+    }
+
+    .tdm-data td {
+      padding: 7px 6px;
+      border-top: 2px solid #fff;
+      border-right: 2px solid #fff;
+      background: #dcebf3;
+      font-weight: 650;
+      overflow-wrap: anywhere;
+    }
+
+    .tdm-data tbody tr:nth-child(odd) td {
+      background: #c9deeb;
+    }
+
+    .tdm-data .etcd {
+      background: #dcebea;
+    }
+
+    .tdm-data .epoch {
+      background: #e9e5ef;
+    }
+
+    .epoch-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 4px;
+      margin-top: 20px;
+      min-height: 250px;
+      color: #fff;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .epoch-col {
+      position: relative;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      padding: 12px 7px;
+      min-height: 250px;
+      border: 2px solid #f7f2ea;
+      background: #174f7a;
+      clip-path: polygon(0 0, 100% 0, 100% 97%, 88% 100%, 74% 97%, 55% 100%, 33% 97%, 16% 100%, 0 97%);
+    }
+
+    .epoch-col strong {
+      display: block;
+      margin: 0;
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.12;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .flow-node {
+      align-self: center;
+      justify-self: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 42px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: #68b7a9;
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    .flow-node.gold {
+      background: #efb300;
+    }
+
+    .flow-node.small {
+      width: 58px;
+      height: 38px;
+      font-size: 16px;
+    }
+
+    .flow-stack {
+      display: grid;
+      gap: 12px;
+      align-content: center;
+      min-height: 140px;
+    }
+
+    .flow-arrow-note {
+      margin-top: 10px;
+      color: #6f8f91;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .tdm-flow-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 22px;
+      color: #fff;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .tdm-flow-svg .flow-col {
+      fill: #174f7a;
+      stroke: #f7f2ea;
+      stroke-width: 3;
+    }
+
+    .tdm-flow-svg .flow-col-wave {
+      fill: #174f7a;
+      stroke: #f7f2ea;
+      stroke-width: 3;
+    }
+
+    .tdm-flow-svg .flow-title {
+      fill: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      text-anchor: middle;
+    }
+
+    .tdm-flow-svg .flow-node-svg {
+      fill: #68b7a9;
+      stroke: #fff;
+      stroke-width: 3;
+    }
+
+    .tdm-flow-svg .flow-node-gold {
+      fill: #efb300;
+      stroke: #fff;
+      stroke-width: 3;
+    }
+
+    .tdm-flow-svg .flow-node-text {
+      fill: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .tdm-flow-svg .flow-link {
+      fill: none;
+      stroke: #9ccdc7;
+      stroke-width: 2.4;
+    }
+
+    .tdm-flow-svg .flow-arrow-head {
+      fill: #9ccdc7;
+      stroke: none;
+    }
+
+    .variable-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .variable-strip code {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(238, 246, 239, 0.9);
+      border: 1px solid rgba(80, 95, 85, 0.18);
+      color: #435e5b;
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .design-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tdm-slide {
+        padding: 16px;
+        overflow-x: auto;
+      }
+
+      .tdm-slide-grid {
+        grid-template-columns: 1fr;
+        min-width: 620px;
+      }
+
+      .timeline-row,
+      .timeline-row.six {
+        grid-template-columns: 1fr;
+      }
+
+      .epoch-pill,
+      .visit-row span {
+        justify-content: flex-start;
+        text-align: left;
+      }
+    }
+
+    .pdf-slide-figure {
+      margin: 22px 0 28px;
+      padding: 12px;
+      border: 1px solid rgba(200, 157, 132, 0.24);
+      border-radius: 7px;
+      background: rgba(255, 253, 249, 0.82);
+    }
+
+    .pdf-slide-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .pdf-slide-figure figcaption {
+      margin-top: 8px;
+      color: #7b675e;
+      font-size: 12px;
+      line-height: 1.45;
     }
 
     .sdtm-module {
-      padding: 20px;
       border: 1px solid rgba(200, 157, 132, 0.28);
       border-radius: 7px;
       background:
         repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 7px),
         rgba(255, 253, 249, 0.72);
+      overflow: hidden;
     }
 
-    .sdtm-module h5 {
-      margin-top: 0;
+    .sdtm-module summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      cursor: pointer;
       color: #4b3a36;
+      list-style: none;
+    }
+
+    .sdtm-module summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .sdtm-module-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(18px, 1.7vw, 22px);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .sdtm-module-toggle {
+      color: #b88f7b;
+      font-size: 22px;
+      line-height: 1;
+      transition: transform 180ms ease;
+    }
+
+    .sdtm-module[open] .sdtm-module-toggle {
+      transform: rotate(90deg);
+    }
+
+    .sdtm-module[open] summary {
+      border-bottom: 1px solid rgba(200, 157, 132, 0.24);
+    }
+
+    .sdtm-module-body {
+      padding: 20px;
+    }
+
+    .sdtm-module-body > :first-child {
+      margin-top: 0;
     }
 
     .sdtm-module h6 {
@@ -3857,17 +4491,23 @@ if pre_dose then ablfl = "Y";</code></pre>
                     New programmers should first learn the major domain families before trying to
                     memorize individual variables.
                   </p>
-                  <div class="flow" aria-label="Raw data to compliant SDTM pipeline">
-                    <div class="flow-step"><strong>Raw Clinical Data</strong><br>eCRF exports, vendor files, audit keys, and source fields.</div>
-                    <div class="flow-step"><strong>Domain Family</strong><br>Trial Design, Special Purpose, Interventions, Events, Findings, and Relationship/SUPP datasets.</div>
-                    <div class="flow-step"><strong>Variable Roles</strong><br>Identifiers, topics, qualifiers, timing variables, and controlled terminology.</div>
-                    <div class="flow-step"><strong>Mapping Rules</strong><br>aCRF, DTS, SDTM spec, raw data, and Define.xml must agree.</div>
-                    <div class="flow-step"><strong>Compliant SDTM</strong><br>Traceable tabulation datasets ready for validation and downstream ADaM.</div>
+                  <div class="sdtm-overview">
+                    <div class="flow" aria-label="Raw data to compliant SDTM pipeline">
+                      <div class="flow-step"><strong>Raw Clinical Data</strong><br>eCRF exports, vendor files, audit keys, and source fields.</div>
+                      <div class="flow-step"><strong>Domain Family</strong><br>Trial Design, Special Purpose, Interventions, Events, Findings, and Relationship/SUPP datasets.</div>
+                      <div class="flow-step"><strong>Variable Roles</strong><br>Identifiers, topics, qualifiers, timing variables, and controlled terminology.</div>
+                      <div class="flow-step"><strong>Mapping Rules</strong><br>aCRF, DTS, SDTM spec, raw data, and Define.xml must agree.</div>
+                      <div class="flow-step"><strong>Compliant SDTM</strong><br>Traceable tabulation datasets ready for validation and downstream ADaM.</div>
+                    </div>
                   </div>
-
+                  <div class="sdtm-module-intro">
+                    <strong>Open the SDTM modules</strong>
+                    <span>Use the overview above as the path from source data to submission datasets. Then open each module below to study one SDTM area at a time.</span>
+                  </div>
                   <div class="sdtm-module-grid" aria-label="SDTM teaching modules">
-                    <section class="sdtm-module">
-                      <h5>Module 1. Trial Design Domains</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 1. Trial Design Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Trial Design domains describe the planned structure of the study. They are
                         built from the protocol, schedule of assessments, treatment plan, inclusion
@@ -4320,10 +4960,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                         not subject observations. If a new programmer tries to map TA, TE, TV, TI,
                         or TS from a CRF field, pause and check the protocol and SDTM specification.
                       </p>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 2. Special Purpose Domains</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 2. Special Purpose Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Special Purpose domains hold records that do not fit the ordinary
                         Interventions, Events, or Findings pattern. They often provide the backbone
@@ -4369,10 +5011,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 3. Interventions Domains</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 3. Interventions Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Interventions describe treatments, medications, exposures, or procedures
                         administered to the subject. These domains usually answer: what was given,
@@ -4389,10 +5033,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                         medications, dose unit conversion, route/frequency controlled terminology,
                         IRT reconciliation, and duplicate medication rows.
                       </p>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 4. Events Domains</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 4. Events Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Events describe things that happened to the subject, such as adverse
                         events, medical history, disposition events, and protocol deviations.
@@ -4411,10 +5057,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                         randomization, completion, discontinuation, and death-related disposition
                         records. Do not assume all DS records come from a single CRF page.
                       </p>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 5. Findings Domains</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 5. Findings Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Findings domains store measurements, tests, questionnaire responses, and
                         assessments. They usually follow a test/result structure: the test code
@@ -4461,10 +5109,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 6. Relationship and Supplemental Datasets</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 6. Relationship and Supplemental Datasets</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Relationship and supplemental datasets preserve traceability when the
                         standard domain structure is not enough. They should solve a real metadata
@@ -4480,10 +5130,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                         <li><strong>RELREC:</strong> Describe relationships between records across domains or within a domain.</li>
                         <li><strong>FA:</strong> Findings About can describe findings about an event or intervention when appropriate.</li>
                       </ul>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 7. Variable Structural Roles</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 7. Variable Structural Roles</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         The first SDTM task is not to copy raw columns. It is to decide each
                         variable's clinical role according to the SDTMIG.
@@ -4531,10 +5183,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 8. Controlled Terminology, Units, and Dates</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 8. Controlled Terminology, Units, and Dates</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Matching the variable name is not enough. Values must be normalized so the
                         dataset can be reviewed, validated, and reused downstream.
@@ -4567,10 +5221,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </section>
+                    </div>
+                    </details>
 
-                    <section class="sdtm-module">
-                      <h5>Module 9. SAS Template: Mapping Raw Date Components to --DTC</h5>
+                    <details class="sdtm-module">
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 9. SAS Template: Mapping Raw Date Components to --DTC</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <div class="sdtm-module-body">
                       <p>
                         Modern EDC systems often store dates as separate year, month, day, hour,
                         and minute components. SDTM --DTC variables are character variables, so
@@ -4657,14 +5313,705 @@ run;</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </section>
+                    </div>
+                    </details>
                   </div>
                 </article>
               </details>
 
-              <details class="training-item">
+                            <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 05</span>
+                  <span class="summary-title">CDISC for Complex Study Design</span>
+                  <span class="summary-note">Complex design concepts, SDTM Trial Design Model, ADaM period variables, and case studies from crossover and SAD/MAD examples.</span>
+                </summary>
+
+                <article class="lesson complex-design-lesson">
+                  <h4>CDISC for Complex Study Design</h4>
+                  <p>
+                    Complex study designs need a clear bridge between the planned protocol design,
+                    SDTM Trial Design Model, subject-level SDTM data, and ADaM analysis timing.
+                    This lesson follows the PDF flow: complex design concepts first, then
+                    SDTM TDM, then ADaM period variables, then case studies.
+                  </p>
+
+                  <div class="complex-flow" aria-label="Complex study design lesson flow">
+                    <span>Complex Study Designs</span>
+                    <span>SDTM Trial Design</span>
+                    <span>ADaM Period Variables</span>
+                    <span>TDM Examples</span>
+                    <span>Crossover Case Studies</span>
+                    <span>SAD / MAD / Food Effect</span>
+                  </div>
+
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-04.png" alt="Agenda for CDISC complex study design lesson">
+                    <figcaption>Lesson flow from the PDF: CDISC for complex study designs, SDTM Trial Design, ADaM period variables, and case studies.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-05.png" alt="CDISC for complex study design section title">
+                    <figcaption>Section bridge: SDTM Trial Design Model and ADaM period variables for complex study design.</figcaption>
+                  </figure>
+
+                  <h4>1. Complex Study Designs</h4>
+                  <p>
+                    A clinical study can include several masking approaches and intervention paths:
+                    double-blind, single-blind, open-label, multiple interventions, sequential
+                    interventions, combination therapies, adaptive designs, SMART designs,
+                    multi-arm studies, and crossover designs. FDA reviewers need a clear view of
+                    the design so they can judge whether the design is appropriate and whether the
+                    submitted data support the trial objectives.
+                  </p>
+                  <div class="design-board" aria-label="Complex study design examples">
+                    <div class="design-grid">
+                      <div class="design-card">
+                        <strong>Parallel Study Design</strong>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">A</span></div>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">Control</span></div>
+                      </div>
+                      <div class="design-card">
+                        <strong>Double Blind to Open Label</strong>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">A</span><span class="arm-line"></span><span class="arm-label">A</span></div>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">Control</span><span class="arm-line"></span><span class="arm-label">A</span></div>
+                      </div>
+                      <div class="design-card">
+                        <strong>Adaptive or SMART Design</strong>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">A</span></div>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">B</span></div>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">C / Control</span></div>
+                      </div>
+                      <div class="design-card">
+                        <strong>Crossover Study Design</strong>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">A</span><span class="epoch-pill pill-rest">Washout</span><span class="arm-label">B</span></div>
+                        <div class="mini-path"><span class="rand-node">R</span><span class="arm-line"></span><span class="arm-label">B</span><span class="epoch-pill pill-rest">Washout</span><span class="arm-label">A</span></div>
+                      </div>
+                    </div>
+                    <p class="native-note">The programming problem is not only which treatment a subject receives. It is also when masking changes, whether the subject crosses over, whether treatment paths are conditional, and which planned element or epoch each record belongs to.</p>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-06.png" alt="Complex study designs overview">
+                    <figcaption>Complex study designs overview: masking, multiple interventions, adaptive designs, and the need for standardized Trial Design Model representation.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-07.png" alt="Parallel, adaptive, open label, and crossover design diagrams">
+                    <figcaption>Visual design examples: parallel study design, double-blind to open-label design, adaptive or SMART study design, and crossover study design.</figcaption>
+                  </figure>
+
+                  <h4>2. SDTM Trial Design Model</h4>
+                  <p>
+                    The Trial Design Model is built on the identification of elements, arms,
+                    epochs, and visits. A practical build order is to create TE first, then TA,
+                    then TV. TI and TS complete the Trial Design package with eligibility criteria
+                    and study-level summary metadata.
+                  </p>
+                  <div class="native-figure" aria-label="Trial Design Model elements arms epochs visits">
+                    <strong>TDM Vocabulary: Elements, Arms, Epochs, Visits</strong>
+                    <div class="timeline-grid">
+                      <div class="timeline-row">
+                        <span class="timeline-label">Elements</span>
+                        <span class="epoch-pill pill-screen">Screen</span>
+                        <span class="epoch-pill pill-runin">Run-in</span>
+                        <span class="epoch-pill pill-placebo">Placebo</span>
+                        <span class="epoch-pill pill-drug-a">Drug A</span>
+                        <span class="epoch-pill pill-drug-b">Drug B</span>
+                      </div>
+                      <div class="timeline-row">
+                        <span class="timeline-label">Arm: Drug A</span>
+                        <span class="epoch-pill pill-screen">Screen</span>
+                        <span class="epoch-pill pill-runin">Run-in</span>
+                        <span class="epoch-pill pill-drug-a">Drug A</span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row">
+                        <span class="timeline-label">Arm: Drug B</span>
+                        <span class="epoch-pill pill-screen">Screen</span>
+                        <span class="epoch-pill pill-runin">Run-in</span>
+                        <span class="epoch-pill pill-drug-b">Drug B</span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row visit-row">
+                        <span class="timeline-label">Visits</span>
+                        <span>Visit 1</span>
+                        <span>Visit 2</span>
+                        <span>Visit 3</span>
+                        <span>Visit 4</span>
+                        <span>Visit 5</span>
+                      </div>
+                    </div>
+                    <p class="native-note">TE defines the building blocks. TA orders those building blocks within each arm and epoch. TV defines the planned visit structure. These datasets describe design intent, not collected subject observations.</p>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-08.png" alt="TDM concepts: elements, arms, epochs, and visits">
+                    <figcaption>TDM concepts: elements such as Screen, Run-in, Placebo, Drug A, and Drug B; arms such as Placebo, Drug A, and Drug B; epochs such as Screening, Run-In, and Treatment; and visits such as Visit 1 through Visit 5.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-09.png" alt="TE TA and TV example tables">
+                    <figcaption>Example TE, TA, and TV tables. TE defines elements, TA connects arms to ordered elements and epochs, and TV defines planned visit numbers and names.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-10.png" alt="TDM domains in SDTM: TE TA TV TI TS">
+                    <figcaption>Trial Design domains in SDTM: TE, TA, TV, TI, and TS. These are special-purpose datasets that describe the study design and do not contain subject data.</figcaption>
+                  </figure>
+
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Trial Design Model domains">
+                      <thead>
+                        <tr>
+                          <th>Domain</th>
+                          <th>Full Name</th>
+                          <th>Role in Complex Design</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>TE</td>
+                          <td>Trial Elements</td>
+                          <td>Defines the planned building blocks, such as Screen, Run-in, Placebo, Drug A, Drug B, Rest, and Follow-up.</td>
+                        </tr>
+                        <tr>
+                          <td>TA</td>
+                          <td>Trial Arms</td>
+                          <td>Defines each planned arm as an ordered sequence of elements and epochs.</td>
+                        </tr>
+                        <tr>
+                          <td>TV</td>
+                          <td>Trial Visits</td>
+                          <td>Defines the planned visit schedule, such as Visit 1 through Visit 6.</td>
+                        </tr>
+                        <tr>
+                          <td>TI</td>
+                          <td>Trial Inclusion/Exclusion</td>
+                          <td>Stores the planned eligibility criteria from the protocol.</td>
+                        </tr>
+                        <tr>
+                          <td>TS</td>
+                          <td>Trial Summary</td>
+                          <td>Stores study-level design and submission parameters.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>3. SDTM TDM in a Crossover Trial</h4>
+                  <p>
+                    In a crossover trial, subjects receive treatments in different sequences,
+                    usually separated by a rest or washout period. The Trial Design Model must show
+                    both planned sequences: for example Placebo then Drug X, and Drug X then
+                    Placebo. The same element can appear in different positions depending on the
+                    arm path.
+                  </p>
+                  <div class="native-figure" aria-label="Crossover trial design timeline">
+                    <strong>Crossover TDM: Same Elements, Different Planned Order</strong>
+                    <div class="timeline-grid">
+                      <div class="timeline-row six">
+                        <span class="timeline-label">Placebo-Drug X</span>
+                        <span class="epoch-pill pill-screen">Screen</span>
+                        <span class="epoch-pill pill-placebo">Placebo</span>
+                        <span class="epoch-pill pill-rest">Rest</span>
+                        <span class="epoch-pill pill-drug-x">Drug X</span>
+                        <span class="epoch-pill pill-follow">Follow-up</span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row six">
+                        <span class="timeline-label">Drug X-Placebo</span>
+                        <span class="epoch-pill pill-screen">Screen</span>
+                        <span class="epoch-pill pill-drug-x">Drug X</span>
+                        <span class="epoch-pill pill-rest">Rest</span>
+                        <span class="epoch-pill pill-placebo">Placebo</span>
+                        <span class="epoch-pill pill-follow">Follow-up</span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row six visit-row">
+                        <span class="timeline-label">Visits</span>
+                        <span>Visit 1</span>
+                        <span>Visit 2</span>
+                        <span>Visit 3</span>
+                        <span>Visit 4</span>
+                        <span>Visit 5</span>
+                        <span>Visit 6</span>
+                      </div>
+                    </div>
+                    <p class="native-note">The TE row for Placebo is the same planned element. TA decides where Placebo appears in each arm. This is why crossover design cannot be understood from a single treatment variable alone.</p>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-11.png" alt="Crossover TDM design diagram">
+                    <figcaption>Crossover TDM concepts: elements include Screen, Rest, Placebo, Drug X, and Follow-up; arms include Placebo-Drug X and Drug X-Placebo; epochs include Screening, First Treatment, Washout, Second Treatment, and Follow-up; visits run from Visit 1 through Visit 6.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-12.png" alt="Crossover TE TA and TV tables">
+                    <figcaption>Crossover TE, TA, and TV example. TA shows the ordered relationship between ARMCD, ARM, ETCD, and EPOCH for Placebo-Drug X and Drug X-Placebo sequences.</figcaption>
+                  </figure>
+
+                  <h4>4. ADaM Variables in a Crossover Trial</h4>
+                  <p>
+                    ADaM must turn the planned design and actual subject timeline into analysis-ready
+                    variables. ADSL often contains treatment sequence variables, planned and actual
+                    treatment variables by period, treatment period start/end dates, and analysis
+                    period start/end dates. Non-ADSL analysis datasets then use those variables to
+                    derive TRTA, APERIOD, APERIODC, APHASE, ASPER, and analysis flags.
+                  </p>
+                  <div class="native-figure" aria-label="ADaM treatment and analysis period variables">
+                    <strong>ADSL Timing Backbone for a Two-Period Crossover</strong>
+                    <div class="timeline-grid">
+                      <div class="timeline-row">
+                        <span class="timeline-label">Planned treatment</span>
+                        <span class="epoch-pill pill-placebo">TRT01P</span>
+                        <span class="epoch-pill pill-rest">Washout</span>
+                        <span class="epoch-pill pill-drug-x">TRT02P</span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row">
+                        <span class="timeline-label">Treatment dates</span>
+                        <span class="epoch-pill pill-screen">TR01SDT</span>
+                        <span class="epoch-pill pill-screen">TR01EDT</span>
+                        <span class="epoch-pill pill-screen">TR02SDT</span>
+                        <span class="epoch-pill pill-screen">TR02EDT</span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row">
+                        <span class="timeline-label">Analysis periods</span>
+                        <span class="epoch-pill pill-follow">AP01SDT</span>
+                        <span class="epoch-pill pill-follow">AP01EDT</span>
+                        <span class="epoch-pill pill-follow">AP02SDT</span>
+                        <span class="epoch-pill pill-follow">AP02EDT</span>
+                        <span></span>
+                      </div>
+                    </div>
+                    <div class="variable-strip">
+                      <code>TRTSEQP</code><code>TRTSEQA</code><code>TRT01P</code><code>TRT02P</code><code>TRT01A</code><code>TRT02A</code><code>APERIOD</code><code>APERIODC</code><code>APHASE</code><code>ASPER</code><code>ASPERC</code>
+                    </div>
+                    <p class="native-note">Treatment periods describe when treatment was given. Analysis periods define the windows used to attribute analysis records. In complex studies these are related, but they are not always identical.</p>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-13.png" alt="Treatment and date variables in ADSL crossover trial">
+                    <figcaption>Treatment and date variables in ADSL: TRTSEQP, TRTSEQA, TRT01P, TRT02P, TRT01A, TRT02A, TR01SDT, TR01EDT, TR02SDT, TR02EDT, AP01SDT, AP01EDT, AP02SDT, and AP02EDT.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-14.png" alt="Analysis period phase and subperiod variables">
+                    <figcaption>ADaM period, phase, and subperiod variables: APERIOD, APERIODC, APHASE, APHASEN, ASPER, and ASPERC.</figcaption>
+                  </figure>
+
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="ADaM period variable families">
+                      <thead>
+                        <tr>
+                          <th>Variable Family</th>
+                          <th>Examples</th>
+                          <th>Purpose</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Treatment sequence</td>
+                          <td>TRTSEQP, TRTSEQA</td>
+                          <td>Stores planned and actual treatment sequence.</td>
+                        </tr>
+                        <tr>
+                          <td>Treatment by period</td>
+                          <td>TRT01P, TRT02P, TRT01A, TRT02A</td>
+                          <td>Identifies planned and actual treatment in each period.</td>
+                        </tr>
+                        <tr>
+                          <td>Treatment dates</td>
+                          <td>TR01SDT, TR01EDT, TR02SDT, TR02EDT</td>
+                          <td>Defines treatment exposure windows.</td>
+                        </tr>
+                        <tr>
+                          <td>Analysis periods</td>
+                          <td>AP01SDT, AP01EDT, AP02SDT, AP02EDT, APERIOD, APERIODC</td>
+                          <td>Defines analysis windows and labels records by period.</td>
+                        </tr>
+                        <tr>
+                          <td>Analysis phases and subperiods</td>
+                          <td>APHASE, APHASEN, ASPER, ASPERC</td>
+                          <td>Defines broader phases and within-period subperiods.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>5. Case Study: TDM Examples</h4>
+                  <p>
+                    The case study begins by showing how different planned study structures are
+                    represented in TE and TA. The key lesson is that TDM must reflect the protocol
+                    design, not simply the CRF or raw data layout.
+                  </p>
+                  <div class="tdm-slide" aria-label="TDM Example 1 native recreation">
+                    <h5 class="tdm-slide-title">TDM Example 1</h5>
+                    <div class="tdm-slide-grid">
+                      <div>
+                        <div class="tdm-panel-title"><span class="tdm-dot"></span>TA (Arms/Elements/Epoch)</div>
+                        <table class="tdm-data" aria-label="TDM Example 1 TA dataset">
+                          <thead>
+                            <tr>
+                              <th>DOMAIN</th>
+                              <th>ARMCD</th>
+                              <th>ARM</th>
+                              <th>TAETORD</th>
+                              <th>ETCD</th>
+                              <th>EPOCH</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>TA</td><td>P-A</td><td>Placebo-DrugA</td><td>1</td><td class="etcd">SCRN</td><td class="epoch">SCREENING</td></tr>
+                            <tr><td>TA</td><td>P-A</td><td>Placebo-DrugA</td><td>2</td><td class="etcd">P</td><td class="epoch">RUN-IN</td></tr>
+                            <tr><td>TA</td><td>P-A</td><td>Placebo-DrugA</td><td>3</td><td class="etcd">P</td><td class="epoch">TREATMENT1</td></tr>
+                            <tr><td>TA</td><td>P-A</td><td>Placebo-DrugA</td><td>4</td><td class="etcd">A</td><td class="epoch">TREATMENT2</td></tr>
+                            <tr><td>TA</td><td>A-A</td><td>DrugA-DrugA</td><td>1</td><td class="etcd">SCRN</td><td class="epoch">SCREENING</td></tr>
+                            <tr><td>TA</td><td>A-A</td><td>DrugA-DrugA</td><td>2</td><td class="etcd">P</td><td class="epoch">RUN-IN</td></tr>
+                            <tr><td>TA</td><td>A-A</td><td>DrugA-DrugA</td><td>3</td><td class="etcd">A</td><td class="epoch">TREATMENT1</td></tr>
+                            <tr><td>TA</td><td>A-A</td><td>DrugA-DrugA</td><td>4</td><td class="etcd">A</td><td class="epoch">TREATMENT2</td></tr>
+                            <tr><td>TA</td><td>B-B</td><td>DrugB-DrugB</td><td>1</td><td class="etcd">SCRN</td><td class="epoch">SCREENING</td></tr>
+                            <tr><td>TA</td><td>B-B</td><td>DrugB-DrugB</td><td>2</td><td class="etcd">P</td><td class="epoch">RUN-IN</td></tr>
+                            <tr><td>TA</td><td>B-B</td><td>DrugB-DrugB</td><td>3</td><td class="etcd">B</td><td class="epoch">TREATMENT1</td></tr>
+                            <tr><td>TA</td><td>B-B</td><td>DrugB-DrugB</td><td>4</td><td class="etcd">B</td><td class="epoch">TREATMENT2</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <div class="tdm-panel-title te"><span class="tdm-dot"></span>TE (Elements)</div>
+                        <table class="tdm-data compact" aria-label="TDM Example 1 TE dataset">
+                          <thead>
+                            <tr><th>DOMAIN</th><th>ETCD</th><th>ELEMENT</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>TE</td><td>SCRN</td><td>Screen</td></tr>
+                            <tr><td>TE</td><td>P</td><td>Placebo</td></tr>
+                            <tr><td>TE</td><td>A</td><td>DrugA</td></tr>
+                            <tr><td>TE</td><td>B</td><td>DrugB</td></tr>
+                          </tbody>
+                        </table>
+                        <svg class="tdm-flow-svg" viewBox="0 0 520 270" role="img" aria-label="TDM Example 1 epoch flow">
+                          <defs>
+                            <marker id="flowArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                              <path d="M0,0 L8,4 L0,8 Z" fill="#9ccdc7"></path>
+                            </marker>
+                          </defs>
+                          <path class="flow-col-wave" d="M0 8 C18 0 38 0 58 8 C78 16 100 16 128 8 L128 250 C110 258 88 258 68 250 C48 242 26 242 0 250 Z"></path>
+                          <path class="flow-col-wave" d="M132 8 C148 0 166 0 184 8 C202 16 220 16 238 8 L238 250 C222 258 204 258 186 250 C168 242 150 242 132 250 Z"></path>
+                          <path class="flow-col-wave" d="M242 8 C264 0 288 0 312 8 C336 16 360 16 382 8 L382 250 C360 258 336 258 312 250 C288 242 264 242 242 250 Z"></path>
+                          <path class="flow-col-wave" d="M386 8 C406 0 430 0 452 8 C474 16 498 16 520 8 L520 250 C500 258 476 258 454 250 C432 242 408 242 386 250 Z"></path>
+                          <text class="flow-title" x="64" y="40">SCREENING</text>
+                          <text class="flow-title" x="185" y="40">RUN-IN</text>
+                          <text class="flow-title" x="312" y="30"><tspan x="312">TREATMENT</tspan><tspan x="312" dy="22">1</tspan></text>
+                          <text class="flow-title" x="454" y="30"><tspan x="454">TREATMENT</tspan><tspan x="454" dy="22">2</tspan></text>
+                          <path class="flow-link" d="M102 132 L146 132"></path>
+                          <path class="flow-link" d="M219 132 L266 88"></path>
+                          <path class="flow-link" d="M219 132 L268 132"></path>
+                          <path class="flow-link" d="M219 132 L266 176"></path>
+                          <path class="flow-link" d="M350 88 L396 124"></path>
+                          <path class="flow-link" d="M350 132 L396 132"></path>
+                          <path class="flow-link" d="M350 182 L396 182"></path>
+                          <polygon class="flow-arrow-head" points="146,132 138,127 138,137"></polygon>
+                          <polygon class="flow-arrow-head" points="266,88 258,83 258,93"></polygon>
+                          <polygon class="flow-arrow-head" points="268,132 260,127 260,137"></polygon>
+                          <polygon class="flow-arrow-head" points="266,176 258,171 258,181"></polygon>
+                          <polygon class="flow-arrow-head" points="396,124 388,119 388,129"></polygon>
+                          <polygon class="flow-arrow-head" points="396,132 388,127 388,137"></polygon>
+                          <polygon class="flow-arrow-head" points="396,182 388,177 388,187"></polygon>
+                          <ellipse class="flow-node-gold" cx="64" cy="132" rx="38" ry="24"></ellipse>
+                          <text class="flow-node-text" x="64" y="132">SCRN</text>
+                          <ellipse class="flow-node-svg" cx="185" cy="132" rx="34" ry="22"></ellipse>
+                          <text class="flow-node-text" x="185" y="132">P</text>
+                          <ellipse class="flow-node-svg" cx="312" cy="82" rx="38" ry="23"></ellipse>
+                          <text class="flow-node-text" x="312" y="82">P</text>
+                          <ellipse class="flow-node-svg" cx="312" cy="132" rx="38" ry="23"></ellipse>
+                          <text class="flow-node-text" x="312" y="132">A</text>
+                          <ellipse class="flow-node-svg" cx="312" cy="182" rx="38" ry="23"></ellipse>
+                          <text class="flow-node-text" x="312" y="182">B</text>
+                          <ellipse class="flow-node-svg" cx="454" cy="132" rx="38" ry="23"></ellipse>
+                          <text class="flow-node-text" x="454" y="132">A</text>
+                          <ellipse class="flow-node-svg" cx="454" cy="182" rx="38" ry="23"></ellipse>
+                          <text class="flow-node-text" x="454" y="182">B</text>
+                        </svg>
+                        <p class="flow-arrow-note">TAETORD is the order of planned elements inside the arm. The same element code can appear in different epochs depending on arm design.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tdm-slide" aria-label="TDM Example 2 native recreation">
+                    <h5 class="tdm-slide-title">TDM Example 2</h5>
+                    <div class="tdm-slide-grid">
+                      <div>
+                        <div class="tdm-panel-title"><span class="tdm-dot"></span>TA (Arms/Elements/Epoch)</div>
+                        <table class="tdm-data" aria-label="TDM Example 2 TA dataset">
+                          <thead>
+                            <tr>
+                              <th>DOMAIN</th>
+                              <th>ARMCD</th>
+                              <th>ARM</th>
+                              <th>TAETORD</th>
+                              <th>ETCD</th>
+                              <th>EPOCH</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>TA</td><td>A</td><td>DrugA</td><td>1</td><td class="etcd">SCRN</td><td class="epoch">SCREENING</td></tr>
+                            <tr><td>TA</td><td>A</td><td>DrugA</td><td>2</td><td class="etcd">A</td><td class="epoch">BLINDED TREATMENT</td></tr>
+                            <tr><td>TA</td><td>A</td><td>DrugA</td><td>3</td><td class="etcd">FU</td><td class="epoch">FOLLOW-UP</td></tr>
+                            <tr><td>TA</td><td>B</td><td>DrugB</td><td>1</td><td class="etcd">SCRN</td><td class="epoch">SCREENING</td></tr>
+                            <tr><td>TA</td><td>B</td><td>DrugB</td><td>2</td><td class="etcd">B</td><td class="epoch">BLINDED TREATMENT</td></tr>
+                            <tr><td>TA</td><td>B</td><td>DrugB</td><td>3</td><td class="etcd">CA</td><td class="epoch">OPEN LABEL TREATMENT</td></tr>
+                            <tr><td>TA</td><td>B</td><td>DrugB</td><td>4</td><td class="etcd">FU</td><td class="epoch">FOLLOW-UP</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <div class="tdm-panel-title te"><span class="tdm-dot"></span>TE (Elements)</div>
+                        <table class="tdm-data compact" aria-label="TDM Example 2 TE dataset">
+                          <thead>
+                            <tr><th>DOMAIN</th><th>ETCD</th><th>ELEMENT</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>TE</td><td>SCRN</td><td>Screening</td></tr>
+                            <tr><td>TE</td><td>A</td><td>DrugA</td></tr>
+                            <tr><td>TE</td><td>B</td><td>DrugB</td></tr>
+                            <tr><td>TE</td><td>CA</td><td>Open Label DrugA</td></tr>
+                            <tr><td>TE</td><td>FU</td><td>Follow-up</td></tr>
+                          </tbody>
+                        </table>
+                        <svg class="tdm-flow-svg" viewBox="0 0 520 270" role="img" aria-label="TDM Example 2 epoch flow">
+                          <defs>
+                            <marker id="flowArrow2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                              <path d="M0,0 L8,4 L0,8 Z" fill="#9ccdc7"></path>
+                            </marker>
+                          </defs>
+                          <path class="flow-col-wave" d="M0 8 C18 0 38 0 58 8 C78 16 100 16 132 8 L132 250 C112 258 90 258 70 250 C50 242 28 242 0 250 Z"></path>
+                          <path class="flow-col-wave" d="M136 8 C156 0 176 0 196 8 C216 16 238 16 266 8 L266 250 C246 258 224 258 204 250 C184 242 162 242 136 250 Z"></path>
+                          <path class="flow-col-wave" d="M270 8 C292 0 314 0 336 8 C358 16 382 16 410 8 L410 250 C388 258 364 258 342 250 C320 242 296 242 270 250 Z"></path>
+                          <path class="flow-col-wave" d="M414 8 C432 0 450 0 468 8 C486 16 508 16 520 8 L520 250 C502 258 480 258 462 250 C444 242 422 242 414 250 Z"></path>
+                          <text class="flow-title" x="66" y="40">SCREENING</text>
+                          <text class="flow-title" x="201" y="40">BLINDED TX</text>
+                          <text class="flow-title" x="340" y="40">OPEN LABEL</text>
+                          <text class="flow-title" x="467" y="40">FOLLOW-UP</text>
+                          <path class="flow-link" d="M104 132 L166 112"></path>
+                          <path class="flow-link" d="M104 132 L166 153"></path>
+                          <path class="flow-link" d="M242 105 L431 124"></path>
+                          <path class="flow-link" d="M242 160 L302 138"></path>
+                          <path class="flow-link" d="M376 132 L431 138"></path>
+                          <polygon class="flow-arrow-head" points="166,112 156,106 156,118"></polygon>
+                          <polygon class="flow-arrow-head" points="166,153 156,147 156,159"></polygon>
+                          <polygon class="flow-arrow-head" points="431,124 421,118 421,130"></polygon>
+                          <polygon class="flow-arrow-head" points="302,138 292,132 292,144"></polygon>
+                          <polygon class="flow-arrow-head" points="431,138 421,132 421,144"></polygon>
+                          <ellipse class="flow-node-gold" cx="66" cy="132" rx="38" ry="24"></ellipse>
+                          <text class="flow-node-text" x="66" y="132">SCRN</text>
+                          <ellipse class="flow-node-svg" cx="201" cy="105" rx="34" ry="22"></ellipse>
+                          <text class="flow-node-text" x="201" y="105">A</text>
+                          <ellipse class="flow-node-svg" cx="201" cy="160" rx="34" ry="22"></ellipse>
+                          <text class="flow-node-text" x="201" y="160">B</text>
+                          <ellipse class="flow-node-svg" cx="340" cy="132" rx="36" ry="22"></ellipse>
+                          <text class="flow-node-text" x="340" y="132">CA</text>
+                          <ellipse class="flow-node-svg" cx="467" cy="132" rx="36" ry="22"></ellipse>
+                          <text class="flow-node-text" x="467" y="132">FU</text>
+                        </svg>
+                        <p class="flow-arrow-note">The open-label period is represented as a planned element and epoch, not hidden inside subject-level data.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-15.png" alt="Case study section title">
+                    <figcaption>Case study section: TDM examples and crossover trial examples.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-16.png" alt="TDM example 1 with TE and TA tables">
+                    <figcaption>TDM Example 1: TE elements and TA arms/elements/epochs for a design with Screening, Run-in, Treatment 1, and Treatment 2.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-17.png" alt="TDM example 2 with blinded and open label treatment">
+                    <figcaption>TDM Example 2: blinded treatment followed by open-label treatment and follow-up, showing how TE and TA represent the planned path.</figcaption>
+                  </figure>
+
+                  <h4>6. Crossover Trial Case Study 1</h4>
+                  <p>
+                    The first crossover case study is an open-label, multiple-dose, four-sequence,
+                    four-period design. Each sequence has six subjects, and the total number of
+                    subjects is twenty-four. ADSL needs the subject's sequence and treatment/date
+                    variables for all four periods.
+                  </p>
+                  <div class="native-figure" aria-label="Four sequence crossover case study">
+                    <strong>Crossover Case Study 1: Four Sequences, Four Periods</strong>
+                    <div class="table-scroll">
+                      <table class="crf-table" aria-label="Four sequence crossover ADSL variables">
+                        <thead>
+                          <tr>
+                            <th>Sequence</th>
+                            <th>TRT01P</th>
+                            <th>TRT02P</th>
+                            <th>TRT03P</th>
+                            <th>TRT04P</th>
+                            <th>Core Dates</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>S001: ABDC</td><td>A</td><td>B</td><td>D</td><td>C</td><td>TR01SDT/TR01EDT through TR04SDT/TR04EDT</td></tr>
+                          <tr><td>S002: CDBA</td><td>C</td><td>D</td><td>B</td><td>A</td><td>AP01SDT/AP01EDT through AP04SDT/AP04EDT</td></tr>
+                          <tr><td>S003: BCAD</td><td>B</td><td>C</td><td>A</td><td>D</td><td>Used by ADAE, ADLB, and other BDS datasets</td></tr>
+                          <tr><td>S004: DACB</td><td>D</td><td>A</td><td>C</td><td>B</td><td>Supports treatment attribution by period window</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="case-grid">
+                      <div class="case-card">
+                        <h5>ADAE Occurrence</h5>
+                        <p>Derive <code>ASTDT</code> from SDTM AE start date. Assign <code>TRTA</code>, <code>APERIOD</code>, and <code>APERIODC</code> by checking whether the event date falls inside <code>AP01SDT/AP01EDT</code>, <code>AP02SDT/AP02EDT</code>, and so on.</p>
+                        <div class="variable-strip"><code>ASTDT</code><code>TRTA</code><code>APERIOD</code><code>APERIODC</code><code>TRTEMFL</code></div>
+                      </div>
+                      <div class="case-card">
+                        <h5>ADAEDIFF / ADLB</h5>
+                        <p>ADAEDIFF can use one row per subject, period, and treatment with <code>AVAL</code>/<code>AVALC</code>. ADLB assigns lab records by comparing <code>ADT</code> to the same analysis period windows.</p>
+                        <div class="variable-strip"><code>USUBJID</code><code>TRTSEQP</code><code>TRTA</code><code>AVAL</code><code>AVALC</code><code>ADT</code></div>
+                      </div>
+                    </div>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-18.png" alt="Crossover trial example 1 study design">
+                    <figcaption>Crossover Trial Example 1: open-label, multiple-dose, four-sequence, four-period design with treatment and analysis period timelines.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-19.png" alt="Crossover trial example 1 ADSL treatment sequence table">
+                    <figcaption>ADSL setup for the four-sequence crossover: TRTSEQP, TRT01P, TRT02P, TRT03P, TRT04P, treatment date variables, and analysis period variables.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-20.png" alt="Adverse event period and treatment group in crossover trial">
+                    <figcaption>Adverse event analysis in crossover: TEAEs are assigned to treatment group periods based on first IP administration date/time and the next period boundary.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-21.png" alt="ADAE occurrence data structure in crossover trial">
+                    <figcaption>ADAE occurrence data structure: derive ASTDT, TRTA, APERIOD, APERIODC, and TRTEMFL using ADSL period windows and SDTM AE start dates.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-22.png" alt="ADAEDIFF basic data structure for crossover trial">
+                    <figcaption>ADAEDIFF basic data structure: one record per subject/period/treatment with AVAL and AVALC to support treatment difference analyses.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-23.png" alt="Laboratory analysis result illustration">
+                    <figcaption>Laboratory analysis context in crossover periods.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-24.png" alt="ADLB basic data structure in crossover trial">
+                    <figcaption>ADLB basic data structure: derive APERIOD, APERIODC, and TRTA for lab records by comparing ADT to APxxSDT/APxxEDT.</figcaption>
+                  </figure>
+
+                  <h4>7. Crossover Trial Case Study 2</h4>
+                  <p>
+                    The second crossover case study is an open-label, two-part, one-sequence,
+                    three-period design. Period 2 is split into subperiods, so the analysis needs
+                    APERIOD plus ASPER/ASPERC and subperiod date/time variables.
+                  </p>
+                  <div class="native-figure" aria-label="Crossover trial with subperiods">
+                    <strong>Crossover Case Study 2: One Sequence, Three Periods, Split Period 2</strong>
+                    <div class="timeline-grid">
+                      <div class="timeline-row">
+                        <span class="timeline-label">Treatment</span>
+                        <span class="epoch-pill pill-drug-a">TRT01A A</span>
+                        <span class="epoch-pill pill-drug-x">TRT02A D</span>
+                        <span class="epoch-pill pill-drug-b">TRT03A DA</span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row">
+                        <span class="timeline-label">Analysis period</span>
+                        <span class="epoch-pill pill-follow">APERIOD 1</span>
+                        <span class="epoch-pill pill-follow">APERIOD 2</span>
+                        <span class="epoch-pill pill-follow">APERIOD 3</span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <div class="timeline-row">
+                        <span class="timeline-label">Subperiods</span>
+                        <span></span>
+                        <span class="epoch-pill pill-rest">P02S1</span>
+                        <span class="epoch-pill pill-rest">P02S2</span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                    <div class="variable-strip">
+                      <code>TR01SDTM</code><code>TR02SDTM</code><code>TR03SDTM</code><code>AP01SDTM</code><code>AP02SDTM</code><code>P02S1SDM</code><code>P02S1EDM</code><code>P02S2SDM</code><code>P02S2EDM</code><code>ASPER</code><code>ASPERC</code>
+                    </div>
+                    <p class="native-note">When one analysis period has clinically meaningful subperiods, BDS datasets need both the broader period assignment and the finer subperiod assignment. This is why ADAE may carry <code>APERIOD</code>, <code>APERIODC</code>, <code>ASPER</code>, and <code>ASPERC</code> together.</p>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-25.png" alt="Crossover trial example 2 study design with subperiods">
+                    <figcaption>Crossover Trial Example 2: open-label, two-part, one-sequence, three-period design with subperiod description and datetime variables.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-26.png" alt="Crossover trial example 2 analysis results">
+                    <figcaption>Analysis results context for Crossover Trial Example 2.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-27.png" alt="ADSL variables for crossover trial example 2">
+                    <figcaption>ADSL for Example 2: TRT01A, TRT02A, TRT03A, TRTSEQA, TRxxSDTM/TRxxEDTM, APxxSDTM/APxxEDT, and subperiod variables such as P02S1SDM and P02S2SDM.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-28.png" alt="ADAE derivation for crossover trial example 2">
+                    <figcaption>ADAE for Example 2: derives TRTA, APERIOD, APERIODC, ASPER, and ASPERC for events occurring in split periods.</figcaption>
+                  </figure>
+
+                  <h4>8. Crossover Trial Case Study 3: SAD/MAD and Food Effect</h4>
+                  <p>
+                    The third case study combines single ascending dose, multiple ascending dose,
+                    and food effect evaluation. The ADEG example shows how ECG analysis records can
+                    require APHASE, APERIODC, APERIOD, baseline flags, baseline values, and change
+                    from baseline.
+                  </p>
+                  <div class="native-figure" aria-label="SAD MAD food effect ADEG case study">
+                    <strong>Crossover Case Study 3: SAD / MAD / Food Effect</strong>
+                    <div class="case-grid">
+                      <div class="case-card">
+                        <h5>Design View</h5>
+                        <p>The same study can contain SAD, MAD, food effect evaluation, and drug treatment periods. A record may need both a broad phase and a period-specific analysis assignment.</p>
+                        <div class="variable-strip"><code>SAD</code><code>MAD</code><code>Food Effect</code><code>Drug Period</code></div>
+                      </div>
+                      <div class="case-card">
+                        <h5>ADEG View</h5>
+                        <p>QTcF records need treatment, visit, analysis phase, analysis period, baseline flag, baseline value, and change from baseline. Baseline may be period-specific, not just one global subject baseline.</p>
+                        <div class="variable-strip"><code>TRTA</code><code>PARAM</code><code>EGDTC</code><code>AVISIT</code><code>APHASE</code><code>APERIODC</code><code>ABLFL</code><code>BASE</code><code>CHG</code></div>
+                      </div>
+                    </div>
+                    <div class="table-scroll">
+                      <table class="crf-table" aria-label="ADEG complex design variables">
+                        <thead>
+                          <tr>
+                            <th>Variable Group</th>
+                            <th>Examples</th>
+                            <th>Why It Matters</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Phase</td><td>APHASE</td><td>Separates SAD, MAD, food effect, and follow-up logic.</td></tr>
+                          <tr><td>Period</td><td>APERIOD, APERIODC</td><td>Assigns the ECG result to the correct treatment period.</td></tr>
+                          <tr><td>Baseline</td><td>ABLFL, BASE, CHG</td><td>Supports period-specific baseline and change from baseline.</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-29.png" alt="SAD MAD and food effect study design">
+                    <figcaption>Crossover Trial Example 3: single ascending dose, multiple ascending dose, and food effect evaluation design.</figcaption>
+                  </figure>
+                  <figure class="pdf-slide-figure">
+                    <img src="assets/cdisc-complex-study/slide-30.png" alt="ADEG example for SAD MAD and food effect">
+                    <figcaption>ADEG example: QTcF records with TRTA, PARAM, EGDTC, VISIT, AVISIT, APHASE, APERIODC, APERIOD, AVAL, ABLFL, BASE, and CHG.</figcaption>
+                  </figure>
+
+                  <h4>9. Programmer Takeaways</h4>
+                  <ul>
+                    <li>Complex design programming starts with the protocol design, not with raw datasets.</li>
+                    <li>TE, TA, and TV describe the planned design; they do not contain subject-level data.</li>
+                    <li>ADSL carries the subject-level treatment sequence, period dates, phase dates, and subperiod dates needed by downstream ADaM datasets.</li>
+                    <li>ADAE, ADLB, ADEG, and similar datasets derive treatment attribution by comparing record dates to analysis period windows.</li>
+                    <li>Baseline, treatment-emergent flags, carryover, and subperiod assignment must be defined by the SAP and ADaM specification.</li>
+                    <li>A reviewer should be able to trace from protocol design to TDM, from TDM to ADSL period variables, and from ADSL to each analysis record.</li>
+                  </ul>
+                </article>
+              </details><details class="training-item">
+                <summary>
+                  <span class="summary-meta">Step 06</span>
                   <span class="summary-title">Introduction to ADaM</span>
                   <span class="summary-note">Why analysis datasets are built from SDTM and how variables such as baseline, change, and flags support analysis.</span>
                 </summary>
@@ -4745,7 +6092,7 @@ run;</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 06</span>
+                  <span class="summary-meta">Step 07</span>
                   <span class="summary-title">TLF Basics</span>
                   <span class="summary-note">How tables, listings, and figures differ, and how shells guide statistical programming outputs.</span>
                 </summary>
@@ -4831,7 +6178,7 @@ run;</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 07</span>
+                  <span class="summary-meta">Step 08</span>
                   <span class="summary-title">Programming Workflow &amp; QC Mindset</span>
                   <span class="summary-note">How production programming, independent QC, log review, and documentation help protect analysis quality.</span>
                 </summary>
@@ -5715,6 +7062,37 @@ run;</code></pre>
     if (initialPanel && document.getElementById(initialPanel)) {
       openPanel(initialPanel, false);
     }
+
+    document.querySelectorAll(".tdm-slide").forEach((slide) => {
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      slide.addEventListener("mousedown", (event) => {
+        isDown = true;
+        slide.classList.add("is-dragging");
+        startX = event.pageX - slide.offsetLeft;
+        scrollLeft = slide.scrollLeft;
+      });
+
+      slide.addEventListener("mouseleave", () => {
+        isDown = false;
+        slide.classList.remove("is-dragging");
+      });
+
+      slide.addEventListener("mouseup", () => {
+        isDown = false;
+        slide.classList.remove("is-dragging");
+      });
+
+      slide.addEventListener("mousemove", (event) => {
+        if (!isDown) return;
+        event.preventDefault();
+        const x = event.pageX - slide.offsetLeft;
+        const walk = (x - startX) * 1.15;
+        slide.scrollLeft = scrollLeft - walk;
+      });
+    });
   </script>
 </body>
 </html>
