@@ -721,6 +721,104 @@
       margin: 0;
     }
 
+    .shell-output {
+      margin: 20px 0 24px;
+      padding: 24px 26px;
+      overflow-x: auto;
+      border: 1px solid rgba(80, 95, 85, 0.22);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(0deg, rgba(54,42,42,0.018) 0 1px, transparent 1px 5px),
+        rgba(255, 255, 252, 0.88);
+      color: #3d3430;
+      box-shadow: 0 12px 26px rgba(74, 53, 44, 0.05);
+    }
+
+    .shell-page-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+      color: #6e5b53;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .shell-title-block {
+      margin: 6px 0 20px;
+      text-align: center;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    .shell-table-number {
+      font-weight: 800;
+    }
+
+    .shell-table-title {
+      font-weight: 800;
+    }
+
+    .shell-population {
+      color: #6e5b53;
+      font-size: 13px;
+    }
+
+    .shell-output table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .shell-output th,
+    .shell-output td {
+      padding: 9px 10px;
+      border-bottom: 1px solid rgba(80, 95, 85, 0.16);
+      text-align: center;
+      vertical-align: top;
+    }
+
+    .shell-output th:first-child,
+    .shell-output td:first-child {
+      text-align: left;
+      width: 34%;
+    }
+
+    .shell-output thead tr:first-child th {
+      border-top: 2px solid rgba(80, 95, 85, 0.35);
+      border-bottom: 1px solid rgba(80, 95, 85, 0.25);
+    }
+
+    .shell-section-row td {
+      padding-top: 14px;
+      color: #4b3a36;
+      font-weight: 800;
+      text-align: left;
+      background: rgba(207, 231, 216, 0.18);
+    }
+
+    .shell-footnotes {
+      display: grid;
+      gap: 5px;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 2px solid rgba(80, 95, 85, 0.3);
+      color: #5d4e48;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .shell-program-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 14px;
+      color: #80695f;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
     .code-window {
       margin: 20px 0 24px;
       overflow: hidden;
@@ -2166,7 +2264,7 @@
           <span class="card-number">01</span>
           <div>
             <h2>STATISTICAL<br>PROGRAMMING<br>TRAINING</h2>
-            <p>Start with clinical research programming, SDTM, ADaM, TLFs, and QC workflow.</p>
+            <p>Start with clinical research programming, Study Data Tabulation Model (SDTM), Analysis Data Model (ADaM), Tables, Listings, and Figures (TLFs), and quality control (QC) workflow.</p>
           </div>
         </a>
         <a class="work-card card-resources" href="#biostatistics" data-panel-link="biostatistics">
@@ -2250,6 +2348,14 @@
                         <tr><td>GDPR</td><td>General Data Protection Regulation</td><td>European privacy regulation for personal data protection.</td></tr>
                         <tr><td>HIPAA</td><td>Health Insurance Portability and Accountability Act</td><td>U.S. privacy regulation relevant to protected health information.</td></tr>
                         <tr><td>ICH</td><td>International Council for Harmonisation</td><td>Global guideline body; E3, E6, E8, E9, and E14 appear throughout clinical work.</td></tr>
+                        <tr><td>ICH E3</td><td>Structure and Content of Clinical Study Reports</td><td>Guideline that drives CSR structure and many table/listing numbering expectations.</td></tr>
+                        <tr><td>ICH E6</td><td>Good Clinical Practice</td><td>Guideline for trial conduct, quality, documentation, and data integrity.</td></tr>
+                        <tr><td>ICH E8</td><td>General Considerations for Clinical Studies</td><td>Guideline for study design quality and critical-to-quality thinking.</td></tr>
+                        <tr><td>ICH E9</td><td>Statistical Principles for Clinical Trials</td><td>Core statistical guideline for trial design, analysis planning, and interpretation.</td></tr>
+                        <tr><td>ICH E10</td><td>Choice of Control Group</td><td>Guideline used when thinking about comparator choice and trial interpretability.</td></tr>
+                        <tr><td>ICH E14</td><td>QT/QTc Evaluation</td><td>Guideline for cardiac repolarization safety assessment.</td></tr>
+                        <tr><td>ICH E17</td><td>Multi-Regional Clinical Trials</td><td>Guideline for global study design and regional consistency.</td></tr>
+                        <tr><td>ICH S7B</td><td>Nonclinical Evaluation of QT/QTc Prolongation</td><td>Nonclinical cardiac safety guideline often discussed together with E14.</td></tr>
                         <tr><td>P21</td><td>Pinnacle 21</td><td>Validation tool used to check SDTM, ADaM, Define.xml, and submission metadata rules.</td></tr>
                         <tr><td>PHI</td><td>Protected Health Information</td><td>Patient-identifying information that requires strict privacy and access controls.</td></tr>
                         <tr><td>QC</td><td>Quality Control</td><td>Independent checks, log review, compare checks, and review processes that protect output quality.</td></tr>
@@ -2276,9 +2382,14 @@
                         <tr><td>eCRF</td><td>Electronic Case Report Form</td><td>Electronic version of the CRF used in an EDC system.</td></tr>
                         <tr><td>EDC</td><td>Electronic Data Capture</td><td>System used by sites and data management to collect clinical data.</td></tr>
                         <tr><td>ePRO</td><td>Electronic Patient-Reported Outcome</td><td>Patient-entered source data, often transferred from a vendor instead of collected in EDC.</td></tr>
+                        <tr><td>CSV</td><td>Comma-Separated Values</td><td>Common text file format used for transfers or intermediate review, but not a final submission dataset format.</td></tr>
                         <tr><td>PRO</td><td>Patient-Reported Outcome</td><td>Assessment reported directly by the patient.</td></tr>
+                        <tr><td>PDF</td><td>Portable Document Format</td><td>Common format for aCRFs, shells, reviewer guides, and reports.</td></tr>
                         <tr><td>SAP</td><td>Statistical Analysis Plan</td><td>Study-level analysis rulebook for populations, endpoints, methods, and output planning.</td></tr>
+                        <tr><td>SAS</td><td>Statistical Analysis System</td><td>Common programming language and platform in regulated statistical programming.</td></tr>
                         <tr><td>TFL / TLF</td><td>Tables, Figures, and Listings / Tables, Listings, and Figures</td><td>Final reporting outputs. Some teams say TFL, others say TLF; this site uses both where context requires.</td></tr>
+                        <tr><td>XML</td><td>Extensible Markup Language</td><td>Format behind Define.xml and other structured metadata files.</td></tr>
+                        <tr><td>XPT</td><td>SAS Transport File</td><td>Required transport format for many regulatory SDTM and ADaM dataset submissions.</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -2299,9 +2410,12 @@
                         <tr><td>CDASH</td><td>Clinical Data Acquisition Standards Harmonization</td><td>CDISC collection standard for CRF data capture.</td></tr>
                         <tr><td>CDISC</td><td>Clinical Data Interchange Standards Consortium</td><td>Standards organization behind CDASH, SDTM, ADaM, controlled terminology, and metadata standards.</td></tr>
                         <tr><td>CT</td><td>Controlled Terminology</td><td>Approved terms and codelists that prevent private recoding.</td></tr>
+                        <tr><td>EVS</td><td>Enterprise Vocabulary Services</td><td>NCI service where CDISC controlled terminology is published.</td></tr>
                         <tr><td>ISO 8601</td><td>International date/time representation standard</td><td>Standard format used for SDTM character dates such as YYYY-MM-DD and partial dates.</td></tr>
+                        <tr><td>LOINC</td><td>Logical Observation Identifiers Names and Codes</td><td>Standard terminology commonly associated with laboratory tests and observations.</td></tr>
                         <tr><td>MedDRA</td><td>Medical Dictionary for Regulatory Activities</td><td>Coding dictionary for adverse events and medical history.</td></tr>
                         <tr><td>MSG</td><td>Metadata Submission Guideline</td><td>CDISC guidance for metadata submission and aCRF annotation expectations.</td></tr>
+                        <tr><td>NCI</td><td>National Cancer Institute</td><td>Publisher of CDISC controlled terminology through EVS.</td></tr>
                         <tr><td>SDTM</td><td>Study Data Tabulation Model</td><td>CDISC standard for tabulation datasets describing what happened in the trial.</td></tr>
                         <tr><td>SDTMIG</td><td>SDTM Implementation Guide</td><td>Domain-specific implementation rules for SDTM datasets.</td></tr>
                         <tr><td>WHODrug</td><td>World Health Organization Drug Dictionary</td><td>Coding dictionary commonly used for concomitant medications.</td></tr>
@@ -2321,16 +2435,30 @@
                       </thead>
                       <tbody>
                         <tr><td>AE</td><td>Adverse Events</td><td>Safety event domain; common source for ADAE and safety tables.</td></tr>
+                        <tr><td>CE</td><td>Clinical Events</td><td>Clinical event domain for events that are not adverse events or medical history.</td></tr>
                         <tr><td>CM</td><td>Concomitant Medications</td><td>Medication domain usually supported by WHODrug coding.</td></tr>
                         <tr><td>DM</td><td>Demographics</td><td>Special-purpose subject-level domain with one record per subject.</td></tr>
                         <tr><td>DS</td><td>Disposition</td><td>Subject disposition events such as completion, discontinuation, or informed consent milestones.</td></tr>
+                        <tr><td>DV</td><td>Protocol Deviations</td><td>Protocol deviation records.</td></tr>
+                        <tr><td>EC</td><td>Exposure as Collected</td><td>Collected exposure information before final exposure standardization.</td></tr>
+                        <tr><td>EG</td><td>Electrocardiogram Test Results</td><td>Findings domain for ECG test results.</td></tr>
                         <tr><td>EX</td><td>Exposure</td><td>Actual treatment administration records.</td></tr>
+                        <tr><td>FA</td><td>Findings About</td><td>Findings collected about another event, intervention, or finding.</td></tr>
+                        <tr><td>HO</td><td>Healthcare Encounters</td><td>Healthcare encounter records such as hospitalization-related information.</td></tr>
                         <tr><td>IE</td><td>Inclusion/Exclusion Criteria Not Met</td><td>Subject-level eligibility exceptions.</td></tr>
                         <tr><td>LB</td><td>Laboratory Tests</td><td>Lab findings domain; often transferred from a central lab vendor.</td></tr>
+                        <tr><td>MB</td><td>Microbiology Specimen</td><td>Microbiology specimen records.</td></tr>
                         <tr><td>MH</td><td>Medical History</td><td>Medical history domain, often coded with MedDRA.</td></tr>
+                        <tr><td>MI</td><td>Microscopic Findings</td><td>Microscopic findings records.</td></tr>
+                        <tr><td>PC</td><td>Pharmacokinetic Concentrations</td><td>PK concentration findings.</td></tr>
+                        <tr><td>PE</td><td>Physical Examination</td><td>Physical examination findings.</td></tr>
+                        <tr><td>PR</td><td>Procedures</td><td>Procedures performed during the study.</td></tr>
                         <tr><td>QS</td><td>Questionnaires</td><td>Questionnaire findings, including some patient-reported outcomes.</td></tr>
+                        <tr><td>RELREC</td><td>Related Records</td><td>Relationship dataset used to link related records across domains.</td></tr>
+                        <tr><td>RS</td><td>Disease Response</td><td>Response assessment records, often used in oncology studies.</td></tr>
                         <tr><td>SC</td><td>Subject Characteristics</td><td>Subject-level characteristics that are not core DM variables.</td></tr>
                         <tr><td>SE</td><td>Subject Elements</td><td>Actual subject movement through planned trial elements.</td></tr>
+                        <tr><td>SU</td><td>Substance Use</td><td>Records for tobacco, alcohol, or other substance use.</td></tr>
                         <tr><td>SV</td><td>Subject Visits</td><td>Actual subject visits, including missed or unscheduled visits.</td></tr>
                         <tr><td>SUPP--</td><td>Supplemental Qualifiers</td><td>Vertical structure for non-standard qualifiers that do not fit a parent SDTM domain.</td></tr>
                         <tr><td>TA</td><td>Trial Arms</td><td>Planned arm paths through elements and epochs. Trial design domains are not mapped from CRF fields.</td></tr>
@@ -2363,6 +2491,7 @@
                         <tr><td>ADVS</td><td>ADaM Vital Signs Dataset</td><td>Analysis-ready vital signs dataset.</td></tr>
                         <tr><td>ABLFL</td><td>Analysis Baseline Flag</td><td>Marks the record selected as analysis baseline.</td></tr>
                         <tr><td>ADT</td><td>Analysis Date</td><td>Numeric SAS analysis date used in ADaM derivations.</td></tr>
+                        <tr><td>ANL01FL</td><td>Analysis Record Flag 01</td><td>Study-defined flag used to select records for a specific analysis.</td></tr>
                         <tr><td>APHASE</td><td>Analysis Phase</td><td>Broad analysis phase such as screening, treatment, or follow-up.</td></tr>
                         <tr><td>APERIOD / APERIODC</td><td>Analysis Period / Analysis Period Character</td><td>Period assignment used heavily in crossover and multi-period studies.</td></tr>
                         <tr><td>ASPER / ASPERC</td><td>Analysis Subperiod / Analysis Subperiod Character</td><td>Finer assignment inside an analysis period.</td></tr>
@@ -2370,7 +2499,12 @@
                         <tr><td>AVISIT</td><td>Analysis Visit</td><td>Analysis-facing visit label, which may differ from raw visit names.</td></tr>
                         <tr><td>BASE</td><td>Baseline Value</td><td>Baseline used for change-from-baseline calculations.</td></tr>
                         <tr><td>CHG</td><td>Change from Baseline</td><td>Derived value commonly calculated as AVAL minus BASE.</td></tr>
+                        <tr><td>FAS / FASFL</td><td>Full Analysis Set / Full Analysis Set Flag</td><td>Population or flag for subjects included in the main efficacy analysis set.</td></tr>
+                        <tr><td>ITT / ITTFL</td><td>Intent-to-Treat / Intent-to-Treat Flag</td><td>Population or flag based on randomized subjects, depending on the SAP definition.</td></tr>
                         <tr><td>PARAM / PARAMCD</td><td>Parameter / Parameter Code</td><td>Analysis parameter label and short code.</td></tr>
+                        <tr><td>PP / PPSFL</td><td>Per-Protocol / Per-Protocol Set Flag</td><td>Population or flag for subjects meeting protocol-defined evaluability criteria.</td></tr>
+                        <tr><td>RANDDT / RANDFL</td><td>Randomization Date / Randomized Flag</td><td>Subject-level randomization variables commonly stored in ADSL.</td></tr>
+                        <tr><td>SAF / SAFFL</td><td>Safety Analysis Set / Safety Analysis Set Flag</td><td>Population or flag for subjects included in safety analyses.</td></tr>
                         <tr><td>TRTA / TRTxxA</td><td>Actual Treatment / Actual Treatment by Period</td><td>Treatment actually received or assigned for analysis.</td></tr>
                         <tr><td>TRTxxP</td><td>Planned Treatment by Period</td><td>Planned treatment for period xx, such as TRT01P and TRT02P.</td></tr>
                         <tr><td>TRTSEQA / TRTSEQP</td><td>Actual / Planned Treatment Sequence</td><td>Treatment sequence variables often used in crossover designs.</td></tr>
@@ -2398,13 +2532,21 @@
                         <tr><td>AESER</td><td>Serious Event Flag</td><td>Indicates whether an adverse event is serious.</td></tr>
                         <tr><td>AESEV</td><td>Severity / Intensity</td><td>Adverse event severity, usually controlled terminology.</td></tr>
                         <tr><td>AETERM</td><td>Reported Term for the Adverse Event</td><td>Verbatim or collected adverse event term.</td></tr>
+                        <tr><td>ARM / ARMCD</td><td>Planned Arm / Planned Arm Code</td><td>Subject's planned treatment arm label and code.</td></tr>
+                        <tr><td>ETCD</td><td>Element Code</td><td>Trial element code used in TE and TA.</td></tr>
+                        <tr><td>EPOCH</td><td>Epoch</td><td>Planned study phase such as screening, treatment, washout, or follow-up.</td></tr>
                         <tr><td>DOMAIN</td><td>Domain Abbreviation</td><td>Two-letter SDTM domain code such as AE, DM, LB, or VS.</td></tr>
                         <tr><td>IDVAR / IDVARVAL</td><td>Identifying Variable / Identifying Variable Value</td><td>SUPP-- variables that point back to the parent domain record.</td></tr>
+                        <tr><td>ORRESU / STRESU</td><td>Original Result Unit / Standard Result Unit</td><td>Collected and standardized units for findings results.</td></tr>
                         <tr><td>QNAM / QLABEL / QVAL</td><td>Qualifier Name / Label / Value</td><td>SUPP-- variables used to store supplemental qualifiers.</td></tr>
+                        <tr><td>STAT / REASND</td><td>Status / Reason Not Done</td><td>Common variable fragments used when a test or assessment was not performed.</td></tr>
                         <tr><td>SOC / PT</td><td>System Organ Class / Preferred Term</td><td>MedDRA hierarchy levels used in safety summaries.</td></tr>
                         <tr><td>STUDYID</td><td>Study Identifier</td><td>Study-level identifier in SDTM and ADaM datasets.</td></tr>
+                        <tr><td>TAETORD</td><td>Trial Arm Element Order</td><td>Order of planned elements within an arm in TA.</td></tr>
+                        <tr><td>TEST / TESTCD</td><td>Test Name / Test Code</td><td>Findings domain test label and short controlled code.</td></tr>
                         <tr><td>TRTEMFL</td><td>Treatment-Emergent Analysis Flag</td><td>ADaM flag identifying treatment-emergent adverse events.</td></tr>
                         <tr><td>USUBJID</td><td>Unique Subject Identifier</td><td>Study-wide unique subject key used across SDTM and ADaM.</td></tr>
+                        <tr><td>VISIT / VISITNUM</td><td>Visit Name / Visit Number</td><td>Visit label and numeric visit order.</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -2421,9 +2563,15 @@
                       </thead>
                       <tbody>
                         <tr><td>ATC</td><td>Anatomical Therapeutic Chemical Classification</td><td>WHODrug-related medication classification often used for concomitant medication summaries.</td></tr>
+                        <tr><td>ANCOVA</td><td>Analysis of Covariance</td><td>Common statistical model used for adjusted treatment comparisons.</td></tr>
+                        <tr><td>BMI</td><td>Body Mass Index</td><td>Common derived clinical measurement.</td></tr>
+                        <tr><td>BP</td><td>Blood Pressure</td><td>Vital signs measurement; commonly split into systolic and diastolic BP.</td></tr>
                         <tr><td>DHT</td><td>Digital Health Technology</td><td>Device or technology source that may produce external clinical data.</td></tr>
                         <tr><td>ECG</td><td>Electrocardiogram</td><td>Cardiac safety data source used in EG/ADEG and QT analyses.</td></tr>
+                        <tr><td>IP</td><td>Investigational Product</td><td>Study treatment under investigation.</td></tr>
+                        <tr><td>IRT</td><td>Interactive Response Technology</td><td>System commonly used for randomization and drug supply assignment.</td></tr>
                         <tr><td>MAD</td><td>Multiple Ascending Dose</td><td>Early-phase design with escalating repeated doses.</td></tr>
+                        <tr><td>PK</td><td>Pharmacokinetics</td><td>Drug concentration and exposure analysis area, often using PC data.</td></tr>
                         <tr><td>QT / QTc / QTcF</td><td>QT Interval / Corrected QT / Fridericia-Corrected QT</td><td>Cardiac repolarization measures often analyzed under ICH E14 thinking.</td></tr>
                         <tr><td>SAD</td><td>Single Ascending Dose</td><td>Early-phase design with escalating single doses.</td></tr>
                         <tr><td>SMART</td><td>Sequential Multiple Assignment Randomized Trial</td><td>Adaptive design where later treatment paths may depend on earlier response.</td></tr>
@@ -2452,20 +2600,20 @@
               <h4>1.1 Global Regulatory Framework</h4>
               <ul>
                 <li>
-                  <strong>ICH-GCP E6(R2/R3):</strong> Good Clinical Practice is the international
+                  <strong>International Council for Harmonisation Good Clinical Practice (ICH-GCP) E6(R2/R3):</strong> Good Clinical Practice is the international
                   ethical and quality standard for designing, conducting, recording, and reporting
                   clinical trials. In programming work, GCP means that data manipulations, analyses,
                   and reporting outputs must protect subject safety and preserve trial integrity.
                 </li>
                 <li>
-                  <strong>21 CFR Part 11 and EMA Annex 11:</strong> These regulations address
+                  <strong>21 Code of Federal Regulations (21 CFR) Part 11 and European Medicines Agency (EMA) Annex 11:</strong> These regulations address
                   electronic records, electronic signatures, system access, audit trails, and data
                   reliability. Programming environments must support controlled access, traceable
                   changes, secure storage, and reproducible execution.
                 </li>
                 <li>
-                  <strong>Data privacy regulations:</strong> HIPAA in the United States and GDPR in
-                  the European Union protect patient privacy. Protected Health Information should not
+                  <strong>Data privacy regulations:</strong> The Health Insurance Portability and Accountability Act (HIPAA) in the United States and the General Data Protection Regulation (GDPR) in
+                  the European Union protect patient privacy. Protected Health Information (PHI) should not
                   appear in analysis-ready programming environments unless specifically permitted
                   and controlled. De-identification, pseudonymization, date handling, and access
                   control are part of responsible data handling.
@@ -2908,7 +3056,7 @@ run;</code></pre>
                 <summary>
                   <span class="summary-meta">Step 02</span>
                   <span class="summary-title">Clinical Trial Documents Programmers Must Read</span>
-                  <span class="summary-note">Protocol, SAP, TLF shells, annotated CRF, data transfer specifications, and Define.xml.</span>
+                  <span class="summary-note">Protocol, Statistical Analysis Plan (SAP), Tables, Listings, and Figures (TLF) shells, annotated Case Report Form (aCRF), Data Transfer Specifications (DTS), and Define.xml.</span>
                 </summary>
 
                 <article class="lesson">
@@ -3611,8 +3759,8 @@ if pre_dose then ablfl = "Y";</code></pre>
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 03</span>
-                  <span class="summary-title">Understanding CRF and aCRF</span>
-                  <span class="summary-note">How clinical source data is collected, exported, annotated, and prepared before SDTM mapping begins.</span>
+                  <span class="summary-title">Understanding Case Report Forms (CRF) and Annotated CRFs (aCRF)</span>
+                  <span class="summary-note">How clinical source data is collected, exported, annotated, and prepared before Study Data Tabulation Model (SDTM) mapping begins.</span>
                 </summary>
 
                 <article class="lesson">
@@ -4811,8 +4959,8 @@ if pre_dose then ablfl = "Y";</code></pre>
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 04</span>
-                  <span class="summary-title">Introduction to SDTM</span>
-                  <span class="summary-note">How raw clinical data becomes compliant SDTM through variable roles, SUPP--, controlled terminology, and ISO 8601 dates.</span>
+                  <span class="summary-title">Introduction to Study Data Tabulation Model (SDTM)</span>
+                  <span class="summary-note">How raw clinical data becomes compliant SDTM through variable roles, Supplemental Qualifiers (SUPP--), controlled terminology, and ISO 8601 dates.</span>
                 </summary>
 
                 <article class="lesson">
@@ -5305,6 +5453,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                         for subject identity, comments, subject-level participation, and study
                         visit structure.
                       </p>
+                      <p>
+                        <strong>Important boundary:</strong> IE is not a Special Purpose domain.
+                        It belongs with Findings-style eligibility results because it records
+                        subject-level inclusion or exclusion criteria not met. TI stores the
+                        planned criteria; IE stores the subject's result against those criteria.
+                      </p>
                       <div class="sdtm-tag-row">
                         <span class="sdtm-tag">DM</span>
                         <span class="sdtm-tag">CO</span>
@@ -5406,6 +5560,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                         <span class="sdtm-tag">VS</span>
                         <span class="sdtm-tag">EG</span>
                         <span class="sdtm-tag">QS</span>
+                        <span class="sdtm-tag">IE</span>
                         <span class="sdtm-tag">FA</span>
                         <span class="sdtm-tag">PC</span>
                       </div>
@@ -5438,6 +5593,11 @@ if pre_dose then ablfl = "Y";</code></pre>
                               <td>Timing</td>
                               <td>--DTC, VISIT, VISITNUM</td>
                               <td>VSDTC = 2026-06-28T09:15</td>
+                            </tr>
+                            <tr>
+                              <td>Eligibility finding</td>
+                              <td>IETESTCD, IETEST, IEORRES</td>
+                              <td>IETESTCD = INC01; IEORRES = N for a criterion not met</td>
                             </tr>
                           </tbody>
                         </table>
@@ -5566,6 +5726,48 @@ if pre_dose then ablfl = "Y";</code></pre>
                         programmers must build ISO 8601 strings carefully while preserving partial
                         dates.
                       </p>
+                      <p>
+                        <strong>SAS date reminder:</strong> a SAS date value is a numeric count of
+                        days from January 1, 1960. For example, 0 means 1960-01-01, 1 means
+                        1960-01-02, and -1 means 1959-12-31. This is different from an SDTM
+                        <code>--DTC</code> value, which is a character string such as
+                        <code>2026-06-28</code> or a partial date such as <code>2026-06</code>.
+                        Use SAS dates for validation and calculations, then output the submitted
+                        SDTM date/time as an ISO 8601 character value.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="SAS date versus SDTM DTC">
+                          <thead>
+                            <tr>
+                              <th>Concept</th>
+                              <th>Example</th>
+                              <th>Programming Meaning</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>SAS numeric date</td>
+                              <td>0</td>
+                              <td>January 1, 1960; useful for date arithmetic and comparisons.</td>
+                            </tr>
+                            <tr>
+                              <td>SAS numeric date</td>
+                              <td>24283</td>
+                              <td>Displays as 2026-06-28 if a date format such as YYMMDD10. is applied.</td>
+                            </tr>
+                            <tr>
+                              <td>SDTM --DTC</td>
+                              <td>2026-06-28</td>
+                              <td>Submitted character date; do not store it as a SAS numeric date.</td>
+                            </tr>
+                            <tr>
+                              <td>Partial SDTM --DTC</td>
+                              <td>2026-06</td>
+                              <td>Preserves a missing day. Do not impute the day in SDTM unless the standard or study rule explicitly requires it.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="code-window" aria-label="SAS ISO 8601 DTC mapping template">
                         <div class="code-window-header">
                           <span>SAS ISO 8601 Date Template</span>
@@ -5656,7 +5858,7 @@ run;</code></pre>
                 <summary>
                   <span class="summary-meta">Step 05</span>
                   <span class="summary-title">CDISC for Complex Study Design</span>
-                  <span class="summary-note">Complex design concepts, SDTM Trial Design Model, ADaM period variables, and case studies from crossover and SAD/MAD examples.</span>
+                  <span class="summary-note">Complex design concepts, SDTM Trial Design Model (TDM), ADaM period variables, and case studies from crossover, Single Ascending Dose (SAD), and Multiple Ascending Dose (MAD) examples.</span>
                 </summary>
 
                 <article class="lesson complex-design-lesson">
@@ -6367,7 +6569,7 @@ run;</code></pre>
               </details><details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 06</span>
-                  <span class="summary-title">Introduction to ADaM</span>
+                  <span class="summary-title">Introduction to Analysis Data Model (ADaM)</span>
                   <span class="summary-note">Why analysis datasets are built from SDTM and how variables such as baseline, change, and flags support analysis.</span>
                 </summary>
 
@@ -6448,14 +6650,14 @@ run;</code></pre>
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 07</span>
-                  <span class="summary-title">TLF Basics</span>
+                  <span class="summary-title">Tables, Listings, and Figures (TLF) Basics</span>
                   <span class="summary-note">How tables, listings, and figures differ, and how shells guide statistical programming outputs.</span>
                 </summary>
 
                 <article class="lesson">
                   <h4>1. What TLF Means</h4>
                   <p>
-                    TLF stands for Tables, Listings, and Figures. These outputs summarize and
+                    Tables, Listings, and Figures (TLF) are the final reporting outputs that summarize and
                     display clinical trial results for clinical study reports, review packages,
                     and internal study interpretation.
                   </p>
@@ -6478,35 +6680,125 @@ run;</code></pre>
                   </ul>
 
                   <h4>3. Example Shell Reading</h4>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="Example TLF shell">
+                  <p>
+                    A shell should be read as a complete output instruction, not just the body
+                    rows. The header tells the population and table identity; the body tells the
+                    statistics and layout; the footnotes tell the rules that often drive the code.
+                  </p>
+                  <div class="shell-output" aria-label="Complete example TLF shell with header, body, footnotes, and source line">
+                    <div class="shell-page-meta">
+                      <span>YIAN GROUP &nbsp; | &nbsp; Protocol YGN-101-02</span>
+                      <span>Page 1 of 1</span>
+                    </div>
+                    <div class="shell-title-block">
+                      <div class="shell-table-number">Table 14.3.4.1</div>
+                      <div class="shell-table-title">Summary of Vital Signs at Baseline and Change from Baseline</div>
+                      <div class="shell-population">Safety Population</div>
+                    </div>
+                    <table>
                       <thead>
                         <tr>
-                          <th>Row Label</th>
-                          <th>Placebo</th>
-                          <th>YGN-101</th>
+                          <th>Parameter / Statistic</th>
+                          <th>Placebo<br>N = xx</th>
+                          <th>YGN-101 50 mg<br>N = xx</th>
+                          <th>Total<br>N = xx</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="shell-section-row">
+                          <td colspan="4">Systolic Blood Pressure (mmHg)</td>
+                        </tr>
+                        <tr>
+                          <td>Baseline, n</td>
+                          <td>xx</td>
+                          <td>xx</td>
+                          <td>xx</td>
+                        </tr>
+                        <tr>
+                          <td>Baseline, Mean (SD)</td>
+                          <td>xxx.x (xx.x)</td>
+                          <td>xxx.x (xx.x)</td>
+                          <td>xxx.x (xx.x)</td>
+                        </tr>
+                        <tr>
+                          <td>Baseline, Median</td>
+                          <td>xxx.x</td>
+                          <td>xxx.x</td>
+                          <td>xxx.x</td>
+                        </tr>
+                        <tr>
+                          <td>Baseline, Min, Max</td>
+                          <td>xxx.x, xxx.x</td>
+                          <td>xxx.x, xxx.x</td>
+                          <td>xxx.x, xxx.x</td>
+                        </tr>
+                        <tr>
+                          <td>Change from Baseline at Week 4, n</td>
+                          <td>xx</td>
+                          <td>xx</td>
+                          <td>xx</td>
+                        </tr>
+                        <tr>
+                          <td>Change from Baseline at Week 4, Mean (SD)</td>
+                          <td>xx.x (xx.x)</td>
+                          <td>xx.x (xx.x)</td>
+                          <td>xx.x (xx.x)</td>
+                        </tr>
+                        <tr>
+                          <td>Change from Baseline at Week 4, Median</td>
+                          <td>xx.x</td>
+                          <td>xx.x</td>
+                          <td>xx.x</td>
+                        </tr>
+                        <tr>
+                          <td>Change from Baseline at Week 4, Min, Max</td>
+                          <td>xx.x, xx.x</td>
+                          <td>xx.x, xx.x</td>
+                          <td>xx.x, xx.x</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="shell-footnotes">
+                      <div>Note: Percentages, if displayed, use the number of subjects in the treatment group as the denominator unless otherwise specified.</div>
+                      <div>Baseline is defined as the last non-missing assessment before the first dose of study treatment.</div>
+                      <div>Change from baseline is calculated as post-baseline value minus baseline value.</div>
+                      <div>SD = standard deviation; Min = minimum; Max = maximum.</div>
+                      <div>Source: ADVS, ADSL. Program: t_14_3_4_1_vs_summary.sas.</div>
+                    </div>
+                    <div class="shell-program-line">
+                      <span>Output: t_14_3_4_1_vs_summary.rtf</span>
+                      <span>Generated: YYYY-MM-DD HH:MM</span>
+                    </div>
+                  </div>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="How to read a complete TLF shell">
+                      <thead>
+                        <tr>
+                          <th>Shell Area</th>
+                          <th>What It Controls</th>
+                          <th>Programming Impact</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>n</td>
-                          <td>xx</td>
-                          <td>xx</td>
+                          <td>Header and title</td>
+                          <td>Table number, endpoint/topic, population, treatment labels, page identity.</td>
+                          <td>Confirms output name, title lines, population flag, treatment variable, and ordering.</td>
                         </tr>
                         <tr>
-                          <td>Mean (SD)</td>
-                          <td>xx.x (xx.x)</td>
-                          <td>xx.x (xx.x)</td>
+                          <td>Column headers</td>
+                          <td>Treatment groups, total column, N values, visit or subgroup structure.</td>
+                          <td>Drives grouping variables, denominator checks, and display formats.</td>
                         </tr>
                         <tr>
-                          <td>Median</td>
-                          <td>xx.x</td>
-                          <td>xx.x</td>
+                          <td>Body rows</td>
+                          <td>Parameters, statistics, precision, indentation, and row order.</td>
+                          <td>Drives PARAM/PARAMCD selection, statistics, decimal places, and row templates.</td>
                         </tr>
                         <tr>
-                          <td>Min, Max</td>
-                          <td>xx.x, xx.x</td>
-                          <td>xx.x, xx.x</td>
+                          <td>Footnotes</td>
+                          <td>Baseline rules, denominator rules, imputation rules, abbreviations, and sources.</td>
+                          <td>Often determines derivation logic and must match SAP and programming specifications.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -6534,8 +6826,8 @@ run;</code></pre>
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Step 08</span>
-                  <span class="summary-title">Programming Workflow &amp; QC Mindset</span>
-                  <span class="summary-note">How production programming, independent QC, log review, and documentation help protect analysis quality.</span>
+                  <span class="summary-title">Programming Workflow &amp; Quality Control (QC) Mindset</span>
+                  <span class="summary-note">How data specifications, production programming, independent QC, log review, and documentation help protect analysis quality.</span>
                 </summary>
 
                 <article class="lesson">
@@ -6545,12 +6837,47 @@ run;</code></pre>
                     The work must be organized, reviewable, and reproducible.
                   </p>
                   <ul>
-                    <li><strong>Read specifications:</strong> Review the protocol, SAP, shells, and programming specifications.</li>
+                    <li><strong>Read source documents:</strong> Review the protocol, SAP, TLF shells, annotated CRF, data transfer specifications, and approved study assumptions.</li>
+                    <li><strong>Create or confirm data specifications:</strong> Translate source documents into SDTM, ADaM, or output programming specifications before coding. The spec should define variables, labels, types, controlled terminology, derivation logic, source datasets, and traceability notes.</li>
                     <li><strong>Build production code:</strong> Create datasets or outputs according to approved requirements.</li>
                     <li><strong>Run checks:</strong> Review logs, warnings, notes, record counts, and unexpected values.</li>
                     <li><strong>Perform QC:</strong> Use independent programming or structured review to confirm the result.</li>
                     <li><strong>Resolve comments:</strong> Document decisions and update code or outputs as needed.</li>
                   </ul>
+
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Programming specification fields">
+                      <thead>
+                        <tr>
+                          <th>Spec Area</th>
+                          <th>What It Should Define</th>
+                          <th>Why It Matters Before Coding</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Dataset-level purpose</td>
+                          <td>Dataset name, label, class, source domains, and intended use.</td>
+                          <td>Prevents programmers from building a dataset without knowing its downstream role.</td>
+                        </tr>
+                        <tr>
+                          <td>Variable metadata</td>
+                          <td>Variable name, label, type, length, format, controlled terminology, and order.</td>
+                          <td>Controls structure, Define.xml metadata, and validation expectations.</td>
+                        </tr>
+                        <tr>
+                          <td>Derivation logic</td>
+                          <td>Algorithms for flags, dates, baseline, change, periods, imputation, and analysis values.</td>
+                          <td>Turns SAP language into programmable rules and reduces private assumptions.</td>
+                        </tr>
+                        <tr>
+                          <td>Traceability</td>
+                          <td>Source variable, source domain, source document reference, and reviewer notes.</td>
+                          <td>Allows QC programmers and reviewers to follow each value back to approved inputs.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
                   <h4>2. What QC Is Looking For</h4>
                   <p>
