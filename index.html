@@ -357,13 +357,18 @@
     }
 
     .acronym-panel {
-      margin: 22px 0 26px;
+      margin: 16px 0 20px;
       border: 1px solid rgba(200, 157, 132, 0.28);
-      border-radius: 8px;
+      border-radius: 6px;
       background:
         repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
-        rgba(255, 250, 248, 0.58);
+        rgba(255, 255, 252, 0.58);
+      box-shadow: 0 10px 22px rgba(80, 65, 50, 0.045);
       overflow: hidden;
+    }
+
+    .acronym-panel[open] {
+      border-color: rgba(200, 157, 132, 0.28);
     }
 
     .acronym-panel > summary {
@@ -382,36 +387,45 @@
     .acronym-panel > summary::after {
       content: ">";
       position: absolute;
-      top: 16px;
+      top: 15px;
       right: 28px;
       color: var(--sand);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 30px;
+      font-size: 32px;
       line-height: 1;
-      transform: rotate(90deg);
       transition: transform 0.2s ease;
     }
 
     .acronym-panel[open] > summary::after {
-      transform: rotate(-90deg);
+      transform: rotate(90deg);
+    }
+
+    .acronym-kicker {
+      color: var(--sand);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
     }
 
     .acronym-title {
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(24px, 2.4vw, 32px);
-      font-weight: 800;
+      font-size: clamp(22px, 2.4vw, 31px);
+      line-height: 1.08;
       letter-spacing: 0;
     }
 
     .acronym-note {
-      color: #80695f;
+      color: #7c6b63;
       font-size: 14px;
-      line-height: 1.5;
+      font-weight: 700;
+      line-height: 1.35;
     }
 
     .acronym-content {
       padding: 0 20px 22px;
+      border-top: 1px solid rgba(200, 157, 132, 0.22);
     }
 
     .acronym-content h5 {
@@ -438,7 +452,21 @@
       overflow: hidden;
     }
 
+    .bio-topic {
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 6px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
+        rgba(255, 250, 248, 0.5);
+      box-shadow: none;
+      overflow: hidden;
+    }
+
     .training-item[open] {
+      border-color: rgba(200, 157, 132, 0.28);
+    }
+
+    .bio-topic[open] {
       border-color: rgba(200, 157, 132, 0.28);
     }
 
@@ -451,7 +479,20 @@
       list-style: none;
     }
 
+    .bio-topic summary {
+      position: relative;
+      display: grid;
+      gap: 5px;
+      padding: 16px 54px 16px 20px;
+      cursor: pointer;
+      list-style: none;
+    }
+
     .training-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .bio-topic summary::-webkit-details-marker {
       display: none;
     }
 
@@ -464,6 +505,21 @@
       font-family: Georgia, "Times New Roman", serif;
       font-size: 28px;
       line-height: 1;
+    }
+
+    .bio-topic summary::after {
+      content: ">";
+      position: absolute;
+      top: 15px;
+      right: 28px;
+      color: var(--sand);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .bio-topic[open] summary::after {
+      transform: rotate(90deg);
     }
 
     .summary-meta {
@@ -495,6 +551,20 @@
       background:
         repeating-radial-gradient(circle at 12% 18%, rgba(54,42,42,0.016) 0 1px, transparent 1px 4px),
         rgba(255, 250, 248, 0.54);
+    }
+
+    .bio-topic .lesson {
+      display: none;
+      border-width: 1px 0 0;
+      border-radius: 0;
+      box-shadow: none;
+      background:
+        repeating-radial-gradient(circle at 12% 18%, rgba(54,42,42,0.016) 0 1px, transparent 1px 4px),
+        rgba(255, 250, 248, 0.54);
+    }
+
+    .bio-topic[open] .lesson {
+      display: block;
     }
 
     .training-overview.is-hidden {
@@ -817,6 +887,121 @@
       color: #80695f;
       font-size: 11px;
       line-height: 1.5;
+    }
+
+    .feedback-card {
+      margin-top: 22px;
+      padding: 24px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
+        rgba(255, 250, 248, 0.7);
+    }
+
+    .feedback-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feedback-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feedback-field {
+      display: grid;
+      gap: 7px;
+      color: #4f423d;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .feedback-field input,
+    .feedback-field select,
+    .feedback-field textarea {
+      width: 100%;
+      border: 1px solid rgba(80, 95, 85, 0.28);
+      border-radius: 6px;
+      background: rgba(255, 255, 252, 0.9);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 500;
+      line-height: 1.45;
+      padding: 11px 12px;
+    }
+
+    .feedback-field textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .feedback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .feedback-button {
+      border: 1px solid rgba(80, 95, 85, 0.42);
+      border-radius: 999px;
+      background: #e3f2ee;
+      color: #3a514a;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      padding: 10px 16px;
+      text-transform: uppercase;
+    }
+
+    .feedback-button.secondary {
+      background: rgba(255, 255, 252, 0.85);
+      color: #6e5f59;
+    }
+
+    .feedback-status {
+      min-height: 1.5em;
+      margin: 0;
+      color: #6b5b55;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .feedback-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .feedback-item {
+      padding: 14px 16px;
+      border: 1px solid rgba(80, 95, 85, 0.16);
+      border-radius: 7px;
+      background: rgba(255, 255, 252, 0.72);
+    }
+
+    .feedback-item-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      color: #4c403c;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .feedback-item p,
+    .feedback-empty {
+      margin: 0;
+      color: #6d625d;
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: pre-wrap;
     }
 
     .code-window {
@@ -1353,12 +1538,568 @@
       margin: 14px 0 24px;
     }
 
-    .sdtm-overview {
-      margin-bottom: 30px;
+    .sdtm-mapping-intro {
+      margin: 24px 0 30px;
+      padding: 24px 26px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
+        rgba(255, 250, 248, 0.62);
     }
 
-    .sdtm-overview .flow {
+    .sdtm-training-lead {
+      margin: 0 0 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(200, 157, 132, 0.22);
+    }
+
+    .sdtm-training-lead h5 {
+      margin: 0 0 10px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(21px, 2.2vw, 28px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .sdtm-training-lead p,
+    .sdtm-training-section p {
+      margin: 0 0 14px;
+      color: #5d514c;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .sdtm-training-lead p:last-child,
+    .sdtm-training-section p:last-child {
       margin-bottom: 0;
+    }
+
+    .sdtm-training-section {
+      margin-top: 22px;
+    }
+
+    .sdtm-training-section h5 {
+      margin: 0 0 10px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(21px, 2.2vw, 28px);
+      line-height: 1.2;
+    }
+
+    .sdtm-training-note {
+      margin-top: 16px;
+      padding: 15px 18px;
+      border-left: 4px solid rgba(200, 157, 132, 0.52);
+      background: rgba(227, 242, 238, 0.56);
+      color: #4f4642;
+      font-size: 16px;
+      line-height: 1.58;
+    }
+
+    .sdtm-spec-panel {
+      margin: 24px 0 4px;
+      padding: 30px 34px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 7px),
+        rgba(255, 255, 252, 0.82);
+    }
+
+    .sdtm-spec-panel h6 {
+      max-width: 760px;
+      margin: 0 0 16px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(23px, 2.4vw, 32px);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .sdtm-spec-panel > p {
+      max-width: 860px;
+      margin: 0 0 26px;
+      color: #5d514c;
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    .sdtm-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 22px;
+      align-items: stretch;
+    }
+
+    .sdtm-spec-callout,
+    .sdtm-spec-steps {
+      border: 0;
+      background: transparent;
+    }
+
+    .sdtm-spec-callout {
+      position: relative;
+      min-height: 0;
+      padding: 18px 20px;
+      border: 1px solid rgba(80, 95, 85, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 252, 0.68);
+    }
+
+    .sdtm-spec-callout::before {
+      content: "";
+      display: none;
+    }
+
+    .sdtm-spec-callout strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(18px, 1.7vw, 23px);
+      line-height: 1.22;
+    }
+
+    .sdtm-spec-callout ol {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 14px;
+      padding: 0;
+      counter-reset: spec-left-step;
+      list-style: none;
+    }
+
+    .sdtm-spec-callout li {
+      position: relative;
+      padding-left: 34px;
+      color: #5d514c;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .sdtm-spec-callout li::before {
+      counter-increment: spec-left-step;
+      content: counter(spec-left-step) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--sand);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .sdtm-spec-steps strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #4b3a36;
+      font-size: 20px;
+      line-height: 1.18;
+    }
+
+    .sdtm-spec-callout p {
+      margin: 0;
+      padding: 14px 16px;
+      border-left: 4px solid rgba(200, 157, 132, 0.42);
+      background: rgba(255, 249, 241, 0.72);
+      color: #4f4642;
+      font-size: 13px;
+      line-height: 1.48;
+    }
+
+    .sdtm-spec-steps {
+      display: grid;
+      align-content: start;
+      gap: 0;
+      padding: 18px 20px 18px 54px;
+      border: 1px solid rgba(80, 95, 85, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 252, 0.68);
+    }
+
+    .sdtm-spec-steps ol {
+      display: grid;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      color: #2f2d2c;
+      counter-reset: spec-step;
+      list-style: none;
+    }
+
+    .sdtm-spec-steps li {
+      position: relative;
+      min-height: 92px;
+      margin: 0;
+      padding: 13px 16px;
+      border: 1px solid rgba(80, 95, 85, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 255, 252, 0.76);
+      color: #4f423d;
+      box-shadow: 0 7px 18px rgba(80, 65, 50, 0.045);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: left;
+    }
+
+    .sdtm-spec-steps li strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #4b3a36;
+      font-size: 13px;
+      line-height: 1.28;
+      text-align: center;
+    }
+
+    .sdtm-spec-steps li span {
+      position: relative;
+      display: block;
+      padding-left: 12px;
+      color: #665a55;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.38;
+    }
+
+    .sdtm-spec-steps li span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(184, 143, 123, 0.8);
+    }
+
+    .sdtm-spec-steps li::before {
+      counter-increment: spec-step;
+      content: counter(spec-step);
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--sand);
+      font-size: 23px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .sdtm-spec-steps li::after {
+      content: "v";
+      position: absolute;
+      left: 50%;
+      bottom: -28px;
+      transform: translateX(-50%);
+      width: auto;
+      height: auto;
+      color: rgba(191, 172, 165, 0.78);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .sdtm-spec-steps li:last-child::after {
+      display: none;
+    }
+
+    .sdtm-spec-pill-row {
+      display: none;
+    }
+
+    .sdtm-spec-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid rgba(200, 157, 132, 0.45);
+      border-radius: 999px;
+      color: #5d514c;
+      background: rgba(255, 249, 241, 0.8);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .sdtm-spec-example {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(200, 157, 132, 0.24);
+    }
+
+    .sdtm-spec-example p {
+      margin-bottom: 12px;
+    }
+
+    .sdtm-spec-table {
+      min-width: 1120px;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .sdtm-spec-table th {
+      background: rgba(227, 242, 238, 0.7);
+      color: #3f3432;
+    }
+
+    .sdtm-spec-table td,
+    .sdtm-spec-table th {
+      border-right: 1px solid rgba(200, 157, 132, 0.18);
+    }
+
+    .sdtm-spec-table td:last-child,
+    .sdtm-spec-table th:last-child {
+      border-right: 0;
+    }
+
+    .sdtm-spec-section-row td {
+      background: rgba(255, 249, 241, 0.82);
+      color: #4b3a36;
+      font-weight: 800;
+    }
+
+    .sdtm-value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .sdtm-value-card {
+      padding: 14px 16px;
+      border: 1px solid rgba(80, 95, 85, 0.16);
+      border-radius: 7px;
+      background: rgba(255, 255, 252, 0.62);
+      color: #5d514c;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .sdtm-value-card strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #4b3a36;
+    }
+
+    .sdtm-intro-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+      gap: 24px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid rgba(80, 95, 85, 0.16);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 7px),
+        rgba(255, 255, 252, 0.72);
+    }
+
+    .sdtm-intro-card.reverse {
+      grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr);
+    }
+
+    .sdtm-intro-number {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border: 2px solid rgba(200, 157, 132, 0.42);
+      border-radius: 50%;
+      color: var(--sand);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .sdtm-intro-card h5 {
+      margin: 0 0 14px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(21px, 2.2vw, 28px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .sdtm-intro-card p {
+      margin: 0 0 15px;
+      color: #4f4642;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .sdtm-intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .sdtm-intro-card strong {
+      color: #352d2a;
+      font-weight: 900;
+    }
+
+    .sdtm-guide-list {
+      margin: 18px 0 0;
+      padding: 24px 28px;
+      border: 4px solid #e74f88;
+      border-left-width: 0;
+      border-radius: 0 4px 4px 0;
+      background: rgba(255, 255, 252, 0.75);
+    }
+
+    .sdtm-guide-list h6 {
+      margin: 0 0 14px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .sdtm-guide-list ul,
+    .sdtm-benefit-list {
+      margin: 0;
+      padding-left: 22px;
+      color: #4f4642;
+      font-size: 18px;
+      line-height: 1.32;
+    }
+
+    .sdtm-structure-callout {
+      padding: 28px 24px;
+      border-radius: 30px;
+      background: rgba(219, 242, 237, 0.75);
+      color: #42403e;
+      font-size: 20px;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .sdtm-benefit-title {
+      margin: 0 0 18px;
+      color: #4b3a36;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .sdtm-visual {
+      min-height: 210px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(230, 246, 243, 0.72);
+      border: 1px solid rgba(80, 95, 85, 0.12);
+    }
+
+    .sdtm-dashboard-visual::before {
+      content: "";
+      position: absolute;
+      inset: 28px 24px 42px 36px;
+      border: 6px dotted rgba(80, 95, 85, 0.36);
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .sdtm-dashboard-visual .screen {
+      position: absolute;
+      right: 30px;
+      top: 44px;
+      width: 118px;
+      height: 94px;
+      border: 3px solid #75c7c8;
+      background: rgba(255,255,255,0.88);
+    }
+
+    .sdtm-dashboard-visual .screen::before {
+      content: "";
+      display: block;
+      height: 22px;
+      background: #b88f7b;
+    }
+
+    .sdtm-dashboard-visual .pulse {
+      position: absolute;
+      left: 74px;
+      top: 94px;
+      width: 132px;
+      height: 42px;
+      border: 3px solid #b7e3dc;
+      background:
+        linear-gradient(135deg, transparent 0 30%, #e74f70 30% 34%, transparent 34% 48%, #e74f70 48% 52%, transparent 52% 64%, #e74f70 64% 68%, transparent 68%);
+    }
+
+    .sdtm-dashboard-visual .chart-line {
+      position: absolute;
+      left: 40px;
+      right: 28px;
+      bottom: 42px;
+      height: 90px;
+      background:
+        linear-gradient(138deg, transparent 0 16%, #95d7d7 16% 19%, transparent 19% 33%, #95d7d7 33% 36%, transparent 36% 54%, #95d7d7 54% 57%, transparent 57%);
+    }
+
+    .sdtm-dna-visual {
+      background:
+        linear-gradient(90deg, rgba(255,255,252,0.82), rgba(230,246,243,0.62));
+    }
+
+    .sdtm-dna-visual::before,
+    .sdtm-dna-visual::after {
+      content: "";
+      position: absolute;
+      top: 22px;
+      bottom: 22px;
+      left: 54px;
+      width: 34px;
+      border-left: 8px solid #e74f88;
+      border-right: 8px solid #e74f88;
+      border-radius: 50%;
+      transform: rotate(12deg);
+    }
+
+    .sdtm-dna-visual::after {
+      left: 100px;
+      transform: rotate(-12deg);
+      opacity: 0.32;
+    }
+
+    .sdtm-laptop-visual {
+      background:
+        linear-gradient(90deg, rgba(255,255,252,0.3) 0 45%, rgba(232, 246, 242, 0.85) 45%);
+    }
+
+    .sdtm-laptop-visual::before {
+      content: "";
+      position: absolute;
+      right: 30px;
+      top: 42px;
+      width: 180px;
+      height: 105px;
+      border: 8px solid #314d5a;
+      border-bottom-width: 18px;
+      border-radius: 7px;
+      background:
+        linear-gradient(#eaf8f6 0 38%, transparent 38%),
+        radial-gradient(circle at 22% 63%, #1b5b86 0 12px, transparent 13px),
+        radial-gradient(circle at 50% 63%, #1b5b86 0 12px, transparent 13px),
+        linear-gradient(90deg, #d14b4b 0 35%, transparent 35% 45%, #d14b4b 45% 67%, transparent 67%);
+      background-color: #fff;
+    }
+
+    .sdtm-laptop-visual::after {
+      content: "";
+      position: absolute;
+      left: 28px;
+      bottom: 34px;
+      width: 110px;
+      height: 78px;
+      border-left: 4px solid #95d7d7;
+      border-bottom: 4px solid #95d7d7;
+      background:
+        linear-gradient(120deg, transparent 0 20%, #95d7d7 20% 23%, transparent 23% 43%, #95d7d7 43% 47%, transparent 47% 68%, #95d7d7 68% 72%, transparent 72%);
     }
 
     .sdtm-module-intro {
@@ -2225,6 +2966,73 @@
         justify-items: start;
         text-align: left;
       }
+
+      .feedback-row {
+        grid-template-columns: 1fr;
+      }
+
+      .acronym-panel > summary {
+        padding: 16px 18px;
+      }
+
+      .acronym-panel > summary::after {
+        right: 18px;
+      }
+
+      .sdtm-intro-card,
+      .sdtm-intro-card.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .sdtm-intro-card {
+        padding: 18px;
+      }
+
+      .sdtm-intro-card p,
+      .sdtm-guide-list ul,
+      .sdtm-benefit-list {
+        font-size: 16px;
+      }
+
+      .sdtm-visual {
+        min-height: 180px;
+      }
+
+      .sdtm-value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sdtm-spec-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sdtm-spec-panel {
+        padding: 22px 18px;
+      }
+
+      .sdtm-spec-callout {
+        padding: 0;
+      }
+
+      .sdtm-spec-callout li {
+        padding-left: 44px;
+        font-size: 17px;
+      }
+
+      .sdtm-spec-steps {
+        padding-left: 0;
+      }
+
+      .sdtm-spec-steps li {
+        padding: 16px 18px 16px 54px;
+        text-align: left;
+      }
+
+      .sdtm-spec-steps li::before {
+        left: 16px;
+        color: var(--sand);
+        font-size: 28px;
+      }
     }
   </style>
 </head>
@@ -2264,21 +3072,18 @@
           <span class="card-number">01</span>
           <div>
             <h2>STATISTICAL<br>PROGRAMMING<br>TRAINING</h2>
-            <p>Start with clinical research programming, Study Data Tabulation Model (SDTM), Analysis Data Model (ADaM), Tables, Listings, and Figures (TLFs), and quality control (QC) workflow.</p>
           </div>
         </a>
         <a class="work-card card-resources" href="#biostatistics" data-panel-link="biostatistics">
           <span class="card-number">02</span>
           <div>
             <h2>BIOSTATISTICS<br>TRAINING</h2>
-            <p>Core statistical concepts for clinical research will be added soon.</p>
           </div>
         </a>
         <a class="work-card card-about" href="#about" data-panel-link="about">
           <span class="card-number">03</span>
           <div>
             <h2>ABOUT<br>US</h2>
-            <p>Who we are and what YIAN GROUP is building.</p>
           </div>
         </a>
       </section>
@@ -2298,7 +3103,7 @@
                 </p>
                 <div class="people-list" aria-label="YIAN GROUP contributors">
                   <div class="contributors-mini" aria-label="YIAN GROUP contributors">
-                    <span>Jin Shi · Jun Ke</span>
+                    <span>Contributors: Jin Shi, Jun Ke</span>
                   </div>
                 </div>
               </div>
@@ -2318,14 +3123,15 @@
             <div class="training-overview">
               <div class="tiny-label">Training Library</div>
               <p>
-                Follow the guides in order. Each step builds on the previous one, moving from the
+                Follow the modules in order. Each module builds on the previous one, moving from the
                 clinical research setting to source data, analysis datasets, outputs, and quality
                 control.
               </p>
               <details class="acronym-panel">
                 <summary>
+                  <span class="acronym-kicker">Reference</span>
                   <span class="acronym-title">List of Acronyms</span>
-                  <span class="acronym-note">Use this as a quick reference while reading the lessons. Core abbreviations are expanded at first use, then reused in their short form.</span>
+                  <span class="acronym-note">Quick definitions for regulatory, CDISC, dataset, output, and quality control terms used in the lessons.</span>
                 </summary>
                 <div class="acronym-content">
                   <h5>Regulatory, Submission, and Programming Workflow</h5>
@@ -2583,7 +3389,7 @@
               <div class="training-list">
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 01</span>
+                  <span class="summary-meta">Module 01</span>
                   <span class="summary-title">Clinical Research Environment &amp; Regulatory Compliance</span>
                   <span class="summary-note">Clinical context, compliance expectations, core documents, data flow, and programming standards.</span>
                 </summary>
@@ -2831,8 +3637,8 @@
                 </li>
               </ul>
               <p>
-                This is the key transition into Step 02: if Step 01 teaches what not to violate,
-                Step 02 teaches where to find the approved instructions before writing code.
+                This is the key transition into Module 02: if Module 01 teaches what not to violate,
+                Module 02 teaches where to find the approved instructions before writing code.
               </p>
 
               <h4>3. End-to-End Clinical Data Flow</h4>
@@ -3054,7 +3860,7 @@ run;</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 02</span>
+                  <span class="summary-meta">Module 02</span>
                   <span class="summary-title">Clinical Trial Documents Programmers Must Read</span>
                   <span class="summary-note">Protocol, Statistical Analysis Plan (SAP), Tables, Listings, and Figures (TLF) shells, annotated Case Report Form (aCRF), Data Transfer Specifications (DTS), and Define.xml.</span>
                 </summary>
@@ -3758,7 +4564,7 @@ if pre_dose then ablfl = "Y";</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 03</span>
+                  <span class="summary-meta">Module 03</span>
                   <span class="summary-title">Understanding Case Report Forms (CRF) and Annotated CRFs (aCRF)</span>
                   <span class="summary-note">How clinical source data is collected, exported, annotated, and prepared before Study Data Tabulation Model (SDTM) mapping begins.</span>
                 </summary>
@@ -4958,7 +5764,7 @@ if pre_dose then ablfl = "Y";</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 04</span>
+                  <span class="summary-meta">Module 04</span>
                   <span class="summary-title">Introduction to Study Data Tabulation Model (SDTM)</span>
                   <span class="summary-note">How raw clinical data becomes compliant SDTM through variable roles, Supplemental Qualifiers (SUPP--), controlled terminology, and ISO 8601 dates.</span>
                 </summary>
@@ -4972,22 +5778,365 @@ if pre_dose then ablfl = "Y";</code></pre>
                     New programmers should first learn the major domain families before trying to
                     memorize individual variables.
                   </p>
-                  <div class="sdtm-overview">
-                    <div class="flow" aria-label="Raw data to compliant SDTM pipeline">
-                      <div class="flow-step"><strong>Raw Clinical Data</strong><br>eCRF exports, vendor files, audit keys, and source fields.</div>
-                      <div class="flow-step"><strong>Domain Family</strong><br>Trial Design, Special Purpose, Interventions, Events, Findings, and Relationship/SUPP datasets.</div>
-                      <div class="flow-step"><strong>Variable Roles</strong><br>Identifiers, topics, qualifiers, timing variables, and controlled terminology.</div>
-                      <div class="flow-step"><strong>Mapping Rules</strong><br>aCRF, DTS, SDTM spec, raw data, and Define.xml must agree.</div>
-                      <div class="flow-step"><strong>Compliant SDTM</strong><br>Traceable tabulation datasets ready for validation and downstream ADaM.</div>
+                  <div class="sdtm-mapping-intro" aria-label="Introduction to SDTM mapping and structure">
+                    <div class="sdtm-training-lead">
+                      <h5>Why SDTM Mapping Exists</h5>
+                      <p>
+                        Clinical trials are designed to answer practical questions: is the drug
+                        working, are there side effects, and is it safe for subjects to continue in
+                        the trial? Those questions can only be answered through clear, comprehensive
+                        data analytics. Before any reviewer, statistician, or programmer can trust
+                        those analytics, the collected data must first be organized into quality
+                        Study Data Tabulation Model (SDTM) datasets.
+                      </p>
+                      <p>
+                        Raw clinical data rarely arrives in submission-ready form. It may come from
+                        electronic Case Report Form (eCRF) exports, vendor transfers, laboratory
+                        files, electronic patient-reported outcome sources, device feeds, or manual
+                        spreadsheets. Each source may use different variable names, date formats,
+                        units, visit labels, coding conventions, and file structures. The work of
+                        converting those sources into the SDTM format is called
+                        <strong> SDTM mapping</strong>.
+                      </p>
+                    </div>
+
+                    <div class="sdtm-training-section">
+                      <h5>Why the Structure Matters for Submission</h5>
+                      <p>
+                        Clinical Data Interchange Standards Consortium (CDISC) standards were put in
+                        place so regulatory reviewers, including the United States Food and Drug
+                        Administration (FDA), can analyze clinical trial data quickly and
+                        consistently. The reviewer should not have to guess where demographics,
+                        adverse events, vital signs, laboratory results, exposure records, or
+                        disposition information are located. SDTM gives submission data a predictable
+                        structure.
+                      </p>
+                      <p>
+                        For clinical trial data to be accepted by regulatory reviewers, the
+                        submission must be in the correct format. If the data are poorly structured,
+                        the sponsor may lose time and money resolving validation issues, reviewer
+                        questions, and traceability gaps. In severe cases, unresolved data structure
+                        problems can jeopardize the usefulness of the submission package.
+                      </p>
+                      <div class="sdtm-training-note">
+                        New programmer takeaway: SDTM is not just a file format. It is the regulated
+                        tabulation layer that lets another person understand what happened to each
+                        subject without reading every raw CRF page or vendor spreadsheet.
+                      </div>
+                    </div>
+
+                    <div class="sdtm-training-section">
+                      <h5>What SDTM Mapping Requires</h5>
+                      <p>
+                        Mapping to CDISC SDTM format is not simple, whether the mapping is planned
+                        before data collection or performed after data have already been collected.
+                        A programmer must connect source fields to SDTM domains, variables, values,
+                        controlled terminology, timing rules, and derivation notes. This often means
+                        reading the annotated CRF, raw data extracts, Data Transfer Specifications
+                        (DTS), SDTM specifications, Define.xml metadata, and reviewer-guide notes
+                        together instead of treating any one document as the full answer.
+                      </p>
+                      <p>
+                        A good SDTM mapping specification is the bridge between source data and
+                        programming. It explains the target domain, target variable, source field,
+                        condition, derivation, controlled terminology, expected type, expected
+                        length, origin, and any special handling needed for partial dates,
+                        supplemental qualifiers, split domains, external vendor data, or value-level
+                        metadata.
+                      </p>
+                      <div class="sdtm-spec-panel">
+                        <h6>The SDTM Mapping Specification Document</h6>
+                        <p>
+                          SDTM mapping can be a complicated task, so the team should plan the
+                          conversion before programming begins. The SDTM mapping specification
+                          document specifies how raw data will be converted into SDTM and is used
+                          by both the SDTM programmer and the testing team. Without a clear
+                          specification, data can be lost, distorted, or interpreted differently by
+                          production and QC programmers.
+                        </p>
+                        <div class="sdtm-spec-grid">
+                          <div class="sdtm-spec-callout">
+                            <strong>The specification document can be created manually as follows:</strong>
+                            <ol>
+                              <li>Examine the CRFs and raw data and identify which SDTM domains you need.</li>
+                              <li>Against each SDTM domain, note which raw dataset will provide the input data.</li>
+                              <li>Against each SDTM domain, list all variables and describe how they are to be programmed.</li>
+                            </ol>
+                            <p>
+                              This planning step is where text values, controlled terminology, source
+                              fields, target variables, conditions, derivations, and origins are
+                              resolved before programming begins.
+                            </p>
+                          </div>
+                          <div class="sdtm-spec-steps">
+                            <ol>
+                              <li>
+                                <strong>Determine the SDTM domains needed</strong>
+                                <span>Review CRFs and protocols.</span>
+                                <span>Map out required standard domains, such as DM, AE, and LB.</span>
+                              </li>
+                              <li>
+                                <strong>Note the relevant raw dataset for each</strong>
+                                <span>Map raw source tables to target domains.</span>
+                                <span>Identify multi-source inputs if applicable.</span>
+                              </li>
+                              <li>
+                                <strong>List and describe programming for all variables</strong>
+                                <span>Specify target variables and origins.</span>
+                                <span>Define derivation rules and text values.</span>
+                              </li>
+                            </ol>
+                          </div>
+                        </div>
+                        <div class="sdtm-spec-example">
+                          <p>
+                            A real SDTM specification is often maintained in Excel. The dummy example
+                            below shows the kind of information a programmer expects to see for a
+                            Demographics (DM) domain. The exact column names may vary by company, but
+                            the intent is the same: every SDTM variable needs a source, an origin, and
+                            a programming rule. The Programming Derivation column should point the
+                            programmer to raw datasets, raw variables, merge keys, conditions, and
+                            derivation logic. The Define.xml Spec column should stay concise and
+                            reviewer-facing.
+                          </p>
+                          <div class="table-scroll">
+                            <table class="crf-table sdtm-spec-table" aria-label="Dummy SDTM DM specification example">
+                              <caption>Dummy SDTM Specification Example: DM</caption>
+                              <thead>
+                                <tr>
+                                  <th>Dataset</th>
+                                  <th>Variable Name</th>
+                                  <th>Variable Label</th>
+                                  <th>Type</th>
+                                  <th>Length</th>
+                                  <th>Controlled Terms / Codelist</th>
+                                  <th>Origin</th>
+                                  <th>Programming Derivation</th>
+                                  <th>Define.xml Spec</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="sdtm-spec-section-row">
+                                  <td colspan="9">Core DM Variables</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>STUDYID</td>
+                                  <td>Study Identifier</td>
+                                  <td>Char</td>
+                                  <td>12</td>
+                                  <td></td>
+                                  <td>Assigned</td>
+                                  <td>Set DM.STUDYID from RAW_STUDY.PROTOCOL_ID. If the study setup table is not provided, assign the protocol constant "DUMMY-101" from the approved study metadata.</td>
+                                  <td>Assigned study identifier representing the protocol or study under which the subject participated.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>DOMAIN</td>
+                                  <td>Domain Abbreviation</td>
+                                  <td>Char</td>
+                                  <td>2</td>
+                                  <td>DM</td>
+                                  <td>Assigned</td>
+                                  <td>Set DM.DOMAIN = "DM" for every output record. No raw variable is required.</td>
+                                  <td>Assigned domain abbreviation identifying records as Demographics.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>USUBJID</td>
+                                  <td>Unique Subject Identifier</td>
+                                  <td>Char</td>
+                                  <td>30</td>
+                                  <td></td>
+                                  <td>Derived</td>
+                                  <td>Derive from DM.STUDYID, RAW_SUBJ.SITEID, and RAW_SUBJ.SUBJID using the company standard delimiter. Confirm the same key is used across all subject-level domains.</td>
+                                  <td>Derived unique subject identifier constructed to be unique across the study and consistent across all submitted subject-level domains.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>SUBJID</td>
+                                  <td>Subject Identifier for the Study</td>
+                                  <td>Char</td>
+                                  <td>20</td>
+                                  <td></td>
+                                  <td>CRF</td>
+                                  <td>Map RAW_SUBJ.SUBJID to DM.SUBJID from the Electronic Data Capture (EDC) subject table. Preserve the source value and leading zeros.</td>
+                                  <td>Collected subject identifier as recorded for the subject within the study.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>SITEID</td>
+                                  <td>Study Site Identifier</td>
+                                  <td>Char</td>
+                                  <td>10</td>
+                                  <td></td>
+                                  <td>CRF / Assigned</td>
+                                  <td>Map RAW_SUBJ.SITEID to DM.SITEID. If site attributes are stored separately, merge RAW_SITE by RAW_SUBJ.SITEKEY and confirm the site number matches.</td>
+                                  <td>Study site identifier associated with the subject's enrolling or participating site.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>AGE</td>
+                                  <td>Age</td>
+                                  <td>Num</td>
+                                  <td>8</td>
+                                  <td></td>
+                                  <td>Derived</td>
+                                  <td>Calculate from RAW_SUBJ.BRTHDTC and DM.RFSTDTC according to the study age rule. Use only valid date components; leave missing if the birth date or reference date is insufficient.</td>
+                                  <td>Derived age at the study reference start date or other protocol-defined reference date, calculated only when sufficient date information is available.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>AGEU</td>
+                                  <td>Age Units</td>
+                                  <td>Char</td>
+                                  <td>5</td>
+                                  <td>AGEU</td>
+                                  <td>Assigned</td>
+                                  <td>If DM.AGE is populated, set DM.AGEU = "YEARS". If AGE is missing, leave AGEU missing.</td>
+                                  <td>Assigned unit for age, populated when age is reported.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>SEX</td>
+                                  <td>Sex</td>
+                                  <td>Char</td>
+                                  <td>1</td>
+                                  <td>SEX: F / M / U</td>
+                                  <td>CRF</td>
+                                  <td>Map RAW_SUBJ.SEX to DM.SEX using the study controlled terminology map, for example "Male" or "M" to "M", "Female" or "F" to "F", and unknown to "U". Query unmapped values.</td>
+                                  <td>Collected sex value standardized to the study's CDISC controlled terminology values.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>RACE</td>
+                                  <td>Race</td>
+                                  <td>Char</td>
+                                  <td>40</td>
+                                  <td>RACE</td>
+                                  <td>CRF</td>
+                                  <td>Map RAW_SUBJ.RACE to DM.RACE using the study controlled terminology map. If RAW_RACE contains multiple selected races, follow the study rule for DM.RACE and create supplemental race qualifiers as specified.</td>
+                                  <td>Collected race value standardized to the study's CDISC controlled terminology values; supplemental race records may be used when multiple race selections are collected.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>COUNTRY</td>
+                                  <td>Country</td>
+                                  <td>Char</td>
+                                  <td>3</td>
+                                  <td>ISO 3166-1 alpha-3</td>
+                                  <td>Assigned</td>
+                                  <td>Merge RAW_SITE.COUNTRY to the subject by RAW_SUBJ.SITEID, then convert to ISO 3166-1 alpha-3 using the approved country lookup table.</td>
+                                  <td>Country of the subject's study site, represented using the standard three-letter country code.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>RFSTDTC</td>
+                                  <td>Subject Reference Start Date/Time</td>
+                                  <td>Char</td>
+                                  <td>19</td>
+                                  <td>ISO 8601</td>
+                                  <td>Derived</td>
+                                  <td>Derive as the earliest non-missing ISO 8601 date/time from RAW_EX.EXSTDTC for the subject. If no exposure exists, use RAW_RAND.RANDDTC only when the specification defines that fallback.</td>
+                                  <td>Derived subject reference start date/time in ISO 8601 character format, generally based on the first protocol-defined exposure or study reference event.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>RFENDTC</td>
+                                  <td>Subject Reference End Date/Time</td>
+                                  <td>Char</td>
+                                  <td>19</td>
+                                  <td>ISO 8601</td>
+                                  <td>Derived</td>
+                                  <td>Derive as the latest non-missing ISO 8601 date/time from RAW_EX.EXENDTC. If no exposure end date exists, use the final study contact date from RAW_DS.DSDTC according to the study rule.</td>
+                                  <td>Derived subject reference end date/time in ISO 8601 character format, generally based on the last protocol-defined exposure or study reference event.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>ARMCD</td>
+                                  <td>Planned Arm Code</td>
+                                  <td>Char</td>
+                                  <td>20</td>
+                                  <td>Study-specific</td>
+                                  <td>Derived</td>
+                                  <td>Map RAW_RAND.ARMCD to DM.ARMCD. For screen failures identified in RAW_DS.DSDECOD, assign "SCRNFAIL" only if required by the study convention.</td>
+                                  <td>Planned arm code representing the subject's intended treatment assignment or screen failure category according to the study design.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>ARM</td>
+                                  <td>Description of Planned Arm</td>
+                                  <td>Char</td>
+                                  <td>200</td>
+                                  <td>Study-specific</td>
+                                  <td>Derived</td>
+                                  <td>Map DM.ARMCD to the planned arm label from the trial design lookup or TA metadata. Do not free-type arm names in the program.</td>
+                                  <td>Planned arm description corresponding to the subject's intended treatment assignment in the study design.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>ACTARMCD</td>
+                                  <td>Actual Arm Code</td>
+                                  <td>Char</td>
+                                  <td>20</td>
+                                  <td>Study-specific</td>
+                                  <td>Derived</td>
+                                  <td>Derive from actual exposure records in RAW_EX.EXTRT, RAW_EX.EXSTDTC, and RAW_EX.EXENDTC using the treatment rules in the specification. Apply study rules for untreated, mis-dosed, or switched subjects.</td>
+                                  <td>Actual arm code representing the treatment pattern the subject actually received, derived according to protocol and study-specific treatment rules.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>ACTARM</td>
+                                  <td>Description of Actual Arm</td>
+                                  <td>Char</td>
+                                  <td>200</td>
+                                  <td>Study-specific</td>
+                                  <td>Derived</td>
+                                  <td>Map DM.ACTARMCD to the corresponding actual arm label using the same treatment lookup used for ACTARMCD.</td>
+                                  <td>Actual arm description corresponding to the subject's actual treatment experience.</td>
+                                </tr>
+                                <tr>
+                                  <td>DM</td>
+                                  <td>DTHFL</td>
+                                  <td>Subject Death Flag</td>
+                                  <td>Char</td>
+                                  <td>1</td>
+                                  <td>NY: Y</td>
+                                  <td>Derived</td>
+                                  <td>Set to "Y" if RAW_DS.DSDECOD indicates death, RAW_AE.AESDTH = "Y", or a separate death source contains a death record for the subject. Otherwise leave missing and reconcile conflicting sources.</td>
+                                  <td>Derived subject death flag indicating whether the subject is reported as deceased in submitted study data.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="sdtm-training-section">
+                      <h5>Why Sponsors Invest in CDISC Standards</h5>
+                      <p>
+                        Implementing CDISC standards has practical benefits for the submitter. It
+                        creates greater efficiency, supports full traceability from the beginning to
+                        the end of the clinical research process, improves data quality, enables data
+                        sharing, reduces downstream cost, streamlines processes, and allows teams to
+                        innovate without inventing a private data language for every study.
+                      </p>
+                      <div class="sdtm-value-grid" aria-label="Benefits of CDISC SDTM standards">
+                        <div class="sdtm-value-card"><strong>Efficiency</strong>Teams spend less time interpreting one-off structures and more time checking clinical meaning.</div>
+                        <div class="sdtm-value-card"><strong>Traceability</strong>Values can be followed from source collection to SDTM, ADaM, and final outputs.</div>
+                        <div class="sdtm-value-card"><strong>Data Quality</strong>Standard domains, variables, and controlled terminology make unexpected values easier to detect.</div>
+                        <div class="sdtm-value-card"><strong>Submission Readiness</strong>Reviewers receive familiar datasets that align with Define.xml, reviewer guides, and validation rules.</div>
+                      </div>
                     </div>
                   </div>
                   <div class="sdtm-module-intro">
-                    <strong>Open the SDTM modules</strong>
-                    <span>Use the overview above as the path from source data to submission datasets. Then open each module below to study one SDTM area at a time.</span>
+                    <strong>Study the SDTM Domain Families</strong>
+                    <span>Use the introduction above as the context for why SDTM mapping matters. Then open each topic below to study one SDTM area at a time.</span>
                   </div>
                   <div class="sdtm-module-grid" aria-label="SDTM teaching modules">
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 1. Trial Design Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 1. Trial Design Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Trial Design domains describe the planned structure of the study. They are
@@ -5445,7 +6594,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 2. Special Purpose Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 2. Special Purpose Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Special Purpose domains hold records that do not fit the ordinary
@@ -5502,7 +6651,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 3. Interventions Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 3. Interventions Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Interventions describe treatments, medications, exposures, or procedures
@@ -5524,7 +6673,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 4. Events Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 4. Events Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Events describe things that happened to the subject, such as adverse
@@ -5548,7 +6697,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 5. Findings Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 5. Findings Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Findings domains store measurements, tests, questionnaire responses, and
@@ -5606,7 +6755,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 6. Relationship and Supplemental Datasets</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 6. Relationship and Supplemental Datasets</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Relationship and supplemental datasets preserve traceability when the
@@ -5627,7 +6776,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 7. Variable Structural Roles</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 7. Variable Structural Roles</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         The first SDTM task is not to copy raw columns. It is to decide each
@@ -5680,7 +6829,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 8. Controlled Terminology, Units, and Dates</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 8. Controlled Terminology, Units, and Dates</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Matching the variable name is not enough. Values must be normalized so the
@@ -5718,7 +6867,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </details>
 
                     <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Module 9. SAS Template: Mapping Raw Date Components to --DTC</span><span class="sdtm-module-toggle">&gt;</span></summary>
+                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 9. SAS Template: Mapping Raw Date Components to --DTC</span><span class="sdtm-module-toggle">&gt;</span></summary>
                       <div class="sdtm-module-body">
                       <p>
                         Modern EDC systems often store dates as separate year, month, day, hour,
@@ -5856,7 +7005,7 @@ run;</code></pre>
 
                             <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 05</span>
+                  <span class="summary-meta">Module 05</span>
                   <span class="summary-title">CDISC for Complex Study Design</span>
                   <span class="summary-note">Complex design concepts, SDTM Trial Design Model (TDM), ADaM period variables, and case studies from crossover, Single Ascending Dose (SAD), and Multiple Ascending Dose (MAD) examples.</span>
                 </summary>
@@ -6568,7 +7717,7 @@ run;</code></pre>
                 </article>
               </details><details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 06</span>
+                  <span class="summary-meta">Module 06</span>
                   <span class="summary-title">Introduction to Analysis Data Model (ADaM)</span>
                   <span class="summary-note">Why analysis datasets are built from SDTM and how variables such as baseline, change, and flags support analysis.</span>
                 </summary>
@@ -6649,7 +7798,7 @@ run;</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 07</span>
+                  <span class="summary-meta">Module 07</span>
                   <span class="summary-title">Tables, Listings, and Figures (TLF) Basics</span>
                   <span class="summary-note">How tables, listings, and figures differ, and how shells guide statistical programming outputs.</span>
                 </summary>
@@ -6825,7 +7974,7 @@ run;</code></pre>
 
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Step 08</span>
+                  <span class="summary-meta">Module 08</span>
                   <span class="summary-title">Programming Workflow &amp; Quality Control (QC) Mindset</span>
                   <span class="summary-note">How data specifications, production programming, independent QC, log review, and documentation help protect analysis quality.</span>
                 </summary>
@@ -6955,12 +8104,19 @@ run;</code></pre>
         <div class="section-layout">
           <h2>Biostatistics Training</h2>
           <div class="copy">
-            <div class="tiny-label">Lesson 01</div>
+            <div class="tiny-label">Module Library</div>
             <p>
-              The first step in clinical biostatistics is understanding the official guidelines
-              that shape trial design, analysis planning, endpoint interpretation, and regulatory
-              communication.
+              Start with Module 1 as a guided orientation to the official guidelines that shape
+              trial design, analysis planning, endpoint interpretation, regulatory communication,
+              and Clinical Study Report structure.
             </p>
+            <div class="training-list bio-topic-list">
+            <details class="bio-topic">
+              <summary>
+                <span class="summary-meta">Module 1</span>
+                <span class="summary-title">Guideline Orientation for Clinical Biostatistics</span>
+                <span class="summary-note">Regulatory expectations, ICH guidance, CSR/TFL structure, FDA/EMA topics, and daily statistical work.</span>
+              </summary>
             <article class="lesson">
               <h4>Guideline Orientation for Clinical Biostatistics</h4>
               <p>
@@ -7019,7 +8175,6 @@ run;</code></pre>
                   </tbody>
                 </table>
               </div>
-
               <h4>2. ICH E3: CSR Structure and TFL Shell Numbering</h4>
               <p>
                 ICH E3 is essential for anyone writing or reviewing a Clinical Study Report. It is
@@ -7413,7 +8568,6 @@ run;</code></pre>
                   question each table should answer.
                 </p>
               </div>
-
               <h4>3. FDA Guidance Often Used in Statistical Thinking</h4>
               <p>
                 FDA guidance documents are often more topic-specific. A beginner does not need to
@@ -7426,7 +8580,6 @@ run;</code></pre>
                 <li><strong>Enrichment strategies:</strong> How eligibility or biomarker strategies affect population and interpretation. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/enrichment-strategies-clinical-trials-support-approval-human-drugs-and-biological-products" target="_blank" rel="noopener">Reference</a></li>
                 <li><strong>Data monitoring committees:</strong> How interim safety and efficacy monitoring is governed. <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/establishment-and-operation-clinical-trial-data-monitoring-committees" target="_blank" rel="noopener">Reference</a></li>
               </ul>
-
               <h4>4. ECG, QT/QTc, and Cardiac Safety Guidelines</h4>
               <p>
                 ECG-related guidance is especially important for safety biostatistics. These
@@ -7471,7 +8624,6 @@ run;</code></pre>
                 change from baseline, placebo-adjusted change from baseline, categorical thresholds,
                 heart rate effects, and the relationship between drug concentration and QTc change.
               </p>
-
               <h4>5. Other FDA and EMA Guidelines Worth Knowing</h4>
               <p>
                 Beyond ICH, statisticians often consult FDA and EMA guidance for concrete design
@@ -7551,7 +8703,6 @@ run;</code></pre>
                   </tbody>
                 </table>
               </div>
-
               <h4>6. How These Guidelines Show Up in Daily Work</h4>
               <div class="table-scroll">
                 <table class="crf-table" aria-label="Guideline concepts in daily biostatistics work">
@@ -7633,16 +8784,53 @@ run;</code></pre>
                 </div>
               </div>
             </article>
+            </details>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="contact" class="section">
         <div class="section-layout">
-          <h2>Contact</h2>
+          <h2>Contact Us</h2>
           <div class="copy">
-            <div class="tiny-label">Get in touch</div>
-            <p>Contact information will be added soon.</p>
+            <div class="tiny-label">Feedback</div>
+            <p>
+              Share questions, corrections, or ideas for future training materials. Submitting the
+              form will open a pre-filled email draft for sending feedback to YIAN GROUP.
+            </p>
+            <div class="feedback-card">
+              <form class="feedback-form" data-feedback-mail-form>
+                <div class="feedback-row">
+                  <label class="feedback-field">
+                    Name
+                    <input name="name" type="text" autocomplete="name" placeholder="Your name">
+                  </label>
+                  <label class="feedback-field">
+                    Email
+                    <input name="email" type="email" autocomplete="email" placeholder="name@example.com">
+                  </label>
+                </div>
+                <label class="feedback-field">
+                  Topic
+                  <select name="topic">
+                    <option value="General feedback">General feedback</option>
+                    <option value="Statistical Programming Training">Statistical Programming Training</option>
+                    <option value="Biostatistics Training">Biostatistics Training</option>
+                    <option value="Website issue">Website issue</option>
+                    <option value="New lesson request">New lesson request</option>
+                  </select>
+                </label>
+                <label class="feedback-field">
+                  Your Feedback
+                  <textarea name="message" required placeholder="Write your comments, questions, or suggestions here."></textarea>
+                </label>
+                <div class="feedback-actions">
+                  <button class="feedback-button" type="submit">Submit Feedback</button>
+                </div>
+                <p class="feedback-status" data-feedback-status aria-live="polite"></p>
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -7775,6 +8963,177 @@ run;</code></pre>
         slide.scrollLeft = scrollLeft - walk;
       });
     });
+
+    const feedbackMailForm = document.querySelector("[data-feedback-mail-form]");
+    const feedbackMailStatus = document.querySelector("[data-feedback-status]");
+    const feedbackRecipient = "your-email@example.com";
+
+    if (feedbackMailForm) {
+      feedbackMailForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(feedbackMailForm);
+        const name = String(formData.get("name") || "").trim();
+        const email = String(formData.get("email") || "").trim();
+        const topic = String(formData.get("topic") || "General feedback");
+        const message = String(formData.get("message") || "").trim();
+
+        if (!message) {
+          if (feedbackMailStatus) feedbackMailStatus.textContent = "Please write a comment before submitting.";
+          return;
+        }
+
+        const subject = `YIAN GROUP Feedback - ${topic}`;
+        const body = [
+          "YIAN GROUP Website Feedback",
+          "",
+          `Name: ${name || "Anonymous"}`,
+          `Email: ${email || "Not provided"}`,
+          `Topic: ${topic}`,
+          "",
+          "Message:",
+          message
+        ].join("\n");
+
+        window.location.href = `mailto:${feedbackRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        if (feedbackMailStatus) {
+          feedbackMailStatus.textContent = "Your email app should open with a pre-filled feedback message.";
+        }
+      });
+    }
+
+    const feedbackStorageKey = "yiangroup_feedback_v1";
+    const feedbackForm = document.querySelector("[data-feedback-form]");
+    const feedbackList = document.querySelector("[data-feedback-list]");
+    const feedbackStatus = document.querySelector("[data-feedback-status]");
+    const feedbackExport = document.querySelector("[data-feedback-export]");
+    const feedbackClear = document.querySelector("[data-feedback-clear]");
+
+    function readFeedbackItems() {
+      try {
+        const saved = window.localStorage.getItem(feedbackStorageKey);
+        const parsed = saved ? JSON.parse(saved) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function writeFeedbackItems(items) {
+      window.localStorage.setItem(feedbackStorageKey, JSON.stringify(items));
+    }
+
+    function renderFeedbackItems() {
+      if (!feedbackList) return;
+
+      feedbackList.replaceChildren();
+      const items = readFeedbackItems();
+
+      if (!items.length) {
+        const empty = document.createElement("p");
+        empty.className = "feedback-empty";
+        empty.textContent = "No saved feedback yet.";
+        feedbackList.append(empty);
+        return;
+      }
+
+      items.slice().reverse().forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "feedback-item";
+
+        const header = document.createElement("div");
+        header.className = "feedback-item-header";
+
+        const identity = document.createElement("span");
+        identity.textContent = `${item.name || "Anonymous"} · ${item.topic || "General feedback"}`;
+
+        const date = document.createElement("span");
+        date.textContent = item.createdAt
+          ? new Date(item.createdAt).toLocaleString()
+          : "Saved feedback";
+
+        const message = document.createElement("p");
+        message.textContent = item.message || "";
+
+        header.append(identity, date);
+        card.append(header, message);
+        feedbackList.append(card);
+      });
+    }
+
+    if (feedbackForm) {
+      feedbackForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(feedbackForm);
+        const message = String(formData.get("message") || "").trim();
+
+        if (!message) {
+          if (feedbackStatus) feedbackStatus.textContent = "Please write a comment before submitting.";
+          return;
+        }
+
+        const item = {
+          id: window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+          name: String(formData.get("name") || "").trim(),
+          email: String(formData.get("email") || "").trim(),
+          topic: String(formData.get("topic") || "General feedback"),
+          message,
+          createdAt: new Date().toISOString()
+        };
+
+        const items = readFeedbackItems();
+        items.push(item);
+        writeFeedbackItems(items);
+        feedbackForm.reset();
+        renderFeedbackItems();
+
+        if (feedbackStatus) {
+          feedbackStatus.textContent = "Saved in this browser. Use Export JSON if you want to keep a file copy.";
+        }
+      });
+    }
+
+    if (feedbackExport) {
+      feedbackExport.addEventListener("click", () => {
+        const items = readFeedbackItems();
+
+        if (!items.length) {
+          if (feedbackStatus) feedbackStatus.textContent = "There is no saved feedback to export yet.";
+          return;
+        }
+
+        const blob = new Blob([JSON.stringify(items, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `yiangroup-feedback-${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+
+        if (feedbackStatus) feedbackStatus.textContent = "Feedback exported as a JSON file.";
+      });
+    }
+
+    if (feedbackClear) {
+      feedbackClear.addEventListener("click", () => {
+        const items = readFeedbackItems();
+
+        if (!items.length) {
+          if (feedbackStatus) feedbackStatus.textContent = "There is no saved feedback to clear.";
+          return;
+        }
+
+        if (window.confirm("Clear saved feedback from this browser?")) {
+          window.localStorage.removeItem(feedbackStorageKey);
+          renderFeedbackItems();
+          if (feedbackStatus) feedbackStatus.textContent = "Saved feedback cleared from this browser.";
+        }
+      });
+    }
+
+    renderFeedbackItems();
   </script>
 </body>
 </html>
