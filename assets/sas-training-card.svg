@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-label="SAS training background">
+  <rect width="640" height="420" fill="#f6f1e8"/>
+  <g opacity=".32" fill="none" stroke="#d7c6b6">
+    <circle cx="86" cy="72" r="54" stroke-width="2"/>
+    <circle cx="86" cy="72" r="36" stroke-width="1.5"/>
+    <circle cx="86" cy="72" r="18" stroke-width="1.2"/>
+  </g>
+
+  <g transform="translate(242 48)">
+    <rect x="0" y="0" width="328" height="226" rx="16" fill="#fffdf7" stroke="#d9c7b7" stroke-width="2.5"/>
+    <rect x="0" y="0" width="328" height="44" rx="16" fill="#2f5062"/>
+    <path d="M0 28h328v18H0z" fill="#2f5062"/>
+    <circle cx="26" cy="23" r="6" fill="#ead1bd"/>
+    <circle cx="46" cy="23" r="6" fill="#cdded2"/>
+    <circle cx="66" cy="23" r="6" fill="#c09a84"/>
+    <text x="250" y="29" fill="#f7eee3" font-family="Courier New, monospace" font-size="14" font-weight="700">program.sas</text>
+
+    <g font-family="Courier New, monospace" font-size="18" font-weight="700">
+      <text x="28" y="80" fill="#7e6b60">data</text>
+      <text x="78" y="80" fill="#315a63">adsl;</text>
+      <text x="28" y="112" fill="#7e6b60">set</text>
+      <text x="76" y="112" fill="#315a63">sdtm.dm;</text>
+      <text x="28" y="144" fill="#7e6b60">if</text>
+      <text x="62" y="144" fill="#315a63">rfstdtc ne ""</text>
+      <text x="214" y="144" fill="#7e6b60">then</text>
+      <text x="28" y="176" fill="#315a63">saffl = "Y";</text>
+      <text x="28" y="208" fill="#7e6b60">run;</text>
+    </g>
+
+    <g opacity=".55" stroke-linecap="round" stroke-width="4">
+      <path d="M28 90h258" stroke="#e2d3c3"/>
+      <path d="M28 122h214" stroke="#e2d3c3"/>
+      <path d="M28 154h276" stroke="#e2d3c3"/>
+      <path d="M28 186h144" stroke="#e2d3c3"/>
+    </g>
+  </g>
+
+  <g transform="translate(72 182)">
+    <rect x="0" y="0" width="250" height="126" rx="12" fill="#fbfaf4" stroke="#d8c7b6" stroke-width="2"/>
+    <text x="22" y="30" fill="#4f403a" font-family="Georgia, serif" font-size="22" font-weight="700">work.adsl</text>
+    <rect x="22" y="48" width="206" height="26" fill="#2f5062"/>
+    <g fill="#f9f6ee" font-family="Arial, sans-serif" font-size="12" font-weight="700">
+      <text x="35" y="66">USUBJID</text>
+      <text x="113" y="66">TRT01P</text>
+      <text x="179" y="66">SAFFL</text>
+    </g>
+    <g font-family="Courier New, monospace" font-size="13" fill="#173f58">
+      <rect x="22" y="76" width="206" height="22" fill="#dce9df"/>
+      <rect x="22" y="100" width="206" height="22" fill="#eef4ea"/>
+      <text x="34" y="91">101-001</text>
+      <text x="114" y="91">Drug A</text>
+      <text x="187" y="91">Y</text>
+      <text x="34" y="115">101-002</text>
+      <text x="114" y="115">Placebo</text>
+      <text x="187" y="115">Y</text>
+    </g>
+  </g>
+
+  <g transform="translate(104 318)">
+    <rect x="0" y="0" width="324" height="66" rx="10" fill="#fffdf7" stroke="#ddcbbb" stroke-width="2"/>
+    <text x="20" y="26" fill="#6e5b50" font-family="Georgia, serif" font-size="20" font-weight="700">Log Review</text>
+    <g font-family="Arial, sans-serif" font-size="13" font-weight="700">
+      <rect x="20" y="38" width="64" height="18" rx="9" fill="#e8f3ee" stroke="#b7cdc0"/>
+      <text x="36" y="52" fill="#365c56">ERROR</text>
+      <rect x="96" y="38" width="80" height="18" rx="9" fill="#f8efe8" stroke="#d4b8a5"/>
+      <text x="112" y="52" fill="#836653">WARNING</text>
+      <rect x="188" y="38" width="52" height="18" rx="9" fill="#f4f1e7" stroke="#d8c9b6"/>
+      <text x="204" y="52" fill="#726256">NOTE</text>
+    </g>
+  </g>
+
+  <g opacity=".22" fill="none" stroke="#8fac9f" stroke-width="3">
+    <path d="M488 306c26-18 54-18 82 0"/>
+    <path d="M500 330c18-12 38-12 56 0"/>
+  </g>
+</svg>

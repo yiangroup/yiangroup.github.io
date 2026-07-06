@@ -164,17 +164,17 @@
 
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
       padding: 42px 0 82px;
       border-top: 1px solid var(--line);
     }
 
     .work-card {
-      min-height: 300px;
+      min-height: 274px;
       display: grid;
       grid-template-rows: 34px 1fr auto;
-      padding: 26px;
+      padding: 22px;
       border: 1px solid transparent;
       border-radius: 4px;
       background: var(--cream);
@@ -227,6 +227,13 @@
         #f2f8f4;
     }
 
+    .card-sas {
+      background:
+        linear-gradient(90deg, rgba(246,241,232,0.95) 0%, rgba(246,241,232,0.74) 50%, rgba(246,241,232,0.18) 100%),
+        url("assets/sas-training-card.svg") right 43% bottom 50% / auto 100% no-repeat,
+        #f6f1e8;
+    }
+
     .work-card:hover {
       border-color: var(--line);
     }
@@ -240,7 +247,7 @@
       margin: 0;
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
+      font-size: 25px;
       font-weight: 700;
       line-height: 1.02;
       letter-spacing: -0.02em;
@@ -1060,6 +1067,17 @@
       margin-top: 16px;
     }
 
+    .xpt-dataset.with-notes {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .xpt-data-pane {
+      min-width: 0;
+    }
+
     .xpt-dataset-name {
       margin: 0 0 6px;
       color: #244566;
@@ -1112,6 +1130,195 @@
       background: rgba(223, 241, 235, 0.9);
     }
 
+    .xpt-table.soft-data th {
+      background: #eef4ef;
+      color: #425852;
+      border-color: rgba(214, 204, 189, 0.72);
+    }
+
+    .xpt-table.soft-data td {
+      background: rgba(255, 255, 252, 0.9);
+      border-color: rgba(222, 214, 199, 0.74);
+      color: #173d5a;
+    }
+
+    .xpt-table.soft-data tbody tr:nth-child(even) td {
+      background: rgba(248, 250, 246, 0.92);
+    }
+
+    .xpt-table th.xpt-note-head {
+      background: rgba(246, 242, 233, 0.96);
+      color: #7b5d50;
+      min-width: 220px;
+      text-align: left;
+    }
+
+    .xpt-table td.xpt-note-cell {
+      background: rgba(255, 253, 248, 0.95) !important;
+      color: #6a554d;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      line-height: 1.35;
+      min-width: 220px;
+      text-align: left;
+      white-space: normal;
+    }
+
+    .xpt-table tr.issue-row td,
+    .xpt-table.soft-data tbody tr.issue-row td {
+      background: rgba(255, 246, 196, 0.88);
+    }
+
+    .xpt-table tr.issue-row td.issue-cell {
+      background: rgba(255, 229, 132, 0.96);
+      box-shadow: inset 0 0 0 2px rgba(177, 137, 44, 0.42);
+      font-weight: 800;
+    }
+
+    .xpt-note-panel {
+      margin-top: 33px;
+      border: 1px solid rgba(200, 157, 132, 0.32);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.9);
+      overflow: hidden;
+    }
+
+    .xpt-note-panel h6 {
+      margin: 0;
+      min-height: 40px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(214, 204, 189, 0.74);
+      background: rgba(246, 242, 233, 0.9);
+      color: #5b4b45;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .xpt-note-panel ol {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+      counter-reset: xptNote;
+    }
+
+    .xpt-note-panel li {
+      position: relative;
+      min-height: 39px;
+      padding: 4px 10px 4px 40px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgba(222, 214, 199, 0.74);
+      color: #6a554d;
+      font-size: 12px;
+      line-height: 1.25;
+      list-style: none;
+    }
+
+    .xpt-note-panel li:first-child {
+      border-top: 0;
+    }
+
+    .xpt-note-panel li::before {
+      counter-increment: xptNote;
+      content: counter(xptNote) ".";
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9a806f;
+      font-weight: 800;
+    }
+
+    .xpt-note-panel.row-aligned {
+      margin-top: 30px;
+    }
+
+    .xpt-note-panel.row-aligned h6 {
+      box-sizing: border-box;
+      height: 34px;
+      min-height: 34px;
+    }
+
+    .xpt-note-panel.row-aligned li {
+      box-sizing: border-box;
+      height: 34px;
+      min-height: 34px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      line-height: 1.08;
+      overflow: hidden;
+    }
+
+    .xpt-dataset.with-notes.paired-notes {
+      --paired-header-h: 35px;
+      --paired-row-h: 35px;
+    }
+
+    .xpt-dataset.with-notes.paired-notes .xpt-table {
+      table-layout: fixed;
+    }
+
+    .xpt-dataset.with-notes.paired-notes .xpt-table thead tr {
+      height: var(--paired-header-h) !important;
+    }
+
+    .xpt-dataset.with-notes.paired-notes .xpt-table tbody tr {
+      height: var(--paired-row-h) !important;
+    }
+
+    .xpt-dataset.with-notes.paired-notes .xpt-table th,
+    .xpt-dataset.with-notes.paired-notes .xpt-table td {
+      box-sizing: border-box !important;
+      height: var(--paired-row-h) !important;
+      min-height: var(--paired-row-h) !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      line-height: 1.05 !important;
+      overflow: hidden;
+    }
+
+    .xpt-dataset.with-notes.paired-notes .xpt-table thead th {
+      height: var(--paired-header-h) !important;
+      min-height: var(--paired-header-h) !important;
+    }
+
+    .xpt-dataset.with-notes.paired-notes .xpt-note-panel.row-aligned h6 {
+      box-sizing: border-box !important;
+      height: var(--paired-header-h) !important;
+      min-height: var(--paired-header-h) !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      line-height: 1 !important;
+      overflow: hidden;
+    }
+
+    .xpt-dataset.with-notes.paired-notes .xpt-note-panel.row-aligned li {
+      box-sizing: border-box !important;
+      height: var(--paired-row-h) !important;
+      min-height: var(--paired-row-h) !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      font-size: 11px;
+      line-height: 1.03 !important;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .xpt-dataset.with-notes {
+        grid-template-columns: 1fr;
+      }
+
+      .xpt-note-panel {
+        margin-top: 10px;
+      }
+    }
+
     .xpt-table .selected-cell {
       outline: 3px solid #102a3d;
       outline-offset: -4px;
@@ -1131,45 +1338,50 @@
     }
 
     .lesson-popup-launch {
-      margin: 18px 0 26px;
+      margin: 22px 0 28px;
     }
 
     .lesson-popup-button {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      width: 100%;
       max-width: 100%;
-      border: 1px solid rgba(200, 157, 132, 0.38);
+      border: 1px solid rgba(214, 204, 189, 0.82);
+      border-left: 4px solid rgba(80, 108, 95, 0.55);
       border-radius: 8px;
-      background:
-        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
-        rgba(255, 253, 249, 0.82);
+      background: rgba(255, 255, 252, 0.82);
       color: #4b3a36;
       cursor: pointer;
-      padding: 15px 18px;
+      padding: 11px 18px;
       text-align: left;
-      box-shadow: 0 12px 24px rgba(75, 58, 54, 0.06);
+      box-shadow: none;
     }
 
     .lesson-popup-button span {
-      color: #b98972;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
+      flex: 0 0 auto;
+      color: #a47f6e;
+      font-family: Arial, sans-serif;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
     }
 
     .lesson-popup-button strong {
+      flex: 1 1 auto;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 22px;
-      line-height: 1.2;
+      font-size: 17px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: 0;
     }
 
     .lesson-popup-button:hover {
-      border-color: rgba(80, 108, 95, 0.42);
-      background:
-        repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 7px),
-        rgba(239, 249, 245, 0.92);
+      border-color: rgba(80, 108, 95, 0.45);
+      border-left-color: rgba(80, 108, 95, 0.75);
+      background: rgba(249, 253, 249, 0.96);
     }
 
     .lesson-popup {
@@ -3463,7 +3675,7 @@
       }
 
       .work-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .practice-materials {
@@ -3581,6 +3793,12 @@
         font-size: 28px;
       }
     }
+
+    @media (max-width: 700px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -3597,7 +3815,6 @@
       </a>
       <nav aria-label="Main navigation">
         <a href="#sas-training" data-panel-link="sas-training">SAS TRAINING</a>
-        <a href="#r-training" data-panel-link="r-training">R TRAINING</a>
         <a href="#training" data-panel-link="training">STATISTICAL PROGRAMMING</a>
         <a href="#biostatistics" data-panel-link="biostatistics">BIOSTATISTICS</a>
         <a href="#contact" data-panel-link="contact">CONTACT</a>
@@ -3617,20 +3834,26 @@
       </section>
 
       <section class="work-grid" aria-label="Website sections">
-        <a class="work-card card-training" href="#training" data-panel-link="training">
+        <a class="work-card card-sas" href="#sas-training" data-panel-link="sas-training">
           <span class="card-number">01</span>
+          <div>
+            <h2>SAS<br>TRAINING</h2>
+          </div>
+        </a>
+        <a class="work-card card-training" href="#training" data-panel-link="training">
+          <span class="card-number">02</span>
           <div>
             <h2>STATISTICAL<br>PROGRAMMING<br>TRAINING</h2>
           </div>
         </a>
         <a class="work-card card-resources" href="#biostatistics" data-panel-link="biostatistics">
-          <span class="card-number">02</span>
+          <span class="card-number">03</span>
           <div>
             <h2>BIOSTATISTICS<br>TRAINING</h2>
           </div>
         </a>
         <a class="work-card card-about" href="#about" data-panel-link="about">
-          <span class="card-number">03</span>
+          <span class="card-number">04</span>
           <div>
             <h2>ABOUT<br>US</h2>
           </div>
@@ -3693,41 +3916,6 @@
             </div>
             <div class="lesson-page" aria-live="polite">
               <button class="back-button" type="button" data-lesson-back>&lt; SAS Training</button>
-              <div class="lesson-page-content"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="r-training" class="section">
-        <div class="section-layout">
-          <h2>R Training</h2>
-          <div class="copy">
-            <div class="training-overview">
-              <div class="tiny-label">Programming Language Track</div>
-              <p>
-                This track will focus on practical R skills for clinical research and
-                statistical programming: tidy data workflows, validation checks,
-                reproducible reporting, tables, visualizations, and package-based
-                programming patterns.
-              </p>
-              <details class="training-item">
-                <summary>
-                  <span class="summary-meta">Coming Soon</span>
-                  <span class="summary-title">R Fundamentals for Clinical Data Work</span>
-                  <span class="summary-note">Data import, transformation, summaries, checks, and reproducible analysis basics.</span>
-                </summary>
-                <article class="lesson">
-                  <h4>R Fundamentals for Clinical Data Work</h4>
-                  <p>
-                    R lessons will be added here as a separate language-focused track.
-                    The clinical domain training remains under Statistical Programming Training.
-                  </p>
-                </article>
-              </details>
-            </div>
-            <div class="lesson-page" aria-live="polite">
-              <button class="back-button" type="button" data-lesson-back>&lt; R Training</button>
               <div class="lesson-page-content"></div>
             </div>
           </div>
@@ -10212,18 +10400,11 @@ run;</code></pre>
                         </p>
                       </div>
 
-                      <div class="lesson-popup-launch">
-                        <button type="button" class="lesson-popup-button" data-open-panel="lb-seven-mistakes">
-                          <span>Open Full-Page Guide</span>
-                          <strong>7 LB Unit Conversion Mistakes That Break Traceability</strong>
-                        </button>
-                      </div>
-
                       <div class="lesson-popup" id="lb-seven-mistakes" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lb-seven-mistakes-title">
                         <div class="lesson-popup-backdrop" data-close-panel></div>
                         <section class="lesson-popup-page">
                           <button type="button" class="lesson-popup-close" data-close-panel>Close</button>
-                          <h3 id="lb-seven-mistakes-title">7 LB Unit Conversion Mistakes That Break Traceability</h3>
+                          <h3 id="lb-seven-mistakes-title">LB Unit Conversion Practice Notes</h3>
                           <p>
                             Laboratory conversion looks simple until the programmer has to defend every value
                             against the source lab report, the vendor transfer, the SDTM specification, and
@@ -10368,12 +10549,72 @@ run;</code></pre>
                               creatinine to umol/L or mg/dL depending on the submission standard. The program
                               should not decide this ad hoc.
                             </p>
-                            <div class="mistake-tag-row">
-                              <span>LBSTRESN</span>
-                              <span>LBSTRESC</span>
-                              <span>LBSTRESU</span>
-                              <span>conversion factor</span>
-                              <span>rounding rule</span>
+                            <div class="dataset-preview">
+                              <h6>lb.xpt</h6>
+                              <div class="table-scroll">
+                                <table class="xpt-table medium soft-data" aria-label="LB standard unit conversion mismatch example">
+                                  <thead>
+                                    <tr>
+                                      <th>STUDYID</th>
+                                      <th>DOMAIN</th>
+                                      <th>USUBJID</th>
+                                      <th>LBSEQ</th>
+                                      <th>LBTESTCD</th>
+                                      <th>LBTEST</th>
+                                      <th>LBORRES</th>
+                                      <th>LBORRESU</th>
+                                      <th>LBSTRESN</th>
+                                      <th>LBSTRESC</th>
+                                      <th>LBSTRESU</th>
+                                      <th>Programming Comment</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>DUMMY-101</td>
+                                      <td>LB</td>
+                                      <td>DUMMY-101-001</td>
+                                      <td>1</td>
+                                      <td>GLUC</td>
+                                      <td>Glucose</td>
+                                      <td>90</td>
+                                      <td>mg/dL</td>
+                                      <td>5.0</td>
+                                      <td>5.0</td>
+                                      <td>mmol/L</td>
+                                      <td>Correct: value, character value, and unit were converted together.</td>
+                                    </tr>
+                                    <tr class="issue-row">
+                                      <td>DUMMY-101</td>
+                                      <td>LB</td>
+                                      <td>DUMMY-101-002</td>
+                                      <td>1</td>
+                                      <td>GLUC</td>
+                                      <td>Glucose</td>
+                                      <td>90</td>
+                                      <td>mg/dL</td>
+                                      <td>5.0</td>
+                                      <td>5.0</td>
+                                      <td class="issue-cell">mg/dL</td>
+                                      <td>Wrong: numeric result was converted, but LBSTRESU still shows the source unit.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>DUMMY-101</td>
+                                      <td>LB</td>
+                                      <td>DUMMY-101-003</td>
+                                      <td>1</td>
+                                      <td>SODIUM</td>
+                                      <td>Sodium</td>
+                                      <td>140</td>
+                                      <td>mmol/L</td>
+                                      <td>140</td>
+                                      <td>140</td>
+                                      <td>mmol/L</td>
+                                      <td>No conversion needed, but the unit still comes from governed metadata.</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                             </div>
                             <p>
                               QC focus: within each test code, check that standardized units are consistent,
@@ -10385,53 +10626,143 @@ run;</code></pre>
                           <article class="mistake-card">
                             <h4>4. Converting the Result but Forgetting the Reference Range</h4>
                             <p>
-                              If the result is converted to a new standard unit, the standard normal range
-                              must be converted using the same unit logic. Otherwise, a perfectly normal value
-                              can be flagged high or low simply because the result and reference range are on
-                              different scales.
+                              This is one of the most dangerous LB conversion errors because it can be
+                              completely silent in conformance validation. The result moves into the standard
+                              unit, but the reference range stays in the original unit. Then
+                              <code>LBNRIND</code> is derived by comparing a converted result against an
+                              unconverted range. The comparison is numerically meaningless, but the output
+                              can still look like a legitimate LOW, NORMAL, or HIGH flag.
+                            </p>
+                            <p>
+                              Here is a concrete worked example. A study collects glucose from US sites in
+                              mg/dL and selects mmol/L as the SDTM standard unit. A US lab reports glucose
+                              as 95 mg/dL with a normal range of 70 to 100 mg/dL. Using the glucose conversion
+                              factor, 95 mg/dL becomes 5.27 mmol/L. That converted result is correct. The
+                              failure happens if the programmer leaves the normal range as 70 to 100 while
+                              labeling the standard unit as mmol/L.
                             </p>
                             <div class="table-scroll">
-                              <table class="crf-table" aria-label="Reference range conversion example">
+                              <table class="xpt-table medium soft-data" aria-label="Reference range conversion error worked example">
                                 <thead>
                                   <tr>
-                                    <th>Item</th>
-                                    <th>Original Unit</th>
-                                    <th>Original Value</th>
-                                    <th>Conversion</th>
-                                    <th>Standardized Value</th>
+                                    <th>Variable</th>
+                                    <th>US Site Record</th>
+                                    <th>Teaching Point</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Glucose result</td>
-                                    <td>mg/dL</td>
-                                    <td>90</td>
-                                    <td>x 0.0555</td>
-                                    <td>5.0 mmol/L</td>
+                                    <td>LBORRES</td>
+                                    <td>95</td>
+                                    <td>Original source result preserved.</td>
                                   </tr>
                                   <tr>
-                                    <td>Lower reference limit</td>
+                                    <td>LBORRESU</td>
                                     <td>mg/dL</td>
-                                    <td>70</td>
-                                    <td>x 0.0555</td>
-                                    <td>3.9 mmol/L</td>
+                                    <td>Original source unit preserved.</td>
                                   </tr>
                                   <tr>
-                                    <td>Upper reference limit</td>
-                                    <td>mg/dL</td>
-                                    <td>110</td>
-                                    <td>x 0.0555</td>
-                                    <td>6.1 mmol/L</td>
+                                    <td>LBSTRESN</td>
+                                    <td>5.27</td>
+                                    <td>95 mg/dL converted to mmol/L.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>LBSTRESU</td>
+                                    <td>mmol/L</td>
+                                    <td>The standard unit is SI.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>LBNRLO</td>
+                                    <td>70 mg/dL</td>
+                                    <td>Source lower reference limit.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>LBNRHI</td>
+                                    <td>100 mg/dL</td>
+                                    <td>Source upper reference limit.</td>
+                                  </tr>
+                                  <tr class="issue-row">
+                                    <td>LBSTNRLO</td>
+                                    <td class="issue-cell">70</td>
+                                    <td>Wrong: still on the mg/dL scale.</td>
+                                  </tr>
+                                  <tr class="issue-row">
+                                    <td>LBSTNRHI</td>
+                                    <td class="issue-cell">100</td>
+                                    <td>Wrong: still on the mg/dL scale.</td>
+                                  </tr>
+                                  <tr class="issue-row">
+                                    <td>LBNRIND</td>
+                                    <td class="issue-cell">LOW</td>
+                                    <td>Wrong: 5.27 is compared against 70 instead of the converted lower limit.</td>
                                   </tr>
                                 </tbody>
                               </table>
                             </div>
                             <p>
-                              This mistake affects <code>LBNRIND</code>, shift tables, potentially clinically
-                              significant abnormality checks, and ADLB derivations. If the source supplies
-                              normal range indicators, the specification must state whether to keep the source
-                              interpretation, rederive it from standardized ranges, or reconcile differences.
+                              A glucose value of 5.27 mmol/L is within the expected normal range after
+                              conversion, approximately 3.88 to 5.55 mmol/L. But if <code>LBSTNRLO</code>
+                              is stored as 70 and <code>LBSTRESU</code> is mmol/L, the dataset is effectively
+                              comparing 5.27 against 70. The record is incorrectly flagged LOW, and that flag
+                              can travel into ADLB, shift tables, potentially clinically significant abnormality
+                              checks, and safety summaries.
                             </p>
+                            <div class="table-scroll">
+                              <table class="xpt-table medium soft-data" aria-label="Reference range conversion wrong versus correct">
+                                <thead>
+                                  <tr>
+                                    <th>Variable</th>
+                                    <th>Wrong</th>
+                                    <th>Correct</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>LBSTRESN</td>
+                                    <td>5.27</td>
+                                    <td>5.27</td>
+                                  </tr>
+                                  <tr>
+                                    <td>LBSTRESU</td>
+                                    <td>mmol/L</td>
+                                    <td>mmol/L</td>
+                                  </tr>
+                                  <tr class="issue-row">
+                                    <td>LBSTNRLO</td>
+                                    <td class="issue-cell">70 (mg/dL scale, unconverted)</td>
+                                    <td>3.88 (mmol/L, converted)</td>
+                                  </tr>
+                                  <tr class="issue-row">
+                                    <td>LBSTNRHI</td>
+                                    <td class="issue-cell">100 (mg/dL scale, unconverted)</td>
+                                    <td>5.55 (mmol/L, converted)</td>
+                                  </tr>
+                                  <tr class="issue-row">
+                                    <td>LBNRIND</td>
+                                    <td class="issue-cell">LOW (wrong)</td>
+                                    <td>NORMAL (correct)</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p>
+                              Important: the value <code>5.27</code> is correct in both cases. The failure is
+                              not the numeric result; it is that the reference ranges were not converted to
+                              match the standard unit. The same conversion factor, metadata table, and rounding
+                              rule used for <code>LBSTRESN</code> must also be used for <code>LBSTNRLO</code>
+                              and <code>LBSTNRHI</code>.
+                            </p>
+                            <div class="example-box">
+                              <strong>Check to run</strong>
+                              <p>
+                                For every record where <code>LBORRESU</code> differs from <code>LBSTRESU</code>,
+                                verify that <code>LBSTNRLO</code> and <code>LBSTNRHI</code> are numerically
+                                consistent with the standard unit, not the original unit. If your glucose
+                                <code>LBSTRESN</code> values are in the range 3 to 7 but your
+                                <code>LBSTNRHI</code> values are in the range 70 to 110, you probably have
+                                unconverted reference ranges.
+                              </p>
+                            </div>
                           </article>
 
                           <article class="mistake-card">
@@ -10485,121 +10816,203 @@ run;</code></pre>
                           <article class="mistake-card">
                             <h4>6. Allowing More Than One <code>LBSTRESU</code> per <code>LBTESTCD</code></h4>
                             <p>
-                              A core purpose of the standardized result variables is that the reviewer can
-                              compare the same lab test across subjects, visits, sites, and vendors. That
-                              comparison breaks when a single <code>LBTESTCD</code> is submitted with multiple
-                              standardized units. If <code>GLUC</code> sometimes has <code>LBSTRESU</code> =
-                              mg/dL and sometimes has <code>LBSTRESU</code> = mmol/L, then the dataset is no
-                              longer standardized for that test.
+                              The invariant is simple: for a given <code>LBTESTCD</code>, there should be
+                              one standard unit. Every record for that test code, regardless of which site
+                              collected it, which lab analyzed it, or when it was collected, should have the
+                              same value in <code>LBSTRESU</code>. When that rule is violated, the standardized
+                              layer is not truly standardized. Analysis results computed across subjects can
+                              become numerically mixed.
                             </p>
                             <p>
-                              The original unit can vary in <code>LBORRESU</code>. One lab may report glucose
-                              in mg/dL and another may report it in mmol/L. That is normal source variability.
-                              The standard unit in <code>LBSTRESU</code>, however, should be governed by the
-                              study standard and should be consistent for the same <code>LBTESTCD</code> unless
-                              the specification documents a controlled exception.
+                              This mistake usually happens in three specific ways. The first is unit
+                              pass-through: the programmer assigns <code>LBSTRESU</code> directly from
+                              <code>LBORRESU</code>, assuming all sites report the same unit. The second is a
+                              mid-study lab change: the central lab upgrades its reporting system and starts
+                              sending a different unit string, such as mIU/mL instead of uIU/mL. These units
+                              may be numerically equivalent, but the submitted standard unit string now varies.
+                              The third is a new local lab joining mid-study with a unit that was not anticipated
+                              in the original mapping specification; the programmer adds a conditional branch
+                              instead of updating the governed conversion metadata.
                             </p>
-                            <div class="table-scroll">
-                              <table class="crf-table" aria-label="Multiple LBSTRESU per LBTESTCD mistake">
-                                <thead>
-                                  <tr>
-                                    <th>LBTESTCD</th>
-                                    <th>LBORRES</th>
-                                    <th>LBORRESU</th>
-                                    <th>Wrong LBSTRESN</th>
-                                    <th>Wrong LBSTRESU</th>
-                                    <th>Correct LBSTRESN</th>
-                                    <th>Correct LBSTRESU</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>GLUC</td>
-                                    <td>90</td>
-                                    <td>mg/dL</td>
-                                    <td>90</td>
-                                    <td>mg/dL</td>
-                                    <td>5.0</td>
-                                    <td>mmol/L</td>
-                                  </tr>
-                                  <tr>
-                                    <td>GLUC</td>
-                                    <td>5.2</td>
-                                    <td>mmol/L</td>
-                                    <td>5.2</td>
-                                    <td>mmol/L</td>
-                                    <td>5.2</td>
-                                    <td>mmol/L</td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                            <div class="xpt-dataset">
+                              <div class="xpt-dataset-name">lb.xpt</div>
+                              <div class="table-scroll">
+                                <table class="xpt-table medium soft-data" aria-label="LB XPT example with inconsistent standard unit">
+                                  <thead>
+                                    <tr>
+                                      <th>STUDYID</th>
+                                      <th>DOMAIN</th>
+                                      <th>USUBJID</th>
+                                      <th>LBSEQ</th>
+                                      <th>VISIT</th>
+                                      <th>LBTESTCD</th>
+                                      <th>LBTEST</th>
+                                      <th>LBORRES</th>
+                                      <th>LBORRESU</th>
+                                      <th>LBSTRESN</th>
+                                      <th>LBSTRESC</th>
+                                      <th>LBSTRESU</th>
+                                      <th>LBDTC</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>DUMMY-101</td>
+                                      <td>LB</td>
+                                      <td>US-001</td>
+                                      <td>1</td>
+                                      <td>Week 4</td>
+                                      <td>TSH</td>
+                                      <td>Thyrotropin</td>
+                                      <td>2.1</td>
+                                      <td>uIU/mL</td>
+                                      <td>2.1</td>
+                                      <td>2.1</td>
+                                      <td>uIU/mL</td>
+                                      <td>2026-02-01</td>
+                                    </tr>
+                                    <tr>
+                                      <td>DUMMY-101</td>
+                                      <td>LB</td>
+                                      <td>EU-007</td>
+                                      <td>1</td>
+                                      <td>Week 4</td>
+                                      <td>TSH</td>
+                                      <td>Thyrotropin</td>
+                                      <td>2.1</td>
+                                      <td>uIU/mL</td>
+                                      <td>2.1</td>
+                                      <td>2.1</td>
+                                      <td>uIU/mL</td>
+                                      <td>2026-02-01</td>
+                                    </tr>
+                                    <tr class="issue-row">
+                                      <td>DUMMY-101</td>
+                                      <td>LB</td>
+                                      <td>US-001</td>
+                                      <td>2</td>
+                                      <td>Week 24</td>
+                                      <td>TSH</td>
+                                      <td>Thyrotropin</td>
+                                      <td>2.3</td>
+                                      <td>mIU/mL</td>
+                                      <td>2.3</td>
+                                      <td>2.3</td>
+                                      <td class="issue-cell">mIU/mL</td>
+                                      <td>2026-06-20</td>
+                                    </tr>
+                                    <tr class="issue-row">
+                                      <td>DUMMY-101</td>
+                                      <td>LB</td>
+                                      <td>EU-007</td>
+                                      <td>2</td>
+                                      <td>Week 24</td>
+                                      <td>TSH</td>
+                                      <td>Thyrotropin</td>
+                                      <td>2.4</td>
+                                      <td>mIU/mL</td>
+                                      <td>2.4</td>
+                                      <td>2.4</td>
+                                      <td class="issue-cell">mIU/mL</td>
+                                      <td>2026-06-20</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                             </div>
                             <p>
-                              QC focus: run a frequency check of <code>LBSTRESU</code> by
-                              <code>LBTESTCD</code>. Any test code with more than one standardized unit should
-                              be reviewed against the SDTM specification and conversion metadata. The fix is
-                              not to change the source result; it is to convert all source units into the single
-                              approved standard unit for that test.
+                              The highlighted problem is conceptual: the numeric values are correct because
+                              1 mIU/mL equals 1 uIU/mL, but <code>LBSTRESU</code> now contains two different
+                              strings for the same <code>LBTESTCD</code>. Pinnacle 21 can validate
+                              <code>LBSTRESU</code> against controlled terminology, but it does not enforce a
+                              single standard unit per <code>LBTESTCD</code>. The fix is architectural:
+                              <code>LBSTRESU</code> should be assigned from a conversion metadata table keyed
+                              on <code>LBTESTCD</code>, not mapped directly from <code>LBORRESU</code>.
                             </p>
+                            <div class="code-window">
+                              <div class="code-window-header">
+                                <span>SAS QC Check</span>
+                                <span>LBSTRESU by LBTESTCD</span>
+                              </div>
+                              <pre><code>/* Flag any LBTESTCD with multiple LBSTRESU values */
+proc freq data=lb noprint;
+  tables lbtestcd * lbstresu / out=unit_check;
+run;
+
+data unit_fail;
+  set unit_check;
+  by lbtestcd;
+  if not (first.lbtestcd and last.lbtestcd);
+run;</code></pre>
+                            </div>
                           </article>
 
                           <article class="mistake-card">
-                            <h4>7. Hard-Coding Conversion Logic Instead of Using Governed Metadata</h4>
+                            <h4>7. Treating Alternate Units as a Late-Stage Decision</h4>
                             <p>
-                              Conversion factors should not live only inside one programmer's DATA step or
-                              private format catalog. A governed conversion metadata table is much easier to
-                              review, test, reuse, and update. It also prevents two programmers from converting
-                              the same test differently in LB, LC, ADLB, listings, and validation checks.
+                              This is the structural mistake. The previous issues are implementation errors;
+                              this one is a planning failure that cannot be corrected cleanly at database lock.
+                              Alternate unit handling should be decided during study design, vendor transfer
+                              planning, SDTM specification development, Define.xml planning, and QC design.
+                            </p>
+                            <p>
+                              Reference basis: FDA study-data technical guidance for clinical submissions
+                              describes an SI-standardized LB domain and, when conventional-unit results are
+                              needed, an LC domain structured like LB. In that model, LB carries SI-standardized
+                              values in <code>LBSTRESU</code>, <code>LBSTRESC</code>, and <code>LBSTRESN</code>.
+                              LC carries corresponding conventional-unit values in <code>LCSTRESU</code>,
+                              <code>LCSTRESC</code>, and <code>LCSTRESN</code>. The ideal source for both unit
+                              systems is the lab vendor itself. If the vendor does not provide both systems,
+                              sponsor-side conversion must be governed, documented, reviewed, and traceable.
+                            </p>
+                            <p>
+                              A post-hoc conversion that is not in the original study specification, not in
+                              Define.xml, and not reviewed by the QC programmer is difficult to defend under
+                              audit. The time to request dual-unit vendor output, agree on conversion factors,
+                              and define rounding rules is during study setup, not after database lock.
                             </p>
                             <div class="table-scroll">
-                              <table class="crf-table" aria-label="Recommended lab conversion metadata">
+                              <table class="crf-table" aria-label="Alternate unit planning approaches">
                                 <thead>
                                   <tr>
-                                    <th>Metadata Field</th>
-                                    <th>Example</th>
-                                    <th>Why It Matters</th>
+                                    <th>Approach</th>
+                                    <th>Status</th>
+                                    <th>LB Content</th>
+                                    <th>Alternate Unit</th>
+                                    <th>Review Risk</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>LBTESTCD</td>
-                                    <td>GLUC</td>
-                                    <td>Connects the rule to the standardized lab test.</td>
+                                    <td>SUPPLB workaround</td>
+                                    <td>Outdated for FDA clinical lab submissions</td>
+                                    <td>Sponsor-chosen standard unit only</td>
+                                    <td>Buried in supplemental qualifiers</td>
+                                    <td>Poor reviewer access and weak tabulation clarity.</td>
                                   </tr>
                                   <tr>
-                                    <td>Original Unit</td>
-                                    <td>mg/dL</td>
-                                    <td>Defines the source unit eligible for the conversion.</td>
+                                    <td>LB only with post-hoc conversion</td>
+                                    <td>Operationally fragile</td>
+                                    <td>SI-standardized values</td>
+                                    <td>Computed later in SAS without clear dataset structure</td>
+                                    <td>High risk if conversion is absent from spec, Define.xml, or QC plan.</td>
                                   </tr>
                                   <tr>
-                                    <td>Standard Unit</td>
-                                    <td>mmol/L</td>
-                                    <td>Defines the required value of LBSTRESU.</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Factor</td>
-                                    <td>0.0555</td>
-                                    <td>Controls the numeric conversion for LBSTRESN and reference ranges.</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Rounding / Precision</td>
-                                    <td>1 decimal</td>
-                                    <td>Ensures LBSTRESC, LBSTRESN, tables, and listings match.</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Effective Date / Version</td>
-                                    <td>Study Standard v1.0</td>
-                                    <td>Supports audit trail when standards or vendor files change.</td>
+                                    <td>LB + LC</td>
+                                    <td>Preferred when both SI and conventional units are required</td>
+                                    <td>SI-standardized result and SI reference range</td>
+                                    <td>LC contains corresponding conventional-unit result and reference range</td>
+                                    <td>Clearer reviewer navigation when planned and documented from the start.</td>
                                   </tr>
                                 </tbody>
                               </table>
                             </div>
                             <p>
-                              Best practice: the program should read conversion metadata, validate that every
-                              source test-unit combination has a rule, report records with missing or ambiguous
-                              rules, and apply the same factor to both results and reference ranges. Hard-coded
-                              one-off conversions are fast on day one and painful during QC, database lock, and
-                              submission review.
+                              Practical takeaway: do not treat alternate units as a programming cleanup item.
+                              Decide whether LC is needed before transfer specifications are finalized, confirm
+                              whether the lab can provide both unit systems, document conversion metadata and
+                              rounding rules, and make the LB/LC relationship visible in Define.xml and the SDTM
+                              programming specification.
                             </p>
                           </article>
                         </section>
@@ -10663,7 +11076,44 @@ run;</code></pre>
                         </table>
                       </div>
 
-                      <h5>2. LB and LC: SI Units versus Conventional Units</h5>
+                      <h5>2. Modifier Variables That Change Lab Interpretation</h5>
+                      <p>
+                        Lab records are not only a result and a unit. Vendor transfers often carry
+                        context variables that determine how the result should be interpreted. New
+                        programmers should preserve these attributes when they are collected or
+                        provided, because the same test name can mean different things under
+                        different specimen, fasting, or method conditions.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="LB modifier variables">
+                          <thead>
+                            <tr>
+                              <th>Variable</th>
+                              <th>What It Captures</th>
+                              <th>Programming Example</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>LBSPEC</td>
+                              <td>Specimen type, such as BLOOD, SERUM, PLASMA, URINE, or CSF.</td>
+                              <td>Glucose from blood and glucose from urine should not be interpreted as the same clinical concept just because the test name looks similar.</td>
+                            </tr>
+                            <tr>
+                              <td>LBLSTAF</td>
+                              <td>Fasting status, usually Y or N when collected.</td>
+                              <td>Fasting status is especially important for glucose and lipid results. Do not drop it if the vendor provides it or the CRF collected it.</td>
+                            </tr>
+                            <tr>
+                              <td>LBMETHOD</td>
+                              <td>Laboratory method, such as STRIP, MICROSCOPY, or AUTOMATED ANALYZER.</td>
+                              <td>A urine protein result from a dipstick method may not be directly comparable with a quantitative analyzer result.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <h5>3. LB and LC: SI Units versus Conventional Units</h5>
                       <p>
                         LB carries the SI-standardized lab result. When a parallel conventional-unit
                         dataset is required, LC is built as the conventional-unit twin of LB. The
@@ -10717,7 +11167,7 @@ run;</code></pre>
                         </table>
                       </div>
 
-                      <h5>3. Conversion Pipeline</h5>
+                      <h5>4. Conversion Pipeline</h5>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="LB LC conversion pipeline">
                           <thead>
@@ -10749,7 +11199,12 @@ run;</code></pre>
                               <td>If conventional equals original, still populate the standardized columns consistently.</td>
                             </tr>
                             <tr>
-                              <td>5. Validate consistency</td>
+                              <td>5. Apply precision rules</td>
+                              <td>Carry forward the study metadata rule for decimal precision and rounding.</td>
+                              <td>Do not casually use code such as round(value, 1). SDTM should preserve adequate precision, or follow the approved metadata exactly.</td>
+                            </tr>
+                            <tr>
+                              <td>6. Validate consistency</td>
                               <td>Check units, ranges, numeric/character results, and test code/test name pairing.</td>
                               <td>One LBTESTCD should not have multiple LBSTRESU values unless the specification explicitly supports that design.</td>
                             </tr>
@@ -10757,12 +11212,14 @@ run;</code></pre>
                         </table>
                       </div>
 
-                      <h5>4. Worked Example: Glucose Reported in mg/dL</h5>
+                      <h5>5. Worked Example: Glucose Reported in mg/dL</h5>
                       <p>
                         A central lab vendor sends glucose as 90 mg/dL, with a reference range of
                         70 to 110 mg/dL. The study standard says LB must use SI units for glucose
                         in mmol/L, while LC uses conventional units in mg/dL. The conversion factor
-                        from mg/dL to mmol/L is 0.0555.
+                        from mg/dL to mmol/L is 0.0555. In this dummy study, the metadata keeps
+                        three decimals for converted glucose values so the SDTM data do not lose
+                        precision before downstream analysis.
                       </p>
                       <div class="xpt-compare-card" aria-label="LB and LC glucose conversion example">
                         <h5 class="xpt-figure-title">
@@ -10828,11 +11285,11 @@ run;</code></pre>
                                   <td>Glucose</td>
                                   <td>90</td>
                                   <td>mg/dL</td>
-                                  <td>5.0</td>
-                                  <td>5.0</td>
+                                  <td>4.995</td>
+                                  <td>4.995</td>
                                   <td>mmol/L</td>
-                                  <td>3.9</td>
-                                  <td>6.1</td>
+                                  <td>3.885</td>
+                                  <td>6.105</td>
                                   <td>2026-03-15T08:20</td>
                                 </tr>
                               </tbody>
@@ -10881,358 +11338,14 @@ run;</code></pre>
                         <p class="xpt-legend">
                           Teaching point: the original result stays 90 mg/dL in both domains. The
                           standardized LB value is converted to SI units, while LC keeps the
-                          conventional standardized value. The reference range is converted with
-                          the same factor as the result.
+                          conventional standardized value. Because the vendor already supplied the
+                          conventional unit, LCORRES, LCORRESU, LCSTRESN, LCSTRESC, and LCSTRESU
+                          remain aligned to the same mg/dL scale. The LB reference range is converted
+                          with the same factor as the result.
                         </p>
                       </div>
 
-                      <div class="xpt-compare-card" aria-label="Additional LB and LC mapping mini-cases dataset preview">
-                        <h5 class="xpt-figure-title">
-                          Additional LB/LC Mapping Mini-Cases
-                          <span>RAW -> LB + LC</span>
-                        </h5>
-                        <p class="xpt-legend">
-                          Real laboratory transfers contain numeric chemistry results, hematology
-                          results, qualitative urinalysis values, inequality results, pregnancy
-                          tests, vendor naming aliases, and mixed source units. Read this example
-                          as a dataset preview: the raw transfer stays traceable, while LB and LC
-                          show the standardized submission targets.
-                        </p>
-
-                        <div class="xpt-dataset">
-                          <div class="xpt-dataset-name">raw_lab.csv</div>
-                          <div class="table-scroll">
-                            <table class="xpt-table medium" aria-label="Raw lab transfer mini-case rows">
-                              <thead>
-                                <tr>
-                                  <th>SUBJID</th>
-                                  <th>VISIT</th>
-                                  <th>TEST_RAW</th>
-                                  <th>RESULT</th>
-                                  <th>UNIT</th>
-                                  <th>NRLO</th>
-                                  <th>NRHI</th>
-                                  <th>SOURCE</th>
-                                  <th>SCENARIO</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>101-001</td>
-                                  <td>WEEK 4</td>
-                                  <td>Sodium</td>
-                                  <td>140</td>
-                                  <td>mEq/L</td>
-                                  <td>135</td>
-                                  <td>145</td>
-                                  <td>CENTRAL</td>
-                                  <td>Equivalent electrolyte unit</td>
-                                </tr>
-                                <tr>
-                                  <td>101-002</td>
-                                  <td>BASELINE</td>
-                                  <td>Hemoglobin</td>
-                                  <td>13.2</td>
-                                  <td>g/dL</td>
-                                  <td>12.0</td>
-                                  <td>16.0</td>
-                                  <td>LOCAL</td>
-                                  <td>Hematology unit conversion</td>
-                                </tr>
-                                <tr>
-                                  <td>101-003</td>
-                                  <td>WEEK 8</td>
-                                  <td>Creatinine</td>
-                                  <td>1.1</td>
-                                  <td>mg/dL</td>
-                                  <td>0.7</td>
-                                  <td>1.3</td>
-                                  <td>CENTRAL</td>
-                                  <td>Conventional to SI</td>
-                                </tr>
-                                <tr>
-                                  <td>101-004</td>
-                                  <td>WEEK 2</td>
-                                  <td>SGPT</td>
-                                  <td>45</td>
-                                  <td>U/L</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>VENDOR</td>
-                                  <td>Vendor alias for ALT</td>
-                                </tr>
-                                <tr>
-                                  <td>101-005</td>
-                                  <td>SCREENING</td>
-                                  <td>Urine Protein</td>
-                                  <td>NEGATIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>LOCAL</td>
-                                  <td>Qualitative urinalysis</td>
-                                </tr>
-                                <tr>
-                                  <td>101-006</td>
-                                  <td>WEEK 12</td>
-                                  <td>Biomarker X</td>
-                                  <td>&lt;0.05</td>
-                                  <td>ng/mL</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>SPECIALTY</td>
-                                  <td>Below quantification limit</td>
-                                </tr>
-                                <tr>
-                                  <td>101-007</td>
-                                  <td>SCREENING</td>
-                                  <td>Pregnancy</td>
-                                  <td>POSITIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>LOCAL</td>
-                                  <td>Qualitative pregnancy test</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-
-                        <div class="xpt-dataset">
-                          <div class="xpt-dataset-name">lb.xpt</div>
-                          <div class="table-scroll">
-                            <table class="xpt-table wide dark" aria-label="LB mini-case standardized rows">
-                              <thead>
-                                <tr>
-                                  <th>USUBJID</th>
-                                  <th>LBTESTCD</th>
-                                  <th>LBTEST</th>
-                                  <th>LBORRES</th>
-                                  <th>LBORRESU</th>
-                                  <th>LBSTRESN</th>
-                                  <th>LBSTRESC</th>
-                                  <th>LBSTRESU</th>
-                                  <th>LBSTNRLO</th>
-                                  <th>LBSTNRHI</th>
-                                  <th>PROGRAMMING POINT</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>DUMMY-101-001</td>
-                                  <td>SODIUM</td>
-                                  <td>Sodium</td>
-                                  <td>140</td>
-                                  <td>mEq/L</td>
-                                  <td>140</td>
-                                  <td>140</td>
-                                  <td>mmol/L</td>
-                                  <td>135</td>
-                                  <td>145</td>
-                                  <td>Numeric value is equivalent, but the standard unit label still matters.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-002</td>
-                                  <td>HGB</td>
-                                  <td>Hemoglobin</td>
-                                  <td>13.2</td>
-                                  <td>g/dL</td>
-                                  <td>132</td>
-                                  <td>132</td>
-                                  <td>g/L</td>
-                                  <td>120</td>
-                                  <td>160</td>
-                                  <td>Convert the result and reference range together.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-003</td>
-                                  <td>CREAT</td>
-                                  <td>Creatinine</td>
-                                  <td>1.1</td>
-                                  <td>mg/dL</td>
-                                  <td>97.2</td>
-                                  <td>97.2</td>
-                                  <td>umol/L</td>
-                                  <td>61.9</td>
-                                  <td>114.9</td>
-                                  <td>Rounding must come from conversion metadata.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-004</td>
-                                  <td>ALT</td>
-                                  <td>Alanine Aminotransferase</td>
-                                  <td>45</td>
-                                  <td>U/L</td>
-                                  <td>45</td>
-                                  <td>45</td>
-                                  <td>U/L</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>Map vendor alias SGPT to controlled test identity.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-005</td>
-                                  <td>PROT</td>
-                                  <td>Protein</td>
-                                  <td>NEGATIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>NEGATIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>Do not invent numeric values for qualitative findings.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-006</td>
-                                  <td>BIOX</td>
-                                  <td>Biomarker X</td>
-                                  <td>&lt;0.05</td>
-                                  <td>ng/mL</td>
-                                  <td></td>
-                                  <td>&lt;0.05</td>
-                                  <td>ng/mL</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>Do not strip the less-than sign and submit 0.05 as exact.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-007</td>
-                                  <td>HCG</td>
-                                  <td>Choriogonadotropin Beta</td>
-                                  <td>POSITIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>POSITIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>For qualitative pregnancy testing, test identity and visit context matter most.</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-
-                        <div class="xpt-dataset">
-                          <div class="xpt-dataset-name">lc.xpt</div>
-                          <div class="table-scroll">
-                            <table class="xpt-table wide dark" aria-label="LC mini-case conventional rows">
-                              <thead>
-                                <tr>
-                                  <th>USUBJID</th>
-                                  <th>LCTESTCD</th>
-                                  <th>LCTEST</th>
-                                  <th>LCORRES</th>
-                                  <th>LCORRESU</th>
-                                  <th>LCSTRESN</th>
-                                  <th>LCSTRESC</th>
-                                  <th>LCSTRESU</th>
-                                  <th>LCSTNRLO</th>
-                                  <th>LCSTNRHI</th>
-                                  <th>PROGRAMMING POINT</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>DUMMY-101-001</td>
-                                  <td>SODIUM</td>
-                                  <td>Sodium</td>
-                                  <td>140</td>
-                                  <td>mEq/L</td>
-                                  <td>140</td>
-                                  <td>140</td>
-                                  <td>mEq/L</td>
-                                  <td>135</td>
-                                  <td>145</td>
-                                  <td>LC preserves the conventional standardized target.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-002</td>
-                                  <td>HGB</td>
-                                  <td>Hemoglobin</td>
-                                  <td>13.2</td>
-                                  <td>g/dL</td>
-                                  <td>13.2</td>
-                                  <td>13.2</td>
-                                  <td>g/dL</td>
-                                  <td>12.0</td>
-                                  <td>16.0</td>
-                                  <td>LC can mirror the conventional source scale.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-003</td>
-                                  <td>CREAT</td>
-                                  <td>Creatinine</td>
-                                  <td>1.1</td>
-                                  <td>mg/dL</td>
-                                  <td>1.1</td>
-                                  <td>1.1</td>
-                                  <td>mg/dL</td>
-                                  <td>0.7</td>
-                                  <td>1.3</td>
-                                  <td>LC stays conventional while LB carries the SI value.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-004</td>
-                                  <td>ALT</td>
-                                  <td>Alanine Aminotransferase</td>
-                                  <td>45</td>
-                                  <td>U/L</td>
-                                  <td>45</td>
-                                  <td>45</td>
-                                  <td>U/L</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>If conventional target is also U/L, LC matches LB numerically.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-005</td>
-                                  <td>PROT</td>
-                                  <td>Protein</td>
-                                  <td>NEGATIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>NEGATIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>Qualitative records usually do not need numeric conversion.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-006</td>
-                                  <td>BIOX</td>
-                                  <td>Biomarker X</td>
-                                  <td>&lt;0.05</td>
-                                  <td>ng/mL</td>
-                                  <td></td>
-                                  <td>&lt;0.05</td>
-                                  <td>ng/mL</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>Keep inequality results as character unless a rule explicitly says otherwise.</td>
-                                </tr>
-                                <tr>
-                                  <td>DUMMY-101-007</td>
-                                  <td>HCG</td>
-                                  <td>Choriogonadotropin Beta</td>
-                                  <td>POSITIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>POSITIVE</td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td>LC mirrors qualitative interpretation when required.</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-
-                      <h5>5. Case Study: Vendor Alias, Qualitative Result, and Below Limit Result</h5>
+                      <h5>6. Case Study: Vendor Alias, Qualitative Result, and Below Limit Result</h5>
                       <p>
                         Laboratory vendors rarely send perfectly standardized data. One transfer may
                         use old test names, local abbreviations, qualitative values, or results with
@@ -11274,132 +11387,125 @@ run;</code></pre>
                         </table>
                       </div>
 
-                      <h5>6. Reference Ranges and Normal Indicators</h5>
+                      <h5>7. Central Lab, Local Lab, and Reference Ranges</h5>
+                      <p>
+                        Many studies use a central laboratory for scheduled assessments and local
+                        laboratories for urgent safety checks. Central lab data usually come with
+                        one controlled transfer structure and a harmonized reference range strategy.
+                        Local lab data may vary by hospital, site, method, specimen, age, and sex.
+                        The programmer must know which source produced the result before assigning
+                        standardized ranges and abnormality indicators.
+                      </p>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="Central and local laboratory handling">
+                          <thead>
+                            <tr>
+                              <th>Situation</th>
+                              <th>SDTM Handling</th>
+                              <th>Programming Risk</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Central laboratory result</td>
+                              <td>Use study-standard test identity, unit conversion, and reference range metadata from the central lab transfer.</td>
+                              <td>Do not overwrite central lab interpretation with site-specific assumptions.</td>
+                            </tr>
+                            <tr>
+                              <td>Local laboratory result</td>
+                              <td>Use the local lab range supplied by the site or vendor. Match by site, lab, specimen, method, sex, age, and collection date when those keys are part of the metadata.</td>
+                              <td>A reference range from the wrong site or method can make LBNRIND clinically misleading.</td>
+                            </tr>
+                            <tr>
+                              <td>Lab source classification</td>
+                              <td>Use approved study conventions such as LBCAT, LBSCAT, source flags, or vendor fields to distinguish CENTRAL LABORATORY and LOCAL LABORATORY records.</td>
+                              <td>If the source is unclear, reviewers cannot tell why two records with the same test have different ranges or methods.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <p>
                         Reference ranges are not decorative metadata. They drive abnormality
                         listings, shift tables, potentially clinically significant abnormality
-                        rules, and reviewer interpretation. If a programmer converts the result but
-                        forgets to convert the reference range, a normal result can appear abnormal,
-                        or a clinically important abnormality can disappear.
+                        rules, and reviewer interpretation. At the training level, keep one rule in
+                        mind: when a standardized result is converted, the standardized reference
+                        limits and units must follow the same approved metadata. Detailed failure
+                        patterns are kept in the practice notes below so this main lesson does not
+                        repeat the same conversion examples twice.
+                      </p>
+
+                      <h5>8. Not Done Laboratory Records</h5>
+                      <p>
+                        Not every planned or collected lab assessment produces a result. A sample may
+                        be hemolyzed, insufficient, lost in transit, or unsuitable for a specific
+                        assay. When the study collects the fact that the test was not performed, the
+                        record should describe the non-occurrence rather than inventing a result.
                       </p>
                       <div class="table-scroll">
-                        <table class="crf-table" aria-label="LB reference range rules">
+                        <table class="crf-table" aria-label="LB not done records">
                           <thead>
                             <tr>
-                              <th>Rule</th>
-                              <th>Correct Approach</th>
+                              <th>Variable</th>
+                              <th>Correct Use</th>
                               <th>Common Error</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>Use the same conversion factor</td>
-                              <td>If glucose result is multiplied by 0.0555, lower and upper reference limits must be multiplied by 0.0555 too.</td>
-                              <td>Converting LBSTRESN but leaving LBSTNRLO/LBSTNRHI in the original units.</td>
+                              <td>LBSTAT</td>
+                              <td>Set to NOT DONE when the lab test was expected or collected as not performed.</td>
+                              <td>Leaving LBSTAT blank while also leaving all result variables blank, making the record look incomplete instead of intentionally not done.</td>
                             </tr>
                             <tr>
-                              <td>Respect source interpretation</td>
-                              <td>LBNRIND should usually reflect the lab vendor or approved source interpretation when available.</td>
-                              <td>Recomputing LOW/NORMAL/HIGH from numeric limits without approval, ignoring age, sex, method, or local lab context.</td>
+                              <td>LBREASND</td>
+                              <td>Capture the reason, such as HEMOLYZED SAMPLE, INSUFFICIENT SAMPLE, SAMPLE LOST, or TEST NOT PERFORMED.</td>
+                              <td>Putting the reason into LBORRES or a free-text comment when LBREASND is available.</td>
                             </tr>
                             <tr>
-                              <td>Keep units consistent</td>
-                              <td>For a given LBTESTCD, LBSTRESU should usually have one standard unit across the study.</td>
-                              <td>Leaving potassium as both mmol/L and mEq/L in LBSTRESU because different sites sent different units.</td>
+                              <td>Result variables</td>
+                              <td>Keep LBORRES, LBSTRESC, and LBSTRESN missing when LBSTAT is NOT DONE.</td>
+                              <td>Creating a pseudo-result such as NOT DONE in LBORRES or zero in LBSTRESN.</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
 
-                      <h5>7. Hands-On Mapping Exercise: Potassium</h5>
+                      <h5>9. When SUPPLB or SUPPLC Is Needed</h5>
                       <p>
-                        Raw data: Subject SUB-101 has potassium = 4.2 mEq/L, reference range 3.5
-                        to 5.0 mEq/L, collected on 2026-03-15. The study specification says the SI
-                        target for potassium is mmol/L and the conventional target is mEq/L. For
-                        potassium, the numeric value is equivalent for these units in this context.
+                        Standard LB and LC variables should be used first. Supplemental qualifiers
+                        are reserved for study-specific or vendor-specific attributes that are
+                        important for traceability but do not have an appropriate standard variable.
                       </p>
-                      <div class="xpt-compare-card" aria-label="Potassium LB LC hands-on mapping exercise">
-                        <h5 class="xpt-figure-title">
-                          Potassium Exercise: Equivalent Numeric Units
-                          <span>LB + LC</span>
-                        </h5>
-                        <div class="xpt-dataset">
-                          <p class="xpt-dataset-name">lb.xpt</p>
-                          <div class="table-scroll">
-                            <table class="xpt-table dark medium" aria-label="LB potassium SI mapping">
-                              <thead>
-                                <tr>
-                                  <th>USUBJID</th>
-                                  <th>LBTESTCD</th>
-                                  <th>LBTEST</th>
-                                  <th>LBORRES</th>
-                                  <th>LBORRESU</th>
-                                  <th>LBSTRESN</th>
-                                  <th>LBSTRESC</th>
-                                  <th>LBSTRESU</th>
-                                  <th>LBSTNRLO</th>
-                                  <th>LBSTNRHI</th>
-                                  <th>LBDTC</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr class="dm-row">
-                                  <td>DUMMY-SUB-101</td>
-                                  <td>K</td>
-                                  <td>Potassium</td>
-                                  <td>4.2</td>
-                                  <td>mEq/L</td>
-                                  <td>4.2</td>
-                                  <td>4.2</td>
-                                  <td>mmol/L</td>
-                                  <td>3.5</td>
-                                  <td>5.0</td>
-                                  <td>2026-03-15</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <div class="xpt-dataset">
-                          <p class="xpt-dataset-name">lc.xpt</p>
-                          <div class="table-scroll">
-                            <table class="xpt-table dark medium" aria-label="LC potassium conventional mapping">
-                              <thead>
-                                <tr>
-                                  <th>USUBJID</th>
-                                  <th>LCTESTCD</th>
-                                  <th>LCTEST</th>
-                                  <th>LCORRES</th>
-                                  <th>LCORRESU</th>
-                                  <th>LCSTRESN</th>
-                                  <th>LCSTRESC</th>
-                                  <th>LCSTRESU</th>
-                                  <th>LCSTNRLO</th>
-                                  <th>LCSTNRHI</th>
-                                  <th>LCDTC</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr class="dm-row">
-                                  <td>DUMMY-SUB-101</td>
-                                  <td>K</td>
-                                  <td>Potassium</td>
-                                  <td>4.2</td>
-                                  <td>mEq/L</td>
-                                  <td>4.2</td>
-                                  <td>4.2</td>
-                                  <td>mEq/L</td>
-                                  <td>3.5</td>
-                                  <td>5.0</td>
-                                  <td>2026-03-15</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
+                      <div class="table-scroll">
+                        <table class="crf-table" aria-label="SUPPLB and SUPPLC examples">
+                          <thead>
+                            <tr>
+                              <th>Scenario</th>
+                              <th>Possible Supplemental Handling</th>
+                              <th>Training Point</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Detailed laboratory vendor name</td>
+                              <td>Use a standard variable if available; otherwise a supplemental qualifier may store the extended vendor detail required by the study.</td>
+                              <td>Do not create non-standard columns directly in LB just because the transfer has extra vendor fields.</td>
+                            </tr>
+                            <tr>
+                              <td>Retest flag</td>
+                              <td>A study-specific qualifier such as QNAM = LBRETEST can identify a repeat test when no standard variable captures the exact business meaning.</td>
+                              <td>Retests affect listings, baseline selection, and abnormality review; the record should remain traceable to the original lab event.</td>
+                            </tr>
+                            <tr>
+                              <td>Extra local-lab context</td>
+                              <td>Supplemental qualifiers may preserve site- or vendor-specific interpretation notes when they are required by the specification.</td>
+                              <td>Use SUPP-- deliberately. If a standard LB variable fits, use the standard variable instead.</td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
 
-                      <h5>8. QC Checklist for LB and LC</h5>
+                      <h5>10. QC Checklist for LB and LC</h5>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="LB and LC QC checklist">
                           <thead>
@@ -11421,19 +11527,9 @@ run;</code></pre>
                               <td>ALT should not appear as both Alanine Aminotransferase and SGPT in submitted standard variables.</td>
                             </tr>
                             <tr>
-                              <td>Standard unit consistency</td>
-                              <td>Multiple LBSTRESU values within the same LBTESTCD.</td>
-                              <td>Mixed units break summaries, reference range interpretation, and validation expectations.</td>
-                            </tr>
-                            <tr>
                               <td>Numeric result consistency</td>
                               <td>LBSTRESC looks numeric but LBSTRESN is missing, excluding planned qualitative or inequality cases.</td>
                               <td>Numeric standardized results should support numeric summaries and ADLB derivations.</td>
-                            </tr>
-                            <tr>
-                              <td>Reference range conversion</td>
-                              <td>LBSTRESU converted but LBSTNRLO/LBSTNRHI still look like original-unit limits.</td>
-                              <td>Incorrect reference ranges can misclassify low, normal, and high results.</td>
                             </tr>
                             <tr>
                               <td>LB/LC pairing</td>
@@ -11442,6 +11538,12 @@ run;</code></pre>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+
+                      <div class="lesson-popup-launch">
+                        <button type="button" class="lesson-popup-button" data-open-panel="lb-seven-mistakes">
+                          <strong>LB Unit Conversion Practice Notes</strong>
+                        </button>
                       </div>
 
                       <div class="workshop">
@@ -12386,73 +12488,424 @@ run;</code></pre>
                 <article class="lesson">
                   <h4>1. Why ADaM Exists</h4>
                   <p>
-                    SDTM is designed for standardized tabulation, not always for direct analysis.
-                    ADaM datasets are analysis-ready datasets created to support the Statistical
-                    Analysis Plan and the tables, listings, and figures for a study.
+                    The Analysis Data Model (ADaM) is the bridge between standardized clinical
+                    observations and final statistical reporting. Study Data Tabulation Model
+                    (SDTM) datasets describe what happened to each subject in a standardized
+                    submission format. ADaM datasets explain how those observations should be
+                    analyzed according to the Statistical Analysis Plan (SAP).
                   </p>
-                  <ul>
-                    <li><strong>Traceability:</strong> An analysis value should be traceable back to source and SDTM data.</li>
-                    <li><strong>Reproducibility:</strong> Another programmer should be able to understand how the result was derived.</li>
-                    <li><strong>Analysis readiness:</strong> Common derivations are prepared once and reused across outputs.</li>
-                  </ul>
+                  <p>
+                    This distinction matters because Tables, Listings, and Figures (TFLs) should
+                    not each reinvent baseline rules, visit windows, imputation rules, treatment
+                    grouping, or population definitions. ADaM follows a practical rule:
+                    derive once, analyze many times. Complex decisions are made in the analysis
+                    dataset build, then reused consistently across outputs.
+                  </p>
 
-                  <h4>2. Common ADaM Datasets</h4>
-                  <ul>
-                    <li><strong>ADSL:</strong> One record per subject, with treatment, population flags, dates, and key subject-level variables.</li>
-                    <li><strong>ADVS:</strong> Analysis dataset for vital signs, often derived from SDTM VS.</li>
-                    <li><strong>ADAE:</strong> Analysis dataset for adverse events, often derived from SDTM AE and subject-level treatment information.</li>
-                  </ul>
+                  <div class="sdtm-pipeline" aria-label="ADaM analysis pipeline">
+                    <div class="flow-step"><strong>Protocol / SAP</strong><br>Define objectives, endpoints, populations, windows, and analysis rules.</div>
+                    <div class="flow-step"><strong>SDTM</strong><br>Standardized record of collected clinical events, interventions, and findings.</div>
+                    <div class="flow-step"><strong>ADaM</strong><br>Analysis-ready datasets with flags, baseline, changes, periods, and derived values.</div>
+                    <div class="flow-step"><strong>TFLs</strong><br>Final statistical outputs generated from approved ADaM datasets.</div>
+                  </div>
 
-                  <h4>3. Example ADVS Derivations</h4>
+                  <h4>2. The Three ADaM Design Promises</h4>
+                  <div class="sdtm-value-grid">
+                    <div class="sdtm-value-card">
+                      <strong>Traceability</strong>
+                      Every analysis value should be traceable from the final output back to ADaM,
+                      SDTM, and the source record or derivation rule.
+                    </div>
+                    <div class="sdtm-value-card">
+                      <strong>Reproducibility</strong>
+                      A reviewer or independent programmer should be able to rerun the code and
+                      regenerate the same result from the submitted datasets and metadata.
+                    </div>
+                    <div class="sdtm-value-card">
+                      <strong>Analysis Readiness</strong>
+                      TFL programs should summarize approved analysis variables, not contain
+                      hidden visit-windowing, baseline, or imputation algorithms.
+                    </div>
+                  </div>
+
+                  <h4>3. ADaM Dataset Structures</h4>
                   <div class="table-scroll">
-                    <table class="crf-table" aria-label="Example ADVS derivations">
+                    <table class="crf-table" aria-label="ADaM dataset structures">
                       <thead>
                         <tr>
-                          <th>Variable</th>
-                          <th>Meaning</th>
-                          <th>Example</th>
+                          <th>Structure</th>
+                          <th>Record Pattern</th>
+                          <th>Typical Datasets</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>BASE</td>
-                          <td>Baseline value before treatment or at the baseline visit.</td>
-                          <td>136</td>
+                          <td>Subject-Level Structure</td>
+                          <td>One record per subject.</td>
+                          <td>ADSL</td>
+                          <td>Treatment, populations, important dates, strata, demographics, and study-level anchors.</td>
                         </tr>
                         <tr>
-                          <td>AVAL</td>
-                          <td>Analysis value at the selected visit.</td>
-                          <td>128</td>
+                          <td>Basic Data Structure (BDS)</td>
+                          <td>One or more records per subject, parameter, and analysis time point.</td>
+                          <td>ADVS, ADLB, ADEG, ADEF</td>
+                          <td>PARAM/PARAMCD, AVAL, BASE, CHG, visit windows, analysis flags, and imputation indicators.</td>
                         </tr>
                         <tr>
-                          <td>CHG</td>
-                          <td>Change from baseline, usually AVAL - BASE.</td>
-                          <td>-8</td>
+                          <td>Occurrence Data Structure (OCCDS)</td>
+                          <td>One record per subject per event or occurrence.</td>
+                          <td>ADAE, ADCM, ADMH</td>
+                          <td>Event counting, treatment-emergent flags, seriousness, severity, occurrence flags, and safety summaries.</td>
                         </tr>
                         <tr>
-                          <td>ANL01FL</td>
-                          <td>Analysis flag identifying records included in a planned analysis.</td>
-                          <td>Y</td>
+                          <td>Other</td>
+                          <td>Study-specific structure when standard structures do not fit.</td>
+                          <td>Special survival, exposure-response, or complex design datasets.</td>
+                          <td>Must be explained clearly in specifications, Define.xml, and the Analysis Data Reviewer's Guide (ADRG).</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
 
+                  <h4>4. ADSL: The Subject-Level Anchor</h4>
+                  <p>
+                    The Subject-Level Analysis Dataset (ADSL) is the foundation of an ADaM package.
+                    It has exactly one record per subject and is merged into almost every other
+                    analysis dataset. If ADSL treatment dates, population flags, or treatment
+                    assignments are wrong, the error spreads into safety, efficacy, disposition,
+                    and exposure outputs.
+                  </p>
+                  <div class="xpt-compare-card" aria-label="ADSL xpt example">
+                    <div class="xpt-figure-title">
+                      <strong>ADSL Subject-Level Example</strong>
+                      <span>adsl.xpt</span>
+                    </div>
+                    <p class="xpt-dataset-name">adsl.xpt</p>
+                    <div class="table-scroll">
+                      <table class="xpt-table dark medium" aria-label="ADSL dataset preview">
+                        <thead>
+                          <tr>
+                            <th>STUDYID</th>
+                            <th>USUBJID</th>
+                            <th>TRT01P</th>
+                            <th>TRT01A</th>
+                            <th>SAFFL</th>
+                            <th>FASFL</th>
+                            <th>TRTSDT</th>
+                            <th>TRTEDT</th>
+                            <th>AGE</th>
+                            <th>SEX</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>DUMMY-101</td>
+                            <td>DUMMY-101-001</td>
+                            <td>Placebo</td>
+                            <td>Placebo</td>
+                            <td>Y</td>
+                            <td>Y</td>
+                            <td>2026-02-03</td>
+                            <td>2026-04-10</td>
+                            <td>57</td>
+                            <td>F</td>
+                          </tr>
+                          <tr>
+                            <td>DUMMY-101</td>
+                            <td>DUMMY-101-002</td>
+                            <td>YGN-101</td>
+                            <td>YGN-101</td>
+                            <td>Y</td>
+                            <td>Y</td>
+                            <td>2026-02-05</td>
+                            <td>2026-04-12</td>
+                            <td>63</td>
+                            <td>M</td>
+                          </tr>
+                          <tr>
+                            <td>DUMMY-101</td>
+                            <td>DUMMY-101-003</td>
+                            <td>YGN-101</td>
+                            <td></td>
+                            <td>N</td>
+                            <td>Y</td>
+                            <td></td>
+                            <td></td>
+                            <td>44</td>
+                            <td>F</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="native-note">
+                      Teaching point: ADSL separates planned treatment from actual treatment.
+                      A subject can be randomized and included in an efficacy population while
+                      not entering the Safety Population if no study treatment was received.
+                    </p>
+                  </div>
+
+                  <h4>5. BDS: Parameters, Values, Baseline, and Change</h4>
+                  <p>
+                    The Basic Data Structure (BDS) is used when analysis depends on a parameter
+                    measured over time. Vital signs, laboratory values, electrocardiogram results,
+                    and many efficacy endpoints follow this pattern. The programmer must make the
+                    record analysis-ready by selecting analysis visits, deriving baseline, calculating
+                    change, and setting analysis flags.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Common BDS variables">
+                      <thead>
+                        <tr>
+                          <th>Variable</th>
+                          <th>Plain-English Meaning</th>
+                          <th>Programming Focus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>PARAMCD / PARAM</td>
+                          <td>Analysis parameter code and label.</td>
+                          <td>One PARAMCD should map consistently to one PARAM within the study.</td>
+                        </tr>
+                        <tr>
+                          <td>AVAL / AVALC</td>
+                          <td>Numeric or character analysis value.</td>
+                          <td>Use AVAL for numeric summaries and AVALC for character analysis results.</td>
+                        </tr>
+                        <tr>
+                          <td>ADT / ADTM</td>
+                          <td>Analysis date or analysis datetime.</td>
+                          <td>May be derived from SDTM --DTC values and SAP imputation rules.</td>
+                        </tr>
+                        <tr>
+                          <td>AVISIT / AVISITN</td>
+                          <td>Analysis visit label and order.</td>
+                          <td>Usually derived by visit windowing, not copied blindly from SDTM VISIT.</td>
+                        </tr>
+                        <tr>
+                          <td>BASE / CHG / PCHG</td>
+                          <td>Baseline, change from baseline, and percent change.</td>
+                          <td>Baseline rules come from the SAP; CHG is usually AVAL - BASE.</td>
+                        </tr>
+                        <tr>
+                          <td>ABLFL / ANL01FL / DTYPE</td>
+                          <td>Baseline flag, analysis flag, and derivation type.</td>
+                          <td>Make selected records and imputed or derived records visible to reviewers.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="xpt-compare-card" aria-label="ADVS xpt example">
+                    <div class="xpt-figure-title">
+                      <strong>BDS Example: Vital Signs Change from Baseline</strong>
+                      <span>advs.xpt</span>
+                    </div>
+                    <p class="xpt-dataset-name">advs.xpt</p>
+                    <div class="table-scroll">
+                      <table class="xpt-table dark medium" aria-label="ADVS dataset preview">
+                        <thead>
+                          <tr>
+                            <th>USUBJID</th>
+                            <th>PARAMCD</th>
+                            <th>PARAM</th>
+                            <th>AVISIT</th>
+                            <th>ADT</th>
+                            <th>AVAL</th>
+                            <th>BASE</th>
+                            <th>CHG</th>
+                            <th>ABLFL</th>
+                            <th>ANL01FL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>DUMMY-101-001</td>
+                            <td>SYSBP</td>
+                            <td>Systolic Blood Pressure (mmHg)</td>
+                            <td>Baseline</td>
+                            <td>2026-02-03</td>
+                            <td>136</td>
+                            <td>136</td>
+                            <td></td>
+                            <td>Y</td>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <td>DUMMY-101-001</td>
+                            <td>SYSBP</td>
+                            <td>Systolic Blood Pressure (mmHg)</td>
+                            <td>Week 4</td>
+                            <td>2026-03-03</td>
+                            <td>128</td>
+                            <td>136</td>
+                            <td>-8</td>
+                            <td></td>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <td>DUMMY-101-001</td>
+                            <td>DIABP</td>
+                            <td>Diastolic Blood Pressure (mmHg)</td>
+                            <td>Week 4</td>
+                            <td>2026-03-03</td>
+                            <td>78</td>
+                            <td>84</td>
+                            <td>-6</td>
+                            <td></td>
+                            <td>Y</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="native-note">
+                      Teaching point: the TFL program can summarize AVAL and CHG directly.
+                      It should not need to search SDTM VS again to rediscover baseline.
+                    </p>
+                  </div>
+
+                  <h4>6. OCCDS: Event Data Prepared for Counting</h4>
+                  <p>
+                    Occurrence Data Structure (OCCDS) is used for event-style records such as
+                    adverse events, concomitant medications, and medical history. These datasets
+                    usually start from SDTM event or intervention domains and add analysis logic:
+                    treatment-emergent flags, analysis start dates, occurrence flags, severity
+                    grouping, seriousness grouping, and population-ready treatment information.
+                  </p>
+                  <div class="xpt-compare-card" aria-label="ADAE xpt example">
+                    <div class="xpt-figure-title">
+                      <strong>OCCDS Example: Adverse Events for Safety Summaries</strong>
+                      <span>adae.xpt</span>
+                    </div>
+                    <p class="xpt-dataset-name">adae.xpt</p>
+                    <div class="table-scroll">
+                      <table class="xpt-table dark medium" aria-label="ADAE dataset preview">
+                        <thead>
+                          <tr>
+                            <th>USUBJID</th>
+                            <th>AESEQ</th>
+                            <th>AETERM</th>
+                            <th>AEDECOD</th>
+                            <th>ASTDT</th>
+                            <th>AENDT</th>
+                            <th>TRTEMFL</th>
+                            <th>SAFFL</th>
+                            <th>AESER</th>
+                            <th>AOCCFL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>DUMMY-101-001</td>
+                            <td>1</td>
+                            <td>Headache</td>
+                            <td>Headache</td>
+                            <td>2026-02-08</td>
+                            <td>2026-02-10</td>
+                            <td>Y</td>
+                            <td>Y</td>
+                            <td>N</td>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <td>DUMMY-101-001</td>
+                            <td>2</td>
+                            <td>Nausea</td>
+                            <td>Nausea</td>
+                            <td>2026-01-28</td>
+                            <td>2026-02-04</td>
+                            <td></td>
+                            <td>Y</td>
+                            <td>N</td>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <td>DUMMY-101-002</td>
+                            <td>1</td>
+                            <td>Left leg fracture</td>
+                            <td>Lower limb fracture</td>
+                            <td>2026-03-12</td>
+                            <td></td>
+                            <td>Y</td>
+                            <td>Y</td>
+                            <td>Y</td>
+                            <td>Y</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="native-note">
+                      Teaching point: ADAE does not simply copy SDTM AE. It adds SAP-driven
+                      analysis dates, treatment-emergent logic, population information, and
+                      occurrence flags so safety TFLs count events consistently.
+                    </p>
+                  </div>
+
+                  <h4>7. Traceability Walk-Through</h4>
+                  <p>
+                    A reviewer should be able to start from a value in a final output and walk
+                    backward through the analysis dataset, the derivation rule, SDTM, and the source.
+                    This is why ADaM specifications must name not only the target variable but also
+                    the source dataset, source variable, algorithm, and any assumptions.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="ADaM traceability examples">
+                      <thead>
+                        <tr>
+                          <th>Final Output Question</th>
+                          <th>ADaM Variable</th>
+                          <th>Derivation Logic</th>
+                          <th>Trace Back To</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mean change from baseline in systolic blood pressure at Week 4</td>
+                          <td>ADVS.CHG</td>
+                          <td>CHG = AVAL - BASE for PARAMCD = SYSBP and AVISIT = Week 4.</td>
+                          <td>ADVS -> SDTM VS -> source vital signs form.</td>
+                        </tr>
+                        <tr>
+                          <td>Number of subjects with at least one treatment-emergent adverse event</td>
+                          <td>ADAE.TRTEMFL and ADAE.AOCCFL</td>
+                          <td>Apply SAP treatment-emergent window and count first occurrence per subject.</td>
+                          <td>ADAE -> SDTM AE + EX + ADSL treatment dates.</td>
+                        </tr>
+                        <tr>
+                          <td>Safety population denominator</td>
+                          <td>ADSL.SAFFL</td>
+                          <td>Set to Y for subjects who received at least one dose of study treatment.</td>
+                          <td>ADSL -> SDTM EX/EC + randomization and exposure records.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>8. Common Beginner Mistakes</h4>
+                  <ul>
+                    <li><strong>Programming TFLs directly from SDTM:</strong> This repeats derivations in multiple output programs and can create inconsistent results.</li>
+                    <li><strong>Putting analysis imputation into SDTM:</strong> Missing date imputation, baseline selection, and visit windowing belong in ADaM according to SAP rules.</li>
+                    <li><strong>Creating flags without specifications:</strong> Population flags, treatment-emergent flags, and analysis flags must be tied to approved definitions.</li>
+                    <li><strong>Losing traceability:</strong> A derived value without a clear source path is difficult to defend in review.</li>
+                    <li><strong>Changing PARAMCD meanings:</strong> Once a PARAMCD is defined, its PARAM label, units, and analysis meaning must remain stable.</li>
+                  </ul>
+
                   <div class="workshop">
                     <h4>Practice Check</h4>
                     <ol>
                       <li>If BASE is 136 and AVAL is 128, what is CHG?</li>
-                      <li>Which document usually defines how baseline is selected?</li>
-                      <li>Why is traceability important in ADaM?</li>
+                      <li>Which document usually defines the baseline rule and TEAE window?</li>
+                      <li>Which dataset should provide the denominator for a safety table?</li>
                     </ol>
-                    <div class="answer-key">
-                      <h5>Answer Key</h5>
+                    <details class="answer-key">
+                      <summary>Answer Key</summary>
                       <ol>
                         <li>CHG is -8.</li>
-                        <li>The SAP usually defines the baseline rule.</li>
-                        <li>Traceability allows reviewers to understand how analysis values were derived from source data.</li>
+                        <li>The Statistical Analysis Plan (SAP) defines the baseline rule and treatment-emergent window.</li>
+                        <li>ADSL usually provides population flags and denominators, such as SAFFL for the Safety Population.</li>
                       </ol>
-                    </div>
+                    </details>
                   </div>
                 </article>
               </details>
@@ -15147,12 +15600,22 @@ run;</code></pre>
                       <tr>
                         <td>Estimator</td>
                         <td>The statistical method used to estimate the estimand.</td>
-                        <td>ANCOVA, MMRM, logistic regression, Cox model, Kaplan-Meier, multiple imputation.</td>
-                        <td>Calling the model the estimand.</td>
+                        <td>Least-squares estimator based on an ANCOVA model; maximum likelihood or restricted maximum likelihood estimator based on an MMRM; model-based hazard ratio estimator from a Cox model; Kaplan-Meier estimator for survival probability.</td>
+                        <td>Calling the model itself the estimand or estimator. ANCOVA, MMRM, and Cox proportional hazards are models; the estimator is the rule or model-based procedure that estimates the target parameter.</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
+                <p>
+                  For precision, keep three layers separate. The <strong>estimand</strong> is the
+                  clinical treatment effect being targeted. The <strong>model</strong> is the
+                  statistical structure used to represent the data, such as ANCOVA, MMRM, logistic
+                  regression, or a Cox proportional hazards model. The <strong>estimator</strong>
+                  is the actual estimation procedure or function derived from that model, such as a
+                  least-squares estimator, maximum likelihood estimator, restricted maximum
+                  likelihood estimator, odds ratio estimator, hazard ratio estimator, or
+                  Kaplan-Meier estimator.
+                </p>
 
                 <h5>The Five Estimand Attributes</h5>
                 <p>
@@ -15385,6 +15848,19 @@ run;</code></pre>
                   <li><strong>Sensitivity analysis:</strong> Do planned sensitivity analyses test clinically plausible alternative assumptions?</li>
                   <li><strong>CSR:</strong> Does the interpretation describe the treatment effect actually estimated?</li>
                 </ul>
+                <div class="example-box">
+                  <strong>Statistician Note: Intercurrent Events Are Not Missing Data</strong>
+                  <p>
+                    An intercurrent event changes the existence, meaning, or interpretation of the
+                    potential outcome; it is part of the scientific question. Missing data only means
+                    the outcome was not observed or collected; it is a data availability problem.
+                    Do not use missing-data techniques such as multiple imputation to hide or
+                    "solve" every intercurrent event. Imputation is appropriate only when it is tied
+                    to a clearly specified estimand strategy, such as a hypothetical strategy that
+                    defines the counterfactual outcome that would have been expected had the
+                    intercurrent event not occurred.
+                  </p>
+                </div>
 
                 <div class="workshop">
                   <h4>Practice Scenario: Rescue Medication Before Week 24</h4>
