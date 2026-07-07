@@ -1854,6 +1854,105 @@
       line-height: 1.5;
     }
 
+
+    .word-shell {
+      border-radius: 0;
+      border: 1px solid rgba(24, 24, 24, 0.28);
+      background: #fffefa;
+      box-shadow: none;
+      color: #111;
+      font-family: "Courier New", Courier, monospace;
+      padding: 20px 24px;
+    }
+
+    .word-shell .shell-page-meta {
+      color: #111;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .word-shell .shell-title-block {
+      color: #111;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      line-height: 1.25;
+      margin: 8px 0 18px;
+      text-align: center;
+    }
+
+    .word-shell .shell-table-number,
+    .word-shell .shell-table-title {
+      font-weight: 700;
+    }
+
+    .word-shell .shell-population {
+      color: #111;
+      font-size: 12px;
+    }
+
+    .word-shell table {
+      min-width: 760px;
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .word-shell th,
+    .word-shell td {
+      border: 0;
+      border-bottom: 0;
+      padding: 3px 7px;
+      text-align: center;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    .word-shell th:first-child,
+    .word-shell td:first-child {
+      text-align: left;
+      width: 42%;
+      white-space: normal;
+    }
+
+    .word-shell thead tr:first-child th {
+      border-top: 1.5px solid #111;
+      border-bottom: 1.5px solid #111;
+      font-weight: 400;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+
+    .word-shell .shell-section-row td {
+      background: transparent;
+      color: #111;
+      font-weight: 400;
+      padding-top: 10px;
+      text-align: left;
+    }
+
+    .word-shell .indent {
+      padding-left: 26px;
+    }
+
+    .word-shell .shell-footnotes {
+      border-top: 1.5px solid #111;
+      color: #8c008c;
+      display: block;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 10.5px;
+      line-height: 1.25;
+      margin-top: 14px;
+      padding-top: 5px;
+    }
+
+    .word-shell .shell-footnotes div {
+      margin: 1px 0;
+    }
+
     .feedback-card {
       margin-top: 22px;
       padding: 24px;
@@ -13818,7 +13917,8 @@ run;</code></pre>
                     <table>
                       <thead>
                         <tr>
-                          <th>Parameter / Statistic</th>
+                          <th>Visit / Analysis Timepoint</th>
+                          <th>Statistical Summary</th>
                           <th>Placebo<br>N = xx</th>
                           <th>YGN-101 50 mg<br>N = xx</th>
                           <th>Total<br>N = xx</th>
@@ -13826,16 +13926,22 @@ run;</code></pre>
                       </thead>
                       <tbody>
                         <tr class="shell-section-row">
-                          <td colspan="4">Systolic Blood Pressure (mmHg)</td>
+                          <td colspan="5">Systolic Blood Pressure (mmHg)</td>
                         </tr>
-                        <tr><td>Baseline, n</td><td>xx</td><td>xx</td><td>xx</td></tr>
-                        <tr><td>Baseline, Mean (SD)</td><td>xxx.x (xx.x)</td><td>xxx.x (xx.x)</td><td>xxx.x (xx.x)</td></tr>
-                        <tr><td>Baseline, Median</td><td>xxx.x</td><td>xxx.x</td><td>xxx.x</td></tr>
-                        <tr><td>Baseline, Min, Max</td><td>xxx.x, xxx.x</td><td>xxx.x, xxx.x</td><td>xxx.x, xxx.x</td></tr>
-                        <tr><td>Change from Baseline at Week 4, n</td><td>xx</td><td>xx</td><td>xx</td></tr>
-                        <tr><td>Change from Baseline at Week 4, Mean (SD)</td><td>xx.x (xx.x)</td><td>xx.x (xx.x)</td><td>xx.x (xx.x)</td></tr>
-                        <tr><td>Change from Baseline at Week 4, Median</td><td>xx.x</td><td>xx.x</td><td>xx.x</td></tr>
-                        <tr><td>Change from Baseline at Week 4, Min, Max</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td></tr>
+                        <tr>
+                          <td rowspan="4"><strong>Baseline</strong></td>
+                          <td>n</td><td>xx</td><td>xx</td><td>xx</td>
+                        </tr>
+                        <tr><td>Mean (SD)</td><td>xxx.x (xx.x)</td><td>xxx.x (xx.x)</td><td>xxx.x (xx.x)</td></tr>
+                        <tr><td>Median</td><td>xxx.x</td><td>xxx.x</td><td>xxx.x</td></tr>
+                        <tr><td>Min, Max</td><td>xxx.x, xxx.x</td><td>xxx.x, xxx.x</td><td>xxx.x, xxx.x</td></tr>
+                        <tr>
+                          <td rowspan="4"><strong>Change from Baseline<br>at Week 4</strong></td>
+                          <td>n</td><td>xx</td><td>xx</td><td>xx</td>
+                        </tr>
+                        <tr><td>Mean (SD)</td><td>xx.x (xx.x)</td><td>xx.x (xx.x)</td><td>xx.x (xx.x)</td></tr>
+                        <tr><td>Median</td><td>xx.x</td><td>xx.x</td><td>xx.x</td></tr>
+                        <tr><td>Min, Max</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td></tr>
                       </tbody>
                     </table>
                     <div class="shell-footnotes">
@@ -13853,47 +13959,222 @@ run;</code></pre>
 
                   <h4>5. How ADaM Flags Drive TLFs</h4>
                   <p>
-                    Production TLF programs should not rediscover analysis rules from raw data.
-                    They should consume the analysis-ready variables and flags created in ADaM.
-                    The practical rule is: derive once in ADaM, display many times in TLFs.
+                    Production Tables, Listings, and Figures (TLFs) should not rediscover analysis
+                    rules from raw data. They should consume the analysis-ready variables and flags
+                    created in Analysis Data Model (ADaM) datasets. The practical rule is simple:
+                    derive once in ADaM, display many times in TLFs.
                   </p>
-                  <div class="table-scroll">
-                    <table class="crf-table" aria-label="ADaM flags used by TLF programs">
-                      <thead>
-                        <tr>
-                          <th>TLF Need</th>
-                          <th>Common ADaM Source</th>
-                          <th>Typical Variables</th>
-                          <th>Programming Use</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Denominator</td>
-                          <td>ADSL</td>
-                          <td>SAFFL, FASFL, ITTFL, TRT01P, TRT01A</td>
-                          <td>Select the population and count subjects once per treatment group.</td>
-                        </tr>
-                        <tr>
-                          <td>Efficacy table</td>
-                          <td>ADEFF, ADQS, ADLB, or other BDS-style ADaM</td>
-                          <td>PARAMCD, PARAM, AVAL, BASE, CHG, AVISIT, ANL01FL, TRT01P</td>
-                          <td>Use the pre-specified analysis record, endpoint parameter, visit, and planned treatment comparison.</td>
-                        </tr>
-                        <tr>
-                          <td>Safety summary</td>
-                          <td>ADAE, ADLB, ADVS, ADCM</td>
-                          <td>SAFFL, TRTA or TRT01A, TRTEMFL, ANLxxFL, AESOC, AEDECOD</td>
-                          <td>Use actual treatment exposure and treatment-emergent flags when the SAP defines safety by actual treatment received.</td>
-                        </tr>
-                        <tr>
-                          <td>Listing</td>
-                          <td>ADaM or SDTM, depending on the listing purpose</td>
-                          <td>USUBJID, dates, terms, sequence variables, analysis flags</td>
-                          <td>Show subject-level records with traceability; do not collapse away clinically important detail.</td>
-                        </tr>
-                      </tbody>
-                    </table>
+
+                  <h5>Core Paradigms Paired With Table Shells</h5>
+                  <p>
+                    When reading a shell, the programmer should immediately ask which ADaM dataset,
+                    population flag, treatment variable, parameter, visit, and analysis flag will drive
+                    each row and column. A shell is not only a layout; it is a set of programming
+                    instructions expressed visually.
+                  </p>
+
+                  <div class="shell-case">
+                    <h5>01. Denominator: Population Baselines</h5>
+                    <p>
+                      <strong>The goal:</strong> populate the column headers with the correct total
+                      subject count (N) for the specified analysis population.
+                    </p>
+                    <p>
+                      <strong>The ADaM mechanism:</strong> filter ADSL where the population flag, such
+                      as SAFFL or FASFL, equals "Y", then count subjects by the treatment variable
+                      requested by the shell, such as TRT01P for planned treatment or TRT01A for actual
+                      treatment.
+                    </p>
+                    <div class="shell-page word-shell">
+                      <div class="shell-page-meta">
+                        <span>Protocol: YGN-101-01</span>
+                        <span>Page 1 of X</span>
+                      </div>
+                      <div class="shell-title-block">
+                        <div class="shell-table-number">Table 14.1.2</div>
+                        <div class="shell-table-title">Demographic and Baseline Characteristics</div>
+                        <div class="shell-population">Safety Population</div>
+                      </div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Characteristic</th>
+                            <th>Placebo<br>(N = xxx) [1]</th>
+                            <th>YGN-101 10 mg<br>(N = xxx) [1]</th>
+                            <th>Total<br>(N = xxx)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="shell-section-row"><td colspan="4">Age (Years)</td></tr>
+                          <tr><td>n</td><td>xx</td><td>xx</td><td>xx</td></tr>
+                          <tr><td>Mean (SD)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td></tr>
+                          <tr><td>Median</td><td>xx.x</td><td>xx.x</td><td>xx.x</td></tr>
+                          <tr><td>Min, Max</td><td>xx, xx</td><td>xx, xx</td><td>xx, xx</td></tr>
+                          <tr class="shell-section-row"><td colspan="4">Sex, n (%)</td></tr>
+                          <tr><td>Female</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
+                          <tr><td>Male</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
+                        </tbody>
+                      </table>
+                      <div class="shell-footnotes">
+                        <div>[1] Denominators are derived from ADSL where SAFFL = "Y", grouped by TRT01A.</div>
+                        <div>Percentages are based on the number of subjects in each treatment group unless otherwise specified.</div>
+                        <div>Source: ADSL. Program: t_14_1_2_demog.sas.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="shell-case">
+                    <h5>02. Efficacy Tables</h5>
+                    <p>
+                      <strong>The goal:</strong> display statistical summaries, least-squares means,
+                      standard errors, confidence intervals, and p-values for specific parameters at
+                      designated analysis visits.
+                    </p>
+                    <p>
+                      <strong>The ADaM mechanism:</strong> filter a Basic Data Structure (BDS) dataset,
+                      such as ADEFF, where PARAMCD equals the endpoint code and ANL01FL equals "Y".
+                      The shell wording should mirror PARAM and AVISIT, not force the TLF program to
+                      invent labels or choose records.
+                    </p>
+                    <div class="shell-page word-shell">
+                      <div class="shell-page-meta">
+                        <span>Protocol: YGN-101-01</span>
+                        <span>Page 1 of X</span>
+                      </div>
+                      <div class="shell-title-block">
+                        <div class="shell-table-number">Table 14.2.1</div>
+                        <div class="shell-table-title">Change from Baseline in Pain Visual Analog Scale Score</div>
+                        <div class="shell-population">Full Analysis Set (FAS)</div>
+                      </div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Visit / Analysis Statistic</th>
+                            <th>Placebo<br>(N = xxx) [1]</th>
+                            <th>YGN-101 10 mg<br>(N = xxx) [1]</th>
+                            <th>Difference<br>(95% CI)</th>
+                            <th>p-value [3]</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="shell-section-row"><td colspan="5">Endpoint: Pain Visual Analog Scale (VAS) Score [2]</td></tr>
+                          <tr><td><strong>Week 4 [4]</strong></td><td></td><td></td><td></td><td></td></tr>
+                          <tr><td class="indent">Baseline Mean (SD)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td><td></td><td></td></tr>
+                          <tr><td class="indent">Visit Mean (SD)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td><td></td><td></td></tr>
+                          <tr><td class="indent">LS Mean Change from Baseline (SE)</td><td>-x.x (x.xx)</td><td>-x.x (x.xx)</td><td>-x.x (-x.x, -x.x)</td><td>0.xxxx</td></tr>
+                        </tbody>
+                      </table>
+                      <div class="shell-footnotes">
+                        <div>[1] Denominators are derived from ADSL where FASFL = "Y".</div>
+                        <div>[2] Parameter is filtered using PARAMCD = "PAINVAS" from ADEFF.</div>
+                        <div>[3] p-value is from an ANCOVA model with treatment and baseline value as covariates.</div>
+                        <div>[4] Rows are restricted to records where ANL01FL = "Y" and displayed using AVISIT.</div>
+                        <div>Source: ADSL, ADEFF. Program: t_14_2_1_pain_vas.sas.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="shell-case">
+                    <h5>03. Safety Summaries</h5>
+                    <p>
+                      <strong>The goal:</strong> display the number and percentage of subjects with
+                      adverse events, organized hierarchically by System Organ Class and Preferred Term.
+                    </p>
+                    <p>
+                      <strong>The ADaM mechanism:</strong> filter ADAE where SAFFL = "Y" and TRTEMFL =
+                      "Y". Count unique subjects by treatment group, usually TRT01A or TRTA for safety
+                      summaries, and calculate percentages using the Safety Population denominator from
+                      ADSL.
+                    </p>
+                    <div class="shell-page word-shell">
+                      <div class="shell-page-meta">
+                        <span>Protocol: YGN-101-01</span>
+                        <span>Page 1 of X</span>
+                      </div>
+                      <div class="shell-title-block">
+                        <div class="shell-table-number">Table 14.3.1.1</div>
+                        <div class="shell-table-title">Summary of Treatment-Emergent Adverse Events by System Organ Class and Preferred Term</div>
+                        <div class="shell-population">Safety Population</div>
+                      </div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>System Organ Class / Preferred Term [2]</th>
+                            <th>Placebo<br>(N = xxx) [1]<br>n (%)</th>
+                            <th>YGN-101 10 mg<br>(N = xxx) [1]<br>n (%)</th>
+                            <th>Total<br>(N = xxx)<br>n (%)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td><strong>Any TEAE [3]</strong></td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
+                          <tr class="shell-section-row"><td colspan="4">NERVOUS SYSTEM DISORDERS</td></tr>
+                          <tr><td class="indent">Headache</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
+                          <tr><td class="indent">Dizziness</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
+                          <tr class="shell-section-row"><td colspan="4">GASTROINTESTINAL DISORDERS</td></tr>
+                          <tr><td class="indent">Nausea</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
+                        </tbody>
+                      </table>
+                      <div class="shell-footnotes">
+                        <div>[1] Denominator is the number of subjects in the Safety Population: ADSL.SAFFL = "Y".</div>
+                        <div>[2] Ordered alphabetically by AESOC and by AEDECOD within each System Organ Class unless the SAP specifies a severity or frequency order.</div>
+                        <div>[3] Counts reflect unique subjects within each category where ADAE.TRTEMFL = "Y".</div>
+                        <div>Source: ADSL, ADAE. Program: t_14_3_1_1_teae_soc_pt.sas.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="shell-case">
+                    <h5>04. Patient Listings</h5>
+                    <p>
+                      <strong>The goal:</strong> present a line-by-line, unaggregated data matrix for
+                      individual subjects so reviewers can trace the records behind the tables.
+                    </p>
+                    <p>
+                      <strong>The ADaM mechanism:</strong> extract variables horizontally into columns.
+                      Listings do not summarize or collapse records unless the shell explicitly says so.
+                      The programmer should preserve the subject-level context needed for review.
+                    </p>
+                    <div class="shell-page word-shell">
+                      <div class="shell-page-meta">
+                        <span>Protocol: YGN-101-01</span>
+                        <span>Page 1 of X</span>
+                      </div>
+                      <div class="shell-title-block">
+                        <div class="shell-table-number">Listing 16.2.7.3</div>
+                        <div class="shell-table-title">Subjects Who Discontinued Study Drug Due to Adverse Events</div>
+                        <div class="shell-population">All Randomized Subjects</div>
+                      </div>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Subject ID [1]</th>
+                            <th>Treatment Group [2]</th>
+                            <th>Age / Sex [3]</th>
+                            <th>Adverse Event Preferred Term [4]</th>
+                            <th>Onset Date [5]</th>
+                            <th>Action Taken</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>XX-XXX-XXXX</td><td>Placebo</td><td>xx / M</td><td>Headache</td><td>2026-XX-XX</td><td>Drug withdrawn</td></tr>
+                          <tr><td>XX-XXX-XXXX</td><td>YGN-101 10 mg</td><td>xx / F</td><td>Nausea</td><td>2026-XX-XX</td><td>Drug withdrawn</td></tr>
+                        </tbody>
+                      </table>
+                      <div class="shell-footnotes">
+                        <div>[1] ADSL.USUBJID. [2] ADSL.TRT01A. [3] ADSL.AGE and ADSL.SEX.</div>
+                        <div>[4] ADAE.AEDECOD where ADAE.AEACN = "DRUG WITHDRAWN". [5] ADAE.ASTDT.</div>
+                        <div>Source: ADSL, ADAE. Program: l_16_2_7_3_ae_disc.sas.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sap-template-callout">
+                    <strong>The ultimate verification rule for shells:</strong> when looking at a table
+                    shell, always ask whether a programmer can write a clear WHERE clause to populate
+                    each row and column. If a row says "Week 12 LOCF", the ADaM dataset must contain a
+                    flag such as ANL02FL = "Y" that explicitly identifies the Last Observation Carried
+                    Forward record. If the shell requires it, the ADaM dataset must flag it. Never let
+                    the reporting program make the clinical decision.
                   </div>
 
                   <h4>6. Safety Example: TEAE Table from ADSL and ADAE</h4>
@@ -17499,26 +17780,60 @@ run;</code></pre>
                 </div>
 
                 <div class="workshop">
-                  <h4>Practice Scenario: Rescue Medication Before Week 24</h4>
-                  <p>
-                    In a Type 2 diabetes study, a subject randomized to placebo starts rescue insulin
-                    at Week 12 and has an HbA1c value at Week 24. The protocol objective is to
-                    evaluate glycemic control at Week 24, but the SAP has not yet stated how rescue
-                    medication should be handled.
-                  </p>
-                  <ol>
-                    <li>Why is this an intercurrent event and not simply missing data?</li>
-                    <li>How would a treatment policy strategy handle the Week 24 value?</li>
-                    <li>How would a hypothetical strategy change the target question?</li>
-                    <li>What should be clarified before database lock?</li>
-                  </ol>
+                  <h4>Practice Scenarios: Choosing the Right Estimand Strategy</h4>
+                  <div class="quiz-set">
+                    <div class="quiz-card">
+                      <h5>Quiz 1. Rescue Medication Before Week 24</h5>
+                      <p>
+                        In a Type 2 diabetes study, a subject randomized to placebo starts rescue insulin
+                        at Week 12 and has an HbA1c value at Week 24. The protocol objective is to
+                        evaluate glycemic control at Week 24, but the Statistical Analysis Plan (SAP)
+                        has not yet stated how rescue medication should be handled.
+                      </p>
+                      <ol>
+                        <li>Why is this an intercurrent event and not simply missing data?</li>
+                        <li>How would a treatment policy strategy handle the Week 24 value?</li>
+                        <li>How would a hypothetical strategy change the target question?</li>
+                        <li>What should be clarified before database lock?</li>
+                      </ol>
+                    </div>
+                    <div class="quiz-card">
+                      <h5>Quiz 2. Treatment Discontinuation With an Observed Endpoint</h5>
+                      <p>
+                        In an oncology study, a subject stops randomized treatment at Month 3 because
+                        of toxicity, starts a subsequent anti-cancer therapy at Month 4, and still has
+                        tumor assessment data at Month 6. The primary endpoint is change in tumor size
+                        at Month 6.
+                      </p>
+                      <ol>
+                        <li>Why is this not just a missing data problem?</li>
+                        <li>Under a treatment policy strategy, would the Month 6 tumor assessment be used?</li>
+                        <li>Under a hypothetical strategy, what counterfactual question must be defined?</li>
+                        <li>What sensitivity analysis concern should the statistician anticipate?</li>
+                      </ol>
+                    </div>
+                    <div class="quiz-card">
+                      <h5>Quiz 3. Discontinuation as Part of the Endpoint</h5>
+                      <p>
+                        In a respiratory study, the endpoint is responder status at Week 12. A responder
+                        is defined as having at least 50% symptom improvement without treatment
+                        discontinuation or prohibited rescue medication. One subject improves by 65%
+                        but discontinues study treatment at Week 8 due to lack of tolerability.
+                      </p>
+                      <ol>
+                        <li>Which estimand strategy does this endpoint definition most closely resemble?</li>
+                        <li>Should the subject be counted as a responder?</li>
+                        <li>Why is this different from a while-on-treatment strategy?</li>
+                        <li>Where should this rule be written so programming and reporting are consistent?</li>
+                      </ol>
+                    </div>
+                  </div>
                   <div class="answer-key">
                     <h5>Answer Key</h5>
                     <ol>
-                      <li>The subject has observed Week 24 data, but rescue medication changes the interpretation of that outcome.</li>
-                      <li>The observed Week 24 value would generally be included regardless of rescue use.</li>
-                      <li>The target question would become what the Week 24 outcome would have been had rescue medication not been started.</li>
-                      <li>The SAP should define the estimand strategy, primary estimator, missing data method, and sensitivity analyses before unblinding.</li>
+                      <li><strong>Quiz 1:</strong> Rescue medication changes the interpretation of the observed HbA1c value. Treatment policy would generally keep the Week 24 value; hypothetical would target what HbA1c would have been without rescue medication. The SAP must define the estimand strategy, estimator, missing data handling, and sensitivity analyses before unblinding.</li>
+                      <li><strong>Quiz 2:</strong> The Month 6 tumor value exists, but it reflects post-discontinuation and post-subsequent-therapy outcomes. Treatment policy can use it as part of the real treatment course. A hypothetical strategy must define the counterfactual outcome had discontinuation or subsequent therapy not occurred, which requires explicit assumptions and sensitivity analyses.</li>
+                      <li><strong>Quiz 3:</strong> This is closest to a composite strategy because discontinuation is built into the endpoint definition as a failure component. The subject should not be counted as a responder, even with 65% improvement. Unlike while-on-treatment, the event is not merely a censoring point; it changes the endpoint result itself. The rule belongs in the protocol, SAP, shell notes, and ADaM derivation specifications.</li>
                     </ol>
                   </div>
                 </div>
