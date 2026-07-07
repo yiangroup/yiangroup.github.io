@@ -63,7 +63,7 @@
     }
 
     .page {
-      width: min(1160px, calc(100% - 40px));
+      width: min(1500px, calc(100% - 40px));
       margin: 0 auto;
     }
 
@@ -302,13 +302,13 @@
     }
 
     #training .section-layout {
-      grid-template-columns: 250px minmax(0, 1fr);
-      gap: 38px;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 34px;
     }
 
     #training .copy,
     #biostatistics .copy {
-      max-width: 1180px;
+      max-width: 1280px;
     }
 
     #biostatistics .section-layout {
@@ -347,6 +347,9 @@
     }
 
     .lesson {
+      box-sizing: border-box;
+      width: min(1280px, calc(100vw - 80px));
+      max-width: 100%;
       margin-top: 0;
       padding: 30px;
       border: 1px solid rgba(200, 157, 132, 0.24);
@@ -2520,6 +2523,102 @@
       font-size: 12px;
       font-weight: 800;
       line-height: 1.25;
+    }
+
+    .ct-spotlight {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.35fr);
+      gap: 16px;
+      align-items: stretch;
+      margin: 16px 0 18px;
+    }
+
+    .ct-rule-box {
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(200, 157, 132, 0.36);
+      border-left: 4px solid rgba(150, 180, 165, 0.95);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.76);
+    }
+
+    .ct-rule-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #4e403b;
+      font-size: 15px;
+    }
+
+    .ct-rule-box p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .ct-chip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .ct-chip {
+      min-height: 58px;
+      padding: 10px 12px;
+      border: 1px solid rgba(200, 157, 132, 0.32);
+      border-radius: 8px;
+      background: rgba(255, 248, 241, 0.72);
+      color: #604e47;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .ct-chip strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #4e403b;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ct-table table {
+      table-layout: fixed;
+    }
+
+    .ct-table th:nth-child(1),
+    .ct-table td:nth-child(1) {
+      width: 26%;
+    }
+
+    .ct-table th:nth-child(2),
+    .ct-table td:nth-child(2) {
+      width: 24%;
+    }
+
+    .ct-table th:nth-child(3),
+    .ct-table td:nth-child(3) {
+      width: 50%;
+    }
+
+    .ct-focus {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(150, 180, 165, 0.36);
+      border-radius: 8px;
+      background: rgba(246, 252, 247, 0.72);
+      color: #5f514a;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .ct-focus strong {
+      color: #4e403b;
+    }
+
+    @media (max-width: 850px) {
+      .ct-spotlight,
+      .ct-chip-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .acrf-note-arrow {
@@ -6953,49 +7052,6 @@ if pre_dose then ablfl = "Y";</code></pre>
                       </p>
                     </div>
 
-                    <div class="acrf-card">
-                      <h5>High-Risk Area: Date and Time Handling</h5>
-                      <p>
-                        Dates and times are a common source of mapping errors. The CRF may collect
-                        date and time separately, use a non-ISO display format, or allow partial
-                        dates. The aCRF should point to the SDTM target, while the SDTM program
-                        converts the collected pieces into ISO 8601 character dates.
-                      </p>
-                      <div class="acrf-note-arrow" aria-label="Date and time mapping example">
-                        <div class="acrf-page">
-                          <div class="acrf-form-title">Adverse Event Start</div>
-                          <div class="acrf-field">
-                            <span>Start Date</span>
-                            <span class="acrf-input">28-JUN-2026</span>
-                            <span class="acrf-annotation">AESTDTC</span>
-                          </div>
-                          <div class="acrf-field">
-                            <span>Start Time</span>
-                            <span class="acrf-input">09:15</span>
-                            <span class="acrf-annotation">AESTDTC</span>
-                          </div>
-                        </div>
-                        <div class="acrf-arrow">→</div>
-                        <div class="acrf-page">
-                          <div class="acrf-form-title">Submitted SDTM Value</div>
-                          <div class="acrf-field">
-                            <span>Combined ISO 8601 target</span>
-                            <span class="acrf-input">2026-06-28T09:15</span>
-                            <span class="acrf-annotation derived">AESTDTC</span>
-                          </div>
-                          <div class="acrf-field">
-                            <span>Partial date stays partial</span>
-                            <span class="acrf-input">2026-06</span>
-                            <span class="acrf-annotation derived">AESTDTC</span>
-                          </div>
-                        </div>
-                      </div>
-                      <p class="acrf-caption">
-                        Teaching point: the aCRF target is not always copied exactly from the CRF
-                        display. DD-MON-YYYY, split date/time boxes, and partial dates must be
-                        transformed carefully into the SDTM --DTC character variable.
-                      </p>
-                    </div>
 
                     <div class="acrf-card">
                       <h5>Complex Pages: Repeats, Horizontal Forms, and Other Specify</h5>
@@ -7026,71 +7082,60 @@ if pre_dose then ablfl = "Y";</code></pre>
                           </p>
                         </div>
                       </div>
-                      <div class="acrf-page" aria-label="Horizontal CRF transposition example">
-                        <div class="acrf-domain-row">
-                          <span class="acrf-domain">CM = Concomitant Medications</span>
-                        </div>
-                        <div class="acrf-form-title">Common Medications Taken Since Last Visit</div>
-                        <div class="acrf-field">
-                          <span>Aspirin</span>
-                          <span class="acrf-input options"><i class="acrf-checkbox"></i> Yes <i class="acrf-checkbox"></i> No</span>
-                          <span class="acrf-annotation">CMTRT = "ASPIRIN"</span>
-                        </div>
-                        <div class="acrf-field">
-                          <span>Acetaminophen</span>
-                          <span class="acrf-input options"><i class="acrf-checkbox"></i> Yes <i class="acrf-checkbox"></i> No</span>
-                          <span class="acrf-annotation">CMTRT = "ACETAMINOPHEN"</span>
-                        </div>
-                        <div class="acrf-field">
-                          <span>Other, specify</span>
-                          <span class="acrf-input"></span>
-                          <span class="acrf-annotation supp">CMTRT / SUPPCM if needed</span>
-                        </div>
-                      </div>
                     </div>
 
                     <div class="acrf-card">
                       <h5>Controlled Terminology and Standards Awareness</h5>
                       <p>
-                        Fixed CRF options should not be re-coded by personal preference. If a CRF
-                        shows choices such as sex, race, severity, route, frequency, or Yes/No
-                        responses, the mapping must be checked against the study standard and the
-                        applicable CDISC Controlled Terminology release. The aCRF is often the first
-                        place a reviewer can see whether collected choices are being translated into
-                        standard values consistently.
+                        Fixed Case Report Form (CRF) options should not be re-coded by personal
+                        preference. When a page collects choices such as sex, race, severity, route,
+                        frequency, or Yes/No responses, the mapping must be checked against the
+                        study standard and the applicable CDISC Controlled Terminology release.
                       </p>
-                      <div class="acrf-badge-row" aria-label="Controlled terminology examples">
-                        <span class="acrf-badge">SEX: M / F / U</span>
-                        <span class="acrf-badge">RACE: WHITE / ASIAN / BLACK OR AFRICAN AMERICAN</span>
-                        <span class="acrf-badge">AESEV: MILD / MODERATE / SEVERE</span>
-                        <span class="acrf-badge">NY: Y / N</span>
-                        <span class="acrf-badge">ROUTE: ORAL / INTRAVENOUS / TOPICAL</span>
-                        <span class="acrf-badge">FREQ: QD / BID / TID / PRN</span>
+
+                      <div class="ct-spotlight" aria-label="Controlled terminology training focus">
+                        <div class="ct-rule-box">
+                          <strong>Core rule for programmers</strong>
+                          <p>
+                            The CRF may show what the site saw. The submitted SDTM value must show
+                            what the standard expects, and the conversion must be traceable in the
+                            SDTM specification and Define.xml.
+                          </p>
+                        </div>
+                        <div class="ct-chip-grid" aria-label="Controlled terminology codelist examples">
+                          <span class="ct-chip"><strong>Sex</strong>M / F / U</span>
+                          <span class="ct-chip"><strong>Race</strong>WHITE / ASIAN / BLACK OR AFRICAN AMERICAN</span>
+                          <span class="ct-chip"><strong>Severity</strong>MILD / MODERATE / SEVERE</span>
+                          <span class="ct-chip"><strong>Yes-No</strong>Y / N</span>
+                          <span class="ct-chip"><strong>Route</strong>ORAL / INTRAVENOUS / TOPICAL</span>
+                          <span class="ct-chip"><strong>Frequency</strong>QD / BID / TID / PRN</span>
+                        </div>
                       </div>
-                      <div class="table-scroll">
+
+                      <div class="table-scroll ct-table">
                         <table class="crf-table" aria-label="Controlled terminology review examples">
                           <thead>
                             <tr>
-                              <th>CRF Choice</th>
-                              <th>SDTM Target</th>
+                              <th>CRF Option</th>
+                              <th>Submit As</th>
                               <th>Programmer Check</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
                               <td>Male / Female / Unknown</td>
-                              <td><span class="log-chip">SEX</span></td>
-                              <td>Do not invent values such as MALE or FEMALE if the study standard requires M or F.</td>
+                              <td><span class="log-chip">SEX</span> codelist</td>
+                              <td>Do not invent MALE or FEMALE if the study standard requires M or F.</td>
                             </tr>
                             <tr>
                               <td>Mild / Moderate / Severe</td>
                               <td><span class="log-chip">AESEV</span></td>
-                              <td>Keep severity values consistent across aCRF, SDTM spec, Define.xml, and AE tables.</td>
+                              <td>Keep the same severity values across aCRF, SDTM spec, Define.xml, and AE tables.</td>
                             </tr>
                             <tr>
                               <td>Yes / No checkbox</td>
                               <td><span class="log-chip">NY</span> codelist variables</td>
-                              <td>Confirm whether the submitted value should be Y/N, not Yes/No or 1/0.</td>
+                              <td>Confirm whether the submitted value is Y/N, not Yes/No, True/False, or 1/0.</td>
                             </tr>
                             <tr>
                               <td>Race: multiple selections allowed</td>
@@ -7100,26 +7145,18 @@ if pre_dose then ablfl = "Y";</code></pre>
                             <tr>
                               <td>Route or frequency options</td>
                               <td><span class="log-chip">--ROUTE</span>, <span class="log-chip">--DOSFRQ</span></td>
-                              <td>Check whether collected wording must be normalized to controlled terminology before submission.</td>
+                              <td>Normalize collected wording only according to the approved study terminology and mapping spec.</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
-                      <p>
-                        The practical rule for new programmers is simple: the aCRF may show what the
-                        site saw, but SDTM must show what the submission standard expects. If the
-                        CRF says "Male" and SDTM expects "M", the mapping must make that conversion
-                        traceable in the specification and consistent in Define.xml. If P21 later
-                        reports a terminology issue, the first documents to cross-check are the
-                        aCRF, SDTM specification, Define.xml codelist, and the study's terminology
-                        version.
-                      </p>
-                      <p class="acrf-caption">
-                        Industry direction: newer metadata workflows increasingly expect the aCRF,
-                        SDTM specification, Define.xml, and validation rules to align automatically.
-                        New programmers should treat the aCRF as part of a metadata system, not a
-                        standalone PDF decoration.
-                      </p>
+
+                      <div class="ct-focus">
+                        <strong>Fast audit path:</strong> if validation reports a terminology issue,
+                        cross-check the aCRF annotation, SDTM specification, Define.xml codelist,
+                        and the study terminology version before changing code.
+                      </div>
+
                       <p class="document-notes">
                         References:
                         <a href="https://www.cdisc.org/standards/terminology/controlled-terminology" target="_blank" rel="noreferrer">CDISC Controlled Terminology</a>;
@@ -7244,70 +7281,49 @@ if pre_dose then ablfl = "Y";</code></pre>
                       </p>
                     </div>
 
-                    <div class="acrf-card">
-                      <h5>Bad vs Better: Annotation Must Not Cover Source Text</h5>
-                      <div class="acrf-compare">
-                        <div class="acrf-overlap-demo bad-overlap">
-                          <strong>Blood Pressure</strong><br>
-                          Systolic result ____ <span>mmHg</span><br>
-                          Diastolic result ____ <span>mmHg</span>
-                          <span class="acrf-annotation bad">VSORRES</span>
-                        </div>
-                        <div class="acrf-overlap-demo good">
-                          <strong>Blood Pressure</strong><br>
-                          Systolic result ____ <span>mmHg</span><br>
-                          Diastolic result ____ <span>mmHg</span>
-                          <span class="acrf-leader"></span>
-                          <span class="acrf-annotation">VSORRES</span>
-                        </div>
-                      </div>
-                      <p class="acrf-caption">
-                        If the annotation box hides a unit, response option, or question stem, the
-                        reviewer loses source context. Move the annotation away and use spacing or a
-                        leader line instead.
-                      </p>
-                    </div>
-                  </div>
 
-                  <h4>4. FDA-Style PDF and aCRF Quality Checks</h4>
-                  <p>
-                    A submission aCRF is not only about content. It must also behave like a clean
-                    reviewer document. The PDF should be searchable, bookmarked, readable, and easy
-                    to inspect page by page.
-                  </p>
-                  <div class="acrf-checklist" aria-label="aCRF validation checklist">
-                    <span><strong>File identity:</strong> the submission file is usually named acrf.pdf.</span>
-                    <span><strong>Searchable text:</strong> reviewers can search variable names such as AETERM or VSORRES.</span>
-                    <span><strong>Bookmarks:</strong> navigation works by visit and by form.</span>
-                    <span><strong>No obstruction:</strong> annotations do not cover CRF question text or response choices.</span>
-                    <span><strong>Complete coverage:</strong> all collected data points are annotated or marked NOT SUBMITTED.</span>
-                    <span><strong>Consistent syntax:</strong> annotations follow the same pattern across pages.</span>
-                    <span><strong>Domain clarity:</strong> every represented domain is clear on the page.</span>
-                    <span><strong>No pseudo-code:</strong> aCRF notes should be reviewer-readable, not programmer shorthand.</span>
+                    <div class="acrf-card">
+                      <h4>4. FDA-Style PDF and aCRF Quality Checks</h4>
+                    <p>
+                      A submission aCRF is not only about content. It must also behave like a clean
+                      reviewer document. The PDF should be searchable, bookmarked, readable, and easy
+                      to inspect page by page.
+                    </p>
+                    <div class="acrf-checklist" aria-label="aCRF validation checklist">
+                      <span><strong>File identity:</strong> the submission file is usually named acrf.pdf.</span>
+                      <span><strong>Searchable text:</strong> reviewers can search variable names such as AETERM or VSORRES.</span>
+                      <span><strong>Bookmarks:</strong> navigation works by visit and by form.</span>
+                      <span><strong>No obstruction:</strong> annotations do not cover CRF question text or response choices.</span>
+                      <span><strong>Complete coverage:</strong> all collected data points are annotated or marked NOT SUBMITTED.</span>
+                      <span><strong>Consistent syntax:</strong> annotations follow the same pattern across pages.</span>
+                      <span><strong>Domain clarity:</strong> every represented domain is clear on the page.</span>
+                      <span><strong>No pseudo-code:</strong> aCRF notes should be reviewer-readable, not programmer shorthand.</span>
+                    </div>
+                    <div class="acrf-self-check" aria-label="Programmer self-check for aCRF review">
+                      <div>
+                        <strong>Count It</strong>
+                        Are all blank input fields, checkboxes, and free-text boxes either annotated
+                        or intentionally marked as not submitted?
+                      </div>
+                      <div>
+                        <strong>Search It</strong>
+                        If you search the PDF for AETERM, AESEV, or VSORRES, does the document take
+                        you to the expected CRF page?
+                      </div>
+                      <div>
+                        <strong>Compare It</strong>
+                        Do the aCRF domain names, variable names, and controlled terms match the SDTM
+                        specification and Define.xml metadata?
+                      </div>
+                    </div>
+                    <p class="document-notes">
+                      Reference for this section:
+                      <a href="https://help.pinnacle21.certara.net/webinars/Best-Practices-for-Annotated-CRFs.pdf" target="_blank" rel="noreferrer">
+                        Pinnacle 21 Best Practices for Annotated CRFs
+                      </a>.
+                    </p>
+                    </div>
                   </div>
-                  <div class="acrf-self-check" aria-label="Programmer self-check for aCRF review">
-                    <div>
-                      <strong>Count It</strong>
-                      Are all blank input fields, checkboxes, and free-text boxes either annotated
-                      or intentionally marked as not submitted?
-                    </div>
-                    <div>
-                      <strong>Search It</strong>
-                      If you search the PDF for AETERM, AESEV, or VSORRES, does the document take
-                      you to the expected CRF page?
-                    </div>
-                    <div>
-                      <strong>Compare It</strong>
-                      Do the aCRF domain names, variable names, and controlled terms match the SDTM
-                      specification and Define.xml metadata?
-                    </div>
-                  </div>
-                  <p class="document-notes">
-                    Reference for this section:
-                    <a href="https://help.pinnacle21.certara.net/webinars/Best-Practices-for-Annotated-CRFs.pdf" target="_blank" rel="noreferrer">
-                      Pinnacle 21 Best Practices for Annotated CRFs
-                    </a>.
-                  </p>
 
                   <h4>5. What to Check Before SDTM Mapping</h4>
                   <ul>
@@ -13904,7 +13920,7 @@ run;</code></pre>
                     rows. The header tells the population and table identity; the body tells the
                     statistics and layout; the footnotes tell the rules that often drive the code.
                   </p>
-                  <div class="shell-output" aria-label="Complete example TLF shell with header, body, footnotes, and source line">
+                  <div class="shell-output word-shell" aria-label="Complete example TLF shell with header, body, footnotes, and source line">
                     <div class="shell-page-meta">
                       <span>YIAN GROUP &nbsp; | &nbsp; Protocol YGN-101-02</span>
                       <span>Page 1 of 1</span>
@@ -14241,7 +14257,7 @@ run;</code></pre>
                       </div>
                     </div>
                   </div>
-                  <div class="shell-output" aria-label="Example TEAE summary shell">
+                  <div class="shell-output word-shell" aria-label="Example TEAE summary shell">
                     <div class="shell-page-meta">
                       <span>YIAN GROUP &nbsp; | &nbsp; Protocol YGN-101-02</span>
                       <span>Page 1 of 1</span>
