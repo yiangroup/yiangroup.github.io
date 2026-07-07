@@ -710,10 +710,43 @@
       color: #3f3432;
     }
 
+    .lesson-spacious-flow {
+      display: grid;
+      gap: 26px;
+      margin: 28px 0 36px;
+    }
+
+    .lesson-spacious-flow .flow-step {
+      position: relative;
+      padding: 22px 24px;
+      min-height: 86px;
+      box-shadow: 0 10px 24px rgba(76, 57, 50, 0.045);
+    }
+
+    .lesson-spacious-flow .flow-step::after {
+      content: "\2193";
+      position: absolute;
+      left: 50%;
+      bottom: -26px;
+      display: block;
+      margin: 0;
+      transform: translateX(-50%);
+      color: #b9907a;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .lesson-spacious-flow .flow-step:last-child::after {
+      display: none;
+    }
+
     .estimand-chain {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr) 18px minmax(0, 1fr);
+      column-gap: 10px;
+      row-gap: 16px;
       margin: 24px 0 28px;
       align-items: stretch;
     }
@@ -731,23 +764,17 @@
       color: #5f514c;
     }
 
-    .estimand-chain-card:not(:last-child)::after {
-      content: "\2192";
-      position: absolute;
-      top: 50%;
-      right: -17px;
-      z-index: 2;
-      width: 22px;
-      height: 22px;
+    .estimand-chain-arrow {
+      align-self: center;
+      justify-self: center;
+      width: auto;
+      height: auto;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(200, 157, 132, 0.34);
-      border-radius: 999px;
-      background: #fffdf8;
       color: #a87f68;
-      font-size: 15px;
+      font-size: 20px;
       font-weight: 900;
-      transform: translateY(-50%);
+      line-height: 1;
     }
 
     .estimand-chain-kicker {
@@ -979,6 +1006,179 @@
     .protocol-page-preview ul {
       margin: 10px 0 0 28px;
       padding: 0;
+    }
+
+    .sap-template-preview {
+      max-width: 880px;
+      margin: 26px auto 32px;
+      padding: 40px 52px 44px;
+      border: 1px solid rgba(70, 88, 94, 0.18);
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 18px 42px rgba(57, 43, 35, 0.13);
+      color: #3f3d3a;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .sap-template-preview h5 {
+      margin: 0 0 10px;
+      color: #244566;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+
+    .sap-template-preview h6 {
+      margin: 24px 0 10px;
+      color: #354d5a;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .sap-template-preview p,
+    .sap-template-preview li {
+      color: #45413d;
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .sap-template-preview p {
+      margin: 0 0 12px;
+    }
+
+    .sap-template-preview ul {
+      margin: 8px 0 0 22px;
+      padding: 0;
+    }
+
+    .sap-doc-subtitle {
+      margin: 0 0 22px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #244566;
+      color: #6a5a52;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sap-template-callout {
+      margin: 18px 0 20px;
+      padding: 14px 16px;
+      border-left: 4px solid #8fb1aa;
+      background: rgba(236, 246, 243, 0.72);
+      color: #4f4a45;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .sap-template-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 16px 0 22px;
+    }
+
+    .sap-template-box {
+      padding: 13px 14px;
+      border: 1px solid rgba(70, 88, 94, 0.16);
+      border-radius: 6px;
+      background: rgba(248, 252, 249, 0.88);
+      color: #4f4a45;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .sap-template-box strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #354d5a;
+    }
+
+    .sap-template-table {
+      width: 100%;
+      margin: 14px 0 20px;
+      border-collapse: collapse;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .sap-template-table th,
+    .sap-template-table td {
+      padding: 10px 11px;
+      border: 1px solid rgba(70, 88, 94, 0.18);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .sap-template-table th {
+      background: #244566;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .sap-template-table td {
+      background: #fbfdf9;
+      color: #4a4540;
+    }
+
+    .sap-template-table .sap-objective-cell {
+      width: 22%;
+      background: #eef5f1;
+      color: #344840;
+      font-weight: 800;
+    }
+
+    .sap-estimand-summary-table {
+      min-width: 980px;
+      table-layout: fixed;
+      border: 2px solid #20201f;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .sap-estimand-summary-table th,
+    .sap-estimand-summary-table td {
+      border: 1.5px solid #20201f;
+      padding: 8px 8px;
+    }
+
+    .sap-estimand-summary-table th {
+      background: #d7ddd8;
+      color: #1e1f1e;
+      font-weight: 800;
+      vertical-align: bottom;
+    }
+
+    .sap-estimand-summary-table td {
+      background: #fbfdf9;
+      color: #1f201f;
+    }
+
+    .sap-estimand-summary-table .objective-row td {
+      background: #fffef8;
+      font-weight: 800;
+    }
+
+    .sap-estimand-summary-table .details-link {
+      color: #1f55ad;
+      font-weight: 700;
+    }
+
+    .sap-reference-line {
+      margin: 8px 0 20px;
+      color: #6a5a52;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     .protocol-parameter-card {
@@ -3348,10 +3548,13 @@
 
     .ice-marker.med {
       left: 68%;
-      width: 38px;
-      height: 28px;
-      border-radius: 6px;
-      background: #111;
+      width: 34px;
+      height: 26px;
+      border: 2px solid #7f5a22;
+      border-radius: 999px;
+      background: #d49a35;
+      color: #fffdf8;
+      box-shadow: 0 0 0 2px rgba(255, 253, 248, 0.85);
     }
 
     .ice-row.compact .ice-marker.ice {
@@ -3501,11 +3704,9 @@
         grid-template-columns: 1fr;
       }
 
-      .estimand-chain-card:not(:last-child)::after {
-        top: auto;
-        right: 50%;
-        bottom: -18px;
-        transform: translateX(50%) rotate(90deg);
+      .estimand-chain-arrow {
+        justify-self: center;
+        transform: rotate(90deg);
       }
 
       .ice-row,
@@ -3538,8 +3739,12 @@
     .estimand-legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 8px;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.72);
       color: #6d5b53;
       font-size: 13px;
       line-height: 1.45;
@@ -3549,6 +3754,10 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 6px 9px;
+      border: 1px solid rgba(200, 157, 132, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 248, 241, 0.76);
     }
 
     .legend-line {
@@ -4037,6 +4246,60 @@
 
     .table-scroll {
       overflow-x: auto;
+    }
+
+    .drag-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      cursor: grab;
+      scrollbar-color: #8fa59d rgba(228, 223, 209, 0.9);
+      scrollbar-width: thin;
+      user-select: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .drag-scroll.is-dragging {
+      cursor: grabbing;
+    }
+
+    .drag-scroll::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    .drag-scroll::-webkit-scrollbar-track {
+      background: rgba(228, 223, 209, 0.9);
+      border-radius: 999px;
+    }
+
+    .drag-scroll::-webkit-scrollbar-thumb {
+      background: #8fa59d;
+      border: 2px solid rgba(228, 223, 209, 0.9);
+      border-radius: 999px;
+    }
+
+    .annotation-pattern-table {
+      min-width: 1120px;
+      table-layout: fixed;
+    }
+
+    .annotation-pattern-table th:nth-child(1),
+    .annotation-pattern-table td:nth-child(1) {
+      width: 140px;
+    }
+
+    .annotation-pattern-table th:nth-child(2),
+    .annotation-pattern-table td:nth-child(2) {
+      width: 280px;
+    }
+
+    .annotation-pattern-table th:nth-child(3),
+    .annotation-pattern-table td:nth-child(3) {
+      width: 330px;
+    }
+
+    .annotation-pattern-table th:nth-child(4),
+    .annotation-pattern-table td:nth-child(4) {
+      width: 370px;
     }
 
     .soa-table,
@@ -4806,7 +5069,7 @@
                 dataset and know where to find a subject's age, adverse events, lab results,
                 exposure records, and analysis variables.
               </p>
-              <div class="flow" aria-label="CDISC data pipeline">
+              <div class="flow lesson-spacious-flow" aria-label="CDISC data pipeline">
                 <div class="flow-step"><strong>Raw Data Collected</strong><br>Site forms, EDC exports, and vendor files.</div>
                 <div class="flow-step"><strong>CDASH</strong><br>Input standard for cleaner CRF and EDC collection.</div>
                 <div class="flow-step"><strong>SDTM</strong><br>Tabulation standard showing what happened to the subject.</div>
@@ -6448,8 +6711,8 @@ if pre_dose then ablfl = "Y";</code></pre>
 
                     <div class="acrf-card">
                       <h5>Annotation Patterns Programmers Should Recognize</h5>
-                      <div class="table-scroll">
-                        <table class="crf-table" aria-label="aCRF annotation convention examples">
+                      <div class="table-scroll drag-scroll">
+                        <table class="crf-table annotation-pattern-table" aria-label="aCRF annotation convention examples">
                           <thead>
                             <tr>
                               <th>Annotation Type</th>
@@ -12975,7 +13238,7 @@ run;</code></pre>
                     dataset build, then reused consistently across outputs.
                   </p>
 
-                  <div class="sdtm-pipeline" aria-label="ADaM analysis pipeline">
+                  <div class="sdtm-pipeline lesson-spacious-flow" aria-label="ADaM analysis pipeline">
                     <div class="flow-step"><strong>Protocol / SAP</strong><br>Define objectives, endpoints, populations, windows, and analysis rules.</div>
                     <div class="flow-step"><strong>SDTM</strong><br>Standardized record of collected clinical events, interventions, and findings.</div>
                     <div class="flow-step"><strong>ADaM</strong><br>Analysis-ready datasets with flags, baseline, changes, periods, and derived values.</div>
@@ -13393,29 +13656,150 @@ run;</code></pre>
                 <article class="lesson">
                   <h4>1. What TLF Means</h4>
                   <p>
-                    Tables, Listings, and Figures (TLF) are the final reporting outputs that summarize and
-                    display clinical trial results for clinical study reports, review packages,
-                    and internal study interpretation.
+                    Tables, Listings, and Figures (TLF, also commonly written as TFL) are the final
+                    statistical reporting outputs that turn analysis datasets into clinical
+                    interpretation. They support the Clinical Study Report (CSR), regulatory review
+                    packages, internal decision making, and sometimes manuscripts. A new programmer
+                    should think of TLFs as the visible end of the whole programming chain:
+                    Protocol and Statistical Analysis Plan (SAP) define the question, Study Data
+                    Tabulation Model (SDTM) records what happened, Analysis Data Model (ADaM) prepares
+                    the analysis-ready variables, and TLF programs present the approved result.
                   </p>
-                  <ul>
-                    <li><strong>Tables:</strong> Summarized results, such as counts, percentages, means, medians, and confidence intervals.</li>
-                    <li><strong>Listings:</strong> Subject-level details, often used to review individual data records.</li>
-                    <li><strong>Figures:</strong> Visual displays such as line plots, forest plots, or Kaplan-Meier curves.</li>
-                  </ul>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Tables listings and figures comparison">
+                      <thead>
+                        <tr>
+                          <th>Output Type</th>
+                          <th>What It Shows</th>
+                          <th>Typical Examples</th>
+                          <th>Programmer Focus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Tables</td>
+                          <td>Aggregate summaries and statistical inference. Tables convert many subject records into counts, percentages, descriptive statistics, estimates, confidence intervals, p-values, odds ratios, hazard ratios, or adjusted means.</td>
+                          <td>Demographics and baseline characteristics; primary efficacy analysis; treatment-emergent adverse event summaries; laboratory shift tables; vital sign changes.</td>
+                          <td>Use the correct population denominator, treatment grouping, parameter selection, decimal precision, and analysis flag. Tables should read from ADaM whenever possible.</td>
+                        </tr>
+                        <tr>
+                          <td>Listings</td>
+                          <td>Subject-level records that let reviewers trace what happened to an individual participant. Listings are not meant to replace tables; they explain the details behind them.</td>
+                          <td>Subject disposition; serious adverse events; adverse events leading to discontinuation; concomitant medications; protocol deviations; deaths.</td>
+                          <td>Preserve traceability, sort records logically, include important dates and terms, and avoid hiding subject-level information that explains a table count.</td>
+                        </tr>
+                        <tr>
+                          <td>Figures</td>
+                          <td>Visual displays of patterns, trends, distributions, and time-to-event behavior that are harder to read in a dense table.</td>
+                          <td>Kaplan-Meier curves; forest plots; longitudinal mean plots; spaghetti plots; box plots for biomarkers or laboratory values.</td>
+                          <td>Use the same analysis dataset, population flag, visit windows, treatment grouping, and censoring or summary rules used by the matching tables.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-                  <h4>2. What a Shell Provides</h4>
+                  <h4>2. TLF Deliverables in the Reporting Package</h4>
                   <p>
-                    A shell is a mock output layout. It tells the programmer what the final output
-                    should look like before real numbers are produced.
+                    TLFs are not just "pretty outputs." They are the final evidence layer used in
+                    the Clinical Study Report, submission packages to agencies such as the FDA, EMA,
+                    and PMDA, internal benefit-risk review, and sometimes journal manuscripts. Each
+                    output type answers a different reviewer question: tables answer "what is the
+                    overall result?", listings answer "which subject records support that result?",
+                    and figures answer "what pattern can be seen over time or across subgroups?"
                   </p>
-                  <ul>
-                    <li>Title, numbering, and population.</li>
-                    <li>Rows, columns, treatment groups, and visit structure.</li>
-                    <li>Footnotes, abbreviations, and statistical methods.</li>
-                    <li>Which dataset and variables are expected to support the output.</li>
-                  </ul>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Common TLF deliverables and reviewer questions">
+                      <thead>
+                        <tr>
+                          <th>Deliverable</th>
+                          <th>Reviewer Question</th>
+                          <th>Example Output</th>
+                          <th>Programming Detail to Protect</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Demographics table</td>
+                          <td>Were treatment groups comparable at baseline?</td>
+                          <td>Table 14.1.2: Demographic and Baseline Characteristics.</td>
+                          <td>Use the correct analysis population, planned treatment group, and one record per subject from ADSL.</td>
+                        </tr>
+                        <tr>
+                          <td>Primary efficacy table</td>
+                          <td>Did the investigational product work for the pre-specified endpoint?</td>
+                          <td>Table 14.2.1: Primary Endpoint Analysis with estimate, confidence interval, and p-value.</td>
+                          <td>Use the SAP-defined estimator, analysis visit, endpoint parameter, population flag, and analysis record flag.</td>
+                        </tr>
+                        <tr>
+                          <td>Safety summary table</td>
+                          <td>What adverse events, laboratory abnormalities, or vital sign changes occurred after treatment?</td>
+                          <td>Table 14.3.1.1: Treatment-Emergent Adverse Events by System Organ Class and Preferred Term.</td>
+                          <td>Use safety population denominators, actual treatment variables such as TRTA or TRT01A, and treatment-emergent flags such as TRTEMFL.</td>
+                        </tr>
+                        <tr>
+                          <td>Subject-level listing</td>
+                          <td>Can the reviewer trace an individual subject's history?</td>
+                          <td>Listing 16.2.7: Adverse Events; Listing 16.2.8: Concomitant Medications; Listing 16.2.1: Disposition.</td>
+                          <td>Keep dates, terms, sequence numbers, causality, severity, action taken, and outcome traceable to SDTM/ADaM.</td>
+                        </tr>
+                        <tr>
+                          <td>Figure</td>
+                          <td>Is there a visual pattern that a table would hide?</td>
+                          <td>Kaplan-Meier curve for time-to-event endpoints; forest plot for subgroup effects; longitudinal line plot for biomarkers.</td>
+                          <td>Use the same population, censoring rules, visit windows, subgroup definitions, and treatment labels used in the matching tables.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-                  <h4>3. Example Shell Reading</h4>
+                  <h4>3. What a Shell Provides</h4>
+                  <p>
+                    A shell is a mock output layout prepared before final data are analyzed. It is
+                    not decoration. It is a programming specification for the final report. A shell
+                    tells the programmer what the output should look like, which population it uses,
+                    what rows and columns are expected, what precision must be displayed, and which
+                    footnotes explain the statistical rules.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="Anatomy of a TLF shell">
+                      <thead>
+                        <tr>
+                          <th>Shell Area</th>
+                          <th>What It Controls</th>
+                          <th>Programming Impact</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Header and title</td>
+                          <td>Output number, endpoint or safety topic, population, treatment labels, page identity, and sometimes cutoff date.</td>
+                          <td>Confirms output name, title lines, population flag, treatment variable, sorting, and title consistency with the SAP.</td>
+                        </tr>
+                        <tr>
+                          <td>Column headers</td>
+                          <td>Treatment groups, total columns, visit columns, subgroup columns, and N values.</td>
+                          <td>Drives grouping variables and denominators. For efficacy, planned treatment such as TRT01P is often used; for safety, actual treatment such as TRT01A or TRTA is often used.</td>
+                        </tr>
+                        <tr>
+                          <td>Body matrix</td>
+                          <td>Rows, indentation, section breaks, statistics, and row order.</td>
+                          <td>Drives PARAMCD selection, SOC/PT ordering, visit structure, descriptive statistics, and row templates.</td>
+                        </tr>
+                        <tr>
+                          <td>Mock numbers</td>
+                          <td>Placeholders such as xx, xx.x, xx (xx.x), x.xx, or xx.x [xx.x, xx.x].</td>
+                          <td>Defines display precision. Counts normally have 0 decimals, percentages often 1 decimal, and p-values commonly 3 decimals unless the SAP says otherwise.</td>
+                        </tr>
+                        <tr>
+                          <td>Footnotes and source line</td>
+                          <td>Abbreviations, denominator rules, baseline rules, models, imputation notes, and source datasets.</td>
+                          <td>Often determines real code logic. Footnotes must match SAP, ADaM specifications, and output programming specifications.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h4>4. Example Shell Reading</h4>
                   <p>
                     A shell should be read as a complete output instruction, not just the body
                     rows. The header tells the population and table identity; the body tells the
@@ -13444,54 +13828,14 @@ run;</code></pre>
                         <tr class="shell-section-row">
                           <td colspan="4">Systolic Blood Pressure (mmHg)</td>
                         </tr>
-                        <tr>
-                          <td>Baseline, n</td>
-                          <td>xx</td>
-                          <td>xx</td>
-                          <td>xx</td>
-                        </tr>
-                        <tr>
-                          <td>Baseline, Mean (SD)</td>
-                          <td>xxx.x (xx.x)</td>
-                          <td>xxx.x (xx.x)</td>
-                          <td>xxx.x (xx.x)</td>
-                        </tr>
-                        <tr>
-                          <td>Baseline, Median</td>
-                          <td>xxx.x</td>
-                          <td>xxx.x</td>
-                          <td>xxx.x</td>
-                        </tr>
-                        <tr>
-                          <td>Baseline, Min, Max</td>
-                          <td>xxx.x, xxx.x</td>
-                          <td>xxx.x, xxx.x</td>
-                          <td>xxx.x, xxx.x</td>
-                        </tr>
-                        <tr>
-                          <td>Change from Baseline at Week 4, n</td>
-                          <td>xx</td>
-                          <td>xx</td>
-                          <td>xx</td>
-                        </tr>
-                        <tr>
-                          <td>Change from Baseline at Week 4, Mean (SD)</td>
-                          <td>xx.x (xx.x)</td>
-                          <td>xx.x (xx.x)</td>
-                          <td>xx.x (xx.x)</td>
-                        </tr>
-                        <tr>
-                          <td>Change from Baseline at Week 4, Median</td>
-                          <td>xx.x</td>
-                          <td>xx.x</td>
-                          <td>xx.x</td>
-                        </tr>
-                        <tr>
-                          <td>Change from Baseline at Week 4, Min, Max</td>
-                          <td>xx.x, xx.x</td>
-                          <td>xx.x, xx.x</td>
-                          <td>xx.x, xx.x</td>
-                        </tr>
+                        <tr><td>Baseline, n</td><td>xx</td><td>xx</td><td>xx</td></tr>
+                        <tr><td>Baseline, Mean (SD)</td><td>xxx.x (xx.x)</td><td>xxx.x (xx.x)</td><td>xxx.x (xx.x)</td></tr>
+                        <tr><td>Baseline, Median</td><td>xxx.x</td><td>xxx.x</td><td>xxx.x</td></tr>
+                        <tr><td>Baseline, Min, Max</td><td>xxx.x, xxx.x</td><td>xxx.x, xxx.x</td><td>xxx.x, xxx.x</td></tr>
+                        <tr><td>Change from Baseline at Week 4, n</td><td>xx</td><td>xx</td><td>xx</td></tr>
+                        <tr><td>Change from Baseline at Week 4, Mean (SD)</td><td>xx.x (xx.x)</td><td>xx.x (xx.x)</td><td>xx.x (xx.x)</td></tr>
+                        <tr><td>Change from Baseline at Week 4, Median</td><td>xx.x</td><td>xx.x</td><td>xx.x</td></tr>
+                        <tr><td>Change from Baseline at Week 4, Min, Max</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td></tr>
                       </tbody>
                     </table>
                     <div class="shell-footnotes">
@@ -13506,55 +13850,180 @@ run;</code></pre>
                       <span>Generated: YYYY-MM-DD HH:MM</span>
                     </div>
                   </div>
+
+                  <h4>5. How ADaM Flags Drive TLFs</h4>
+                  <p>
+                    Production TLF programs should not rediscover analysis rules from raw data.
+                    They should consume the analysis-ready variables and flags created in ADaM.
+                    The practical rule is: derive once in ADaM, display many times in TLFs.
+                  </p>
                   <div class="table-scroll">
-                    <table class="crf-table" aria-label="How to read a complete TLF shell">
+                    <table class="crf-table" aria-label="ADaM flags used by TLF programs">
                       <thead>
                         <tr>
-                          <th>Shell Area</th>
-                          <th>What It Controls</th>
-                          <th>Programming Impact</th>
+                          <th>TLF Need</th>
+                          <th>Common ADaM Source</th>
+                          <th>Typical Variables</th>
+                          <th>Programming Use</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Header and title</td>
-                          <td>Table number, endpoint/topic, population, treatment labels, page identity.</td>
-                          <td>Confirms output name, title lines, population flag, treatment variable, and ordering.</td>
+                          <td>Denominator</td>
+                          <td>ADSL</td>
+                          <td>SAFFL, FASFL, ITTFL, TRT01P, TRT01A</td>
+                          <td>Select the population and count subjects once per treatment group.</td>
                         </tr>
                         <tr>
-                          <td>Column headers</td>
-                          <td>Treatment groups, total column, N values, visit or subgroup structure.</td>
-                          <td>Drives grouping variables, denominator checks, and display formats.</td>
+                          <td>Efficacy table</td>
+                          <td>ADEFF, ADQS, ADLB, or other BDS-style ADaM</td>
+                          <td>PARAMCD, PARAM, AVAL, BASE, CHG, AVISIT, ANL01FL, TRT01P</td>
+                          <td>Use the pre-specified analysis record, endpoint parameter, visit, and planned treatment comparison.</td>
                         </tr>
                         <tr>
-                          <td>Body rows</td>
-                          <td>Parameters, statistics, precision, indentation, and row order.</td>
-                          <td>Drives PARAM/PARAMCD selection, statistics, decimal places, and row templates.</td>
+                          <td>Safety summary</td>
+                          <td>ADAE, ADLB, ADVS, ADCM</td>
+                          <td>SAFFL, TRTA or TRT01A, TRTEMFL, ANLxxFL, AESOC, AEDECOD</td>
+                          <td>Use actual treatment exposure and treatment-emergent flags when the SAP defines safety by actual treatment received.</td>
                         </tr>
                         <tr>
-                          <td>Footnotes</td>
-                          <td>Baseline rules, denominator rules, imputation rules, abbreviations, and sources.</td>
-                          <td>Often determines derivation logic and must match SAP and programming specifications.</td>
+                          <td>Listing</td>
+                          <td>ADaM or SDTM, depending on the listing purpose</td>
+                          <td>USUBJID, dates, terms, sequence variables, analysis flags</td>
+                          <td>Show subject-level records with traceability; do not collapse away clinically important detail.</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
 
+                  <h4>6. Safety Example: TEAE Table from ADSL and ADAE</h4>
+                  <p>
+                    Safety outputs are where treatment variables matter most. In many studies,
+                    efficacy tables use planned randomized treatment, but safety tables use actual
+                    treatment received. For treatment-emergent adverse events (TEAEs), the table
+                    should usually count subjects from ADSL where SAFFL = "Y", group by the approved
+                    actual-treatment variable, and count events from ADAE where TRTEMFL = "Y". The
+                    TLF program should not recalculate TEAE by comparing dates unless the ADaM
+                    specification explicitly requires it.
+                  </p>
+                  <div class="xpt-compare-card">
+                    <div class="xpt-figure-title">
+                      <strong>adsl.xpt</strong>
+                      <span>Safety denominator source</span>
+                    </div>
+                    <div class="xpt-dataset">
+                      <div class="xpt-data-pane table-scroll">
+                        <table class="xpt-table soft-data medium" aria-label="ADSL safety population example">
+                          <thead>
+                            <tr>
+                              <th>USUBJID</th>
+                              <th>SAFFL</th>
+                              <th>TRT01P</th>
+                              <th>TRT01A</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>YGN-101-001</td><td>Y</td><td>Placebo</td><td>Placebo</td></tr>
+                            <tr><td>YGN-101-002</td><td>Y</td><td>YGN-101 50 mg</td><td>YGN-101 50 mg</td></tr>
+                            <tr><td>YGN-101-003</td><td>Y</td><td>YGN-101 50 mg</td><td>Placebo</td></tr>
+                            <tr><td>YGN-101-004</td><td>N</td><td>Placebo</td><td></td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="xpt-figure-title">
+                      <strong>adae.xpt</strong>
+                      <span>TEAE numerator source</span>
+                    </div>
+                    <div class="xpt-dataset">
+                      <div class="xpt-data-pane table-scroll">
+                        <table class="xpt-table soft-data wide" aria-label="ADAE TEAE example">
+                          <thead>
+                            <tr>
+                              <th>USUBJID</th>
+                              <th>TRTA</th>
+                              <th>TRTEMFL</th>
+                              <th>AESOC</th>
+                              <th>AEDECOD</th>
+                              <th>AESEV</th>
+                              <th>AESER</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr><td>YGN-101-001</td><td>Placebo</td><td>Y</td><td>Nervous system disorders</td><td>Headache</td><td>MILD</td><td>N</td></tr>
+                            <tr><td>YGN-101-002</td><td>YGN-101 50 mg</td><td>Y</td><td>Gastrointestinal disorders</td><td>Nausea</td><td>MODERATE</td><td>N</td></tr>
+                            <tr><td>YGN-101-002</td><td>YGN-101 50 mg</td><td></td><td>Nervous system disorders</td><td>Dizziness</td><td>MILD</td><td>N</td></tr>
+                            <tr><td>YGN-101-003</td><td>Placebo</td><td>Y</td><td>Infections and infestations</td><td>Nasopharyngitis</td><td>MILD</td><td>N</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="shell-output" aria-label="Example TEAE summary shell">
+                    <div class="shell-page-meta">
+                      <span>YIAN GROUP &nbsp; | &nbsp; Protocol YGN-101-02</span>
+                      <span>Page 1 of 1</span>
+                    </div>
+                    <div class="shell-title-block">
+                      <div class="shell-table-number">Table 14.3.1.1</div>
+                      <div class="shell-table-title">Summary of Treatment-Emergent Adverse Events by System Organ Class and Preferred Term</div>
+                      <div class="shell-population">Safety Population</div>
+                    </div>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>System Organ Class<br>Preferred Term</th>
+                          <th>Placebo<br>N = 2<br>n (%)</th>
+                          <th>YGN-101 50 mg<br>N = 1<br>n (%)</th>
+                          <th>Total<br>N = 3<br>n (%)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Subjects with any TEAE</td><td>2 (100.0)</td><td>1 (100.0)</td><td>3 (100.0)</td></tr>
+                        <tr class="shell-section-row"><td colspan="4">Gastrointestinal disorders</td></tr>
+                        <tr><td>&nbsp;&nbsp;Nausea</td><td>0</td><td>1 (100.0)</td><td>1 (33.3)</td></tr>
+                        <tr class="shell-section-row"><td colspan="4">Infections and infestations</td></tr>
+                        <tr><td>&nbsp;&nbsp;Nasopharyngitis</td><td>1 (50.0)</td><td>0</td><td>1 (33.3)</td></tr>
+                        <tr class="shell-section-row"><td colspan="4">Nervous system disorders</td></tr>
+                        <tr><td>&nbsp;&nbsp;Headache</td><td>1 (50.0)</td><td>0</td><td>1 (33.3)</td></tr>
+                      </tbody>
+                    </table>
+                    <div class="shell-footnotes">
+                      <div>TEAE = treatment-emergent adverse event. Subjects are counted once per system organ class and preferred term.</div>
+                      <div>Denominator is the number of subjects in the Safety Population by actual treatment received.</div>
+                      <div>Source: ADSL, ADAE. Use ADSL.SAFFL = "Y" for denominators and ADAE.TRTEMFL = "Y" for numerator records.</div>
+                      <div>Programming note: group safety summaries by the study-approved actual treatment variable, such as TRT01A or ADAE.TRTA, not blindly by planned treatment.</div>
+                    </div>
+                  </div>
+
+                  <h4>7. Production Rules for TLF Programming</h4>
+                  <ul>
+                    <li><strong>Cross-output consistency:</strong> Total subject counts and sub-population counts must align across tables and listings. If the disposition or population summary shows 120 subjects in the Safety Population, later safety tables should reconcile to the same denominator unless the SAP defines a different rule.</li>
+                    <li><strong>Strict CDISC flow:</strong> TLFs should read from compliant ADaM datasets whenever possible. Complex cleaning, treatment-emergent derivation, baseline derivation, visit windowing, or imputation logic should not be reinvented inside every output program.</li>
+                    <li><strong>Defensive programming:</strong> Real studies have missing visits, empty treatment groups, rare adverse events, and zero-count categories. If the shell expects the row, the program should display 0 or the required placeholder rather than dropping the row or breaking the layout.</li>
+                    <li><strong>Shell precision is mandatory:</strong> Placeholders such as xx, xx.x, xx (xx.x), and x.xxx specify required formatting. P-values, percentages, confidence intervals, and descriptive statistics must follow the shell and SAP precision rules.</li>
+                    <li><strong>Independent validation:</strong> Primary efficacy and key safety outputs usually require independent QC programming or structured review. Production and QC programs should be independently developed from the same shell, SAP, and ADaM data, then reconciled.</li>
+                  </ul>
+                  <div class="sap-template-callout">
+                    Key takeaway: A shell is the operational blueprint and contract for a TLF. It protects the output structure, precision, source data assumptions, and validation expectations before real results are placed into the report.
+                  </div>
+
                   <div class="workshop">
                     <h4>Practice Check</h4>
                     <ol>
-                      <li>Is a listing usually summarized or subject-level?</li>
-                      <li>What does a shell help a programmer confirm before coding?</li>
-                      <li>Why should footnotes be reviewed carefully?</li>
+                      <li>Why do we still need listings if tables already summarize the study?</li>
+                      <li>What happens if the decimal places in the output do not match the shell?</li>
+                      <li>Where should core derivations happen: inside TLF code or inside ADaM code?</li>
                     </ol>
-                    <div class="answer-key">
-                      <h5>Answer Key</h5>
+                    <details class="answer-key">
+                      <summary>Answer Key</summary>
                       <ol>
-                        <li>A listing is usually subject-level.</li>
-                        <li>A shell confirms layout, rows, columns, population, statistics, and footnotes.</li>
-                        <li>Footnotes may define important analysis rules, denominators, or interpretation details.</li>
+                        <li>Listings provide subject-level traceability and audit support. They let reviewers inspect the individual records behind a table count.</li>
+                        <li>The output fails validation expectations and may become inconsistent with the SAP or shell. Formatting precision is a requirement, not a cosmetic preference.</li>
+                        <li>Core derivations should be created in ADaM or approved programming specifications. TLF code should primarily select, summarize, format, and display.</li>
                       </ol>
-                    </div>
+                    </details>
                   </div>
                 </article>
               </details>
@@ -16046,16 +16515,19 @@ run;</code></pre>
                     <strong>Objective</strong>
                     <p>The broad clinical question: what does the study want to prove or understand?</p>
                   </div>
+                  <div class="estimand-chain-arrow" aria-hidden="true">→</div>
                   <div class="estimand-chain-card">
                     <span class="estimand-chain-kicker">Measure it</span>
                     <strong>Endpoint</strong>
                     <p>The quantifiable outcome used to answer the objective, such as change from baseline.</p>
                   </div>
+                  <div class="estimand-chain-arrow" aria-hidden="true">→</div>
                   <div class="estimand-chain-card">
                     <span class="estimand-chain-kicker">Define reality</span>
                     <strong>Estimand</strong>
                     <p>The precise treatment effect after deciding how rescue therapy, discontinuation, death, and missing data are handled.</p>
                   </div>
+                  <div class="estimand-chain-arrow" aria-hidden="true">→</div>
                   <div class="estimand-chain-card">
                     <span class="estimand-chain-kicker">Calculate it</span>
                     <strong>Estimator</strong>
@@ -16170,6 +16642,491 @@ run;</code></pre>
                   </table>
                 </div>
 
+                <h5>Estimand Framework in SAP</h5>
+                <p>
+                  The example below follows the Word-style SAP template structure. Study-specific
+                  identifiers have been dummy-coded as <strong>YIAN GROUP</strong>, while template
+                  placeholders are kept visible for later study-specific editing.
+                </p>
+                <div class="sap-template-preview" aria-label="SAP estimand framework template">
+                  <h5>4.2.7 Primary Endpoint (eGFR Change from Baseline Template)</h5>
+                  <div class="sap-doc-subtitle">Study ID: &lt;&lt; YIAN GROUP-STUDY-ID &gt;&gt;</div>
+                  <p>
+                    The primary objective is described in &lt;&lt; Table 1 &gt;&gt;.
+                  </p>
+
+                  <h6>4.2.7.1 Definitions and Derivations</h6>
+                  <div class="sap-template-callout">
+                    Author note: Adapt terminology of "renal" vs "kidney", "KFRT" vs other term
+                    as appropriate according to terminology used in the clinical study protocol
+                    (CSP).
+                  </div>
+
+                  <h6>Estimand</h6>
+                  <p>
+                    The primary objective will be assessed through a primary estimand with the
+                    following attributes:
+                  </p>
+                  <table class="sap-template-table" aria-label="Primary eGFR estimand attributes">
+                    <tbody>
+                      <tr>
+                        <th>Attribute</th>
+                        <th>SAP Template Text</th>
+                      </tr>
+                      <tr>
+                        <td class="sap-objective-cell">Treatment</td>
+                        <td>
+                          &lt;&lt; YIAN GROUP DRUG &gt;&gt; or &lt;&lt; matching placebo/comparator &gt;&gt;
+                          &lt;&lt; additional conditions of treatment, eg, on top of standard of
+                          care &gt;&gt;.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="sap-objective-cell">Population</td>
+                        <td>
+                          &lt;&lt; Targeted patient population &gt;&gt; as defined by the inclusion and
+                          exclusion criteria. Implemented using &lt;&lt; FAS &gt;&gt;.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="sap-objective-cell">Variable</td>
+                        <td>
+                          Absolute change from baseline in eGFR to Week 104 (Year 2 post-treatment assessment).
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="sap-objective-cell">Intercurrent Event Strategies</td>
+                        <td>
+                          <strong>Permanent discontinuation of investigational intervention:</strong>
+                          Will be handled using a treatment policy strategy, including all data
+                          regardless of permanent discontinuation of investigational intervention.
+                          <br><br>
+                          <strong>&lt;&lt; Initiation of concomitant medications affecting eGFR
+                          &lt;&lt; or non-chronic dialysis &gt;&gt;&gt;&gt;:</strong> Will be handled using a
+                          treatment policy strategy, including all data regardless of initiation or
+                          change in concomitant medication.
+                          <br><br>
+                          <strong>KFRT or renal death:</strong> Will be handled using a composite
+                          strategy, implemented by imputing a randomly selected eGFR value between
+                          &lt;&lt; 0 and 10 &gt;&gt; mL/min/1.73 m2 after the event has occurred.
+                          <br><br>
+                          <strong>Non-renal death:</strong> Will be handled using a hypothetical
+                          strategy as if it could not happen, implemented by imputing eGFR after the
+                          intercurrent event.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="sap-objective-cell">Population-level summary for the variable</td>
+                        <td>
+                          Difference in means between treatment groups, expressed as the average
+                          difference per year.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="sap-template-callout">
+                    Author note: Consider if another approach for handling dialysis which does not
+                    meet criteria for being chronic should be specified, eg, if MMRM is used for the
+                    primary analysis.
+                  </div>
+
+
+                  <h6>Primary Variable</h6>
+                  <p>
+                    The eGFR values used for analyses will be calculated using central laboratory
+                    serum creatinine values using the &lt;&lt; CKD-EPI 2021 equation &gt;&gt;. eGFR
+                    values reported from the central laboratory will not be included in statistical
+                    analyses.
+                  </p>
+                  <p>
+                    See Section 3.3.1.1 for the definition of baseline eGFR.
+                  </p>
+                  <div class="sap-template-callout">
+                    Author note: Baseline eGFR is commonly derived using the mean of more than one
+                    pre-randomisation measurement, and it is recommended to include the definition
+                    in SAP Section 3.3.1.1.
+                  </div>
+                  <p>
+                    The eGFR at Week 104 is defined as the mean of all evaluable central-laboratory eGFR
+                    values within the Week 104 analysis visit window (target Day 729; allowable
+                    window Day 701 to Day 757).
+                  </p>
+                  <p>
+                    The primary variable change from baseline in eGFR to Week 104
+                    will be calculated as eGFR at Week 104 minus eGFR at baseline.
+                  </p>
+
+                  <h6>Definition of KFRT</h6>
+                  <p>
+                    KFRT refers to an &lt;&lt; adjudicated &gt;&gt; event of chronic dialysis or renal
+                    transplant. &lt;&lt; If events are adjudicated: Please refer to the adjudication
+                    charter for the definition of chronic dialysis. &gt;&gt; &lt;&lt; If events are not
+                    adjudicated: Chronic dialysis treatment is defined as &lt;&lt; dialysis treatment
+                    ongoing for at least &lt;&lt; 28 &gt;&gt; days &gt;&gt;. The onset date of chronic dialysis
+                    will be the date when the qualifying dialysis treatment started. &gt;&gt;
+                  </p>
+
+                  <h6>4.2.7.2 Handling of Study Withdrawal and Missing Data</h6>
+                  <p>
+                    The methods described in this section will be applied for all analyses of the
+                    primary endpoint, except where otherwise stated. In analyses where multiple
+                    imputations are used, there will in general be m = &lt;&lt; 100 &gt;&gt; imputations.
+                  </p>
+
+                  <h6>Study Withdrawal</h6>
+                  <p>
+                    Participants that withdraw consent or are lost to follow-up will be handled
+                    according to the strategies for missing data defined below.
+                  </p>
+
+                  <h6>Missing Data</h6>
+                  <h6>Handling in Primary Analysis</h6>
+                  <p>
+                    After an intercurrent event of KFRT or renal death, primary endpoint measurements
+                    will be censored, and eGFR values at Week 104 will be imputed to a
+                    random value between &lt;&lt; 0 and 10 &gt;&gt; using multiple imputation, ie,
+                    multiple eGFR values will be independently drawn from a uniform(&lt;&lt; 0,
+                    10 &gt;&gt;) distribution, regardless of any prior intercurrent events.
+                  </p>
+                  <p>
+                    For missing eGFR data at Week 104 after intercurrent events other
+                    than KFRT or renal death, the following multiple imputation approaches will be
+                    applied:
+                  </p>
+                  <ul>
+                    <li>
+                      Missing values after the occurrence of the intercurrent event permanent
+                      discontinuation of investigational intervention will be imputed from
+                      non-missing data from participants in the same treatment group with the
+                      intercurrent event (retrieved dropout multiple imputation).
+                    </li>
+                    <li>
+                      If the retrieved dropout imputation cannot be performed due to an insufficient
+                      number of retrieved dropouts, a multiple imputation approach using data from
+                      participants randomised to the &lt;&lt; comparator &gt;&gt; group with eGFR observed
+                      at Week 104 will be used instead.
+                    </li>
+                    <li>
+                      In the absence of an intercurrent event of permanent discontinuation of
+                      investigational intervention, values missing for any reason other than KFRT
+                      and renal death will be imputed assuming Missing at Random (MAR), performing
+                      multiple imputation using data from participants randomised to the same
+                      respective treatment group with non-missing eGFR at Week 104.
+                    </li>
+                  </ul>
+                  <p>
+                    For the primary analysis, imputation will not use intermediate values observed
+                    after randomization and prior to Week 104. Rather, imputation will
+                    be based on baseline eGFR and other baseline characteristics (&lt;&lt; baseline
+                    log-transformed UACR, SGLT2i use at &lt;&lt; screening &gt;&gt;, and T2DM status
+                    &gt;&gt;).
+                  </p>
+                  <p>
+                    For the multiple imputation, a total of &lt;&lt; 100 &gt;&gt; datasets will be
+                    imputed. The primary analysis model (see Section 4.2.7.3) will be fitted to each
+                    imputed data set, and results will be pooled using Rubin's rules.
+                  </p>
+                  <div class="sap-template-callout">
+                    Author note: Sequential imputation of values at intermediate timepoints could be
+                    appropriate when the primary variable is not a post-treatment measurement in
+                    order to handle an acute effect, but in the case of a post-treatment primary
+                    variable it is more appropriate only to impute the value of the primary variable.
+                  </div>
+
+                  <h6>Handling in Sensitivity Analyses</h6>
+                  <p>
+                    For the sensitivity analysis based on 10% worst values (see Section 4.2.7.5),
+                    rather than applying multiple imputation of eGFR from a uniform(0, 10)
+                    distribution, change from baseline eGFR is imputed by multiple imputation using
+                    the 10% of participants with the worst change from baseline eGFR observed at
+                    Week 104, separately by treatment group.
+                  </p>
+                  <p>
+                    &lt;&lt; For the sensitivity analysis including intermediate timepoints, a single
+                    eGFR value will be set to a value of 5 mL/min/1.73 m2 at each visit following a
+                    KFRT or renal death event. Observed values after a KFRT event will be censored,
+                    and the imputed value will be used for analysis. An analysis visit will be
+                    considered to fall after a KFRT or renal death event based on the visit date, if
+                    the visit occurred, or the target date, if the visit did not occur. Other missing
+                    data will not be imputed; instead missing post-baseline assessments are
+                    implicitly handled in the likelihood-based parameter estimation assuming MAR.
+                    &gt;&gt;
+                  </p>
+
+                  <h6>4.2.7.3 Primary Analysis of Primary Endpoint</h6>
+                  <p>
+                    The primary endpoint will be analysed using an ANCOVA model with treatment group
+                    &lt;&lt; include stratification factors as recorded in the IRT system as appropriate,
+                    baseline eGFR, baseline log-transformed UACR, SGLT2i use at screening, and T2DM
+                    status &gt;&gt; as explanatory variables.
+                  </p>
+
+                  <h6>4.2.7.4 Presentation</h6>
+                  <p>
+                    For the analysis of the primary endpoint targeting the primary estimand, the
+                    following will be presented:
+                  </p>
+                  <ul>
+                    <li>
+                      The estimated LS mean with 95% CI of change from baseline in eGFR at
+                      Week 104 by treatment group, alongside the
+                      estimated difference between treatment groups with 95% CI and p-value at
+                      Week 104. Treatment effect will be presented
+                      as the estimated LS mean difference between treatment groups divided by
+                      &lt;&lt; 2 &gt;&gt;, ie, the average effect of &lt;&lt; YIAN GROUP DRUG &gt;&gt; relative
+                      to &lt;&lt; comparator &gt;&gt; on renal decline per year over &lt;&lt; 2 &gt;&gt; years of
+                      treatment.
+                    </li>
+                    <li>
+                      Descriptive statistics of observed values and change from baseline in eGFR by
+                      analysis visit (Baseline, Week 24, Week 52, Week 76, and Week 104) and treatment group. The descriptive statistics will
+                      be based on non-imputed values.
+                    </li>
+                    <li>
+                      In addition, by applying the same ANCOVA model as for the primary analysis to
+                      each timepoint, the estimated LS mean with 95% CI of change from baseline in
+                      eGFR by treatment group, and the estimated difference between treatment groups
+                      with 95% CI, will be presented by analysis visit for Week 24, Week 52, and Week 76.
+                    </li>
+                    <li>
+                      A figure of estimated LS mean with 95% CI of change from baseline in eGFR by
+                      analysis visit (Baseline, Week 24, Week 52, Week 76, and Week 104) and treatment group.
+                    </li>
+                  </ul>
+                  <div class="sap-template-callout">
+                    Author note: The descriptive statistics bullet can be omitted if this output is
+                    part of a safety laboratory output.
+                  </div>
+
+                  <h6>4.2.7.5 Sensitivity Analyses of Primary Endpoint</h6>
+                  <h6>Sensitivity Analysis 1: Imputation using the 10% worst cases</h6>
+                  <p>
+                    The analysis will be performed identically to the primary analysis of the primary
+                    endpoint, with the exception of imputation of change from baseline in eGFR at
+                    Week 104 after a KFRT or renal death event,
+                    where the multiple imputation instead will be based on the 10% of participants
+                    with the worst observed eGFR change (see Section 4.2.7.2).
+                  </p>
+                  <p>
+                    <strong>Presentation:</strong> Estimated LS means will be presented in the same
+                    way for the sensitivity analysis as for the primary analysis, see Section
+                    4.2.7.4.
+                  </p>
+
+                  <h6>&lt;&lt; Sensitivity Analysis 2: Analysis including intermediate timepoints &gt;&gt;</h6>
+                  <p>
+                    &lt;&lt; This sensitivity analysis analyses eGFR over time from randomisation to
+                    Week 104 using an MMRM. eGFR after a KFRT or renal death event
+                    will be set to a value of 5 mL/min/1.73 m2. Analysis of change from baseline
+                    eGFR with MMRM will be performed with adjustment for covariates baseline eGFR,
+                    baseline log-transformed UACR, SGLT2i use at screening, and T2DM status, using
+                    an unstructured variance structure for residual variance. The models will be fit
+                    using PROC MIXED in SAS with REML and Kenward-Roger will be used to compute
+                    degrees of freedom. If the MMRM does not converge, the following steps as
+                    suggested in Lu et al, 2010 will be taken until convergence is met: use Fisher
+                    scoring algorithm in the first 10 iterations; use Cholesky decomposition of the
+                    covariance matrix by applying the no diagonal factor analytic structure; use a
+                    structured covariance structure in decreasing complexity, such as Toeplitz then
+                    first-order autoregressive; replace the MMRM with an ANCOVA model with multiple
+                    imputation assuming MAR. &gt;&gt;
+                  </p>
+                  <p>
+                    <strong>Presentation:</strong> For each analysis visit (Week 24, Week 52, Week 76, and Week 104), the estimated
+                    LS mean with 95% CI of change from baseline in eGFR by treatment group, alongside
+                    the estimated treatment effect with 95% CI, will be presented.
+                  </p>
+
+                  <h6>4.2.7.6 Supplementary Analyses of Primary Endpoint</h6>
+                  <div class="sap-template-callout">
+                    Author note: Add if applicable, otherwise delete section.
+                  </div>
+
+                  <h6>4.2.7.7 Subgroup Analyses</h6>
+                  <p>
+                    To assess the consistency of the treatment effect on the primary endpoint across
+                    subgroups, subgroup analyses will be conducted for the subgroup variables listed
+                    in &lt;&lt; Table X &gt;&gt;.
+                  </p>
+                  <h6>Definitions and Derivations</h6>
+                  <p>
+                    The treatment effect (point estimate and CI) within each subgroup category will
+                    be estimated by fitting the same statistical model as for the primary analysis
+                    described in Section 4.2.7.3 to each subgroup category separately. The analyses
+                    will be based on the multiple imputation datasets derived for the primary
+                    analysis.
+                  </p>
+                  <p>
+                    &lt;&lt; When the subgroup is defined by a &lt;&lt; stratification factor/explanatory
+                    variable included in the primary analysis model &gt;&gt;, this &lt;&lt; stratification
+                    factor/explanatory variable &gt;&gt; will not be included in the ANCOVA model. &gt;&gt;
+                  </p>
+                  <p>
+                    In addition, the statistical model described in Section 4.2.7.3, adding the
+                    subgroup variable and a treatment-by-subgroup interaction term as explanatory
+                    variables, will be fitted to each subgroup to derive the p-value for the test of
+                    interaction between treatment group and subgroup. The treatment-by-subgroup
+                    interaction p-value will be calculated as the median p-value from the set of all
+                    imputations.
+                  </p>
+                  <p>
+                    For subgroups with less than &lt;&lt; 10 &gt;&gt; participants in a subgroup category,
+                    the treatment effect will not be estimated, and the interaction p-value will not
+                    be calculated.
+                  </p>
+                  <div class="sap-template-callout">
+                    Author note: Subgroup categories should be aligned with how they are defined in
+                    the Study Participants section. For subgroup variables, eg, age group and race,
+                    categories defined in the Study Participants section can be pooled into one
+                    subgroup category if deemed to contain too few participants, but categories for
+                    Geographic Region should be kept as defined using United Nations M49 definition,
+                    see the Demographics section. If any other regional division or country
+                    allocation is done, then the subgroup variable should no longer be called
+                    Geographic Region.
+                  </div>
+                  <div class="sap-template-callout">
+                    Author note: Insert table "Variables and categories for subgroup analyses of the
+                    primary endpoint", including table title, from Section 4.2.1.7 here.
+                  </div>
+                  <h6>Presentation</h6>
+                  <p>
+                    The following will be presented in a table:
+                  </p>
+                  <ul>
+                    <li>
+                      For each subgroup category: the number of participants included in the
+                      analysis, estimated LS mean with 95% CI of change from baseline at
+                      Week 104 per treatment group, and the
+                      estimated difference between treatment groups with 95% CI.
+                    </li>
+                    <li>
+                      For each subgroup variable: the p-value of interaction between treatment group
+                      &lt;&lt; each YIAN GROUP DRUG group individually versus comparator &gt;&gt; and
+                      subgroup variable. These p-values will be presented as a descriptive measure.
+                    </li>
+                    <li>
+                      A forest plot with results overall and for all subgroup variables will be
+                      presented.
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="sap-template-preview estimand-objective-summary-block" aria-label="Objective-level estimand summary training table">
+                  <h6>Alternative Table Format: Objective-Level Estimand Summary</h6>
+                  <p>
+                    Some Statistical Analysis Plans present estimands in a compact objective-by-objective
+                    table. The format below mirrors a common regulatory SAP style: each objective is
+                    stated as a full-width row, followed by the endpoint, population, intercurrent event
+                    strategy, population-level summary, and cross-reference section.
+                  </p>
+                  <div class="table-scroll">
+                    <table class="sap-template-table sap-estimand-summary-table" aria-label="Objective-level estimand summary table">
+                      <thead>
+                        <tr>
+                          <th style="width: 12%;">Statistical category</th>
+                          <th style="width: 18%;">Endpoint</th>
+                          <th style="width: 18%;">Population</th>
+                          <th style="width: 20%;">Intercurrent event (ICE) strategy</th>
+                          <th style="width: 22%;">Population level summary (analysis)</th>
+                          <th style="width: 10%;">Details in section</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 1: To assess the efficacy of repeated dosing of YIAN GROUP-101 relative to matching placebo on post-dose lung function, when used by participants with asthma on rescue treatment only who are experiencing acute airway obstruction.</td>
+                        </tr>
+                        <tr>
+                          <td>Primary</td>
+                          <td>Change from baseline in FEV1 AUC0-60 min post-challenge 1.</td>
+                          <td>Adult participants with asthma on rescue treatment only, and who are sensitive to mannitol.</td>
+                          <td>A hypothetical strategy will be implemented. This estimand targets the hypothetical scenario in which the ICE did not occur and as such outcomes for participants without an ICE are as observed and for those with an ICE (defined as discontinuation of study during a treatment period due to an asthma exacerbation or the taking of prohibited medication), will be set to missing from the time-point at which the ICE occurs.</td>
+                          <td>Difference in the adjusted means of the endpoint for the treatment comparison of YIAN GROUP-101 versus matching placebo.</td>
+                          <td><span class="details-link">4.2.1</span></td>
+                        </tr>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 2: To establish the efficacy of YIAN GROUP-101 after a single dose compared with matching placebo in reversal of acute airway obstruction.</td>
+                        </tr>
+                        <tr>
+                          <td>Secondary</td>
+                          <td>Change from mannitol baseline in FEV1 AUC0-15 min post-challenge 1.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td><span class="details-link">4.2.2</span></td>
+                        </tr>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 3: To establish the efficacy of YIAN GROUP-101 compared with matching placebo in the sustainability of effect of reversal of acute airway obstruction post-challenge 1.</td>
+                        </tr>
+                        <tr>
+                          <td>Secondary</td>
+                          <td>Change from mannitol baseline in FEV1 at 7 hours post-challenge 1.</td>
+                          <td>As per primary objective.</td>
+                          <td>While-on-treatment.</td>
+                          <td>As per primary objective.</td>
+                          <td><span class="details-link">4.2.3</span></td>
+                        </tr>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 4: To establish the protective efficacy of prior repetitive doses of YIAN GROUP-101 compared with matching placebo on lung function fall in response to a recurring trigger of acute airway obstruction.</td>
+                        </tr>
+                        <tr>
+                          <td>Secondary</td>
+                          <td>Fall in FEV1 from baseline FEV1 at completion of challenge 2, pre-dose.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td><span class="details-link">4.2.4</span></td>
+                        </tr>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 5: To establish the efficacy of a single dose of YIAN GROUP-101 compared with matching placebo on post-dose speed of recovery of lung function following a recurring trigger of acute airway obstruction.</td>
+                        </tr>
+                        <tr>
+                          <td>Secondary</td>
+                          <td>Time to return to baseline FEV1 within 5% post-challenge 2.</td>
+                          <td>As per primary objective.</td>
+                          <td>While-on-treatment.</td>
+                          <td>Difference in the adjusted medians of participant-level outcomes for the treatment comparison of YIAN GROUP-101 versus matching placebo.</td>
+                          <td><span class="details-link">4.2.5</span></td>
+                        </tr>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 6: To explore the efficacy after a single dose of YIAN GROUP-101 compared with matching placebo on post-dose lung function following a recurring trigger of acute airway obstruction.</td>
+                        </tr>
+                        <tr>
+                          <td>Exploratory</td>
+                          <td>Change from baseline FEV1 AUC0-15 min post-challenge 2.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td><span class="details-link">4.2.6</span></td>
+                        </tr>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 7: To assess the perception of relief of dyspnea from YIAN GROUP-101 as compared to matching placebo.</td>
+                        </tr>
+                        <tr>
+                          <td>Exploratory</td>
+                          <td>Change from baseline in Borg dyspnea scale post-challenge.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td>As per primary objective.</td>
+                          <td><span class="details-link">4.2.7</span></td>
+                        </tr>
+                        <tr class="objective-row">
+                          <td colspan="6">Objective 8: To assess the perception of onset of effect of YIAN GROUP-101 as compared to matching placebo.</td>
+                        </tr>
+                        <tr>
+                          <td>Exploratory</td>
+                          <td>Time to perceived onset of effect of study medication working post-challenge.</td>
+                          <td>As per primary objective.</td>
+                          <td>While-on-treatment.</td>
+                          <td>Difference in the adjusted medians of participant-level outcomes for the treatment comparison of YIAN GROUP-101 versus matching placebo.</td>
+                          <td><span class="details-link">4.2.8</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p class="sap-reference-line">
+                    Reference: <a href="https://cdn.clinicaltrials.gov/large-docs/90/NCT05555290/SAP_001.pdf" target="_blank" rel="noopener">ClinicalTrials.gov SAP example, NCT05555290, SAP_001.pdf</a>.
+                  </p>
+                </div>
+
                 <h5>Intercurrent Events Are Not Just Missing Data</h5>
                 <p>
                   A major training point for new statisticians is that intercurrent events are not
@@ -16282,7 +17239,7 @@ run;</code></pre>
                 </p>
                 <div class="estimand-strategy-stack">
                   <div class="estimand-figure-card">
-                    <h6>A. Treatment Policy Strategy</h6>
+                    <h6>Treatment Policy Strategy</h6>
                     <p class="strategy-purpose">Treatment effect of providing access to a treatment strategy.</p>
                     <div class="ice-diagram" role="img" aria-label="Treatment policy strategy cases">
                       <div class="ice-row">
@@ -16322,7 +17279,7 @@ run;</code></pre>
                   </div>
 
                   <div class="estimand-figure-card">
-                    <h6>B. Hypothetical Strategy</h6>
+                    <h6>Hypothetical Strategy</h6>
                     <p class="strategy-purpose">Treatment effect in a world where the intercurrent event would not occur.</p>
                     <div class="ice-diagram" role="img" aria-label="Hypothetical strategy cases">
                       <div class="ice-row">
@@ -16357,7 +17314,7 @@ run;</code></pre>
                   </div>
 
                   <div class="estimand-figure-card">
-                    <h6>C. While-on-Treatment Strategy</h6>
+                    <h6>While-on-Treatment Strategy</h6>
                     <p class="strategy-purpose">Treatment effect while subjects are still receiving treatment.</p>
                     <div class="ice-diagram" role="img" aria-label="While-on-treatment strategy cases">
                       <div class="ice-row">
@@ -16384,7 +17341,7 @@ run;</code></pre>
                   </div>
 
                   <div class="estimand-figure-card">
-                    <h6>D. Composite Strategy</h6>
+                    <h6>Composite Strategy</h6>
                     <p class="strategy-purpose">Treatment effect where the intercurrent event is part of success or failure.</p>
                     <div class="ice-diagram" role="img" aria-label="Composite strategy cases">
                       <div class="ice-row">
@@ -16412,7 +17369,7 @@ run;</code></pre>
                   </div>
 
                   <div class="estimand-figure-card">
-                    <h6>E. Principal Stratum Strategy</h6>
+                    <h6>Principal Stratum Strategy</h6>
                     <p class="strategy-purpose">Treatment effect among subjects who would complete both treatments, regardless of assignment.</p>
                     <div class="ice-diagram principal-diagram" role="img" aria-label="Principal stratum strategy cases">
                       <div class="principal-group cases-two">
@@ -16488,6 +17445,8 @@ run;</code></pre>
                     <span><i class="legend-line gray"></i>Modeled hypothetical continuation</span>
                     <span><i class="legend-line dotted"></i>Unobserved behavior under non-assigned treatment</span>
                     <span><strong>ICE</strong> intercurrent event</span>
+                    <span><strong>OBS</strong> observed pre-ICE measurement</span>
+                    <span><strong>MED</strong> additional medication or switch</span>
                     <span><strong>END</strong> endpoint assessment</span>
                     <span><strong>MISS</strong> missing endpoint</span>
                   </div>
@@ -16538,16 +17497,6 @@ run;</code></pre>
                     </tbody>
                   </table>
                 </div>
-
-                <h5>Statistician Checklist</h5>
-                <ul>
-                  <li><strong>Protocol:</strong> Are objectives, endpoints, key intercurrent events, and estimand language aligned?</li>
-                  <li><strong>SAP:</strong> Are the five estimand attributes written explicitly for primary and key secondary endpoints?</li>
-                  <li><strong>Analysis method:</strong> Does the estimator match the estimand, not just the data format?</li>
-                  <li><strong>Missing data:</strong> Are missing data assumptions separated from intercurrent event strategies?</li>
-                  <li><strong>Sensitivity analysis:</strong> Do planned sensitivity analyses test clinically plausible alternative assumptions?</li>
-                  <li><strong>CSR:</strong> Does the interpretation describe the treatment effect actually estimated?</li>
-                </ul>
 
                 <div class="workshop">
                   <h4>Practice Scenario: Rescue Medication Before Week 24</h4>
@@ -16807,7 +17756,7 @@ run;</code></pre>
       openPanel(initialPanel, false);
     }
 
-    document.querySelectorAll(".tdm-slide").forEach((slide) => {
+    document.querySelectorAll(".tdm-slide, .drag-scroll").forEach((slide) => {
       let isDown = false;
       let startX = 0;
       let scrollLeft = 0;
