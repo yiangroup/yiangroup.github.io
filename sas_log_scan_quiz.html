@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAS Log Scan Quiz</title>
+  <style>
+    :root {
+      --ink: #27211f;
+      --muted: #6f6259;
+      --paper: #fbf7ee;
+      --line: #e5dacb;
+      --navy: #1f416d;
+      --blue: #2f73b8;
+      --terminal: #ffffff;
+      --terminal-line: #b8c7d9;
+      --green: #147b4b;
+      --red: #b42318;
+      --amber: #9a6700;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.88), rgba(255,255,255,0.78)),
+        repeating-linear-gradient(115deg, #f4efe6 0, #f4efe6 3px, #f8f4ec 3px, #f8f4ec 8px);
+    }
+
+    .hero {
+      min-height: 136px;
+      padding: 22px 46px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .kicker {
+      color: #c08a6d;
+      font-size: 14px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 40px;
+      line-height: 1.05;
+      font-weight: 500;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .topbar {
+      min-height: 58px;
+      background: var(--navy);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 22px;
+      border-bottom: 4px solid #18345b;
+    }
+
+    .topbar strong {
+      font-size: 18px;
+    }
+
+    .score {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(640px, 1fr) 320px;
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .log-card,
+    .side-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(47, 37, 28, 0.10);
+      overflow: hidden;
+    }
+
+    .log-head {
+      height: 44px;
+      background: linear-gradient(#e9f1fb, #d7e5f5);
+      color: #12396b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--terminal-line);
+      font-family: "Consolas", "Courier New", monospace;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .log-body {
+      background: var(--terminal);
+      color: #111;
+      min-height: 560px;
+      padding: 18px;
+      overflow: auto;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.45;
+      border-top: 4px solid #f4f7fb;
+    }
+
+    .line {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      font: inherit;
+      padding: 2px 4px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .line:hover {
+      background: #eef5ff;
+    }
+
+    .num {
+      color: #777;
+      user-select: none;
+    }
+
+    .code {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .line.selected {
+      background: #fff5bf;
+      outline: 1px solid #d9a400;
+    }
+
+    .line.correct {
+      background: #e7f7ee;
+      outline: 2px solid #41b983;
+    }
+
+    .line.missed {
+      background: #ffe9e7;
+      outline: 2px solid #ff7d73;
+    }
+
+    .line.false-positive {
+      background: #fff4d6;
+      outline: 2px solid #f2b84b;
+    }
+
+    .sas-note { color: #0000cc; font-weight: 700; }
+    .sas-error { color: #cc0000; font-weight: 700; }
+    .sas-warning { color: #b35a00; font-weight: 700; }
+    .sas-code { color: #111; }
+    .sas-marker { color: #008000; font-weight: 700; }
+
+    .side-card {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+    }
+
+    .side-title {
+      background: #f4efe6;
+      border-bottom: 1px solid var(--line);
+      padding: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .case-list {
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+    }
+
+    .case-button {
+      min-height: 40px;
+      border: 1px solid #d8c9b7;
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+      padding: 0 12px;
+    }
+
+    .case-button.active {
+      border-color: var(--blue);
+      background: #e9f5fc;
+      color: var(--navy);
+    }
+
+    .actions {
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 12px;
+    }
+
+    button.action {
+      min-height: 38px;
+      border: 1px solid var(--blue);
+      border-radius: 6px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--blue);
+    }
+
+    .feedback {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      min-height: 36px;
+    }
+
+    .feedback.good {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .feedback.warn {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      main {
+        padding: 10px;
+      }
+
+      .log-body {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="kicker">Module 04</div>
+    <h1>SAS Log Scan Quiz</h1>
+    <p class="subtitle">Practice identifying clean logs and logs with issues by clicking the suspicious SAS log lines.</p>
+  </section>
+
+  <header class="topbar">
+    <strong>Manual SAS Log Review</strong>
+    <div class="score" id="score">Case 1: not checked</div>
+  </header>
+
+  <main>
+    <section class="log-card" aria-label="SAS log quiz">
+      <div class="log-head">
+        <span id="caseTitle">SAS LOG CASE 1</span>
+        <span id="caseStatus">CLICK ISSUE LINES</span>
+      </div>
+      <div class="log-body" id="logBody"></div>
+    </section>
+
+    <aside class="side-card" aria-label="Quiz controls">
+      <div class="side-title">Cases</div>
+      <div class="case-list" id="caseList"></div>
+      <div class="actions">
+        <button class="action secondary" type="button" id="resetBtn">Reset Case</button>
+        <button class="action" type="button" id="checkBtn">Check Case</button>
+        <div class="feedback" id="feedback">Click only the lines that indicate a log issue. If the log is clean, leave all lines unselected.</div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const cases = [
+      {
+        shortTitle: "Case 1",
+        title: "Case 1 - Variable Not Found",
+        issueLines: [8, 9, 10],
+        explanation: "Variable AGE is missing from WORK.ADSL. In clinical programming this can break merges or analyses that depend on demographics.",
+        lines: [
+          "1    proc sort data=work.adsl; by usubjid; run;",
+          "NOTE: There were 120 observations read from the data set WORK.ADSL.",
+          "NOTE: The data set WORK.ADSL has 120 observations and 35 variables.",
+          "4    proc means data=work.adsl n mean std;",
+          "5      class saffl;",
+          "6      var age;",
+          "7    run;",
+          "ERROR: Variable AGE is not on file WORK.ADSL.",
+          "ERROR: Variable AGE in list does not match type prescribed for this list.",
+          "ERROR: The SAS System stopped processing this step because of errors.",
+          "NOTE: PROCEDURE MEANS used (Total process time):",
+          "      real time           0.02 seconds",
+          "      cpu time            0.01 seconds"
+        ]
+      },
+      {
+        shortTitle: "Case 2",
+        title: "Case 2 - Syntax and Unclosed Quote",
+        issueLines: [7, 8, 9, 12, 13, 14],
+        explanation: "The quoted string and syntax error can stop the step, leaving downstream ADaM or TLF outputs stale.",
+        lines: [
+          "21   data adae;",
+          "22     set sdtm.ae;",
+          "23     length trtemfl $1;",
+          "24     if astdt >= trtsdt then trtemfl = 'Y;",
+          "25     if aeser = 'Y' then output;",
+          "26   run;",
+          "NOTE: Variable AENDT is uninitialized.",
+          "NOTE: Missing values were generated as a result of performing an operation on missing values.",
+          "WARNING: The quoted string currently being processed has become more than 262 bytes long.",
+          "          ----",
+          "          49",
+          "ERROR 49-169: The meaning of an identifier after a quoted string might change in a future SAS release.",
+          "ERROR 22-322: Syntax error, expecting one of the following: !, !!, &, *, **, +, -, /, ;.",
+          "ERROR: The SAS System stopped processing this step because of errors.",
+          "NOTE: The data set WORK.ADAE has 0 observations and 0 variables."
+        ]
+      },
+      {
+        shortTitle: "Case 3",
+        title: "Case 3 - Implicit Conversion and Invalid Numeric Data",
+        issueLines: [8, 10, 11, 12],
+        explanation: "Implicit character-to-numeric conversion can turn values such as '<0.1' or 'TRACE' into missing numeric results.",
+        lines: [
+          "101  data lb_numeric;",
+          "102    set raw.lb;",
+          "103    if lbtestcd = 'CREAT' then lbstresn = lborres;",
+          "104    if lbstresn > 1.2 then abnfl = 'Y';",
+          "105  run;",
+          "NOTE: There were 842 observations read from the data set RAW.LB.",
+          "NOTE: The data set WORK.LB_NUMERIC has 842 observations and 18 variables.",
+          "NOTE: Character values have been converted to numeric values at the places given by: (Line):(Column).",
+          "      103:39",
+          "NOTE: Invalid numeric data, LBORRES='<0.1' , at line 103 column 39.",
+          "WARNING: Limit set by ERRORS= option reached. Further errors of this type will not be printed.",
+          "NOTE: Missing values were generated as a result of performing an operation on missing values.",
+          "NOTE: DATA statement used (Total process time):",
+          "      real time           0.05 seconds"
+        ]
+      },
+      {
+        shortTitle: "Case 4",
+        title: "Case 4 - Uninitialized Variable and Length Warning",
+        issueLines: [7, 8, 10],
+        explanation: "Uninitialized AGEU creates all-missing values, and multiple lengths for USUBJID can truncate identifiers across domains.",
+        lines: [
+          "141  data adsl_qc;",
+          "142    length usubjid $18;",
+          "143    set adam.adsl;",
+          "144    if ageu = 'YEARS' then age_years = age;",
+          "145  run;",
+          "NOTE: There were 120 observations read from the data set ADAM.ADSL.",
+          "NOTE: Variable AGEU is uninitialized.",
+          "NOTE: Numeric values have been converted to character values at the places given by: (Line):(Column).",
+          "      144:8",
+          "WARNING: Multiple lengths were specified for the variable USUBJID by input data set(s). This can cause truncation of data.",
+          "NOTE: The data set WORK.ADSL_QC has 120 observations and 38 variables.",
+          "NOTE: DATA statement used (Total process time):",
+          "      real time           0.03 seconds"
+        ]
+      },
+      {
+        shortTitle: "Case 5",
+        title: "Case 5 - Repeated BY Values in Merge",
+        issueLines: [10],
+        explanation: "Repeated BY values indicate a many-to-many merge risk. Clinical measurements can be matched to the wrong visit/date.",
+        lines: [
+          "201  proc sort data=work.vs; by usubjid visit; run;",
+          "NOTE: There were 480 observations read from the data set WORK.VS.",
+          "203  proc sort data=work.lb; by usubjid visit; run;",
+          "NOTE: There were 632 observations read from the data set WORK.LB.",
+          "205  data vs_lb;",
+          "206    merge vs(in=invs) lb(in=inlb);",
+          "207    by usubjid visit;",
+          "208    if invs;",
+          "209  run;",
+          "NOTE: MERGE statement has more than one data set with repeats of BY values.",
+          "NOTE: There were 480 observations read from the data set WORK.VS.",
+          "NOTE: There were 632 observations read from the data set WORK.LB.",
+          "NOTE: The data set WORK.VS_LB has 702 observations and 64 variables.",
+          "NOTE: DATA statement used (Total process time):",
+          "      real time           0.07 seconds"
+        ]
+      },
+      {
+        shortTitle: "Case 6",
+        title: "Case 6 - Math and Missing Value Propagation",
+        issueLines: [7, 8, 9],
+        explanation: "Division by zero and missing-value propagation can silently remove baseline change, BMI, PK, or questionnaire values.",
+        lines: [
+          "301  data qs_score;",
+          "302    set raw.qs;",
+          "303    pctchg = 100 * (aval - base) / base;",
+          "304    total_score = q1 + q2 + q3 + q4;",
+          "305  run;",
+          "NOTE: There were 240 observations read from the data set RAW.QS.",
+          "NOTE: Division by zero detected at line 303 column 33.",
+          "NOTE: Mathematical operations could not be performed at the following places. The results of the operations have been set to missing values.",
+          "NOTE: Missing values were generated as a result of performing an operation on missing values.",
+          "NOTE: The data set WORK.QS_SCORE has 240 observations and 22 variables.",
+          "NOTE: DATA statement used (Total process time):",
+          "      real time           0.04 seconds"
+        ]
+      }
+    ];
+
+    const selectedByCase = cases.map(() => new Set());
+    const checkedByCase = cases.map(() => false);
+    let activeCase = 0;
+
+    const logBody = document.getElementById("logBody");
+    const caseList = document.getElementById("caseList");
+    const caseTitle = document.getElementById("caseTitle");
+    const caseStatus = document.getElementById("caseStatus");
+    const score = document.getElementById("score");
+    const feedback = document.getElementById("feedback");
+
+    function renderCaseButtons() {
+      caseList.innerHTML = "";
+      cases.forEach((item, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = index === activeCase ? "case-button active" : "case-button";
+        button.textContent = item.shortTitle;
+        button.addEventListener("click", () => {
+          activeCase = index;
+          render();
+        });
+        caseList.appendChild(button);
+      });
+    }
+
+    function renderLog() {
+      const item = cases[activeCase];
+      const selected = selectedByCase[activeCase];
+      const issueSet = new Set(item.issueLines);
+      logBody.innerHTML = "";
+      item.lines.forEach((text, index) => {
+        const lineNumber = index + 1;
+        const line = document.createElement("button");
+        line.type = "button";
+        line.className = "line";
+        if (selected.has(lineNumber)) line.classList.add("selected");
+        if (checkedByCase[activeCase]) {
+          const isIssue = issueSet.has(lineNumber);
+          const isSelected = selected.has(lineNumber);
+          if (isIssue && isSelected) line.classList.add("correct");
+          if (isIssue && !isSelected) line.classList.add("missed");
+          if (!isIssue && isSelected) line.classList.add("false-positive");
+        }
+        line.innerHTML = `<span class="num">${String(lineNumber).padStart(2, "0")}</span><span class="code"></span>`;
+        const code = line.querySelector(".code");
+        code.textContent = text || " ";
+        code.className = `code ${sasClass(text)}`;
+        line.addEventListener("click", () => {
+          checkedByCase[activeCase] = false;
+          if (selected.has(lineNumber)) selected.delete(lineNumber);
+          else selected.add(lineNumber);
+          render();
+        });
+        logBody.appendChild(line);
+      });
+    }
+
+    function sasClass(text) {
+      const trimmed = text.trim();
+      if (trimmed.startsWith("ERROR")) return "sas-error";
+      if (trimmed.startsWith("WARNING")) return "sas-warning";
+      if (trimmed.startsWith("NOTE")) return "sas-note";
+      if (/^-+$/.test(trimmed) || /^[0-9]+$/.test(trimmed)) return "sas-marker";
+      if (/^[0-9]+\s+/.test(trimmed)) return "sas-code";
+      return "";
+    }
+
+    function render() {
+      const item = cases[activeCase];
+      caseTitle.textContent = item.shortTitle.toUpperCase();
+      caseStatus.textContent = item.issueLines.length ? "CLICK ISSUE LINES" : "CLEAN LOG POSSIBLE";
+      renderCaseButtons();
+      renderLog();
+      updateScore();
+      feedback.className = "feedback";
+      feedback.textContent = checkedByCase[activeCase]
+        ? item.explanation
+        : "Click only the lines that indicate a log issue. If the log is clean, leave all lines unselected.";
+    }
+
+    function updateScore() {
+      const selected = selectedByCase[activeCase];
+      const issueSet = new Set(cases[activeCase].issueLines);
+      let correct = 0;
+      issueSet.forEach((line) => {
+        if (selected.has(line)) correct += 1;
+      });
+      const falsePositives = [...selected].filter((line) => !issueSet.has(line)).length;
+      score.textContent = `Case ${activeCase + 1}: ${correct} / ${issueSet.size} issue lines, ${falsePositives} false positives`;
+    }
+
+    function checkCase() {
+      checkedByCase[activeCase] = true;
+      const selected = selectedByCase[activeCase];
+      const issueSet = new Set(cases[activeCase].issueLines);
+      const missed = [...issueSet].filter((line) => !selected.has(line)).length;
+      const falsePositives = [...selected].filter((line) => !issueSet.has(line)).length;
+      renderLog();
+      updateScore();
+      feedback.className = missed === 0 && falsePositives === 0 ? "feedback good" : "feedback warn";
+      feedback.textContent = missed === 0 && falsePositives === 0
+        ? `Correct. ${cases[activeCase].explanation}`
+        : `Review highlighted lines. Green = correct, red = missed issue, amber = false positive. ${cases[activeCase].explanation}`;
+    }
+
+    function resetCase() {
+      selectedByCase[activeCase].clear();
+      checkedByCase[activeCase] = false;
+      render();
+    }
+
+    document.getElementById("checkBtn").addEventListener("click", checkCase);
+    document.getElementById("resetBtn").addEventListener("click", resetCase);
+    render();
+  </script>
+</body>
+</html>

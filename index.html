@@ -5893,21 +5893,66 @@ age_num = input(scan(ageres, 1, " "), best.);</code></pre>
                   </tbody>
                 </table>
               </div>
-              <div class="code-window" aria-label="SAS log scan example">
-                <div class="code-window-header">
-                  <span>SAS Log Scan Example</span>
-                  <span>Checklist</span>
-                </div>
-<pre><code>/* Example manual log review checklist:
-   1. Search for ERROR:
-   2. Search for WARNING:
-   3. Search for uninitialized
-   4. Search for converted
-   5. Search for repeats of BY values
-   6. Confirm expected input and output record counts
-*/</code></pre>
+              <h5>4.2.1 Manual SAS Log Review Checklist</h5>
+              <p>
+                A log scan is more than a keyword search. Each message should be reviewed for its likely programming impact, then traced back to the code, input data, and expected output record counts.
+              </p>
+              <div class="table-scroll">
+                <table class="crf-table" aria-label="Manual SAS log review checklist">
+                  <thead>
+                    <tr>
+                      <th>Review Dimension</th>
+                      <th>Target Objective</th>
+                      <th>Keywords &amp; Actions</th>
+                      <th>Training Notes / Best Practices</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>01. Critical Failures</strong></td>
+                      <td>Identify blocking program errors that can invalidate the output.</td>
+                      <td>Search for <code>ERROR:</code>. Confirm whether the step stopped, skipped output creation, or produced partial results.</td>
+                      <td><strong>Zero tolerance:</strong> production code cannot be released with active errors. Resolve the root cause, rerun the affected program, and confirm downstream outputs were regenerated.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>02. System Warnings</strong></td>
+                      <td>Catch execution, syntax, format, and environment risks.</td>
+                      <td>Search for <code>WARNING:</code>. Review every warning, even if the program completed.</td>
+                      <td><strong>Investigation required:</strong> warnings may indicate missing formats, invalid options, truncated output, unresolved macro variables, or unexpected data behavior.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>03. Variable Definition</strong></td>
+                      <td>Detect uninitialized or misspelled variables before they propagate.</td>
+                      <td>Search for <code>uninitialized</code>. Compare variable names against the SDTM/ADaM specification and input dataset metadata.</td>
+                      <td><strong>Typo alert:</strong> this is often caused by misspelled variable names, missing input variables, or conditional logic that references a variable before assignment.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>04. Type Conversion</strong></td>
+                      <td>Monitor character/numeric mismatches and hidden precision problems.</td>
+                      <td>Search for <code>converted</code> and review automatic character-to-numeric or numeric-to-character conversions.</td>
+                      <td><strong>Data integrity:</strong> implicit conversion can create missing values, strip leading zeros, change date interpretation, or affect precision. Use explicit conversion rules when needed.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>05. Merge Logic</strong></td>
+                      <td>Validate key uniqueness and prevent unintended row multiplication.</td>
+                      <td>Search for <code>repeats of BY values</code> and <code>MERGE statement has repeats</code>. Check key counts before and after merge.</td>
+                      <td><strong>Logic check:</strong> many-to-many relationships during a merge can duplicate subjects, visits, or events. Confirm the intended grain of each input dataset.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>06. Data Integrity</strong></td>
+                      <td>Cross-check record consistency across input, intermediate, and final datasets.</td>
+                      <td>Compare input vs. output observation counts, duplicate keys, expected population counts, and major derivation flags.</td>
+                      <td><strong>Final gatekeeping:</strong> verify that actual row counts match the expected business logic before QC compare, table generation, or delivery.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
+              <div class="embedded-quiz-card">
+                <h4>Practice Quiz: SAS Log Scan</h4>
+                <p>Use the quiz below to practice identifying common SAS log issues, deciding whether they block delivery, and choosing the correct follow-up action.</p>
+                <iframe class="quiz-frame" src="sas_log_scan_quiz.html" title="SAS Log Scan Quiz"></iframe>
+              </div>
               <h5>4.3 Independent QC and Compare</h5>
               <p>
                 Regulated programming relies on independent validation. The production programmer
@@ -19350,6 +19395,8 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
 
 
 
