@@ -2087,6 +2087,33 @@
       line-height: 1.58;
       white-space: pre;
     }
+    .code-window.sas-syntax {
+      border: 1px solid #c8d4df;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(41, 67, 91, 0.12);
+    }
+
+    .code-window.sas-syntax .code-window-header {
+      background: linear-gradient(#f7fbff, #e7eff7);
+      color: #28445f;
+      border-bottom: 1px solid #c8d4df;
+    }
+
+    .code-window.sas-syntax pre {
+      color: #111111;
+      background: #ffffff;
+      font-size: 15px;
+      line-height: 1.48;
+    }
+
+    .sas-syntax .sas-comment { color: #557a55; font-style: italic; }
+    .sas-syntax .sas-proc,
+    .sas-syntax .sas-keyword,
+    .sas-syntax .sas-step { color: #263cff; font-weight: 800; }
+    .sas-syntax .sas-data { color: #111111; font-weight: 800; }
+    .sas-syntax .sas-var { color: #111111; }
+    .sas-syntax .sas-option { color: #008a84; }
+    .sas-syntax .sas-output { color: #7b2c83; font-weight: 800; }
 
     .code-note {
       margin: -10px 0 22px;
@@ -7977,7 +8004,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                         </p>
                         <div class="document-preview" aria-label="Vital Signs CRF image preview">
                           <img src="assets/vital-signs-crf-page-1.png?v=4x" alt="Vital Signs CRF page 1 with administrative fields and vital signs measurements">
-                          <img src="assets/vital-signs-crf-page-2.png?v=4x" alt="Vital Signs CRF page 2 with temperature route, weight, height, clinical significance, and comments">
+                          <img src="assets/vital-signs-crf-page-2-compact.png?v=1" alt="Vital Signs CRF page 2 with temperature route, weight, height, clinical significance, and comments">
                         </div>
                       </div>
                     </div>
@@ -17382,50 +17409,64 @@ run;</code></pre>
             <details class="bio-topic">
               <summary>
                 <span class="summary-meta">Module 4</span>
-                <span class="summary-title">SAS PROC MI Procedure</span>
-                <span class="summary-note">MMRM primary analysis, Missing At Random assumptions, observed-data modeling, and practical sensitivity checks.</span>
+                <span class="summary-title">SAS PROC MI Under the MAR Assumption</span>
+                <span class="summary-note">Multiple imputation workflow under MAR, from PROC MI output to imputation-specific analysis and PROC MIANALYZE.</span>
               </summary>
               <article class="lesson">
-                <h4>SAS PROC MI Procedure</h4>
+                <h4>SAS PROC MI Under the MAR Assumption</h4>
                 <div class="callout-card mi-intro-block">
-                                    <p>
+                  <p>
                     In many clinical studies, the analysis dataset is not perfectly complete. A subject may miss a scheduled visit, discontinue treatment, start rescue medication, or leave the study before the primary endpoint is observed. When the endpoint value is missing, the programmer and statistician need a pre-specified way to create an analysis-ready dataset without pretending that the missing value is known with certainty.
                   </p>
                   <p>
                     <code>PROC MI</code> is one SAS procedure used for this job. Rather than filling in one fixed replacement value, it creates multiple plausible versions of the missing values and carries the uncertainty forward. Those imputed datasets can then be analyzed separately and combined later, so the final inference reflects both the observed data and the uncertainty introduced by missing data.
                   </p>
-                  <p>Multiple imputation inference involves three distinct phases.</p>
+                  <p>Keep the workflow in three separate phases:</p>
                   <ol>
-                    <li>The missing data are filled in <em>m</em> times to generate <em>m</em> complete data sets.</li>
-                    <li>The <em>m</em> complete data sets are analyzed using standard statistical analyses.</li>
-                    <li>The results from the <em>m</em> complete data sets are combined to produce inferential results.</li>
+                    <li><strong>Impute:</strong> fill in missing values <em>m</em> times to create <em>m</em> complete analysis datasets.</li>
+                    <li><strong>Analyze:</strong> run the same planned analysis model within each imputed dataset.</li>
+                    <li><strong>Combine:</strong> use <code>PROC MIANALYZE</code> to combine the imputation-specific estimates and standard errors.</li>
                   </ol>
+                  <div class="table-scroll">
+                    <table class="crf-table" aria-label="PROC MI method selection overview">
+                      <thead>
+                        <tr>
+                          <th>Question</th>
+                          <th>Why It Matters</th>
+                          <th>Common PROC MI Direction</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Is the missing pattern monotone?</td>
+                          <td>If a later variable is missing whenever an earlier missingness pattern starts, PROC MI can use monotone methods.</td>
+                          <td>Regression, predictive mean matching, propensity score, logistic regression, or discriminant methods depending on variable type.</td>
+                        </tr>
+                        <tr>
+                          <td>Is the missing pattern arbitrary?</td>
+                          <td>Clinical longitudinal data often have irregular missingness across visits and subjects.</td>
+                          <td>MCMC or FCS methods can be used to create complete imputed datasets before analysis.</td>
+                        </tr>
+                        <tr>
+                          <td>Are variables continuous or classification variables?</td>
+                          <td>The imputation method must match the type of variable being imputed.</td>
+                          <td>Continuous outcomes may use regression or predictive mean matching; binary, ordinal, or nominal variables need appropriate classification methods.</td>
+                        </tr>
+                        <tr>
+                          <td>Does the imputation model match the analysis model?</td>
+                          <td>The imputer's model and analyst's model should be compatible enough that the final inference answers the planned question.</td>
+                          <td>Include treatment, baseline, visit history, stratification factors, and other pre-specified predictors needed for the analysis.</td>
+                        </tr>
+                        <tr>
+                          <td>Does the imputation behave reasonably?</td>
+                          <td>For simulation-based methods, diagnostics help check whether the imputation process is stable.</td>
+                          <td>Review convergence, trace behavior, distributions of imputed values, and whether imputed values are clinically plausible.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                   <p>
-                    The MI procedure creates multiply imputed data sets for incomplete multivariate data. It uses methods that incorporate appropriate variability across the <em>m</em> imputations. The method of choice depends on the patterns of missingness.
-                  </p>
-                  <p>
-                    A data set with variables <em>Y</em><sub>1</sub>, <em>Y</em><sub>2</sub>, ..., <em>Y</em><sub>p</sub> (in that order) is said to have a <strong>monotone missing pattern</strong> when the event that a variable <em>Y</em><sub>j</sub> is missing for a particular individual implies that all subsequent variables <em>Y</em><sub>k</sub>, <em>k &gt; j</em>, are missing for that individual.
-                  </p>
-                  <p>
-                    For data sets with monotone missing patterns, either a parametric method that assumes multivariate normality or a nonparametric method is appropriate to impute missing values for a continuous variable. Parametric methods available include the regression method (Rubin 1987, pp. 166-167) and the predictive mean matching method (Heitjan and Little 1991; Schenker and Taylor 1996). The nonparametric method is the propensity score method (Rubin 1987, pp. 124, 158).
-                  </p>
-                  <p>
-                    To impute missing values for a classification variable in data sets with monotone missing patterns, you can use the logistic regression method when the classification variable has a binary or ordinal response, and the discriminant function method when the classification variable has a binary or nominal response.
-                  </p>
-                  <p>
-                    For data sets with arbitrary missing patterns, a Markov chain Monte Carlo (MCMC) method (Schafer 1997) that assumes multivariate normality is used to impute all missing values or just enough missing values for continuous variables to make the imputed data sets have monotone missing patterns. When an imputed data set has a monotone missing pattern, methods for data sets with monotone missing patterns can then be used to impute remaining missing values.
-                  </p>
-                  <p>
-                    Once the <em>m</em> complete data sets are analyzed using standard SAS procedures, the MIANALYZE procedure can be used to generate valid statistical inferences about these parameters by combining results from the <em>m</em> analyses.
-                  </p>
-                  <p>
-                    Often, as few as three to five imputations are adequate in multiple imputation (Rubin 1996, p. 480). The relative efficiency of the small <em>m</em> imputation estimator is high for cases with little missing information (Rubin 1987, p. 114). (Also see the section Multiple Imputation Efficiency.)
-                  </p>
-                  <p>
-                    Multiple imputation inference assumes that the model (variables) you used to analyze the multiply imputed data (the analyst's model) is the same as the model used to impute missing values in multiple imputation (the imputer's model). But in practice, the two models might not be the same. The consequences for different scenarios (Schafer 1997, pp. 139-143) are discussed in the section Imputer's Model Versus Analyst's Model.
-                  </p>
-                  <p>
-                    When an MCMC method is used to impute missing values, the trace (time series) and autocorrelation function plots for parameters such as variable means and covariances can be displayed to check for convergence of the MCMC method. See the section Checking Convergence in MCMC for a detailed description of these plots. If the ODS graphics on statement is specified, these statistical graphics are created via the Output Delivery System (ODS). Otherwise, the traditional graphics are created.
+                    The key programming point is simple: <code>PROC MI</code> creates the imputed analysis records, the planned model analyzes each imputation, and <code>PROC MIANALYZE</code> combines the results. The details of the imputation method should be driven by the SAP, the missing-data pattern, variable type, and the scientific assumptions behind the analysis.
                   </p>
                 </div>
 
@@ -17733,24 +17774,30 @@ run;</code></pre>
                 </div>
 
                 <h4>5. SAS Template: MMRM Primary and MAR Sensitivity</h4>
-                <pre><code>/* Training template only. Final model terms must follow the approved SAP. */
-proc mixed data=adhba1c method=reml;
-  class usubjid trt01p avisitn site;
-  model chg = trt01p avisitn trt01p*avisitn base base*avisitn site
-        / ddfm=kr solution;
-  repeated avisitn / subject=usubjid type=un r;
-  lsmeans trt01p*avisitn / diff cl;
-  ods output diffs=mmrm_diffs lsmeans=mmrm_lsmeans;
-run;
+                <div class="code-window sas-syntax" aria-label="SAS MMRM template with syntax highlighting">
+                  <div class="code-window-header">
+                    <span>SAS MMRM Template</span>
+                    <span>.sas</span>
+                  </div>
+<pre><code><span class="sas-comment">/* Training template only. Final model terms must follow the approved SAP. */</span>
+<span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">adhba1c</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
+  <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn site</span>;
+  <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn site</span>
+        / <span class="sas-option">ddfm=kr solution</span>;
+  <span class="sas-keyword">repeated</span> <span class="sas-var">avisitn</span> / <span class="sas-option">subject=</span><span class="sas-var">usubjid</span> <span class="sas-option">type=un r</span>;
+  <span class="sas-keyword">lsmeans</span> <span class="sas-var">trt01p*avisitn</span> / <span class="sas-option">diff cl</span>;
+  <span class="sas-keyword">ods output</span> <span class="sas-output">diffs=mmrm_diffs</span> <span class="sas-output">lsmeans=mmrm_lsmeans</span>;
+<span class="sas-step">run</span>;
 
-/* Example MAR sensitivity: same estimand, different pre-specified covariance. */
-proc mixed data=adhba1c method=reml;
-  class usubjid trt01p avisitn site;
-  model chg = trt01p avisitn trt01p*avisitn base base*avisitn site
-        / ddfm=kr solution;
-  repeated avisitn / subject=usubjid type=ar(1);
-  lsmeans trt01p*avisitn / diff cl;
-run;</code></pre>
+<span class="sas-comment">/* Example MAR sensitivity: same estimand, different pre-specified covariance. */</span>
+<span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">adhba1c</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
+  <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn site</span>;
+  <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn site</span>
+        / <span class="sas-option">ddfm=kr solution</span>;
+  <span class="sas-keyword">repeated</span> <span class="sas-var">avisitn</span> / <span class="sas-option">subject=</span><span class="sas-var">usubjid</span> <span class="sas-option">type=ar(1)</span>;
+  <span class="sas-keyword">lsmeans</span> <span class="sas-var">trt01p*avisitn</span> / <span class="sas-option">diff cl</span>;
+<span class="sas-step">run</span>;</code></pre>
+                </div>
 
                 <h4>6. Sensitivity Analyses That Still Live Under MAR</h4>
                 <p>
@@ -17793,36 +17840,35 @@ run;</code></pre>
                         <td>Whether a richer observed history changes the treatment contrast.</td>
                         <td>Still MAR if the model conditions on observed predictors.</td>
                       </tr>
-                      <tr>
-                        <td>Tipping-point or MNAR analysis</td>
-                        <td>Shift imputed values or apply assumptions about unobserved outcomes.</td>
-                        <td>How extreme departures from MAR must be to overturn the conclusion.</td>
-                        <td>Not MAR; label separately as an MNAR or robustness analysis.</td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
-
                 <h4>7. SAS Template: MAR Multiple Imputation Sensitivity</h4>
-                <pre><code>/* Wide-form example: one row per subject with BASE, WK12, and WK24. */
-proc mi data=hba1c_wide out=mi_hba1c nimpute=100 seed=20260708;
-  class trt01p site;
-  fcs reg(wk24 = trt01p base wk12 site);
-  var trt01p site base wk12 wk24;
-run;
+                <div class="code-window sas-syntax" aria-label="SAS PROC MI and MIANALYZE template with syntax highlighting">
+                  <div class="code-window-header">
+                    <span>SAS PROC MI Template</span>
+                    <span>.sas</span>
+                  </div>
+<pre><code><span class="sas-comment">/* Wide-form example: one row per subject with BASE, WK12, and WK24. */</span>
+<span class="sas-proc">proc mi</span> <span class="sas-option">data=</span><span class="sas-data">hba1c_wide</span> <span class="sas-option">out=</span><span class="sas-output">mi_hba1c</span> <span class="sas-option">nimpute=100 seed=20260708</span>;
+  <span class="sas-keyword">class</span> <span class="sas-var">trt01p site</span>;
+  <span class="sas-keyword">fcs reg</span>(<span class="sas-var">wk24</span> = <span class="sas-var">trt01p base wk12 site</span>);
+  <span class="sas-keyword">var</span> <span class="sas-var">trt01p site base wk12 wk24</span>;
+<span class="sas-step">run</span>;
 
-proc mixed data=mi_hba1c method=reml;
-  by _imputation_;
-  class trt01p site;
-  model wk24 = trt01p base site / solution;
-  lsmeans trt01p / diff cl;
-  ods output diffs=mi_diffs;
-run;
+<span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">mi_hba1c</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
+  <span class="sas-keyword">by</span> <span class="sas-var">_imputation_</span>;
+  <span class="sas-keyword">class</span> <span class="sas-var">trt01p site</span>;
+  <span class="sas-keyword">model</span> <span class="sas-var">wk24</span> = <span class="sas-var">trt01p base site</span> / <span class="sas-option">solution</span>;
+  <span class="sas-keyword">lsmeans</span> <span class="sas-var">trt01p</span> / <span class="sas-option">diff cl</span>;
+  <span class="sas-keyword">ods output</span> <span class="sas-output">diffs=mi_diffs</span>;
+<span class="sas-step">run</span>;
 
-proc mianalyze data=mi_diffs;
-  modeleffects estimate;
-  stderr stderr;
-run;</code></pre>
+<span class="sas-proc">proc mianalyze</span> <span class="sas-option">data=</span><span class="sas-data">mi_diffs</span>;
+  <span class="sas-keyword">modeleffects</span> <span class="sas-var">estimate</span>;
+  <span class="sas-keyword">stderr</span> <span class="sas-var">stderr</span>;
+<span class="sas-step">run</span>;</code></pre>
+                </div>
 
                 <h4>8. What Must Be Written Before Lock</h4>
                 <div class="table-scroll">
@@ -19395,6 +19441,13 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
