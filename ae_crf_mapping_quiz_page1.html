@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AE aCRF Mapping Quiz</title>
+  <style>
+    :root {
+      --navy: #1f416d;
+      --blue: #2f73b8;
+      --ink: #1f2a3d;
+      --muted: #62718a;
+      --grid: #c8d5e5;
+      --field: #9fb1c7;
+      --slot: #c9fbfb;
+      --bg: #f3f6fa;
+      --ok: #0f7a4f;
+      --bad: #b42318;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    .module-hero {
+      min-height: 136px;
+      padding: 22px 46px 20px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.82)),
+        repeating-linear-gradient(115deg, #f4efe6 0, #f4efe6 3px, #f8f4ec 3px, #f8f4ec 8px);
+      border-bottom: 1px solid #e5dacb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .module-kicker {
+      color: #c08a6d;
+      font-size: 14px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .module-title {
+      margin: 0 0 8px;
+      color: #2f2c2a;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 38px;
+      line-height: 1.05;
+      font-weight: 500;
+    }
+
+    .module-subtitle {
+      margin: 0;
+      color: #6f6259;
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .topbar {
+      min-height: 58px;
+      background: var(--navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 22px;
+      border-bottom: 4px solid #18345b;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .score {
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px 0;
+      overflow-x: auto;
+    }
+
+    .tab {
+      border: 1px solid #9fb7d2;
+      border-bottom: 0;
+      background: #fff;
+      color: var(--navy);
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 8px 8px 0 0;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(760px, 1fr) 280px;
+      gap: 16px;
+      padding: 16px;
+      align-items: start;
+    }
+
+    .page {
+      background: #fff;
+      border: 1px solid var(--grid);
+      box-shadow: 0 12px 28px rgba(31, 65, 109, 0.11);
+      min-height: calc(100vh - 310px);
+      padding: 24px 28px 42px;
+    }
+
+    .crf-header {
+      border: 2px solid var(--navy);
+      margin-bottom: 18px;
+    }
+
+    .crf-title {
+      height: 52px;
+      background: var(--navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 130px 1fr 140px 1fr;
+      border-top: 1px solid var(--grid);
+    }
+
+    .meta div {
+      min-height: 36px;
+      border-right: 1px solid var(--grid);
+      border-bottom: 1px solid var(--grid);
+      padding: 9px 12px;
+      font-size: 13px;
+    }
+
+    .meta div:nth-child(4n) { border-right: 0; }
+
+    .meta .label {
+      font-weight: 700;
+      color: #405067;
+      background: #fbfdff;
+    }
+
+    .meta .value {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .domain-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border: 2px solid #111;
+      background: var(--slot);
+      padding: 2px 8px;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .instructions {
+      border-left: 4px solid var(--blue);
+      background: #e9f5fc;
+      color: #2268b8;
+      padding: 12px 16px;
+      font-size: 14px;
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      background: var(--blue);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 9px 12px;
+      margin: 14px 0 10px;
+    }
+
+    .crf-table {
+      border: 1px solid var(--grid);
+      border-bottom: 0;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 42px minmax(330px, 1fr) minmax(330px, 0.9fr);
+      min-height: 58px;
+      border-bottom: 1px solid var(--grid);
+    }
+
+    .qnum,
+    .question,
+    .answer {
+      border-right: 1px solid var(--grid);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .answer {
+      border-right: 0;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+
+    .qnum {
+      justify-content: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .question {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.25;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+
+    .req-star { color: #c5162e; }
+
+    .radio,
+    .check {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .circle {
+      width: 17px;
+      height: 17px;
+      border: 2px solid var(--field);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .box {
+      width: 15px;
+      height: 15px;
+      border: 1.5px solid var(--field);
+      display: inline-block;
+    }
+
+    .input {
+      height: 28px;
+      min-width: 150px;
+      border: 2px solid var(--field);
+      background: #fff;
+    }
+
+    .wide { min-width: 280px; flex: 1; }
+
+    .linebox {
+      min-height: 58px;
+      flex: 1 1 100%;
+      border: 2px solid var(--field);
+      background:
+        linear-gradient(#fff 0 26px, #d9e2ed 27px, #fff 28px);
+    }
+
+    .linebox.tall { min-height: 78px; }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      font-style: italic;
+      flex-basis: 100%;
+    }
+
+    .slot {
+      min-width: 230px;
+      min-height: 42px;
+      border: 2px dashed #7f98b8;
+      background: #f6fbff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 5px 8px;
+      color: #0e5762;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.1;
+      vertical-align: middle;
+    }
+
+    .slot.small { min-width: 150px; }
+    .slot.medium { min-width: 190px; }
+
+    .slot:empty::before {
+      content: "Drop mapping here";
+      color: #6b7d94;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .slot.over {
+      border-color: var(--blue);
+      background: #eaf6ff;
+      box-shadow: 0 0 0 3px rgba(47, 115, 184, 0.16);
+    }
+
+    .slot.ok {
+      border-color: var(--ok);
+      background: #effaf4;
+    }
+
+    .slot.bad {
+      border-color: var(--bad);
+      background: #fff1f0;
+      box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.18);
+    }
+
+    .card {
+      min-width: 92px;
+      min-height: 30px;
+      border: 3px solid #111;
+      background: var(--slot);
+      color: #001b1f;
+      padding: 4px 8px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.05;
+      cursor: grab;
+      user-select: none;
+      text-align: center;
+    }
+
+    .slot .card {
+      min-width: 92px;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .panel {
+      position: sticky;
+      top: 16px;
+      background: #fff;
+      border: 1px solid var(--grid);
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(31, 65, 109, 0.11);
+      overflow: hidden;
+    }
+
+    .panel-title {
+      background: #e9f5fc;
+      color: var(--navy);
+      font-weight: 700;
+      padding: 12px;
+      border-bottom: 1px solid var(--grid);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .bank {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      padding: 12px;
+      min-height: 330px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid var(--grid);
+    }
+
+    button {
+      border: 1px solid var(--blue);
+      border-radius: 6px;
+      background: var(--blue);
+      color: #fff;
+      min-height: 36px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--blue);
+    }
+
+    .message {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    .message.good { color: var(--ok); font-weight: 700; }
+    .message.warn { color: var(--bad); font-weight: 700; }
+
+    @media (max-width: 1080px) {
+      .layout { grid-template-columns: 1fr; }
+      .panel { position: static; }
+      .bank { flex-direction: row; flex-wrap: wrap; min-height: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .module-hero { padding: 18px; }
+      .module-title { font-size: 28px; }
+      .module-subtitle { font-size: 14px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .page { padding: 14px; overflow-x: auto; }
+      .crf-inner { min-width: 720px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="module-hero" aria-label="Module introduction">
+    <div class="module-kicker">Module 03</div>
+    <h2 class="module-title">Understanding Case Report Forms (CRF) and Annotated CRFs (aCRF)</h2>
+    <p class="module-subtitle">How clinical source data is collected, exported, annotated, and prepared before Study Data Tabulation Model (SDTM) mapping begins.</p>
+  </section>
+
+  <header class="topbar">
+    <h1>AE aCRF Mapping Quiz</h1>
+    <div class="score" id="score">Page 1: 0 / 9 correct</div>
+  </header>
+
+  <nav class="tabs" id="tabs" aria-label="CRF pages"></nav>
+
+  <main class="layout">
+    <section class="page" aria-label="AE CRF page">
+      <div class="crf-inner" id="crfPage"></div>
+    </section>
+
+    <aside class="panel" aria-label="Mapping cards">
+      <div class="panel-title">
+        <span>Mapping Cards</span>
+        <span id="pageCardCount">Page 1</span>
+      </div>
+      <div class="bank" id="bank"></div>
+      <div class="actions">
+        <button type="button" class="secondary" id="resetBtn">Reset Page</button>
+        <button type="button" id="checkBtn">Check Page</button>
+        <div class="message" id="message">Each page has its own card set. Drag cards into the blue slots on this page.</div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const pages = [
+      {
+        label: "Page 1",
+        scoreLabel: "Page 1",
+        sections: [
+          {
+            title: "1. ADMINISTRATIVE & EVENT IDENTIFICATION",
+            rows: [
+              { n: 1, q: 'Was an Adverse Event reported or observed? <span class="req-star">*</span>', a: '<span class="radio"><span class="circle"></span>Yes</span><span class="radio"><span class="circle"></span>No</span><span class="slot medium" data-answer="NOT SUBMITTED"></span>' },
+              { n: 2, q: 'AE number / identifier: <span class="slot small" data-answer="AELNKID"></span>', a: '<span class="input wide"></span>' },
+              { n: 3, q: 'Date site became aware of AE: <span class="req-star">*</span> <span class="slot" data-answer="AWAREDT in SUPPAE"></span>', a: '<span class="input wide"></span><span class="hint">(DD / MMM / YYYY)</span>' },
+              { n: 4, tall: true, q: 'Source of AE information: <span class="slot" data-answer="AESOURCE in SUPPAE"></span>', a: '<span class="radio"><span class="circle"></span>Subject report</span><span class="radio"><span class="circle"></span>Investigator observed</span><span class="radio"><span class="circle"></span>Lab / test result</span><span class="radio"><span class="circle"></span>Medical record</span>' },
+              { n: 5, q: 'Visit / contact when AE identified: <span class="slot" data-answer="AEVISIT in SUPPAE"></span>', a: '<span class="input wide"></span>' },
+              { n: 6, tall: true, q: 'Adverse Event term / diagnosis: <span class="req-star">*</span> <span class="slot small" data-answer="AETERM"></span>', a: '<span class="linebox"></span>' },
+              { n: 7, tall: true, q: 'Verbatim subject description, if applicable: <span class="slot" data-answer="VERBDESC in SUPPAE"></span>', a: '<span class="linebox"></span>' }
+            ]
+          },
+          {
+            title: "2. ONSET, DURATION & INTENSITY",
+            rows: [
+              { n: 8, q: 'AE onset date: <span class="req-star">*</span> <span class="slot small" data-answer="AESTDTC"></span>', a: '<span class="input"></span><span class="hint">(DD / MMM / YYYY)</span>' },
+              { n: 9, q: 'AE onset time: <span class="slot small" data-answer="AESTDTC"></span>', a: '<span class="input"></span><span class="hint">(24-Hour Clock: HH:MM)</span>' }
+            ]
+          }
+        ],
+        cards: ["AE (Adverse Events)", "NOT SUBMITTED", "AELNKID", "AWAREDT in SUPPAE", "AESOURCE in SUPPAE", "AEVISIT in SUPPAE", "AETERM", "VERBDESC in SUPPAE", "AESTDTC", "AESTDTC"]
+      },
+      {
+        label: "Page 2",
+        scoreLabel: "Page 2",
+        sections: [
+          {
+            title: "2. ONSET, DURATION & INTENSITY - CONTINUED",
+            rows: [
+              { n: 10, q: 'Is the AE ongoing? <span class="req-star">*</span> <span class="slot small" data-answer="AEENRTPT"></span>', a: '<span class="radio"><span class="circle"></span>Yes</span><span class="radio"><span class="circle"></span>No</span>' },
+              { n: 11, q: 'AE end date, if resolved: <span class="slot small" data-answer="AEENDTC"></span>', a: '<span class="input"></span><span class="hint">(DD / MMM / YYYY)</span>' },
+              { n: 12, q: 'Worst severity / intensity: <span class="req-star">*</span> <span class="slot small" data-answer="AESEV"></span>', a: '<span class="radio"><span class="circle"></span>Mild</span><span class="radio"><span class="circle"></span>Moderate</span><span class="radio"><span class="circle"></span>Severe</span>' },
+              { n: 13, q: 'CTCAE grade, if applicable: <span class="slot small" data-answer="AETOXGR"></span>', a: '<span class="radio"><span class="circle"></span>1</span><span class="radio"><span class="circle"></span>2</span><span class="radio"><span class="circle"></span>3</span><span class="radio"><span class="circle"></span>4</span><span class="radio"><span class="circle"></span>5</span><span class="radio"><span class="circle"></span>N/A</span>' },
+              { n: 14, q: 'Pattern of event: <span class="slot small" data-answer="AEPATT"></span>', a: '<span class="radio"><span class="circle"></span>Single episode</span><span class="radio"><span class="circle"></span>Intermittent</span><span class="radio"><span class="circle"></span>Continuous</span>' }
+            ]
+          },
+          {
+            title: "3. SERIOUSNESS & IMPORTANT MEDICAL EVENTS",
+            rows: [
+              { n: 15, q: 'Is this event serious? <span class="req-star">*</span> <span class="slot small" data-answer="AESER"></span>', a: '<span class="radio"><span class="circle"></span>No</span><span class="radio"><span class="circle"></span>Yes</span><span class="hint">If Yes, complete SAE reporting per protocol and local requirements.</span>' },
+              { n: 16, tall: true, q: 'Seriousness criteria, if SAE:', a: '<span class="check"><span class="box"></span>Death <span class="slot small" data-answer="AESDTH"></span></span><span class="check"><span class="box"></span>Life-threatening <span class="slot small" data-answer="AESLIFE"></span></span><span class="check"><span class="box"></span>Hospitalization or prolonged hospitalization <span class="slot small" data-answer="AESHOSP"></span></span><span class="check"><span class="box"></span>Persistent/significant disability <span class="slot small" data-answer="AESDISAB"></span></span><span class="check"><span class="box"></span>Congenital anomaly/birth defect <span class="slot small" data-answer="AESCONG"></span></span><span class="check"><span class="box"></span>Other medically important event <span class="slot small" data-answer="AESMIE"></span></span>' },
+              { n: 17, q: 'Date SAE criteria first met: <span class="slot" data-answer="SAEDTC in SUPPAE"></span>', a: '<span class="input"></span><span class="hint">(DD / MMM / YYYY)</span>' },
+              { n: 18, tall: true, q: 'Was the sponsor / safety desk notified?', a: '<span class="radio"><span class="circle"></span>Yes</span><span class="radio"><span class="circle"></span>No</span><span class="radio"><span class="circle"></span>N/A</span><span class="slot" data-answer="SAFNOTIF in SUPPAE"></span><span class="input"></span><span class="hint">Notification date</span><span class="slot" data-answer="SAFNTDTC in SUPPAE"></span>' }
+            ]
+          }
+        ],
+        cards: ["AE (Adverse Events)", "AEENRTPT", "AEENDTC", "AESEV", "AETOXGR", "AEPATT", "AESER", "AESDTH", "AESLIFE", "AESHOSP", "AESDISAB", "AESCONG", "AESMIE", "SAEDTC in SUPPAE", "SAFNOTIF in SUPPAE", "SAFNTDTC in SUPPAE"]
+      },
+      {
+        label: "Page 3",
+        scoreLabel: "Page 3",
+        sections: [
+          {
+            title: "4. CAUSALITY & RELATIONSHIP ASSESSMENT",
+            rows: [
+              { n: 19, tall: true, q: 'Relationship to investigational product: <span class="req-star">*</span> <span class="slot small" data-answer="AEREL"></span>', a: '<span class="radio"><span class="circle"></span>Not related</span><span class="radio"><span class="circle"></span>Unlikely</span><span class="radio"><span class="circle"></span>Possible</span><span class="radio"><span class="circle"></span>Probable</span><span class="radio"><span class="circle"></span>Definite</span><span class="radio"><span class="circle"></span>Not assessable</span>' },
+              { n: 20, q: 'Relationship to study procedure: <span class="slot" data-answer="PROCREL in SUPPAE"></span>', a: '<span class="radio"><span class="circle"></span>Not related</span><span class="radio"><span class="circle"></span>Possible</span><span class="radio"><span class="circle"></span>Related</span><span class="radio"><span class="circle"></span>N/A</span>' },
+              { n: 21, tall: true, q: 'Alternative etiology considered: <span class="slot" data-answer="AETIOL in SUPPAE"></span>', a: '<span class="check"><span class="box"></span>Underlying disease</span><span class="check"><span class="box"></span>Concomitant medication</span><span class="check"><span class="box"></span>Intercurrent illness</span><span class="check"><span class="box"></span>Accident / injury</span><span class="check"><span class="box"></span>Other</span>' },
+              { n: 22, tall: true, q: 'Causality rationale: <span class="slot" data-answer="CAUSRTN in SUPPAE"></span>', a: '<span class="linebox tall"></span>' }
+            ]
+          },
+          {
+            title: "5. ACTION TAKEN & TREATMENT",
+            rows: [
+              { n: 23, tall: true, q: 'Action taken with investigational product: <span class="slot small" data-answer="AEACN"></span>', a: '<span class="radio"><span class="circle"></span>None</span><span class="radio"><span class="circle"></span>Dose reduced</span><span class="radio"><span class="circle"></span>Temporarily interrupted</span><span class="radio"><span class="circle"></span>Permanently discontinued</span><span class="radio"><span class="circle"></span>Not applicable</span>' },
+              { n: 24, tall: true, q: 'Other action taken: <span class="slot small" data-answer="AEACNOTH"></span>', a: '<span class="check"><span class="box"></span>Medication given</span><span class="check"><span class="box"></span>Procedure performed</span><span class="check"><span class="box"></span>Hospital / ER evaluation</span><span class="check"><span class="box"></span>Study visit added</span><span class="check"><span class="box"></span>None</span>' },
+              { n: 25, tall: true, q: 'Treatment details: <span class="slot" data-answer="TRTDET in SUPPAE"></span>', a: '<span class="linebox"></span>' }
+            ]
+          }
+        ],
+        cards: ["AE (Adverse Events)", "AEREL", "PROCREL in SUPPAE", "AETIOL in SUPPAE", "CAUSRTN in SUPPAE", "AEACN", "AEACNOTH", "TRTDET in SUPPAE"]
+      },
+      {
+        label: "Page 4",
+        scoreLabel: "Page 4",
+        sections: [
+          {
+            title: "6. OUTCOME, FOLLOW-UP & RECURRENCE",
+            rows: [
+              { n: 26, tall: true, q: 'Outcome at time of assessment: <span class="req-star">*</span> <span class="slot small" data-answer="AEOUT"></span>', a: '<span class="radio"><span class="circle"></span>Recovered / resolved</span><span class="radio"><span class="circle"></span>Recovering / resolving</span><span class="radio"><span class="circle"></span>Not recovered / not resolved</span><span class="radio"><span class="circle"></span>Recovered with sequelae</span><span class="radio"><span class="circle"></span>Fatal</span><span class="radio"><span class="circle"></span>Unknown</span>' },
+              { n: 27, q: 'Date of outcome assessment: <span class="slot" data-answer="OUTDTC in SUPPAE"></span>', a: '<span class="input"></span><span class="hint">(DD / MMM / YYYY)</span>' },
+              { n: 28, tall: true, q: 'Sequelae description, if applicable: <span class="slot" data-answer="SEQDESC in SUPPAE"></span>', a: '<span class="linebox"></span>' },
+              { n: 29, tall: true, q: 'Did AE recur after rechallenge? <span class="slot" data-answer="AERECUR in SUPPAE"></span>', a: '<span class="radio"><span class="circle"></span>Yes</span><span class="radio"><span class="circle"></span>No</span><span class="radio"><span class="circle"></span>Not rechallenged</span><span class="radio"><span class="circle"></span>Unknown</span>' }
+            ]
+          },
+          {
+            title: "7. AESI, PREGNANCY & REPORTING FLAGS",
+            rows: [
+              { n: 30, q: 'Is this an Adverse Event of Special Interest? <span class="slot" data-answer="AESI in SUPPAE"></span>', a: '<span class="radio"><span class="circle"></span>No</span><span class="radio"><span class="circle"></span>Yes</span><span class="hint">If Yes, specify category below.</span>' },
+              { n: 31, q: 'AESI category: <span class="slot" data-answer="AESICAT in SUPPAE"></span>', a: '<span class="linebox"></span>' },
+              { n: 32, q: 'Pregnancy-related event? <span class="slot" data-answer="AEPREG in SUPPAE"></span>', a: '<span class="radio"><span class="circle"></span>No</span><span class="radio"><span class="circle"></span>Yes</span><span class="radio"><span class="circle"></span>N/A</span>' },
+              { n: 33, q: 'Additional expedited reporting required? <span class="slot" data-answer="EXPREQ in SUPPAE"></span>', a: '<span class="radio"><span class="circle"></span>No</span><span class="radio"><span class="circle"></span>Yes</span><span class="radio"><span class="circle"></span>Pending assessment</span>' }
+            ]
+          }
+        ],
+        cards: ["AE (Adverse Events)", "AEOUT", "OUTDTC in SUPPAE", "SEQDESC in SUPPAE", "AERECUR in SUPPAE", "AESI in SUPPAE", "AESICAT in SUPPAE", "AEPREG in SUPPAE", "EXPREQ in SUPPAE"]
+      }
+    ];
+
+    const pageState = pages.map(() => new Map());
+    const tabs = document.getElementById("tabs");
+    const crfPage = document.getElementById("crfPage");
+    const bank = document.getElementById("bank");
+    const score = document.getElementById("score");
+    const message = document.getElementById("message");
+    const pageCardCount = document.getElementById("pageCardCount");
+    let activePage = 0;
+    let dragged = null;
+
+    function shuffle(items) {
+      return items
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+    }
+
+    function makeCard(text) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.draggable = true;
+      card.textContent = text;
+      card.dataset.value = text;
+      card.addEventListener("dragstart", () => {
+        dragged = card;
+        setTimeout(() => card.style.opacity = "0.45", 0);
+      });
+      card.addEventListener("dragend", () => {
+        card.style.opacity = "1";
+        dragged = null;
+      });
+      return card;
+    }
+
+    function crfHeader(includeInstructions) {
+      return `
+        <span class="slot medium" data-answer="AE (Adverse Events)"></span>
+        <div class="crf-header">
+          <div class="crf-title">MEDIDATA RAVE(R) CASE REPORT FORM</div>
+          <div class="meta">
+            <div class="label">Protocol ID:</div><div></div>
+            <div class="label">Site ID / Name:</div><div></div>
+            <div class="label">Subject ID:</div><div></div>
+            <div class="label">Event / Folder:</div><div></div>
+            <div class="label">Form Name:</div><div class="value">Adverse Event (AE)</div>
+            <div class="label">Instance Date:</div><div></div>
+          </div>
+        </div>
+        ${includeInstructions ? `<div class="instructions"><strong>Instructions:</strong> Complete one AE form for each adverse event, including events identified at scheduled visits, unscheduled contacts, chart review, or subject report. Record the event using medical terminology and update this form when follow-up information becomes available.</div>` : ""}
+      `;
+    }
+
+    function renderTabs() {
+      tabs.innerHTML = "";
+      pages.forEach((page, index) => {
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.className = index === activePage ? "tab active" : "tab";
+        tab.textContent = page.label;
+        tab.addEventListener("click", () => switchPage(index));
+        tabs.appendChild(tab);
+      });
+    }
+
+    function rowHtml(row) {
+      const style = row.tall ? ' style="min-height: 96px;"' : "";
+      return `
+        <div class="row"${style}>
+          <div class="qnum">${row.n}</div>
+          <div class="question">${row.q}</div>
+          <div class="answer">${row.a}</div>
+        </div>
+      `;
+    }
+
+    function renderPage() {
+      const page = pages[activePage];
+      crfPage.innerHTML = crfHeader(activePage === 0) + page.sections.map(section => `
+        <div class="section">${section.title}</div>
+        <div class="crf-table">${section.rows.map(rowHtml).join("")}</div>
+      `).join("");
+
+      crfPage.querySelectorAll(".slot").forEach((slot, index) => {
+        slot.dataset.key = `${activePage}-${index}`;
+        const saved = pageState[activePage].get(slot.dataset.key);
+        if (saved) slot.appendChild(makeCard(saved));
+        wireSlot(slot);
+      });
+      renderBank();
+      updateScoreText();
+    }
+
+    function renderBank() {
+      const available = [...pages[activePage].cards];
+      pageState[activePage].forEach((value) => {
+        const index = available.indexOf(value);
+        if (index >= 0) available.splice(index, 1);
+      });
+      bank.innerHTML = "";
+      shuffle(available).forEach((text) => bank.appendChild(makeCard(text)));
+      pageCardCount.textContent = pages[activePage].label;
+    }
+
+    function wireSlot(slot) {
+      slot.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        slot.classList.add("over");
+      });
+      slot.addEventListener("dragleave", () => slot.classList.remove("over"));
+      slot.addEventListener("drop", (event) => {
+        event.preventDefault();
+        slot.classList.remove("over", "ok", "bad");
+        if (!dragged) return;
+        const oldCard = slot.querySelector(".card");
+        if (oldCard) pageState[activePage].delete(slot.dataset.key);
+        const oldSlot = dragged.closest(".slot");
+        if (oldSlot) pageState[activePage].delete(oldSlot.dataset.key);
+        slot.innerHTML = "";
+        slot.appendChild(dragged);
+        pageState[activePage].set(slot.dataset.key, dragged.dataset.value);
+        renderBank();
+        updateScoreText(false);
+      });
+    }
+
+    function switchPage(index) {
+      activePage = index;
+      renderTabs();
+      renderPage();
+      message.className = "message";
+      message.textContent = "Each page has its own card set. Drag cards into the blue slots on this page.";
+    }
+
+    function updateScoreText(runCheck = false) {
+      const slots = Array.from(crfPage.querySelectorAll(".slot"));
+      const correct = slots.filter(slot => pageState[activePage].get(slot.dataset.key) === slot.dataset.answer).length;
+      score.textContent = `${pages[activePage].scoreLabel}: ${correct} / ${slots.length} correct`;
+      if (!runCheck) {
+        slots.forEach(slot => slot.classList.remove("ok", "bad"));
+      }
+    }
+
+    function checkPage() {
+      const slots = Array.from(crfPage.querySelectorAll(".slot"));
+      let correct = 0;
+      let firstBad = null;
+      slots.forEach((slot) => {
+        const value = pageState[activePage].get(slot.dataset.key);
+        slot.classList.remove("ok", "bad");
+        if (value === slot.dataset.answer) {
+          correct += 1;
+          slot.classList.add("ok");
+        } else {
+          slot.classList.add("bad");
+          if (!firstBad) firstBad = slot;
+        }
+      });
+      score.textContent = `${pages[activePage].scoreLabel}: ${correct} / ${slots.length} correct`;
+      message.className = correct === slots.length ? "message good" : "message warn";
+      message.textContent = correct === slots.length ? "All correct for this page." : "Unfilled or incorrect slots on this page are highlighted in red.";
+      if (firstBad) firstBad.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function resetPage() {
+      pageState[activePage].clear();
+      renderPage();
+      message.className = "message";
+      message.textContent = "This page has been reset. Other pages were not changed.";
+    }
+
+    document.getElementById("checkBtn").addEventListener("click", checkPage);
+    document.getElementById("resetBtn").addEventListener("click", resetPage);
+    renderTabs();
+    renderPage();
+  </script>
+</body>
+</html>

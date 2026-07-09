@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -677,19 +677,25 @@
       border-bottom-color: rgba(75, 58, 54, 0.44);
     }
 
-    .flow {
+    .flow,
+    .sdtm-pipeline {
+      --flow-gap: 26px;
+      --flow-arrow-color: #b9907a;
       display: grid;
-      gap: 10px;
-      margin: 22px 0 26px;
+      gap: var(--flow-gap);
+      margin: 26px 0 34px;
     }
 
     .flow-step {
-      padding: 15px 18px;
-      border: 1px solid rgba(200, 157, 132, 0.32);
-      border-radius: 6px;
+      position: relative;
+      min-height: 86px;
+      padding: 20px 24px;
+      border: 1px solid rgba(200, 157, 132, 0.34);
+      border-radius: 7px;
       background:
         repeating-linear-gradient(105deg, rgba(255,255,255,0.18) 0 1px, transparent 1px 6px),
         rgba(255, 248, 241, 0.72);
+      box-shadow: 0 10px 24px rgba(76, 57, 50, 0.045);
       color: #604e47;
       font-size: 15px;
       line-height: 1.62;
@@ -697,16 +703,19 @@
 
     .flow-step::after {
       content: "\2193";
-      display: block;
-      margin-top: 8px;
-      color: var(--sand);
+      position: absolute;
+      left: 50%;
+      bottom: calc(-1 * var(--flow-gap) + 5px);
+      transform: translateX(-50%);
+      color: var(--flow-arrow-color);
+      font-size: 18px;
       font-weight: 800;
+      line-height: 1;
       text-align: center;
     }
 
     .flow-step:last-child::after {
-      content: "";
-      margin: 0;
+      display: none;
     }
 
     .flow-step strong {
@@ -714,35 +723,8 @@
     }
 
     .lesson-spacious-flow {
-      display: grid;
-      gap: 26px;
-      margin: 28px 0 36px;
-    }
-
-    .lesson-spacious-flow .flow-step {
-      position: relative;
-      padding: 22px 24px;
-      min-height: 86px;
-      box-shadow: 0 10px 24px rgba(76, 57, 50, 0.045);
-    }
-
-    .lesson-spacious-flow .flow-step::after {
-      content: "\2193";
-      position: absolute;
-      left: 50%;
-      bottom: -26px;
-      display: block;
-      margin: 0;
-      transform: translateX(-50%);
-      color: #b9907a;
-      font-size: 18px;
-      font-weight: 800;
-      line-height: 1;
-      text-align: center;
-    }
-
-    .lesson-spacious-flow .flow-step:last-child::after {
-      display: none;
+      --flow-gap: 28px;
+      margin: 28px 0 38px;
     }
 
     .estimand-chain {
@@ -770,7 +752,7 @@
     .estimand-chain-arrow {
       align-self: center;
       justify-self: center;
-      width: auto;
+      width: 24px;
       height: auto;
       display: grid;
       place-items: center;
@@ -778,6 +760,7 @@
       font-size: 20px;
       font-weight: 900;
       line-height: 1;
+      white-space: nowrap;
     }
 
     .estimand-chain-kicker {
@@ -2525,6 +2508,262 @@
       line-height: 1.25;
     }
 
+
+    .ct-visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 22px 0 26px;
+    }
+
+    .ct-visual {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(190, 155, 128, 0.38);
+      border-radius: 8px;
+      background: rgba(255, 255, 250, 0.78);
+      box-shadow: 0 16px 32px rgba(74, 57, 45, 0.06);
+    }
+
+    .ct-visual figcaption {
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(190, 155, 128, 0.28);
+      background: rgba(248, 245, 235, 0.72);
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .ct-visual-body {
+      padding: 16px;
+    }
+
+    .ig-mock-table,
+    .ct-list-table,
+    .ct-xpt-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.76rem;
+      line-height: 1.25;
+    }
+
+    .ig-mock-table th,
+    .ig-mock-table td {
+      border: 1px solid #1f1f1f;
+      padding: 6px 7px;
+      vertical-align: top;
+      color: #111;
+      background: #f4f7f3;
+    }
+
+    .ig-mock-table th {
+      background: #eef0eb;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .ig-mock-table th:nth-child(5),
+    .ig-mock-table td:nth-child(5) {
+      background: #d5dcd4;
+    }
+
+    .ct-highlight {
+      background: #fff36a;
+      color: #053f75;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      padding: 0 2px;
+    }
+
+    .crf-mock-sheet {
+      border: 1px solid #b8c8db;
+      background: #fff;
+      color: #0f2440;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .crf-mock-row {
+      display: grid;
+      grid-template-columns: 48px minmax(250px, 1fr) minmax(320px, 1.16fr);
+      align-items: center;
+      min-height: 62px;
+      border-bottom: 1px solid #b8c8db;
+    }
+
+    .crf-mock-row:last-child {
+      border-bottom: 0;
+    }
+
+    .crf-mock-num {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      border-right: 1px solid #b8c8db;
+      color: #66788e;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .crf-mock-question {
+      padding: 12px 16px;
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+
+    .crf-var-tag {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 4px 9px;
+      border: 3px solid #111;
+      background: #c9fbf3;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.95rem;
+      font-weight: 800;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .crf-mock-options {
+      padding: 12px 16px;
+      font-size: 1rem;
+      white-space: normal;
+    }
+
+    .radio-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin: 0 7px 0 16px;
+      border: 2px solid #9aabc2;
+      border-radius: 50%;
+      vertical-align: -2px;
+    }
+
+    .crf-section-bar {
+      padding: 11px 16px;
+      background: #2f76b8;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      font-size: 1.05rem;
+    }
+
+    .crf-mock-note {
+      display: block;
+      margin: 8px 0 0 16px;
+      color: #60728b;
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    .ct-list-table th,
+    .ct-list-table td,
+    .ct-xpt-table th,
+    .ct-xpt-table td {
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .ct-list-table th {
+      background: #243d55;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .ct-list-table td {
+      background: #eef4ee;
+      color: #24423c;
+    }
+
+    .ct-list-table .ct-do {
+      background: #f4f8ef;
+      font-weight: 800;
+      color: #2f5c50;
+    }
+
+    .ct-xpt-table th {
+      background: #28577a;
+      color: #fff;
+      font-weight: 800;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .ct-xpt-table td {
+      background: #d8e5df;
+      color: #073b5c;
+      text-align: center;
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .ct-visual-caption-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+
+    .ct-crf-wide {
+      grid-column: 1 / -1;
+    }
+
+    .ct-crf-wide .ct-visual-body {
+      padding: 18px;
+    }
+
+    .ct-crf-wide .crf-mock-row {
+      grid-template-columns: 54px minmax(300px, 0.78fr) minmax(620px, 1.22fr);
+    }
+
+    .ct-crf-wide .crf-mock-question {
+      min-width: 0;
+    }
+
+    .ct-crf-wide .crf-mock-options {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .crf-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .ct-crf-wide .crf-mock-note {
+      flex-basis: 100%;
+      margin-top: 8px;
+      max-width: none;
+    }
+
+    .ct-crf-wide .crf-section-bar {
+      white-space: normal;
+      line-height: 1.25;
+    }
+
+    @media (max-width: 980px) {
+      .ct-visual-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .crf-mock-row {
+        grid-template-columns: 44px 1fr;
+      }
+
+      .crf-mock-options {
+        grid-column: 2;
+        border-top: 1px solid #d7e0ea;
+      }
+    }
+
     .ct-spotlight {
       display: grid;
       grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.35fr);
@@ -2578,6 +2817,44 @@
       font-size: 11px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    .ct-chip em {
+      display: block;
+      margin-top: 5px;
+      color: #7a675e;
+      font-style: normal;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .ct-chip-panel-title {
+      margin: 0 0 8px;
+      color: #6d5a50;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+
+    .ct-lookup-note {
+      margin: 0 0 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(207, 183, 82, 0.45);
+      border-radius: 8px;
+      background: rgba(255, 248, 184, 0.32);
+      color: #5f514a;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .ct-lookup-note mark {
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(255, 230, 56, 0.65);
+      color: #4e403b;
+      font-weight: 800;
     }
 
     .ct-table table {
@@ -4733,7 +5010,91 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
+  
+
+    .embedded-quiz-card {
+      margin: 1.65rem 0 0;
+      padding: 1.1rem;
+      border: 1px solid rgba(190, 155, 124, 0.42);
+      border-radius: 8px;
+      background: rgba(255, 255, 248, 0.76);
+      box-shadow: 0 14px 32px rgba(76, 58, 44, 0.06);
+    }
+
+    .embedded-quiz-card h4 {
+      margin: 0 0 0.85rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      line-height: 1.2;
+      color: #483b35;
+    }
+
+    .embedded-quiz-card p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+    }
+
+    .quiz-frame {
+      display: block;
+      width: 100%;
+      min-height: 820px;
+      border: 1px solid rgba(190, 155, 124, 0.5);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+  
+/* MI implementation example */
+.mi-implementation-example { margin-top: 18px; }
+.mi-implementation-example h5 { margin: 0 0 12px; font-size: 1.05rem; color: var(--ink); }
+.mi-step-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0 18px; }
+.mi-step-card { border: 1px solid rgba(187,150,122,.42); border-radius: 8px; background: rgba(255,255,255,.58); padding: 14px 16px; }
+.mi-step-card strong { display:block; color:var(--ink); margin-bottom:6px; }
+.mi-step-card span { display:block; line-height:1.55; }
+.mi-flow-grid { display:grid; grid-template-columns:minmax(230px,1fr) auto minmax(300px,1.18fr) auto minmax(250px,1fr); align-items:center; gap:12px; margin:14px 0 18px; }
+.mi-flow-card { min-height:118px; border:1px solid rgba(45,91,123,.35); border-radius:8px; background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(238,247,242,.74)); padding:12px; display:flex; flex-direction:column; justify-content:center; }
+.mi-flow-card .eyebrow { font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:#8a715f; font-weight:700; }
+.mi-flow-card strong { color:#123d5a; margin-top:6px; }
+.mi-flow-arrow { color:#2d5b7b; font-size:1.45rem; font-weight:700; text-align:center; }
+.sas-data-card { justify-content:flex-start; gap:8px; }
+.sas-window { overflow:hidden; border:1px solid rgba(46,79,105,.42); border-radius:6px; background:#fff; box-shadow:0 7px 16px rgba(37,54,64,.12); }
+.sas-title-bar { display:flex; align-items:center; justify-content:space-between; gap:10px; background:#e8eff3; border-bottom:1px solid rgba(46,79,105,.24); color:#173f5c; font-family:"Courier New",monospace; font-size:.74rem; font-weight:700; padding:5px 8px; }
+.sas-title-bar span:last-child { color:#7a6559; font-size:.68rem; }
+.sas-mini-table { width:100%; border-collapse:collapse; font-family:"Courier New",monospace; font-size:.66rem; line-height:1.25; }
+.sas-mini-table th { background:#2b5f82; color:#fff; padding:4px 5px; text-align:left; border-right:1px solid rgba(255,255,255,.45); }
+.sas-mini-table td { background:#eef5f2; color:#10384f; padding:4px 5px; border-top:1px solid #fff; border-right:1px solid #fff; white-space:nowrap; }
+.sas-mini-table tr:nth-child(even) td { background:#dce9e4; }
+.sas-mini-table .missing-cell { background:#fff1a8; color:#7a3f2c; font-weight:700; }
+.sas-footnote { color:#123d5a; font-size:.78rem; font-weight:800; }
+.sas-copy-stack { position:relative; min-height:158px; }
+.sas-copy-stack .sas-window { position:absolute; left:0; right:0; }
+.sas-copy-stack .copy-back-6 { top:0; transform:translate(36px, -5px) scale(.84); opacity:.16; }
+.sas-copy-stack .copy-back-5 { top:5px; transform:translate(30px, -2px) scale(.87); opacity:.22; }
+.sas-copy-stack .copy-back-4 { top:10px; transform:translate(24px, 1px) scale(.90); opacity:.30; }
+.sas-copy-stack .copy-back-3 { top:15px; transform:translate(18px, 4px) scale(.93); opacity:.40; }
+.sas-copy-stack .copy-back-2 { top:20px; transform:translate(12px, 7px) scale(.96); opacity:.54; }
+.sas-copy-stack .copy-back-1 { top:25px; transform:translate(6px, 10px) scale(.98); opacity:.70; }
+.sas-copy-stack .copy-front { top:34px; }.mi-output-card { align-items:flex-start; gap:8px; padding:14px 16px; }
+.mi-output-body { display:grid; gap:8px; width:100%; }
+.adam-data-window { width:100%; overflow:hidden; border:1px solid rgba(46,79,105,.42); border-radius:6px; background:#fff; box-shadow:0 7px 16px rgba(37,54,64,.12); }
+.adam-data-window .sas-title-bar { background:#214f72; color:#fff; }
+.adam-data-table { width:100%; border-collapse:collapse; font-family:"Courier New",monospace; font-size:.58rem; line-height:1.18; }
+.adam-data-table th { background:#e8eff3; color:#173f5c; padding:3px 4px; text-align:left; border-right:1px solid #fff; }
+.adam-data-table td { background:#eef5f2; color:#10384f; padding:3px 4px; border-top:1px solid #fff; border-right:1px solid #fff; white-space:nowrap; }
+.adam-data-table tr:nth-child(even) td { background:#dce9e4; }
+.adam-data-table .mi-value { background:#fff1a8; color:#7a3f2c; font-weight:900; }
+.adam-data-table .mi-impnum { background:#fff8dc; color:#6e4d1f; font-weight:900; }
+.mi-adeffmi-table { width:100%; min-width:880px; border-collapse:collapse; }
+.mi-adeffmi-table th { background:#275779; color:#fff; font-weight:700; text-align:center; padding:10px 12px; border:2px solid rgba(255,255,255,.9); }
+.mi-adeffmi-table td { background:#d6e2dc; color:#083b58; text-align:center; padding:8px 12px; border:2px solid rgba(255,255,255,.9); }
+.mi-adeffmi-table tbody tr:nth-child(even) td { background:#cbd8d4; }
+.mi-adeffmi-table .mi-value { background:#fff27a; color:#5d3426; border:1px dashed rgba(180,80,70,.75); border-radius:999px; padding:1px 7px; font-weight:700; }
+.mi-adeffmi-table .mi-impnum { background:#fff27a; color:#2f4f22; font-weight:700; }
+.mi-ellipsis td { background:rgba(255,255,255,.62)!important; color:#8a715f; font-weight:700; letter-spacing:.14em; }
+.mi-note { margin-top:10px; font-size:.94rem; }
+@media (max-width:900px){ .mi-step-strip,.mi-flow-grid{grid-template-columns:1fr}.mi-flow-arrow{transform:rotate(90deg)}}
+
+</style>
 </head>
 <body>
   <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
@@ -4881,7 +5242,7 @@
                         <tr>
                           <th>Acronym</th>
                           <th>Full Term</th>
-                          <th>What New Programmers Should Remember</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -4918,7 +5279,7 @@
                         <tr>
                           <th>Acronym</th>
                           <th>Full Term</th>
-                          <th>What New Programmers Should Remember</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -4947,7 +5308,7 @@
                         <tr>
                           <th>Acronym</th>
                           <th>Full Term</th>
-                          <th>What New Programmers Should Remember</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -4976,7 +5337,7 @@
                         <tr>
                           <th>Acronym</th>
                           <th>Full Term</th>
-                          <th>What New Programmers Should Remember</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -5026,7 +5387,7 @@
                         <tr>
                           <th>Acronym</th>
                           <th>Full Term</th>
-                          <th>What New Programmers Should Remember</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -5066,7 +5427,7 @@
                         <tr>
                           <th>Acronym</th>
                           <th>Full Term</th>
-                          <th>What New Programmers Should Remember</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -5105,7 +5466,7 @@
                         <tr>
                           <th>Acronym</th>
                           <th>Full Term</th>
-                          <th>What New Programmers Should Remember</th>
+                          <th>Programmer Focus</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -5253,7 +5614,7 @@
 
               <h4>1.4 Where Data Standards Fit</h4>
               <p>
-                A new programmer does not need to learn every data standard on the first day. The
+                Programmers do not need to learn every data standard on the first day. The
                 first idea is simpler: clinical trial data cannot stay as a pile of site forms,
                 EDC exports, vendor spreadsheets, and one-off file layouts. Before analysis and
                 submission, the data must be reorganized into a standard path so the study team and
@@ -5412,7 +5773,7 @@
                 </li>
                 <li>
                   <strong>Training sign-off matters:</strong> Before touching active study data or
-                  production programs, new hires usually complete a training matrix and sign off
+                  production programs, team members usually complete a training matrix and sign off
                   that they have read and understood the required programming SOPs.
                 </li>
                 <li>
@@ -6218,7 +6579,7 @@ run;</code></pre>
                     <div class="answer-key">
                       <h5>Trainer Blueprint</h5>
                       <p>
-                        Look up the SAP section on analysis populations. New hires often assume
+                        Look up the SAP section on analysis populations. Programmers sometimes assume
                         randomized means FAS, but many SAPs require randomization, at least one dose
                         of study drug, and at least one post-baseline efficacy assessment.
                       </p>
@@ -6339,7 +6700,7 @@ if pre_dose then ablfl = "Y";</code></pre>
 
                   <h4>3. SDTM MSG 2.0 Visual aCRF Specifications</h4>
                   <p>
-                    Before writing code, new programmers must learn to read the annotated CRF. MSG
+                    Before writing code, programmers must learn to read the annotated CRF. MSG
                     2.0-style visual annotations help reviewers understand source, domain, and
                     variable mapping without immediately opening Define.xml.
                   </p>
@@ -7085,84 +7446,271 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </div>
 
                     <div class="acrf-card">
-                      <h5>Controlled Terminology and Standards Awareness</h5>
+                      <h5>Mapping Fixed CRF Options & Controlled Terminology (CT) Compliance</h5>
                       <p>
-                        Fixed Case Report Form (CRF) options should not be re-coded by personal
-                        preference. When a page collects choices such as sex, race, severity, route,
-                        frequency, or Yes/No responses, the mapping must be checked against the
-                        study standard and the applicable CDISC Controlled Terminology release.
+                        Fixed Case Report Form (CRF) options are design decisions, not free text.
+                        When a page uses checkboxes, radio buttons, or fixed drop-down choices for
+                        sex, race, severity, route, frequency, or Yes/No responses, the submitted
+                        Study Data Tabulation Model (SDTM) value must follow the study standard and
+                        the exact Clinical Data Interchange Standards Consortium (CDISC) Controlled
+                        Terminology release assigned to the project.
+                      </p>
+                      <p>
+                        The rule is simple: preserve the source meaning, but submit the controlled
+                        value. Do not recode by personal preference, raw database convenience, prior
+                        project habit, or intuition. The reviewer should be able to trace the CRF
+                        choice, raw stored value, mapping specification, Define.xml codelist, and
+                        submitted SDTM value without seeing a different interpretation at each step.
                       </p>
 
-                      <div class="ct-spotlight" aria-label="Controlled terminology training focus">
-                        <div class="ct-rule-box">
-                          <strong>Core rule for programmers</strong>
-                          <p>
-                            The CRF may show what the site saw. The submitted SDTM value must show
-                            what the standard expects, and the conversion must be traceable in the
-                            SDTM specification and Define.xml.
+                      <div class="document-notes">
+                        <strong>How to read the implementation guide:</strong>
+                        when the controlled terminology column shows a highlighted codelist name
+                        such as <mark>AESEV</mark>, <mark>NY</mark>, <mark>ACN</mark>, or
+                        <mark>LOC</mark>, it is a lookup instruction. Open the study-approved CDISC
+                        CT package and use the official submission value for that codelist. If the IG shows
+                        <mark>*</mark>, it still signals controlled terminology. The allowed values are usually
+                        sponsor-defined and must be documented in the study specification.
+                      </div>
+
+                      <div class="ct-visual-grid" aria-label="Controlled terminology mapping visual examples">
+                        <figure class="ct-visual">
+                          <figcaption>1. IG variable metadata tells you which terminology source to check</figcaption>
+                          <div class="ct-visual-body">
+                            <table class="ig-mock-table" aria-label="IG-style adverse event controlled terminology example">
+                              <thead>
+                                <tr>
+                                  <th>Variable Name</th>
+                                  <th>Variable Label</th>
+                                  <th>Type</th>
+                                  <th>Controlled Terms, Codelist, or Format</th>
+                                  <th>CDISC Notes</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>AESEV</td>
+                                  <td>Severity / Intensity</td>
+                                  <td>Char</td>
+                                  <td><mark class="ct-highlight">AESEV</mark></td>
+                                  <td>The severity or intensity of the event. Examples include MILD, MODERATE, and SEVERE.</td>
+                                </tr>
+                                <tr>
+                                  <td>AETOXGR</td>
+                                  <td>Standard Toxicity Grade</td>
+                                  <td>Char</td>
+                                  <td><mark class="ct-highlight">CTCAE grade values</mark></td>
+                                  <td>Use the study-specified toxicity grading scale when toxicity grade is collected.</td>
+                                </tr>
+                                <tr>
+                                  <td>AEPATT</td>
+                                  <td>Pattern of Event</td>
+                                  <td>Char</td>
+                                  <td><mark class="ct-highlight">*</mark><br><span class="muted-note">Sponsor-defined codelist</span></td>
+                                  <td>Describes the event pattern. Because IG shows an asterisk, confirm the sponsor-defined allowed values in the study specification.</td>
+                                </tr>
+                                <tr>
+                                  <td>AESER</td>
+                                  <td>Serious Event</td>
+                                  <td>Char</td>
+                                  <td><mark class="ct-highlight">NY</mark></td>
+                                  <td>Identifies whether the event is serious. Submitted values should follow the Y/N codelist.</td>
+                                </tr>
+                                <tr>
+                                  <td>AEACN</td>
+                                  <td>Action Taken with Study Treatment</td>
+                                  <td>Char</td>
+                                  <td><mark class="ct-highlight">ACN</mark></td>
+                                  <td>Describes the action taken with study treatment because of the event, using the approved action-taken codelist.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </figure>
+
+                        <figure class="ct-visual ct-crf-wide">
+                          <figcaption>2. CRF/aCRF shows the fixed choices and the target AE variables</figcaption>
+                          <div class="ct-visual-body">
+                            <div class="crf-mock-sheet" aria-label="CRF adverse event fixed choices example">
+                              <div class="crf-mock-row">
+                                <div class="crf-mock-num">12</div>
+                                <div class="crf-mock-question">Worst severity / intensity: <span class="required">*</span> <span class="crf-var-tag">AESEV</span></div>
+                                <div class="crf-mock-options">
+                                  <span class="crf-option"><span class="radio-dot"></span>Mild</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Moderate</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Severe</span>
+                                </div>
+                              </div>
+                              <div class="crf-mock-row">
+                                <div class="crf-mock-num">13</div>
+                                <div class="crf-mock-question">CTCAE grade, if applicable: <span class="crf-var-tag">AETOXGR</span></div>
+                                <div class="crf-mock-options">
+                                  <span class="crf-option"><span class="radio-dot"></span>1</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>2</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>3</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>4</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>5</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>N/A</span>
+                                </div>
+                              </div>
+                              <div class="crf-mock-row">
+                                <div class="crf-mock-num">14</div>
+                                <div class="crf-mock-question">Pattern of event: <span class="crf-var-tag">AEPATT</span></div>
+                                <div class="crf-mock-options">
+                                  <span class="crf-option"><span class="radio-dot"></span>Single episode</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Intermittent</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Continuous</span>
+                                </div>
+                              </div>
+                              <div class="crf-section-bar">Seriousness and Important Medical Events</div>
+                              <div class="crf-mock-row">
+                                <div class="crf-mock-num">15</div>
+                                <div class="crf-mock-question">Is this event serious? <span class="required">*</span> <span class="crf-var-tag">AESER</span></div>
+                                <div class="crf-mock-options">
+                                  <span class="crf-option"><span class="radio-dot"></span>No</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Yes</span>
+                                  <span class="crf-mock-note">If Yes, complete serious adverse event reporting according to protocol and local requirements.</span>
+                                </div>
+                              </div>
+                              <div class="crf-mock-row">
+                                <div class="crf-mock-num">16</div>
+                                <div class="crf-mock-question">Action taken with study treatment: <span class="crf-var-tag">AEACN</span></div>
+                                <div class="crf-mock-options">
+                                  <span class="crf-option"><span class="radio-dot"></span>Dose not changed</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Dose reduced</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Drug withdrawn</span>
+                                  <span class="crf-option"><span class="radio-dot"></span>Not applicable</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </figure>
+
+                        <figure class="ct-visual">
+                          <figcaption>3. CT lookup confirms the submitted values</figcaption>
+                          <div class="ct-visual-body">
+                            <table class="ct-list-table" aria-label="Controlled terminology codelist example">
+                              <thead>
+                                <tr>
+                                  <th>Codelist</th>
+                                  <th>CRF Display</th>
+                                  <th>Submit As</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>AESEV</td>
+                                  <td>Mild / Moderate / Severe</td>
+                                  <td>MILD / MODERATE / SEVERE</td>
+                                </tr>
+                                <tr>
+                                  <td>TOXGR</td>
+                                  <td>1 / 2 / 3 / 4 / 5</td>
+                                  <td>1 / 2 / 3 / 4 / 5</td>
+                                </tr>
+                                <tr>
+                                  <td>AEPATT (*)</td>
+                                  <td>Single episode / Intermittent / Continuous</td>
+                                  <td>Study-approved sponsor codelist values</td>
+                                </tr>
+                                <tr>
+                                  <td>NY</td>
+                                  <td>No / Yes</td>
+                                  <td>N / Y</td>
+                                </tr>
+                                <tr>
+                                  <td>ACN</td>
+                                  <td>Dose not changed / Dose reduced / Drug withdrawn / Not applicable</td>
+                                  <td>DOSE NOT CHANGED / DOSE REDUCED / DRUG WITHDRAWN / NOT APPLICABLE</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </figure>
+
+                        <figure class="ct-visual">
+                          <figcaption>4. ae.xpt stores standardized submission values</figcaption>
+                          <div class="ct-visual-body">
+                            <div class="xpt-scroll">
+                              <table class="ct-xpt-table" aria-label="AE xpt controlled terminology example">
+                                <thead>
+                                  <tr>
+                                    <th>USUBJID</th>
+                                    <th>AESEQ</th>
+                                    <th>AETERM</th>
+                                    <th>AESEV</th>
+                                    <th>AETOXGR</th>
+                                    <th>AEPATT</th>
+                                    <th>AESER</th>
+                                    <th>AEACN</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>YIAN-101-001</td>
+                                    <td>1</td>
+                                    <td>Headache</td>
+                                    <td>MILD</td>
+                                    <td>1</td>
+                                    <td>SINGLE EPISODE</td>
+                                    <td>N</td>
+                                    <td>DOSE NOT CHANGED</td>
+                                  </tr>
+                                  <tr>
+                                    <td>YIAN-101-002</td>
+                                    <td>1</td>
+                                    <td>Nausea</td>
+                                    <td>MODERATE</td>
+                                    <td>2</td>
+                                    <td>INTERMITTENT</td>
+                                    <td>N</td>
+                                    <td>DOSE REDUCED</td>
+                                  </tr>
+                                  <tr>
+                                    <td>YIAN-101-003</td>
+                                    <td>1</td>
+                                    <td>Pneumonia</td>
+                                    <td>SEVERE</td>
+                                    <td>4</td>
+                                    <td>CONTINUOUS</td>
+                                    <td>Y</td>
+                                    <td>DRUG WITHDRAWN</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class="ct-visual-caption-note">The submitted dataset stores the controlled submission values, not local display text such as Mild, severe, Yes, or No.</p>
+
+
+
+                          </div>
+                        </figure>
+                      </div>
+
+                      <div class="acrf-mini-grid">
+                        <div class="acrf-mini">
+                          <strong>1. Inspect the CRF Design</strong>
+                          <p class="acrf-caption">
+                            Identify fixed selections, displayed text, allowed multiple selections,
+                            and the underlying raw database value.
                           </p>
                         </div>
-                        <div class="ct-chip-grid" aria-label="Controlled terminology codelist examples">
-                          <span class="ct-chip"><strong>Sex</strong>M / F / U</span>
-                          <span class="ct-chip"><strong>Race</strong>WHITE / ASIAN / BLACK OR AFRICAN AMERICAN</span>
-                          <span class="ct-chip"><strong>Severity</strong>MILD / MODERATE / SEVERE</span>
-                          <span class="ct-chip"><strong>Yes-No</strong>Y / N</span>
-                          <span class="ct-chip"><strong>Route</strong>ORAL / INTRAVENOUS / TOPICAL</span>
-                          <span class="ct-chip"><strong>Frequency</strong>QD / BID / TID / PRN</span>
+                        <div class="acrf-mini">
+                          <strong>2. Check Spec and CT Version</strong>
+                          <p class="acrf-caption">
+                            Find the target variable and codelist name in the SDTM specification,
+                            then confirm the exact submission value in the approved CDISC CT release.
+                          </p>
+                        </div>
+                        <div class="acrf-mini">
+                          <strong>3. Document Explicit Logic</strong>
+                          <p class="acrf-caption">
+                            Write the mapping rule directly in the specification so production,
+                            quality control, Define.xml, and validation checks use the same logic.
+                          </p>
                         </div>
                       </div>
 
-                      <div class="table-scroll ct-table">
-                        <table class="crf-table" aria-label="Controlled terminology review examples">
-                          <thead>
-                            <tr>
-                              <th>CRF Option</th>
-                              <th>Submit As</th>
-                              <th>Programmer Check</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Male / Female / Unknown</td>
-                              <td><span class="log-chip">SEX</span> codelist</td>
-                              <td>Do not invent MALE or FEMALE if the study standard requires M or F.</td>
-                            </tr>
-                            <tr>
-                              <td>Mild / Moderate / Severe</td>
-                              <td><span class="log-chip">AESEV</span></td>
-                              <td>Keep the same severity values across aCRF, SDTM spec, Define.xml, and AE tables.</td>
-                            </tr>
-                            <tr>
-                              <td>Yes / No checkbox</td>
-                              <td><span class="log-chip">NY</span> codelist variables</td>
-                              <td>Confirm whether the submitted value is Y/N, not Yes/No, True/False, or 1/0.</td>
-                            </tr>
-                            <tr>
-                              <td>Race: multiple selections allowed</td>
-                              <td><span class="log-chip">RACE</span> plus SUPPDM when needed</td>
-                              <td>Follow the study rule for MULTIPLE and supplemental race values. Do not collapse choices silently.</td>
-                            </tr>
-                            <tr>
-                              <td>Route or frequency options</td>
-                              <td><span class="log-chip">--ROUTE</span>, <span class="log-chip">--DOSFRQ</span></td>
-                              <td>Normalize collected wording only according to the approved study terminology and mapping spec.</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-
-                      <div class="ct-focus">
-                        <strong>Fast audit path:</strong> if validation reports a terminology issue,
-                        cross-check the aCRF annotation, SDTM specification, Define.xml codelist,
-                        and the study terminology version before changing code.
-                      </div>
-
-                      <p class="document-notes">
-                        References:
-                        <a href="https://www.cdisc.org/standards/terminology/controlled-terminology" target="_blank" rel="noreferrer">CDISC Controlled Terminology</a>;
-                        <a href="https://evs.nci.nih.gov/ftp1/CDISC/" target="_blank" rel="noreferrer">NCI EVS CDISC Terminology Files</a>;
-                        <a href="https://www.cdisc.org/standards/data-exchange/define-xml" target="_blank" rel="noreferrer">CDISC Define-XML</a>.
-                      </p>
                     </div>
 
                     <div class="acrf-card">
@@ -7171,7 +7719,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                         Not every source record is entered by site staff on the EDC eCRF. Patient
                         diaries, ePRO/eCOA instruments, central labs, ECG vendors, PK labs,
                         imaging vendors, IRT/randomization systems, and wearable devices may all
-                        provide source data through external transfers. New programmers should not
+                        provide source data through external transfers. Programmers should not
                         expect every SDTM variable to be visible on an eCRF page.
                       </p>
                       <div class="acrf-flow five" aria-label="External data to SDTM flow">
@@ -7351,6 +7899,12 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </li>
                   </ul>
 
+              <div class="embedded-quiz-card">
+                <h4>Practice Quiz: AE CRF Mapping</h4>
+                <p>Use the quiz below to check whether the CRF option, controlled terminology lookup, and submitted AE dataset logic are aligned.</p>
+                <iframe class="quiz-frame" src="ae_crf_mapping_quiz_page1.html" title="AE CRF Mapping Quiz"></iframe>
+              </div>
+
                   <div class="workshop document-workshop">
                     <h4>Practice Workshop: Vital Signs CRF to SDTM VS</h4>
                     <p>
@@ -7401,7 +7955,10 @@ if pre_dose then ablfl = "Y";</code></pre>
                     </div>
                   </div>
                 </article>
+
               </details>
+
+
 
               <details class="training-item">
                 <summary>
@@ -7416,7 +7973,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                     SDTM is where raw clinical chaos becomes standardized regulatory currency.
                     Raw eCRF exports, vendor files, and data management transfers are reshaped into
                     tabulation datasets that reviewers can navigate consistently across studies.
-                    New programmers should first learn the major domain families before trying to
+                    Programmers should first learn the major domain families before trying to
                     memorize individual variables.
                   </p>
                   <div class="sdtm-mapping-intro" aria-label="Introduction to SDTM mapping and structure">
@@ -7460,7 +8017,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                         problems can jeopardize the usefulness of the submission package.
                       </p>
                       <div class="sdtm-training-note">
-                        New programmer takeaway: SDTM is not just a file format. It is the regulated
+                        Programming takeaway: SDTM is not just a file format. It is the regulated
                         tabulation layer that lets another person understand what happened to each
                         subject without reading every raw CRF page or vendor spreadsheet.
                       </div>
@@ -8012,7 +8569,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                           </tbody>
                         </table>
                       </div>
-                      <h6>TDM Vocabulary New Programmers Must Learn</h6>
+                      <h6>TDM Vocabulary for Programmers</h6>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="Trial Design Model vocabulary">
                           <thead>
@@ -8166,7 +8723,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                               <th>Step</th>
                               <th>What to Extract from the Protocol</th>
                               <th>Where It Usually Goes</th>
-                              <th>New Programmer Warning</th>
+                              <th>Programming Warning</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -8342,7 +8899,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                       </div>
                       <p class="document-notes">
                         Mentor warning: Trial Design domains are metadata about the planned trial,
-                        not subject observations. If a new programmer tries to map TA, TE, TV, TI,
+                        not subject observations. If a programmer tries to map TA, TE, TV, TI,
                         or TS from a CRF field, pause and check the protocol and SDTM specification.
                       </p>
                     </div>
@@ -8484,7 +9041,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                         RFPENDTC is the subject reference end date/time. In plain language, it is
                         used to represent the sponsor-defined end of the subject's participation
                         reference period, when that concept is defined by the protocol and SDTM
-                        specification. New programmers often confuse RFPENDTC with RFENDTC or
+                        specification. Programmers often confuse RFPENDTC with RFENDTC or
                         RFXENDTC, but these dates answer different questions and should not be
                         substituted for one another without specification support.
                       </p>
@@ -8904,7 +9461,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                         </ol>
                       </div>
 
-                      <h5>DM QC Checks New Programmers Should Run</h5>
+                      <h5>DM QC Checks Programmers Should Run</h5>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="DM QC checks">
                           <thead>
@@ -8955,7 +9512,7 @@ if pre_dose then ablfl = "Y";</code></pre>
                         be obvious from DM alone.
                       </p>
                       <p>
-                        A new programmer should think of SE as the subject-level bridge between the
+                        A clinical programmer should think of SE as the subject-level bridge between the
                         planned Trial Design Model and the subject's real timeline. Trial Elements
                         (TE) defines the planned building blocks, Trial Arms (TA) describes the
                         planned sequence of elements for each arm, and SE records the subject's
@@ -9478,7 +10035,7 @@ run;</code></pre>
                         <p>
                           A subject signs consent on 2026-01-10, starts treatment on 2026-02-03,
                           stops treatment early on 2026-04-10 due to an adverse event, and completes
-                          the final safety follow-up on 2026-05-10. A new programmer may be tempted
+                          the final safety follow-up on 2026-05-10. A programmer may be tempted
                           to create only one record from first dose to final follow-up. That hides
                           the difference between treatment exposure and post-treatment follow-up.
                         </p>
@@ -9491,7 +10048,7 @@ run;</code></pre>
                         </ol>
                       </div>
 
-                      <h5>SE QC Checks New Programmers Should Run</h5>
+                      <h5>SE QC Checks Programmers Should Run</h5>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="SE QC checks">
                           <thead>
@@ -9549,7 +10106,7 @@ run;</code></pre>
                       <p>
                         The practical difference is simple: TV says what visits were planned in the
                         study design; SV says what happened, or was expected to happen, for a
-                        specific subject. A new programmer should not build SV by copying TV for
+                        specific subject. A programmer should not build SV by copying TV for
                         every subject, and should not build SV only from forms that were completed.
                         The SDTM specification must define which planned visits should appear in SV,
                         how missed visits are represented, how unscheduled visits are named, and
@@ -10020,7 +10577,7 @@ run;</code></pre>
                         </table>
                       </div>
 
-                      <h5>SV QC Checks New Programmers Should Run</h5>
+                      <h5>SV QC Checks Programmers Should Run</h5>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="SV QC checks">
                           <thead>
@@ -10526,7 +11083,7 @@ run;</code></pre>
 
                       <h5>Advanced Mapping Scenario 4: Missed Doses and Temporary Interruptions</h5>
                       <p>
-                        One of the most frequent errors committed by junior programmers is
+                        One of the most frequent errors committed by programmers is
                         generating EX rows for periods when a patient stopped taking medication.
                         Consider a subject on a daily IV infusion who misses the Week 4 infusion due
                         to a family emergency.
@@ -10895,7 +11452,7 @@ run;</code></pre>
                         One of the hardest safety programming concepts is not simply how to build
                         AE. It is how treatment-emergent logic flows across the full study
                         lifecycle: Protocol, Statistical Analysis Plan (SAP), SDTM, supplemental
-                        qualifiers, and ADaM. A new programmer may see both SUPPAE.AETRTEM and
+                        qualifiers, and ADaM. A programmer may see both SUPPAE.AETRTEM and
                         ADAE.TRTEMFL and assume they are interchangeable. They are not.
                       </p>
                       <p>
@@ -12200,7 +12757,7 @@ run;</code></pre>
                       <p>
                         Laboratory vendors rarely send perfectly standardized data. One transfer may
                         use old test names, local abbreviations, qualitative values, or results with
-                        inequality symbols. New programmers should learn to separate three tasks:
+                        inequality symbols. Programmers should learn to separate three tasks:
                         preserve the source, normalize the test identity, and only create numeric
                         standardized results when the result is truly numeric.
                       </p>
@@ -13774,7 +14331,7 @@ run;</code></pre>
                     Tables, Listings, and Figures (TLF, also commonly written as TFL) are the final
                     statistical reporting outputs that turn analysis datasets into clinical
                     interpretation. They support the Clinical Study Report (CSR), regulatory review
-                    packages, internal decision making, and sometimes manuscripts. A new programmer
+                    packages, internal decision making, and sometimes manuscripts. A programmer
                     should think of TLFs as the visible end of the whole programming chain:
                     Protocol and Statistical Analysis Plan (SAP) define the question, Study Data
                     Tabulation Model (SDTM) records what happened, Analysis Data Model (ADaM) prepares
@@ -16780,6 +17337,508 @@ run;</code></pre>
             <details class="bio-topic">
               <summary>
                 <span class="summary-meta">Module 4</span>
+                <span class="summary-title">SAS PROC MI Procedure</span>
+                <span class="summary-note">MMRM primary analysis, Missing At Random assumptions, observed-data modeling, and practical sensitivity checks.</span>
+              </summary>
+              <article class="lesson">
+                <h4>SAS PROC MI Procedure</h4>
+                <div class="callout-card mi-intro-block">
+                                    <p>
+                    In many clinical studies, the analysis dataset is not perfectly complete. A subject may miss a scheduled visit, discontinue treatment, start rescue medication, or leave the study before the primary endpoint is observed. When the endpoint value is missing, the programmer and statistician need a pre-specified way to create an analysis-ready dataset without pretending that the missing value is known with certainty.
+                  </p>
+                  <p>
+                    <code>PROC MI</code> is one SAS procedure used for this job. Rather than filling in one fixed replacement value, it creates multiple plausible versions of the missing values and carries the uncertainty forward. Those imputed datasets can then be analyzed separately and combined later, so the final inference reflects both the observed data and the uncertainty introduced by missing data.
+                  </p>
+                  <p>Multiple imputation inference involves three distinct phases.</p>
+                  <ol>
+                    <li>The missing data are filled in <em>m</em> times to generate <em>m</em> complete data sets.</li>
+                    <li>The <em>m</em> complete data sets are analyzed using standard statistical analyses.</li>
+                    <li>The results from the <em>m</em> complete data sets are combined to produce inferential results.</li>
+                  </ol>
+                  <p>
+                    The MI procedure creates multiply imputed data sets for incomplete multivariate data. It uses methods that incorporate appropriate variability across the <em>m</em> imputations. The method of choice depends on the patterns of missingness.
+                  </p>
+                  <p>
+                    A data set with variables <em>Y</em><sub>1</sub>, <em>Y</em><sub>2</sub>, ..., <em>Y</em><sub>p</sub> (in that order) is said to have a <strong>monotone missing pattern</strong> when the event that a variable <em>Y</em><sub>j</sub> is missing for a particular individual implies that all subsequent variables <em>Y</em><sub>k</sub>, <em>k &gt; j</em>, are missing for that individual.
+                  </p>
+                  <p>
+                    For data sets with monotone missing patterns, either a parametric method that assumes multivariate normality or a nonparametric method is appropriate to impute missing values for a continuous variable. Parametric methods available include the regression method (Rubin 1987, pp. 166-167) and the predictive mean matching method (Heitjan and Little 1991; Schenker and Taylor 1996). The nonparametric method is the propensity score method (Rubin 1987, pp. 124, 158).
+                  </p>
+                  <p>
+                    To impute missing values for a classification variable in data sets with monotone missing patterns, you can use the logistic regression method when the classification variable has a binary or ordinal response, and the discriminant function method when the classification variable has a binary or nominal response.
+                  </p>
+                  <p>
+                    For data sets with arbitrary missing patterns, a Markov chain Monte Carlo (MCMC) method (Schafer 1997) that assumes multivariate normality is used to impute all missing values or just enough missing values for continuous variables to make the imputed data sets have monotone missing patterns. When an imputed data set has a monotone missing pattern, methods for data sets with monotone missing patterns can then be used to impute remaining missing values.
+                  </p>
+                  <p>
+                    Once the <em>m</em> complete data sets are analyzed using standard SAS procedures, the MIANALYZE procedure can be used to generate valid statistical inferences about these parameters by combining results from the <em>m</em> analyses.
+                  </p>
+                  <p>
+                    Often, as few as three to five imputations are adequate in multiple imputation (Rubin 1996, p. 480). The relative efficiency of the small <em>m</em> imputation estimator is high for cases with little missing information (Rubin 1987, p. 114). (Also see the section Multiple Imputation Efficiency.)
+                  </p>
+                  <p>
+                    Multiple imputation inference assumes that the model (variables) you used to analyze the multiply imputed data (the analyst's model) is the same as the model used to impute missing values in multiple imputation (the imputer's model). But in practice, the two models might not be the same. The consequences for different scenarios (Schafer 1997, pp. 139-143) are discussed in the section Imputer's Model Versus Analyst's Model.
+                  </p>
+                  <p>
+                    When an MCMC method is used to impute missing values, the trace (time series) and autocorrelation function plots for parameters such as variable means and covariances can be displayed to check for convergence of the MCMC method. See the section Checking Convergence in MCMC for a detailed description of these plots. If the ODS graphics on statement is specified, these statistical graphics are created via the Output Delivery System (ODS). Otherwise, the traditional graphics are created.
+                  </p>
+                </div>
+
+<div class="callout-card mi-implementation-example">
+  <h5>MI Implementation Example: ADEFF to ADEFFMI</h5>
+  <p>After the missing-data rule is defined, the practical workflow is organized as three linked steps. The imputation step creates a stacked intermediate analysis dataset, the analysis step runs the planned model within each imputation, and the combining step applies Rubin's rule.</p>
+  <div class="mi-step-strip">
+    <div class="mi-step-card"><strong>Step 1. Imputation</strong><span>Use the imputation model to create one large dataset containing multiple imputed copies of the analysis records. <code>PROC MI</code></span></div>
+    <div class="mi-step-card"><strong>Step 2. Analysis</strong><span>Use the analysis model to analyze each imputed data set separately. For an MMRM setting, this is commonly done with <code>PROC MIXED</code>.</span></div>
+    <div class="mi-step-card"><strong>Step 3. Combining Results</strong><span>Use Rubin's rule to combine the imputation-specific estimates into one inferential result. <code>PROC MIANALYZE</code></span></div>
+  </div>
+  <div class="mi-flow-grid">
+    <div class="mi-flow-card sas-data-card">
+      <span class="eyebrow">Original ADEFF</span>
+      <div class="sas-window" aria-label="Original ADEFF SAS data set preview">
+        <div class="sas-title-bar"><span>WORK.ADEFF</span><span>888 obs</span></div>
+        <table class="sas-mini-table">
+          <thead><tr><th>USUBJID</th><th>AVISITN</th><th>CHG</th><th>DTYPE</th></tr></thead>
+          <tbody>
+            <tr><td>002</td><td>4</td><td>-2.2</td><td></td></tr>
+            <tr><td>002</td><td>16</td><td class="missing-cell">.</td><td></td></tr>
+            <tr><td>002</td><td>28</td><td>-4.6</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <span class="sas-footnote">Original analysis records</span>
+    </div>
+    <div class="mi-flow-arrow">-&gt;</div>
+    <div class="mi-flow-card sas-data-card">
+      <span class="eyebrow">100 imputed copies</span>
+      <div class="sas-copy-stack" aria-label="Stack of 100 imputed SAS data set copies">
+        <div class="sas-window copy-back-6"><div class="sas-title-bar"><span>ADEFF_IMP094</span><span>888 obs</span></div></div>
+        <div class="sas-window copy-back-5"><div class="sas-title-bar"><span>ADEFF_IMP095</span><span>888 obs</span></div></div>
+        <div class="sas-window copy-back-4"><div class="sas-title-bar"><span>ADEFF_IMP096</span><span>888 obs</span></div></div>
+        <div class="sas-window copy-back-3"><div class="sas-title-bar"><span>ADEFF_IMP097</span><span>888 obs</span></div></div>
+        <div class="sas-window copy-back-2"><div class="sas-title-bar"><span>ADEFF_IMP098</span><span>888 obs</span></div></div>
+        <div class="sas-window copy-back-1"><div class="sas-title-bar"><span>ADEFF_IMP099</span><span>888 obs</span></div></div>
+        <div class="sas-window copy-front">
+          <div class="sas-title-bar"><span>ADEFF_IMP100</span><span>888 obs</span></div>
+          <table class="sas-mini-table">
+            <thead><tr><th>USUBJID</th><th>AVISITN</th><th>CHG</th><th>IMPNUM</th></tr></thead>
+            <tbody>
+              <tr><td>002</td><td>4</td><td>-2.2</td><td>100</td></tr>
+              <tr><td>002</td><td>16</td><td class="missing-cell">5.15</td><td>100</td></tr>
+              <tr><td>002</td><td>28</td><td>-4.6</td><td>100</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <span class="sas-footnote">888 x 100 = 88,800 records</span>
+    </div>
+    <div class="mi-flow-arrow">-&gt;</div>
+    <div class="mi-flow-card mi-output-card">
+      <span class="eyebrow">Intermediate ADaM</span>
+      <div class="mi-output-body">
+        <strong>Store Step 1 output as <code>ADEFFMI</code></strong>
+        <div class="adam-data-window" aria-label="ADEFFMI intermediate ADaM data preview">
+          <div class="sas-title-bar"><span>ADEFFMI</span><span>88,800 obs</span></div>
+          <table class="adam-data-table">
+            <thead><tr><th>USUBJID</th><th>AVISITN</th><th>CHG</th><th>DTYPE</th><th>IMPNUM</th></tr></thead>
+            <tbody>
+              <tr><td>002</td><td>4</td><td>-2.2</td><td></td><td class="mi-impnum">1</td></tr>
+              <tr><td>002</td><td>16</td><td class="mi-value">5.2</td><td class="mi-value">MI</td><td class="mi-impnum">1</td></tr>
+              <tr><td>002</td><td>16</td><td class="mi-value">-4.9</td><td class="mi-value">MI</td><td class="mi-impnum">2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="sas-footnote">Stacked imputation-ready data set</span>
+      </div>
+    </div>
+  </div>
+  <p class="mi-note">The output from Step 1 is often stored as an intermediate Analysis Data Model dataset such as <code>ADEFFMI</code>, rather than overwriting the original analysis dataset.</p>
+  <h5>Intermediate ADaM Data Set <code>ADEFFMI</code>: Subject 002 Example</h5>
+  <div class="xpt-scroll">
+    <table class="xpt-table mi-adeffmi-table">
+      <thead><tr><th>TRTP</th><th>USUBJID</th><th>PARAMCD</th><th>STRATA1</th><th>STRATA2</th><th>AVISITN</th><th>CHG</th><th>DTYPE</th><th>IMPNUM</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>4</td><td>-2.2</td><td></td><td class="mi-impnum">1</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>16</td><td><span class="mi-value">5.2</span></td><td><span class="mi-value">MI</span></td><td class="mi-impnum">1</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>28</td><td>-4.6</td><td></td><td class="mi-impnum">1</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>4</td><td>-2.2</td><td></td><td class="mi-impnum">2</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>16</td><td><span class="mi-value">-4.9</span></td><td><span class="mi-value">MI</span></td><td class="mi-impnum">2</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>28</td><td>-4.6</td><td></td><td class="mi-impnum">2</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>4</td><td>-2.2</td><td></td><td class="mi-impnum">3</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>16</td><td><span class="mi-value">-4.97</span></td><td><span class="mi-value">MI</span></td><td class="mi-impnum">3</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>28</td><td>-4.6</td><td></td><td class="mi-impnum">3</td></tr>
+        <tr class="mi-ellipsis"><td colspan="9">...</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>4</td><td>-2.2</td><td></td><td class="mi-impnum">100</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>16</td><td><span class="mi-value">5.15</span></td><td><span class="mi-value">MI</span></td><td class="mi-impnum">100</td></tr>
+        <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>28</td><td>-4.6</td><td></td><td class="mi-impnum">100</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="mi-note"><code>IMPNUM</code> is the imputation number created from <code>PROC MI</code>; in this training example it ranges from 1 to 100. Rows with <code>DTYPE = "MI"</code> show imputed values, while observed rows are repeated within each imputation copy so the analysis model can run on a complete dataset.</p>
+</div>
+
+
+                <p>
+                  Many confirmatory trials use a mixed model for repeated measures (MMRM) as the
+                  primary analysis for continuous longitudinal endpoints. The model usually relies on
+                  a Missing At Random (MAR) assumption. That phrase sounds simple, but it is often
+                  misunderstood. MAR does not mean the missing data are harmless, evenly distributed,
+                  or literally random. It means that after conditioning on the observed information in
+                  the model, the chance that an outcome is missing is assumed not to depend on the
+                  unobserved value itself.
+                </p>
+                <p>
+                  Sensitivity analysis asks a practical question: if the primary MMRM is reasonable,
+                  do the study conclusions remain stable under other pre-specified, scientifically
+                  defensible MAR analyses? It is not a place to search for a better p-value after the
+                  result is known. It is a planned stress test of the assumptions behind the primary
+                  analysis.
+                </p>
+
+                <h4>1. The Primary Analysis Setting</h4>
+                <p>
+                  In this training example, the primary analysis is an MMRM for change from baseline
+                  in HbA1c through Week 24. The study compares YIAN GROUP DRUG 50 mg with placebo in
+                  the Full Analysis Set (FAS). The primary visit is Week 24, but the model uses all
+                  observed post-baseline visits, not only Week 24.
+                </p>
+                <div class="table-scroll">
+                  <table class="crf-table" aria-label="MMRM primary analysis setting">
+                    <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th>Training Example</th>
+                        <th>Statistician Focus</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Endpoint</td>
+                        <td>Change from baseline in HbA1c at Week 24.</td>
+                        <td>The endpoint must be defined before the model is chosen.</td>
+                      </tr>
+                      <tr>
+                        <td>Primary model</td>
+                        <td>MMRM using observed post-baseline HbA1c values.</td>
+                        <td>No Last Observation Carried Forward (LOCF) is inserted into the primary dataset.</td>
+                      </tr>
+                      <tr>
+                        <td>MAR assumption</td>
+                        <td>Missingness is explained by observed treatment, visit, baseline, and prior outcomes included in the analysis.</td>
+                        <td>MAR is conditional on what is observed and modeled; it is not automatically true.</td>
+                      </tr>
+                      <tr>
+                        <td>Primary contrast</td>
+                        <td>Least-squares mean difference at Week 24: YIAN GROUP DRUG 50 mg minus placebo.</td>
+                        <td>The estimand and SAP determine which treatment effect this contrast represents.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h4>2. What MAR Means in Plain Statistical Language</h4>
+                <p>
+                  Suppose a participant has a Week 12 HbA1c value but misses the Week 24 visit. Under
+                  MAR, the model assumes that the missing Week 24 outcome can be described using the
+                  participant's observed information, such as baseline HbA1c, treatment group, earlier
+                  HbA1c response, visit history, site, region, or other pre-specified predictors. The
+                  model does not assume the missing Week 24 value is identical to Week 12, and it does
+                  not fill the value with a guessed number in the analysis dataset.
+                </p>
+                <p>
+                  A crucial boundary is intercurrent events. If a participant starts rescue medication,
+                  discontinues randomized treatment, or switches therapy, the estimand strategy must
+                  decide whether post-event data are included, excluded, modeled under a hypothetical
+                  scenario, or treated as part of a composite endpoint. Only after that scientific
+                  decision is made should the statistician discuss missing data and MAR.
+                </p>
+
+                <h4>3. Example Analysis Dataset View</h4>
+                <p>
+                  The small ADaM-style dataset below shows how MMRM uses observed repeated measures.
+                  Subject YIAN-301-002 has a missing Week 24 value, but their baseline and Week 12
+                  information still help the model estimate the Week 24 treatment contrast under MAR.
+                </p>
+                <div class="xpt-dataset">
+                  <div class="xpt-dataset-name">adhba1c.xpt</div>
+                  <div class="table-scroll">
+                    <table class="xpt-table" aria-label="ADHBA1C example for MMRM under MAR">
+                      <thead>
+                        <tr>
+                          <th>USUBJID</th>
+                          <th>TRT01P</th>
+                          <th>AVISIT</th>
+                          <th>AVISITN</th>
+                          <th>BASE</th>
+                          <th>AVAL</th>
+                          <th>CHG</th>
+                          <th>MISREAS</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>YIAN-301-001</td>
+                          <td>Placebo</td>
+                          <td>Week 12</td>
+                          <td>12</td>
+                          <td>8.2</td>
+                          <td>8.0</td>
+                          <td>-0.2</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>YIAN-301-001</td>
+                          <td>Placebo</td>
+                          <td>Week 24</td>
+                          <td>24</td>
+                          <td>8.2</td>
+                          <td>7.9</td>
+                          <td>-0.3</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>YIAN-301-002</td>
+                          <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Week 12</td>
+                          <td>12</td>
+                          <td>8.4</td>
+                          <td>7.8</td>
+                          <td>-0.6</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>YIAN-301-002</td>
+                          <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Week 24</td>
+                          <td>24</td>
+                          <td>8.4</td>
+                          <td></td>
+                          <td></td>
+                          <td>Missed visit</td>
+                        </tr>
+                        <tr>
+                          <td>YIAN-301-003</td>
+                          <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Week 12</td>
+                          <td>12</td>
+                          <td>8.0</td>
+                          <td>7.1</td>
+                          <td>-0.9</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>YIAN-301-003</td>
+                          <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Week 24</td>
+                          <td>24</td>
+                          <td>8.0</td>
+                          <td>6.9</td>
+                          <td>-1.1</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p>
+                    Teaching point: the missing Week 24 result is not replaced by Week 12. The MMRM
+                    uses the available observed data and the model structure specified in the SAP.
+                  </p>
+                </div>
+
+                <h4>4. Primary MMRM Specification</h4>
+                <div class="table-scroll">
+                  <table class="crf-table" aria-label="Primary MMRM specification">
+                    <thead>
+                      <tr>
+                        <th>Specification Item</th>
+                        <th>Example SAP Language</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Analysis population</td>
+                        <td>Full Analysis Set.</td>
+                      </tr>
+                      <tr>
+                        <td>Response variable</td>
+                        <td>Change from baseline in HbA1c at scheduled post-baseline visits.</td>
+                      </tr>
+                      <tr>
+                        <td>Fixed effects</td>
+                        <td>Treatment, visit, treatment-by-visit interaction, baseline value, baseline-by-visit interaction, and pre-specified stratification factors such as site or region.</td>
+                      </tr>
+                      <tr>
+                        <td>Repeated subject</td>
+                        <td>Participant-level repeated measures identified by USUBJID.</td>
+                      </tr>
+                      <tr>
+                        <td>Covariance structure</td>
+                        <td>Unstructured covariance as the primary structure; fallback structures must be pre-specified if convergence fails.</td>
+                      </tr>
+                      <tr>
+                        <td>Inference</td>
+                        <td>Restricted maximum likelihood estimation with Kenward-Roger degrees of freedom, if specified in the SAP.</td>
+                      </tr>
+                      <tr>
+                        <td>Primary contrast</td>
+                        <td>Least-squares mean treatment difference at Week 24 with confidence interval and p-value.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h4>5. SAS Template: MMRM Primary and MAR Sensitivity</h4>
+                <pre><code>/* Training template only. Final model terms must follow the approved SAP. */
+proc mixed data=adhba1c method=reml;
+  class usubjid trt01p avisitn site;
+  model chg = trt01p avisitn trt01p*avisitn base base*avisitn site
+        / ddfm=kr solution;
+  repeated avisitn / subject=usubjid type=un r;
+  lsmeans trt01p*avisitn / diff cl;
+  ods output diffs=mmrm_diffs lsmeans=mmrm_lsmeans;
+run;
+
+/* Example MAR sensitivity: same estimand, different pre-specified covariance. */
+proc mixed data=adhba1c method=reml;
+  class usubjid trt01p avisitn site;
+  model chg = trt01p avisitn trt01p*avisitn base base*avisitn site
+        / ddfm=kr solution;
+  repeated avisitn / subject=usubjid type=ar(1);
+  lsmeans trt01p*avisitn / diff cl;
+run;</code></pre>
+
+                <h4>6. Sensitivity Analyses That Still Live Under MAR</h4>
+                <p>
+                  Sensitivity analysis under MAR changes a modeling choice while keeping the same
+                  basic observed-data assumption. It should be planned before database lock and before
+                  treatment effects are known.
+                </p>
+                <div class="table-scroll">
+                  <table class="crf-table" aria-label="MAR sensitivity analysis menu">
+                    <thead>
+                      <tr>
+                        <th>Approach</th>
+                        <th>What Changes</th>
+                        <th>What It Tests</th>
+                        <th>MAR Boundary</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Alternative covariance structure</td>
+                        <td>Use Toeplitz, AR(1), or compound symmetry instead of unstructured covariance.</td>
+                        <td>Whether the Week 24 conclusion depends heavily on the covariance model.</td>
+                        <td>Still MAR if the missingness assumption remains conditional on observed data.</td>
+                      </tr>
+                      <tr>
+                        <td>Alternative degrees of freedom method</td>
+                        <td>Compare Kenward-Roger with Satterthwaite, if allowed by the SAP.</td>
+                        <td>Whether inference changes because of small-sample variance estimation.</td>
+                        <td>Still MAR.</td>
+                      </tr>
+                      <tr>
+                        <td>MAR multiple imputation</td>
+                        <td>Impute missing outcomes using treatment, baseline, previous outcomes, site, and visit history.</td>
+                        <td>Whether an imputation implementation of MAR supports the MMRM conclusion.</td>
+                        <td>Still MAR when imputation uses only observed-data predictors.</td>
+                      </tr>
+                      <tr>
+                        <td>Auxiliary predictors</td>
+                        <td>Add observed variables related to missingness, such as baseline severity or missed-visit reason.</td>
+                        <td>Whether a richer observed history changes the treatment contrast.</td>
+                        <td>Still MAR if the model conditions on observed predictors.</td>
+                      </tr>
+                      <tr>
+                        <td>Tipping-point or MNAR analysis</td>
+                        <td>Shift imputed values or apply assumptions about unobserved outcomes.</td>
+                        <td>How extreme departures from MAR must be to overturn the conclusion.</td>
+                        <td>Not MAR; label separately as an MNAR or robustness analysis.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <h4>7. SAS Template: MAR Multiple Imputation Sensitivity</h4>
+                <pre><code>/* Wide-form example: one row per subject with BASE, WK12, and WK24. */
+proc mi data=hba1c_wide out=mi_hba1c nimpute=100 seed=20260708;
+  class trt01p site;
+  fcs reg(wk24 = trt01p base wk12 site);
+  var trt01p site base wk12 wk24;
+run;
+
+proc mixed data=mi_hba1c method=reml;
+  by _imputation_;
+  class trt01p site;
+  model wk24 = trt01p base site / solution;
+  lsmeans trt01p / diff cl;
+  ods output diffs=mi_diffs;
+run;
+
+proc mianalyze data=mi_diffs;
+  modeleffects estimate;
+  stderr stderr;
+run;</code></pre>
+
+                <h4>8. What Must Be Written Before Lock</h4>
+                <div class="table-scroll">
+                  <table class="crf-table" aria-label="MAR sensitivity documentation checklist">
+                    <thead>
+                      <tr>
+                        <th>Document</th>
+                        <th>What Must Be Clear</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Protocol / SAP</td>
+                        <td>Endpoint, estimand, intercurrent-event strategy, primary visit, and primary population.</td>
+                      </tr>
+                      <tr>
+                        <td>SAP model section</td>
+                        <td>Exact MMRM fixed effects, covariance structure, degrees of freedom method, and primary contrast.</td>
+                      </tr>
+                      <tr>
+                        <td>Sensitivity analysis section</td>
+                        <td>Which MAR sensitivity analyses will be run and what decision they are intended to support.</td>
+                      </tr>
+                      <tr>
+                        <td>Programming specification</td>
+                        <td>ADaM variables, visit windows, baseline definition, missing result handling, and output shells.</td>
+                      </tr>
+                      <tr>
+                        <td>CSR interpretation</td>
+                        <td>Whether sensitivity analyses support, qualify, or challenge the primary MMRM conclusion.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="practice-block">
+                  <h4>Practice Quiz: Reading MAR Sensitivity Scenarios</h4>
+                  <ol>
+                    <li>A subject has Baseline and Week 12 HbA1c but misses Week 24 due to a scheduling issue. Should Week 12 be discarded from the MMRM?</li>
+                    <li>A subject starts rescue medication at Week 12 and has a Week 24 HbA1c value. Can MAR alone decide whether Week 24 is included?</li>
+                    <li>The unstructured covariance MMRM fails to converge. Can the team choose the covariance structure that gives the smallest p-value?</li>
+                    <li>A subject has no post-baseline HbA1c values. What should the statistician check before assuming the subject contributes to the MMRM response model?</li>
+                  </ol>
+                  <details class="answer-key">
+                    <summary>Answer Key</summary>
+                    <div class="answer-key-body">
+                      <ol>
+                        <li>No. MMRM uses all observed post-baseline repeated measures that meet the analysis rules. Week 12 remains informative under MAR.</li>
+                        <li>No. Rescue medication is an intercurrent event. The estimand strategy must decide how post-rescue data are handled before missing-data assumptions are discussed.</li>
+                        <li>No. Covariance fallback rules must be pre-specified in the SAP or analysis plan. Choosing after seeing results creates bias.</li>
+                        <li>Check the SAP, software behavior, analysis population rules, and whether the model requires at least one post-baseline response. Baseline-only subjects may be in the population but not contribute a response observation to the repeated-measures model.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+              </article>
+            </details>
+
+            <details class="bio-topic">
+              <summary>
+                <span class="summary-meta">Module 5</span>
                 <span class="summary-title">Estimands and Intercurrent Events</span>
                 <span class="summary-note">How ICH E9(R1) connects the clinical question, endpoint, treatment effect, intercurrent events, analysis method, and sensitivity analysis.</span>
               </summary>
@@ -16812,19 +17871,19 @@ run;</code></pre>
                     <strong>Objective</strong>
                     <p>The broad clinical question: what does the study want to prove or understand?</p>
                   </div>
-                  <div class="estimand-chain-arrow" aria-hidden="true">→</div>
+                  <div class="estimand-chain-arrow" aria-hidden="true">&rarr;</div>
                   <div class="estimand-chain-card">
                     <span class="estimand-chain-kicker">Measure it</span>
                     <strong>Endpoint</strong>
                     <p>The quantifiable outcome used to answer the objective, such as change from baseline.</p>
                   </div>
-                  <div class="estimand-chain-arrow" aria-hidden="true">→</div>
+                  <div class="estimand-chain-arrow" aria-hidden="true">&rarr;</div>
                   <div class="estimand-chain-card">
                     <span class="estimand-chain-kicker">Define reality</span>
                     <strong>Estimand</strong>
                     <p>The precise treatment effect after deciding how rescue therapy, discontinuation, death, and missing data are handled.</p>
                   </div>
-                  <div class="estimand-chain-arrow" aria-hidden="true">→</div>
+                  <div class="estimand-chain-arrow" aria-hidden="true">&rarr;</div>
                   <div class="estimand-chain-card">
                     <span class="estimand-chain-kicker">Calculate it</span>
                     <strong>Estimator</strong>
@@ -17911,7 +18970,7 @@ run;</code></pre>
     </main>
 
     <footer>
-      <span>© 2026 YIAN GROUP. All rights reserved.</span>
+      <span>&copy; 2026 YIAN GROUP. All rights reserved.</span>
       <span>Biostatistics & Statistical Programming Training</span>
     </footer>
   </div>
@@ -18199,7 +19258,7 @@ run;</code></pre>
         header.className = "feedback-item-header";
 
         const identity = document.createElement("span");
-        identity.textContent = `${item.name || "Anonymous"} · ${item.topic || "General feedback"}`;
+        identity.textContent = `${item.name || "Anonymous"} &middot; ${item.topic || "General feedback"}`;
 
         const date = document.createElement("span");
         date.textContent = item.createdAt
@@ -18291,3 +19350,15 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
