@@ -67,6 +67,10 @@
       margin: 0 auto;
     }
 
+    header .logo {
+      visibility: hidden;
+      pointer-events: none;
+    }
     header {
       min-height: 116px;
       display: flex;
@@ -721,10 +725,180 @@
     .flow-step strong {
       color: #3f3432;
     }
+    details.flow-step {
+      padding: 0;
+      overflow: visible;
+    }
+
+    details.flow-step summary {
+      display: block;
+      padding: 20px 24px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    details.flow-step summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.flow-step summary::after {
+      content: "Click for example";
+      display: block;
+      margin-top: 10px;
+      color: #9a705f;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    details.flow-step[open] summary::after {
+      content: "Example shown";
+    }
+
+    .pipeline-example-panel {
+      padding: 0 24px 22px;
+    }
+
+    .pipeline-example-panel .table-scroll {
+      margin: 8px 0 10px;
+    }
+
+    .pipeline-example-note {
+      margin: 8px 0 0;
+      color: #6f6259;
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
     .lesson-spacious-flow {
       --flow-gap: 28px;
       margin: 28px 0 38px;
+    }
+    .data-screenshot {
+      margin: 10px 0 10px;
+      overflow: hidden;
+      border: 1px solid #b8c8d6;
+      border-radius: 5px;
+      background: #ffffff;
+      box-shadow: 0 12px 24px rgba(45, 63, 80, 0.14);
+      font-family: "Courier New", Courier, monospace;
+      color: #0d314d;
+    }
+
+    .data-screenshot-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 7px 10px;
+      background: linear-gradient(#eaf3f8, #d7e7ef);
+      border-bottom: 1px solid #b8c8d6;
+      color: #163d5a;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .data-screenshot table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      line-height: 1.28;
+    }
+
+    .data-screenshot th {
+      padding: 5px 7px;
+      background: #2f5f7d;
+      color: #ffffff;
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .data-screenshot td {
+      padding: 5px 7px;
+      border-right: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+      background: #dcece3;
+      white-space: nowrap;
+    }
+
+    .data-screenshot tr:nth-child(even) td {
+      background: #cfe1d8;
+    }
+
+
+    .tfl-report-screenshot {
+      margin: 10px 0 10px;
+      padding: 18px 22px 20px;
+      border: 1px solid #d9d9d9;
+      background: #ffffff;
+      box-shadow: 0 12px 24px rgba(56, 56, 56, 0.12);
+      color: #111111;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      line-height: 1.22;
+    }
+
+    .tfl-report-title {
+      margin: 0 0 14px;
+      text-align: center;
+      white-space: pre-line;
+    }
+
+    .tfl-report-table {
+      width: min(980px, 96%);
+      margin: 0 auto;
+      border-collapse: collapse;
+      border-top: 2px solid #111111;
+      border-bottom: 2px solid #111111;
+      table-layout: fixed;
+    }
+
+    .tfl-report-table th,
+    .tfl-report-table td {
+      padding: 4px 10px;
+      font-weight: 400;
+      text-align: center;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    .tfl-report-table th:first-child,
+    .tfl-report-table td:first-child {
+      width: 50%;
+      text-align: left;
+    }
+
+    .tfl-report-table thead tr:last-child th {
+      border-bottom: 1px solid #111111;
+    }
+
+    .tfl-report-section td {
+      padding-top: 12px;
+      text-align: left !important;
+    }
+
+    .tfl-report-indent {
+      padding-left: 26px !important;
+    }
+
+    .tfl-report-footnote {
+      width: min(980px, 96%);
+      margin: 10px auto 0;
+      font-size: 12px;
+    }
+    .rtf-output-screenshot {
+      margin: 10px 0 10px;
+      padding: 18px 22px 20px;
+      overflow-x: auto;
+      border: 1px solid #d9d9d9;
+      background: #ffffff;
+      box-shadow: 0 12px 24px rgba(56, 56, 56, 0.12);
+      color: #111111;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      line-height: 1.18;
+      white-space: pre;
     }
 
     .estimand-chain {
@@ -992,6 +1166,192 @@
     .protocol-page-preview ul {
       margin: 10px 0 0 28px;
       padding: 0;
+    }
+
+
+
+    .sap-example-set {
+      max-width: 1040px;
+      margin: 22px auto 34px;
+      padding: 18px;
+      border: 1px solid rgba(200, 157, 132, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.62);
+    }
+
+    .sap-example-set-header {
+      margin: 0 0 16px;
+      padding: 0 4px 12px;
+      border-bottom: 1px solid rgba(200, 157, 132, 0.24);
+    }
+
+    .sap-example-set-header strong {
+      display: block;
+      color: #3f3432;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .sap-example-set-header span {
+      display: block;
+      margin-top: 4px;
+      color: #75665e;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .sap-example-card {
+      margin: 0 0 18px;
+      padding: 16px 18px 18px;
+      border: 1px solid rgba(70, 88, 94, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      overflow: hidden;
+    }
+
+    .sap-example-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .sap-example-kicker {
+      display: inline-flex;
+      margin: 0 0 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(36, 69, 102, 0.08);
+      color: #244566;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sap-example-card-title {
+      margin: 0 0 8px;
+      color: #354d5a;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .sap-example-card-note {
+      margin: 0 0 14px;
+      color: #5e5550;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .sap-example-card .sap-example-disclosure {
+      margin: 12px 0 0;
+    }
+
+    .sap-example-card .sap-template-preview {
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+
+    .sap-scroll-window {
+      height: 360px;
+      margin: 12px 0 0;
+      border: 1px solid rgba(70, 88, 94, 0.18);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.78), 0 10px 24px rgba(57, 43, 35, 0.08);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .sap-scroll-window::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .sap-scroll-window::-webkit-scrollbar-track {
+      background: rgba(238, 231, 218, 0.65);
+      border-left: 1px solid rgba(70, 88, 94, 0.12);
+    }
+
+    .sap-scroll-window::-webkit-scrollbar-thumb {
+      border: 3px solid rgba(238, 231, 218, 0.65);
+      border-radius: 999px;
+      background: rgba(36, 69, 102, 0.58);
+    }
+
+    .sap-scroll-window .sap-template-preview {
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .sap-example-disclosure {
+      max-width: 940px;
+      margin: 18px auto 28px;
+      border: 1px solid rgba(200, 157, 132, 0.36);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.82);
+      box-shadow: 0 12px 28px rgba(76, 57, 50, 0.08);
+      overflow: hidden;
+    }
+
+    .sap-example-disclosure > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px;
+      cursor: pointer;
+      list-style: none;
+      color: #3f3432;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .sap-example-disclosure > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .sap-example-disclosure > summary span {
+      display: block;
+    }
+
+    .sap-example-disclosure > summary em {
+      display: block;
+      margin-top: 4px;
+      color: #80685c;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .sap-example-disclosure > summary::after {
+      flex: 0 0 auto;
+      content: "Open";
+      padding: 4px 11px;
+      border: 1px solid rgba(31, 65, 109, 0.25);
+      border-radius: 999px;
+      background: #fff;
+      color: #1f416d;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .sap-example-disclosure[open] > summary::after {
+      content: "Close";
+    }
+
+    .sap-example-disclosure .sap-template-preview {
+      margin-top: 0;
+      margin-bottom: 0;
+      border-width: 1px 0 0;
+      border-radius: 0;
+      box-shadow: none;
     }
 
     .sap-template-preview {
@@ -2114,6 +2474,8 @@
     .sas-syntax .sas-var { color: #111111; }
     .sas-syntax .sas-option { color: #008a84; }
     .sas-syntax .sas-output { color: #7b2c83; font-weight: 800; }
+    .sas-syntax .sas-string { color: #8c278c; }
+    .sas-syntax .sas-func { color: #008a84; font-weight: 800; }
 
     .code-note {
       margin: -10px 0 22px;
@@ -5039,6 +5401,33 @@
     }
   
 
+
+    .module-quiz-card {
+      margin: 24px 0 30px;
+      padding: 18px;
+      border: 1px solid rgba(200, 157, 132, 0.34);
+      border-radius: 8px;
+      background: rgba(255, 253, 249, 0.78);
+      box-shadow: 0 12px 28px rgba(76, 57, 50, 0.08);
+    }
+
+    .module-quiz-card h5 {
+      margin: 0 0 8px;
+    }
+
+    .module-quiz-card p {
+      margin: 0 0 14px;
+      color: #6f6259;
+    }
+
+    .module-quiz-frame {
+      display: block;
+      width: 100%;
+      min-height: 700px;
+      border: 1px solid rgba(190, 155, 124, 0.5);
+      border-radius: 8px;
+      background: #fff;
+    }
     .embedded-quiz-card {
       margin: 1.65rem 0 0;
       padding: 1.1rem;
@@ -5132,14 +5521,14 @@
   </svg>
   <div class="page">
     <header>
-      <a class="logo" href="#top" aria-label="YIAN GROUP home" data-home-link>
+      <a class="logo" href="#top" aria-label="YIAN GROUP home">
         <img src="assets/yian-group-founder-logo.png" alt="YIAN GROUP">
       </a>
       <nav aria-label="Main navigation">
+        <a href="#top" data-home-link>HOME</a>
         <a href="#sas-training" data-panel-link="sas-training">SAS TRAINING</a>
         <a href="#training" data-panel-link="training">STATISTICAL PROGRAMMING</a>
         <a href="#biostatistics" data-panel-link="biostatistics">BIOSTATISTICS</a>
-        <a href="#contact" data-panel-link="contact">CONTACT</a>
         <a href="#about" data-panel-link="about">ABOUT US</a>
       </nav>
     </header>
@@ -5655,14 +6044,107 @@
                 dataset and know where to find a subject's age, adverse events, lab results,
                 exposure records, and analysis variables.
               </p>
-              <div class="flow lesson-spacious-flow" aria-label="CDISC data pipeline">
-                <div class="flow-step"><strong>Raw Data Collected</strong><br>Site forms, EDC exports, and vendor files.</div>
-                <div class="flow-step"><strong>CDASH</strong><br>Input standard for cleaner CRF and EDC collection.</div>
-                <div class="flow-step"><strong>SDTM</strong><br>Tabulation standard showing what happened to the subject.</div>
-                <div class="flow-step"><strong>ADaM</strong><br>Analysis-ready datasets with derivations and population flags.</div>
-                <div class="flow-step"><strong>TFLs</strong><br>Final tables, listings, and figures for reporting.</div>
+              <div class="flow lesson-spacious-flow" aria-label="CDISC data pipeline with screenshot-style examples">
+                <details class="flow-step">
+                  <summary><strong>Raw Data Collected</strong><br>Site forms, EDC exports, and vendor files.</summary>
+                  <div class="pipeline-example-panel">
+                    <div class="data-screenshot" role="img" aria-label="Screenshot-style raw EDC export example">
+                      <div class="data-screenshot-title"><span>RAW_VS_EDC_EXPORT</span><span>EDC CSV export</span></div>
+                      <table>
+                        <thead><tr><th>SUBJID</th><th>VISIT</th><th>FORM</th><th>VSDAT</th><th>TEST</th><th>RESULT</th><th>UNIT</th></tr></thead>
+                        <tbody>
+                          <tr><td>002</td><td>BASELINE</td><td>VITALS</td><td>2026-01-08</td><td>Weight</td><td>82</td><td>kg</td></tr>
+                          <tr><td>002</td><td>WEEK 4</td><td>VITALS</td><td>2026-02-05</td><td>Weight</td><td>80.4</td><td>kg</td></tr>
+                          <tr><td>002</td><td>WEEK 4</td><td>VITALS</td><td>2026-02-05</td><td>Systolic BP</td><td>128</td><td>mmHg</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="pipeline-example-note">Raw data looks like a site or vendor export: form names, local visit text, and original units are still visible.</p>
+                  </div>
+                </details>
+                <details class="flow-step">
+                  <summary><strong>CDASH</strong><br>Input standard for cleaner CRF and EDC collection.</summary>
+                  <div class="pipeline-example-panel">
+                    <div class="data-screenshot" role="img" aria-label="Screenshot-style CDASH vital signs dataset example">
+                      <div class="data-screenshot-title"><span>CDASH_VS</span><span>collection-standard dataset</span></div>
+                      <table>
+                        <thead><tr><th>STUDYID</th><th>SITEID</th><th>SUBJID</th><th>VISIT</th><th>VSDAT</th><th>VSTEST</th><th>VSORRES</th><th>VSORRESU</th></tr></thead>
+                        <tbody>
+                          <tr><td>ABC-123</td><td>101</td><td>002</td><td>BASELINE</td><td>2026-01-08</td><td>Weight</td><td>82</td><td>kg</td></tr>
+                          <tr><td>ABC-123</td><td>101</td><td>002</td><td>WEEK 4</td><td>2026-02-05</td><td>Weight</td><td>80.4</td><td>kg</td></tr>
+                          <tr><td>ABC-123</td><td>101</td><td>002</td><td>WEEK 4</td><td>2026-02-05</td><td>Systolic BP</td><td>128</td><td>mmHg</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="pipeline-warning-note"><strong>Note:</strong> CDASH is often a collection design standard rather than a separate dataset deliverable. Many companies map directly from raw EDC/vendor data to SDTM, while using CDASH principles to make CRF fields and raw exports easier to standardize.</p>
+                  </div>
+                </details>
+                <details class="flow-step">
+                  <summary><strong>SDTM</strong><br>Tabulation standard showing what happened to the subject.</summary>
+                  <div class="pipeline-example-panel">
+                    <div class="data-screenshot" role="img" aria-label="Screenshot-style SDTM VS dataset example">
+                      <div class="data-screenshot-title"><span>vs.xpt</span><span>SDTM VS domain</span></div>
+                      <table>
+                        <thead><tr><th>STUDYID</th><th>USUBJID</th><th>VSTESTCD</th><th>VSORRES</th><th>VSORRESU</th><th>VSSTRESN</th><th>VSSTRESU</th></tr></thead>
+                        <tbody>
+                          <tr><td>ABC-123</td><td>ABC-123-002</td><td>WEIGHT</td><td>80.4</td><td>kg</td><td>80.4</td><td>kg</td></tr>
+                          <tr><td>ABC-123</td><td>ABC-123-002</td><td>SYSBP</td><td>128</td><td>mmHg</td><td>128</td><td>mmHg</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="pipeline-example-note">SDTM looks like a submitted standard dataset: standard domain, standard variables, and traceable subject records.</p>
+                  </div>
+                </details>
+                <details class="flow-step">
+                  <summary><strong>ADaM</strong><br>Analysis-ready datasets with derivations and population flags.</summary>
+                  <div class="pipeline-example-panel">
+                    <div class="data-screenshot" role="img" aria-label="Screenshot-style ADaM ADVS dataset example">
+                      <div class="data-screenshot-title"><span>ADVS</span><span>analysis-ready dataset</span></div>
+                      <table>
+                        <thead><tr><th>USUBJID</th><th>PARAMCD</th><th>AVISIT</th><th>BASE</th><th>AVAL</th><th>CHG</th><th>SAFFL</th></tr></thead>
+                        <tbody>
+                          <tr><td>ABC-123-002</td><td>WEIGHT</td><td>Baseline</td><td>82.0</td><td>82.0</td><td>.</td><td>Y</td></tr>
+                          <tr><td>ABC-123-002</td><td>WEIGHT</td><td>Week 4</td><td>82.0</td><td>80.4</td><td>-1.6</td><td>Y</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="pipeline-example-note">ADaM starts to look like the dataset a table program can use: baseline, change, visit labels, and population flags are ready.</p>
+                  </div>
+                </details>
+                <details class="flow-step">
+                  <summary><strong>TFLs</strong><br>Final tables, listings, and figures for reporting.</summary>
+                  <div class="pipeline-example-panel">
+                    <div class="tfl-report-screenshot" role="img" aria-label="Screenshot-style TFL report output example">
+                      <div class="tfl-report-title">Table 14.1.1.1
+Change in Weight at Week 4
+Safety Analysis Set</div>
+                      <table class="tfl-report-table">
+                        <thead>
+                          <tr><th></th><th>Placebo<br>(N=42)</th><th>Active<br>(N=44)</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr class="tfl-report-section"><td colspan="3">Baseline, kg</td></tr>
+                          <tr><td class="tfl-report-indent">n</td><td>42</td><td>44</td></tr>
+                          <tr><td class="tfl-report-indent">Mean (SD)</td><td>82.1 (12.4)</td><td>81.7 (11.9)</td></tr>
+                          <tr><td class="tfl-report-indent">Median</td><td>81.8</td><td>80.9</td></tr>
+                          <tr><td class="tfl-report-indent">Min, Max</td><td>58.2, 112.4</td><td>59.1, 110.8</td></tr>
+                          <tr class="tfl-report-section"><td colspan="3">Change from baseline, kg</td></tr>
+                          <tr><td class="tfl-report-indent">n</td><td>42</td><td>44</td></tr>
+                          <tr><td class="tfl-report-indent">Mean (SD)</td><td>-0.4 (2.1)</td><td>-1.8 (2.4)</td></tr>
+                          <tr><td class="tfl-report-indent">Median</td><td>-0.2</td><td>-1.5</td></tr>
+                          <tr><td class="tfl-report-indent">Min, Max</td><td>-5.1, 4.2</td><td>-7.0, 2.8</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="pipeline-example-note">TFLs should feel like the final report output, not like a web table. The layout, title, columns, and footnotes are part of the deliverable.</p>
+                  </div>
+                </details>
               </div>
-              <ul>
+              <div class="module-quiz-card">
+                <h5>Practice Quiz: Data Flow and Standards</h5>
+                <p>Use this short quiz to check the difference between raw data, CDASH, SDTM, ADaM, and TFLs.</p>
+                <iframe class="module-quiz-frame" src="module01_pipeline_quiz.html" title="Module 01 Data Flow Quiz"></iframe>
+              </div><ul>
                 <li>
                   <strong>CDASH is the input standard:</strong> It helps design CRF and EDC fields
                   so data is collected consistently from the beginning.
@@ -5814,12 +6296,12 @@
                 decoration; it tells the reviewer what the program does, which data it uses, what it
                 creates, who wrote it, and why later changes were made.
               </p>
-              <div class="code-window" aria-label="SAS program header example">
+              <div class="code-window sas-syntax" aria-label="SAS program header example">
                 <div class="code-window-header">
                   <span>SAS Program Header Example</span>
                   <span>.sas</span>
                 </div>
-<pre><code>/*****************************************************************************
+<pre><code><span class="sas-comment">/*****************************************************************************
 * Company Name: YIAN GROUP Training
 * Study Protocol: ABC-123
 * Program Name: adae.sas
@@ -5835,9 +6317,8 @@
 * ----------  -----------  -------------  ------------------------------------
 * 2026-07-15  Jane Smith   Ticket #442    Updated missing onset date imputation
 *                                         per SAP Amendment 2.
-*****************************************************************************/</code></pre>
-              </div>
-              <p class="code-note">
+*****************************************************************************/</span></code></pre>
+              </div><p class="code-note">
                 Practical rule: never start functional SAS, R, or Python code on line 1. First give
                 the reviewer a map of the program.
               </p>
@@ -5860,22 +6341,21 @@
                   anomalies, or sponsor decisions.
                 </li>
               </ul>
-              <div class="code-window" aria-label="SAS comment examples">
+              <div class="code-window sas-syntax" aria-label="SAS comment examples">
                 <div class="code-window-header">
                   <span>SAS Comment Examples</span>
                   <span>Good vs Bad</span>
                 </div>
-<pre><code>/* Bad: repeats the code without explaining the reason. */
-/* Substringing the variable */
-age_num = input(substr(ageres, 1, 2), best.);
+<pre><code><span class="sas-comment">/* Bad: repeats the code without explaining the reason. */</span>
+<span class="sas-comment">/* Substringing the variable */</span>
+<span class="sas-var">age_num</span> = <span class="sas-func">input</span>(<span class="sas-func">substr</span>(<span class="sas-var">ageres</span>, 1, 2), <span class="sas-option">best.</span>);
 
-/* Better: explains the study rule and document source. */
-/* Remove the "YEARS" suffix from AGERES before numeric conversion,
-   per ADaM specification page 12. */
-age_num = input(scan(ageres, 1, " "), best.);</code></pre>
+<span class="sas-comment">/* Better: explains the study rule and document source. */</span>
+<span class="sas-comment">/* Remove the "YEARS" suffix from AGERES before numeric conversion,
+   per ADaM specification page 12. */</span>
+<span class="sas-var">age_num</span> = <span class="sas-func">input</span>(<span class="sas-func">scan</span>(<span class="sas-var">ageres</span>, 1, <span class="sas-string">" "</span>), <span class="sas-option">best.</span>);</code></pre>
               </div>
-
-              <h5>4.2 Log Checking: The Ultimate Defense</h5>
+<h5>4.2 Log Checking: The Ultimate Defense</h5>
               <p>
                 A program that runs is not automatically correct. The execution log is often the
                 first place where data integrity problems appear. Before submitting work for review,
@@ -5998,36 +6478,41 @@ age_num = input(scan(ageres, 1, " "), best.);</code></pre>
                 <div class="flow-step"><strong>Automated Compare</strong><br>Compares records, variables, labels, formats, values, and types.</div>
                 <div class="flow-step"><strong>Resolution</strong><br>Any mismatch is investigated, documented, corrected, and rerun.</div>
               </div>
-              <div class="code-window" aria-label="SAS PROC COMPARE example">
+              <div class="code-window sas-syntax" aria-label="SAS PROC COMPARE example">
                 <div class="code-window-header">
                   <span>SAS PROC COMPARE Example</span>
                   <span>QC</span>
                 </div>
-<pre><code>/* Do not modify, overwrite, or pre-sort the production deliverable.
-   Compare directly against adam.adae. */
-data qc_adae;
-  set qc.adae;
-run;
+<pre><code><span class="sas-comment">/* Do not modify, overwrite, or pre-sort the production deliverable.
+   Compare directly against adam.adae. */</span>
+<span class="sas-step">data</span> <span class="sas-data">qc_adae</span>;
+  <span class="sas-keyword">set</span> <span class="sas-data">qc.adae</span>;
+<span class="sas-keyword">run</span>;
 
-proc sort data=qc_adae;
-  by usubjid aeseq paramcd avisitn;
-run;
+<span class="sas-proc">proc sort</span> <span class="sas-option">data=</span><span class="sas-data">qc_adae</span>;
+  <span class="sas-keyword">by</span> <span class="sas-var">usubjid aeseq paramcd avisitn</span>;
+<span class="sas-keyword">run</span>;
 
-proc compare base=adam.adae
-             compare=qc_adae
-             criterion=1e-10
-             listall;
-  id usubjid aeseq paramcd avisitn;
-run;</code></pre>
+<span class="sas-proc">proc compare</span> <span class="sas-option">base=</span><span class="sas-data">adam.adae</span>
+             <span class="sas-option">compare=</span><span class="sas-data">qc_adae</span>
+             <span class="sas-option">criterion=1e-10</span>
+             <span class="sas-option">listall</span>;
+  <span class="sas-keyword">id</span> <span class="sas-var">usubjid aeseq paramcd avisitn</span>;
+<span class="sas-keyword">run</span>;</code></pre>
               </div>
-              <div class="answer-key">
-                <h5>Onboarding Takeaway</h5>
-                <p>
-                  SOPs protect the company from regulatory findings. Coding standards protect your
-                  teammates from unreadable or unreproducible code. Write every program as if the
-                  next person opening it must defend it during an audit.
-                </p>
-              </div>
+<h5>Onboarding Takeaway</h5>
+              <p>
+                SOPs protect the company from regulatory findings, but day-to-day coding standards
+                protect the people who must read, validate, rerun, and explain the program later.
+                A clean program should make the data source, derivation logic, sorting rule, and
+                output location easy to defend without relying on memory or informal handoff notes.
+              </p>
+              <p>
+                In practice, write every program as if the next programmer will open it during an
+                audit or database lock review. Use clear section headers, stable naming, traceable
+                intermediate datasets, and comments only where they explain a decision that would
+                not be obvious from the code itself.
+              </p>
 
                 </article>
               </details>
@@ -18091,11 +18576,18 @@ run;</code></pre>
 
                 <h5>Estimand Framework in SAP</h5>
                 <p>
-                  The example below follows the Word-style SAP template structure. Study-specific
-                  identifiers have been dummy-coded as <strong>YIAN GROUP</strong>, while template
-                  placeholders are kept visible for later study-specific editing.
+                  The examples below show two common ways an SAP may present estimand content. Study-specific identifiers have been dummy-coded as <strong>YIAN GROUP</strong>, while template placeholders are kept visible for later study-specific editing.
                 </p>
-                <div class="sap-template-preview" aria-label="SAP estimand framework template">
+                <div class="sap-example-set" aria-label="Two SAP estimand example formats">
+                  <div class="sap-example-set-header">
+                    <strong>Two common SAP example formats</strong>
+                    <span>The same estimand content can be written as a detailed paragraph-style SAP section or as a compact objective-level table.</span>
+                  </div>
+                  <section class="sap-example-card">
+                    <div class="sap-example-kicker">Example 1</div>
+                    <p class="sap-example-card-note">Use this format when the SAP needs full wording for definitions, missing-data rules, sensitivity analyses, and presentation details.</p>
+                    <div class="sap-scroll-window" aria-label="Scrollable paragraph-style SAP text example">
+                      <div class="sap-template-preview" aria-label="SAP estimand framework template">
                   <h5>4.2.7 Primary Endpoint (eGFR Change from Baseline Template)</h5>
                   <div class="sap-doc-subtitle">Study ID: &lt;&lt; YIAN GROUP-STUDY-ID &gt;&gt;</div>
                   <p>
@@ -18103,11 +18595,6 @@ run;</code></pre>
                   </p>
 
                   <h6>4.2.7.1 Definitions and Derivations</h6>
-                  <div class="sap-template-callout">
-                    Author note: Adapt terminology of "renal" vs "kidney", "KFRT" vs other term
-                    as appropriate according to terminology used in the clinical study protocol
-                    (CSP).
-                  </div>
 
                   <h6>Estimand</h6>
                   <p>
@@ -18148,18 +18635,17 @@ run;</code></pre>
                           Will be handled using a treatment policy strategy, including all data
                           regardless of permanent discontinuation of investigational intervention.
                           <br><br>
-                          <strong>&lt;&lt; Initiation of concomitant medications affecting eGFR
-                          &lt;&lt; or non-chronic dialysis &gt;&gt;&gt;&gt;:</strong> Will be handled using a
-                          treatment policy strategy, including all data regardless of initiation or
-                          change in concomitant medication.
+                          <strong>&lt;&lt; Initiation or change of allowed concomitant medication &gt;&gt;:</strong>
+                          Will be handled using a treatment policy strategy, including all data
+                          regardless of initiation or change in allowed concomitant medication.
                           <br><br>
-                          <strong>KFRT or renal death:</strong> Will be handled using a composite
-                          strategy, implemented by imputing a randomly selected eGFR value between
-                          &lt;&lt; 0 and 10 &gt;&gt; mL/min/1.73 m2 after the event has occurred.
+                          <strong>Rescue or prohibited anti-disease therapy:</strong> Will be handled using a composite
+                          strategy, implemented by assigning the post-event endpoint to a pre-specified
+                          poor-outcome value or category after the event has occurred.
                           <br><br>
-                          <strong>Non-renal death:</strong> Will be handled using a hypothetical
-                          strategy as if it could not happen, implemented by imputing eGFR after the
-                          intercurrent event.
+                          <strong>Other intercurrent events affecting interpretation:</strong> Will be handled using a
+                          hypothetical strategy as if the event had not occurred, implemented by imputing
+                          the endpoint after the intercurrent event.
                         </td>
                       </tr>
                       <tr>
@@ -18202,15 +18688,14 @@ run;</code></pre>
                     The primary variable change from baseline in eGFR to Week 104
                     will be calculated as eGFR at Week 104 minus eGFR at baseline.
                   </p>
-
-                  <h6>Definition of KFRT</h6>
+                  <h6>Definition of Rescue or Prohibited Anti-Disease Therapy</h6>
                   <p>
-                    KFRT refers to an &lt;&lt; adjudicated &gt;&gt; event of chronic dialysis or renal
-                    transplant. &lt;&lt; If events are adjudicated: Please refer to the adjudication
-                    charter for the definition of chronic dialysis. &gt;&gt; &lt;&lt; If events are not
-                    adjudicated: Chronic dialysis treatment is defined as &lt;&lt; dialysis treatment
-                    ongoing for at least &lt;&lt; 28 &gt;&gt; days &gt;&gt;. The onset date of chronic dialysis
-                    will be the date when the qualifying dialysis treatment started. &gt;&gt;
+                    Rescue or prohibited anti-disease therapy refers to any non-randomized treatment
+                    started after randomization that is expected to affect the primary endpoint or
+                    change the interpretation of the randomized treatment effect. The SAP should
+                    define which medications, procedures, or treatment switches qualify, how the
+                    start date is determined, and whether post-event endpoint data will be used,
+                    censored, or handled through imputation.
                   </p>
 
                   <h6>4.2.7.2 Handling of Study Withdrawal and Missing Data</h6>
@@ -18229,7 +18714,7 @@ run;</code></pre>
                   <h6>Missing Data</h6>
                   <h6>Handling in Primary Analysis</h6>
                   <p>
-                    After an intercurrent event of KFRT or renal death, primary endpoint measurements
+                    After initiation of rescue or prohibited anti-disease therapy, primary endpoint measurements
                     will be censored, and eGFR values at Week 104 will be imputed to a
                     random value between &lt;&lt; 0 and 10 &gt;&gt; using multiple imputation, ie,
                     multiple eGFR values will be independently drawn from a uniform(&lt;&lt; 0,
@@ -18237,7 +18722,7 @@ run;</code></pre>
                   </p>
                   <p>
                     For missing eGFR data at Week 104 after intercurrent events other
-                    than KFRT or renal death, the following multiple imputation approaches will be
+                    than rescue or prohibited anti-disease therapy, the following multiple imputation approaches will be
                     applied:
                   </p>
                   <ul>
@@ -18255,8 +18740,8 @@ run;</code></pre>
                     </li>
                     <li>
                       In the absence of an intercurrent event of permanent discontinuation of
-                      investigational intervention, values missing for any reason other than KFRT
-                      and renal death will be imputed assuming Missing at Random (MAR), performing
+                      investigational intervention, values missing for any reason other than rescue or prohibited anti-disease therapy
+                      will be imputed assuming Missing at Random (MAR), performing
                       multiple imputation using data from participants randomised to the same
                       respective treatment group with non-missing eGFR at Week 104.
                     </li>
@@ -18291,9 +18776,9 @@ run;</code></pre>
                   <p>
                     &lt;&lt; For the sensitivity analysis including intermediate timepoints, a single
                     eGFR value will be set to a value of 5 mL/min/1.73 m2 at each visit following a
-                    KFRT or renal death event. Observed values after a KFRT event will be censored,
+                    rescue or prohibited anti-disease therapy. Observed values after a rescue/prohibited therapy event will be censored,
                     and the imputed value will be used for analysis. An analysis visit will be
-                    considered to fall after a KFRT or renal death event based on the visit date, if
+                    considered to fall after a rescue or prohibited anti-disease therapy based on the visit date, if
                     the visit occurred, or the target date, if the visit did not occur. Other missing
                     data will not be imputed; instead missing post-baseline assessments are
                     implicitly handled in the likelihood-based parameter estimation assuming MAR.
@@ -18350,7 +18835,7 @@ run;</code></pre>
                   <p>
                     The analysis will be performed identically to the primary analysis of the primary
                     endpoint, with the exception of imputation of change from baseline in eGFR at
-                    Week 104 after a KFRT or renal death event,
+                    Week 104 after a rescue or prohibited anti-disease therapy,
                     where the multiple imputation instead will be based on the 10% of participants
                     with the worst observed eGFR change (see Section 4.2.7.2).
                   </p>
@@ -18363,7 +18848,7 @@ run;</code></pre>
                   <h6>&lt;&lt; Sensitivity Analysis 2: Analysis including intermediate timepoints &gt;&gt;</h6>
                   <p>
                     &lt;&lt; This sensitivity analysis analyses eGFR over time from randomisation to
-                    Week 104 using an MMRM. eGFR after a KFRT or renal death event
+                    Week 104 using an MMRM. eGFR after a rescue or prohibited anti-disease therapy
                     will be set to a value of 5 mL/min/1.73 m2. Analysis of change from baseline
                     eGFR with MMRM will be performed with adjustment for covariates baseline eGFR,
                     baseline log-transformed UACR, SGLT2i use at screening, and T2DM status, using
@@ -18456,9 +18941,14 @@ run;</code></pre>
                     </li>
                   </ul>
                 </div>
+                    </div>
+                  </section>
 
-                <div class="sap-template-preview estimand-objective-summary-block" aria-label="Objective-level estimand summary training table">
-                  <h6>Alternative Table Format: Objective-Level Estimand Summary</h6>
+                  <section class="sap-example-card sap-example-card-wide">
+                    <div class="sap-example-kicker">Example 2</div>
+                    <p class="sap-example-card-note">Use this format when the SAP summarizes each objective in a structured table with endpoint, population, ICE strategy, summary measure, and cross-reference.</p>
+                    <div class="sap-template-preview estimand-objective-summary-block" aria-label="Objective-level estimand summary training table">
+                  <h6>Objective-Level Estimand Summary Table</h6>
                   <p>
                     Some Statistical Analysis Plans present estimands in a compact objective-by-objective
                     table. The format below mirrors a common regulatory SAP style: each objective is
@@ -18572,6 +19062,8 @@ run;</code></pre>
                   <p class="sap-reference-line">
                     Reference: <a href="https://cdn.clinicaltrials.gov/large-docs/90/NCT05555290/SAP_001.pdf" target="_blank" rel="noopener">ClinicalTrials.gov SAP example, NCT05555290, SAP_001.pdf</a>.
                   </p>
+                    </div>
+                  </section>
                 </div>
 
                 <h5>Intercurrent Events Are Not Just Missing Data</h5>
@@ -19013,52 +19505,7 @@ run;</code></pre>
           </div>
         </div>
       </section>
-
-      <section id="contact" class="section">
-        <div class="section-layout">
-          <h2>Contact Us</h2>
-          <div class="copy">
-            <div class="tiny-label">Feedback</div>
-            <p>
-              Share questions, corrections, or ideas for future training materials. Submitting the
-              form will open a pre-filled email draft for sending feedback to YIAN GROUP.
-            </p>
-            <div class="feedback-card">
-              <form class="feedback-form" data-feedback-mail-form>
-                <div class="feedback-row">
-                  <label class="feedback-field">
-                    Name
-                    <input name="name" type="text" autocomplete="name" placeholder="Your name">
-                  </label>
-                  <label class="feedback-field">
-                    Email
-                    <input name="email" type="email" autocomplete="email" placeholder="name@example.com">
-                  </label>
-                </div>
-                <label class="feedback-field">
-                  Topic
-                  <select name="topic">
-                    <option value="General feedback">General feedback</option>
-                    <option value="Statistical Programming Training">Statistical Programming Training</option>
-                    <option value="Biostatistics Training">Biostatistics Training</option>
-                    <option value="Website issue">Website issue</option>
-                    <option value="New lesson request">New lesson request</option>
-                  </select>
-                </label>
-                <label class="feedback-field">
-                  Your Feedback
-                  <textarea name="message" required placeholder="Write your comments, questions, or suggestions here."></textarea>
-                </label>
-                <div class="feedback-actions">
-                  <button class="feedback-button" type="submit">Submit Feedback</button>
-                </div>
-                <p class="feedback-status" data-feedback-status aria-live="polite"></p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+</main>
 
     <footer>
       <span>&copy; 2026 YIAN GROUP. All rights reserved.</span>
@@ -19441,6 +19888,45 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

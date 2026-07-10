@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -26,45 +26,6 @@
       color: var(--ink);
       background: var(--bg);
     }
-
-    .module-hero {
-      min-height: 136px;
-      padding: 22px 46px 20px;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.82)),
-        repeating-linear-gradient(115deg, #f4efe6 0, #f4efe6 3px, #f8f4ec 3px, #f8f4ec 8px);
-      border-bottom: 1px solid #e5dacb;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .module-kicker {
-      color: #c08a6d;
-      font-size: 14px;
-      letter-spacing: 2px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    .module-title {
-      margin: 0 0 8px;
-      color: #2f2c2a;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 38px;
-      line-height: 1.05;
-      font-weight: 500;
-    }
-
-    .module-subtitle {
-      margin: 0;
-      color: #6f6259;
-      font-size: 17px;
-      line-height: 1.35;
-      font-weight: 700;
-    }
-
     .topbar {
       min-height: 58px;
       background: var(--navy);
@@ -432,22 +393,13 @@
     }
 
     @media (max-width: 760px) {
-      .module-hero { padding: 18px; }
-      .module-title { font-size: 28px; }
-      .module-subtitle { font-size: 14px; }
-      .topbar { align-items: flex-start; flex-direction: column; }
+    .topbar { align-items: flex-start; flex-direction: column; }
       .page { padding: 14px; overflow-x: auto; }
       .crf-inner { min-width: 720px; }
     }
   </style>
 </head>
 <body>
-  <section class="module-hero" aria-label="Module introduction">
-    <div class="module-kicker">Module 03</div>
-    <h2 class="module-title">Understanding Case Report Forms (CRF) and Annotated CRFs (aCRF)</h2>
-    <p class="module-subtitle">How clinical source data is collected, exported, annotated, and prepared before Study Data Tabulation Model (SDTM) mapping begins.</p>
-  </section>
-
   <header class="topbar">
     <h1>AE aCRF Mapping Quiz</h1>
     <div class="score" id="score">Page 1: 0 / 9 correct</div>
@@ -756,3 +708,5 @@
   </script>
 </body>
 </html>
+
+

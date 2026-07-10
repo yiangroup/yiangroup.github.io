@@ -1,0 +1,303 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Module 01 Data Flow Quiz</title>
+  <style>
+    :root {
+      --navy: #1f416d;
+      --blue: #2f73b8;
+      --ink: #27211f;
+      --muted: #6f6259;
+      --paper: #fbf7ee;
+      --line: #e5dacb;
+      --ok: #147b4b;
+      --bad: #b42318;
+      --amber: #9a6700;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.88), rgba(255,255,255,0.78)),
+        repeating-linear-gradient(115deg, #f4efe6 0, #f4efe6 3px, #f8f4ec 3px, #f8f4ec 8px);
+    }
+    .topbar {
+      min-height: 58px;
+      background: var(--navy);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 22px;
+      border-bottom: 4px solid #18345b;
+    }
+    .topbar strong { font-size: 18px; }
+    .score { font-weight: 700; white-space: nowrap; }
+    .tabs { display: flex; gap: 8px; padding: 12px 16px 0; overflow-x: auto; }
+    .tab {
+      border: 1px solid #9fb7d2;
+      border-bottom: 0;
+      background: #fff;
+      color: var(--navy);
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 8px 8px 0 0;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .tab.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    main { display: block; padding: 18px; }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(47, 37, 28, 0.10);
+      overflow: hidden;
+    }
+    .panel-head {
+      min-height: 46px;
+      padding: 12px 18px;
+      background: linear-gradient(#e9f1fb, #d7e5f5);
+      border-bottom: 1px solid #b8c7d9;
+      color: #12396b;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .panel-body { padding: 18px; }
+    .quiz-panel { display: none; }
+    .quiz-panel.active { display: block; }
+    .prompt { margin: 0 0 16px; color: var(--muted); line-height: 1.55; }
+    .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .match-item, .drop-zone, .sort-item, .blank-row {
+      border: 1px solid #d9c7b9;
+      border-radius: 7px;
+      background: #fffdf9;
+      padding: 12px 14px;
+      min-height: 48px;
+    }
+    .match-item, .sort-item {
+      cursor: pointer;
+      font-weight: 800;
+      color: #233d61;
+      user-select: none;
+    }
+    .match-item.selected { outline: 3px solid rgba(47, 115, 184, 0.25); background: #f0f6fd; }
+    .drop-zone { display: grid; gap: 7px; color: #5f514c; }
+    .drop-zone strong { color: #3f3432; }
+    .answer-chip {
+      display: inline-block;
+      width: fit-content;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #e7f1f7;
+      color: #163d5a;
+      font-weight: 800;
+      font-size: 12px;
+    }
+    .correct { border-color: rgba(20, 123, 75, 0.55) !important; background: #f0fbf5 !important; }
+    .incorrect { border-color: rgba(180, 35, 24, 0.55) !important; background: #fff2f0 !important; }
+    .blank-row { margin-bottom: 10px; line-height: 1.5; }
+    select {
+      min-width: 180px;
+      margin: 0 4px;
+      padding: 5px 8px;
+      border: 1px solid #b8c7d9;
+      border-radius: 5px;
+      background: #fff;
+      color: #173654;
+      font-weight: 700;
+    }
+    .sort-list { display: grid; gap: 10px; margin: 12px 0; }
+    .sort-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding-right: 18px;
+    }
+    .sort-item > span:first-child {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .sort-actions { display: inline-flex; gap: 6px; justify-self: end; white-space: nowrap; }
+    .mini-btn, .action-btn {
+      border: 1px solid #9fb7d2;
+      border-radius: 5px;
+      background: #fff;
+      color: #1f416d;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .mini-btn { min-width: 38px; height: 28px; padding: 0 6px; }
+    .action-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .action-btn { padding: 9px 13px; background: #1f416d; color: #fff; border-color: #1f416d; }
+    .action-btn.secondary { background: #fff; color: #1f416d; }
+    .feedback { margin-top: 12px; min-height: 22px; font-weight: 800; }
+    .feedback.ok { color: var(--ok); }
+    .feedback.bad { color: var(--bad); }
+    @media (max-width: 880px) { .match-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <strong>Module 01 Data Flow Quiz</strong>
+    <div class="score" id="score">0 / 3 activities checked</div>
+  </header>
+
+  <nav class="tabs" aria-label="Quiz activities">
+    <button class="tab active" data-tab="match">Match</button>
+    <button class="tab" data-tab="blank">Fill Blanks</button>
+    <button class="tab" data-tab="order">Order</button>
+  </nav>
+
+  <main>
+    <section class="card">
+      <div class="panel-head"><span id="panelTitle">Match the Data Flow Layer</span><span>Practice</span></div>
+      <div class="panel-body">
+        <section class="quiz-panel active" id="match">
+          <p class="prompt">Click a term on the left, then click the matching description on the right.</p>
+          <div class="match-grid">
+            <div id="terms">
+              <div class="match-item" data-term="raw">Raw Data</div>
+              <div class="match-item" data-term="cdash">CDASH</div>
+              <div class="match-item" data-term="sdtm">SDTM</div>
+              <div class="match-item" data-term="adam">ADaM</div>
+              <div class="match-item" data-term="tfl">TFLs</div>
+            </div>
+            <div id="zones">
+              <div class="drop-zone" data-answer="adam"><strong>Analysis-ready datasets</strong><span>Baseline, change, population flags, analysis visits.</span></div>
+              <div class="drop-zone" data-answer="raw"><strong>Original source export</strong><span>EDC forms, site data, vendor files.</span></div>
+              <div class="drop-zone" data-answer="tfl"><strong>Final report output</strong><span>Tables, listings, and figures.</span></div>
+              <div class="drop-zone" data-answer="cdash"><strong>Collection design standard</strong><span>Often not a separate dataset deliverable.</span></div>
+              <div class="drop-zone" data-answer="sdtm"><strong>Tabulation standard</strong><span>Standard domains showing what happened to the subject.</span></div>
+            </div>
+          </div>
+          <div class="action-row"><button class="action-btn" id="checkMatch">Check Matching</button><button class="action-btn secondary" id="resetMatch">Reset</button></div>
+          <div class="feedback" id="matchFeedback"></div>
+        </section>
+
+        <section class="quiz-panel" id="blank">
+          <p class="prompt">Choose the best term for each sentence.</p>
+          <div class="blank-row">1. <select data-answer="SDTM"><option></option><option>Raw</option><option>CDASH</option><option>SDTM</option><option>ADaM</option><option>TFLs</option></select> describes what happened to each subject in standard domains.</div>
+          <div class="blank-row">2. <select data-answer="ADaM"><option></option><option>Raw</option><option>CDASH</option><option>SDTM</option><option>ADaM</option><option>TFLs</option></select> prepares data for analysis using SAP rules.</div>
+          <div class="blank-row">3. Many companies map raw EDC/vendor data directly to <select data-answer="SDTM"><option></option><option>Raw</option><option>CDASH</option><option>SDTM</option><option>ADaM</option><option>TFLs</option></select>.</div>
+          <div class="blank-row">4. <select data-answer="TFLs"><option></option><option>Raw</option><option>CDASH</option><option>SDTM</option><option>ADaM</option><option>TFLs</option></select> are the final tables, listings, and figures used for reporting.</div>
+          <div class="action-row"><button class="action-btn" id="checkBlank">Check Blanks</button><button class="action-btn secondary" id="resetBlank">Reset</button></div>
+          <div class="feedback" id="blankFeedback"></div>
+        </section>
+
+        <section class="quiz-panel" id="order">
+          <p class="prompt">Put the practical programming flow in order. CDASH is included as a design reference, but not always a separate programming dataset.</p>
+          <div class="sort-list" id="sortList">
+            <div class="sort-item" data-step="4"><span>ADaM analysis dataset</span><span class="sort-actions"><button class="mini-btn">Up</button><button class="mini-btn">Down</button></span></div>
+            <div class="sort-item" data-step="1"><span>Raw EDC / vendor data</span><span class="sort-actions"><button class="mini-btn">Up</button><button class="mini-btn">Down</button></span></div>
+            <div class="sort-item" data-step="5"><span>TFL output</span><span class="sort-actions"><button class="mini-btn">Up</button><button class="mini-btn">Down</button></span></div>
+            <div class="sort-item" data-step="3"><span>SDTM domain</span><span class="sort-actions"><button class="mini-btn">Up</button><button class="mini-btn">Down</button></span></div>
+            <div class="sort-item" data-step="2"><span>CDASH collection design reference</span><span class="sort-actions"><button class="mini-btn">Up</button><button class="mini-btn">Down</button></span></div>
+          </div>
+          <div class="action-row"><button class="action-btn" id="checkOrder">Check Order</button><button class="action-btn secondary" id="resetOrder">Reset</button></div>
+          <div class="feedback" id="orderFeedback"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.quiz-panel');
+    const titles = { match: 'Match the Data Flow Layer', blank: 'Fill in the Standard', order: 'Order the Programming Flow' };
+    const completed = { match: false, blank: false, order: false };
+    function updateScore() {
+      document.getElementById('score').textContent = `${Object.values(completed).filter(Boolean).length} / 3 activities checked`;
+    }
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+      document.getElementById('panelTitle').textContent = titles[tab.dataset.tab];
+    }));
+
+    let selected = null;
+    document.querySelectorAll('.match-item').forEach(item => item.addEventListener('click', () => {
+      document.querySelectorAll('.match-item').forEach(i => i.classList.remove('selected'));
+      selected = item;
+      item.classList.add('selected');
+    }));
+    document.querySelectorAll('.drop-zone').forEach(zone => zone.addEventListener('click', () => {
+      if (!selected) return;
+      zone.dataset.term = selected.dataset.term;
+      zone.querySelector('.answer-chip')?.remove();
+      const chip = document.createElement('span');
+      chip.className = 'answer-chip';
+      chip.textContent = selected.textContent;
+      zone.append(chip);
+      selected.remove();
+      selected = null;
+    }));
+    document.getElementById('checkMatch').addEventListener('click', () => {
+      let correct = 0;
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.classList.remove('correct', 'incorrect');
+        const ok = zone.dataset.term === zone.dataset.answer;
+        if (ok) correct++;
+        zone.classList.add(ok ? 'correct' : 'incorrect');
+      });
+      completed.match = true; updateScore();
+      const fb = document.getElementById('matchFeedback');
+      fb.className = `feedback ${correct === 5 ? 'ok' : 'bad'}`;
+      fb.textContent = correct === 5 ? 'All matches are correct.' : `${correct} of 5 matches are correct.`;
+    });
+    document.getElementById('resetMatch').addEventListener('click', () => location.reload());
+
+    document.getElementById('checkBlank').addEventListener('click', () => {
+      let correct = 0;
+      document.querySelectorAll('#blank select').forEach(sel => {
+        sel.parentElement.classList.remove('correct', 'incorrect');
+        const ok = sel.value === sel.dataset.answer;
+        if (ok) correct++;
+        sel.parentElement.classList.add(ok ? 'correct' : 'incorrect');
+      });
+      completed.blank = true; updateScore();
+      const fb = document.getElementById('blankFeedback');
+      fb.className = `feedback ${correct === 4 ? 'ok' : 'bad'}`;
+      fb.textContent = correct === 4 ? 'All blanks are correct.' : `${correct} of 4 blanks are correct.`;
+    });
+    document.getElementById('resetBlank').addEventListener('click', () => {
+      document.querySelectorAll('#blank select').forEach(sel => { sel.value = ''; sel.parentElement.classList.remove('correct','incorrect'); });
+      document.getElementById('blankFeedback').textContent = '';
+    });
+
+    document.getElementById('sortList').addEventListener('click', e => {
+      if (!e.target.classList.contains('mini-btn')) return;
+      const item = e.target.closest('.sort-item');
+      if (e.target.textContent === 'Up' && item.previousElementSibling) item.parentElement.insertBefore(item, item.previousElementSibling);
+      if (e.target.textContent === 'Down' && item.nextElementSibling) item.parentElement.insertBefore(item.nextElementSibling, item);
+    });
+    document.getElementById('checkOrder').addEventListener('click', () => {
+      const items = [...document.querySelectorAll('.sort-item')];
+      let ok = true;
+      items.forEach((item, idx) => {
+        item.classList.remove('correct', 'incorrect');
+        const good = Number(item.dataset.step) === idx + 1;
+        if (!good) ok = false;
+        item.classList.add(good ? 'correct' : 'incorrect');
+      });
+      completed.order = true; updateScore();
+      const fb = document.getElementById('orderFeedback');
+      fb.className = `feedback ${ok ? 'ok' : 'bad'}`;
+      fb.textContent = ok ? 'Correct order.' : 'Some steps are out of order.';
+    });
+    document.getElementById('resetOrder').addEventListener('click', () => location.reload());
+  </script>
+</body>
+</html>
+
+
