@@ -1228,6 +1228,145 @@
       text-transform: uppercase;
     }
 
+
+    .model-sketch-card {
+      margin: 18px 0 34px;
+      padding: 24px 26px 26px;
+      border: 1px solid rgba(143, 177, 170, 0.32);
+      border-radius: 8px;
+      background: rgba(250, 253, 249, 0.78);
+    }
+
+    .model-sketch-card h5 {
+      margin: 0 0 18px;
+      color: #354d5a;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .model-formula {
+      margin: 2px 0 26px;
+      color: #1f2628;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.65;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .model-primary-note {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 14px;
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: #282b2d;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .model-primary-note::before {
+      content: "o";
+      color: #1f2628;
+      font-size: 18px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .model-map-title {
+      margin: 0 0 18px;
+      color: #1f2628;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .model-variable-map {
+      width: 100%;
+      max-width: 760px;
+      border-collapse: collapse;
+      background: transparent;
+      color: #25282a;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .model-variable-map th,
+    .model-variable-map td {
+      padding: 14px 24px 14px 0;
+      border-bottom: 1px solid rgba(70, 88, 94, 0.14);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .model-variable-map th {
+      color: #25282a;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 500;
+    }
+
+    .model-variable-map td:first-child {
+      width: 28%;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+    .model-variable-map td:nth-child(2) {
+      width: 26%;
+      color: #4f585c;
+      font-family: "Courier New", Consolas, monospace;
+      white-space: nowrap;
+    }
+
+    .sas-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(217, 222, 218, 0.52);
+      color: #566165;
+      font-family: "Courier New", Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .model-variable-map em {
+      color: #33383a;
+      font-style: italic;
+    }
+
+    .model-variable-map strong {
+      color: #202426;
+      font-weight: 800;
+    }
+
+    @media (max-width: 760px) {
+      .model-sketch-card {
+        padding: 18px;
+      }
+
+      .model-formula {
+        font-size: 19px;
+      }
+
+      .model-variable-map {
+        font-size: 13px;
+      }
+
+      .model-variable-map th,
+      .model-variable-map td {
+        padding-right: 12px;
+      }
+
+      .model-variable-map td:first-child {
+        font-size: 17px;
+      }
+    }
+
     .sap-example-card-title {
       margin: 0 0 8px;
       color: #354d5a;
@@ -18138,6 +18277,7 @@ run;</code></pre>
                         <tr>
                           <th>USUBJID</th>
                           <th>TRT01P</th>
+                          <th>STRATA1</th>
                           <th>AVISIT</th>
                           <th>AVISITN</th>
                           <th>BASE</th>
@@ -18150,6 +18290,7 @@ run;</code></pre>
                         <tr>
                           <td>YIAN-301-001</td>
                           <td>Placebo</td>
+                          <td>Region A</td>
                           <td>Week 12</td>
                           <td>12</td>
                           <td>8.2</td>
@@ -18160,6 +18301,7 @@ run;</code></pre>
                         <tr>
                           <td>YIAN-301-001</td>
                           <td>Placebo</td>
+                          <td>Region A</td>
                           <td>Week 24</td>
                           <td>24</td>
                           <td>8.2</td>
@@ -18170,6 +18312,7 @@ run;</code></pre>
                         <tr>
                           <td>YIAN-301-002</td>
                           <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Region B</td>
                           <td>Week 12</td>
                           <td>12</td>
                           <td>8.4</td>
@@ -18180,6 +18323,7 @@ run;</code></pre>
                         <tr>
                           <td>YIAN-301-002</td>
                           <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Region B</td>
                           <td>Week 24</td>
                           <td>24</td>
                           <td>8.4</td>
@@ -18190,6 +18334,7 @@ run;</code></pre>
                         <tr>
                           <td>YIAN-301-003</td>
                           <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Region A</td>
                           <td>Week 12</td>
                           <td>12</td>
                           <td>8.0</td>
@@ -18200,6 +18345,7 @@ run;</code></pre>
                         <tr>
                           <td>YIAN-301-003</td>
                           <td>YIAN GROUP DRUG 50 mg</td>
+                          <td>Region A</td>
                           <td>Week 24</td>
                           <td>24</td>
                           <td>8.0</td>
@@ -18236,7 +18382,7 @@ run;</code></pre>
                       </tr>
                       <tr>
                         <td>Fixed effects</td>
-                        <td>Treatment, visit, treatment-by-visit interaction, baseline value, baseline-by-visit interaction, and pre-specified stratification factors such as site or region.</td>
+                        <td>Treatment, visit, treatment-by-visit interaction, baseline value, baseline-by-visit interaction, and pre-specified stratification factors such as STRATA1 or region.</td>
                       </tr>
                       <tr>
                         <td>Repeated subject</td>
@@ -18257,6 +18403,72 @@ run;</code></pre>
                     </tbody>
                   </table>
                 </div>
+                <div class="model-sketch-card" aria-label="MMRM formula and SAS variable mapping">
+                  <h5>Model Sketch</h5>
+                  <div class="model-formula" aria-label="MMRM mathematical model">
+                    Y<sub>ij</sub> = &mu; + &tau;<sub>g_i</sub> + v<sub>j</sub> + (&tau;v)<sub>g_i j</sub> + &beta;<sub>1</sub>BASE<sub>i</sub> + &beta;<sub>2j</sub>(BASE<sub>i</sub> &times; v<sub>j</sub>) + &gamma;STRATA<sub>i</sub> + &epsilon;<sub>ij</sub>
+                  </div>
+                  <div class="model-primary-note">
+                    <div><strong>Primary Comparison:</strong> The primary treatment effect is derived from the least-squares mean (LS Mean) difference at the primary visit, e.g., <strong>Week 24</strong>.</div>
+                  </div>
+                  <div class="model-map-title">2. Mapping Table: Formula vs. SAS Variable</div>
+                  <table class="model-variable-map" aria-label="MMRM formula terms mapped to SAS variables">
+                    <thead>
+                      <tr>
+                        <th>Formula Term</th>
+                        <th>SAS Variable / Code</th>
+                        <th>Plain Meaning</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Y<sub>ij</sub></td>
+                        <td><span class="sas-pill">CHG</span></td>
+                        <td><strong>Dependent Variable:</strong> Change from baseline for participant <em>i</em> at visit <em>j</em>.</td>
+                      </tr>
+                      <tr>
+                        <td>&mu;</td>
+                        <td><em>Included by default</em></td>
+                        <td><strong>Intercept:</strong> The overall intercept of the model.</td>
+                      </tr>
+                      <tr>
+                        <td>&tau;<sub>g_i</sub></td>
+                        <td><span class="sas-pill">TRT01P</span></td>
+                        <td><strong>Treatment Group:</strong> The planned treatment assigned to participant <em>i</em>.</td>
+                      </tr>
+                      <tr>
+                        <td>v<sub>j</sub></td>
+                        <td><span class="sas-pill">AVISITN</span></td>
+                        <td><strong>Visit:</strong> The scheduled analysis visit, coded numerically.</td>
+                      </tr>
+                      <tr>
+                        <td>(&tau;v)<sub>g_i j</sub></td>
+                        <td><span class="sas-pill">TRT01P * AVISITN</span></td>
+                        <td><strong>Treatment-by-Visit Interaction:</strong> Allows the treatment effect to vary at different time points.</td>
+                      </tr>
+                      <tr>
+                        <td>BASE<sub>i</sub></td>
+                        <td><span class="sas-pill">BASE</span></td>
+                        <td><strong>Baseline Adjustment:</strong> The participant's initial value before treatment.</td>
+                      </tr>
+                      <tr>
+                        <td>BASE<sub>i</sub> &times; v<sub>j</sub></td>
+                        <td><span class="sas-pill">BASE * AVISITN</span></td>
+                        <td><strong>Baseline-by-Visit Interaction:</strong> Allows the impact of the baseline value to vary over time.</td>
+                      </tr>
+                      <tr>
+                        <td>STRATA<sub>i</sub></td>
+                        <td><span class="sas-pill">STRATA1</span></td>
+                        <td><strong>Stratification Factor:</strong> The pre-specified randomization stratification factor.</td>
+                      </tr>
+                      <tr>
+                        <td>&epsilon;<sub>ij</sub></td>
+                        <td><span class="sas-pill">REPEATED statement</span></td>
+                        <td><strong>Within-Subject Error:</strong> Residual variation across visits for the same participant.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
                 <h4>5. SAS Template: MMRM Primary and MAR Sensitivity</h4>
                 <div class="code-window sas-syntax" aria-label="SAS MMRM template with syntax highlighting">
@@ -18266,8 +18478,8 @@ run;</code></pre>
                   </div>
 <pre><code><span class="sas-comment">/* Training template only. Final model terms must follow the approved SAP. */</span>
 <span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">adhba1c</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
-  <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn site</span>;
-  <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn site</span>
+  <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn strata1</span>;
+  <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn strata1</span>
         / <span class="sas-option">ddfm=kr solution</span>;
   <span class="sas-keyword">repeated</span> <span class="sas-var">avisitn</span> / <span class="sas-option">subject=</span><span class="sas-var">usubjid</span> <span class="sas-option">type=un r</span>;
   <span class="sas-keyword">lsmeans</span> <span class="sas-var">trt01p*avisitn</span> / <span class="sas-option">diff cl</span>;
@@ -18276,8 +18488,8 @@ run;</code></pre>
 
 <span class="sas-comment">/* Example MAR sensitivity: same estimand, different pre-specified covariance. */</span>
 <span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">adhba1c</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
-  <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn site</span>;
-  <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn site</span>
+  <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn strata1</span>;
+  <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn strata1</span>
         / <span class="sas-option">ddfm=kr solution</span>;
   <span class="sas-keyword">repeated</span> <span class="sas-var">avisitn</span> / <span class="sas-option">subject=</span><span class="sas-var">usubjid</span> <span class="sas-option">type=ar(1)</span>;
   <span class="sas-keyword">lsmeans</span> <span class="sas-var">trt01p*avisitn</span> / <span class="sas-option">diff cl</span>;
@@ -19888,6 +20100,14 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
