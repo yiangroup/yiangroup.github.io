@@ -7137,208 +7137,10 @@ Safety Analysis Set</div>
                     </div>
                   </div>
 
-                  <div class="workshop">
-                    <h4>Workshop: Advanced Document Traceability Challenge</h4>
-                    <p>
-                      Review the mock TLF shell below. Instead of only reading the layout, solve
-                      the three production-style data anomalies by cross-referencing the Protocol,
-                      SAP, annotated CRF, data specifications, and mock shell.
-                    </p>
-
-                    <div class="mock-document">
-                      <h5>Mock TLF Shell</h5>
-                      <div class="table-scroll">
-                        <table class="crf-table" aria-label="Mock TLF shell review">
-                          <thead>
-                            <tr>
-                              <th colspan="3">Protocol: YGN-101-02 | Population: Full Analysis Set (FAS)</th>
-                            </tr>
-                            <tr>
-                              <th colspan="3">Table 14.2.1 Change from Baseline in Seated Systolic Blood Pressure (mmHg) at Week 12</th>
-                            </tr>
-                            <tr>
-                              <th>Statistic</th>
-                              <th>Placebo (N=XX)</th>
-                              <th>YGN-101 50mg (N=XX)</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td><strong>Baseline</strong><br>n</td>
-                              <td>xx</td>
-                              <td>xx</td>
-                            </tr>
-                            <tr>
-                              <td>Mean (SD)</td>
-                              <td>xx.x (xx.x)</td>
-                              <td>xx.x (xx.x)</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Week 12 (Visit 6)</strong><br>n</td>
-                              <td>xx</td>
-                              <td>xx</td>
-                            </tr>
-                            <tr>
-                              <td>Mean (SD)</td>
-                              <td>xx.x (xx.x)</td>
-                              <td>xx.x (xx.x)</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Change from Baseline at Week 12</strong><br>n</td>
-                              <td>xx</td>
-                              <td>xx</td>
-                            </tr>
-                            <tr>
-                              <td>Mean (SD)</td>
-                              <td>xx.x (xx.x)</td>
-                              <td>xx.x (xx.x)</td>
-                            </tr>
-                            <tr>
-                              <td>p-value [1]</td>
-                              <td>0.xxxx</td>
-                              <td>0.xxxx</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <p>
-                        [1] P-value is calculated using an ANCOVA model with treatment as a factor
-                        and baseline value as a covariate. Footnote: Week 12 visit window is
-                        defined as Study Day 78 to 98.
-                      </p>
-                    </div>
-
-                    <div class="mock-document">
-                      <h5>Challenge Scenario 1: The Dual-Visit Windowing Trap (BDS)</h5>
-                      <p>
-                        Subject <strong>101-002-015</strong> missed the official Week 12 clinic
-                        visit. The raw database shows two unscheduled safety checks: Study Day 80
-                        and Study Day 94. Both contain seated systolic blood pressure, and both fall
-                        inside the Week 12 window of Study Day 78 to 98.
-                      </p>
-                      <ol>
-                        <li>Why can you not include both records in the Week 12 table?</li>
-                        <li>How should the code choose which one record becomes the analytical Week 12 value in ADVS?</li>
-                        <li>Which document contains the exact tie-breaking rule?</li>
-                      </ol>
-                    </div>
-                    <div class="answer-key">
-                      <h5>Trainer Blueprint</h5>
-                      <p>
-                        Look up the SAP section on windowing algorithms and handling multiple
-                        assessments. The usual rule is to select the record closest to the target
-                        study day; if records are equidistant, use the later record.
-                      </p>
-                      <ul>
-                        <li>Week 12 target day is Day 84.</li>
-                        <li>Day 80 distance is |80 - 84| = 4 days.</li>
-                        <li>Day 94 distance is |94 - 84| = 10 days.</li>
-                        <li>Day 80 is selected for Week 12.</li>
-                      </ul>
-                      <div class="code-window" aria-label="SAS ADVS windowing example">
-                        <div class="code-window-header">
-                          <span>SAS Windowing Blueprint</span>
-                          <span>ADVS</span>
-                        </div>
-<pre><code>data advs_window;
-  set advs_candidates;
-  target = 84;
-  dist = abs(ady - target);
-run;
-
-proc sort data=advs_window;
-  by usubjid avisitn dist descending ady;
-run;
-
-data advs_week12;
-  set advs_window;
-  by usubjid avisitn;
-  if first.avisitn;
-run;</code></pre>
-                      </div>
-                    </div>
-
-                    <div class="mock-document">
-                      <h5>Challenge Scenario 2: The Implicit Exclusion Population Trap (ADSL)</h5>
-                      <p>
-                        Subject <strong>101-005-022</strong> was randomized to YGN-101 50mg, but
-                        had a severe panic attack immediately after randomization, refused study
-                        medication, withdrew consent, and left the clinic. They have zero
-                        post-baseline vital signs data. The mock shell uses the Full Analysis Set.
-                      </p>
-                      <ol>
-                        <li>Should this subject be counted in the YGN-101 denominator?</li>
-                        <li>Which document defines the exact FAS boundary?</li>
-                        <li>Which programmatic conditions must be checked before setting FASFL = "Y"?</li>
-                      </ol>
-                    </div>
-                    <div class="answer-key">
-                      <h5>Trainer Blueprint</h5>
-                      <p>
-                        Look up the SAP section on analysis populations. Programmers sometimes assume
-                        randomized means FAS, but many SAPs require randomization, at least one dose
-                        of study drug, and at least one post-baseline efficacy assessment.
-                      </p>
-                      <ul>
-                        <li>Do not set FASFL = "Y" from RANDFL alone.</li>
-                        <li>Check EX for actual dosing, such as EXDOSE &gt; 0 or a valid exposure record.</li>
-                        <li>Check VS or ADVS for at least one valid post-baseline assessment.</li>
-                        <li>This subject has no dosing and no post-baseline data, so FASFL should be "N".</li>
-                      </ul>
-                      <div class="code-window" aria-label="SAS ADSL FAS flag example">
-                        <div class="code-window-header">
-                          <span>SAS Population Flag Blueprint</span>
-                          <span>ADSL</span>
-                        </div>
-<pre><code>/* Example logic only. Final rules must follow the study SAP. */
-if randfl = "Y" and dosedfl = "Y" and postbase_vsfl = "Y" then fasfl = "Y";
-else fasfl = "N";</code></pre>
-                      </div>
-                    </div>
-
-                    <div class="mock-document">
-                      <h5>Challenge Scenario 3: The Timing Is Everything Baseline Puzzle</h5>
-                      <p>
-                        Subject <strong>101-001-009</strong> has two vital signs records on Study
-                        Day 1, the first-dose day. Record A has systolic BP 142 mmHg at 08:15 AM.
-                        Record B has systolic BP 135 mmHg at 11:30 AM. Exposure data shows the
-                        first dose was taken at 09:00 AM. The mock shell requires change from
-                        baseline.
-                      </p>
-                      <ol>
-                        <li>Which record is the true baseline value?</li>
-                        <li>What happens if the wrong record is used?</li>
-                        <li>If the raw EDC time is missing, which fallback rule must the program use, and which document authorizes it?</li>
-                      </ol>
-                    </div>
-                    <div class="answer-key">
-                      <h5>Trainer Blueprint</h5>
-                      <p>
-                        Look up the SAP baseline definition and confirm source time variables in the
-                        annotated CRF or data specifications. Record A is baseline because it occurs
-                        before the 09:00 AM dose. Record B is post-dose and using it would corrupt
-                        the change-from-baseline calculation.
-                      </p>
-                      <ul>
-                        <li>Use date-time logic such as VSDTM &lt; EXDTM when both timestamps are available.</li>
-                        <li>If time is missing, use the SAP's missing-time fallback rule.</li>
-                        <li>Many SAPs state that a Day 1 missing-time assessment is assumed pre-dose unless explicitly marked post-dose.</li>
-                        <li>The program should also use VISIT, VSEVAL, or another clinical-intent variable when available.</li>
-                      </ul>
-                      <div class="code-window" aria-label="SAS baseline flag example">
-                        <div class="code-window-header">
-                          <span>SAS Baseline Blueprint</span>
-                          <span>ADVS</span>
-                        </div>
-<pre><code>/* Example logic only. Final missing-time rules must follow the SAP. */
-if not missing(vsdtm) and not missing(exdtm) then pre_dose = (vsdtm &lt; exdtm);
-else if ady = 1 and missing(vstm) and upcase(visit) = "BASELINE" then pre_dose = 1;
-else pre_dose = 0;
-
-if pre_dose then ablfl = "Y";</code></pre>
-                      </div>
-                    </div>
-
+                  <div class="embedded-quiz-card">
+                    <h4>Practice Quiz: Mock TLF QC Detective</h4>
+                    <p>Use this interactive quiz to practice cross-checking a mock TLF shell against the SAP, Protocol, ADaM specification, and programming action before output delivery.</p>
+                    <iframe class="quiz-frame" src="mock_tlf_qc_quiz.html" title="Mock TLF QC Detective Quiz" style="min-height: 1840px;"></iframe>
                   </div>
                 </article>
               </details>
@@ -20100,6 +19902,12 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,569 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mock TLF QC Detective Quiz</title>
+  <style>
+    :root {
+      --ink: #2d2723;
+      --muted: #6f6259;
+      --paper: #fbf7ee;
+      --line: #e2d6c7;
+      --navy: #1f416d;
+      --blue: #2f73b8;
+      --green: #147b4b;
+      --red: #b42318;
+      --amber: #a8662b;
+      --soft: #fffdf8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,.78)),
+        repeating-linear-gradient(115deg, #f4efe6 0, #f4efe6 3px, #f8f4ec 3px, #f8f4ec 8px);
+    }
+    .topbar {
+      min-height: 58px;
+      padding: 10px 22px;
+      background: var(--navy);
+      color: #fff;
+      border-bottom: 4px solid #18345b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar strong { font-size: 18px; }
+    .score { font-weight: 800; white-space: nowrap; }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .intro {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .shell-panel {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+    .word-page {
+      min-height: 760px;
+      max-width: 980px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: 36px 48px 30px;
+      border: 1px solid rgba(24, 24, 24, .28);
+      background: #fffefa;
+      box-shadow: 0 16px 36px rgba(58, 43, 34, .14);
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .word-page-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: #111;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .word-page-title {
+      margin: 26px auto 20px;
+      max-width: 620px;
+      color: #111;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+    }
+    .word-page .shell-population {
+      margin: 0 0 10px;
+      color: #111;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .word-page table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #111;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    .word-page .shell-table th,
+    .word-page .shell-table td {
+      padding: 3px 7px;
+      border: 0;
+      color: #111;
+      font-size: 11px;
+      text-align: center;
+      vertical-align: top;
+    }
+    .word-page .shell-table th:first-child,
+    .word-page .shell-table td:first-child {
+      width: 48%;
+      text-align: left;
+    }
+    .word-page .shell-table thead th {
+      border-top: 1.5px solid #111;
+      border-bottom: 1.5px solid #111;
+      font-weight: 400;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+    .word-page .shell-section-row td {
+      padding-top: 11px;
+    }
+    .word-page .shell-stat-row td:first-child {
+      padding-left: 26px;
+    }
+    .word-page .shell-pvalue-row td {
+      padding-top: 9px;
+      border-top: 1px solid #111;
+    }
+    .word-page .shell-footnote {
+      margin: 12px 0 0;
+      padding-top: 8px;
+      border-top: 1.5px solid #111;
+      color: #111;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .word-page-footer {
+      margin-top: auto;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: #6f6f6f;
+      font-size: 10px;
+      line-height: 1.2;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, .92);
+      box-shadow: 0 12px 26px rgba(70, 52, 42, .08);
+      overflow: hidden;
+    }
+    .card-head {
+      min-height: 46px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .62);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+    }
+    .card-head h2, .card-head h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #eef2f0;
+      color: #4d5a60;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .shell-body { padding: 18px; }
+    .meta {
+      margin: 0 0 12px;
+      color: #3f3432;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .shell-title {
+      margin: 0 0 12px;
+      padding-top: 11px;
+      border-top: 1px solid var(--line);
+      color: #3f3432;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    .shell-table th,
+    .shell-table td {
+      padding: 10px 8px;
+      border-top: 1px solid var(--line);
+      color: #4b403b;
+      font-size: 13px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .shell-table th { color: #342d29; font-weight: 800; }
+    .shell-table td:nth-child(n+2), .shell-table th:nth-child(n+2) { text-align: center; }
+    .shell-footnote {
+      margin: 10px 0 0;
+      padding-top: 11px;
+      border-top: 1px solid var(--line);
+      color: #5f514c;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .quiz-list { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 980px; margin: 0 auto; }
+    .scenario { padding: 14px 16px; }
+    .scenario h3 {
+      margin: 0 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    .scenario p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+    .field-grid { display: grid; gap: 8px; }
+    label {
+      display: grid;
+      gap: 5px;
+      color: #3f3432;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    select {
+      width: 100%;
+      min-height: 38px;
+      padding: 7px 9px;
+      border: 1px solid #c9d5df;
+      border-radius: 6px;
+      background: #fff;
+      color: #173654;
+      font-weight: 700;
+    }
+    .action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    button {
+      min-height: 38px;
+      padding: 0 13px;
+      border: 1px solid var(--navy);
+      border-radius: 6px;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    button.secondary { background: #fff; color: var(--navy); }
+    .feedback {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 13px;
+      border-radius: 7px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    .feedback.ok {
+      display: block;
+      border: 1px solid rgba(20, 123, 75, .35);
+      background: #f0fbf5;
+      color: #174f35;
+    }
+    .feedback.bad {
+      display: block;
+      border: 1px solid rgba(180, 35, 24, .32);
+      background: #fff3f1;
+      color: #84251e;
+    }
+    .blueprint {
+      display: none;
+      margin-top: 12px;
+      padding: 13px;
+      border-left: 4px solid #8fb1aa;
+      background: rgba(236, 246, 243, .72);
+      color: #4f4a45;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    .blueprint.show { display: block; }
+    .blueprint strong { color: #244566; }
+    .doc-strip {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .doc-chip {
+      padding: 11px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.74);
+      color: #4d403a;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .doc-chip strong { display: block; color: var(--navy); margin-bottom: 3px; }
+    @media (max-width: 980px) {
+      .workspace { grid-template-columns: 1fr; }
+      .doc-strip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      main { padding: 14px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .doc-strip { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <strong>Mock TLF QC Detective Quiz</strong>
+    <div class="score" id="score">0 / 3 scenarios solved</div>
+  </header>
+
+  <main>
+    <p class="intro">
+      Review the mock TLF shell, then solve three production-style anomalies by choosing the issue, the controlling document, and the programming action.
+    </p>
+
+    <section class="workspace">
+      <article class="shell-panel" aria-label="Word-style mock TLF shell">
+        <div class="word-page">
+          <div class="word-page-meta">
+            <span>Protocol: YGN-101-02</span>
+            <span>Draft Mock Shell</span>
+          </div>
+          <div class="word-page-title">
+            <div>Table 14.2.1</div>
+            <div>Change from Baseline in Seated Systolic Blood Pressure (mmHg) at Week 12</div>
+            <div>Analysis Set</div>
+          </div>
+          <table class="shell-table" aria-label="Mock TLF shell">
+            <thead>
+              <tr>
+                <th>Analysis Variable / Statistic</th>
+                <th>Placebo<br>(N=XX)</th>
+                <th>YGN-101 50mg<br>(N=XX)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="shell-section-row"><td>Baseline</td><td></td><td></td></tr>
+              <tr class="shell-stat-row"><td>n</td><td>xx</td><td>xx</td></tr>
+              <tr class="shell-stat-row"><td>Mean (SD)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td></tr>
+              <tr class="shell-stat-row"><td>Median</td><td>xx.x</td><td>xx.x</td></tr>
+              <tr class="shell-stat-row"><td>Q1, Q3</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td></tr>
+              <tr class="shell-stat-row"><td>Min, Max</td><td>xx, xx</td><td>xx, xx</td></tr>
+
+              <tr class="shell-section-row"><td>Week 12 (Visit 6)</td><td></td><td></td></tr>
+              <tr class="shell-stat-row"><td>n</td><td>xx</td><td>xx</td></tr>
+              <tr class="shell-stat-row"><td>Mean (SD)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td></tr>
+              <tr class="shell-stat-row"><td>Median</td><td>xx.x</td><td>xx.x</td></tr>
+              <tr class="shell-stat-row"><td>Q1, Q3</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td></tr>
+              <tr class="shell-stat-row"><td>Min, Max</td><td>xx, xx</td><td>xx, xx</td></tr>
+
+              <tr class="shell-section-row"><td>Change from Baseline at Week 12 (Crude)</td><td></td><td></td></tr>
+              <tr class="shell-stat-row"><td>n</td><td>xx</td><td>xx</td></tr>
+              <tr class="shell-stat-row"><td>Mean (SD)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td></tr>
+              <tr class="shell-stat-row"><td>Median</td><td>xx.x</td><td>xx.x</td></tr>
+              <tr class="shell-stat-row"><td>Q1, Q3</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td></tr>
+              <tr class="shell-stat-row"><td>Min, Max</td><td>xx, xx</td><td>xx, xx</td></tr>
+
+              <tr class="shell-section-row"><td>ANCOVA Statistical Analysis [1]</td><td></td><td></td></tr>
+              <tr class="shell-stat-row"><td>LS Mean (SE)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td></tr>
+              <tr class="shell-stat-row"><td>LS Mean Difference (95% CI) (vs Placebo)</td><td>--</td><td>xx.x (xx.x, xx.x)</td></tr>
+              <tr class="shell-stat-row"><td>p-value (vs Placebo)</td><td>--</td><td>0.xxxx</td></tr>
+            </tbody>
+          </table>
+          <p class="shell-footnote">[1] ANCOVA model includes treatment as a factor and baseline value as a covariate. Week 12 visit window is defined as Study Day 78 to 98.</p>
+          <div class="word-page-footer">
+            <span>CONFIDENTIAL - TRAINING MOCK SHELL</span>
+            <span>Page 1 of 1</span>
+          </div>
+        </div>
+      </article>
+
+      <section class="quiz-list" aria-label="QC scenarios">
+        <article class="card scenario" data-answer="visit-window|adam-spec|apply-tiebreak">
+          <h3>Scenario 1: Dual-Visit Windowing Trap</h3>
+          <p>Subject 101-002-015 has two unscheduled SBP records inside the Week 12 window: Study Day 80 and Study Day 94.</p>
+          <div class="field-grid">
+            <label>Issue
+              <select class="issue">
+                <option value="">Choose...</option>
+                <option value="visit-window">Two candidate records map to one analysis visit</option>
+                <option value="population">Subject has no post-baseline data</option>
+                <option value="shell-layout">P-value displayed under each treatment column</option>
+              </select>
+            </label>
+            <label>Controlling document
+              <select class="doc">
+                <option value="">Choose...</option>
+                <option value="protocol">Protocol</option>
+                <option value="sap">SAP</option>
+                <option value="adam-spec">ADaM specification / BDS derivation rule</option>
+                <option value="mock-shell">Mock TLF shell</option>
+              </select>
+            </label>
+            <label>Programming action
+              <select class="action">
+                <option value="">Choose...</option>
+                <option value="include-both">Include both records in Week 12</option>
+                <option value="apply-tiebreak">Apply the pre-specified visit-window tie-break rule</option>
+                <option value="use-ancova-all">Use ANCOVA output for every row</option>
+                <option value="single-pvalue">Display one model p-value for the treatment comparison</option>
+              </select>
+            </label>
+          </div>
+          <div class="action-row"><button class="check">Check</button><button class="secondary reveal">Trainer Blueprint</button></div>
+          <div class="feedback"></div>
+          <div class="blueprint"><strong>Blueprint:</strong> One analysis visit should have one selected analysis record per subject/parameter unless the specification says otherwise. Check the ADaM BDS visit window and tie-break rule, then derive one Week 12 ADVS record.</div>
+        </article>
+
+        <article class="card scenario" data-answer="model-source|sap|separate-sources">
+          <h3>Scenario 2: Crude vs Model-Based Row Trap</h3>
+          <p>The shell contains both crude descriptive rows and ANCOVA statistical analysis rows. A draft output programmer plans to populate the entire table from the ANCOVA output dataset because it already contains LS means and p-values.</p>
+          <div class="field-grid">
+            <label>Issue
+              <select class="issue">
+                <option value="">Choose...</option>
+                <option value="visit-window">Two candidate records map to one analysis visit</option>
+                <option value="model-source">Crude summary rows and model-based rows are being sourced from the same output</option>
+                <option value="shell-layout">P-value displayed under each treatment column</option>
+              </select>
+            </label>
+            <label>Controlling document
+              <select class="doc">
+                <option value="">Choose...</option>
+                <option value="protocol">Protocol visit schedule only</option>
+                <option value="sap">SAP statistical method and mock shell row definitions</option>
+                <option value="adam-spec">ADaM specification only</option>
+                <option value="mock-shell">Mock shell formatting only</option>
+              </select>
+            </label>
+            <label>Programming action
+              <select class="action">
+                <option value="">Choose...</option>
+                <option value="use-ancova-all">Use ANCOVA output for every numeric row</option>
+                <option value="separate-sources">Populate n/Mean/Median/Q1/Min/Max from analysis data summaries, and LS mean/CI/p-value from model output</option>
+                <option value="apply-tiebreak">Apply visit-window tie-break rule</option>
+                <option value="single-pvalue">Display one model p-value</option>
+              </select>
+            </label>
+          </div>
+          <div class="action-row"><button class="check">Check</button><button class="secondary reveal">Trainer Blueprint</button></div>
+          <div class="feedback"></div>
+          <div class="blueprint"><strong>Blueprint:</strong> TLF shells often mix descriptive statistics and inferential model results. Crude rows should be summarized directly from the analysis dataset, while ANCOVA rows come from the model output specified in the SAP.</div>
+        </article>        <article class="card scenario" data-answer="shell-layout|mock-shell|single-pvalue">
+          <h3>Scenario 3: P-value Placement Trap</h3>
+          <p>The shell shows a p-value row under both treatment columns, but the footnote says the p-value comes from an ANCOVA treatment comparison.</p>
+          <div class="field-grid">
+            <label>Issue
+              <select class="issue">
+                <option value="">Choose...</option>
+                <option value="visit-window">Two candidate records map to one analysis visit</option>
+                <option value="model-source">Crude and model-based rows are mixed together</option>
+                <option value="shell-layout">A single model comparison is being displayed as if it belongs to each arm</option>
+              </select>
+            </label>
+            <label>Controlling document
+              <select class="doc">
+                <option value="">Choose...</option>
+                <option value="protocol">Protocol visit schedule</option>
+                <option value="sap">SAP only</option>
+                <option value="adam-spec">ADaM derivation rule</option>
+                <option value="mock-shell">Mock shell plus SAP statistical method</option>
+              </select>
+            </label>
+            <label>Programming action
+              <select class="action">
+                <option value="">Choose...</option>
+                <option value="two-pvalues">Calculate one p-value per treatment group</option>
+                <option value="single-pvalue">Display one model p-value for the treatment comparison</option>
+                <option value="use-ancova-all">Use ANCOVA output for every displayed row</option>
+                <option value="include-both">Include both window records</option>
+              </select>
+            </label>
+          </div>
+          <div class="action-row"><button class="check">Check</button><button class="secondary reveal">Trainer Blueprint</button></div>
+          <div class="feedback"></div>
+          <div class="blueprint"><strong>Blueprint:</strong> A treatment-comparison p-value is not arm-specific. Confirm the shell layout with the statistician; display a single p-value column or a clearly labeled comparison row.</div>
+        </article>
+      </section>
+    </section>
+
+    <section class="doc-strip" aria-label="Document map">
+      <div class="doc-chip"><strong>Protocol</strong>Visit schedule, assessment timing, treatment plan.</div>
+      <div class="doc-chip"><strong>SAP</strong>Population definitions, model, estimand, primary comparison.</div>
+      <div class="doc-chip"><strong>aCRF</strong>How source fields are collected and labeled.</div>
+      <div class="doc-chip"><strong>ADaM Spec</strong>Derivations, visit windows, flags, analysis records.</div>
+      <div class="doc-chip"><strong>Mock Shell</strong>Display layout, footnotes, table intent.</div>
+    </section>
+  </main>
+
+  <script>
+    const solved = new Set();
+    const score = document.getElementById('score');
+
+    function updateScore() {
+      score.textContent = `${solved.size} / 3 scenarios solved`;
+    }
+
+    document.querySelectorAll('.scenario').forEach((card, index) => {
+      const check = card.querySelector('.check');
+      const reveal = card.querySelector('.reveal');
+      const feedback = card.querySelector('.feedback');
+      const blueprint = card.querySelector('.blueprint');
+
+      check.addEventListener('click', () => {
+        const expected = card.dataset.answer.split('|');
+        const actual = [
+          card.querySelector('.issue').value,
+          card.querySelector('.doc').value,
+          card.querySelector('.action').value
+        ];
+        const complete = actual.every(Boolean);
+        const ok = complete && expected.every((value, i) => value === actual[i]);
+        feedback.className = `feedback ${ok ? 'ok' : 'bad'}`;
+        feedback.textContent = ok
+          ? 'Correct. This is the production decision path you would document before programming or QC sign-off.'
+          : complete
+            ? 'Not quite. Re-check which document controls the decision and whether the action changes data, population, or display.'
+            : 'Choose one answer in each dropdown first.';
+        if (ok) {
+          solved.add(index);
+          blueprint.classList.add('show');
+          updateScore();
+        }
+      });
+
+      reveal.addEventListener('click', () => {
+        blueprint.classList.toggle('show');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
