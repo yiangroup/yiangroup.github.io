@@ -5751,16 +5751,194 @@
               </p>
               <details class="training-item">
                 <summary>
-                  <span class="summary-meta">Coming Soon</span>
-                  <span class="summary-title">SAS Fundamentals for Clinical Programming</span>
-                  <span class="summary-note">Core syntax, datasets, logs, formats, macros, and QC-ready coding style.</span>
+                  <span class="summary-meta">Module 01</span>
+                  <span class="summary-title">Getting Started Using SAS Software</span>
+                  <span class="summary-note">SAS language basics, datasets, DATA/PROC steps, logs, results, libraries, views, properties, and system options.</span>
                 </summary>
                 <article class="lesson">
-                  <h4>SAS Fundamentals for Clinical Programming</h4>
+                  <h4>Module 01. Getting Started Using SAS Software</h4>
                   <p>
-                    SAS lessons will be added here as a separate language-focused track.
-                    The clinical domain training remains under Statistical Programming Training.
+                    This module introduces SAS as a programming environment. The goal is not to memorize every command;
+                    it is to understand how SAS reads code, creates data sets, writes logs and results, and stores data in libraries.
+                    The examples below use small clinical-style training data so each topic connects to later statistical programming work.
                   </p>
+
+                  <h5>1.1 The SAS Language</h5>
+                  <p>SAS programs are built from statements. Most statements end with a semicolon. A DATA step usually creates or modifies a data set; a PROC step usually analyzes, prints, sorts, or reports a data set.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS language basics example">
+                    <div class="code-window-header"><span>1.1 SAS Language</span><span>.sas</span></div>
+<pre><code><span class="sas-comment">/* Every SAS statement ends with a semicolon. */</span>
+<span class="sas-step">data</span> <span class="sas-data">work.demo</span>;
+  <span class="sas-keyword">length</span> <span class="sas-var">usubjid</span> $12 <span class="sas-var">trt01p</span> $20;
+  <span class="sas-var">usubjid</span> = <span class="sas-string">'101-001'</span>;
+  <span class="sas-var">trt01p</span> = <span class="sas-string">'Placebo'</span>;
+  <span class="sas-output">output</span>;
+<span class="sas-keyword">run</span>;
+
+<span class="sas-proc">proc print</span> <span class="sas-option">data=</span><span class="sas-data">work.demo</span>;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.2 SAS Data Sets</h5>
+                  <p>A SAS data set is a table with observations and variables. Clinical programmers often think in terms of one row per subject, one row per event, or one row per test result.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS data set example">
+                    <div class="code-window-header"><span>1.2 SAS Data Sets</span><span>WORK.ADSL_TRAIN</span></div>
+<pre><code><span class="sas-step">data</span> <span class="sas-data">work.adsl_train</span>;
+  <span class="sas-keyword">length</span> <span class="sas-var">usubjid trt01p saffl</span> $12;
+  <span class="sas-keyword">input</span> <span class="sas-var">usubjid</span> $ <span class="sas-var">trt01p</span> $ <span class="sas-var">age</span> <span class="sas-var">saffl</span> $;
+  <span class="sas-keyword">datalines</span>;
+101-001 Placebo 62 Y
+101-002 Active  55 Y
+101-003 Active  71 N
+;
+<span class="sas-keyword">run</span>;
+
+<span class="sas-proc">proc contents</span> <span class="sas-option">data=</span><span class="sas-data">work.adsl_train</span>;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.3 DATA and PROC Steps</h5>
+                  <p>DATA steps build data. PROC steps do something with data. A common beginner mistake is mixing DATA step statements inside PROC steps or forgetting where a step ends.</p>
+                  <div class="code-window sas-syntax" aria-label="DATA and PROC steps example">
+                    <div class="code-window-header"><span>1.3 DATA and PROC Steps</span><span>Pattern</span></div>
+<pre><code><span class="sas-step">data</span> <span class="sas-data">work.safety</span>;
+  <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_train</span>;
+  <span class="sas-keyword">where</span> <span class="sas-var">saffl</span> = <span class="sas-string">'Y'</span>;
+<span class="sas-keyword">run</span>;
+
+<span class="sas-proc">proc freq</span> <span class="sas-option">data=</span><span class="sas-data">work.safety</span>;
+  <span class="sas-keyword">tables</span> <span class="sas-var">trt01p</span>;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.4 The DATA Step's Built-in Loop</h5>
+                  <p>The DATA step runs once for each input observation unless you tell it otherwise. This built-in loop is why one short IF statement can derive a value for every row.</p>
+                  <div class="code-window sas-syntax" aria-label="DATA step loop example">
+                    <div class="code-window-header"><span>1.4 Built-in Loop</span><span>Derivation</span></div>
+<pre><code><span class="sas-step">data</span> <span class="sas-data">work.adsl_flags</span>;
+  <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_train</span>;
+
+  <span class="sas-comment">/* SAS repeats this logic for each observation. */</span>
+  <span class="sas-keyword">if</span> <span class="sas-var">age</span> &gt;= 65 <span class="sas-keyword">then</span> <span class="sas-var">agegr1</span> = <span class="sas-string">'Older'</span>;
+  <span class="sas-keyword">else</span> <span class="sas-var">agegr1</span> = <span class="sas-string">'Younger'</span>;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.5 Choosing a Mode for Submitting SAS Programs</h5>
+                  <p>SAS code can be submitted interactively, in batch, or through a scheduler. Training often starts interactively; production clinical work usually requires reproducible batch runs.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS run mode example">
+                    <div class="code-window-header"><span>1.5 Submission Mode</span><span>Batch-friendly setup</span></div>
+<pre><code><span class="sas-comment">/* Batch-friendly programs should define inputs, outputs, and logs clearly. */</span>
+<span class="sas-keyword">options</span> <span class="sas-option">nodate</span> <span class="sas-option">nonumber</span> <span class="sas-option">mprint</span> <span class="sas-option">mlogic</span>;
+
+<span class="sas-comment">/* In production, paths are usually controlled by project setup macros. */</span>
+<span class="sas-keyword">%let</span> <span class="sas-var">study</span>=YGN101;
+<span class="sas-keyword">%let</span> <span class="sas-var">outds</span>=adsl_train;</code></pre>
+                  </div>
+
+                  <h5>1.6 Windows and Commands in the SAS Windowing Environment</h5>
+                  <p>Classic SAS has separate windows for program code, log messages, output, explorer, and viewtable. Even in SAS Studio, the same mental model helps: code, log, results, data.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS window commands example">
+                    <div class="code-window-header"><span>1.6 SAS Windows</span><span>Commands</span></div>
+<pre><code><span class="sas-comment">/* Common windowing commands typed into the command bar. */</span>
+<span class="sas-comment">/* log      - show the SAS log window                         */</span>
+<span class="sas-comment">/* output   - show classic listing output                     */</span>
+<span class="sas-comment">/* explorer - browse libraries and data sets                  */</span>
+<span class="sas-comment">/* viewtable work.adsl_train - open a data set in table view  */</span></code></pre>
+                  </div>
+
+                  <h5>1.7 Submitting a Program in the SAS Windowing Environment</h5>
+                  <p>After submitting code, always read the log before trusting the output. A table can be produced even when the log contains warnings that make it unsuitable for delivery.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS submit and clear example">
+                    <div class="code-window-header"><span>1.7 Submit Program</span><span>Workflow</span></div>
+<pre><code><span class="sas-comment">/* Training habit: run a small section, then check the log. */</span>
+<span class="sas-step">data</span> <span class="sas-data">work.check_submit</span>;
+  <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_train</span>;
+<span class="sas-keyword">run</span>;
+
+<span class="sas-proc">proc print</span> <span class="sas-option">data=</span><span class="sas-data">work.check_submit</span> <span class="sas-option">obs=</span>5;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.8 Reading the SAS Log</h5>
+                  <p>The log is the first QC tool. For regulated programming, ERROR, WARNING, uninitialized variables, conversions, repeats of BY values, and unexpected record counts all require review.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS log scan example">
+                    <div class="code-window-header"><span>1.8 Read the Log</span><span>QC habit</span></div>
+<pre><code><span class="sas-comment">/* Example issue: AGEGR1 is misspelled, creating an uninitialized variable note. */</span>
+<span class="sas-step">data</span> <span class="sas-data">work.log_check</span>;
+  <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_flags</span>;
+  <span class="sas-keyword">if</span> <span class="sas-var">agegrp1</span> = <span class="sas-string">'Older'</span> <span class="sas-keyword">then</span> <span class="sas-var">seniorfl</span> = <span class="sas-string">'Y'</span>;
+<span class="sas-keyword">run</span>;
+
+<span class="sas-comment">/* Expected log review: search for ERROR, WARNING, uninitialized, converted. */</span></code></pre>
+                  </div>
+
+                  <h5>1.9 Viewing Your Results</h5>
+                  <p>Results can appear as listing output, HTML, PDF, RTF, or data sets created from procedure output. In production, output data sets are useful for QC checks.</p>
+                  <div class="code-window sas-syntax" aria-label="Viewing SAS results example">
+                    <div class="code-window-header"><span>1.9 View Results</span><span>ODS</span></div>
+<pre><code><span class="sas-proc">ods output</span> <span class="sas-output">OneWayFreqs=work.trt_counts</span>;
+<span class="sas-proc">proc freq</span> <span class="sas-option">data=</span><span class="sas-data">work.safety</span>;
+  <span class="sas-keyword">tables</span> <span class="sas-var">trt01p</span>;
+<span class="sas-keyword">run</span>;
+<span class="sas-proc">ods output</span> <span class="sas-keyword">close</span>;
+
+<span class="sas-proc">proc print</span> <span class="sas-option">data=</span><span class="sas-data">work.trt_counts</span>;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.10 SAS Data Libraries</h5>
+                  <p>A library is a shortcut to a storage location. WORK is temporary. A named library can point to permanent project data such as raw, sdtm, adam, or output folders.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS library example">
+                    <div class="code-window-header"><span>1.10 SAS Libraries</span><span>LIBNAME</span></div>
+<pre><code><span class="sas-comment">/* WORK disappears after the SAS session. Project libraries are persistent. */</span>
+<span class="sas-keyword">libname</span> <span class="sas-data">raw</span> <span class="sas-string">"C:\\study\\raw"</span>;
+<span class="sas-keyword">libname</span> <span class="sas-data">adam</span> <span class="sas-string">"C:\\study\\adam"</span>;
+
+<span class="sas-step">data</span> <span class="sas-data">adam.adsl_train</span>;
+  <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_train</span>;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.11 Viewing Data Sets in the Viewtable Window</h5>
+                  <p>Viewtable is useful for quick inspection, but it is not a substitute for programmed checks. Use it to understand shape, then use PROC PRINT or PROC CONTENTS to document findings.</p>
+                  <div class="code-window sas-syntax" aria-label="Viewtable and print example">
+                    <div class="code-window-header"><span>1.11 Viewtable</span><span>Inspect data</span></div>
+<pre><code><span class="sas-comment">/* Windowing command: viewtable work.adsl_train */</span>
+
+<span class="sas-proc">proc print</span> <span class="sas-option">data=</span><span class="sas-data">work.adsl_train</span> <span class="sas-option">obs=</span>10;
+  <span class="sas-keyword">var</span> <span class="sas-var">usubjid trt01p age saffl</span>;
+<span class="sas-keyword">run</span>;</code></pre>
+                  </div>
+
+                  <h5>1.12 Viewing the Properties of Data Sets with SAS Explorer</h5>
+                  <p>Dataset properties tell you variable names, types, lengths, labels, formats, sort order, and observation counts. These details often explain merge issues and truncation.</p>
+                  <div class="code-window sas-syntax" aria-label="Dataset properties example">
+                    <div class="code-window-header"><span>1.12 Dataset Properties</span><span>PROC CONTENTS</span></div>
+<pre><code><span class="sas-proc">proc contents</span> <span class="sas-option">data=</span><span class="sas-data">work.adsl_train</span> <span class="sas-option">varnum</span>;
+<span class="sas-keyword">run</span>;
+
+<span class="sas-comment">/* Quick check: type and length must match before merges. */</span>
+<span class="sas-proc">proc sql</span>;
+  <span class="sas-keyword">select</span> <span class="sas-var">name, type, length, label</span>
+  <span class="sas-keyword">from</span> <span class="sas-data">dictionary.columns</span>
+  <span class="sas-keyword">where</span> <span class="sas-var">libname</span> = <span class="sas-string">'WORK'</span> <span class="sas-keyword">and</span> <span class="sas-var">memname</span> = <span class="sas-string">'ADSL_TRAIN'</span>;
+<span class="sas-keyword">quit</span>;</code></pre>
+                  </div>
+
+                  <h5>1.13 Using SAS System Options</h5>
+                  <p>System options control how SAS runs and how output/logs look. For training, options help make results readable; for production, they make runs traceable and easier to QC.</p>
+                  <div class="code-window sas-syntax" aria-label="SAS system options example">
+                    <div class="code-window-header"><span>1.13 SAS System Options</span><span>OPTIONS</span></div>
+<pre><code><span class="sas-keyword">options</span> <span class="sas-option">nodate</span> <span class="sas-option">nonumber</span> <span class="sas-option">validvarname=upcase</span>;
+<span class="sas-keyword">options</span> <span class="sas-option">mprint</span> <span class="sas-option">mlogic</span> <span class="sas-option">symbolgen</span>;
+
+<span class="sas-proc">proc options</span> <span class="sas-option">option=</span><span class="sas-var">validvarname</span>;
+<span class="sas-keyword">run</span>;
+
+<span class="sas-comment">/* After debugging macros, turn noisy macro options off if team standard requires it. */</span>
+<span class="sas-keyword">options</span> <span class="sas-option">nomprint</span> <span class="sas-option">nomlogic</span> <span class="sas-option">nosymbolgen</span>;</code></pre>
+                  </div>
                 </article>
               </details>
             </div>
@@ -19902,6 +20080,7 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
 
 
 
