@@ -1,0 +1,210 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAS Display Manager Simulator</title>
+<style>
+  html, body { margin:0; background:#02a9e6; font-family:Tahoma, Arial, sans-serif; }
+  body { padding:10px; box-sizing:border-box; overflow:hidden; }
+  .sas-app { width:100%; min-width:0; height:680px; background:#d8e4ed; border:1px solid #0d5f9f; box-shadow:0 0 0 1px rgba(255,255,255,.55) inset; display:grid; grid-template-rows:24px 24px 28px 1fr 23px 22px; overflow:hidden; }
+  .titlebar { display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg,#06a9e8,#0757bb); color:white; padding:0 9px; font-size:12px; line-height:24px; }
+  .title-left { display:flex; align-items:center; gap:6px; }
+  .sas-logo { width:15px; height:15px; display:inline-grid; place-items:center; background:#f1f1f1; color:#315f9a; border:1px solid #7d9ab7; font-size:7px; font-weight:800; }
+  .win-controls { display:flex; gap:18px; font-size:15px; }
+  .menubar { display:flex; align-items:center; gap:18px; padding:0 8px; background:#f6f6f6; border-bottom:1px solid #bfc6cc; font-size:12px; color:#111; }
+  .menu-item { position:relative; cursor:pointer; height:24px; line-height:24px; }
+  .menu-item:hover { background:#dce8f4; }
+  .menu-popup { display:none; position:absolute; top:23px; left:0; min-width:150px; background:#fff; border:1px solid #7f9db9; box-shadow:2px 2px 4px rgba(0,0,0,.22); z-index:20; padding:3px 0; }
+  .menu-popup div { padding:5px 18px 5px 10px; white-space:nowrap; }
+  .menu-popup div:hover { background:#316ac5; color:#fff; }
+  .menu-item.open .menu-popup { display:block; }
+  .toolbar { display:flex; align-items:center; gap:5px; padding:3px 7px; background:#ececec; border-bottom:1px solid #8ea0ae; }
+  .check { font-size:16px; margin-right:2px; }
+  .command { width:170px; height:18px; border:1px solid #7f7f7f; background:white; padding:0 4px; font:12px Tahoma, Arial, sans-serif; }
+  .tool { width:17px; height:17px; border:1px solid transparent; background:transparent; padding:0; cursor:pointer; position:relative; }
+  .tool:hover { border-color:#7f9db9; background:#dfefff; }
+  .ico-page::before { content:""; position:absolute; left:4px; top:2px; width:9px; height:12px; background:white; border:1px solid #555; }
+  .ico-folder::before { content:""; position:absolute; left:2px; top:6px; width:13px; height:9px; background:#e6c83e; border:1px solid #735; } .ico-folder::after{content:"";position:absolute;left:3px;top:3px;width:7px;height:4px;background:#f0dc62;border:1px solid #735;border-bottom:0;}
+  .ico-save::before { content:""; position:absolute; left:3px; top:2px; width:12px; height:13px; background:#203b76; border:1px solid #111; } .ico-save::after{content:"";position:absolute;left:5px;top:4px;width:8px;height:3px;background:white;}
+  .ico-print::before { content:""; position:absolute; left:2px; top:6px; width:13px; height:8px; background:#777; border:1px solid #333; } .ico-print::after{content:"";position:absolute;left:5px;top:2px;width:8px;height:6px;background:white;border:1px solid #555;}
+  .ico-run::before { content:"▶"; position:absolute; left:3px; top:0; color:#1b7b2c; font-size:14px; }
+  .ico-stop::before { content:"×"; position:absolute; left:3px; top:-2px; color:#111; font-size:20px; }
+  .ico-help::before { content:"?"; position:absolute; left:4px; top:1px; width:10px; height:10px; border-radius:50%; color:#063aad; font-weight:800; }
+  .sep { width:1px; height:19px; background:#aaa; margin:0 3px; }
+  .workspace { display:grid; grid-template-columns:286px 1fr; min-height:0; background:#c9d8e3; border-top:1px solid #eef4f8; }
+  .explorer { margin:5px 4px 4px 5px; background:white; border:1px solid #7b91a2; display:grid; grid-template-rows:23px 1fr 24px; min-width:0; }
+  .pane-title { display:flex; justify-content:space-between; align-items:center; height:23px; padding:0 5px; background:linear-gradient(#d7e8f4,#b6cadb); border-bottom:1px solid #93a6b5; color:#6c747b; font-size:12px; box-sizing:border-box; }
+  .small-close { display:grid; place-items:center; width:15px; height:14px; background:#9daab3; color:white; font-weight:800; font-size:11px; }
+  .explorer-content { padding:6px; font-size:11px; }
+  .content-label { border:1px solid #9a9a9a; padding:3px 4px; margin-bottom:8px; color:#111; }
+  .folders { display:grid; grid-template-columns:repeat(2, 72px); gap:14px 18px; align-items:start; padding-left:10px; }
+  .folder { width:72px; text-align:center; cursor:pointer; color:#111; line-height:1.15; overflow:hidden; }
+  .folder:hover span:last-child { text-decoration:underline; }
+  .folder.selected span:last-child { background:#0a58c2; color:#fff; }
+  .folderpic { position:relative; display:block; width:32px; height:27px; margin:0 auto 4px; }
+  .folderpic::before { content:""; position:absolute; left:5px; top:9px; width:23px; height:15px; background:linear-gradient(#fce66b,#d9b42d); border:1px solid #687a88; }
+  .folderpic::after { content:""; position:absolute; left:8px; top:4px; width:13px; height:6px; background:#fce66b; border:1px solid #687a88; border-bottom:0; }
+  .pcpic::before { background:linear-gradient(#68b8df,#2a75a8); }
+  .left-tabs { display:flex; align-items:end; background:#e7e7e7; border-top:1px solid #b5b5b5; }
+  .left-tab { width:82px; height:21px; border-right:1px solid #999; padding:4px 5px 0; font-size:11px; box-sizing:border-box; }
+  .left-tab.active { background:white; border-top:2px solid #315f9f; padding-top:2px; }
+  .right { display:grid; grid-template-rows:1.45fr 1fr; gap:4px; padding:5px 5px 4px 2px; min-width:0; }
+  .mdi { background:white; border:1px solid #788f9f; min-width:0; overflow:hidden; display:grid; grid-template-rows:23px 1fr; }
+  .mdi-title { display:flex; align-items:center; justify-content:space-between; height:23px; padding:0 5px; background:linear-gradient(#d7e8f4,#b7ccdc); border-bottom:1px solid #8fa4b5; color:#65727b; font-size:12px; box-sizing:border-box; }
+  .mdi-title b { font-weight:400; }
+  .mdi-buttons { display:flex; gap:3px; }
+  .mdi-buttons span { width:17px; height:14px; display:grid; place-items:center; border:1px solid #7f94a5; background:linear-gradient(#d8eaf6,#a9bdcd); color:#304a60; font-size:10px; }
+  .mdi-buttons span.close { background:linear-gradient(#e7b0a8,#c84c3b); color:#fff; }
+  .pane-body { position:relative; overflow:hidden; background:white; }
+  .pane-scroll { position:absolute; right:3px; top:4px; bottom:16px; width:11px; background:#f1f1f1; border-left:1px solid #ddd; } .pane-scroll::before{content:"^";position:absolute;top:0;left:2px;color:#aaa;font-size:9px;} .pane-scroll::after{content:"v";position:absolute;bottom:0;left:2px;color:#aaa;font-size:9px;}
+  .hscroll { position:absolute; left:4px; right:16px; bottom:3px; height:12px; background:#f0f0f0; }
+  pre { margin:0; }
+  .log-text { padding:5px 12px; color:#0000ff; font:700 12px/1.12 "Courier New", monospace; white-space:pre; }
+  .editor-area { padding:7px 10px; color:#111; font:13px/1.25 "Courier New", monospace; white-space:pre; min-height:100%; outline:none; }
+  .cursor { border-left:2px solid #111; height:18px; display:inline-block; }
+  .output-text { padding:8px 12px; color:#111; font:12px/1.25 "Courier New", monospace; white-space:pre; display:none; }
+  .bottom-tabs { display:flex; align-items:end; height:23px; background:#e8e8e8; border-top:1px solid #a8b3bc; padding-left:272px; box-sizing:border-box; }
+  .tab { min-width:110px; height:22px; padding:4px 8px 0; border:1px solid #aaa; border-bottom:0; background:#efefef; box-sizing:border-box; font-size:11px; cursor:pointer; }
+  .tab.active { background:white; border-top:2px solid #315f9f; padding-top:2px; font-weight:700; }
+  .status { display:flex; justify-content:space-between; align-items:center; height:22px; padding:0 12px 0 780px; background:#f1f1f1; border-top:1px solid #b6b6b6; color:#111; font-size:11px; box-sizing:border-box; }
+  .callout { position:absolute; display:none; z-index:50; max-width:260px; padding:8px 10px; background:#fffde8; border:1px solid #9a7d2c; box-shadow:2px 2px 6px rgba(0,0,0,.22); font-size:12px; color:#111; line-height:1.35; }
+  .sim-layout { display:grid; grid-template-columns:1fr; gap:14px; align-items:start; }
+  .app-wrap { position:relative; min-width:0; }
+  .hotspot { position:absolute; z-index:30; border:2px dashed rgba(0,102,204,.35); background:rgba(0,102,204,.035); cursor:pointer; transition:background .15s, border-color .15s, box-shadow .15s, opacity .15s; opacity:.22; }
+  .hotspot:hover { opacity:.75; border-color:#0b68b7; background:rgba(0,102,204,.11); }
+  .hotspot.active { opacity:1; border-color:#ff8c00; background:rgba(255,165,0,.22); box-shadow:0 0 0 2px rgba(255,140,0,.14); }
+  #spot-toolbar { left:0; right:0; top:48px; height:28px; }
+  #spot-command { left:31px; top:51px; width:210px; height:22px; }
+  #spot-explorer { left:5px; top:82px; width:286px; height:555px; }
+  #spot-log { left:294px; right:5px; top:82px; height:337px; }
+  #spot-editor { left:294px; right:5px; top:424px; height:210px; }
+  .info-panel { min-height:0; border:1px solid #c7d2dc; background:#fffdf7; box-shadow:0 10px 24px rgba(39,56,72,.12); padding:16px 18px; box-sizing:border-box; color:#2d2723; font-family:Tahoma, Arial, sans-serif; }
+  .info-panel h2 { margin:0 0 10px; color:#244566; font:700 20px Georgia,"Times New Roman",serif; }
+  .info-panel p { margin:0 0 12px; color:#594f49; font-size:14px; line-height:1.55; }
+  .info-panel ul { margin:8px 0 0 18px; padding:0; color:#594f49; font-size:14px; line-height:1.5; }
+  .info-card { display:none; }
+  .info-card.active { display:block; animation:fadeIn .16s ease-out; }
+  .info-kicker { display:inline-block; margin-bottom:10px; padding:4px 9px; border:1px solid #c8d4df; background:#eef5fa; color:#244566; font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; }
+  .tag { display:inline-block; padding:2px 7px; border-radius:3px; color:white; font-size:11px; font-weight:800; }
+  .tag-blue { background:#0000cc; } .tag-warn { background:#b06a00; } .tag-red { background:#cc0000; }
+  .practice-box { margin-top:16px; padding-top:14px; border-top:1px solid #e0d7ca; }
+  .practice-box button { margin:4px 6px 4px 0; border:1px solid #244566; background:#f7fbff; color:#244566; padding:7px 10px; font-size:12px; font-weight:800; cursor:pointer; }
+  .practice-box button:hover { background:#e7eff7; }
+  .practice-feedback { margin-top:8px; min-height:20px; color:#244566; font-size:13px; font-weight:700; }
+  @keyframes fadeIn { from { opacity:.45; transform:translateY(3px); } to { opacity:1; transform:translateY(0); } }
+  @media (max-width:1050px){ .sim-layout{grid-template-columns:1fr;} .info-panel{min-height:0;} }
+</style>
+</head>
+<body>
+<div class="sim-layout">
+<div class="app-wrap">
+<div class="sas-app" id="sasApp">
+  <div class="titlebar"><div class="title-left"><span class="sas-logo">SAS</span><span>SAS</span></div><div class="win-controls"><span>−</span><span>□</span><span>×</span></div></div>
+  <div class="menubar">
+    <div class="menu-item">File<div class="menu-popup"><div>New Program</div><div>Open...</div><div>Save</div><div>Print...</div></div></div>
+    <div class="menu-item">Edit<div class="menu-popup"><div>Undo</div><div>Cut</div><div>Copy</div><div>Paste</div></div></div>
+    <div class="menu-item">View<div class="menu-popup"><div>Explorer</div><div>Log</div><div>Output</div><div>Editor</div></div></div>
+    <div class="menu-item">Tools<div class="menu-popup"><div>Options</div><div>Customize</div></div></div>
+    <div class="menu-item">Run<div class="menu-popup"><div id="menuSubmit">Submit</div><div>Cancel Submitted Statements</div></div></div>
+    <div class="menu-item">Solutions</div><div class="menu-item">Window</div><div class="menu-item">Help</div>
+  </div>
+  <div class="toolbar"><span class="check">✓</span><input class="command" id="command" title="Try: log, editor, output, explorer"><button class="tool ico-page" title="New program"></button><button class="tool ico-folder" title="Open"></button><button class="tool ico-save" title="Save"></button><button class="tool ico-print" title="Print"></button><span class="sep"></span><button class="tool ico-run" id="runBtn" title="Submit"></button><button class="tool ico-stop" title="Cancel"></button><button class="tool ico-help" title="Help"></button></div>
+  <div class="workspace">
+    <aside class="explorer" id="explorerPane"><div class="pane-title"><span>Explorer</span><span class="small-close">×</span></div><div class="explorer-content"><div class="content-label">Contents of 'SAS Environment'</div><div class="folders"><div class="folder" data-info="Libraries store SAS data sets such as WORK, RAW, SDTM, and ADAM."><span class="folderpic"></span><span>Libraries</span></div><div class="folder" data-info="File Shortcuts point to external folders or files."><span class="folderpic"></span><span>File Shortcuts</span></div><div class="folder" data-info="Favorite Folders are saved locations you use often."><span class="folderpic"></span><span>Favorite<br>Folders</span></div><div class="folder" data-info="This PC lets you browse local drives and folders."><span class="folderpic pcpic"></span><span>This PC</span></div></div></div><div class="left-tabs"><div class="left-tab">Results</div><div class="left-tab active">Explorer</div></div></aside>
+    <main class="right"><section class="mdi" id="logPane"><div class="mdi-title"><b>Log - (Untitled)</b><div class="mdi-buttons"><span>−</span><span>□</span><span class="close">×</span></div></div><div class="pane-body"><pre class="log-text" id="logText">NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA.
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M7)
+      Licensed to LLX SOLUTIONS LLC - SERVICE PROVIDER, Site 70205607.
+NOTE: This session is executing on the X64_DSRV19 platform.
+
+
+NOTE: Analytical products:
+      SAS/STAT 15.2
+      SAS/IML 15.2
+
+NOTE: Additional host information:
+      X64_DSRV19 WIN 10.0.20348  Server
+
+NOTE: SAS initialization used:
+      real time           1.97 seconds
+      cpu time            0.92 seconds</pre><div class="pane-scroll"></div><div class="hscroll"></div></div></section><section class="mdi" id="editorPane"><div class="mdi-title"><b>Editor - Untitled1</b><div class="mdi-buttons"><span>−</span><span>□</span><span class="close">×</span></div></div><div class="pane-body"><div class="editor-area" id="editor" contenteditable="true"><span class="cursor"></span></div><div class="pane-scroll"></div><div class="hscroll"></div></div></section></main>
+  </div>
+  <div class="bottom-tabs"><div class="tab" data-tab="output">Output - (Untitled)</div><div class="tab" data-tab="log">Log - (Untitled)</div><div class="tab active" data-tab="editor">Editor - Untitled1</div></div>
+  <div class="status"><span>C:\Users\jin.shi</span><span>Ln 1, Col 1</span></div>
+</div>
+<button class="hotspot active" id="spot-editor" type="button" data-region="editor" aria-label="Editor window"></button>
+<button class="hotspot" id="spot-log" type="button" data-region="log" aria-label="Log window"></button>
+<button class="hotspot" id="spot-explorer" type="button" data-region="explorer" aria-label="Explorer window"></button>
+<button class="hotspot" id="spot-toolbar" type="button" data-region="toolbar" aria-label="Toolbar"></button>
+<button class="hotspot" id="spot-command" type="button" data-region="command" aria-label="Command box"></button>
+</div>
+<aside class="info-panel" aria-live="polite">
+  <div class="info-card active" id="card-editor">
+    <span class="info-kicker">Editor</span>
+    <h2>Editor - write SAS code here</h2>
+    <p>The Editor is where a programmer writes or pastes SAS code. In Display Manager, you can submit selected code or submit the whole editor.</p>
+    <ul><li><strong>Shortcut:</strong> F8 submits code.</li><li><strong>Risk:</strong> if nothing is selected, SAS may run more code than intended.</li><li><strong>Habit:</strong> run a small section, then read the Log.</li></ul>
+  </div>
+  <div class="info-card" id="card-log">
+    <span class="info-kicker">Log</span>
+    <h2>Log - read this after every run</h2>
+    <p>The Log is the execution record. It tells you whether SAS created data, how many observations were processed, and whether there are problems.</p>
+    <ul><li><span class="tag tag-blue">NOTE</span> normal execution details.</li><li><span class="tag tag-warn">WARNING</span> code ran, but review is required.</li><li><span class="tag tag-red">ERROR</span> code failed or output is not reliable.</li></ul>
+  </div>
+  <div class="info-card" id="card-explorer">
+    <span class="info-kicker">Explorer</span>
+    <h2>Explorer - browse libraries and data</h2>
+    <p>Explorer is the data/file browser. Beginners should learn where WORK, permanent libraries, and shortcuts appear.</p>
+    <ul><li><strong>WORK:</strong> temporary library cleared after the session.</li><li><strong>Permanent libraries:</strong> assigned with LIBNAME.</li><li><strong>Viewtable:</strong> useful for quick inspection, not formal QC.</li></ul>
+  </div>
+  <div class="info-card" id="card-toolbar">
+    <span class="info-kicker">Toolbar</span>
+    <h2>Toolbar - common actions</h2>
+    <p>The toolbar provides quick access to open, save, print, submit, cancel, and help actions. The green run icon is the key beginner action.</p>
+    <ul><li><strong>Submit:</strong> run selected code or the active editor.</li><li><strong>Cancel:</strong> stop submitted statements.</li><li><strong>Save:</strong> save code as a .sas file.</li></ul>
+  </div>
+  <div class="info-card" id="card-command">
+    <span class="info-kicker">Command Box</span>
+    <h2>Command box - jump to windows</h2>
+    <p>The command box accepts short commands in Display Manager. Try typing <code>log</code>, <code>editor</code>, <code>output</code>, or <code>explorer</code>.</p>
+    <ul><li><strong>log:</strong> show the Log window.</li><li><strong>editor:</strong> show the Editor window.</li><li><strong>output:</strong> show listing output.</li></ul>
+  </div>
+  <div class="info-card" id="card-output">
+    <span class="info-kicker">Output</span>
+    <h2>Output - review printed results</h2>
+    <p>The Output window shows classic listing output produced by procedures such as PROC PRINT, PROC FREQ, and PROC MEANS. Some SAS sessions also show results in a Results Viewer.</p>
+    <ul><li><strong>Use it for:</strong> quick review of procedure output.</li><li><strong>Do not rely on it alone:</strong> still check the Log for errors and warnings.</li><li><strong>Production habit:</strong> capture key procedure output with ODS when it needs QC.</li></ul>
+  </div>  <div class="practice-box">
+    <strong>Mini practice</strong><br>
+    <button type="button" id="practiceRun">Simulate successful run</button>
+    <button type="button" id="practiceError">Simulate error</button>
+    <div class="practice-feedback" id="practiceFeedback"></div>
+  </div>
+</aside>
+</div>
+<div class="callout" id="callout"></div>
+<script>
+const app=document.getElementById('sasApp');
+const callout=document.getElementById('callout');
+function showCallout(text, el){const r=el.getBoundingClientRect(); callout.textContent=text; callout.style.left=Math.min(r.left+8, window.innerWidth-290)+'px'; callout.style.top=(r.bottom+6)+'px'; callout.style.display='block';}
+document.addEventListener('click', e=>{ if(!e.target.closest('.menu-item')) document.querySelectorAll('.menu-item.open').forEach(x=>x.classList.remove('open')); if(!e.target.closest('.folder,.tool,.tab,.menu-popup')) callout.style.display='none'; });
+document.querySelectorAll('.menu-item').forEach(m=>m.addEventListener('click',e=>{e.stopPropagation(); document.querySelectorAll('.menu-item.open').forEach(x=>{if(x!==m)x.classList.remove('open')}); m.classList.toggle('open');}));
+document.querySelectorAll('.folder').forEach(f=>f.addEventListener('click',e=>{document.querySelectorAll('.folder').forEach(x=>x.classList.remove('selected')); f.classList.add('selected'); showCallout(f.dataset.info,f);}));
+function submitDemo(){document.getElementById('editor').textContent="data work.demo;\n  x = 1;\nrun;\n\nproc print data=work.demo;\nrun;"; document.getElementById('logText').textContent+="\n\nNOTE: The data set WORK.DEMO has 1 observations and 1 variables.\nNOTE: PROCEDURE PRINT used."; showCallout('Submit sends Editor code to SAS. Always read the Log after running.', document.getElementById('runBtn'));}
+document.getElementById('runBtn').addEventListener('click',submitDemo); document.getElementById('menuSubmit').addEventListener('click',submitDemo);
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active'); const name=t.dataset.tab; if(name==='log'){selectRegion('log');} else if(name==='editor'){selectRegion('editor');} else if(name==='output'){document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active')); document.querySelectorAll('.info-card').forEach(c=>c.classList.toggle('active',c.id==='card-output')); callout.style.display='none';}}));
+function selectRegion(region){document.querySelectorAll('.hotspot').forEach(h=>h.classList.toggle('active',h.dataset.region===region));document.querySelectorAll('.info-card').forEach(c=>c.classList.toggle('active',c.id==='card-'+region));callout.style.display='none';}
+document.querySelectorAll('.hotspot').forEach(h=>h.addEventListener('click',e=>{e.stopPropagation();selectRegion(h.dataset.region);}));
+document.getElementById('practiceRun').addEventListener('click',()=>{selectRegion('log');document.getElementById('logText').textContent+='\n\nNOTE: The data set WORK.PRACTICE has 3 observations and 2 variables.\nNOTE: PROCEDURE PRINT used.';document.getElementById('practiceFeedback').textContent='Correct window to check: Log. The successful run adds blue NOTE lines.';});
+document.getElementById('practiceError').addEventListener('click',()=>{selectRegion('log');document.getElementById('logText').textContent+='\n\nERROR: Variable TRT01P not found.\nNOTE: The SAS System stopped processing this step because of errors.';document.getElementById('practiceFeedback').textContent='Check the Log first. ERROR lines explain why the run failed.';});
+document.getElementById('command').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.toLowerCase().trim(); const map={log:'Log window',editor:'Editor window',output:'Output window',explorer:'Explorer window'}; showCallout(map[v]||'Command box: try log, editor, output, or explorer.', e.target);}});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

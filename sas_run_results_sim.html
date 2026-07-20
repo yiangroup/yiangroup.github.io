@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAS Run, Log, Output, and Results Simulator</title>
+<style>
+  html,body{margin:0;background:#02a9e6;font-family:Tahoma,Arial,sans-serif;color:#111} body{padding:10px;box-sizing:border-box;overflow:hidden}
+  .app{height:790px;background:#d8e4ed;border:1px solid #0d5f9f;display:grid;grid-template-rows:24px 24px 30px 1fr 184px;overflow:hidden}
+  .title{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#06a9e8,#0757bb);color:white;padding:0 9px;font-size:12px}.logo{display:inline-grid;place-items:center;width:15px;height:15px;margin-right:6px;background:#f1f1f1;color:#315f9a;border:1px solid #7d9ab7;font-size:7px;font-weight:800}.win{display:flex;gap:18px;font-size:15px}
+  .menu{display:flex;gap:18px;align-items:center;background:#f6f6f6;border-bottom:1px solid #bfc6cc;padding:0 8px;font-size:12px}.bar{display:flex;align-items:center;gap:6px;background:#ececec;border-bottom:1px solid #8ea0ae;padding:4px 8px}.cmd{width:170px;height:18px;border:1px solid #777;background:#fff}.tool{border:1px solid #789;background:#eef6ff;color:#0b4d7a;padding:3px 8px;font-size:12px;font-weight:700;cursor:pointer}.tool.run{background:#e9f6e9;color:#16661f}.tool:hover{filter:brightness(.96)}
+  .main{display:grid;grid-template-columns:270px 1fr;gap:4px;padding:5px;background:#c9d8e3;min-height:0}.pane{border:1px solid #788f9f;background:#fff;display:grid;grid-template-rows:23px 1fr;min-width:0;overflow:hidden}.pane-title{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#d7e8f4,#b7ccdc);border-bottom:1px solid #8fa4b5;color:#65727b;height:23px;padding:0 6px;font-size:12px;box-sizing:border-box}.pane-body{position:relative;overflow:hidden}.right{display:grid;grid-template-rows:1.45fr 1fr;gap:4px;min-width:0}.editor{padding:9px 12px;font:13px/1.35 "Courier New",monospace;white-space:pre;outline:none;color:#111}.log{padding:7px 12px;font:700 12px/1.18 "Courier New",monospace;white-space:pre;color:#0000ff}.output{padding:12px 16px;font:12px/1.22 "Courier New",monospace;white-space:pre;color:#111;display:none}.results-tree{padding:8px;font-size:12px}.tree-head{border:1px solid #aaa;padding:3px 4px;margin-bottom:8px}.tree-item{padding:5px 6px;margin:3px 0;cursor:pointer}.tree-item:hover,.tree-item.active{background:#316ac5;color:#fff}.tree-muted{color:#777}.tabs{display:flex;height:23px;background:#e8e8e8;border-top:1px solid #a8b3bc}.tab{min-width:112px;padding:4px 8px 0;border-right:1px solid #aaa;background:#efefef;font-size:11px;cursor:pointer}.tab.active{background:#fff;border-top:2px solid #315f9f;padding-top:2px;font-weight:700}
+  .explain{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:#fffdf7;border-top:1px solid #c7d2dc;padding:14px}.card{border:1px solid #d7cdbf;background:#fff;padding:12px 14px}.card.active{border-color:#ff8c00;box-shadow:0 0 0 2px rgba(255,140,0,.18)}.k{display:inline-block;margin-bottom:7px;padding:3px 8px;background:#eef5fa;border:1px solid #c8d4df;color:#244566;font-size:11px;font-weight:800;letter-spacing:.04em}.card h3{margin:0 0 6px;color:#244566;font:700 17px Georgia,"Times New Roman",serif}.card p{margin:0;color:#594f49;font-size:13px;line-height:1.45}.note{color:#0000ff}.warn{color:#b06a00}.err{color:#cc0000}.hidden{display:none}.status{position:absolute;right:6px;bottom:3px;color:#777;font-size:11px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="title"><div><span class="logo">SAS</span>SAS</div><div class="win"><span>-</span><span>□</span><span>×</span></div></div>
+  <div class="menu"><span>File</span><span>Edit</span><span>View</span><span>Tools</span><span>Run</span><span>Solutions</span><span>Window</span><span>Help</span></div>
+  <div class="bar"><span>✓</span><input class="cmd" value=""><button class="tool run" id="run">Submit</button><button class="tool" id="showLog">Log</button><button class="tool" id="showOutput">Output</button><button class="tool" id="showResults">Results</button><button class="tool" id="reset">Reset</button></div>
+  <div class="main">
+    <section class="pane"><div class="pane-title"><span>Results</span><span>×</span></div><div class="pane-body"><div class="results-tree" id="resultsTree"><div class="tree-head">Results Viewer</div><div class="tree-muted">Submit the program to create result nodes.</div></div></div></section>
+    <div class="right">
+      <section class="pane" id="topPane"><div class="pane-title"><span id="topTitle">Editor - Untitled1</span><span>- □ ×</span></div><div class="pane-body"><pre class="editor" id="editor">data work.demo;
+  length usubjid $7 trt01p $8;
+  input usubjid $ trt01p $ age;
+datalines;
+101-001 Placebo 62
+101-002 Active 55
+101-003 Active 71
+;
+run;
+
+proc print data=work.demo;
+run;
+
+proc freq data=work.demo;
+  tables trt01p;
+run;</pre><pre class="output" id="output"></pre><div class="status">Ln 1, Col 1</div></div></section>
+      <section class="pane"><div class="pane-title"><span>Log - (Untitled)</span><span>- □ ×</span></div><div class="pane-body"><pre class="log" id="log">NOTE: SAS session ready.
+NOTE: Submit code from the Editor to create Log, Output, and Results entries.</pre></div></section>
+    </div>
+  </div>
+  <div class="tabs"><div class="tab" data-view="output">Output - (Untitled)</div><div class="tab" data-view="log">Log - (Untitled)</div><div class="tab active" data-view="editor">Editor - Untitled1</div><div class="tab" data-view="results">Results</div></div>
+  <div class="explain">
+    <div class="card active" id="card-log"><span class="k">LOG</span><h3>Execution record</h3><p>The Log is mandatory after every run. Look for <span class="note">NOTE</span>, <span class="warn">WARNING</span>, and <span class="err">ERROR</span>. A result can appear even when the log needs review.</p></div>
+    <div class="card" id="card-output"><span class="k">OUTPUT</span><h3>Printed listing</h3><p>Output is the printed result generated by procedures. Here PROC PRINT and PROC FREQ create listing-style tables.</p></div>
+    <div class="card" id="card-results"><span class="k">RESULTS</span><h3>Navigation tree</h3><p>Results is a navigation area. It lists generated outputs so you can jump to PRINT or FREQ results. It is not the same as the Log.</p></div>
+  </div>
+</div>
+<script>
+const log=document.getElementById('log'), output=document.getElementById('output'), editor=document.getElementById('editor'), tree=document.getElementById('resultsTree'), bottomTitle=document.getElementById('bottomTitle');
+const cards={log:document.getElementById('card-log'),output:document.getElementById('card-output'),results:document.getElementById('card-results')};
+function activeCard(name){Object.values(cards).forEach(c=>c.classList.remove('active')); if(cards[name]) cards[name].classList.add('active');}
+function show(view){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view)); if(view==='output'){editor.style.display='none';output.style.display='block';bottomTitle.textContent='Output - (Untitled)';activeCard('output')} else if(view==='editor'){output.style.display='none';editor.style.display='block';bottomTitle.textContent='Editor - Untitled1'} else if(view==='log'){activeCard('log')} else if(view==='results'){activeCard('results')}}
+function submit(){log.innerHTML='NOTE: The data set WORK.DEMO has 3 observations and 3 variables.\nNOTE: DATA statement used.\nNOTE: PROCEDURE PRINT used.\nNOTE: PROCEDURE FREQ used.\nNOTE: There were 3 observations read from the data set WORK.DEMO.';output.textContent='                         The PRINT Procedure\n\nObs    usubjid    trt01p      age\n 1     101-001    Placebo      62\n 2     101-002    Active       55\n 3     101-003    Active       71\n\n\n                         The FREQ Procedure\n\n                 trt01p    Frequency\n                 Active        2\n                 Placebo       1';tree.innerHTML='<div class="tree-head">Results Viewer</div><div class="tree-item active" data-result="print">PRINT: WORK.DEMO</div><div class="tree-item" data-result="freq">FREQ: TRT01P</div>';bindTree();show('output')}
+function bindTree(){document.querySelectorAll('.tree-item').forEach(item=>item.onclick=()=>{document.querySelectorAll('.tree-item').forEach(x=>x.classList.remove('active'));item.classList.add('active');show('output');activeCard('results')})}
+document.getElementById('run').onclick=submit;document.getElementById('showLog').onclick=()=>show('log');document.getElementById('showOutput').onclick=()=>show('output');document.getElementById('showResults').onclick=()=>show('results');document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>show(t.dataset.view));document.getElementById('reset').onclick=()=>{log.textContent='NOTE: SAS session ready.\nNOTE: Submit code from the Editor to create Log, Output, and Results entries.';output.textContent='';tree.innerHTML='<div class="tree-head">Results Viewer</div><div class="tree-muted">Submit the program to create result nodes.</div>';show('editor')};
+</script>
+</body>
+</html>
+

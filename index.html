@@ -305,6 +305,18 @@
       align-items: start;
     }
 
+    #sas-training .section-layout {
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    #sas-training .copy {
+      max-width: 1320px;
+    }
+
+    #sas-training .lesson-page .lesson {
+      width: min(1360px, calc(100vw - 80px));
+    }
     #training .section-layout {
       grid-template-columns: 260px minmax(0, 1fr);
       gap: 34px;
@@ -2616,6 +2628,282 @@
     .sas-syntax .sas-string { color: #8c278c; }
     .sas-syntax .sas-func { color: #008a84; font-weight: 800; }
 
+    .sas-interface-shell {
+      margin: 22px 0 28px;
+      overflow: hidden;
+      border: 1px solid #7f98ad;
+      border-radius: 0;
+      background: #e8edf2;
+      box-shadow: 0 18px 34px rgba(39, 56, 72, 0.18);
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .sas-interface-titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 25px;
+      padding: 0 9px;
+      background: linear-gradient(90deg, #06a8e7 0%, #0a5bb8 100%);
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 25px;
+    }
+
+    .sas-window-controls {
+      display: flex;
+      gap: 13px;
+      color: #ffffff;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .sas-menu-bar {
+      display: flex;
+      gap: 18px;
+      height: 24px;
+      align-items: center;
+      padding: 0 9px;
+      border-bottom: 1px solid #c5cbd0;
+      background: #f4f4f4;
+      color: #111;
+      font-size: 12px;
+    }
+
+    .sas-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 28px;
+      padding: 3px 8px;
+      border-bottom: 1px solid #9eaeba;
+      background: #eeeeee;
+    }
+
+    .sas-command-box {
+      width: 190px;
+      height: 18px;
+      border: 1px solid #8b8b8b;
+      background: #ffffff;
+    }
+
+    .sas-tool-icon {
+      width: 15px;
+      height: 15px;
+      border: 1px solid #7b7b7b;
+      background: linear-gradient(#ffffff, #cfd8df);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+    }
+
+    .sas-interface-grid {
+      display: grid;
+      grid-template-columns: 238px minmax(0, 1fr);
+      min-height: 520px;
+      border-top: 1px solid #d8e0e6;
+      background: #c9d8e3;
+    }
+
+    .sas-interface-pane {
+      margin: 5px 4px 5px 5px;
+      border: 1px solid #8ea3b3;
+      background: #ffffff;
+      min-width: 0;
+    }
+
+    .sas-pane-title,
+    .sas-mdi-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 22px;
+      padding: 0 7px;
+      border-bottom: 1px solid #9eb0bd;
+      background: linear-gradient(#dceaf5, #b5c9d9);
+      color: #52606a;
+      font-size: 12px;
+    }
+
+    .sas-pane-close,
+    .sas-mdi-buttons span {
+      display: inline-grid;
+      place-items: center;
+      width: 16px;
+      height: 14px;
+      border: 1px solid #8a99a5;
+      background: #d7e3ec;
+      color: #505a61;
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    .sas-explorer-content {
+      padding: 8px;
+      color: #111;
+      font-size: 12px;
+    }
+
+    .sas-explorer-label {
+      margin-bottom: 8px;
+      border: 1px solid #a6a6a6;
+      padding: 3px 4px;
+      color: #303030;
+      font-size: 11px;
+    }
+
+    .sas-folder-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      align-items: start;
+      text-align: center;
+    }
+
+    .sas-folder-icon {
+      display: grid;
+      justify-items: center;
+      gap: 5px;
+      color: #111;
+      font-size: 11px;
+      line-height: 1.1;
+    }
+
+    .sas-folder-art {
+      width: 28px;
+      height: 22px;
+      border: 1px solid #6a7e91;
+      background: linear-gradient(#ffe96b, #d5b52f);
+      position: relative;
+    }
+
+    .sas-folder-art::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: -5px;
+      width: 13px;
+      height: 6px;
+      border: 1px solid #6a7e91;
+      border-bottom: 0;
+      background: #f9dc56;
+    }
+
+    .sas-interface-main {
+      display: grid;
+      grid-template-rows: 1.45fr 1fr;
+      gap: 4px;
+      min-width: 0;
+      padding: 5px 5px 5px 2px;
+      background: #c9d8e3;
+    }
+
+    .sas-mdi-window {
+      border: 1px solid #7e96a8;
+      background: #ffffff;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .sas-mdi-title strong {
+      color: #6b7379;
+      font-weight: 400;
+    }
+
+    .sas-mdi-buttons {
+      display: flex;
+      gap: 3px;
+    }
+
+    .sas-interface-panel {
+      padding: 8px 10px;
+      min-width: 0;
+      height: calc(100% - 22px);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .sas-interface-panel pre {
+      margin: 0;
+      overflow: hidden;
+      color: #0000ff;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.15;
+      white-space: pre;
+    }
+
+    .sas-interface-editor pre {
+      color: #111111;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 1.34;
+    }
+
+    .sas-interface-bottom-tabs {
+      display: flex;
+      height: 23px;
+      border-top: 1px solid #a6b5c0;
+      background: #e8e8e8;
+    }
+
+    .sas-tab {
+      min-width: 96px;
+      padding: 4px 9px 0;
+      border-right: 1px solid #a6a6a6;
+      background: #efefef;
+      color: #111;
+      font-size: 11px;
+    }
+
+    .sas-tab.active {
+      background: #ffffff;
+      border-top: 2px solid #305f9f;
+      padding-top: 2px;
+      font-weight: 700;
+    }
+
+    .sas-status-bar {
+      display: flex;
+      justify-content: space-between;
+      height: 21px;
+      padding: 3px 8px 0;
+      border-top: 1px solid #b4b4b4;
+      background: #f0f0f0;
+      color: #333;
+      font-size: 11px;
+    }
+
+    .sas-log-note { color: #0000ff; }
+    .sas-log-warning { color: #b06a00; font-weight: 800; }
+    .sas-log-error { color: #cc0000; font-weight: 800; }
+
+    .sas-interface-takeaways {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .sas-interface-takeaways span {
+      display: block;
+      padding: 10px 11px;
+      border: 1px solid #d8cdbd;
+      border-radius: 8px;
+      background: rgba(255, 253, 247, 0.82);
+      color: #5a4b43;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 760px) {
+      .sas-interface-grid,
+      .sas-interface-takeaways {
+        grid-template-columns: 1fr;
+      }
+      .sas-interface-grid { min-height: auto; }
+      .sas-interface-main { grid-template-rows: 1fr 1fr; }
+      .sas-folder-row { grid-template-columns: repeat(2, 1fr); }
+    }
     .code-note {
       margin: -10px 0 22px;
       color: #80685c;
@@ -5752,16 +6040,32 @@
               <details class="training-item">
                 <summary>
                   <span class="summary-meta">Module 01</span>
-                  <span class="summary-title">Getting Started Using SAS Software</span>
-                  <span class="summary-note">SAS language basics, datasets, DATA/PROC steps, logs, results, libraries, views, properties, and system options.</span>
+                  <span class="summary-title">Getting Started in the SAS Interface</span>
+                  <span class="summary-note">Program Editor, Log, Results, Explorer, libraries, Viewtable, and the basic code-submit-check workflow.</span>
                 </summary>
                 <article class="lesson">
-                  <h4>Module 01. Getting Started Using SAS Software</h4>
+                  <h4>Module 01. Getting Started in the SAS Interface</h4>
                   <p>
-                    This module introduces SAS as a programming environment. The goal is not to memorize every command;
-                    it is to understand how SAS reads code, creates data sets, writes logs and results, and stores data in libraries.
-                    The examples below use small clinical-style training data so each topic connects to later statistical programming work.
+                    This module starts with the SAS workspace itself. Before writing longer programs, learn where code is submitted,
+                    where the log records problems, where results appear, and where data sets live. The working habit is simple:
+                    write a small section, submit it, read the log, inspect the data or result, then continue.
                   </p>
+
+                  <h5>0. Interface Map: What You Are Looking At</h5>
+                  <p>
+                    SAS Display Manager is a Windows-style application. Use the simulator below to click through the main areas:
+                    Explorer, Log, Editor, Output tabs, toolbar buttons, and the command box.
+                  </p>
+                  <iframe class="module-quiz-frame" src="sas_display_manager_sim.html" title="Clickable SAS Display Manager Simulator" style="min-height: 1010px;"></iframe>
+
+
+                  <h5>0.2 Practice Run: Log vs Output vs Results</h5>
+                  <p>
+                    Use this second simulator to run a small SAS program and observe the difference between the Log,
+                    Output, and Results windows. The main teaching point is that <strong>Log tells you whether the run is trustworthy</strong>,
+                    while <strong>Output/Results show what SAS produced</strong>.
+                  </p>
+                  <iframe class="module-quiz-frame" src="sas_run_results_sim.html" title="SAS Run Results and Output Simulator" style="min-height: 850px;"></iframe>
 
                   <h5>1.1 The SAS Language</h5>
                   <p>SAS programs are built from statements. Most statements end with a semicolon. A DATA step usually creates or modifies a data set; a PROC step usually analyzes, prints, sorts, or reports a data set.</p>
@@ -20080,6 +20384,14 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
