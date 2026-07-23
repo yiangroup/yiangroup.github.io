@@ -3032,6 +3032,32 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
+    .acrf-example-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+    .acrf-example-item { border: 1px solid rgba(200, 157, 132, 0.32); border-radius: 6px; background: rgba(255, 248, 241, 0.72); overflow: hidden; }
+    .acrf-example-item summary { min-height: 72px; display: grid; place-items: center; padding: 12px 10px; color: #5d4c45; font-size: 13px; font-weight: 800; text-align: center; cursor: pointer; list-style: none; }
+    .acrf-example-item summary::-webkit-details-marker { display: none; }
+    .acrf-example-item summary::after { content: "Click for example"; display: block; margin-top: 6px; color: #9a755f; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+    .acrf-example-body { border-top: 1px solid rgba(200, 157, 132, 0.24); background: rgba(255,255,255,.78); padding: 12px; }
+    .mini-crf-page, .mini-edc-table, .mini-sdtm-table { background: #fff; border: 1px solid #cfcfcf; padding: 12px; font-family: Arial, sans-serif; color: #111; }
+    .mini-crf-title { text-align: center; font-weight: 700; margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif; }
+    .mini-crf-question { font-size: 14px; line-height: 1.25; margin-bottom: 8px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; }
+    .mini-crf-option { display: flex; align-items: center; gap: 8px; margin: 7px 0; font: 400 13px/1.2 Arial, Helvetica, sans-serif; }
+    .mini-radio { width: 13px; height: 13px; border: 1.5px solid #111; border-radius: 50%; display: inline-block; flex: 0 0 auto; }
+    .mini-acrf-tag { display: inline-block; border: 1.5px solid #0e595c; background: #e7ffff; padding: 2px 5px; margin-left: 6px; font: 600 11px/1.15 "Courier New", Consolas, monospace; letter-spacing: 0; }
+    .mini-edc-table table, .mini-sdtm-table table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .mini-edc-table th, .mini-edc-table td, .mini-sdtm-table th, .mini-sdtm-table td { border: 1px solid #bfc9c9; padding: 4px 5px; text-align: left; }
+    .mini-edc-table th, .mini-sdtm-table th { background: #315f7a; color: #fff; }
+    .mini-sdtm-table td { background: #e7f3ec; }
+.mini-sdtm-record { display: grid; gap: 5px; font-size: 12px; }
+.mini-sdtm-record div { display: grid; grid-template-columns: 70px 1fr; border: 1px solid #bfc9c9; }
+.mini-sdtm-record b { background: #315f7a; color: #fff; padding: 4px 5px; }
+.mini-sdtm-record span { background: #e7f3ec; padding: 4px 5px; min-width: 0; overflow-wrap: anywhere; }
+
+    .mini-sdtm-domain { overflow-x: auto; }
+.mini-sdtm-domain table { min-width: 430px; width: 100%; border-collapse: collapse; font: 700 9px/1.15 Arial, Helvetica, sans-serif; color:#10384f; }
+.mini-sdtm-domain th { background:#315f7a; color:#fff; padding:4px 5px; border:1px solid #fff; text-align:left; }
+.mini-sdtm-domain td { background:#dceee6; padding:4px 5px; border:1px solid #fff; white-space:nowrap; }
+@media (max-width: 900px) { .acrf-example-flow { grid-template-columns: 1fr; } }
     .acrf-flow span {
       min-height: 92px;
       display: grid;
@@ -5937,6 +5963,49 @@
 .mi-note { margin-top:10px; font-size:.94rem; }
 @media (max-width:900px){ .mi-step-strip,.mi-flow-grid{grid-template-columns:1fr}.mi-flow-arrow{transform:rotate(90deg)}}
 
+
+/* SAS interface intro */
+.sas-clinical-intro { margin: .6rem 0 1.3rem; display: grid; gap: 1rem; }
+.sas-clinical-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.sas-clinical-card { border: 1px solid rgba(190,155,124,.38); border-radius: 8px; background: rgba(255,255,248,.78); padding: 1rem 1.1rem; box-shadow: 0 8px 22px rgba(76,58,44,.05); }
+.sas-clinical-card.wide { grid-column: 1 / -1; }
+.sas-clinical-card h5 { margin: 0 0 .35rem; font-size: 1rem; color: var(--ink); }
+.sas-clinical-card p { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.58; }
+.sas-clinical-card ul { margin: .35rem 0 0; padding-left: 1.15rem; color: var(--muted); font-size: .94rem; line-height: 1.5; }
+.sas-clinical-card li { margin: .34rem 0; }
+.sas-clinical-card .rule { font-weight: 800; color: var(--ink); }
+.sas-clinical-card .sas-chip { display: inline-block; padding: .05rem .28rem; border-radius: 999px; background: rgba(39,87,121,.1); color: #244566; font: 800 .82em var(--sans); letter-spacing: .02em; }
+@media (max-width: 900px) { .sas-clinical-grid { grid-template-columns: 1fr; } .sas-clinical-card, .sas-clinical-card.wide { grid-column: 1 / -1; } }
+.sas-interface-intro { margin: 1.1rem 0 1.35rem; display: grid; gap: 1rem; }
+.sas-interface-panel { border: 1px solid rgba(190,155,124,.42); border-radius: 8px; background: rgba(255,255,248,.72); padding: 1rem 1.1rem; box-shadow: 0 10px 24px rgba(76,58,44,.05); }
+.sas-interface-panel h5 { margin: 0 0 .65rem; color: var(--ink); font-size: 1rem; }
+.sas-interface-panel p { margin: 0 0 .75rem; color: var(--muted); }
+.sas-interface-table { width: 100%; border-collapse: collapse; font-size: .94rem; }
+.sas-interface-table th { background: rgba(39,87,121,.92); color: #fff; text-align: left; padding: .65rem .75rem; border-right: 1px solid rgba(255,255,255,.4); }
+.sas-interface-table td { vertical-align: top; padding: .72rem .75rem; border-top: 1px solid rgba(190,155,124,.3); color: var(--muted); }
+.sas-interface-table td:first-child { color: var(--ink); font-weight: 700; width: 24%; }
+.sas-interface-table strong { color: var(--ink); }
+.sas-interface-analogy { color: #244566; font-weight: 800; white-space: nowrap; }
+.sas-workflow-visual { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: .9rem; padding-bottom: .35rem; }
+.sas-workflow-card { border: 1px solid rgba(104,151,174,.38); background: rgba(255,255,255,.68); border-radius: 8px; overflow: hidden; box-shadow: 0 6px 16px rgba(35,61,79,.045); }
+.sas-workflow-card h6 { margin: 0; padding: .55rem .7rem; background: linear-gradient(#d7e9f0,#bad2dc); color: #123b5a; font: 800 .8rem/1.1 var(--sans); letter-spacing: .04em; text-transform: uppercase; border-bottom: 1px solid rgba(104,151,174,.45); }
+.sas-workflow-card p { margin: 0; padding: .7rem .8rem 1rem; font-size: .9rem; line-height: 1.55; color: var(--muted); }
+.sas-mini-window { height: 118px; margin: .72rem .72rem 0; border: 1px solid #8fb1bf; background: #fff; font: 700 .66rem/1.45 'Courier New', monospace; color: #0024d8; overflow: hidden; }
+.sas-mini-title { height: 18px; background: linear-gradient(#d6e8ef,#b5d0db); border-bottom: 1px solid #8fb1bf; color: #466374; font: 700 .62rem/18px Arial, sans-serif; padding: 0 .35rem; }
+.sas-mini-body { padding: .45rem .55rem; }
+.sas-mini-code { color: #111; }
+.sas-mini-code .kw { color:#183eff; font-weight:800; }
+.sas-mini-log .note { color:#0037ff; }
+.sas-mini-log .warn { color:#b56a00; }
+.sas-mini-results { color:#001d72; text-align:center; }
+.sas-mini-table { margin: .3rem auto 0; border-collapse: collapse; font: 700 .58rem/1.25 Arial, sans-serif; color:#111; }
+.sas-mini-table th, .sas-mini-table td { border:1px solid #b9c3cb; padding:.18rem .28rem; }
+.sas-mini-table th { color:#001d72; background:#eef3fb; }
+@media (max-width: 900px) { .sas-workflow-visual { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .sas-interface-table, .sas-interface-table thead, .sas-interface-table tbody, .sas-interface-table tr, .sas-interface-table th, .sas-interface-table td { display:block; width:100%; } .sas-interface-table th { display:none; } .sas-interface-table td { border-top:0; padding:.45rem 0; } .sas-interface-table tr { border-top:1px solid rgba(190,155,124,.3); padding:.55rem 0; } }
+.reference-link { margin: -.25rem 0 .85rem; font-size: .9rem; line-height: 1.25; }
+.reference-link a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.reference-link a:hover { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -6045,22 +6114,82 @@
                 </summary>
                 <article class="lesson">
                   <h4>Module 01. Getting Started in the SAS Interface</h4>
-                  <p>
-                    This module starts with the SAS workspace itself. Before writing longer programs, learn where code is submitted,
-                    where the log records problems, where results appear, and where data sets live. The working habit is simple:
-                    write a small section, submit it, read the log, inspect the data or result, then continue.
-                  </p>
+                  <h5>1.1 The Main Work Area (Top Tabs)</h5>
+                  <div class="sas-interface-intro" aria-label="SAS main work area orientation">
+                    <section class="sas-interface-panel">
+                      <p>
+                        When you open a new program through <strong>New &gt; SAS Program</strong> or <strong>Ctrl + N</strong>, the main workflow moves through three core tabs.
+                      </p>
+                      <div class="sas-workflow-visual" aria-label="SAS code log results workflow">
+                        <article class="sas-workflow-card">
+                          <h6>Code</h6>
+                          <div class="sas-mini-window" aria-hidden="true">
+                            <div class="sas-mini-title">Editor - Untitled1</div>
+                            <div class="sas-mini-body sas-mini-code"><span class="kw">data</span> work.demo;<br>  set raw.vitals;<br><span class="kw">run</span>;<br><br><span class="kw">proc print</span> data=work.demo;<br><span class="kw">run</span>;</div>
+                          </div>
+                          <p>Write SAS commands in the Program Editor. In clinical work, submit small sections so the Log and output can be checked before continuing.</p>
+                        </article>
+                        <article class="sas-workflow-card">
+                          <h6>Log</h6>
+                          <div class="sas-mini-window" aria-hidden="true">
+                            <div class="sas-mini-title">Log - Untitled</div>
+                            <div class="sas-mini-body sas-mini-log"><span class="note">NOTE: The data set WORK.DEMO has 120 observations.</span><br><span class="note">NOTE: PROCEDURE PRINT used.</span><br><span class="warn">WARNING: Review unexpected record counts.</span></div>
+                          </div>
+                          <p>Read the Log first after every run. It is the execution record: notes, warnings, errors, conversions, missing values, and observation counts.</p>
+                        </article>
+                        <article class="sas-workflow-card">
+                          <h6>Output / Results</h6>
+                          <div class="sas-mini-window" aria-hidden="true">
+                            <div class="sas-mini-title">Output - The SAS System</div>
+                            <div class="sas-mini-body sas-mini-results">The SAS System<table class="sas-mini-table"><tr><th>Obs</th><th>USUBJID</th><th>AVAL</th></tr><tr><td>1</td><td>101-001</td><td>62</td></tr><tr><td>2</td><td>101-002</td><td>55</td></tr></table></div>
+                          </div>
+                          <p>Use Output and Results to review generated tables, listings, graphs, and ODS entries. Trust them only after the Log has been reviewed.</p>
+                        </article>
+                      </div>
+                    </section>
+                  </div>
+                  <h5>1.2 Clinical Trial Programming Context</h5>
+                  <div class="sas-clinical-intro" aria-label="Clinical trial programming context">
+                    <div class="sas-clinical-grid">
+                      <article class="sas-clinical-card">
+                        <h5>Why Clinical Programming Is Different? (It's Regulated!)</h5><p>We do not just write code; we create audit evidence.</p><ul><li>Clinical trial submissions to FDA/EMA require reproducible SDTM, ADaM, TLFs, and clean QC logs.</li><li><span class="rule">No Manual Data Editing (GxP Rules):</span> never modify study data by hand.</li><li>Every dataset and summary table must be created <strong>100% programmatically</strong> from source data.</li></ul>
+                      </article>
+                      <article class="sas-clinical-card">
+                        <h5>Study Data Live in Controlled Locations</h5>
+                        <ul><li><strong>Permanent study folders:</strong> EDC raw data -> SDTM -> ADaM -> final TFLs.</li><li><span class="rule">Rule:</span> deliverable or reviewable data must be read from or saved to designated SAS libraries.</li><li><strong>Temporary WORK library:</strong> use <span class="sas-chip">WORK</span> only for quick scratchpad checks during the active session.</li><li><span class="rule">Rule:</span> WORK disappears when the SAS session ends.</li></ul>
+                      </article>
+                      <article class="sas-clinical-card wide">
+                        <h5>Traceability Makes the Work Reviewable</h5>
+                        <p>The same dataset or table may be reviewed by production programming, QC programming, statistics, data management, and audit teams. A well-used SAS session helps another programmer reproduce the path from active libraries to submitted code, Log evidence, created datasets, and displayed outputs.</p>
+                      </article>
+                    </div>
+                  </div>
+<h5>1.3 Interface Map: What You Are Looking At</h5>
 
-                  <h5>0. Interface Map: What You Are Looking At</h5>
                   <p>
                     SAS Display Manager is a Windows-style application. Use the simulator below to click through the main areas:
                     Explorer, Log, Editor, Output tabs, toolbar buttons, and the command box.
                   </p>
                   <iframe class="module-quiz-frame" src="sas_display_manager_sim.html" title="Clickable SAS Display Manager Simulator" style="min-height: 1010px;"></iframe>
-<h5>1.1 The SAS Language</h5>
+                </article>
+              </details>
+
+              <details class="training-item">
+                <summary>
+                  <span class="summary-meta">Module 02</span>
+                  <span class="summary-title">SAS Language, Data Sets, and Basic Programming Flow</span>
+                  <span class="summary-note">Statements, DATA steps, PROC steps, built-in DATA step loop, libraries, Viewtable, system options, and log-reading habits.</span>
+                </summary>
+                <article class="lesson">
+                  <h4>Module 02. SAS Language, Data Sets, and Basic Programming Flow</h4>
+                  <p>
+                    This module starts after the interface orientation. The goal is to understand the core SAS grammar: how statements end, how DATA steps create data, how PROC steps work with data, and how libraries store datasets.
+                  </p>
+
+                  <h5>2.1 The SAS Language</h5>
                   <p>SAS programs are built from statements. Most statements end with a semicolon. A DATA step usually creates or modifies a data set; a PROC step usually analyzes, prints, sorts, or reports a data set.</p>
                   <div class="code-window sas-syntax" aria-label="SAS language basics example">
-                    <div class="code-window-header"><span>1.1 SAS Language</span><span>.sas</span></div>
+                    <div class="code-window-header"><span>2.1 SAS Language</span><span>.sas</span></div>
 <pre><code><span class="sas-comment">/* Every SAS statement ends with a semicolon. */</span>
 <span class="sas-step">data</span> <span class="sas-data">work.demo</span>;
   <span class="sas-keyword">length</span> <span class="sas-var">usubjid</span> $12 <span class="sas-var">trt01p</span> $20;
@@ -6073,10 +6202,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.2 SAS Data Sets</h5>
+                  <h5>2.2 SAS Data Sets</h5>
                   <p>A SAS data set is a table with observations and variables. Clinical programmers often think in terms of one row per subject, one row per event, or one row per test result.</p>
                   <div class="code-window sas-syntax" aria-label="SAS data set example">
-                    <div class="code-window-header"><span>1.2 SAS Data Sets</span><span>WORK.ADSL_TRAIN</span></div>
+                    <div class="code-window-header"><span>2.2 SAS Data Sets</span><span>WORK.ADSL_TRAIN</span></div>
 <pre><code><span class="sas-step">data</span> <span class="sas-data">work.adsl_train</span>;
   <span class="sas-keyword">length</span> <span class="sas-var">usubjid trt01p saffl</span> $12;
   <span class="sas-keyword">input</span> <span class="sas-var">usubjid</span> $ <span class="sas-var">trt01p</span> $ <span class="sas-var">age</span> <span class="sas-var">saffl</span> $;
@@ -6091,10 +6220,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.3 DATA and PROC Steps</h5>
+                  <h5>2.3 DATA and PROC Steps</h5>
                   <p>DATA steps build data. PROC steps do something with data. A common beginner mistake is mixing DATA step statements inside PROC steps or forgetting where a step ends.</p>
                   <div class="code-window sas-syntax" aria-label="DATA and PROC steps example">
-                    <div class="code-window-header"><span>1.3 DATA and PROC Steps</span><span>Pattern</span></div>
+                    <div class="code-window-header"><span>2.3 DATA and PROC Steps</span><span>Pattern</span></div>
 <pre><code><span class="sas-step">data</span> <span class="sas-data">work.safety</span>;
   <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_train</span>;
   <span class="sas-keyword">where</span> <span class="sas-var">saffl</span> = <span class="sas-string">'Y'</span>;
@@ -6105,10 +6234,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.4 The DATA Step's Built-in Loop</h5>
+                  <h5>2.4 The DATA Step's Built-in Loop</h5>
                   <p>The DATA step runs once for each input observation unless you tell it otherwise. This built-in loop is why one short IF statement can derive a value for every row.</p>
                   <div class="code-window sas-syntax" aria-label="DATA step loop example">
-                    <div class="code-window-header"><span>1.4 Built-in Loop</span><span>Derivation</span></div>
+                    <div class="code-window-header"><span>2.4 Built-in Loop</span><span>Derivation</span></div>
 <pre><code><span class="sas-step">data</span> <span class="sas-data">work.adsl_flags</span>;
   <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_train</span>;
 
@@ -6118,10 +6247,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.5 Choosing a Mode for Submitting SAS Programs</h5>
+                  <h5>2.5 Choosing a Mode for Submitting SAS Programs</h5>
                   <p>SAS code can be submitted interactively, in batch, or through a scheduler. Training often starts interactively; production clinical work usually requires reproducible batch runs.</p>
                   <div class="code-window sas-syntax" aria-label="SAS run mode example">
-                    <div class="code-window-header"><span>1.5 Submission Mode</span><span>Batch-friendly setup</span></div>
+                    <div class="code-window-header"><span>2.5 Submission Mode</span><span>Batch-friendly setup</span></div>
 <pre><code><span class="sas-comment">/* Batch-friendly programs should define inputs, outputs, and logs clearly. */</span>
 <span class="sas-keyword">options</span> <span class="sas-option">nodate</span> <span class="sas-option">nonumber</span> <span class="sas-option">mprint</span> <span class="sas-option">mlogic</span>;
 
@@ -6130,10 +6259,10 @@
 <span class="sas-keyword">%let</span> <span class="sas-var">outds</span>=adsl_train;</code></pre>
                   </div>
 
-                  <h5>1.6 Windows and Commands in the SAS Windowing Environment</h5>
+                  <h5>2.6 Windows and Commands in the SAS Windowing Environment</h5>
                   <p>Classic SAS has separate windows for program code, log messages, output, explorer, and viewtable. Even in SAS Studio, the same mental model helps: code, log, results, data.</p>
                   <div class="code-window sas-syntax" aria-label="SAS window commands example">
-                    <div class="code-window-header"><span>1.6 SAS Windows</span><span>Commands</span></div>
+                    <div class="code-window-header"><span>2.6 SAS Windows</span><span>Commands</span></div>
 <pre><code><span class="sas-comment">/* Common windowing commands typed into the command bar. */</span>
 <span class="sas-comment">/* log      - show the SAS log window                         */</span>
 <span class="sas-comment">/* output   - show classic listing output                     */</span>
@@ -6141,10 +6270,10 @@
 <span class="sas-comment">/* viewtable work.adsl_train - open a data set in table view  */</span></code></pre>
                   </div>
 
-                  <h5>1.7 Submitting a Program in the SAS Windowing Environment</h5>
+                  <h5>2.7 Submitting a Program in the SAS Windowing Environment</h5>
                   <p>After submitting code, always read the log before trusting the output. A table can be produced even when the log contains warnings that make it unsuitable for delivery.</p>
                   <div class="code-window sas-syntax" aria-label="SAS submit and clear example">
-                    <div class="code-window-header"><span>1.7 Submit Program</span><span>Workflow</span></div>
+                    <div class="code-window-header"><span>2.7 Submit Program</span><span>Workflow</span></div>
 <pre><code><span class="sas-comment">/* Training habit: run a small section, then check the log. */</span>
 <span class="sas-step">data</span> <span class="sas-data">work.check_submit</span>;
   <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_train</span>;
@@ -6154,10 +6283,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.8 Reading the SAS Log</h5>
+                  <h5>2.8 Reading the SAS Log</h5>
                   <p>The log is the first QC tool. For regulated programming, ERROR, WARNING, uninitialized variables, conversions, repeats of BY values, and unexpected record counts all require review.</p>
                   <div class="code-window sas-syntax" aria-label="SAS log scan example">
-                    <div class="code-window-header"><span>1.8 Read the Log</span><span>QC habit</span></div>
+                    <div class="code-window-header"><span>2.8 Read the Log</span><span>QC habit</span></div>
 <pre><code><span class="sas-comment">/* Example issue: AGEGR1 is misspelled, creating an uninitialized variable note. */</span>
 <span class="sas-step">data</span> <span class="sas-data">work.log_check</span>;
   <span class="sas-keyword">set</span> <span class="sas-data">work.adsl_flags</span>;
@@ -6167,10 +6296,10 @@
 <span class="sas-comment">/* Expected log review: search for ERROR, WARNING, uninitialized, converted. */</span></code></pre>
                   </div>
 
-                  <h5>1.9 Viewing Your Results</h5>
+                  <h5>2.9 Viewing Your Results</h5>
                   <p>Results can appear as listing output, HTML, PDF, RTF, or data sets created from procedure output. In production, output data sets are useful for QC checks.</p>
                   <div class="code-window sas-syntax" aria-label="Viewing SAS results example">
-                    <div class="code-window-header"><span>1.9 View Results</span><span>ODS</span></div>
+                    <div class="code-window-header"><span>2.9 View Results</span><span>ODS</span></div>
 <pre><code><span class="sas-proc">ods output</span> <span class="sas-output">OneWayFreqs=work.trt_counts</span>;
 <span class="sas-proc">proc freq</span> <span class="sas-option">data=</span><span class="sas-data">work.safety</span>;
   <span class="sas-keyword">tables</span> <span class="sas-var">trt01p</span>;
@@ -6181,10 +6310,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.10 SAS Data Libraries</h5>
+                  <h5>2.10 SAS Data Libraries</h5>
                   <p>A library is a shortcut to a storage location. WORK is temporary. A named library can point to permanent project data such as raw, sdtm, adam, or output folders.</p>
                   <div class="code-window sas-syntax" aria-label="SAS library example">
-                    <div class="code-window-header"><span>1.10 SAS Libraries</span><span>LIBNAME</span></div>
+                    <div class="code-window-header"><span>2.10 SAS Libraries</span><span>LIBNAME</span></div>
 <pre><code><span class="sas-comment">/* WORK disappears after the SAS session. Project libraries are persistent. */</span>
 <span class="sas-keyword">libname</span> <span class="sas-data">raw</span> <span class="sas-string">"C:\\study\\raw"</span>;
 <span class="sas-keyword">libname</span> <span class="sas-data">adam</span> <span class="sas-string">"C:\\study\\adam"</span>;
@@ -6194,10 +6323,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.11 Viewing Data Sets in the Viewtable Window</h5>
+                  <h5>2.11 Viewing Data Sets in the Viewtable Window</h5>
                   <p>Viewtable is useful for quick inspection, but it is not a substitute for programmed checks. Use it to understand shape, then use PROC PRINT or PROC CONTENTS to document findings.</p>
                   <div class="code-window sas-syntax" aria-label="Viewtable and print example">
-                    <div class="code-window-header"><span>1.11 Viewtable</span><span>Inspect data</span></div>
+                    <div class="code-window-header"><span>2.11 Viewtable</span><span>Inspect data</span></div>
 <pre><code><span class="sas-comment">/* Windowing command: viewtable work.adsl_train */</span>
 
 <span class="sas-proc">proc print</span> <span class="sas-option">data=</span><span class="sas-data">work.adsl_train</span> <span class="sas-option">obs=</span>10;
@@ -6205,10 +6334,10 @@
 <span class="sas-keyword">run</span>;</code></pre>
                   </div>
 
-                  <h5>1.12 Viewing the Properties of Data Sets with SAS Explorer</h5>
+                  <h5>2.12 Viewing the Properties of Data Sets with SAS Explorer</h5>
                   <p>Dataset properties tell you variable names, types, lengths, labels, formats, sort order, and observation counts. These details often explain merge issues and truncation.</p>
                   <div class="code-window sas-syntax" aria-label="Dataset properties example">
-                    <div class="code-window-header"><span>1.12 Dataset Properties</span><span>PROC CONTENTS</span></div>
+                    <div class="code-window-header"><span>2.12 Dataset Properties</span><span>PROC CONTENTS</span></div>
 <pre><code><span class="sas-proc">proc contents</span> <span class="sas-option">data=</span><span class="sas-data">work.adsl_train</span> <span class="sas-option">varnum</span>;
 <span class="sas-keyword">run</span>;
 
@@ -6220,10 +6349,10 @@
 <span class="sas-keyword">quit</span>;</code></pre>
                   </div>
 
-                  <h5>1.13 Using SAS System Options</h5>
+                  <h5>2.13 Using SAS System Options</h5>
                   <p>System options control how SAS runs and how output/logs look. For training, options help make results readable; for production, they make runs traceable and easier to QC.</p>
                   <div class="code-window sas-syntax" aria-label="SAS system options example">
-                    <div class="code-window-header"><span>1.13 SAS System Options</span><span>OPTIONS</span></div>
+                    <div class="code-window-header"><span>2.13 SAS System Options</span><span>OPTIONS</span></div>
 <pre><code><span class="sas-keyword">options</span> <span class="sas-option">nodate</span> <span class="sas-option">nonumber</span> <span class="sas-option">validvarname=upcase</span>;
 <span class="sas-keyword">options</span> <span class="sas-option">mprint</span> <span class="sas-option">mlogic</span> <span class="sas-option">symbolgen</span>;
 
@@ -7669,10 +7798,11 @@ Safety Analysis Set</div>
                   </div>
 
                   <h4>3. SDTM MSG 2.0 Visual aCRF Specifications</h4>
+                  <p class="reference-link"><a href="https://www.cdisc.org/standards/foundational/sdtm/sdtm-metadata-submission-guidelines-v2-0" target="_blank" rel="noopener">CDISC MSG 2.0 reference</a></p>
                   <p>
                     Before writing code, programmers must learn to read the annotated CRF. MSG
-                    2.0-style visual annotations help reviewers understand source, domain, and
-                    variable mapping without immediately opening Define.xml.
+                    2.0-style visual annotations show how a collected CRF field connects to an SDTM
+                    domain and variable, so the mapping logic is visible directly on the form.
                   </p>
                   <div class="acrf-gallery">
                     <div class="acrf-card">
@@ -7682,11 +7812,23 @@ Safety Analysis Set</div>
                         variables or discrete variable values. It is a reviewer-facing map, not a
                         database extract and not a place for temporary programming notes.
                       </p>
-                      <div class="acrf-flow" aria-label="aCRF source to SDTM mapping flow">
-                        <span>Blank CRF<br>Question text and choices</span>
-                        <span>Raw EDC<br>Database fields and values</span>
-                        <span>aCRF<br>Visual SDTM annotations</span>
-                        <span>SDTM<br>Submitted domains and variables</span>
+                                            <div class="acrf-example-flow" aria-label="aCRF source to SDTM mapping flow with examples">
+                        <details class="acrf-example-item">
+                          <summary>Blank CRF<br>Question text and choices</summary>
+                          <div class="acrf-example-body"><div class="mini-crf-page" aria-label="Blank disposition CRF example"><div class="mini-crf-title">Disposition Form</div><div class="mini-crf-question">What was the subject's treatment status?</div><div class="mini-crf-option"><span class="mini-radio"></span> COMPLETED</div><div class="mini-crf-option"><span class="mini-radio"></span> ADVERSE EVENT</div><div class="mini-crf-option"><span class="mini-radio"></span> DEATH</div><div class="mini-crf-option"><span class="mini-radio"></span> LACK OF EFFICACY</div><div class="mini-crf-option"><span class="mini-radio"></span> WITHDRAWAL BY SUBJECT</div></div></div>
+                        </details>
+                        <details class="acrf-example-item">
+                          <summary>Raw EDC<br>Database fields and values</summary>
+                          <div class="acrf-example-body"><div class="mini-edc-table" aria-label="Raw EDC disposition export example"><table><thead><tr><th>SUBJID</th><th>FORM</th><th>FIELD</th><th>VALUE</th></tr></thead><tbody><tr><td>002</td><td>DISP</td><td>TRTSTAT</td><td>COMPLETED</td></tr><tr><td>003</td><td>DISP</td><td>TRTSTAT</td><td>ADVERSE EVENT</td></tr></tbody></table></div></div>
+                        </details>
+                        <details class="acrf-example-item">
+                          <summary>aCRF<br>Visual SDTM annotations</summary>
+                          <div class="acrf-example-body"><div class="mini-crf-page" aria-label="Annotated disposition CRF example"><div class="mini-crf-title"><span class="mini-acrf-tag">DSCAT = DISPOSITION EVENT</span></div><div class="mini-crf-question">What was the subject's treatment status?</div><div class="mini-crf-option"><span class="mini-radio"></span> COMPLETED <span class="mini-acrf-tag">DSTERM / DSDECOD</span></div><div class="mini-crf-option"><span class="mini-radio"></span> ADVERSE EVENT</div><div class="mini-crf-option"><span class="mini-radio"></span> DEATH</div><div class="mini-crf-option"><span class="mini-radio"></span> LACK OF EFFICACY</div><div class="mini-crf-option"><span class="mini-radio"></span> WITHDRAWAL BY SUBJECT</div></div></div>
+                        </details>
+                        <details class="acrf-example-item">
+                          <summary>SDTM<br>Submitted domains and variables</summary>
+                          <div class="acrf-example-body"><div class="mini-sdtm-table mini-sdtm-domain" aria-label="SDTM DS domain dataset example"><table><thead><tr><th>STUDYID</th><th>DOMAIN</th><th>USUBJID</th><th>DSSEQ</th><th>DSCAT</th><th>DSTERM</th><th>DSDECOD</th></tr></thead><tbody><tr><td>ABC-123</td><td>DS</td><td>ABC-123-002</td><td>1</td><td>DISPOSITION EVENT</td><td>COMPLETED</td><td>COMPLETED</td></tr></tbody></table></div></div>
+                        </details>
                       </div>
                     </div>
 
@@ -8302,8 +8444,8 @@ Safety Analysis Set</div>
                         </div>
                         <div class="acrf-mini">
                           <strong>Assigned or Derived</strong>
-                          <span class="acrf-annotation derived">USUBJID</span>
-                          <p class="acrf-caption">Dashed border: do not hunt for a raw field. Look for derivation logic.</p>
+                          <span class="acrf-annotation derived">DSCAT = DISPOSITION EVENT</span>
+                          <p class="acrf-caption">Dashed border: assigned or derived value. Check the mapping specification or derivation rule instead of searching the CRF for a collected field.</p>
                         </div>
                         <div class="acrf-mini">
                           <strong>Supplemental Data</strong>
@@ -8404,12 +8546,12 @@ Safety Analysis Set</div>
                           </p>
                         </div>
                         <div class="acrf-mini">
-                          <strong>Other, Specify</strong>
-                          <span class="acrf-annotation supp">AETERM = OTHER</span>
-                          <span class="acrf-annotation supp">Specify text in SUPPAE</span>
+                          <strong>Action Taken: Other, Specify</strong>
+                          <span class="acrf-annotation">AEACN = OTHER</span>
+                          <span class="acrf-annotation supp">AEACNOTH in SUPPAE</span>
                           <p class="acrf-caption">
-                            The checkbox may drive a main topic value, while the free-text specify
-                            field often belongs in SUPP--.
+                            The checked response maps to the standard AE action value, while the
+                            free-text explanation is stored as supplemental detail.
                           </p>
                         </div>
                       </div>
@@ -20374,6 +20516,46 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
