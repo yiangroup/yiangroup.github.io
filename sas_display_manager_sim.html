@@ -7,7 +7,7 @@
 <style>
   html, body { margin:0; background:#02a9e6; font-family:Tahoma, Arial, sans-serif; }
   body { padding:10px; box-sizing:border-box; overflow:hidden; }
-  .sas-app { width:100%; min-width:0; height:680px; background:#d8e4ed; border:1px solid #0d5f9f; box-shadow:0 0 0 1px rgba(255,255,255,.55) inset; display:grid; grid-template-rows:24px 24px 28px 1fr 23px 22px; overflow:hidden; }
+  .sas-app { width:100%; min-width:0; height:680px; background:#d8e4ed; border:1px solid #0d5f9f; box-shadow:0 0 0 1px rgba(255,255,255,.55) inset; display:grid; grid-template-rows:24px 24px 36px 1fr 23px 22px; overflow:hidden; }
   .titlebar { display:flex; justify-content:space-between; align-items:center; background:linear-gradient(90deg,#06a9e8,#0757bb); color:white; padding:0 9px; font-size:12px; line-height:24px; }
   .title-left { display:flex; align-items:center; gap:6px; }
   .sas-logo { width:15px; height:15px; display:inline-grid; place-items:center; background:#f1f1f1; color:#315f9a; border:1px solid #7d9ab7; font-size:7px; font-weight:800; }
@@ -19,19 +19,39 @@
   .menu-popup div { padding:5px 18px 5px 10px; white-space:nowrap; }
   .menu-popup div:hover { background:#316ac5; color:#fff; }
   .menu-item.open .menu-popup { display:block; }
-  .toolbar { display:flex; align-items:center; gap:5px; padding:3px 7px; background:#ececec; border-bottom:1px solid #8ea0ae; }
+  .toolbar { display:block; height:36px; padding:0; background:#ececec; border-bottom:1px solid #8ea0ae; position:relative; overflow:hidden; } .toolbar-ref { height:49px; width:919px; max-width:none; display:block; image-rendering:auto; transform:translateY(-6px); } .toolbar-hotspot { position:absolute; top:0; height:28px; border:0; background:transparent; cursor:pointer; } #runBtn { left:386px; width:24px; }
   .check { font-size:16px; margin-right:2px; }
   .command { width:170px; height:18px; border:1px solid #7f7f7f; background:white; padding:0 4px; font:12px Tahoma, Arial, sans-serif; }
-  .tool { width:17px; height:17px; border:1px solid transparent; background:transparent; padding:0; cursor:pointer; position:relative; }
+  .tool { width:20px; height:20px; border:1px solid transparent; background:transparent; padding:0; cursor:pointer; position:relative; }
   .tool:hover { border-color:#7f9db9; background:#dfefff; }
-  .ico-page::before { content:""; position:absolute; left:4px; top:2px; width:9px; height:12px; background:white; border:1px solid #555; }
-  .ico-folder::before { content:""; position:absolute; left:2px; top:6px; width:13px; height:9px; background:#e6c83e; border:1px solid #735; } .ico-folder::after{content:"";position:absolute;left:3px;top:3px;width:7px;height:4px;background:#f0dc62;border:1px solid #735;border-bottom:0;}
-  .ico-save::before { content:""; position:absolute; left:3px; top:2px; width:12px; height:13px; background:#203b76; border:1px solid #111; } .ico-save::after{content:"";position:absolute;left:5px;top:4px;width:8px;height:3px;background:white;}
-  .ico-print::before { content:""; position:absolute; left:2px; top:6px; width:13px; height:8px; background:#777; border:1px solid #333; } .ico-print::after{content:"";position:absolute;left:5px;top:2px;width:8px;height:6px;background:white;border:1px solid #555;}
-  .ico-run::before { content:"▶"; position:absolute; left:3px; top:0; color:#1b7b2c; font-size:14px; }
-  .ico-stop::before { content:"×"; position:absolute; left:3px; top:-2px; color:#111; font-size:20px; }
-  .ico-help::before { content:"?"; position:absolute; left:4px; top:1px; width:10px; height:10px; border-radius:50%; color:#063aad; font-weight:800; }
-  .sep { width:1px; height:19px; background:#aaa; margin:0 3px; }
+  .ico-page::before { content:""; position:absolute; left:5px; top:3px; width:10px; height:13px; background:#fff; border:1px solid #333; }
+  .ico-page::after { content:""; position:absolute; left:12px; top:3px; border-left:4px solid #cfe4f4; border-bottom:4px solid transparent; }
+  .ico-folder::before { content:""; position:absolute; left:3px; top:8px; width:14px; height:8px; background:#e6c12d; border:1px solid #4b4b1d; }
+  .ico-folder::after { content:""; position:absolute; left:5px; top:5px; width:7px; height:4px; background:#f4df5e; border:1px solid #4b4b1d; border-bottom:0; }
+  .ico-save::before { content:""; position:absolute; left:4px; top:3px; width:12px; height:13px; background:#1f3f73; border:1px solid #111; }
+  .ico-save::after { content:""; position:absolute; left:6px; top:5px; width:8px; height:3px; background:#fff; box-shadow:0 7px 0 #cfcfcf; }
+  .ico-print::before { content:""; position:absolute; left:3px; top:8px; width:14px; height:7px; background:#6f6f6f; border:1px solid #222; }
+  .ico-print::after { content:""; position:absolute; left:6px; top:3px; width:8px; height:7px; background:#fff; border:1px solid #333; box-shadow:0 10px 0 -2px #333; }
+  .ico-search::before { content:""; position:absolute; left:4px; top:3px; width:8px; height:11px; background:#fff; border:1px solid #555; }
+  .ico-search::after { content:""; position:absolute; left:10px; top:9px; width:8px; height:2px; background:#b00000; transform:rotate(48deg); box-shadow:-4px -4px 0 1px #d7f3ff; }
+  .ico-cut::before { content:"✂"; position:absolute; left:1px; top:1px; color:#aaa; font-size:15px; }
+  .ico-copy::before { content:""; position:absolute; left:6px; top:6px; width:9px; height:8px; border:1px solid #aaa; background:#d8d8d8; }
+  .ico-copy::after { content:""; position:absolute; left:3px; top:3px; width:9px; height:8px; border:1px solid #b8b8b8; background:#eeeeee; }
+  .ico-paste::before { content:""; position:absolute; left:5px; top:6px; width:11px; height:10px; background:#dcdcdc; border:1px solid #444; }
+  .ico-paste::after { content:""; position:absolute; left:6px; top:3px; width:8px; height:5px; background:#f4cf41; border:1px solid #6b5d1a; box-shadow:2px 5px 0 -1px #264d9b; }
+  .ico-undo::before { content:"↶"; position:absolute; left:0; top:-4px; color:#283fd0; font-size:21px; font-weight:700; }
+  .ico-wizard::before { content:""; position:absolute; left:4px; top:5px; width:12px; height:10px; background:#f8df45; border:1px solid #5f7c9a; }
+  .ico-wizard::after { content:"✦"; position:absolute; left:2px; top:-2px; color:#176bd4; font-size:12px; }
+  .ico-magnify::before { content:""; position:absolute; left:4px; top:4px; width:9px; height:9px; background:#f5e05b; border:2px solid #2785a7; border-radius:50%; }
+  .ico-magnify::after { content:""; position:absolute; left:13px; top:13px; width:6px; height:2px; background:#333; transform:rotate(45deg); }
+  .ico-run::before { content:"▶"; position:absolute; left:4px; top:1px; color:#0b7b28; font-size:14px; }
+  .ico-runner::before { content:""; position:absolute; left:8px; top:3px; width:4px; height:4px; background:#666; border-radius:50%; box-shadow:-3px 5px 0 #666; }
+  .ico-runner::after { content:""; position:absolute; left:6px; top:9px; width:12px; height:2px; background:#555; transform:rotate(-35deg); box-shadow:-3px 4px 0 #555, 4px 5px 0 #555; }
+  .ico-stop::before { content:"×"; position:absolute; left:3px; top:-3px; color:#000; font-size:24px; font-weight:400; }
+  .ico-alert::before { content:"!"; position:absolute; left:4px; top:2px; width:11px; height:11px; border:2px solid #263ca7; border-radius:50%; color:#c00000; background:#fff; font:bold 11px Arial; text-align:center; line-height:11px; }
+  .ico-book::before { content:""; position:absolute; left:5px; top:4px; width:11px; height:11px; background:#8225cc; border:1px solid #222; transform:rotate(-28deg); }
+  .ico-book::after { content:""; position:absolute; left:7px; top:6px; width:8px; height:2px; background:#ffdf5f; transform:rotate(-28deg); box-shadow:0 3px 0 #ffdf5f; }
+  .ico-help::before { content:"?"; position:absolute; left:5px; top:2px; color:#063aad; font-weight:800; }  .sep { width:1px; height:21px; background:#9c9c9c; margin:0 5px 0 3px; box-shadow:1px 0 0 #fff; }
   .workspace { display:grid; grid-template-columns:286px 1fr; min-height:0; background:#c9d8e3; border-top:1px solid #eef4f8; }
   .explorer { margin:5px 4px 4px 5px; background:white; border:1px solid #7b91a2; display:grid; grid-template-rows:23px 1fr 24px; min-width:0; }
   .pane-title { display:flex; justify-content:space-between; align-items:center; height:23px; padding:0 5px; background:linear-gradient(#d7e8f4,#b6cadb); border-bottom:1px solid #93a6b5; color:#6c747b; font-size:12px; box-sizing:border-box; }
@@ -64,22 +84,22 @@
   .editor-area { padding:7px 10px; color:#111; font:13px/1.25 "Courier New", monospace; white-space:pre; min-height:100%; outline:none; }
   .cursor { border-left:2px solid #111; height:18px; display:inline-block; }
   .output-text { padding:8px 12px; color:#111; font:12px/1.25 "Courier New", monospace; white-space:pre; display:none; }
-  .bottom-tabs { display:flex; align-items:end; height:23px; background:#e8e8e8; border-top:1px solid #a8b3bc; padding-left:272px; box-sizing:border-box; }
+  .bottom-tabs { display:flex; align-items:end; height:23px; background:#e8e8e8; border-top:1px solid #a8b3bc; padding-left:286px; box-sizing:border-box; }
   .tab { min-width:110px; height:22px; padding:4px 8px 0; border:1px solid #aaa; border-bottom:0; background:#efefef; box-sizing:border-box; font-size:11px; cursor:pointer; }
   .tab.active { background:white; border-top:2px solid #315f9f; padding-top:2px; font-weight:700; }
-  .status { display:flex; justify-content:space-between; align-items:center; height:22px; padding:0 12px 0 780px; background:#f1f1f1; border-top:1px solid #b6b6b6; color:#111; font-size:11px; box-sizing:border-box; }
+  .status { display:flex; justify-content:flex-end; gap:260px; align-items:center; height:22px; padding:0 12px 0 286px; background:#f1f1f1; border-top:1px solid #b6b6b6; color:#111; font-size:11px; box-sizing:border-box; }
   .callout { position:absolute; display:none; z-index:50; max-width:260px; padding:8px 10px; background:#fffde8; border:1px solid #9a7d2c; box-shadow:2px 2px 6px rgba(0,0,0,.22); font-size:12px; color:#111; line-height:1.35; }
   .sim-layout { display:grid; grid-template-columns:1fr; gap:14px; align-items:start; }
   .app-wrap { position:relative; min-width:0; }
   .hotspot { position:absolute; z-index:30; border:2px dashed rgba(0,102,204,.35); background:rgba(0,102,204,.035); cursor:pointer; transition:background .15s, border-color .15s, box-shadow .15s, opacity .15s; opacity:.22; }
   .hotspot:hover { opacity:.75; border-color:#0b68b7; background:rgba(0,102,204,.11); }
   .hotspot.active { opacity:1; border-color:#ff8c00; background:rgba(255,165,0,.22); box-shadow:0 0 0 2px rgba(255,140,0,.14); }
-  #spot-toolbar { left:0; right:0; top:48px; height:28px; }
-  #spot-command { left:31px; top:51px; width:210px; height:22px; }
-  #spot-explorer { left:5px; top:82px; width:286px; height:555px; }
-  #spot-log { left:294px; right:5px; top:82px; height:337px; }
+  #spot-toolbar { left:0; right:0; top:48px; height:36px; }
+  #spot-command { left:31px; top:55px; width:210px; height:22px; }
+  #spot-explorer { left:5px; top:90px; width:286px; height:547px; }
+  #spot-log { left:294px; right:5px; top:90px; height:329px; }
   #spot-editor { left:294px; right:5px; top:424px; height:210px; }
-  .info-panel { min-height:0; border:1px solid #c7d2dc; background:#fffdf7; box-shadow:0 10px 24px rgba(39,56,72,.12); padding:16px 18px; box-sizing:border-box; color:#2d2723; font-family:Tahoma, Arial, sans-serif; }
+  .info-panel { min-height:auto; border:1px solid #c7d2dc; background:#fffdf7; box-shadow:0 10px 24px rgba(39,56,72,.12); padding:16px 18px; box-sizing:border-box; color:#2d2723; font-family:Tahoma, Arial, sans-serif; }
   .info-panel h2 { margin:0 0 10px; color:#244566; font:700 20px Georgia,"Times New Roman",serif; }
   .info-panel p { margin:0 0 12px; color:#594f49; font-size:14px; line-height:1.55; }
   .info-panel ul { margin:8px 0 0 18px; padding:0; color:#594f49; font-size:14px; line-height:1.5; }
@@ -91,9 +111,9 @@
   .practice-box { margin-top:16px; padding-top:14px; border-top:1px solid #e0d7ca; }
   .practice-box button { margin:4px 6px 4px 0; border:1px solid #244566; background:#f7fbff; color:#244566; padding:7px 10px; font-size:12px; font-weight:800; cursor:pointer; }
   .practice-box button:hover { background:#e7eff7; }
-  .practice-feedback { margin-top:8px; min-height:20px; color:#244566; font-size:13px; font-weight:700; }
+  .practice-feedback { margin-top:8px; min-height:20px; color:#244566; font-size:13px; font-weight:700; } .practice-feedback.error { color:#c00000 !important; } .practice-feedback.warning { color:#a45b00 !important; } .log-error { color:#c00000; } .log-warning { color:#a45b00; }
   @keyframes fadeIn { from { opacity:.45; transform:translateY(3px); } to { opacity:1; transform:translateY(0); } }
-  @media (max-width:1050px){ .sim-layout{grid-template-columns:1fr;} .info-panel{min-height:0;} }
+  @media (max-width:1050px){ .sim-layout{grid-template-columns:1fr;} .info-panel{min-height:auto;} }
 </style>
 </head>
 <body>
@@ -109,7 +129,7 @@
     <div class="menu-item">Run<div class="menu-popup"><div id="menuSubmit">Submit</div><div>Cancel Submitted Statements</div></div></div>
     <div class="menu-item">Solutions</div><div class="menu-item">Window</div><div class="menu-item">Help</div>
   </div>
-  <div class="toolbar"><span class="check">✓</span><input class="command" id="command" title="Try: log, editor, output, explorer"><button class="tool ico-page" title="New program"></button><button class="tool ico-folder" title="Open"></button><button class="tool ico-save" title="Save"></button><button class="tool ico-print" title="Print"></button><span class="sep"></span><button class="tool ico-run" id="runBtn" title="Submit"></button><button class="tool ico-stop" title="Cancel"></button><button class="tool ico-help" title="Help"></button></div>
+  <div class="toolbar"><img class="toolbar-ref" src="sas-toolbar-reference.png" alt="SAS toolbar"><button class="toolbar-hotspot" id="runBtn" title="Submit" aria-label="Submit"></button></div>
   <div class="workspace">
     <aside class="explorer" id="explorerPane"><div class="pane-title"><span>Explorer</span><span class="small-close">×</span></div><div class="explorer-content"><div class="content-label">Contents of 'SAS Environment'</div><div class="folders"><div class="folder" data-info="Libraries store SAS data sets such as WORK, RAW, SDTM, and ADAM."><span class="folderpic"></span><span>Libraries</span></div><div class="folder" data-info="File Shortcuts point to external folders or files."><span class="folderpic"></span><span>File Shortcuts</span></div><div class="folder" data-info="Favorite Folders are saved locations you use often."><span class="folderpic"></span><span>Favorite<br>Folders</span></div><div class="folder" data-info="This PC lets you browse local drives and folders."><span class="folderpic pcpic"></span><span>This PC</span></div></div></div><div class="left-tabs"><div class="left-tab">Results</div><div class="left-tab active">Explorer</div></div></aside>
     <main class="right"><section class="mdi" id="logPane"><div class="mdi-title"><b>Log - (Untitled)</b><div class="mdi-buttons"><span>−</span><span>□</span><span class="close">×</span></div></div><div class="pane-body"><pre class="log-text" id="logText">NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA.
@@ -177,7 +197,7 @@ NOTE: SAS initialization used:
   </div>  <div class="practice-box">
     <strong>Mini practice</strong><br>
     <button type="button" id="practiceRun">Simulate successful run</button>
-    <button type="button" id="practiceError">Simulate error</button>
+    <button type="button" id="practiceWarning">Simulate warning</button> <button type="button" id="practiceError">Simulate error</button>
     <div class="practice-feedback" id="practiceFeedback"></div>
   </div>
 </aside>
@@ -195,12 +215,40 @@ document.getElementById('runBtn').addEventListener('click',submitDemo); document
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active'); const name=t.dataset.tab; if(name==='log'){selectRegion('log');} else if(name==='editor'){selectRegion('editor');} else if(name==='output'){document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active')); document.querySelectorAll('.info-card').forEach(c=>c.classList.toggle('active',c.id==='card-output')); callout.style.display='none';}}));
 function selectRegion(region){document.querySelectorAll('.hotspot').forEach(h=>h.classList.toggle('active',h.dataset.region===region));document.querySelectorAll('.info-card').forEach(c=>c.classList.toggle('active',c.id==='card-'+region));callout.style.display='none';}
 document.querySelectorAll('.hotspot').forEach(h=>h.addEventListener('click',e=>{e.stopPropagation();selectRegion(h.dataset.region);}));
-document.getElementById('practiceRun').addEventListener('click',()=>{selectRegion('log');document.getElementById('logText').textContent+='\n\nNOTE: The data set WORK.PRACTICE has 3 observations and 2 variables.\nNOTE: PROCEDURE PRINT used.';document.getElementById('practiceFeedback').textContent='Correct window to check: Log. The successful run adds blue NOTE lines.';});
-document.getElementById('practiceError').addEventListener('click',()=>{selectRegion('log');document.getElementById('logText').textContent+='\n\nERROR: Variable TRT01P not found.\nNOTE: The SAS System stopped processing this step because of errors.';document.getElementById('practiceFeedback').textContent='Check the Log first. ERROR lines explain why the run failed.';});
-document.getElementById('command').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.toLowerCase().trim(); const map={log:'Log window',editor:'Editor window',output:'Output window',explorer:'Explorer window'}; showCallout(map[v]||'Command box: try log, editor, output, or explorer.', e.target);}});
+const baseLog=`NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA.
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M7)
+      Licensed to LLX SOLUTIONS LLC - SERVICE PROVIDER, Site 70205607.
+NOTE: This session is executing on the X64_DSRV19 platform.
+
+
+NOTE: Analytical products:
+      SAS/STAT 15.2
+      SAS/IML 15.2
+
+NOTE: Additional host information:
+      X64_DSRV19 WIN 10.0.20348  Server
+
+NOTE: SAS initialization used:
+      real time           1.97 seconds
+      cpu time            0.92 seconds`;
+function setPracticeFeedback(text,type){const feedback=document.getElementById('practiceFeedback');feedback.textContent=text;feedback.classList.remove('error','warning');if(type)feedback.classList.add(type);}
+document.getElementById('practiceRun').addEventListener('click',()=>{selectRegion('log');document.getElementById('logText').textContent=baseLog+'\n\nNOTE: The data set WORK.PRACTICE has 3 observations and 2 variables.\nNOTE: PROCEDURE PRINT used.';setPracticeFeedback('Correct window to check: Log. The successful run adds blue NOTE lines.','');});
+document.getElementById('practiceWarning').addEventListener('click',()=>{selectRegion('log');document.getElementById('logText').innerHTML=baseLog+'\n\n<span class="log-warning">WARNING: Missing values were generated as a result of performing an operation on missing values.</span>\nNOTE: Review the warning and confirm whether it is expected.';setPracticeFeedback('Correct window to check: Log. WARNING lines need review before using output.','warning');});
+document.getElementById('practiceError').addEventListener('click',()=>{selectRegion('log');document.getElementById('logText').innerHTML=baseLog+'\n\n<span class="log-error">ERROR: Variable TRT01P not found.</span>\nNOTE: The SAS System stopped processing this step because of errors.';setPracticeFeedback('Check the Log first. ERROR lines explain why the run failed.','error');});document.getElementById('command').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.toLowerCase().trim(); const map={log:'Log window',editor:'Editor window',output:'Output window',explorer:'Explorer window'}; showCallout(map[v]||'Command box: try log, editor, output, or explorer.', e.target);}});
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
