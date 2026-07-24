@@ -377,9 +377,19 @@
     }
 
     .training-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 12px;
+      display: block;
+      margin-top: 18px;
+    }
+
+    .training-list > .training-item,
+    .training-list > .bio-topic {
+      display: block;
+      margin: 0 0 16px;
+    }
+
+    .training-list > .training-item:last-child,
+    .training-list > .bio-topic:last-child {
+      margin-bottom: 0;
     }
 
     .training-item.domain-family-module-card {
@@ -5708,7 +5718,8 @@
       justify-content: space-between;
       gap: 18px;
       flex-wrap: wrap;
-      padding: 34px 0 44px;
+      box-sizing: border-box;
+      padding: 34px clamp(32px, 6vw, 120px) 44px;
       border-top: 1px solid var(--line);
       color: var(--sand);
       font-size: 14px;
@@ -6311,14 +6322,40 @@
       line-height: 1.55;
     }
 
+    .training-list,
     .training-list.bio-topic-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+      display: block !important;
     }
 
+    .training-list > .training-item,
+    .training-list > .bio-topic,
     .training-list.bio-topic-list > .bio-topic {
-      margin: 0 !important;
+      display: block !important;
+      margin: 0 0 16px !important;
+    }
+
+    .training-list > .training-item:last-child,
+    .training-list > .bio-topic:last-child,
+    .training-list.bio-topic-list > .bio-topic:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    .module-card-spacer {
+      display: block;
+      height: 16px;
+      flex: 0 0 16px;
+    }
+
+    .training-list > .training-item + .training-item,
+    .training-list > .bio-topic + .bio-topic,
+    .training-list.bio-topic-list > .bio-topic + .bio-topic,
+    .training-overview > .training-item + .training-item {
+      margin-top: 16px !important;
+    }
+
+    .training-overview > .training-item {
+      display: block !important;
+      margin-bottom: 0 !important;
     }
   </style>
 </head>
@@ -19282,12 +19319,22 @@ run;</code></pre>
   <span class="sas-keyword">ods output</span> <span class="sas-output">diffs=mmrm_diffs</span> <span class="sas-output">lsmeans=mmrm_lsmeans</span>;
 <span class="sas-step">run</span>;
 
-<span class="sas-comment">/* Example MAR sensitivity: same estimand, different pre-specified covariance. */</span>
-<span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">adhba1c</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
+<span class="sas-comment">/* Example MAR sensitivity: hypothetical strategy for post-rescue ICE. */</span>
+<span class="sas-comment">/* Keep the same model, but analyze a SAP-defined dataset where values after rescue medication are excluded or set missing before imputation/modeling. */</span>
+<span class="sas-proc">data</span> <span class="sas-data">adhba1c_hyp</span>;
+  <span class="sas-keyword">set</span> <span class="sas-data">adhba1c</span>;
+  <span class="sas-keyword">if</span> <span class="sas-var">postrescue</span> = <span class="sas-string">"Y"</span> <span class="sas-keyword">then do</span>;
+    <span class="sas-var">aval</span> = .;
+    <span class="sas-var">chg</span> = .;
+    <span class="sas-var">dtype</span> = <span class="sas-string">"HYPO"</span>;
+  <span class="sas-keyword">end</span>;
+<span class="sas-step">run</span>;
+
+<span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">adhba1c_hyp</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
   <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn strata1</span>;
   <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn strata1</span>
         / <span class="sas-option">ddfm=kr solution</span>;
-  <span class="sas-keyword">repeated</span> <span class="sas-var">avisitn</span> / <span class="sas-option">subject=</span><span class="sas-var">usubjid</span> <span class="sas-option">type=ar(1)</span>;
+  <span class="sas-keyword">repeated</span> <span class="sas-var">avisitn</span> / <span class="sas-option">subject=</span><span class="sas-var">usubjid</span> <span class="sas-option">type=un</span>;
   <span class="sas-keyword">lsmeans</span> <span class="sas-var">trt01p*avisitn</span> / <span class="sas-option">diff cl</span>;
 <span class="sas-step">run</span>;</code></pre>
                 </div>
@@ -19310,10 +19357,10 @@ run;</code></pre>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Alternative covariance structure</td>
-                        <td>Use Toeplitz, AR(1), or compound symmetry instead of unstructured covariance.</td>
-                        <td>Whether the Week 24 conclusion depends heavily on the covariance model.</td>
-                        <td>Still MAR if the missingness assumption remains conditional on observed data.</td>
+                        <td>Alternative ICE handling</td>
+                        <td>Apply a pre-specified hypothetical strategy, such as excluding or setting post-rescue values to missing before the MAR analysis.</td>
+                        <td>Whether the Week 24 conclusion depends on how rescue medication or treatment discontinuation is handled.</td>
+                        <td>Still MAR if the post-ICE rule is pre-specified and the missing values are modeled conditional on observed data.</td>
                       </tr>
                       <tr>
                         <td>Alternative degrees of freedom method</td>
@@ -19511,7 +19558,7 @@ run;</code></pre>
                   <ol>
                     <li>A subject has Baseline and Week 12 HbA1c but misses Week 24 due to a scheduling issue. Should Week 12 be discarded from the MMRM?</li>
                     <li>A subject starts rescue medication at Week 12 and has a Week 24 HbA1c value. Can MAR alone decide whether Week 24 is included?</li>
-                    <li>The unstructured covariance MMRM fails to converge. Can the team choose the covariance structure that gives the smallest p-value?</li>
+                    <li>A subject starts rescue medication before Week 24. Can the team decide after seeing results whether to include or exclude the post-rescue Week 24 value?</li>
                     <li>A subject has no post-baseline HbA1c values. What should the statistician check before assuming the subject contributes to the MMRM response model?</li>
                   </ol>
                   <details class="answer-key">
@@ -19520,7 +19567,7 @@ run;</code></pre>
                       <ol>
                         <li>No. MMRM uses all observed post-baseline repeated measures that meet the analysis rules. Week 12 remains informative under MAR.</li>
                         <li>No. Rescue medication is an intercurrent event. The estimand strategy must decide how post-rescue data are handled before missing-data assumptions are discussed.</li>
-                        <li>No. Covariance fallback rules must be pre-specified in the SAP or analysis plan. Choosing after seeing results creates bias.</li>
+                        <li>No. ICE handling must be pre-specified in the estimand/SAP. Choosing the post-rescue rule after seeing results creates bias.</li>
                         <li>Check the SAP, software behavior, analysis population rules, and whether the model requires at least one post-baseline response. Baseline-only subjects may be in the population but not contribute a response observation to the repeated-measures model.</li>
                       </ol>
                     </div>
@@ -19528,6 +19575,9 @@ run;</code></pre>
                 </div>
               </article>
             </details>
+
+            
+            <div class="module-card-spacer" aria-hidden="true"></div>
 
             <details class="bio-topic">
               <summary>
@@ -21005,6 +21055,20 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
