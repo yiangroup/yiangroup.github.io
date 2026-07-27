@@ -2300,6 +2300,81 @@
     .sas-ods-wide .sas-ods-table {
       min-width: 760px;
     }
+
+    .sas-phreg-table {
+      min-width: 900px;
+      border-collapse: collapse;
+      margin: 0 auto 12px;
+      background: #f8fbfb;
+      color: #000;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      border: 1px solid #b8c8c8;
+    }
+
+    .sas-phreg-table th,
+    .sas-phreg-table td {
+      padding: 7px 8px;
+      border: 1px solid #c4d0d0;
+      text-align: right;
+      vertical-align: middle;
+    }
+
+    .sas-phreg-table .title-row th {
+      background: #e8f3f4;
+      color: #112277;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .sas-phreg-table .subtitle-row th {
+      background: #e8f3f4;
+      color: #112277;
+      font-size: 15px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .sas-phreg-table .header-row th {
+      background: #e8f3f4;
+      color: #112277;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .sas-phreg-table .param-cell {
+      background: #e8f3f4;
+      color: #112277;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .sas-phreg-table .label-cell {
+      text-align: left;
+    }
+
+    .sas-ods-green .sas-ods-title {
+      color: #112277;
+    }
+
+    .sas-ods-green .sas-ods-table th {
+      background: #e8f3f4;
+      color: #112277;
+      border-color: #c4d0d0;
+    }
+
+    .sas-ods-green .sas-ods-table td {
+      background: #f8fbfb;
+      border-color: #c4d0d0;
+    }
+
+    .sas-ods-green .sas-ods-table .obs {
+      background: #e8f3f4;
+      color: #112277;
+    }
     @media (max-width: 900px) {
       .sas-ods-grid,
       .sas-ods-interpret {
@@ -2329,8 +2404,7 @@
 
     .sas-ods-wide .sas-ods-table {
       min-width: 760px;
-    }
-    @media (max-width: 900px) {
+    }@media (max-width: 900px) {
       .xpt-dataset.with-notes {
         grid-template-columns: 1fr;
       }
@@ -7126,8 +7200,7 @@
 
     .sas-ods-wide .sas-ods-table {
       min-width: 760px;
-    }
-    @media (max-width: 900px) {
+    }@media (max-width: 900px) {
       .crossover-roadmap,
       .crossover-insight-grid,
       .method-grid {
@@ -7167,7 +7240,144 @@
       display: block !important;
       margin-bottom: 0 !important;
     }
-  </style>
+  
+    .math-inline {
+      font-family: "Cambria Math", "Times New Roman", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .math-equation {
+      font-family: "Cambria Math", "Times New Roman", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 31px;
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    .math-equation sub,
+    .math-equation sup,
+    .math-inline sub,
+    .math-inline sup {
+      font-size: 0.62em;
+      line-height: 0;
+    }
+
+    .math-equation .math-roman,
+    .math-inline .math-roman {
+      font-style: normal;
+    }
+
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      margin: 0 8px;
+      line-height: 1.15;
+    }
+
+    .math-frac .math-num {
+      display: block;
+      padding: 0 12px 5px;
+      border-bottom: 1.5px solid #25201d;
+      white-space: nowrap;
+    }
+
+    .math-frac .math-den {
+      display: block;
+      padding: 5px 12px 0;
+      white-space: nowrap;
+    }
+
+    .math-prod {
+      display: inline-block;
+      position: relative;
+      margin: 0 16px;
+      font-size: 54px;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .math-prod sup,
+    .math-prod sub {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .math-prod sup { top: -17px; }
+    .math-prod sub { bottom: -16px; }
+    .ipcw-mapping-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 26px;
+      background: rgba(255, 255, 255, 0.62);
+      font-size: 17px;
+    }
+
+    .ipcw-mapping-table th {
+      text-align: left;
+      color: #25201d;
+      font-weight: 500;
+      padding: 14px 18px 16px;
+      border-bottom: 1px solid rgba(76, 92, 84, 0.18);
+      font-size: 19px;
+    }
+
+    .ipcw-mapping-table td {
+      vertical-align: top;
+      padding: 18px;
+      border-bottom: 1px solid rgba(76, 92, 84, 0.16);
+      color: #25201d;
+      line-height: 1.45;
+    }
+
+    .ipcw-mapping-table .step-purpose {
+      width: 23%;
+      font-weight: 700;
+    }
+
+    .ipcw-mapping-table .notation-cell {
+      width: 32%;
+      font-family: "Cambria Math", "Times New Roman", Georgia, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #25201d;
+    }
+
+    .ipcw-mapping-table .sas-cell {
+      width: 45%;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 15px;
+      color: #656b67;
+      line-height: 1.45;
+    }
+
+    .ipcw-mapping-table code {
+      display: inline;
+      padding: 3px 7px;
+      border-radius: 9px;
+      background: rgba(76, 92, 84, 0.08);
+      color: #656b67;
+      font-size: inherit;
+      white-space: normal;
+    }
+    .identifiability-equation {
+      font-size: 32px;
+      word-spacing: 2px;
+      letter-spacing: 0;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }</style>
 </head>
 <body>
   <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
@@ -21748,7 +21958,7 @@ run;</code></pre>
 
                 <div class="sas-ods-example" aria-label="SAS ODS output example for RPSFTM">
                   <div class="sas-ods-grid">
-                    <div class="sas-ods-panel">
+                    <div class="sas-ods-panel sas-ods-green">
                       <div class="sas-ods-title">95% Confidence Interval for Psi</div>
                       <table class="sas-ods-table">
                         <thead>
@@ -21759,7 +21969,7 @@ run;</code></pre>
                         </tbody>
                       </table>
                     </div>
-                    <div class="sas-ods-panel">
+                    <div class="sas-ods-panel sas-ods-green">
                       <div class="sas-ods-title">95% Confidence Interval for Acceleration Factor exp(Psi)</div>
                       <table class="sas-ods-table">
                         <thead>
@@ -21805,232 +22015,252 @@ run;</code></pre>
                     <div class="sas-ods-note"><strong>Diagnostic plot</strong>The optimal &psi; is where the Z-score crosses 0. This is the value that best removes the transformed treatment-arm contrast.</div>
                   </div>
                 </div>
-                <h4>4. IPCW: Inverse Probability of Censoring Weighting</h4>
-                <p>
-                  IPCW censors subjects at the moment of treatment switching and reweights the remaining uncensored subjects using inverse probability of censoring weights. The goal is to create a weighted pseudo-population that represents what follow-up would have looked like if crossover had not occurred.
+                <h4>4. Lecture: IPCW in Survival Analysis and Treatment Crossover</h4>
+                <p class="method-transition">
+                  <strong>Translating Counterfactual Theory to SAS Macro Implementation.</strong> This section bridges rigorous IPCW theory with the actual SAS macro logic used to handle treatment switching in survival analysis.
                 </p>
 
-                <h5>Step 1. Core Mathematical Logic and Stabilized Weight</h5>
-                <div class="rpsft-formula-card" aria-label="IPCW stabilized weight formula">
-                  <div class="rpsft-equation">
-                    W(t) = <span style="display:inline-block; vertical-align:middle;"><span style="display:block; border-bottom:1px solid #25201d; padding:0 8px 5px;">P(Uncensored at t | Baseline covariates)</span><span style="display:block; padding:5px 8px 0;">P(Uncensored at t | Baseline + Time-varying covariates)</span></span>
-                  </div>
+                <h5>1. Counterfactual Framework and the Causal Estimand</h5>
+                <p>
+                  In a randomized clinical trial with treatment switching, let <strong>A<sub>0</sub> in {0, 1}</strong> denote baseline treatment assignment. Let <strong>C(t) in {0, 1}</strong> be the time-varying counting process for censoring due to crossover, where <strong>C(t) = 1</strong> when a patient switches from control to experimental treatment.
+                </p>
+                <p>
+                  The objective is to estimate the <strong>marginal counterfactual survival distribution</strong> <strong>S<sup>a=0</sup>(t) = P(T<sup>a=0</sup> &gt; t)</strong>, which represents survival under the hypothetical regime where no patient switches treatments.
+                </p>
+                <div class="rpsft-formula-card" aria-label="IPCW identifiability bridge formula">
+                  <h5>The Identifiability Bridge</h5>
+                  <p>Under <strong>Consistency</strong>, <strong>Positivity</strong>, and <strong>Conditional Exchangeability</strong>:</p>
+                  <div class="rpsft-equation math-equation identifiability-equation">dΛ<sub>T<sup>a&#772;=0</sup></sub>(t | L&#772;(t<sup>−</sup>), C(t<sup>−</sup>) = 0) = dΛ<sub>T</sub>(t | L&#772;(t<sup>−</sup>), C(t<sup>−</sup>) = 0, A<sub>0</sub> = 0)</div>
+                  <p>Where <strong>L&#772;(t)</strong> is the history of both baseline and time-varying clinical predictors of crossover up to <strong>t<sup>-</sup></strong>.</p>
+                </div>
+
+                <h5>2. Measure Transformation and Stabilized Weight Derivation</h5>
+                <p>
+                  IPCW constructs a pseudo-population by applying a Radon-Nikodym derivative to the observed data density.
+                </p>
+                <div class="rpsft-formula-card" aria-label="IPCW stabilized weight derivation">
+                  <h5>Mathematical Definition of Stabilized Weight SW(t)</h5>
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = <span class="math-prod">∏<sup>t</sup><sub>k=1</sub></span><span class="math-frac"><span class="math-num">P(C<sub>k</sub> = 0 | C<sub>k-1</sub> = 0, L&#772;<sub>0</sub>)</span><span class="math-den">P(C<sub>k</sub> = 0 | C<sub>k-1</sub> = 0, L&#772;<sub>k-1</sub>)</span></span></div>
                   <ul class="rpsft-formula-notes">
-                    <li><strong>Key assumption:</strong> No unmeasured confounding. The dataset must contain the key clinical predictors of treatment switching.</li>
-                    <li><strong>Clinical predictors:</strong> disease progression, ECOG/performance status, tumor burden, laboratory values, prior response, and other time-updated variables that influence crossover decisions.</li>
+                    <li><strong>Denominator:</strong> The conditional probability of remaining uncensored at interval k, given baseline covariates and time-updated covariates such as disease progression or ECOG status.</li>
+                    <li><strong>Numerator:</strong> The conditional probability of remaining uncensored at interval k, conditioned only on baseline covariates.</li>
+                    <li><strong>Asymptotic variance reduction:</strong> Including the numerator does not alter the expectation E[SW(t)] = 1 under no unmeasured confounding, but it restricts the dynamic range of SW(t), reducing variance of downstream MSM parameters.</li>
                   </ul>
                 </div>
 
-                <h5>Step 2. SAS Implementation and Data Mapping</h5>
-                <p class="method-transition">
-                  To implement IPCW through SAS macros or time-dependent Cox models, the analysis data must be structured in counting-process format, usually with interval bounds such as <code>tstart</code> and <code>tend</code>.
-                </p>
+                <h5>3. Step-by-Step Code Mapping: Theory to SAS Macro Execution</h5>
                 <div class="table-scroll">
-                  <table class="crf-table crossover-method-table rpsft-variable-table" aria-label="IPCW SAS variable mapping">
-                    <thead><tr><th>Category</th><th>SAS Argument</th><th>Description / Programming Meaning</th></tr></thead>
+                  <table class="ipcw-mapping-table" aria-label="IPCW theory to SAS macro mapping">
+                    <thead>
+                      <tr>
+                        <th>Step &amp; Purpose</th>
+                        <th>Mathematical Notation</th>
+                        <th>SAS Macro Implementation</th>
+                      </tr>
+                    </thead>
                     <tbody>
-                      <tr><td><span class="method-topic-badge">Data Structure</span></td><td><code>tstart</code><code>tend</code></td><td>Counting-process interval bounds for time-varying records.</td></tr>
-                      <tr><td><span class="method-topic-badge">Events &amp; Crossover</span></td><td><code>dth_ind</code><code>dth_event</code><code>xo_ind</code><code>xo_time</code><code>xo_cnsr</code></td><td>Indicators for primary endpoint event and treatment switching; crossover is treated as a censoring event for the weight model.</td></tr>
-                      <tr><td><span class="method-topic-badge">Baseline Predictors</span></td><td><code>bl_ct</code><code>bl_cl</code></td><td>Baseline continuous and class variables used in the numerator weight model.</td></tr>
-                      <tr><td><span class="method-topic-badge">Time-Varying Predictors</span></td><td><code>tv_ct</code><code>tv_cl</code></td><td>Longitudinal covariates updated over time to model the switching/censoring risk in the denominator.</td></tr>
-                      <tr><td><span class="method-topic-badge">Reference Arm</span></td><td><code>ref</code></td><td>Treatment arm where crossover weighting is estimated, typically the control arm.</td></tr>
+                      <tr>
+                        <td class="step-purpose">1. Data Subset</td>
+                        <td class="notation-cell">i ∈ {A<sub>0</sub> = 0}, C<sub>i</sub>(t) ∈ {0, 1}</td>
+                        <td class="sas-cell"><code>data _ipcw_base;</code> <code>if &amp;trt = &amp;ref;</code></td>
+                      </tr>
+                      <tr>
+                        <td class="step-purpose">2. Numerator Model</td>
+                        <td class="notation-cell">Ŝ<sub>num</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>)</td>
+                        <td class="sas-cell"><code>PROC PHREG;</code> <code>model ... = &amp;bl_ct &amp;bl_cl;</code></td>
+                      </tr>
+                      <tr>
+                        <td class="step-purpose">3. Denominator Model</td>
+                        <td class="notation-cell">Ŝ<sub>den</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>, L&#772;(t))</td>
+                        <td class="sas-cell"><code>PROC PHREG;</code> <code>model ... = &amp;bl_ct &amp;bl_cl &amp;tv_ct &amp;tv_cl;</code></td>
+                      </tr>
+                      <tr>
+                        <td class="step-purpose">4. Stabilized Weight</td>
+                        <td class="notation-cell">SW<sub>i</sub>(t) = Ŝ<sub>num</sub>(t<sub>i</sub>) / Ŝ<sub>den</sub>(t<sub>i</sub>)</td>
+                        <td class="sas-cell"><code>data _weights;</code> <code>sw_t = _surv_num / _surv_den;</code></td>
+                      </tr>
+                      <tr>
+                        <td class="step-purpose">5. Weight Truncation</td>
+                        <td class="notation-cell">SW<sub>i</sub><sup>*</sup>(t) = clip(SW<sub>i</sub>(t), Q<sub>αL</sub>, Q<sub>αU</sub>)</td>
+                        <td class="sas-cell"><code>PROC UNIVARIATE;</code> + truncation logic</td>
+                      </tr>
+                      <tr>
+                        <td class="step-purpose">6. Merge &amp; Reset</td>
+                        <td class="notation-cell">SW<sub>i</sub>(t) = 1 &nbsp; ∀i ∈ {A<sub>0</sub> = 1}</td>
+                        <td class="sas-cell"><code>data _surv_weighted;</code> <code>if &amp;trt ne &amp;ref then sw_t = 1;</code></td>
+                      </tr>
+                      <tr>
+                        <td class="step-purpose">7. Weighted MSM Cox</td>
+                        <td class="notation-cell">λ(t | A<sub>0</sub>) = λ<sub>0</sub>(t) exp(βA<sub>0</sub>)</td>
+                        <td class="sas-cell"><code>PROC PHREG;</code> <code>WEIGHT sw_t / norm;</code> <code>ID &amp;subjid;</code></td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
 
-                <h5>Step 3. Macro Logic, Output, and Weight Diagnostics</h5>
+                <h5>Step 1. Restricting Crossover Censoring Model to Reference Arm</h5>
                 <p>
-                  The fold-out box below keeps the SAS macro logic available without interrupting the main teaching flow. For IPCW, the output is not only the final weighted hazard ratio; the weight diagnostics must also be reviewed before trusting the model.
+                  Mathematically, treatment switching only occurs in the control group. Therefore, the censoring mechanism <strong>P(C(t) | L&#772;(t))</strong> is estimated solely on the reference arm.
                 </p>
-                <details class="macro-expander">
-                  <summary>[ Expand SAS Macro Logic &amp; Call Syntax ]</summary>
-                  <p class="macro-note">This is a teaching macro structure. It shows the complete weighting workflow: counting-process input, censoring at crossover, baseline and time-varying models, stabilized weights, truncation, and final weighted Cox analysis.</p>
-                  <div class="code-window sas-syntax" aria-label="IPCW full teaching macro logic">
-                    <div class="code-window-header"><span>IPCW Full Teaching Macro Logic</span><span>.sas</span></div>
-<pre><code>%macro ipcw_teach(data=, subjid=, dth_time=, dth_event=,
-                  trt=, ref=0, tstart=, tend=,
-                  xo_time=, xo_ind=, xo_cnsr=,
-                  bl_ct=, bl_cl=, tv_ct=, tv_cl=,
-                  lower_pct=1, upper_pct=99);
+                <div class="code-window sas-syntax" aria-label="IPCW SAS step 1 reference arm censoring indicator">
+                  <div class="code-window-header"><span>Step 1. Reference Arm and Censoring Indicator</span><span>.sas</span></div>
+                  <pre><code>/* 1. Subset reference arm &amp; define censoring indicator */
+data _ipcw_base;
+  set &amp;data;
+  if &amp;trt = &amp;ref;
+  if &amp;xo_ind = 1 and &amp;tend &gt;= &amp;xo_time then _xo_censor = 1;
+  else _xo_censor = 0;
+run;</code></pre>
+                </div>
 
-  /* 1. Keep counting-process records for the reference arm. */
-  data _ipcw_base;
-    set &amp;data;
-    if &amp;trt = &amp;ref;
+                <h5>Steps 2 and 3. Estimating Numerator and Denominator Survival Probabilities</h5>
+                <p>
+                  Under a time-dependent Cox proportional hazards model, the conditional survival for remaining uncensored up to interval <strong>(t<sub>start</sub>, t<sub>end</sub>]</strong> is:
+                </p>
+                <div class="rpsft-formula-card" aria-label="IPCW conditional survival model">
+                  <div class="rpsft-equation math-equation">S(t | X) = exp { - ∫<sub>0</sub><sup>t</sup> λ<sub>0</sub>(u) exp(γ<sup>T</sup>X(u)) du }</div>
+                  <ul class="rpsft-formula-notes">
+                    <li><strong>Numerator model S<sub>num</sub>:</strong> X(u) includes baseline continuous and baseline class covariates.</li>
+                    <li><strong>Denominator model S<sub>den</sub>:</strong> X(u) includes baseline covariates plus time-varying continuous and class covariates.</li>
+                  </ul>
+                </div>
+                <div class="code-window sas-syntax" aria-label="IPCW SAS numerator and denominator models">
+                  <div class="code-window-header"><span>Steps 2 and 3. Numerator and Denominator Models</span><span>.sas</span></div>
+                  <pre><code>/* 2. Numerator Model: Conditional on Baseline Covariates Only */
+proc phreg data=_ipcw_base covs(aggregate) covm;
+  class &amp;bl_cl;
+  model (&amp;tstart, &amp;tend)*_xo_censor(0) = &amp;bl_ct &amp;bl_cl / rl;
+  id &amp;subjid;
+  output out=_w_num survival=_surv_num;
+run;
 
-    if &amp;xo_ind = 1 and &amp;tend &gt;= &amp;xo_time then _xo_censor = 1;
-    else _xo_censor = 0;
-  run;
+/* 3. Denominator Model: Conditional on Baseline + Time-Varying Covariates */
+proc phreg data=_ipcw_base covs(aggregate) covm;
+  class &amp;bl_cl &amp;tv_cl;
+  model (&amp;tstart, &amp;tend)*_xo_censor(0) = &amp;bl_ct &amp;bl_cl &amp;tv_ct &amp;tv_cl / rl;
+  id &amp;subjid;
+  output out=_w_den survival=_surv_den;
+run;</code></pre>
+                </div>
 
-  proc sort data=_ipcw_base;
-    by &amp;subjid &amp;tstart &amp;tend;
-  run;
+                <h5>Step 4. Constructing SW<sub>i</sub>(t)</h5>
+                <div class="rpsft-formula-card" aria-label="IPCW stabilized weight construction formula">
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = <span class="math-frac"><span class="math-num">Ŝ<sub>num</sub>(t<sub>i</sub>)</span><span class="math-den">Ŝ<sub>den</sub>(t<sub>i</sub>)</span></span></div>
+                </div>
+                <div class="code-window sas-syntax" aria-label="IPCW SAS stabilized weight construction">
+                  <div class="code-window-header"><span>Step 4. Form Stabilized Weights</span><span>.sas</span></div>
+                  <pre><code>/* 4. Form Stabilized Weights */
+data _weights;
+  merge _w_num(keep=&amp;subjid &amp;tstart &amp;tend _surv_num)
+        _w_den(keep=&amp;subjid &amp;tstart &amp;tend _surv_den);
+  by &amp;subjid &amp;tstart &amp;tend;
 
-  /* 2. Numerator model: remaining uncensored using baseline covariates. */
-  ods exclude all;
-  proc phreg data=_ipcw_base covs(aggregate) covm;
-    class &amp;bl_cl;
-    model (&amp;tstart, &amp;tend)*_xo_censor(0) = &amp;bl_ct &amp;bl_cl / rl;
-    id &amp;subjid;
-    output out=_w_num survival=_surv_num;
-  run;
-  ods exclude none;
+  if _surv_den &gt; 0 then sw_t = _surv_num / _surv_den;
+  else sw_t = .;
+run;</code></pre>
+                </div>
 
-  /* 3. Denominator model: baseline plus time-varying covariates. */
-  ods exclude all;
-  proc phreg data=_ipcw_base covs(aggregate) covm;
-    class &amp;bl_cl &amp;tv_cl;
-    model (&amp;tstart, &amp;tend)*_xo_censor(0) =
-          &amp;bl_ct &amp;bl_cl &amp;tv_ct &amp;tv_cl / rl;
-    id &amp;subjid;
-    output out=_w_den survival=_surv_den;
-  run;
-  ods exclude none;
+                <h5>Step 5. Regularization via Percentile Truncation</h5>
+                <p>
+                  To satisfy the positivity assumption and prevent extreme variance inflation caused by near-zero denominators, stabilized weights are truncated at lower and upper percentiles.
+                </p>
+                <div class="rpsft-formula-card" aria-label="IPCW percentile truncation formula">
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub><sup>*</sup>(t) = max(Q<sub>αL</sub>(SW), min(SW<sub>i</sub>(t), Q<sub>αU</sub>(SW)))</div>
+                </div>
+                <div class="code-window sas-syntax" aria-label="IPCW SAS percentile truncation">
+                  <div class="code-window-header"><span>Step 5. Percentile Truncation</span><span>.sas</span></div>
+                  <pre><code>/* 5. Percentile Truncation (e.g., 1st and 99th percentiles) */
+proc univariate data=_weights noprint;
+  var sw_t;
+  output out=_pct pctlpts=&amp;lower_pct &amp;upper_pct pctlpre=p_;
+run;
 
-  /* 4. Form stabilized weights. */
-  data _weights;
-    merge _w_num(keep=&amp;subjid &amp;tstart &amp;tend _surv_num)
-          _w_den(keep=&amp;subjid &amp;tstart &amp;tend _surv_den);
-    by &amp;subjid &amp;tstart &amp;tend;
+data _weights_trunc;
+  if _n_ = 1 then set _pct;
+  set _weights;
+  if sw_t &lt; p_&amp;lower_pct then sw_t = p_&amp;lower_pct;
+  if sw_t &gt; p_&amp;upper_pct then sw_t = p_&amp;upper_pct;
+run;</code></pre>
+                </div>
 
-    if _surv_den &gt; 0 then sw_t = _surv_num / _surv_den;
-    else sw_t = .;
-  run;
+                <h5>Step 6. Recombining Arm Sequences</h5>
+                <p>
+                  For the experimental arm, no crossover censoring adjustment is applied under the trial protocol. Their weights are set to <strong>1</strong>.
+                </p>
+                <div class="rpsft-formula-card" aria-label="IPCW experimental arm weights set to one">
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = 1 <span class="math-roman">for all subjects in the experimental arm</span></div>
+                </div>
+                <div class="code-window sas-syntax" aria-label="IPCW SAS merge weights back to all patients">
+                  <div class="code-window-header"><span>Step 6. Merge Weights Back to All Patients</span><span>.sas</span></div>
+                  <pre><code>/* 6. Merge weights back to all patients */
+data _surv_weighted;
+  merge _all_intervals(in=a)
+        _weights_trunc(keep=&amp;subjid &amp;tstart &amp;tend sw_t);
+  by &amp;subjid &amp;tstart &amp;tend;
+  if a;
 
-  /* 5. Truncate extreme weights to reduce instability. */
-  proc univariate data=_weights noprint;
-    var sw_t;
-    output out=_pct pctlpts=&amp;lower_pct &amp;upper_pct pctlpre=p_;
-  run;
+  if &amp;trt ne &amp;ref or missing(sw_t) then sw_t = 1;
+run;</code></pre>
+                </div>
 
-  data _weights_trunc;
-    if _n_ = 1 then set _pct;
-    set _weights;
+                <h5>Step 7. Weighted Marginal Structural Cox Model and Sandwich Variance</h5>
+                <p>
+                  The final weighted Cox model estimates overall survival under the no-crossover pseudo-population. Because stabilized weights are estimated nuisance parameters rather than fixed weights, robust sandwich variance is used.
+                </p>
+                <div class="rpsft-formula-card" aria-label="IPCW weighted MSM and sandwich variance equations">
+                  <div class="rpsft-equation math-equation">λ(t | A<sub>0</sub>) = λ<sub>0</sub>(t) exp(β<sub>MSM</sub>A<sub>0</sub>)</div>
+                  <div class="rpsft-equation math-equation">U(β) = Σ<sub>i=1</sub><sup>N</sup> ∫<sub>0</sub><sup>τ</sup> SW<sub>i</sub>(t)[Z<sub>i</sub>(t) - Z&#772;(β,t)] dM<sub>i</sub>(t) = 0</div>
+                  <div class="rpsft-equation math-equation">Var<sub>sandwich</sub>(β̂) = I<sup>-1</sup>(β̂)[Σ<sub>i=1</sub><sup>N</sup> U<sub>i</sub>(β̂)U<sub>i</sub><sup>T</sup>(β̂)]I<sup>-1</sup>(β̂)</div>
+                </div>
+                <div class="code-window sas-syntax" aria-label="IPCW SAS final weighted MSM via PROC PHREG">
+                  <div class="code-window-header"><span>Step 7. Final Weighted MSM via PROC PHREG</span><span>.sas</span></div>
+                  <pre><code>/* 7. Final Weighted MSM via PROC PHREG */
+proc phreg data=_surv_weighted covs(aggregate) covm;
+  class &amp;bl_cl &amp;tv_cl &amp;trt(ref=first);
+  model (&amp;tstart, &amp;tend)*&amp;dth_event(0) = &amp;trt &amp;bl_ct &amp;bl_cl &amp;tv_ct &amp;tv_cl / rl;
+  id &amp;subjid;           /* Triggers Sandwich Variance Estimator */
+  weight sw_t / norm;   /* Applies IPCW Stabilized Weight */
+run;</code></pre>
+                </div>
 
-    lower_cut = p_&amp;lower_pct;
-    upper_cut = p_&amp;upper_pct;
-
-    sw_t_raw = sw_t;
-    if sw_t &lt; lower_cut then sw_t = lower_cut;
-    if sw_t &gt; upper_cut then sw_t = upper_cut;
-  run;
-
-  /* 6. Merge weights back to all survival intervals. */
-  proc sort data=&amp;data out=_all_intervals;
-    by &amp;subjid &amp;tstart &amp;tend;
-  run;
-
-  data _surv_weighted;
-    merge _all_intervals(in=a)
-          _weights_trunc(keep=&amp;subjid &amp;tstart &amp;tend sw_t);
-    by &amp;subjid &amp;tstart &amp;tend;
-    if a;
-
-    if &amp;trt ne &amp;ref then sw_t = 1;
-    if missing(sw_t) then sw_t = 1;
-  run;
-
-  /* 7. Final weighted Cox model for overall survival. */
-  ods output ParameterEstimates=ipcw_treatment_effect;
-  proc phreg data=_surv_weighted covs(aggregate) covm;
-    class &amp;bl_cl &amp;tv_cl &amp;trt(ref=first);
-    model (&amp;tstart, &amp;tend)*&amp;dth_event(0) =
-          &amp;trt &amp;bl_ct &amp;bl_cl &amp;tv_ct &amp;tv_cl / rl;
-    id &amp;subjid;
-    weight sw_t / norm;
-  run;
-
-  /* 8. Review weight distribution before trusting the final model. */
-  title "IPCW teaching output: stabilized weight distribution";
-  proc means data=_surv_weighted n mean std min p1 p5 p50 p95 p99 max;
-    var sw_t;
-  run;
-
-%mend ipcw_teach;</code></pre>
-                  </div>
-                </details>
-                <div class="sas-ods-example" aria-label="SAS ODS output example for IPCW weight diagnostics and weighted Cox regression">
-                  <div class="sas-ods-panel">
-                    <div class="sas-ods-title">Summary Statistics for Stabilized IPCW Weights W(t)</div>
-                    <table class="sas-ods-table">
-                      <thead>
-                        <tr><th>Variable</th><th>N</th><th>Mean</th><th>Std Dev</th><th>Minimum</th><th>Maximum</th></tr>
-                      </thead>
-                      <tbody>
-                        <tr><td class="left" style="font-weight:bold; text-align:left;">W_stabilized</td><td>1420</td><td>0.9982</td><td>0.2845</td><td>0.4120</td><td>3.8412</td></tr>
-                      </tbody>
-                    </table>
-                    <div class="sas-ods-caption">Output 1. Distribution diagnostics for IPCW stabilized weights (PROC MEANS).</div>
-                    <div class="sas-ods-footnote">Note: The mean weight is close to 1.0 and the maximum weight is below 10, suggesting that the stabilized weights are well behaved in this example and do not show an obvious severe positivity problem.</div>
-                  </div>
-                  <hr class="sas-ods-divider">
-                  <div class="sas-mini-code" aria-label="Final IPCW weighted PROC PHREG code example">
-                    <div class="sas-mini-code-title">Final weighted Cox model using IPCW weights</div>
-<pre><code><span class="sas-code-blue">proc phreg</span> <span class="sas-code-opt">data=</span>surv_weighted <span class="sas-code-opt">covs(aggregate) covm</span>;
-  <span class="sas-code-blue">class</span> trt(ref='Control') region stage;
-  <span class="sas-code-blue">model</span> (tstart, tend)*death_event(0) = trt age region stage ecog / <span class="sas-code-opt">rl</span>;
-  <span class="sas-code-blue">id</span> usubjid;
-  <span class="sas-code-blue">weight</span> w_stabilized / <span class="sas-code-opt">norm</span>;
-<span class="sas-code-blue">run</span>;</code></pre>
-                  </div>
+                <div class="sas-ods-example" aria-label="SAS ODS output example for IPCW weighted Cox regression">
                   <div class="sas-ods-panel sas-ods-wide">
-                    <div class="sas-ods-title">Analysis of Maximum Likelihood Parameter Estimates (Weighted Cox PH Model)</div>
-                    <table class="sas-ods-table">
+                    <table class="sas-phreg-table" aria-label="Analysis of maximum likelihood estimates with sandwich variance estimate">
                       <thead>
-                        <tr><th>Parameter</th><th>DF</th><th>Parameter<br>Estimate</th><th>Robust<br>Std Error</th><th>Chi-Square</th><th>Pr &gt; ChiSq</th><th>Hazard Ratio<br>(95% CI)</th></tr>
+                        <tr class="title-row"><th colspan="10">Analysis of Maximum Likelihood Estimates</th></tr>
+                        <tr class="subtitle-row"><th colspan="10">with Sandwich Variance Estimate</th></tr>
+                        <tr class="header-row">
+                          <th>Parameter</th><th></th><th>DF</th><th>Parameter<br>Estimate</th><th>Standard<br>Error</th><th>StdErr<br>Ratio</th><th>Chi-Square</th><th>Pr &gt; ChiSq</th><th>Hazard<br>Ratio</th><th>95% Hazard Ratio Confidence<br>Limits</th>
+                        </tr>
                       </thead>
                       <tbody>
-                        <tr><td class="left" style="font-weight:bold; text-align:left;">TRT (Experimental vs Control)</td><td>1</td><td>-0.4878</td><td>0.2254</td><td>4.6819</td><td>0.0305</td><td>0.614 (0.395, 0.955)</td></tr>
+                        <tr><td class="param-cell">trt</td><td></td><td>1</td><td>-0.48779</td><td>0.22544</td><td>1.027</td><td>4.6819</td><td>0.0305</td><td>0.614</td><td>0.395 &nbsp;&nbsp; 0.955</td></tr>
+                        <tr><td class="param-cell">age</td><td></td><td>1</td><td>-0.00893</td><td>0.00746</td><td>1.003</td><td>1.4345</td><td>0.2310</td><td>0.991</td><td>0.977 &nbsp;&nbsp; 1.006</td></tr>
+                        <tr><td class="param-cell">tv1</td><td></td><td>1</td><td>-0.01370</td><td>0.00883</td><td>0.950</td><td>2.4075</td><td>0.1208</td><td>0.986</td><td>0.969 &nbsp;&nbsp; 1.004</td></tr>
+                        <tr><td class="param-cell">tv2</td><td></td><td>1</td><td>-0.05942</td><td>0.09294</td><td>0.955</td><td>0.4087</td><td>0.5226</td><td>0.942</td><td>0.785 &nbsp;&nbsp; 1.131</td></tr>
                       </tbody>
                     </table>
-                    <div class="sas-ods-caption">Output 2. IPCW adjusted survival treatment effect (PROC PHREG with WEIGHT and robust sandwich variance).</div>
-                  </div>
-                  <hr class="sas-ods-divider">
-                  <div class="sas-ods-panel sas-ods-wide">
-                    <div class="sas-ods-title">Estimated Sandwich Covariance Matrix</div>
-                    <table class="sas-ods-table">
-                      <thead>
-                        <tr><th>Parameter</th><th>TRT</th><th>AGE</th><th>STAGE</th><th>ECOG</th></tr>
-                      </thead>
-                      <tbody>
-                        <tr><td class="left" style="font-weight:bold; text-align:left;">TRT</td><td>0.05081</td><td>-0.00044</td><td>0.00312</td><td>0.00208</td></tr>
-                        <tr><td class="left" style="font-weight:bold; text-align:left;">AGE</td><td>-0.00044</td><td>0.00006</td><td>-0.00018</td><td>0.00009</td></tr>
-                        <tr><td class="left" style="font-weight:bold; text-align:left;">STAGE</td><td>0.00312</td><td>-0.00018</td><td>0.01849</td><td>0.00174</td></tr>
-                        <tr><td class="left" style="font-weight:bold; text-align:left;">ECOG</td><td>0.00208</td><td>0.00009</td><td>0.00174</td><td>0.01196</td></tr>
-                      </tbody>
-                    </table>
-                    <div class="sas-ods-caption">Output 3. Robust sandwich covariance matrix from PROC PHREG COVS(AGGREGATE) / COVM.</div>
+                    <div class="sas-ods-caption">IPCW adjusted survival treatment effect from weighted PROC PHREG.</div>
                   </div>
                 </div>
                 <div class="rpsft-interpretation">
-                  <strong>How to Interpret IPCW SAS Outputs</strong>
+                  <strong>How to Interpret This IPCW Output</strong>
                   <ul>
-                    <li><strong>Weight diagnostics:</strong> Mean W(t) is close to 1.0 (0.9982), which indicates that the stabilized weights maintain overall sample balance in this example.</li>
-                    <li><strong>Extreme weights and positivity:</strong> The maximum weight is below 10 (3.8412), so there is no obvious weight explosion. Very large weights would suggest possible positivity problems and may require pre-specified truncation.</li>
-                    <li><strong>IPCW adjusted hazard ratio:</strong> The weighted Cox model gives HR = 0.614 with 95% CI 0.395 to 0.955 and p-value = 0.0305. For an OS endpoint, this suggests a lower death hazard in the experimental arm after crossover adjustment.</li>
-                    <li><strong>Robust variance correction:</strong> The sandwich covariance matrix is the source of the robust standard error. For TRT, the diagonal covariance value is 0.05081, and sqrt(0.05081) = 0.2254, matching the robust standard error in Output 2.</li>
+                    <li><strong>Treatment effect:</strong> The weighted Cox model gives HR = 0.614 with 95% CI 0.395 to 0.955 and p-value = 0.0305.</li>
+                    <li><strong>Clinical reading:</strong> For an OS endpoint, this suggests a lower death hazard in the experimental arm after crossover adjustment.</li>
+                    <li><strong>Sandwich variance:</strong> The table is explicitly labeled with Sandwich Variance Estimate, so the standard error and p-value are based on the robust variance used for the weighted model.</li>
                   </ul>
                 </div>
-                <h4>5. RPSFTM vs IPCW: Practical Comparison</h4>
-                <div class="method-grid">
-                  <div class="method-card"><strong>RPSFTM</strong><span>Often easier to implement. It estimates a constant acceleration factor and transforms observed survival time into a counterfactual no-treatment-switching time. It does not require the same level of time-varying covariate collection as IPCW, but the rank-preservation and constant-acceleration assumptions are strong and untestable.</span></div>
-                  <div class="method-card"><strong>IPCW</strong><span>More data intensive. It censors switchers and reweights remaining subjects to represent the original population. It requires high-quality baseline and time-varying covariates that explain treatment switching; otherwise the no unmeasured confounding assumption is weak.</span></div>
-                </div>
-                <div class="table-scroll">
-                  <table class="crf-table" aria-label="RPSFTM and IPCW comparison">
-                    <thead><tr><th>Dimension</th><th>RPSFTM</th><th>IPCW</th></tr></thead>
-                    <tbody>
-                      <tr><td>Core target</td><td>Estimate a counterfactual survival time if experimental treatment had not been received after crossover.</td><td>Estimate treatment effect after censoring crossover and reweighting remaining subjects.</td></tr>
-                      <tr><td>Main assumption</td><td>Preservation of ranks and constant acceleration factor; the structural treatment effect is applied consistently on the counterfactual time scale.</td><td>No unmeasured confounding; observed covariates adequately explain switching and censoring due to crossover.</td></tr>
-                      <tr><td>Data burden</td><td>Lower; does not require rich time-varying covariates to the same extent.</td><td>Higher; needs counting-process records and relevant time-varying covariates.</td></tr>
-                      <tr><td>SAS model work</td><td>Macro searches over &psi; and can use log-rank, Weibull, or Cox proportional hazards options.</td><td>Macro fits weight models, forms stabilized weights, truncates weights, then fits weighted Cox PH.</td></tr>
-                      <tr><td>Risk</td><td>Counterfactual transformation depends on an untestable structural assumption.</td><td>Weights can be unstable; missing confounders or near-perfect predictors can undermine the analysis.</td></tr>
-                      <tr><td>Interpretation</td><td>Estimated acceleration factor and adjusted treatment effect for the hypothetical no-crossover scenario.</td><td>Weighted hazard ratio estimating the no-crossover contrast under weighting assumptions.</td></tr>
-                    </tbody>
-                  </table>
-                </div>
 
-                <h4>6. How This Connects to Estimands and ICEs</h4>
+                <h5>8. Advanced Diagnostic Requirements for Peer Review</h5>
+                <div class="rpsft-interpretation">
+                  <ul>
+                    <li><strong>Expectation check:</strong> Verify E[SW(t)] is approximately 1.0. A sample mean far from 1.0 indicates model misspecification or severe positivity violation.</li>
+                    <li><strong>Positivity violation check:</strong> Inspect max(SW<sub>t</sub>). If max(SW<sub>t</sub>) &gt; 20 before truncation, examine covariate overlap across time slices.</li>
+                    <li><strong>Robust vs. model-based standard error ratio:</strong> SE Ratio = Robust SE<sub>Sandwich</sub> / Naive Model SE. A ratio substantially above 1.0 indicates that weight-estimation uncertainty dominates sample variance and may require bootstrap validation.</li>
+                  </ul>
+                </div>
+                <h4>5. How This Connects to Estimands and ICEs</h4>
                 <p>
                   Treatment crossover is an intercurrent event. It occurs after randomization and affects either the interpretation or existence of the endpoint. In an oncology overall survival setting, the subject may still die and therefore still have an observed OS endpoint, but the endpoint may reflect treatment received after crossover. That is why crossover is not merely a missing data problem.
                 </p>
@@ -22046,7 +22276,7 @@ run;</code></pre>
                   </table>
                 </div>
 
-                <h4>7. Statistician and Programmer Checklist</h4>
+                <h4>6. Statistician and Programmer Checklist</h4>
                 <ol>
                   <li><strong>Confirm the clinical rule:</strong> Is crossover allowed by protocol, and when can it occur?</li>
                   <li><strong>Define the estimand:</strong> Is the primary analysis treatment policy, hypothetical no-crossover, or something else?</li>
@@ -22058,7 +22288,7 @@ run;</code></pre>
                   <li><strong>Maintain reproducibility:</strong> validated macros, versioned datasets, clean logs, and traceable output are required for regulatory work.</li>
                 </ol>
 
-                <h4>8. Practice Questions</h4>
+                <h4>7. Practice Questions</h4>
                 <div class="quiz-set">
                   <div class="quiz-card">
                     <h5>Quiz 1. Control-to-Experimental Crossover</h5>
@@ -22492,6 +22722,19 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
