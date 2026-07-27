@@ -7242,7 +7242,7 @@
     }
   
     .math-inline {
-      font-family: "Cambria Math", "Times New Roman", Georgia, serif;
+      font-family: "STIX Two Math", "Cambria Math", "Cambria", "Times New Roman", Georgia, serif;
       font-style: italic;
       font-weight: 400;
       letter-spacing: 0;
@@ -7250,7 +7250,7 @@
     }
 
     .math-equation {
-      font-family: "Cambria Math", "Times New Roman", Georgia, serif;
+      font-family: "STIX Two Math", "Cambria Math", "Cambria", "Times New Roman", Georgia, serif;
       font-style: italic;
       font-weight: 400;
       font-size: 31px;
@@ -7347,7 +7347,7 @@
 
     .ipcw-mapping-table .notation-cell {
       width: 32%;
-      font-family: "Cambria Math", "Times New Roman", Georgia, serif;
+      font-family: "STIX Two Math", "Cambria Math", "Cambria", "Times New Roman", Georgia, serif;
       font-style: italic;
       font-size: 24px;
       line-height: 1.35;
@@ -7377,6 +7377,84 @@
       letter-spacing: 0;
       padding-top: 20px;
       padding-bottom: 20px;
+    }
+    .math-overbar {
+      position: relative;
+      display: inline-block;
+      padding: 0 0.01em;
+      font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .math-overbar::before {
+      content: "";
+      position: absolute;
+      left: 0.02em;
+      right: 0.02em;
+      top: -0.04em;
+      border-top: 1px solid currentColor;
+    }
+    /* Global math / notation rendering */
+    .math-inline,
+    .math-equation,
+    .rpsft-equation,
+    .notation-cell,
+    .ipcw-mapping-table .notation-cell,
+    .rpsft-variable-table .notation-cell,
+    .formula-term,
+    .formula-symbol {
+      font-family: "Cambria Math", "STIX Two Math", "Times New Roman", Georgia, serif !important;
+      font-style: italic !important;
+      font-weight: 400 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .math-inline strong,
+    .math-equation strong,
+    .rpsft-equation strong,
+    .notation-cell strong {
+      font-family: inherit !important;
+      font-style: inherit !important;
+    }
+
+    .math-roman,
+    .math-equation .math-roman,
+    .math-inline .math-roman {
+      font-family: "Times New Roman", Georgia, serif !important;
+      font-style: normal !important;
+    }
+
+    .math-inline code,
+    .math-equation code,
+    .notation-cell code,
+    .rpsft-equation code {
+      font-family: Consolas, "Courier New", monospace !important;
+      font-style: normal !important;
+    }
+    .math-bar-sup {
+      display: inline-block;
+      margin-left: 0.12em;
+      padding-left: 0.02em;
+      transform: translateY(-0.02em);
+    }
+
+    .math-inline sup .math-bar-sup,
+    .math-equation sup .math-bar-sup {
+      font-size: 0.95em;
+    }
+    .mathml-equation {
+      margin: 18px auto 22px;
+      padding: 12px 10px;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    .mathml-equation math {
+      font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", "Times New Roman", serif;
+      font-size: 31px;
+      line-height: 1.45;
     }</style>
 </head>
 <body>
@@ -22022,16 +22100,26 @@ run;</code></pre>
 
                 <h5>1. Counterfactual Framework and the Causal Estimand</h5>
                 <p>
-                  In a randomized clinical trial with treatment switching, let <strong>A<sub>0</sub> in {0, 1}</strong> denote baseline treatment assignment. Let <strong>C(t) in {0, 1}</strong> be the time-varying counting process for censoring due to crossover, where <strong>C(t) = 1</strong> when a patient switches from control to experimental treatment.
+                  In a randomized clinical trial with treatment switching, let <span class="math-inline">A<sub>0</sub> ∈ {0, 1}</span> denote baseline treatment assignment. Let <span class="math-inline">C(t) ∈ {0, 1}</span> be the time-varying counting process for censoring due to crossover (<span class="math-inline">C(t) = 1</span> when a patient switches from control to experimental treatment).
                 </p>
                 <p>
-                  The objective is to estimate the <strong>marginal counterfactual survival distribution</strong> <strong>S<sup>a=0</sup>(t) = P(T<sup>a=0</sup> &gt; t)</strong>, which represents survival under the hypothetical regime where no patient switches treatments.
+                  Our objective is to estimate the <strong>marginal counterfactual survival distribution</strong> <span class="math-inline">S<sup><span class="math-bar-sup"><span class="math-overbar">𝑎</span>=0</span></sup>(t) = P(T<sup><span class="math-bar-sup"><span class="math-overbar">𝑎</span>=0</span></sup> &gt; t)</span>, which represents survival under the hypothetical regime where no patient switches treatments (<span class="math-inline"><span class="math-overbar">𝑎</span> = 0</span>).
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW identifiability bridge formula">
                   <h5>The Identifiability Bridge</h5>
                   <p>Under <strong>Consistency</strong>, <strong>Positivity</strong>, and <strong>Conditional Exchangeability</strong>:</p>
-                  <div class="rpsft-equation math-equation identifiability-equation">dΛ<sub>T<sup>a&#772;=0</sup></sub>(t | L&#772;(t<sup>−</sup>), C(t<sup>−</sup>) = 0) = dΛ<sub>T</sub>(t | L&#772;(t<sup>−</sup>), C(t<sup>−</sup>) = 0, A<sub>0</sub> = 0)</div>
-                  <p>Where <strong>L&#772;(t)</strong> is the history of both baseline and time-varying clinical predictors of crossover up to <strong>t<sup>-</sup></strong>.</p>
+                                    <div class="mathml-equation identifiability-equation" aria-label="Identifiability bridge equation">
+                    <math display="block">
+                      <mrow>
+                        <mi>d</mi><msub><mi>&Lambda;</mi><msup><mi>T</mi><mrow><mover><mi>a</mi><mo>&macr;</mo></mover><mo>=</mo><mn>0</mn></mrow></msup></msub>
+                        <mo>(</mo><mi>t</mi><mo>|</mo><mover><mi>L</mi><mo>&macr;</mo></mover><mo>(</mo><msup><mi>t</mi><mo>&minus;</mo></msup><mo>)</mo><mo>,</mo><mi>C</mi><mo>(</mo><msup><mi>t</mi><mo>&minus;</mo></msup><mo>)</mo><mo>=</mo><mn>0</mn><mo>)</mo>
+                        <mo>=</mo>
+                        <mi>d</mi><msub><mi>&Lambda;</mi><mi>T</mi></msub>
+                        <mo>(</mo><mi>t</mi><mo>|</mo><mover><mi>L</mi><mo>&macr;</mo></mover><mo>(</mo><msup><mi>t</mi><mo>&minus;</mo></msup><mo>)</mo><mo>,</mo><mi>C</mi><mo>(</mo><msup><mi>t</mi><mo>&minus;</mo></msup><mo>)</mo><mo>=</mo><mn>0</mn><mo>,</mo><msub><mi>A</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mo>)</mo>
+                      </mrow>
+                    </math>
+                  </div>
+                  <p>Where <span class="math-inline">L&#772;(t)</span> is the history of both baseline (<span class="math-inline">L&#772;(0)</span>) and time-varying (<span class="math-inline">L&#772;(t)</span>) clinical predictors of crossover up to <span class="math-inline">t<sup>−</sup></span>.</p>
                 </div>
 
                 <h5>2. Measure Transformation and Stabilized Weight Derivation</h5>
@@ -22040,7 +22128,18 @@ run;</code></pre>
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW stabilized weight derivation">
                   <h5>Mathematical Definition of Stabilized Weight SW(t)</h5>
-                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = <span class="math-prod">∏<sup>t</sup><sub>k=1</sub></span><span class="math-frac"><span class="math-num">P(C<sub>k</sub> = 0 | C<sub>k-1</sub> = 0, L&#772;<sub>0</sub>)</span><span class="math-den">P(C<sub>k</sub> = 0 | C<sub>k-1</sub> = 0, L&#772;<sub>k-1</sub>)</span></span></div>
+                                    <div class="mathml-equation sw-equation" aria-label="Stabilized IPCW weight formula">
+                    <math display="block">
+                      <mrow>
+                        <mi>S</mi><msub><mi>W</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo>
+                        <munderover><mo>&prod;</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>t</mi></munderover>
+                        <mfrac>
+                          <mrow><mi>P</mi><mo>(</mo><msub><mi>C</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn><mo>|</mo><msub><mi>C</mi><mrow><mi>k</mi><mo>&minus;</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><msub><mover><mi>L</mi><mo>&macr;</mo></mover><mn>0</mn></msub><mo>)</mo></mrow>
+                          <mrow><mi>P</mi><mo>(</mo><msub><mi>C</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn><mo>|</mo><msub><mi>C</mi><mrow><mi>k</mi><mo>&minus;</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><msub><mover><mi>L</mi><mo>&macr;</mo></mover><mrow><mi>k</mi><mo>&minus;</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow>
+                        </mfrac>
+                      </mrow>
+                    </math>
+                  </div>
                   <ul class="rpsft-formula-notes">
                     <li><strong>Denominator:</strong> The conditional probability of remaining uncensored at interval k, given baseline covariates and time-updated covariates such as disease progression or ECOG status.</li>
                     <li><strong>Numerator:</strong> The conditional probability of remaining uncensored at interval k, conditioned only on baseline covariates.</li>
@@ -22118,7 +22217,22 @@ run;</code></pre>
                   Under a time-dependent Cox proportional hazards model, the conditional survival for remaining uncensored up to interval <strong>(t<sub>start</sub>, t<sub>end</sub>]</strong> is:
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW conditional survival model">
-                  <div class="rpsft-equation math-equation">S(t | X) = exp { - ∫<sub>0</sub><sup>t</sup> λ<sub>0</sub>(u) exp(γ<sup>T</sup>X(u)) du }</div>
+                                  <div class="mathml-equation survival-equation" aria-label="Conditional survival probability under Cox model">
+                  <math display="block">
+                    <mrow>
+                      <mi>S</mi><mo>(</mo><mi>t</mi><mo>|</mo><mi>X</mi><mo>)</mo><mo>=</mo><mi>exp</mi>
+                      <mrow>
+                        <mo>{</mo>
+                        <mo>&minus;</mo>
+                        <msubsup><mo>&int;</mo><mn>0</mn><mi>t</mi></msubsup>
+                        <msub><mi>&lambda;</mi><mn>0</mn></msub><mo>(</mo><mi>u</mi><mo>)</mo>
+                        <mi>exp</mi><mo>(</mo><msup><mi>&gamma;</mi><mi>T</mi></msup><mi>X</mi><mo>(</mo><mi>u</mi><mo>)</mo><mo>)</mo>
+                        <mi>d</mi><mi>u</mi>
+                        <mo>}</mo>
+                      </mrow>
+                    </mrow>
+                  </math>
+                </div>
                   <ul class="rpsft-formula-notes">
                     <li><strong>Numerator model S<sub>num</sub>:</strong> X(u) includes baseline continuous and baseline class covariates.</li>
                     <li><strong>Denominator model S<sub>den</sub>:</strong> X(u) includes baseline covariates plus time-varying continuous and class covariates.</li>
@@ -22208,9 +22322,43 @@ run;</code></pre>
                   The final weighted Cox model estimates overall survival under the no-crossover pseudo-population. Because stabilized weights are estimated nuisance parameters rather than fixed weights, robust sandwich variance is used.
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW weighted MSM and sandwich variance equations">
-                  <div class="rpsft-equation math-equation">λ(t | A<sub>0</sub>) = λ<sub>0</sub>(t) exp(β<sub>MSM</sub>A<sub>0</sub>)</div>
-                  <div class="rpsft-equation math-equation">U(β) = Σ<sub>i=1</sub><sup>N</sup> ∫<sub>0</sub><sup>τ</sup> SW<sub>i</sub>(t)[Z<sub>i</sub>(t) - Z&#772;(β,t)] dM<sub>i</sub>(t) = 0</div>
-                  <div class="rpsft-equation math-equation">Var<sub>sandwich</sub>(β̂) = I<sup>-1</sup>(β̂)[Σ<sub>i=1</sub><sup>N</sup> U<sub>i</sub>(β̂)U<sub>i</sub><sup>T</sup>(β̂)]I<sup>-1</sup>(β̂)</div>
+                  <div class="mathml-equation msm-equation" aria-label="Weighted marginal structural Cox model">
+                    <math display="block">
+                      <mrow>
+                        <mi>&lambda;</mi><mo>(</mo><mi>t</mi><mo>|</mo><msub><mi>A</mi><mn>0</mn></msub><mo>)</mo>
+                        <mo>=</mo>
+                        <msub><mi>&lambda;</mi><mn>0</mn></msub><mo>(</mo><mi>t</mi><mo>)</mo>
+                        <mi>exp</mi><mo>(</mo><msub><mi>&beta;</mi><mi>MSM</mi></msub><msub><mi>A</mi><mn>0</mn></msub><mo>)</mo>
+                      </mrow>
+                    </math>
+                  </div>
+                  <div class="mathml-equation msm-equation" aria-label="Weighted Cox score equation">
+                    <math display="block">
+                      <mrow>
+                        <mi>U</mi><mo>(</mo><mi>&beta;</mi><mo>)</mo><mo>=</mo>
+                        <msubsup><mo>&sum;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup>
+                        <msubsup><mo>&int;</mo><mn>0</mn><mi>&tau;</mi></msubsup>
+                        <msub><mi>SW</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>)</mo>
+                        <mo>[</mo><msub><mi>Z</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>)</mo><mo>&minus;</mo><mover><mi>Z</mi><mo>&macr;</mo></mover><mo>(</mo><mi>&beta;</mi><mo>,</mo><mi>t</mi><mo>)</mo><mo>]</mo>
+                        <mi>d</mi><msub><mi>M</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><mn>0</mn>
+                      </mrow>
+                    </math>
+                  </div>
+                  <div class="mathml-equation msm-equation" aria-label="Huber White sandwich variance estimator">
+                    <math display="block">
+                      <mrow>
+                        <msub><mi>Var</mi><mi>sandwich</mi></msub><mo>(</mo><mover><mi>&beta;</mi><mo>^</mo></mover><mo>)</mo>
+                        <mo>=</mo>
+                        <msup><mi>I</mi><mrow><mo>&minus;</mo><mn>1</mn></mrow></msup><mo>(</mo><mover><mi>&beta;</mi><mo>^</mo></mover><mo>)</mo>
+                        <mo>[</mo>
+                        <msubsup><mo>&sum;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup>
+                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mover><mi>&beta;</mi><mo>^</mo></mover><mo>)</mo>
+                        <msubsup><mi>U</mi><mi>i</mi><mi>T</mi></msubsup><mo>(</mo><mover><mi>&beta;</mi><mo>^</mo></mover><mo>)</mo>
+                        <mo>]</mo>
+                        <msup><mi>I</mi><mrow><mo>&minus;</mo><mn>1</mn></mrow></msup><mo>(</mo><mover><mi>&beta;</mi><mo>^</mo></mover><mo>)</mo>
+                      </mrow>
+                    </math>
+                  </div>
                 </div>
                 <div class="code-window sas-syntax" aria-label="IPCW SAS final weighted MSM via PROC PHREG">
                   <div class="code-window-header"><span>Step 7. Final Weighted MSM via PROC PHREG</span><span>.sas</span></div>
@@ -22722,6 +22870,17 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
