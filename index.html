@@ -21876,164 +21876,211 @@ run;</code></pre>
                     </tbody>
                   </table>
                 </div>
-                <h4>3. RPSFTM: Rank Preserving Structural Failure Time Model</h4>
-                <h5>Step 1. Core Principle</h5>
-                <p>
-                  The RPSFTM estimates counterfactual survival time by assuming that time spent on experimental treatment is rescaled by a constant acceleration factor, exp(&psi;). The key idea is to separate each subject's observed follow-up into time off experimental treatment and time on experimental treatment.
-                </p>
-                <div class="rpsft-formula-card" aria-label="RPSFTM counterfactual survival formula">
-                  <div class="rpsft-equation">
-                    U<sub>i</sub> = T<sub>off,i</sub> + T<sub>on,i</sub> &middot; exp(&psi;)
-                  </div>
-                  <ul class="rpsft-formula-notes">
-                    <li><em>If exp(&psi;) &lt; 1:</em> experimental treatment prolongs survival, so observed time on treatment is discounted back to a shorter counterfactual no-treatment time.</li>
-                    <li><em>If exp(&psi;) = 1:</em> there is no estimated survival-time change from experimental treatment.</li>
-                  </ul>
-                </div>
-                <p>
-                  In a typical setup, subjects in the immediate treatment arm have all relevant time counted as on-treatment time. Control subjects who never switch have on-treatment time equal to zero. Control subjects who cross over have off-treatment time before crossover and on-treatment time after crossover. The macro searches for the value of &psi; that removes the treatment-arm difference after survival times are transformed.
+                <h4>3. Lecture: RPSFTM in Survival Analysis and Treatment Crossover</h4>
+                <p class="method-transition">
+                  <strong>Translating Structural Failure Time Theory to SAS Macro Implementation.</strong> This section bridges rigorous RPSFTM causal theory with the SAS grid-search algorithm used to handle treatment switching in oncology trials.
                 </p>
 
-                <h5>Step 2. SAS Implementation and Variable Mapping</h5>
-                <p class="method-transition">
-                  To fit this model using a SAS RPSFTM macro, key trial variables are mapped as follows:
+                <h5>1. Structural Counterfactual Framework and the Causal Estimand</h5>
+                <p>
+                  In a randomized clinical trial with treatment crossover, let <span class="math-inline">A<sub>0</sub> ∈ {0, 1}</span> denote baseline treatment assignment. Patients in the control group (<span class="math-inline">A<sub>0</sub> = 0</span>) may switch to the experimental therapy (<span class="math-inline">A<sub>0</sub> = 1</span>) at time <span class="math-inline">T<sub>off,i</sub></span>, spending <span class="math-inline">T<sub>on,i</sub></span> time on the active treatment.
                 </p>
+                <p>
+                  Our objective is to estimate the <strong>causal acceleration factor</strong> <span class="math-inline">e<sup>ψ</sup></span> and recover the <strong>counterfactual untreated survival time</strong> <span class="math-inline">U<sub>i</sub>(ψ)</span>, representing the survival time a patient would have experienced had they never received the active treatment.
+                </p>
+                <div class="rpsft-formula-card" aria-label="RPSFTM rank preservation assumption">
+                  <h5>The Rank Preservation Assumption</h5>
+                  <p>Under the <strong>Rank Preservation Structural Assumption</strong>, the treatment multiplies the remaining survival time by a constant factor <span class="math-inline">e<sup>−ψ</sup></span>:</p>
+                  <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM counterfactual untreated survival time">
+                    <math display="block">
+                      <mrow>
+                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
+                        <msub><mi>T</mi><mrow><mi>off</mi><mo>,</mo><mi>i</mi></mrow></msub>
+                        <mo>+</mo>
+                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>·</mo><mi>exp</mi><mo>(</mo><mi>ψ</mi><mo>)</mo>
+                      </mrow>
+                    </math>
+                  </div>
+                  <p>Where <span class="math-inline">T<sub>off,i</sub></span> is the time spent on control, <span class="math-inline">T<sub>on,i</sub></span> is the time spent on active treatment, and <span class="math-inline">U<sub>i</sub>(ψ)</span> is the counterfactual untreated event time.</p>
+                </div>
+
+                <h5>2. Unconfoundedness and the Log-Rank Zero-Finding Derivation</h5>
+                <p>
+                  RPSFTM identifies the true parameter <span class="math-inline">ψ<sup>*</sup></span> by exploiting randomized assignment: under randomization, the counterfactual distributions <span class="math-inline">U(ψ<sup>*</sup>)</span> must be independent of baseline treatment <span class="math-inline">A<sub>0</sub></span>.
+                </p>
+                <div class="rpsft-formula-card" aria-label="RPSFTM zero finding criterion">
+                  <h5>Mathematical Criterion for Zero-Finding</h5>
+                  <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM expected score criterion">
+                    <math display="block">
+                      <mrow>
+                        <mi>E</mi><mo>[</mo><mi>Z</mi><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>|</mo><msub><mi>A</mi><mn>0</mn></msub><mo>]</mo><mo>=</mo><mn>0</mn>
+                        <mo>⇒</mo>
+                        <mi>Z</mi><mo>(</mo><msup><mi>ψ</mi><mo>*</mo></msup><mo>)</mo><mo>=</mo>
+                        <mfrac>
+                          <mrow>
+                            <msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup>
+                            <msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup>
+                            <mo>[</mo><msub><mi>A</mi><mrow><mn>0</mn><mo>,</mo><mi>i</mi></mrow></msub><mo>−</mo><msub><mover><mi>A</mi><mo>¯</mo></mover><mn>0</mn></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>ψ</mi><mo>)</mo><mo>]</mo>
+                            <mi>d</mi><msub><mi>M</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>ψ</mi><mo>)</mo>
+                          </mrow>
+                          <mrow><msqrt><mrow><mi>Var</mi><mo>(</mo><mi>Z</mi><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>)</mo></mrow></msqrt></mrow>
+                        </mfrac>
+                        <mo>=</mo><mn>0</mn>
+                      </mrow>
+                    </math>
+                  </div>
+                  <ul class="rpsft-formula-notes">
+                    <li><strong>Target score Z(ψ):</strong> The standardized log-rank statistic comparing counterfactual untreated survival times <span class="math-inline">U<sub>i</sub>(ψ)</span> between randomized arms <span class="math-inline">A<sub>0</sub>=1</span> and <span class="math-inline">A<sub>0</sub>=0</span>.</li>
+                    <li><strong>Grid search optimization:</strong> Since <span class="math-inline">Z(ψ)</span> is a step function of <span class="math-inline">ψ</span>, the SAS macro evaluates <span class="math-inline">Z(ψ<sub>k</sub>)</span> across a defined grid and locates <span class="math-inline">ψ̂</span> where <span class="math-inline">Z(ψ)</span> crosses zero.</li>
+                    <li><strong>Recensoring adjustment:</strong> To prevent informative censoring induced by time transformation, actual censoring times are replaced by recensored values <span class="math-inline">D<sub>i</sub>(ψ) = min(C<sub>i</sub>, C<sub>i</sub> exp(ψ))</span>.</li>
+                  </ul>
+                </div>
+
+                <h5>3. Step-by-Step Code Mapping: Theory to SAS Macro Execution</h5>
                 <div class="table-scroll">
-                  <table class="crf-table crossover-method-table rpsft-variable-table" aria-label="RPSFTM SAS variable mapping">
-                    <thead><tr><th>Concept</th><th>SAS Argument</th><th>Description</th></tr></thead>
+                  <table class="ipcw-mapping-table" aria-label="RPSFTM theory to SAS macro mapping">
+                    <thead>
+                      <tr>
+                        <th>Step &amp; Purpose</th>
+                        <th>Mathematical Notation</th>
+                        <th>SAS Macro Implementation</th>
+                      </tr>
+                    </thead>
                     <tbody>
-                      <tr><td><span class="method-topic-badge">Identifiers &amp; Arm</span></td><td><code>id</code><code>subjid</code><code>trt</code><code>imm</code><code>def</code></td><td>Subject identifier and randomized assignment. Some macros use immediate versus deferred/control treatment coding.</td></tr>
-                      <tr><td><span class="method-topic-badge">Survival &amp; Crossover</span></td><td><code>surv_time</code><code>censyrs</code><code>xo</code><code>xo_time</code><code>xoyrs</code></td><td>Observed time to event or censoring, crossover indicator, and time from randomization to crossover.</td></tr>
-                      <tr><td><span class="method-topic-badge">Event &amp; Progression</span></td><td><code>dth_event</code><code>event</code><code>prog</code></td><td>Event indicators for overall survival and progression, depending on endpoint setup and macro requirements.</td></tr>
-                      <tr><td><span class="method-topic-badge">Method Option</span></td><td><code>method</code><code>logrank</code><code>weibull</code><code>coxph</code></td><td>Statistical option used during the grid search over &psi;.</td></tr>
+                      <tr><td class="step-purpose">1. Time Decomposition</td><td class="notation-cell">T<sub>i</sub> = T<sub>off,i</sub> + T<sub>on,i</sub></td><td class="sas-cell"><code>data _rpsftm_base;</code> <code>t_off = ...;</code> <code>t_on = ...;</code></td></tr>
+                      <tr><td class="step-purpose">2. Grid Generation</td><td class="notation-cell">ψ<sup>(k)</sup> ∈ [ψ<sub>min</sub>, ψ<sub>max</sub>]</td><td class="sas-cell"><code>data _grid;</code> <code>do psi = &amp;psimin to &amp;psimax by &amp;psistep;</code></td></tr>
+                      <tr><td class="step-purpose">3. Counterfactual Transformation</td><td class="notation-cell">U<sub>i</sub>(ψ) = T<sub>off,i</sub> + T<sub>on,i</sub> exp(ψ)</td><td class="sas-cell"><code>data _cf;</code> <code>u_i = t_off + t_on * exp(psi);</code></td></tr>
+                      <tr><td class="step-purpose">4. Recensoring Logic</td><td class="notation-cell">D<sub>i</sub>(ψ) = min(C<sub>i</sub>, C<sub>i</sub> exp(ψ))</td><td class="sas-cell"><code>u_rec = min(u_i, c_i * exp(psi));</code></td></tr>
+                      <tr><td class="step-purpose">5. Log-Rank Evaluation</td><td class="notation-cell">Z(ψ) ∼ Log-Rank(U(ψ) by A<sub>0</sub>)</td><td class="sas-cell"><code>PROC LIFETEST;</code> <code>time u_rec*censor(0);</code> <code>strata &amp;trt;</code></td></tr>
+                      <tr><td class="step-purpose">6. Zero-Crossing Interpolation</td><td class="notation-cell">Z(ψ̂) = 0 ⇒ ψ̂</td><td class="sas-cell"><code>data _estimate;</code> <code>if z_prev * z_curr &lt;= 0;</code></td></tr>
+                      <tr><td class="step-purpose">7. Causal Hazard Ratio Estimation</td><td class="notation-cell">HR<sub>causal</sub> = exp(−ψ̂)</td><td class="sas-cell"><code>data _final_hr;</code> <code>hr_causal = exp(-psi_hat);</code></td></tr>
                     </tbody>
                   </table>
                 </div>
 
-                <h5>Step 3. Macro Logic and Output Interpretation</h5>
-                <p>
-                  The fold-out box below keeps the SAS logic available without interrupting the main teaching flow. After the macro runs, interpretation focuses on &psi;, exp(&psi;), and whether the interval suggests a clear treatment benefit.
-                </p>
-                <details class="macro-expander">
-                  <summary>[ Expand SAS Macro Logic &amp; Call Syntax ]</summary>
-                  <p class="macro-note">This is a teaching macro structure, not production code. It shows the full mechanism a programmer should understand before using a validated project macro.</p>
-                  <div class="code-window sas-syntax" aria-label="RPSFTM full teaching macro logic">
-                    <div class="code-window-header"><span>RPSFTM Full Teaching Macro Logic</span><span>.sas</span></div>
-<pre><code>%macro rpsft_teach(data=, subjid=, surv_time=, trt=, event=,
-                   xo=, xo_time=, base_ct=, base_cl=,
-                   method=logrank, psi_low=-2, psi_high=2, psi_by=0.02);
-
-  /* 1. Build candidate psi values. */
-  data _psi_grid;
-    do psi = &amp;psi_low to &amp;psi_high by &amp;psi_by;
-      output;
-    end;
-  run;
-
-  /* 2. Attach each psi value to each subject. */
-  proc sql;
-    create table _rpsft_grid as
-    select a.*, b.psi
-    from &amp;data as a, _psi_grid as b;
-  quit;
-
-  /* 3. Split observed survival into off-treatment and on-treatment time. */
-  data _rpsft_time;
-    set _rpsft_grid;
-
-    if &amp;trt = 1 then do;
-      time_off = 0;
-      time_on  = &amp;surv_time;
-    end;
-    else if &amp;xo = 1 then do;
-      time_off = min(&amp;xo_time, &amp;surv_time);
-      time_on  = max(0, &amp;surv_time - &amp;xo_time);
+                <h5>4. Detailed SAS Macro Implementation Sections</h5>
+                <h5>Step 1. Data Decomposition and Recensoring Indicator</h5>
+                <p>Mathematically, patient follow-up must be partitioned into exposure duration <span class="math-inline">T<sub>on</sub></span> and unexposed duration <span class="math-inline">T<sub>off</sub></span>.</p>
+                <div class="code-window sas-syntax" aria-label="RPSFTM SAS data decomposition">
+                  <div class="code-window-header"><span>Step 1. Decompose Follow-Up Time and Crossover Duration</span><span>.sas</span></div>
+                  <pre><code>/* STEP 1. DECOMPOSE FOLLOW-UP TIME AND CROSSOVER DURATION */
+data _rpsftm_prep;
+    set &amp;data;
+    if &amp;xo_ind = 1 then do;
+        t_off = &amp;xo_time;
+        t_on  = &amp;event_time - &amp;xo_time;
     end;
     else do;
-      time_off = &amp;surv_time;
-      time_on  = 0;
+        t_off = &amp;event_time;
+        t_on  = 0;
     end;
+run;</code></pre>
+                </div>
 
-    u_time  = time_off + time_on * exp(psi);
-    u_event = &amp;event;
-  run;
-
-  proc sort data=_rpsft_time;
-    by psi;
-  run;
-
-  /* 4. For each psi, estimate whether transformed survival still differs by arm. */
-  %if %upcase(&amp;method) = LOGRANK %then %do;
-    ods exclude all;
-    ods output HomTests=_rpsft_tests;
-    proc lifetest data=_rpsft_time;
-      by psi;
-      time u_time*u_event(0);
-      strata &amp;trt / test=logrank;
-    run;
-    ods exclude none;
-  %end;
-
-  %else %if %upcase(&amp;method) = WEIBULL %then %do;
-    ods exclude all;
-    ods output ParameterEstimates=_rpsft_tests;
-    proc lifereg data=_rpsft_time;
-      by psi;
-      class &amp;trt &amp;base_cl;
-      model u_time*u_event(0) = &amp;trt &amp;base_ct &amp;base_cl / dist=weibull;
-    run;
-    ods exclude none;
-  %end;
-
-  %else %if %upcase(&amp;method) = COXPH %then %do;
-    ods exclude all;
-    ods output ParameterEstimates=_rpsft_tests;
-    proc phreg data=_rpsft_time;
-      by psi;
-      class &amp;base_cl;
-      model u_time*u_event(0) = &amp;trt &amp;base_ct &amp;base_cl / rl;
-      id &amp;subjid;
-    run;
-    ods exclude none;
-  %end;
-
-  /* 5. Select the psi value where the arm contrast is closest to zero. */
-  data _rpsft_score;
-    set _rpsft_tests;
-    length method $12;
-    method = upcase("&amp;method");
-
-    /* Map the procedure-specific statistic here in a validated implementation. */
-    if missing(test_statistic) then test_statistic = .;
-    abs_score = abs(test_statistic);
-  run;
-
-  proc sort data=_rpsft_score;
-    by abs_score;
-  run;
-
-  data rpsft_result;
-    set _rpsft_score(obs=1);
-    acceleration_factor = exp(psi);
-    label psi = "Estimated psi"
-          acceleration_factor = "Acceleration factor exp(psi)";
-  run;
-
-  title "RPSFTM teaching output: selected psi and acceleration factor";
-  proc print data=rpsft_result label noobs;
-  run;
-
-%mend rpsft_teach;</code></pre>
+                <h5>Steps 2 and 3. Grid Search Counterfactual Calculation and Log-Rank Scoring</h5>
+                <p>Under a candidate parameter <span class="math-inline">ψ<sub>k</sub></span>, counterfactual event times and recensored times are evaluated.</p>
+                <div class="rpsft-formula-card" aria-label="RPSFTM counterfactual and recensoring event formula">
+                  <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM transformed time and recensored event indicator">
+                    <math display="block">
+                      <mrow>
+                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
+                        <msub><mi>T</mi><mrow><mi>off</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>+</mo>
+                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mi>exp</mi><mo>(</mo><mi>ψ</mi><mo>)</mo>
+                        <mo>,</mo>
+                        <msub><mi>Δ</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
+                        <mi>I</mi><mo>(</mo><msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>≤</mo><msub><mi>D</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>)</mo>
+                      </mrow>
+                    </math>
                   </div>
-                </details>
+                </div>
+                <div class="code-window sas-syntax" aria-label="RPSFTM SAS grid search and z score evaluation">
+                  <div class="code-window-header"><span>Steps 2 and 3. Grid Search and Z-Score Evaluation</span><span>.sas</span></div>
+                  <pre><code>/* STEPS 2 &amp; 3. GRID SEARCH AND Z-SCORE EVALUATION */
+%macro _rpsftm_grid_search(psimin=-2, psimax=2, psistep=0.01);
+    
+    %do psi_val = &amp;psimin %to &amp;psimax %by &amp;psistep;
+        
+        /* Transform times under candidate psi */
+        data _cf_eval;
+            set _rpsftm_prep;
+            psi = &amp;psi_val;
+            
+            /* Counterfactual untreated time */
+            u_uncensored = t_off + t_on * exp(psi);
+            
+            /* Recensoring bounds */
+            c_bound = &amp;censor_time * min(1, exp(psi));
+            u_eval  = min(u_uncensored, c_bound);
+            
+            /* Event indicator after recensoring */
+            if u_uncensored &lt;= c_bound and &amp;status = 1 then delta_rec = 1;
+            else delta_rec = 0;
+        run;
+        
+        /* Compute Log-Rank Z-score */
+        proc lifetest data=_cf_eval odsoutput LogRankHomogeneity=_logrank;
+            time u_eval * delta_rec(0);
+            strata &amp;trt;
+        run;
+        
+        /* Capture Z-statistic */
+        data _z_out;
+            set _logrank;
+            psi = &amp;psi_val;
+            z_score = sqrt(ChiSq) * sign(1 - ProbChiSq);
+            keep psi z_score;
+        run;
+        
+        proc append base=_all_zscores data=_z_out force; run;
+    %end;
+
+%mend _rpsftm_grid_search;</code></pre>
+                </div>
+
+                <h5>Step 4. Linear Interpolation for ψ̂ Zero-Crossing</h5>
+                <p>Find two adjacent grid points where the standardized log-rank statistic changes sign, then estimate <span class="math-inline">ψ̂</span> via linear interpolation.</p>
+                <div class="rpsft-formula-card" aria-label="RPSFTM linear interpolation formula">
+                  <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM zero crossing interpolation formula">
+                    <math display="block">
+                      <mrow>
+                        <mover><mi>ψ</mi><mo>^</mo></mover><mo>=</mo>
+                        <msub><mi>ψ</mi><mi>k</mi></msub><mo>−</mo><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mi>k</mi></msub><mo>)</mo><mo>·</mo>
+                        <mfrac>
+                          <mrow><msub><mi>ψ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>ψ</mi><mi>k</mi></msub></mrow>
+                          <mrow><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo><mo>−</mo><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mi>k</mi></msub><mo>)</mo></mrow>
+                        </mfrac>
+                      </mrow>
+                    </math>
+                  </div>
+                </div>
+                <div class="code-window sas-syntax" aria-label="RPSFTM SAS linear interpolation for zero crossing">
+                  <div class="code-window-header"><span>Step 4. Linear Interpolation for Zero Crossing</span><span>.sas</span></div>
+                  <pre><code>/* STEP 4. LINEAR INTERPOLATION FOR ZERO CROSSING */
+data _rpsftm_estimate;
+    set _all_zscores;
+    z_next = lag(-1)(z_score);
+    psi_next = lag(-1)(psi);
+    
+    /* Detect sign change across 0 */
+    if z_score * z_next &lt;= 0 and z_score ne . then do;
+        /* Linear interpolation formula */
+        psi_hat = psi - z_score * ((psi_next - psi) / (z_next - z_score));
+        acceleration_factor = exp(psi_hat);
+        causal_hr = exp(-psi_hat);
+        output;
+    end;
+run;</code></pre>
+                </div>
+
+                <h5>5. SAS Output and Interpretation</h5>
                 <div class="rpsft-interpretation">
                   <strong>How to Interpret RPSFTM Output</strong>
                   <ul>
-                    <li><strong>Point estimate:</strong> &psi; and exp(&psi;) describe the estimated acceleration factor. For example, exp(&psi;) = 0.7 means one observed year on experimental treatment maps to 0.7 years on the counterfactual no-treatment time scale; equivalently, one counterfactual no-treatment year corresponds to about 1 / 0.7 = 1.43 observed treatment-years.</li>
-                    <li><strong>Statistical significance:</strong> If the 95% confidence interval for &psi; includes 0, or the 95% confidence interval for exp(&psi;) includes 1, the adjusted analysis does not show clear statistical evidence of a treatment benefit.</li>
+                    <li><strong>Point estimate:</strong> <span class="math-inline">ψ</span> and <span class="math-inline">exp(ψ)</span> describe the estimated acceleration factor.</li>
+                    <li><strong>Statistical significance:</strong> If the 95% confidence interval for <span class="math-inline">ψ</span> includes 0, or the 95% confidence interval for <span class="math-inline">exp(ψ)</span> includes 1, the adjusted analysis does not show clear statistical evidence of a treatment benefit.</li>
+                    <li><strong>Diagnostic plot:</strong> The optimal <span class="math-inline">ψ</span> is the value where the standardized log-rank statistic crosses zero.</li>
                   </ul>
                 </div>
-
                 <div class="sas-ods-example" aria-label="SAS ODS output example for RPSFTM">
                   <div class="sas-ods-grid">
                     <div class="sas-ods-panel sas-ods-green">
@@ -22870,6 +22917,7 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
 
 
 
