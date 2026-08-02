@@ -125,6 +125,54 @@
       color: var(--sand);
     }
 
+    .utility-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding-left: 20px;
+      border-left: 1px solid rgba(200, 157, 132, 0.42);
+      color: #6f5b52;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .utility-link span[aria-hidden="true"] {
+      display: inline-grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(67, 94, 91, 0.34);
+      border-radius: 999px;
+      color: #435e5b;
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .utility-link svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .utility-link:hover,
+    .utility-link.is-active {
+      color: var(--sand);
+    }
+
+    .utility-link:hover span[aria-hidden="true"],
+    .utility-link.is-active span[aria-hidden="true"] {
+      border-color: rgba(184, 143, 123, 0.6);
+      color: var(--sand);
+      background: rgba(255, 255, 252, 0.62);
+    }
+
     .logo img,
     nav a,
     h2,
@@ -498,6 +546,87 @@
       white-space: nowrap;
       font-weight: 800;
       color: #435e5b;
+    }
+
+
+    .acronym-section .section-layout {
+      align-items: start;
+    }
+
+    .acronym-page {
+      max-width: 1120px;
+    }
+
+    .acronym-search-card {
+      margin: 22px 0 24px;
+      padding: 18px 20px;
+      border: 1px solid rgba(200, 157, 132, 0.3);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(105deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 7px),
+        rgba(255, 255, 252, 0.7);
+    }
+
+    .acronym-search-card label {
+      display: block;
+      margin-bottom: 8px;
+      color: #4b3a36;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .acronym-search-card input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 14px;
+      border: 1px solid rgba(67, 94, 91, 0.34);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      font: inherit;
+      outline: none;
+    }
+
+    .acronym-search-card input:focus {
+      border-color: rgba(67, 94, 91, 0.78);
+      box-shadow: 0 0 0 3px rgba(67, 94, 91, 0.12);
+    }
+
+    .acronym-search-count {
+      margin-top: 8px;
+      color: #7c6b63;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .acronym-content-standalone {
+      padding: 0;
+      border-top: 0;
+    }
+
+    .acronym-content-standalone h5 {
+      margin: 30px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(200, 157, 132, 0.22);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(18px, 1.8vw, 24px);
+    }
+
+    .acronym-category-hidden,
+    .acronym-row-hidden {
+      display: none !important;
+    }
+
+    .acronym-empty {
+      margin: 26px 0 0;
+      padding: 18px 20px;
+      border: 1px solid rgba(200, 157, 132, 0.28);
+      border-radius: 8px;
+      color: #6f5b52;
+      font-weight: 700;
+      background: rgba(255, 255, 252, 0.66);
     }
 
     .training-item {
@@ -6085,6 +6214,11 @@
         flex-direction: column;
       }
 
+      .utility-link {
+        padding-left: 0;
+        border-left: 0;
+      }
+
       .hero,
       .section-layout {
         grid-template-columns: 1fr;
@@ -8268,6 +8402,33 @@
         width: calc(100% + 254px) !important;
       }
     }
+    /* Standardized main reading text for training lesson pages */
+    #training .lesson > p,
+    #sas-training .lesson > p,
+    #biostatistics .lesson > p,
+    #training .lesson > section > p,
+    #sas-training .lesson > section > p,
+    #biostatistics .lesson > section > p,
+    #training .lesson .main-prose,
+    #sas-training .lesson .main-prose,
+    #biostatistics .lesson .main-prose {
+      color: #6f5b52;
+      font-size: 16px;
+      line-height: 1.86;
+      margin: 0 0 18px;
+    }
+
+    #training .lesson > ul,
+    #training .lesson > ol,
+    #sas-training .lesson > ul,
+    #sas-training .lesson > ol,
+    #biostatistics .lesson > ul,
+    #biostatistics .lesson > ol {
+      color: #6f5b52;
+      font-size: 16px;
+      line-height: 1.82;
+      margin: 0 0 18px;
+    }
   </style>
 </head>
 <body>
@@ -8289,6 +8450,7 @@
         <a href="#biostatistics" data-panel-link="biostatistics">BIOSTATISTICS</a>
         <a href="#about" data-panel-link="about">ABOUT US</a>
       </nav>
+      <a class="utility-link acronym-utility-link" href="#acronyms" data-panel-link="acronyms" aria-label="Open acronym search"><span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="10.5" cy="10.5" r="5.5"></circle><path d="M15 15l4.5 4.5"></path></svg></span><span>Acronyms</span></a>
     </header>
 
     <main id="top">
@@ -8635,24 +8797,22 @@
         </div>
       </section>
 
-      <section id="training" class="section">
+
+      <section id="acronyms" class="section acronym-section">
         <div class="section-layout">
-          <h2>Statistical Programming Training</h2>
-          <div class="copy">
-            <div class="training-overview">
-              <div class="tiny-label">Training Library</div>
-              <p>
-                Follow the modules in order. Each module builds on the previous one, moving from the
-                clinical research setting to source data, analysis datasets, outputs, and quality
-                control.
-              </p>
-              <details class="acronym-panel">
-                <summary>
-                  <span class="acronym-kicker">Reference</span>
-                  <span class="acronym-title">List of Acronyms</span>
-                  <span class="acronym-note">Quick definitions for regulatory, CDISC, dataset, output, and quality control terms used in the lessons.</span>
-                </summary>
-                <div class="acronym-content">
+          <h2>List of Acronyms</h2>
+          <div class="copy acronym-page">
+            <div class="tiny-label">Reference Library</div>
+            <p>
+              Search common regulatory, CDISC, dataset, output, and quality control terms used across the lessons.
+            </p>
+            <div class="acronym-search-card" role="search">
+              <label for="acronym-search">Search acronyms</label>
+              <input id="acronym-search" type="search" placeholder="Search by acronym, full term, or programmer focus..." autocomplete="off" data-acronym-search>
+              <div class="acronym-search-count" data-acronym-count>Showing all acronyms.</div>
+            </div>
+            <div class="acronym-content acronym-content-standalone" data-acronym-list>
+
                   <h5>Regulatory, Submission, and Programming Workflow</h5>
                   <div class="table-scroll">
                     <table class="crf-table acronym-table" aria-label="Regulatory and workflow acronyms">
@@ -8904,8 +9064,25 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </details>
+                
+              <p class="acronym-empty" data-acronym-empty hidden>No matching acronym found.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="training" class="section">
+        <div class="section-layout">
+          <h2>Statistical Programming Training</h2>
+          <div class="copy">
+            <div class="training-overview">
+              <div class="tiny-label">Training Library</div>
+              <p>
+                Follow the modules in order. Each module builds on the previous one, moving from the
+                clinical research setting to source data, analysis datasets, outputs, and quality
+                control.
+              </p>
+              
               <div class="training-list">
               <details class="training-item">
                 <summary>
@@ -23471,6 +23648,50 @@ run;</code></pre>
 
     convertAnswerKeys();
 
+
+    function initAcronymSearch() {
+      const input = document.querySelector("[data-acronym-search]");
+      const list = document.querySelector("[data-acronym-list]");
+      const count = document.querySelector("[data-acronym-count]");
+      const empty = document.querySelector("[data-acronym-empty]");
+      if (!input || !list) return;
+
+      const tables = Array.from(list.querySelectorAll("table.acronym-table"));
+      const rows = tables.flatMap((table) => Array.from(table.querySelectorAll("tbody tr")));
+
+      function filterAcronyms() {
+        const query = input.value.trim().toLowerCase();
+        let visibleRows = 0;
+
+        rows.forEach((row) => {
+          const matches = !query || row.textContent.toLowerCase().includes(query);
+          row.classList.toggle("acronym-row-hidden", !matches);
+          if (matches) visibleRows += 1;
+        });
+
+        tables.forEach((table) => {
+          const hasVisibleRows = Array.from(table.querySelectorAll("tbody tr"))
+            .some((row) => !row.classList.contains("acronym-row-hidden"));
+          const scroll = table.closest(".table-scroll");
+          const heading = scroll?.previousElementSibling?.matches("h5") ? scroll.previousElementSibling : null;
+          scroll?.classList.toggle("acronym-category-hidden", !hasVisibleRows);
+          heading?.classList.toggle("acronym-category-hidden", !hasVisibleRows);
+        });
+
+        if (count) {
+          count.textContent = query
+            ? `${visibleRows} matching acronym${visibleRows === 1 ? "" : "s"}.`
+            : "Showing all acronyms.";
+        }
+        if (empty) empty.hidden = visibleRows !== 0;
+      }
+
+      input.addEventListener("input", filterAcronyms);
+      filterAcronyms();
+    }
+
+    initAcronymSearch();
+
     function closeLessonPopups() {
       document.querySelectorAll(".lesson-popup.is-open").forEach((popup) => {
         popup.classList.remove("is-open");
@@ -23968,6 +24189,7 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
 
 
 
