@@ -25,10 +25,12 @@
 
     html {
       scroll-behavior: smooth;
+      overscroll-behavior-x: none;
     }
 
     body {
       margin: 0;
+      overscroll-behavior-x: none;
       background:
         radial-gradient(circle at 16% 12%, rgba(248, 230, 228, 0.46), transparent 28%),
         radial-gradient(circle at 84% 18%, rgba(207, 231, 216, 0.28), transparent 24%),
@@ -1267,15 +1269,43 @@
     }
 
     .model-formula {
-      margin: 2px 0 26px;
+      margin: 8px 0 28px;
       color: #1f2628;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 24px;
-      line-height: 1.65;
+      font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", "Times New Roman", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(25px, 2.15vw, 34px);
+      line-height: 1.75;
+      letter-spacing: 0;
       overflow-x: auto;
       white-space: nowrap;
+      text-align: center;
     }
 
+    .model-formula .math-term {
+      display: inline-block;
+      white-space: nowrap;
+      margin: 0 0.03em;
+    }
+
+    .model-formula .math-op {
+      display: inline-block;
+      padding: 0 0.16em;
+      font-style: normal;
+    }
+
+    .model-formula .math-roman {
+      font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", "Times New Roman", Georgia, serif;
+      font-style: italic;
+    }
+
+    .model-formula sub,
+    .model-formula sup,
+    .model-variable-map td:first-child sub,
+    .model-variable-map td:first-child sup {
+      font-size: 0.62em;
+      line-height: 0;
+    }
     .model-primary-note {
       display: grid;
       grid-template-columns: 22px minmax(0, 1fr);
@@ -2404,7 +2434,8 @@
 
     .sas-ods-wide .sas-ods-table {
       min-width: 760px;
-    }@media (max-width: 900px) {
+    }
+@media (max-width: 900px) {
       .xpt-dataset.with-notes {
         grid-template-columns: 1fr;
       }
@@ -7200,7 +7231,8 @@
 
     .sas-ods-wide .sas-ods-table {
       min-width: 760px;
-    }@media (max-width: 900px) {
+    }
+@media (max-width: 900px) {
       .crossover-roadmap,
       .crossover-insight-grid,
       .method-grid {
@@ -7455,7 +7487,788 @@
       font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", "Times New Roman", serif;
       font-size: 31px;
       line-height: 1.45;
-    }</style>
+    }
+    .lesson-with-toc {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .lesson-toc {
+      position: sticky;
+      top: 92px;
+      max-height: calc(100vh - 120px);
+      overflow: auto;
+      padding: 6px 0 6px 20px;
+      border-left: 2px solid rgba(200, 157, 132, 0.38);
+      background: transparent;
+    }
+
+    .lesson-toc-title {
+      margin: 0 0 14px;
+      color: #b58a74;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-toc-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lesson-toc-list li {
+      position: relative;
+    }
+
+    .lesson-toc-link {
+      display: block;
+      padding: 8px 0 8px 22px;
+      color: #746761;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.26;
+      text-decoration: none;
+      text-transform: none;
+    }
+
+    .lesson-toc-link::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 15px;
+      width: 8px;
+      height: 8px;
+      border: 2px solid rgba(200, 157, 132, 0.5);
+      border-radius: 999px;
+      background: #fbf8ef;
+    }
+
+    .lesson-toc-link:hover,
+    .lesson-toc-link:focus-visible {
+      color: #243f56;
+      outline: none;
+    }
+
+    .lesson-toc-link.is-active {
+      color: #243f56;
+    }
+
+    .lesson-toc-link.is-active::before {
+      border-color: #2f5f78;
+      background: #2f5f78;
+      box-shadow: 0 0 0 5px rgba(47, 95, 120, 0.12);
+    }
+
+    .lesson-with-toc .lesson h4,
+    .lesson-with-toc .lesson h5 {
+      scroll-margin-top: 90px;
+    }
+
+    @media (max-width: 980px) {
+      .lesson-with-toc {
+        display: block;
+      }
+
+      .lesson-toc {
+        position: static;
+        max-height: none;
+        margin-bottom: 18px;
+      }
+
+      .lesson-toc-list {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 4px;
+      }
+    }
+    .lesson-with-toc > .lesson {
+      width: auto !important;
+      min-width: 0;
+    }
+
+    .lesson-page-content {
+      width: 100%;
+    }
+    /* Standardized module components */
+    :root {
+      --component-note: #c89d84;
+      --component-warning: #b5653f;
+      --component-takeaway: #4f8379;
+      --component-practice: #386987;
+      --component-example: #5f7891;
+      --component-success: #63815f;
+      --component-border: rgba(200, 157, 132, 0.34);
+      --component-bg: rgba(255, 253, 246, 0.78);
+    }
+
+    .component-standard,
+    .workshop,
+    .document-workshop,
+    .answer-key,
+    .document-notes,
+    .model-primary-note,
+    .xpt-note-panel,
+    .sas-ods-note,
+    .sas-ods-footnote,
+    .code-note,
+    .native-note,
+    .principal-group-note,
+    .flow-arrow-note,
+    .sdtm-training-note,
+    .sdtm-spec-callout,
+    .sdtm-structure-callout,
+    .population-takeaway,
+    .screening-note-box,
+    .population-adam-note,
+    .sap-template-callout,
+    .sas-ods-example,
+    .sap-example-card,
+    .callout-card,
+    .mi-note,
+    .pipeline-example-note,
+    .pipeline-warning-note,
+    .crf-mock-note,
+    .ct-visual-caption-note,
+    .ct-lookup-note,
+    .macro-expander .macro-note,
+    .screening-exception-note,
+    .run-in-note,
+    .clinical-rule-note,
+    .sas-interface-takeaways {
+      --component-accent: var(--component-note);
+      position: relative;
+      display: block;
+      box-sizing: border-box;
+      margin: 20px 0;
+      padding: 18px 20px 18px 22px;
+      border: 1px solid var(--component-border);
+      border-left: 4px solid var(--component-accent);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 253, 246, 0.82)),
+        var(--component-bg);
+      box-shadow: 0 10px 24px rgba(92, 70, 56, 0.045);
+      color: #4f4540;
+    }
+
+    .mi-note,
+    .pipeline-example-note,
+    .pipeline-warning-note,
+    .crf-mock-note,
+    .ct-visual-caption-note,
+    .ct-lookup-note,
+    .sas-ods-footnote {
+      padding: 13px 16px 13px 18px;
+      margin: 14px 0;
+    }
+
+    .workshop,
+    .document-workshop {
+      --component-accent: var(--component-practice);
+      --component-bg: rgba(246, 251, 253, 0.82);
+    }
+
+    .sas-ods-example,
+    .sap-example-card,
+    .sdtm-spec-example,
+    .acrf-example-body,
+    .pipeline-example-note {
+      --component-accent: var(--component-example);
+      --component-bg: rgba(247, 250, 252, 0.84);
+    }
+
+    .pipeline-warning-note,
+    .sas-log-warning,
+    .warning-note {
+      --component-accent: var(--component-warning);
+      --component-bg: rgba(255, 249, 243, 0.86);
+    }
+
+    .population-takeaway,
+    .sas-interface-takeaways,
+    .clinical-rule-note {
+      --component-accent: var(--component-takeaway);
+      --component-bg: rgba(247, 252, 249, 0.84);
+    }
+
+    .answer-key,
+    details.answer-key {
+      --component-accent: var(--component-success);
+      --component-bg: rgba(249, 252, 246, 0.84);
+    }
+
+    .component-standard::before,
+    .workshop::before,
+    .document-workshop::before,
+    .document-notes::before,
+    .model-primary-note::before,
+    .xpt-note-panel::before,
+    .sas-ods-note::before,
+    .sas-ods-footnote::before,
+    .code-note::before,
+    .native-note::before,
+    .principal-group-note::before,
+    .flow-arrow-note::before,
+    .sdtm-training-note::before,
+    .sdtm-spec-callout::before,
+    .sdtm-structure-callout::before,
+    .population-takeaway::before,
+    .screening-note-box::before,
+    .population-adam-note::before,
+    .sap-template-callout::before,
+    .sas-ods-example::before,
+    .sap-example-card::before,
+    .callout-card::before,
+    .mi-note::before,
+    .pipeline-example-note::before,
+    .pipeline-warning-note::before,
+    .crf-mock-note::before,
+    .ct-visual-caption-note::before,
+    .ct-lookup-note::before,
+    .macro-expander .macro-note::before,
+    .screening-exception-note::before,
+    .run-in-note::before,
+    .clinical-rule-note::before,
+    .sas-interface-takeaways::before {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 8px 10px 0;
+      padding: 4px 9px 3px;
+      border: 1px solid color-mix(in srgb, var(--component-accent) 32%, transparent);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--component-accent) 9%, white);
+      color: var(--component-accent);
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .workshop::before,
+    .document-workshop::before { content: "Practice"; }
+    .population-takeaway::before,
+    .sas-interface-takeaways::before { content: "Takeaway"; }
+    .pipeline-warning-note::before,
+    .warning-note::before { content: "Warning"; }
+    .sas-ods-example::before,
+    .sap-example-card::before,
+    .sdtm-spec-example::before,
+    .acrf-example-body::before,
+    .pipeline-example-note::before { content: "Example"; }
+    .document-notes::before,
+    .model-primary-note::before,
+    .xpt-note-panel::before,
+    .sas-ods-note::before,
+    .sas-ods-footnote::before,
+    .code-note::before,
+    .native-note::before,
+    .principal-group-note::before,
+    .flow-arrow-note::before,
+    .sdtm-training-note::before,
+    .sdtm-spec-callout::before,
+    .sdtm-structure-callout::before,
+    .screening-note-box::before,
+    .population-adam-note::before,
+    .sap-template-callout::before,
+    .callout-card::before,
+    .mi-note::before,
+    .crf-mock-note::before,
+    .ct-visual-caption-note::before,
+    .ct-lookup-note::before,
+    .macro-expander .macro-note::before,
+    .screening-exception-note::before,
+    .run-in-note::before,
+    .clinical-rule-note::before { content: "Note"; }
+
+    .component-standard h4,
+    .component-standard h5,
+    .component-standard h6,
+    .workshop h4,
+    .workshop h5,
+    .document-workshop h4,
+    .document-workshop h5,
+    .answer-key h4,
+    .answer-key h5,
+    .document-notes h4,
+    .document-notes h5,
+    .sap-example-card h4,
+    .sap-example-card h5,
+    .sas-ods-example h4,
+    .sas-ods-example h5,
+    .callout-card h4,
+    .callout-card h5,
+    .population-takeaway h4,
+    .population-takeaway h5,
+    .sas-interface-takeaways h4,
+    .sas-interface-takeaways h5 {
+      margin: 0 0 10px;
+      color: #3f3432;
+      font-family: var(--serif);
+      font-size: clamp(18px, 1.35vw, 22px);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    .component-standard p,
+    .workshop p,
+    .document-workshop p,
+    .answer-key p,
+    .document-notes p,
+    .model-primary-note p,
+    .xpt-note-panel p,
+    .sas-ods-note p,
+    .sas-ods-footnote p,
+    .code-note p,
+    .native-note p,
+    .principal-group-note p,
+    .flow-arrow-note p,
+    .sdtm-training-note p,
+    .sdtm-spec-callout p,
+    .sdtm-structure-callout p,
+    .population-takeaway p,
+    .screening-note-box p,
+    .population-adam-note p,
+    .sap-template-callout p,
+    .sas-ods-example p,
+    .sap-example-card p,
+    .callout-card p,
+    .sas-interface-takeaways p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.62;
+    }
+
+    .component-standard p:last-child,
+    .workshop p:last-child,
+    .document-workshop p:last-child,
+    .answer-key p:last-child,
+    .document-notes p:last-child,
+    .model-primary-note p:last-child,
+    .xpt-note-panel p:last-child,
+    .sas-ods-note p:last-child,
+    .sas-ods-footnote p:last-child,
+    .code-note p:last-child,
+    .native-note p:last-child,
+    .principal-group-note p:last-child,
+    .flow-arrow-note p:last-child,
+    .sdtm-training-note p:last-child,
+    .sdtm-spec-callout p:last-child,
+    .sdtm-structure-callout p:last-child,
+    .population-takeaway p:last-child,
+    .screening-note-box p:last-child,
+    .population-adam-note p:last-child,
+    .sap-template-callout p:last-child,
+    .sas-ods-example p:last-child,
+    .sap-example-card p:last-child,
+    .callout-card p:last-child,
+    .sas-interface-takeaways p:last-child {
+      margin-bottom: 0;
+    }
+
+    details.answer-key summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 8px 13px;
+      border: 1px solid color-mix(in srgb, var(--component-success) 34%, transparent);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: #365d42;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+    }
+
+    .sas-log-note,
+    .sas-log-warning,
+    .sas-log-error {
+      border-radius: 4px;
+      padding: 2px 5px;
+      font-weight: 800;
+    }
+
+    .sas-log-note { background: #e6eefc; color: #0031c2; }
+    .sas-log-warning { background: #fff1cf; color: #b05b00; }
+    .sas-log-error { background: #ffe1dc; color: #c00000; }
+  
+    .lesson-toc-back {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin: 18px 0 0;
+      padding: 12px 0 0 22px;
+      border: 0;
+      border-top: 1px solid rgba(200, 157, 132, 0.32);
+      background: transparent;
+      color: #8f6f5f;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      line-height: 1.25;
+      text-align: left;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .lesson-toc-back::before {
+      content: "â†‘";
+      display: inline-grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      margin-left: -22px;
+      border: 1px solid rgba(143, 111, 95, 0.34);
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.72);
+      color: #2f5f78;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .lesson-toc-back:hover,
+    .lesson-toc-back:focus-visible {
+      color: #243f56;
+      outline: none;
+    }
+
+    .lesson-toc-back:hover::before,
+    .lesson-toc-back:focus-visible::before {
+      border-color: #2f5f78;
+      background: rgba(47, 95, 120, 0.1);
+    }
+
+    @media (max-width: 980px) {
+      .lesson-toc-back {
+        width: auto;
+        margin-top: 12px;
+        padding-right: 12px;
+      }
+    }
+  
+    .lesson-toc {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .lesson-toc-list {
+      min-height: 0;
+      overflow: auto;
+      padding-right: 8px;
+    }
+
+    .lesson-toc-back {
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 980px) {
+      .lesson-toc {
+        display: block;
+        overflow: visible;
+      }
+
+      .lesson-toc-list {
+        overflow: visible;
+        padding-right: 0;
+      }
+    }
+  
+    /* TOC refinement: keep long labels readable and prevent clipping */
+    .lesson-with-toc {
+      grid-template-columns: minmax(270px, 300px) minmax(0, 1fr);
+      gap: clamp(30px, 3vw, 46px);
+    }
+
+    .lesson-toc {
+      width: 100%;
+      min-width: 0;
+      overflow-x: visible;
+      overflow-y: auto;
+      padding: 8px 10px 8px 24px;
+    }
+
+    .lesson-toc-list {
+      overflow-x: visible;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .lesson-toc-link {
+      max-width: 100%;
+      padding: 8px 6px 8px 22px;
+      overflow-wrap: anywhere;
+      word-break: normal;
+      hyphens: auto;
+    }
+
+    .lesson-toc-link::before {
+      left: -8px;
+    }
+
+    .lesson-toc-back {
+      padding-left: 22px;
+      white-space: normal;
+    }
+
+    @media (max-width: 980px) {
+      .lesson-with-toc {
+        display: block;
+      }
+    }
+  
+    /* TOC marker fix: keep dots inside the sidebar so they never clip or cover text */
+    .lesson-toc {
+      padding-left: 18px;
+      padding-right: 12px;
+    }
+
+    .lesson-toc-list {
+      overflow-x: hidden;
+      padding-left: 0;
+      padding-right: 2px;
+    }
+
+    .lesson-toc-list li {
+      position: relative;
+    }
+
+    .lesson-toc-link {
+      position: relative;
+      padding-left: 34px;
+      padding-right: 8px;
+    }
+
+    .lesson-toc-link::before {
+      left: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lesson-toc-link.is-active::before {
+      box-shadow: 0 0 0 4px rgba(47, 95, 120, 0.12);
+    }
+
+    .lesson-toc-back {
+      padding-left: 34px;
+    }
+
+    .lesson-toc-back::before {
+      margin-left: -28px;
+    }
+  
+    /* TOC top control: Back to Top replaces the old On This Page heading */
+    .lesson-toc-title {
+      display: none;
+    }
+
+    .lesson-toc-back {
+      width: 100%;
+      margin: 0 0 16px;
+      padding: 0 0 14px 34px;
+      border-top: 0;
+      border-bottom: 1px solid rgba(200, 157, 132, 0.34);
+      color: #8f6f5f;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .lesson-toc-back::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      border: 1px solid rgba(143, 111, 95, 0.38);
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.8);
+    }
+
+    .lesson-toc-back::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-top: 2px solid #4f7b88;
+      border-left: 2px solid #4f7b88;
+      transform: rotate(45deg);
+    }
+
+    .lesson-toc-back:hover::before,
+    .lesson-toc-back:focus-visible::before {
+      border-color: #2f5f78;
+      background: rgba(47, 95, 120, 0.08);
+    }
+
+    .lesson-toc-back:hover::after,
+    .lesson-toc-back:focus-visible::after {
+      border-color: #243f56;
+    }
+  
+    /* Back to Top icon option B: arrow up to top line */
+    .lesson-toc-back {
+      gap: 10px;
+      padding-left: 0;
+    }
+
+    .lesson-toc-back::before,
+    .lesson-toc-back::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    .lesson-toc-back-icon {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(47, 95, 120, 0.08);
+      color: #4f7b88;
+    }
+
+    .lesson-toc-back-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .lesson-toc-back:hover .lesson-toc-back-icon,
+    .lesson-toc-back:focus-visible .lesson-toc-back-icon {
+      background: rgba(47, 95, 120, 0.14);
+      color: #243f56;
+    }
+    /* Lesson page wide layout: move TOC into the left gutter and restore lesson width */
+    @media (min-width: 1180px) {
+      body #training .lesson-page-content,
+      body #sas-training .lesson-page-content,
+      body #biostatistics .lesson-page-content {
+        width: 100%;
+        max-width: none !important;
+      }
+
+      body #training .lesson-page-content .lesson-with-toc,
+      body #sas-training .lesson-page-content .lesson-with-toc,
+      body #biostatistics .lesson-page-content .lesson-with-toc {
+        grid-template-columns: 230px minmax(0, 1fr) !important;
+        gap: 26px !important;
+        margin-left: clamp(-320px, -15vw, -190px) !important;
+        width: calc(100% + clamp(270px, 15vw, 380px)) !important;
+      }
+
+      body #training .lesson-page-content .lesson-with-toc > .lesson,
+      body #sas-training .lesson-page-content .lesson-with-toc > .lesson,
+      body #biostatistics .lesson-page-content .lesson-with-toc > .lesson {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0;
+      }
+
+      body #training .lesson-page-content .lesson-toc,
+      body #sas-training .lesson-page-content .lesson-toc,
+      body #biostatistics .lesson-page-content .lesson-toc {
+        max-width: 230px;
+        padding-right: 6px;
+      }
+    }
+
+    @media (min-width: 1500px) {
+      body #training .lesson-page-content .lesson-with-toc,
+      body #sas-training .lesson-page-content .lesson-with-toc,
+      body #biostatistics .lesson-page-content .lesson-with-toc {
+        margin-left: -340px !important;
+        width: calc(100% + 420px) !important;
+      }
+    }
+
+    @media (min-width: 1900px) {
+      body #training .lesson-page-content .lesson-with-toc,
+      body #sas-training .lesson-page-content .lesson-with-toc,
+      body #biostatistics .lesson-page-content .lesson-with-toc {
+        margin-left: -390px !important;
+        width: calc(100% + 520px) !important;
+      }
+    }
+
+    @media (max-width: 1179px) {
+      body .lesson-page-content .lesson-with-toc {
+        margin-left: 0 !important;
+        width: 100% !important;
+      }
+    }
+
+    /* Lesson layout: left gutter TOC, restored content width */
+    @media (min-width: 1180px) {
+      body .section .lesson-page.toc-layout-trial {
+        margin-top: 38px;
+      }
+
+      body .section .lesson-page.toc-layout-trial .back-button {
+        margin-bottom: 28px;
+      }
+
+      body .section .lesson-page.toc-layout-trial .lesson-with-toc {
+        grid-template-columns: 220px minmax(0, 1fr) !important;
+        gap: 34px !important;
+        margin-left: -254px !important;
+        width: calc(100% + 254px) !important;
+      }
+
+      body .section .lesson-page.toc-layout-trial .lesson-with-toc > .lesson {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 46px 52px 58px;
+      }
+
+      body .section .lesson-page.toc-layout-trial .lesson-toc {
+        max-width: 220px;
+        padding: 2px 8px 8px 22px;
+      }
+
+      body .section .lesson-page.toc-layout-trial .lesson-toc-back {
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+      }
+    }
+
+    @media (min-width: 1500px) {
+      body .section .lesson-page.toc-layout-trial .lesson-with-toc {
+        margin-left: -254px !important;
+        width: calc(100% + 254px) !important;
+      }
+    }
+
+    @media (min-width: 1900px) {
+      body .section .lesson-page.toc-layout-trial .lesson-with-toc {
+        margin-left: -254px !important;
+        width: calc(100% + 254px) !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
@@ -11186,22 +11999,21 @@ Safety Analysis Set</div>
                 </article>
               </details>
 
-              <details class="training-item domain-family-module-card">
+              
+              <details class="training-item sdtm-family-module-card">
                 <summary>
                   <span class="summary-meta">Module 06</span>
-                  <span class="summary-title">Study the SDTM Domain Families</span>
-                  <span class="summary-note">Trial Design, Special Purpose, Interventions, Events, Findings, Relationship, Supplemental Qualifiers, and ISO 8601 date handling.</span>
+                  <span class="summary-title">SDTM Domain Families: Trial Design Domains (TDM)</span>
+                  <span class="summary-note">Protocol-driven planned study design: TA, TE, TV, TI, and TS.</span>
                 </summary>
 
-                <article class="lesson">
+                <article class="lesson sdtm-family-lesson">
                   <div class="sdtm-module-intro">
-                    <strong>Study the SDTM Domain Families</strong>
-                    <span>Use the introduction above as the context for why SDTM mapping matters. Then open each topic below to study one SDTM area at a time.</span>
+                    <strong>Trial Design Domains (TDM)</strong>
+                    <span>Protocol-driven planned study design: TA, TE, TV, TI, and TS.</span>
                   </div>
-                  <div class="sdtm-module-grid" aria-label="SDTM teaching modules">
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 1. Trial Design Domains (TDM)</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Trial Design domains describe the planned structure of the study. They are
                         built from the protocol, schedule of assessments, treatment plan, inclusion
@@ -11654,12 +12466,25 @@ Safety Analysis Set</div>
                         not subject observations. If a programmer tries to map TA, TE, TV, TI,
                         or TS from a CRF field, pause and check the protocol and SDTM specification.
                       </p>
-                    </div>
-                    </details>
+                  </div>
+                </article>
+              </details>
 
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 2. Special Purpose Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+
+              <details class="training-item sdtm-family-module-card">
+                <summary>
+                  <span class="summary-meta">Module 07</span>
+                  <span class="summary-title">SDTM Domain Families: Special Purpose Domains</span>
+                  <span class="summary-note">Subject-level anchors such as DM, SE, SV, CO, and protocol exceptions.</span>
+                </summary>
+
+                <article class="lesson sdtm-family-lesson">
+                  <div class="sdtm-module-intro">
+                    <strong>Special Purpose Domains</strong>
+                    <span>Subject-level anchors such as DM, SE, SV, CO, and protocol exceptions.</span>
+                  </div>
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Special Purpose domains hold records that do not fit the ordinary
                         Interventions, Events, or Findings pattern. They often provide the backbone
@@ -13373,12 +14198,25 @@ run;</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </div>
-                    </details>
+                  </div>
+                </article>
+              </details>
 
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 3. Interventions Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+
+              <details class="training-item sdtm-family-module-card">
+                <summary>
+                  <span class="summary-meta">Module 08</span>
+                  <span class="summary-title">SDTM Domain Families: Interventions Domains</span>
+                  <span class="summary-note">Treatments and exposures: EX, CM, PR, EC, and collected intervention records.</span>
+                </summary>
+
+                <article class="lesson sdtm-family-lesson">
+                  <div class="sdtm-module-intro">
+                    <strong>Interventions Domains</strong>
+                    <span>Treatments and exposures: EX, CM, PR, EC, and collected intervention records.</span>
+                  </div>
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Interventions describe treatments, medications, exposures, or procedures
                         administered to the subject. These domains usually answer: what was given,
@@ -13930,12 +14768,25 @@ run;</code></pre>
                         exposure record needed for downstream analysis. Respecting that boundary is
                         the heart of exposure programming.
                       </p>
-                    </div>
-                    </details>
+                  </div>
+                </article>
+              </details>
 
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 4. Events Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+
+              <details class="training-item sdtm-family-module-card">
+                <summary>
+                  <span class="summary-meta">Module 09</span>
+                  <span class="summary-title">SDTM Domain Families: Events Domains</span>
+                  <span class="summary-note">What happened to the subject: AE, DS, MH, CE, DV, and event timing.</span>
+                </summary>
+
+                <article class="lesson sdtm-family-lesson">
+                  <div class="sdtm-module-intro">
+                    <strong>Events Domains</strong>
+                    <span>What happened to the subject: AE, DS, MH, CE, DV, and event timing.</span>
+                  </div>
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Events describe things that happened to the subject, such as adverse
                         events, medical history, disposition events, and protocol deviations.
@@ -14469,12 +15320,25 @@ run;</code></pre>
                           </p>
                         </div>
                       </div>
-                    </div>
-                    </details>
+                  </div>
+                </article>
+              </details>
 
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 5. Findings Domains</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+
+              <details class="training-item sdtm-family-module-card">
+                <summary>
+                  <span class="summary-meta">Module 10</span>
+                  <span class="summary-title">SDTM Domain Families: Findings Domains</span>
+                  <span class="summary-note">Tests and measurements: LB, VS, EG, QS, FA, and result standardization.</span>
+                </summary>
+
+                <article class="lesson sdtm-family-lesson">
+                  <div class="sdtm-module-intro">
+                    <strong>Findings Domains</strong>
+                    <span>Tests and measurements: LB, VS, EG, QS, FA, and result standardization.</span>
+                  </div>
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Findings domains store measurements, tests, questionnaire responses, and
                         assessments. They usually follow a test/result structure: the test code
@@ -15727,12 +16591,25 @@ run;</code></pre>
                           </div>
                         </details>
                       </div>
-                    </div>
-                    </details>
+                  </div>
+                </article>
+              </details>
 
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 6. Relationship and Supplemental Datasets</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+
+              <details class="training-item sdtm-family-module-card">
+                <summary>
+                  <span class="summary-meta">Module 11</span>
+                  <span class="summary-title">SDTM Domain Families: Relationship and Supplemental Datasets</span>
+                  <span class="summary-note">RELREC, SUPP--, and traceability when standard variables are not enough.</span>
+                </summary>
+
+                <article class="lesson sdtm-family-lesson">
+                  <div class="sdtm-module-intro">
+                    <strong>Relationship and Supplemental Datasets</strong>
+                    <span>RELREC, SUPP--, and traceability when standard variables are not enough.</span>
+                  </div>
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Relationship and supplemental datasets preserve traceability when the
                         standard domain structure is not enough. They should solve a real metadata
@@ -15748,12 +16625,25 @@ run;</code></pre>
                         <li><strong>RELREC:</strong> Describe relationships between records across domains or within a domain.</li>
                         <li><strong>FA:</strong> Findings About can describe findings about an event or intervention when appropriate.</li>
                       </ul>
-                    </div>
-                    </details>
+                  </div>
+                </article>
+              </details>
 
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 7. Controlled Terminology, Units, and Dates</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+
+              <details class="training-item sdtm-family-module-card">
+                <summary>
+                  <span class="summary-meta">Module 12</span>
+                  <span class="summary-title">SDTM Domain Families: Controlled Terminology, Units, and Dates</span>
+                  <span class="summary-note">Codelists, standardized units, ISO 8601 dates, and review-ready values.</span>
+                </summary>
+
+                <article class="lesson sdtm-family-lesson">
+                  <div class="sdtm-module-intro">
+                    <strong>Controlled Terminology, Units, and Dates</strong>
+                    <span>Codelists, standardized units, ISO 8601 dates, and review-ready values.</span>
+                  </div>
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Matching the variable name is not enough. Values must be normalized so the
                         dataset can be reviewed, validated, and reused downstream.
@@ -15786,12 +16676,25 @@ run;</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </div>
-                    </details>
+                  </div>
+                </article>
+              </details>
 
-                    <details class="sdtm-module">
-                      <summary class="sdtm-module-summary"><span class="sdtm-module-title">Topic 8. SAS Template: Mapping Raw Date Components to --DTC</span><span class="sdtm-module-toggle">&gt;</span></summary>
-                      <div class="sdtm-module-body">
+
+              <details class="training-item sdtm-family-module-card">
+                <summary>
+                  <span class="summary-meta">Module 13</span>
+                  <span class="summary-title">SDTM Domain Families: SAS Template: Mapping Raw Date Components to --DTC</span>
+                  <span class="summary-note">A practical SAS pattern for building SDTM date strings from raw components.</span>
+                </summary>
+
+                <article class="lesson sdtm-family-lesson">
+                  <div class="sdtm-module-intro">
+                    <strong>SAS Template: Mapping Raw Date Components to --DTC</strong>
+                    <span>A practical SAS pattern for building SDTM date strings from raw components.</span>
+                  </div>
+                  <div class="sdtm-module-body sdtm-standalone-module-body">
+
                       <p>
                         Modern EDC systems often store dates as separate year, month, day, hour,
                         and minute components. SDTM --DTC variables are character variables, so
@@ -15920,15 +16823,13 @@ run;</code></pre>
                           </tbody>
                         </table>
                       </div>
-                    </div>
-                    </details>
                   </div>
                 </article>
               </details>
 
                             <details class="training-item complex-module-card">
                 <summary>
-                  <span class="summary-meta">Module 07</span>
+                  <span class="summary-meta">Module 14</span>
                   <span class="summary-title">CDISC for Complex Study Design</span>
                   <span class="summary-note">Complex design concepts, SDTM Trial Design Model (TDM), ADaM period variables, and case studies from crossover, Single Ascending Dose (SAD), and Multiple Ascending Dose (MAD) examples.</span>
                 </summary>
@@ -16642,7 +17543,7 @@ run;</code></pre>
 
               <details class="training-item adam-module-card">
                 <summary>
-                  <span class="summary-meta">Module 08</span>
+                  <span class="summary-meta">Module 15</span>
                   <span class="summary-title">Introduction to Analysis Data Model (ADaM)</span>
                   <span class="summary-note">Why analysis datasets are built from SDTM and how variables such as baseline, change, and flags support analysis.</span>
                 </summary>
@@ -17074,7 +17975,7 @@ run;</code></pre>
 
               <details class="training-item tlf-module-card">
                 <summary>
-                  <span class="summary-meta">Module 09</span>
+                  <span class="summary-meta">Module 16</span>
                   <span class="summary-title">Tables, Listings, and Figures (TLF) Basics</span>
                   <span class="summary-note">How tables, listings, and figures differ, and how shells guide statistical programming outputs.</span>
                 </summary>
@@ -17638,7 +18539,7 @@ run;</code></pre>
 
               <details class="training-item workflow-module-card">
                 <summary>
-                  <span class="summary-meta">Module 10</span>
+                  <span class="summary-meta">Module 17</span>
                   <span class="summary-title">Programming Workflow &amp; Quality Control (QC) Mindset</span>
                   <span class="summary-note">How data specifications, production programming, independent QC, log review, and documentation help protect analysis quality.</span>
                 </summary>
@@ -20336,8 +21237,8 @@ run;</code></pre>
                 </div>
                 <div class="model-sketch-card" aria-label="MMRM formula and SAS variable mapping">
                   <h5>Model Sketch</h5>
-                  <div class="model-formula" aria-label="MMRM mathematical model">
-                    Y<sub>ij</sub> = &mu; + &tau;<sub>g_i</sub> + v<sub>j</sub> + (&tau;v)<sub>g_i j</sub> + &beta;<sub>1</sub>BASE<sub>i</sub> + &beta;<sub>2j</sub>(BASE<sub>i</sub> &times; v<sub>j</sub>) + &gamma;STRATA<sub>i</sub> + &epsilon;<sub>ij</sub>
+                  <div class="model-formula math-equation" aria-label="MMRM mathematical model">
+                    <span class="math-term">Y<sub>ij</sub></span><span class="math-op">=</span><span class="math-term">&mu;</span><span class="math-op">+</span><span class="math-term">&tau;<sub>g_i</sub></span><span class="math-op">+</span><span class="math-term">&nu;<sub>j</sub></span><span class="math-op">+</span><span class="math-term">(&tau;&nu;)<sub>g_i j</sub></span><span class="math-op">+</span><span class="math-term">&beta;<sub>1</sub>BASE<sub>i</sub></span><span class="math-op">+</span><span class="math-term">&beta;<sub>2j</sub>(BASE<sub>i</sub> &times; &nu;<sub>j</sub>)</span><span class="math-op">+</span><span class="math-term">&gamma;STRATA<sub>i</sub></span><span class="math-op">+</span><span class="math-term">&epsilon;<sub>ij</sub></span>
                   </div>
                   <div class="model-primary-note">
                     <div><strong>Primary Comparison:</strong> The primary treatment effect is derived from the least-squares mean (LS Mean) difference at the primary visit, e.g., <strong>Week 24</strong>.</div>
@@ -20353,47 +21254,47 @@ run;</code></pre>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Y<sub>ij</sub></td>
+                        <td><span class="math-inline">Y<sub>ij</sub></span></td>
                         <td><span class="sas-pill">CHG</span></td>
                         <td><strong>Dependent Variable:</strong> Change from baseline for participant <em>i</em> at visit <em>j</em>.</td>
                       </tr>
                       <tr>
-                        <td>&mu;</td>
+                        <td><span class="math-inline">&mu;</span></td>
                         <td><em>Included by default</em></td>
                         <td><strong>Intercept:</strong> The overall intercept of the model.</td>
                       </tr>
                       <tr>
-                        <td>&tau;<sub>g_i</sub></td>
+                        <td><span class="math-inline">&tau;<sub>g_i</sub></span></td>
                         <td><span class="sas-pill">TRT01P</span></td>
                         <td><strong>Treatment Group:</strong> The planned treatment assigned to participant <em>i</em>.</td>
                       </tr>
                       <tr>
-                        <td>v<sub>j</sub></td>
+                        <td><span class="math-inline">&nu;<sub>j</sub></span></td>
                         <td><span class="sas-pill">AVISITN</span></td>
                         <td><strong>Visit:</strong> The scheduled analysis visit, coded numerically.</td>
                       </tr>
                       <tr>
-                        <td>(&tau;v)<sub>g_i j</sub></td>
+                        <td><span class="math-inline">(&tau;&nu;)<sub>g_i j</sub></span></td>
                         <td><span class="sas-pill">TRT01P * AVISITN</span></td>
                         <td><strong>Treatment-by-Visit Interaction:</strong> Allows the treatment effect to vary at different time points.</td>
                       </tr>
                       <tr>
-                        <td>BASE<sub>i</sub></td>
+                        <td><span class="math-inline">BASE<sub>i</sub></span></td>
                         <td><span class="sas-pill">BASE</span></td>
                         <td><strong>Baseline Adjustment:</strong> The participant's initial value before treatment.</td>
                       </tr>
                       <tr>
-                        <td>BASE<sub>i</sub> &times; v<sub>j</sub></td>
+                        <td><span class="math-inline">BASE<sub>i</sub> &times; &nu;<sub>j</sub></span></td>
                         <td><span class="sas-pill">BASE * AVISITN</span></td>
                         <td><strong>Baseline-by-Visit Interaction:</strong> Allows the impact of the baseline value to vary over time.</td>
                       </tr>
                       <tr>
-                        <td>STRATA<sub>i</sub></td>
+                        <td><span class="math-inline">STRATA<sub>i</sub></span></td>
                         <td><span class="sas-pill">STRATA1</span></td>
                         <td><strong>Stratification Factor:</strong> The pre-specified randomization stratification factor.</td>
                       </tr>
                       <tr>
-                        <td>&epsilon;<sub>ij</sub></td>
+                        <td><span class="math-inline">&epsilon;<sub>ij</sub></span></td>
                         <td><span class="sas-pill">REPEATED statement</span></td>
                         <td><strong>Within-Subject Error:</strong> Residual variation across visits for the same participant.</td>
                       </tr>
@@ -21883,56 +22784,56 @@ run;</code></pre>
 
                 <h5>1. Structural Counterfactual Framework and the Causal Estimand</h5>
                 <p>
-                  In a randomized clinical trial with treatment crossover, let <span class="math-inline">A<sub>0</sub> ∈ {0, 1}</span> denote baseline treatment assignment. Patients in the control group (<span class="math-inline">A<sub>0</sub> = 0</span>) may switch to the experimental therapy (<span class="math-inline">A<sub>0</sub> = 1</span>) at time <span class="math-inline">T<sub>off,i</sub></span>, spending <span class="math-inline">T<sub>on,i</sub></span> time on the active treatment.
+                  In a randomized clinical trial with treatment crossover, let <span class="math-inline">A<sub>0</sub> âˆˆ {0, 1}</span> denote baseline treatment assignment. Patients in the control group (<span class="math-inline">A<sub>0</sub> = 0</span>) may switch to the experimental therapy (<span class="math-inline">A<sub>0</sub> = 1</span>) at time <span class="math-inline">T<sub>off,i</sub></span>, spending <span class="math-inline">T<sub>on,i</sub></span> time on the active treatment.
                 </p>
                 <p>
-                  Our objective is to estimate the <strong>causal acceleration factor</strong> <span class="math-inline">e<sup>ψ</sup></span> and recover the <strong>counterfactual untreated survival time</strong> <span class="math-inline">U<sub>i</sub>(ψ)</span>, representing the survival time a patient would have experienced had they never received the active treatment.
+                  Our objective is to estimate the <strong>causal acceleration factor</strong> <span class="math-inline">e<sup>Ïˆ</sup></span> and recover the <strong>counterfactual untreated survival time</strong> <span class="math-inline">U<sub>i</sub>(Ïˆ)</span>, representing the survival time a patient would have experienced had they never received the active treatment.
                 </p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM rank preservation assumption">
                   <h5>The Rank Preservation Assumption</h5>
-                  <p>Under the <strong>Rank Preservation Structural Assumption</strong>, the treatment multiplies the remaining survival time by a constant factor <span class="math-inline">e<sup>−ψ</sup></span>:</p>
+                  <p>Under the <strong>Rank Preservation Structural Assumption</strong>, the treatment multiplies the remaining survival time by a constant factor <span class="math-inline">e<sup>âˆ’Ïˆ</sup></span>:</p>
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM counterfactual untreated survival time">
                     <math display="block">
                       <mrow>
-                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
+                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>=</mo>
                         <msub><mi>T</mi><mrow><mi>off</mi><mo>,</mo><mi>i</mi></mrow></msub>
                         <mo>+</mo>
-                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>·</mo><mi>exp</mi><mo>(</mo><mi>ψ</mi><mo>)</mo>
+                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>Â·</mo><mi>exp</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo>
                       </mrow>
                     </math>
                   </div>
-                  <p>Where <span class="math-inline">T<sub>off,i</sub></span> is the time spent on control, <span class="math-inline">T<sub>on,i</sub></span> is the time spent on active treatment, and <span class="math-inline">U<sub>i</sub>(ψ)</span> is the counterfactual untreated event time.</p>
+                  <p>Where <span class="math-inline">T<sub>off,i</sub></span> is the time spent on control, <span class="math-inline">T<sub>on,i</sub></span> is the time spent on active treatment, and <span class="math-inline">U<sub>i</sub>(Ïˆ)</span> is the counterfactual untreated event time.</p>
                 </div>
 
                 <h5>2. Unconfoundedness and the Log-Rank Zero-Finding Derivation</h5>
                 <p>
-                  RPSFTM identifies the true parameter <span class="math-inline">ψ<sup>*</sup></span> by exploiting randomized assignment: under randomization, the counterfactual distributions <span class="math-inline">U(ψ<sup>*</sup>)</span> must be independent of baseline treatment <span class="math-inline">A<sub>0</sub></span>.
+                  RPSFTM identifies the true parameter <span class="math-inline">Ïˆ<sup>*</sup></span> by exploiting randomized assignment: under randomization, the counterfactual distributions <span class="math-inline">U(Ïˆ<sup>*</sup>)</span> must be independent of baseline treatment <span class="math-inline">A<sub>0</sub></span>.
                 </p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM zero finding criterion">
                   <h5>Mathematical Criterion for Zero-Finding</h5>
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM expected score criterion">
                     <math display="block">
                       <mrow>
-                        <mi>E</mi><mo>[</mo><mi>Z</mi><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>|</mo><msub><mi>A</mi><mn>0</mn></msub><mo>]</mo><mo>=</mo><mn>0</mn>
-                        <mo>⇒</mo>
-                        <mi>Z</mi><mo>(</mo><msup><mi>ψ</mi><mo>*</mo></msup><mo>)</mo><mo>=</mo>
+                        <mi>E</mi><mo>[</mo><mi>Z</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>|</mo><msub><mi>A</mi><mn>0</mn></msub><mo>]</mo><mo>=</mo><mn>0</mn>
+                        <mo>â‡’</mo>
+                        <mi>Z</mi><mo>(</mo><msup><mi>Ïˆ</mi><mo>*</mo></msup><mo>)</mo><mo>=</mo>
                         <mfrac>
                           <mrow>
-                            <msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup>
-                            <msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup>
-                            <mo>[</mo><msub><mi>A</mi><mrow><mn>0</mn><mo>,</mo><mi>i</mi></mrow></msub><mo>−</mo><msub><mover><mi>A</mi><mo>¯</mo></mover><mn>0</mn></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>ψ</mi><mo>)</mo><mo>]</mo>
-                            <mi>d</mi><msub><mi>M</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>ψ</mi><mo>)</mo>
+                            <msubsup><mo>âˆ‘</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup>
+                            <msubsup><mo>âˆ«</mo><mn>0</mn><mi>âˆž</mi></msubsup>
+                            <mo>[</mo><msub><mi>A</mi><mrow><mn>0</mn><mo>,</mo><mi>i</mi></mrow></msub><mo>âˆ’</mo><msub><mover><mi>A</mi><mo>Â¯</mo></mover><mn>0</mn></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>Ïˆ</mi><mo>)</mo><mo>]</mo>
+                            <mi>d</mi><msub><mi>M</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>Ïˆ</mi><mo>)</mo>
                           </mrow>
-                          <mrow><msqrt><mrow><mi>Var</mi><mo>(</mo><mi>Z</mi><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>)</mo></mrow></msqrt></mrow>
+                          <mrow><msqrt><mrow><mi>Var</mi><mo>(</mo><mi>Z</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>)</mo></mrow></msqrt></mrow>
                         </mfrac>
                         <mo>=</mo><mn>0</mn>
                       </mrow>
                     </math>
                   </div>
                   <ul class="rpsft-formula-notes">
-                    <li><strong>Target score Z(ψ):</strong> The standardized log-rank statistic comparing counterfactual untreated survival times <span class="math-inline">U<sub>i</sub>(ψ)</span> between randomized arms <span class="math-inline">A<sub>0</sub>=1</span> and <span class="math-inline">A<sub>0</sub>=0</span>.</li>
-                    <li><strong>Grid search optimization:</strong> Since <span class="math-inline">Z(ψ)</span> is a step function of <span class="math-inline">ψ</span>, the SAS macro evaluates <span class="math-inline">Z(ψ<sub>k</sub>)</span> across a defined grid and locates <span class="math-inline">ψ̂</span> where <span class="math-inline">Z(ψ)</span> crosses zero.</li>
-                    <li><strong>Recensoring adjustment:</strong> To prevent informative censoring induced by time transformation, actual censoring times are replaced by recensored values <span class="math-inline">D<sub>i</sub>(ψ) = min(C<sub>i</sub>, C<sub>i</sub> exp(ψ))</span>.</li>
+                    <li><strong>Target score Z(Ïˆ):</strong> The standardized log-rank statistic comparing counterfactual untreated survival times <span class="math-inline">U<sub>i</sub>(Ïˆ)</span> between randomized arms <span class="math-inline">A<sub>0</sub>=1</span> and <span class="math-inline">A<sub>0</sub>=0</span>.</li>
+                    <li><strong>Grid search optimization:</strong> Since <span class="math-inline">Z(Ïˆ)</span> is a step function of <span class="math-inline">Ïˆ</span>, the SAS macro evaluates <span class="math-inline">Z(Ïˆ<sub>k</sub>)</span> across a defined grid and locates <span class="math-inline">ÏˆÌ‚</span> where <span class="math-inline">Z(Ïˆ)</span> crosses zero.</li>
+                    <li><strong>Recensoring adjustment:</strong> To prevent informative censoring induced by time transformation, actual censoring times are replaced by recensored values <span class="math-inline">D<sub>i</sub>(Ïˆ) = min(C<sub>i</sub>, C<sub>i</sub> exp(Ïˆ))</span>.</li>
                   </ul>
                 </div>
 
@@ -21948,12 +22849,12 @@ run;</code></pre>
                     </thead>
                     <tbody>
                       <tr><td class="step-purpose">1. Time Decomposition</td><td class="notation-cell">T<sub>i</sub> = T<sub>off,i</sub> + T<sub>on,i</sub></td><td class="sas-cell"><code>data _rpsftm_base;</code> <code>t_off = ...;</code> <code>t_on = ...;</code></td></tr>
-                      <tr><td class="step-purpose">2. Grid Generation</td><td class="notation-cell">ψ<sup>(k)</sup> ∈ [ψ<sub>min</sub>, ψ<sub>max</sub>]</td><td class="sas-cell"><code>data _grid;</code> <code>do psi = &amp;psimin to &amp;psimax by &amp;psistep;</code></td></tr>
-                      <tr><td class="step-purpose">3. Counterfactual Transformation</td><td class="notation-cell">U<sub>i</sub>(ψ) = T<sub>off,i</sub> + T<sub>on,i</sub> exp(ψ)</td><td class="sas-cell"><code>data _cf;</code> <code>u_i = t_off + t_on * exp(psi);</code></td></tr>
-                      <tr><td class="step-purpose">4. Recensoring Logic</td><td class="notation-cell">D<sub>i</sub>(ψ) = min(C<sub>i</sub>, C<sub>i</sub> exp(ψ))</td><td class="sas-cell"><code>u_rec = min(u_i, c_i * exp(psi));</code></td></tr>
-                      <tr><td class="step-purpose">5. Log-Rank Evaluation</td><td class="notation-cell">Z(ψ) ∼ Log-Rank(U(ψ) by A<sub>0</sub>)</td><td class="sas-cell"><code>PROC LIFETEST;</code> <code>time u_rec*censor(0);</code> <code>strata &amp;trt;</code></td></tr>
-                      <tr><td class="step-purpose">6. Zero-Crossing Interpolation</td><td class="notation-cell">Z(ψ̂) = 0 ⇒ ψ̂</td><td class="sas-cell"><code>data _estimate;</code> <code>if z_prev * z_curr &lt;= 0;</code></td></tr>
-                      <tr><td class="step-purpose">7. Causal Hazard Ratio Estimation</td><td class="notation-cell">HR<sub>causal</sub> = exp(−ψ̂)</td><td class="sas-cell"><code>data _final_hr;</code> <code>hr_causal = exp(-psi_hat);</code></td></tr>
+                      <tr><td class="step-purpose">2. Grid Generation</td><td class="notation-cell">Ïˆ<sup>(k)</sup> âˆˆ [Ïˆ<sub>min</sub>, Ïˆ<sub>max</sub>]</td><td class="sas-cell"><code>data _grid;</code> <code>do psi = &amp;psimin to &amp;psimax by &amp;psistep;</code></td></tr>
+                      <tr><td class="step-purpose">3. Counterfactual Transformation</td><td class="notation-cell">U<sub>i</sub>(Ïˆ) = T<sub>off,i</sub> + T<sub>on,i</sub> exp(Ïˆ)</td><td class="sas-cell"><code>data _cf;</code> <code>u_i = t_off + t_on * exp(psi);</code></td></tr>
+                      <tr><td class="step-purpose">4. Recensoring Logic</td><td class="notation-cell">D<sub>i</sub>(Ïˆ) = min(C<sub>i</sub>, C<sub>i</sub> exp(Ïˆ))</td><td class="sas-cell"><code>u_rec = min(u_i, c_i * exp(psi));</code></td></tr>
+                      <tr><td class="step-purpose">5. Log-Rank Evaluation</td><td class="notation-cell">Z(Ïˆ) âˆ¼ Log-Rank(U(Ïˆ) by A<sub>0</sub>)</td><td class="sas-cell"><code>PROC LIFETEST;</code> <code>time u_rec*censor(0);</code> <code>strata &amp;trt;</code></td></tr>
+                      <tr><td class="step-purpose">6. Zero-Crossing Interpolation</td><td class="notation-cell">Z(ÏˆÌ‚) = 0 â‡’ ÏˆÌ‚</td><td class="sas-cell"><code>data _estimate;</code> <code>if z_prev * z_curr &lt;= 0;</code></td></tr>
+                      <tr><td class="step-purpose">7. Causal Hazard Ratio Estimation</td><td class="notation-cell">HR<sub>causal</sub> = exp(âˆ’ÏˆÌ‚)</td><td class="sas-cell"><code>data _final_hr;</code> <code>hr_causal = exp(-psi_hat);</code></td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -21978,17 +22879,17 @@ run;</code></pre>
                 </div>
 
                 <h5>Steps 2 and 3. Grid Search Counterfactual Calculation and Log-Rank Scoring</h5>
-                <p>Under a candidate parameter <span class="math-inline">ψ<sub>k</sub></span>, counterfactual event times and recensored times are evaluated.</p>
+                <p>Under a candidate parameter <span class="math-inline">Ïˆ<sub>k</sub></span>, counterfactual event times and recensored times are evaluated.</p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM counterfactual and recensoring event formula">
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM transformed time and recensored event indicator">
                     <math display="block">
                       <mrow>
-                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
+                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>=</mo>
                         <msub><mi>T</mi><mrow><mi>off</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>+</mo>
-                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mi>exp</mi><mo>(</mo><mi>ψ</mi><mo>)</mo>
+                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mi>exp</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo>
                         <mo>,</mo>
-                        <msub><mi>Δ</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
-                        <mi>I</mi><mo>(</mo><msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>≤</mo><msub><mi>D</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>)</mo>
+                        <msub><mi>Î”</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>=</mo>
+                        <mi>I</mi><mo>(</mo><msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>â‰¤</mo><msub><mi>D</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>)</mo>
                       </mrow>
                     </math>
                   </div>
@@ -22037,17 +22938,17 @@ run;</code></pre>
 %mend _rpsftm_grid_search;</code></pre>
                 </div>
 
-                <h5>Step 4. Linear Interpolation for ψ̂ Zero-Crossing</h5>
-                <p>Find two adjacent grid points where the standardized log-rank statistic changes sign, then estimate <span class="math-inline">ψ̂</span> via linear interpolation.</p>
+                <h5>Step 4. Linear Interpolation for ÏˆÌ‚ Zero-Crossing</h5>
+                <p>Find two adjacent grid points where the standardized log-rank statistic changes sign, then estimate <span class="math-inline">ÏˆÌ‚</span> via linear interpolation.</p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM linear interpolation formula">
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM zero crossing interpolation formula">
                     <math display="block">
                       <mrow>
-                        <mover><mi>ψ</mi><mo>^</mo></mover><mo>=</mo>
-                        <msub><mi>ψ</mi><mi>k</mi></msub><mo>−</mo><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mi>k</mi></msub><mo>)</mo><mo>·</mo>
+                        <mover><mi>Ïˆ</mi><mo>^</mo></mover><mo>=</mo>
+                        <msub><mi>Ïˆ</mi><mi>k</mi></msub><mo>âˆ’</mo><mi>Z</mi><mo>(</mo><msub><mi>Ïˆ</mi><mi>k</mi></msub><mo>)</mo><mo>Â·</mo>
                         <mfrac>
-                          <mrow><msub><mi>ψ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>ψ</mi><mi>k</mi></msub></mrow>
-                          <mrow><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo><mo>−</mo><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mi>k</mi></msub><mo>)</mo></mrow>
+                          <mrow><msub><mi>Ïˆ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>âˆ’</mo><msub><mi>Ïˆ</mi><mi>k</mi></msub></mrow>
+                          <mrow><mi>Z</mi><mo>(</mo><msub><mi>Ïˆ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo><mo>âˆ’</mo><mi>Z</mi><mo>(</mo><msub><mi>Ïˆ</mi><mi>k</mi></msub><mo>)</mo></mrow>
                         </mfrac>
                       </mrow>
                     </math>
@@ -22076,9 +22977,9 @@ run;</code></pre>
                 <div class="rpsft-interpretation">
                   <strong>How to Interpret RPSFTM Output</strong>
                   <ul>
-                    <li><strong>Point estimate:</strong> <span class="math-inline">ψ</span> and <span class="math-inline">exp(ψ)</span> describe the estimated acceleration factor.</li>
-                    <li><strong>Statistical significance:</strong> If the 95% confidence interval for <span class="math-inline">ψ</span> includes 0, or the 95% confidence interval for <span class="math-inline">exp(ψ)</span> includes 1, the adjusted analysis does not show clear statistical evidence of a treatment benefit.</li>
-                    <li><strong>Diagnostic plot:</strong> The optimal <span class="math-inline">ψ</span> is the value where the standardized log-rank statistic crosses zero.</li>
+                    <li><strong>Point estimate:</strong> <span class="math-inline">Ïˆ</span> and <span class="math-inline">exp(Ïˆ)</span> describe the estimated acceleration factor.</li>
+                    <li><strong>Statistical significance:</strong> If the 95% confidence interval for <span class="math-inline">Ïˆ</span> includes 0, or the 95% confidence interval for <span class="math-inline">exp(Ïˆ)</span> includes 1, the adjusted analysis does not show clear statistical evidence of a treatment benefit.</li>
+                    <li><strong>Diagnostic plot:</strong> The optimal <span class="math-inline">Ïˆ</span> is the value where the standardized log-rank statistic crosses zero.</li>
                   </ul>
                 </div>
                 <div class="sas-ods-example" aria-label="SAS ODS output example for RPSFTM">
@@ -22147,10 +23048,10 @@ run;</code></pre>
 
                 <h5>1. Counterfactual Framework and the Causal Estimand</h5>
                 <p>
-                  In a randomized clinical trial with treatment switching, let <span class="math-inline">A<sub>0</sub> ∈ {0, 1}</span> denote baseline treatment assignment. Let <span class="math-inline">C(t) ∈ {0, 1}</span> be the time-varying counting process for censoring due to crossover (<span class="math-inline">C(t) = 1</span> when a patient switches from control to experimental treatment).
+                  In a randomized clinical trial with treatment switching, let <span class="math-inline">A<sub>0</sub> âˆˆ {0, 1}</span> denote baseline treatment assignment. Let <span class="math-inline">C(t) âˆˆ {0, 1}</span> be the time-varying counting process for censoring due to crossover (<span class="math-inline">C(t) = 1</span> when a patient switches from control to experimental treatment).
                 </p>
                 <p>
-                  Our objective is to estimate the <strong>marginal counterfactual survival distribution</strong> <span class="math-inline">S<sup><span class="math-bar-sup"><span class="math-overbar">𝑎</span>=0</span></sup>(t) = P(T<sup><span class="math-bar-sup"><span class="math-overbar">𝑎</span>=0</span></sup> &gt; t)</span>, which represents survival under the hypothetical regime where no patient switches treatments (<span class="math-inline"><span class="math-overbar">𝑎</span> = 0</span>).
+                  Our objective is to estimate the <strong>marginal counterfactual survival distribution</strong> <span class="math-inline">S<sup><span class="math-bar-sup"><span class="math-overbar">ð‘Ž</span>=0</span></sup>(t) = P(T<sup><span class="math-bar-sup"><span class="math-overbar">ð‘Ž</span>=0</span></sup> &gt; t)</span>, which represents survival under the hypothetical regime where no patient switches treatments (<span class="math-inline"><span class="math-overbar">ð‘Ž</span> = 0</span>).
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW identifiability bridge formula">
                   <h5>The Identifiability Bridge</h5>
@@ -22166,7 +23067,7 @@ run;</code></pre>
                       </mrow>
                     </math>
                   </div>
-                  <p>Where <span class="math-inline">L&#772;(t)</span> is the history of both baseline (<span class="math-inline">L&#772;(0)</span>) and time-varying (<span class="math-inline">L&#772;(t)</span>) clinical predictors of crossover up to <span class="math-inline">t<sup>−</sup></span>.</p>
+                  <p>Where <span class="math-inline">L&#772;(t)</span> is the history of both baseline (<span class="math-inline">L&#772;(0)</span>) and time-varying (<span class="math-inline">L&#772;(t)</span>) clinical predictors of crossover up to <span class="math-inline">t<sup>âˆ’</sup></span>.</p>
                 </div>
 
                 <h5>2. Measure Transformation and Stabilized Weight Derivation</h5>
@@ -22207,37 +23108,37 @@ run;</code></pre>
                     <tbody>
                       <tr>
                         <td class="step-purpose">1. Data Subset</td>
-                        <td class="notation-cell">i ∈ {A<sub>0</sub> = 0}, C<sub>i</sub>(t) ∈ {0, 1}</td>
+                        <td class="notation-cell">i âˆˆ {A<sub>0</sub> = 0}, C<sub>i</sub>(t) âˆˆ {0, 1}</td>
                         <td class="sas-cell"><code>data _ipcw_base;</code> <code>if &amp;trt = &amp;ref;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">2. Numerator Model</td>
-                        <td class="notation-cell">Ŝ<sub>num</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>)</td>
+                        <td class="notation-cell">Åœ<sub>num</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>)</td>
                         <td class="sas-cell"><code>PROC PHREG;</code> <code>model ... = &amp;bl_ct &amp;bl_cl;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">3. Denominator Model</td>
-                        <td class="notation-cell">Ŝ<sub>den</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>, L&#772;(t))</td>
+                        <td class="notation-cell">Åœ<sub>den</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>, L&#772;(t))</td>
                         <td class="sas-cell"><code>PROC PHREG;</code> <code>model ... = &amp;bl_ct &amp;bl_cl &amp;tv_ct &amp;tv_cl;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">4. Stabilized Weight</td>
-                        <td class="notation-cell">SW<sub>i</sub>(t) = Ŝ<sub>num</sub>(t<sub>i</sub>) / Ŝ<sub>den</sub>(t<sub>i</sub>)</td>
+                        <td class="notation-cell">SW<sub>i</sub>(t) = Åœ<sub>num</sub>(t<sub>i</sub>) / Åœ<sub>den</sub>(t<sub>i</sub>)</td>
                         <td class="sas-cell"><code>data _weights;</code> <code>sw_t = _surv_num / _surv_den;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">5. Weight Truncation</td>
-                        <td class="notation-cell">SW<sub>i</sub><sup>*</sup>(t) = clip(SW<sub>i</sub>(t), Q<sub>αL</sub>, Q<sub>αU</sub>)</td>
+                        <td class="notation-cell">SW<sub>i</sub><sup>*</sup>(t) = clip(SW<sub>i</sub>(t), Q<sub>Î±L</sub>, Q<sub>Î±U</sub>)</td>
                         <td class="sas-cell"><code>PROC UNIVARIATE;</code> + truncation logic</td>
                       </tr>
                       <tr>
                         <td class="step-purpose">6. Merge &amp; Reset</td>
-                        <td class="notation-cell">SW<sub>i</sub>(t) = 1 &nbsp; ∀i ∈ {A<sub>0</sub> = 1}</td>
+                        <td class="notation-cell">SW<sub>i</sub>(t) = 1 &nbsp; âˆ€i âˆˆ {A<sub>0</sub> = 1}</td>
                         <td class="sas-cell"><code>data _surv_weighted;</code> <code>if &amp;trt ne &amp;ref then sw_t = 1;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">7. Weighted MSM Cox</td>
-                        <td class="notation-cell">λ(t | A<sub>0</sub>) = λ<sub>0</sub>(t) exp(βA<sub>0</sub>)</td>
+                        <td class="notation-cell">Î»(t | A<sub>0</sub>) = Î»<sub>0</sub>(t) exp(Î²A<sub>0</sub>)</td>
                         <td class="sas-cell"><code>PROC PHREG;</code> <code>WEIGHT sw_t / norm;</code> <code>ID &amp;subjid;</code></td>
                       </tr>
                     </tbody>
@@ -22306,7 +23207,7 @@ run;</code></pre>
 
                 <h5>Step 4. Constructing SW<sub>i</sub>(t)</h5>
                 <div class="rpsft-formula-card" aria-label="IPCW stabilized weight construction formula">
-                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = <span class="math-frac"><span class="math-num">Ŝ<sub>num</sub>(t<sub>i</sub>)</span><span class="math-den">Ŝ<sub>den</sub>(t<sub>i</sub>)</span></span></div>
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = <span class="math-frac"><span class="math-num">SÌ‚<sub>num</sub>(t<sub>i</sub>)</span><span class="math-den">SÌ‚<sub>den</sub>(t<sub>i</sub>)</span></span></div>
                 </div>
                 <div class="code-window sas-syntax" aria-label="IPCW SAS stabilized weight construction">
                   <div class="code-window-header"><span>Step 4. Form Stabilized Weights</span><span>.sas</span></div>
@@ -22326,7 +23227,7 @@ run;</code></pre>
                   To satisfy the positivity assumption and prevent extreme variance inflation caused by near-zero denominators, stabilized weights are truncated at lower and upper percentiles.
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW percentile truncation formula">
-                  <div class="rpsft-equation math-equation">SW<sub>i</sub><sup>*</sup>(t) = max(Q<sub>αL</sub>(SW), min(SW<sub>i</sub>(t), Q<sub>αU</sub>(SW)))</div>
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub><sup>*</sup>(t) = max(Q<sub>Î±L</sub>(SW), min(SW<sub>i</sub>(t), Q<sub>Î±U</sub>(SW)))</div>
                 </div>
                 <div class="code-window sas-syntax" aria-label="IPCW SAS percentile truncation">
                   <div class="code-window-header"><span>Step 5. Percentile Truncation</span><span>.sas</span></div>
@@ -22630,11 +23531,127 @@ run;</code></pre>
       });
 
       if (updateUrl) {
-        history.replaceState(null, "", `#${panelId}`);
+        history.pushState(null, "", `#${panelId}`);
       }
     }
 
-    function openLessonPage(item) {
+    function slugifyTocText(text) {
+      return text
+        .toLowerCase()
+        .replace(/&/g, " and ")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+    }
+
+    function buildLessonToc(article) {
+      const h4Headings = Array.from(article.querySelectorAll("h4"));
+      const h5Headings = Array.from(article.querySelectorAll("h5"));
+      const headings = h4Headings.length > 1
+        ? h4Headings
+        : h5Headings.length > 1
+          ? h5Headings
+          : Array.from(article.querySelectorAll("h4, h5"));
+
+      if (headings.length < 2) {
+        return article;
+      }
+
+      const usedIds = new Set();
+      const toc = document.createElement("nav");
+      toc.className = "lesson-toc";
+      toc.setAttribute("aria-label", "Lesson table of contents");
+
+      const list = document.createElement("ul");
+      list.className = "lesson-toc-list";
+      const tocEntries = [];
+
+      headings.forEach((heading, index) => {
+        const label = heading.textContent.replace(/^\d+(?:\.\d+)*\s+/, "").trim();
+        const baseId = `toc-${slugifyTocText(label)}`;
+        let id = baseId;
+        let counter = 2;
+        while (usedIds.has(id) || document.getElementById(id)) {
+          id = `${baseId}-${counter}`;
+          counter += 1;
+        }
+        usedIds.add(id);
+        heading.id = id;
+
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.className = index === 0 ? "lesson-toc-link is-active" : "lesson-toc-link";
+        link.href = `#${id}`;
+        link.textContent = label;
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          toc.querySelectorAll(".lesson-toc-link").forEach((tocLink) => tocLink.classList.remove("is-active"));
+          link.classList.add("is-active");
+          heading.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        item.append(link);
+        list.append(item);
+        tocEntries.push({ heading, link });
+      });
+
+      const setActiveTocLink = (activeLink) => {
+        toc.querySelectorAll(".lesson-toc-link").forEach((tocLink) => {
+          tocLink.classList.toggle("is-active", tocLink === activeLink);
+        });
+      };
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+          if (!visible) return;
+          const match = tocEntries.find((entry) => entry.heading === visible.target);
+          if (match) setActiveTocLink(match.link);
+        }, {
+          root: null,
+          rootMargin: "-18% 0px -70% 0px",
+          threshold: 0
+        });
+        tocEntries.forEach((entry) => observer.observe(entry.heading));
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "lesson-with-toc";
+
+      const backButton = document.createElement("button");
+      backButton.type = "button";
+      backButton.className = "lesson-toc-back";
+      backButton.innerHTML = `<span class="lesson-toc-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 5h14"/><path d="M12 19V8"/><path d="m7 13 5-5 5 5"/></svg></span><span>Back to Top</span>`;
+      backButton.addEventListener("click", () => {
+        wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      toc.append(backButton, list);
+      wrapper.append(toc, article);
+      return wrapper;
+    }
+    function getLessonItems(section) {
+      return Array.from(section.querySelectorAll(".training-item, .bio-topic"))
+        .filter((item) => item.closest(".section") === section);
+    }
+
+    function getLessonHash(item) {
+      const section = item?.closest(".section");
+      if (!section?.id) return "";
+      const items = getLessonItems(section);
+      const index = items.indexOf(item);
+      return index >= 0 ? `${section.id}/module${index + 1}` : section.id;
+    }
+
+    function findLessonItemFromHash(hash) {
+      const cleanHash = hash.replace(/^#/, "");
+      const [sectionId, moduleId] = cleanHash.split("/");
+      const section = document.getElementById(sectionId);
+      const match = /^module(\d+)$/i.exec(moduleId || "");
+      if (!section || !match) return null;
+      return getLessonItems(section)[Number(match[1]) - 1] || null;
+    }
+    function openLessonPage(item, updateUrl = true) {
       const article = item.querySelector(".lesson");
       const section = item.closest(".section");
       const overview = section?.querySelector(".training-overview, .bio-overview");
@@ -22654,10 +23671,15 @@ run;</code></pre>
         bioTopic.removeAttribute("open");
       });
 
-      lessonPageContent.replaceChildren(article.cloneNode(true));
+      const lessonHash = getLessonHash(item);
+      lessonPage.classList.add("toc-layout-trial");
+      lessonPageContent.classList.add("toc-layout-trial-content");
+      lessonPageContent.replaceChildren(buildLessonToc(article.cloneNode(true)));
       overview.classList.add("is-hidden");
       lessonPage.classList.add("is-active");
-      history.replaceState(null, "", `#${section.id}`);
+      if (updateUrl) {
+        history.pushState(null, "", `#${lessonHash}`);
+      }
       section.scrollIntoView({ block: "start" });
     }
 
@@ -22667,7 +23689,8 @@ run;</code></pre>
       });
 
       document.querySelectorAll(".lesson-page.is-active").forEach((page) => {
-        page.classList.remove("is-active");
+        page.classList.remove("is-active", "toc-layout-trial");
+        page.querySelector(".lesson-page-content")?.classList.remove("toc-layout-trial-content");
         page.querySelector(".lesson-page-content")?.replaceChildren();
       });
     }
@@ -22699,7 +23722,11 @@ run;</code></pre>
 
     document.querySelectorAll("[data-lesson-back]").forEach((button) => {
       button.addEventListener("click", () => {
+        const activeSection = button.closest(".section");
         closeLessonPage();
+        if (activeSection?.id) {
+          history.pushState(null, "", `#${activeSection.id}`);
+        }
       });
     });
 
@@ -22708,10 +23735,34 @@ run;</code></pre>
       openHome();
     });
 
-    const initialPanel = window.location.hash.replace("#", "");
-    if (initialPanel && document.getElementById(initialPanel)) {
-      openPanel(initialPanel, false);
+    function routeFromHash() {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) {
+        openHome(false);
+        return;
+      }
+
+      const lessonItem = findLessonItemFromHash(hash);
+      if (lessonItem) {
+        const section = lessonItem.closest(".section");
+        if (section?.id) {
+          openPanel(section.id, false);
+          openLessonPage(lessonItem, false);
+        }
+        return;
+      }
+
+      const panelId = hash.split("/")[0];
+      if (panelId && document.getElementById(panelId)) {
+        openPanel(panelId, false);
+        return;
+      }
+
+      openHome(false);
     }
+
+    window.addEventListener("popstate", routeFromHash);
+    routeFromHash();
 
     document.querySelectorAll(".tdm-slide, .drag-scroll").forEach((slide) => {
       let isDown = false;
@@ -22917,6 +23968,31 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
