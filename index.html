@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -1452,6 +1452,17 @@
       font-size: 18px;
       line-height: 1.2;
       text-align: center;
+    }
+
+    
+    .model-primary-note .compact-note-list {
+      grid-column: 2;
+      margin: -6px 0 0;
+      padding-left: 18px;
+    }
+
+    .model-primary-note .compact-note-list li {
+      margin: 8px 0;
     }
 
     .model-map-title {
@@ -8060,7 +8071,7 @@
     }
 
     .lesson-toc-back::before {
-      content: "â†‘";
+      content: "↑";
       display: inline-grid;
       place-items: center;
       width: 18px;
@@ -8847,7 +8858,7 @@
                         <tr><td>SDRG</td><td>Study Data Reviewer's Guide</td><td>Explains SDTM datasets, data issues, standards decisions, and validation explanations.</td></tr>
                         <tr><td>SOP</td><td>Standard Operating Procedure</td><td>Company-controlled procedure that governs how regulated work must be done.</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h5>Core Documents, Systems, and Output Terms</h5>
@@ -8876,7 +8887,7 @@
                         <tr><td>XML</td><td>Extensible Markup Language</td><td>Format behind Define.xml and other structured metadata files.</td></tr>
                         <tr><td>XPT</td><td>SAS Transport File</td><td>Required transport format for many regulatory SDTM and ADaM dataset submissions.</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h5>CDISC Standards and Controlled Terminology</h5>
@@ -8905,7 +8916,7 @@
                         <tr><td>SDTMIG</td><td>SDTM Implementation Guide</td><td>Domain-specific implementation rules for SDTM datasets.</td></tr>
                         <tr><td>WHODrug</td><td>World Health Organization Drug Dictionary</td><td>Coding dictionary commonly used for concomitant medications.</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h5>Common SDTM Domains and Trial Design Domains</h5>
@@ -8955,7 +8966,7 @@
                         <tr><td>TV</td><td>Trial Visits</td><td>Planned visit structure and timing windows.</td></tr>
                         <tr><td>VS</td><td>Vital Signs</td><td>Findings domain for measurements such as blood pressure, weight, height, and temperature.</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h5>ADaM Datasets and Frequent Analysis Variables</h5>
@@ -8995,7 +9006,7 @@
                         <tr><td>TRTxxP</td><td>Planned Treatment by Period</td><td>Planned treatment for period xx, such as TRT01P and TRT02P.</td></tr>
                         <tr><td>TRTSEQA / TRTSEQP</td><td>Actual / Planned Treatment Sequence</td><td>Treatment sequence variables often used in crossover designs.</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h5>Common SDTM Variable Fragments and Safety Terms</h5>
@@ -9034,7 +9045,7 @@
                         <tr><td>USUBJID</td><td>Unique Subject Identifier</td><td>Study-wide unique subject key used across SDTM and ADaM.</td></tr>
                         <tr><td>VISIT / VISITNUM</td><td>Visit Name / Visit Number</td><td>Visit label and numeric visit order.</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h5>Other Clinical and Safety Terms</h5>
@@ -9062,7 +9073,7 @@
                         <tr><td>SAD</td><td>Single Ascending Dose</td><td>Early-phase design with escalating single doses.</td></tr>
                         <tr><td>SMART</td><td>Sequential Multiple Assignment Randomized Trial</td><td>Adaptive design where later treatment paths may depend on earlier response.</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
                 
               <p class="acronym-empty" data-acronym-empty hidden>No matching acronym found.</p>
@@ -9236,7 +9247,7 @@
                           <tr><td>002</td><td>WEEK 4</td><td>VITALS</td><td>2026-02-05</td><td>Weight</td><td>80.4</td><td>kg</td></tr>
                           <tr><td>002</td><td>WEEK 4</td><td>VITALS</td><td>2026-02-05</td><td>Systolic BP</td><td>128</td><td>mmHg</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="pipeline-example-note">Raw data looks like a site or vendor export: form names, local visit text, and original units are still visible.</p>
                   </div>
@@ -9253,7 +9264,7 @@
                           <tr><td>ABC-123</td><td>101</td><td>002</td><td>WEEK 4</td><td>2026-02-05</td><td>Weight</td><td>80.4</td><td>kg</td></tr>
                           <tr><td>ABC-123</td><td>101</td><td>002</td><td>WEEK 4</td><td>2026-02-05</td><td>Systolic BP</td><td>128</td><td>mmHg</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="pipeline-warning-note"><strong>Note:</strong> CDASH is often a collection design standard rather than a separate dataset deliverable. Many companies map directly from raw EDC/vendor data to SDTM, while using CDASH principles to make CRF fields and raw exports easier to standardize.</p>
                   </div>
@@ -9269,7 +9280,7 @@
                           <tr><td>ABC-123</td><td>ABC-123-002</td><td>WEIGHT</td><td>80.4</td><td>kg</td><td>80.4</td><td>kg</td></tr>
                           <tr><td>ABC-123</td><td>ABC-123-002</td><td>SYSBP</td><td>128</td><td>mmHg</td><td>128</td><td>mmHg</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="pipeline-example-note">SDTM looks like a submitted standard dataset: standard domain, standard variables, and traceable subject records.</p>
                   </div>
@@ -9285,7 +9296,7 @@
                           <tr><td>ABC-123-002</td><td>WEIGHT</td><td>Baseline</td><td>82.0</td><td>82.0</td><td>.</td><td>Y</td></tr>
                           <tr><td>ABC-123-002</td><td>WEIGHT</td><td>Week 4</td><td>82.0</td><td>80.4</td><td>-1.6</td><td>Y</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="pipeline-example-note">ADaM starts to look like the dataset a table program can use: baseline, change, visit labels, and population flags are ready.</p>
                   </div>
@@ -9313,7 +9324,7 @@ Safety Analysis Set</div>
                           <tr><td class="tfl-report-indent">Median</td><td>-0.2</td><td>-1.5</td></tr>
                           <tr><td class="tfl-report-indent">Min, Max</td><td>-5.1, 4.2</td><td>-7.0, 2.8</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="pipeline-example-note">TFLs should feel like the final report output, not like a web table. The layout, title, columns, and footnotes are part of the deliverable.</p>
                   </div>
@@ -9576,7 +9587,7 @@ Safety Analysis Set</div>
                       <td>Unexpected data multiplication may have occurred. Confirm unique key variables before merging and compare record counts before and after the join.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
               <h5>4.2.1 Manual SAS Log Review Checklist</h5>
               <p>
@@ -9630,7 +9641,7 @@ Safety Analysis Set</div>
                       <td><strong>Final gatekeeping:</strong> verify that actual row counts match the expected business logic before QC compare, table generation, or delivery.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
 
               <div class="embedded-quiz-card">
@@ -9800,7 +9811,7 @@ Safety Analysis Set</div>
                             <td>Foundation for <strong>ITT / FAS analysis</strong>.</td>
                           </tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                   </div>
 
@@ -9977,7 +9988,7 @@ Safety Analysis Set</div>
                           <td>Rejects, errors, warnings, notices, rule IDs, affected datasets, affected variables, and resolution status.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>4. Clinical Study Protocol: The Master Blueprint</h4>
@@ -10339,7 +10350,7 @@ Safety Analysis Set</div>
                           <td>After dataset or metadata creation, before delivery, and after any major code or spec update.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <div class="workshop">
@@ -10424,7 +10435,7 @@ Safety Analysis Set</div>
                           <td>Find where collected fields should flow before writing SDTM mapping code.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>3. SDTM MSG 2.0 Visual aCRF Specifications</h4>
@@ -10449,7 +10460,8 @@ Safety Analysis Set</div>
                         </details>
                         <details class="acrf-example-item">
                           <summary>Raw EDC<br>Database fields and values</summary>
-                          <div class="acrf-example-body"><div class="mini-edc-table" aria-label="Raw EDC disposition wide export example"><table><thead><tr><th>Category</th><th>CategoryCodedValue</th><th>ParticipantCompletedStudy</th><th>ParticipantCompletedStudyCodedValue</th><th>SubjectsStatus</th><th>SubjectsStatusCodedValue</th><th>CorrespondingAE</th></tr></thead><tbody><tr><td>DISPOSITION EVENT</td><td>DISPOSITION EVENT</td><td>No</td><td>N</td><td>WITHDRAWAL BY SUBJECT</td><td>26</td><td></td></tr><tr><td>DISPOSITION EVENT</td><td>DISPOSITION EVENT</td><td>No</td><td>N</td><td>LOST TO FOLLOW-UP</td><td>8</td><td></td></tr><tr><td>DISPOSITION EVENT</td><td>DISPOSITION EVENT</td><td>No</td><td>N</td><td>WITHDRAWAL BY SUBJECT</td><td>26</td><td></td></tr></tbody></table></div></div>
+                          <div class="acrf-example-body"><div class="mini-edc-table" aria-label="Raw EDC disposition wide export example"><table><thead><tr><th>Category</th><th>CategoryCodedValue</th><th>ParticipantCompletedStudy</th><th>ParticipantCompletedStudyCodedValue</th><th>SubjectsStatus</th><th>SubjectsStatusCodedValue</th><th>CorrespondingAE</th></tr></thead><tbody><tr><td>DISPOSITION EVENT</td><td>DISPOSITION EVENT</td><td>No</td><td>N</td><td>WITHDRAWAL BY SUBJECT</td><td>26</td><td></td></tr><tr><td>DISPOSITION EVENT</td><td>DISPOSITION EVENT</td><td>No</td><td>N</td><td>LOST TO FOLLOW-UP</td><td>8</td><td></td></tr><tr><td>DISPOSITION EVENT</td><td>DISPOSITION EVENT</td><td>No</td><td>N</td><td>WITHDRAWAL BY SUBJECT</td><td>26</td><td></td></tr></tbody>
+                  </table></div></div>
                         </details>
                         <details class="acrf-example-item">
                           <summary>aCRF<br>Visual SDTM annotations</summary>
@@ -10457,7 +10469,8 @@ Safety Analysis Set</div>
                         </details>
                         <details class="acrf-example-item">
                           <summary>SDTM<br>Submitted domains and variables</summary>
-                          <div class="acrf-example-body"><div class="mini-sdtm-table mini-sdtm-domain" aria-label="SDTM DS domain dataset example"><table><thead><tr><th>STUDYID</th><th>DOMAIN</th><th>USUBJID</th><th>DSSEQ</th><th>DSCAT</th><th>DSTERM</th><th>DSDECOD</th></tr></thead><tbody><tr><td>ABC-123</td><td>DS</td><td>ABC-123-002</td><td>1</td><td>DISPOSITION EVENT</td><td>COMPLETED</td><td>COMPLETED</td></tr></tbody></table></div></div>
+                          <div class="acrf-example-body"><div class="mini-sdtm-table mini-sdtm-domain" aria-label="SDTM DS domain dataset example"><table><thead><tr><th>STUDYID</th><th>DOMAIN</th><th>USUBJID</th><th>DSSEQ</th><th>DSCAT</th><th>DSTERM</th><th>DSDECOD</th></tr></thead><tbody><tr><td>ABC-123</td><td>DS</td><td>ABC-123-002</td><td>1</td><td>DISPOSITION EVENT</td><td>COMPLETED</td><td>COMPLETED</td></tr></tbody>
+                  </table></div></div>
                         </details>
                       </div>
                     </div>
@@ -11060,7 +11073,7 @@ Safety Analysis Set</div>
                               <td>The CRF field was collected but intentionally not submitted.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                     </div>
 
@@ -11266,7 +11279,7 @@ Safety Analysis Set</div>
                                   <td>Describes the action taken with study treatment because of the event, using the approved action-taken codelist.</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </figure>
 
@@ -11366,7 +11379,7 @@ Safety Analysis Set</div>
                                   <td>DOSE NOT CHANGED / DOSE REDUCED / DRUG WITHDRAWN / NOT APPLICABLE</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </figure>
 
@@ -11419,7 +11432,7 @@ Safety Analysis Set</div>
                                     <td>DRUG WITHDRAWN</td>
                                   </tr>
                                 </tbody>
-                              </table>
+                  </table>
                             </div>
                             <p class="ct-visual-caption-note">The submitted dataset stores the controlled submission values, not local display text such as Mild, severe, Yes, or No.</p>
 
@@ -11507,7 +11520,7 @@ Safety Analysis Set</div>
                               <td>Acquisition date/time, device ID, algorithm version, repeated measurements, quality flags, and traceability to vendor source files.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <p class="document-notes">
                         Practical rule: if data are not on the eCRF, do not mark them as missing
@@ -11550,7 +11563,7 @@ Safety Analysis Set</div>
                               <td>If it is valid clinical data, it may still belong in a standard domain or SUPP--.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                     </div>
 
@@ -12047,7 +12060,7 @@ Safety Analysis Set</div>
                                   <td>Derived subject death flag indicating whether the subject is reported as deceased in submitted study data.</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                       </div>
@@ -12098,7 +12111,7 @@ Safety Analysis Set</div>
                               <td>TAETORD, EPOCH, RFSTDTC, RFXSTDTC, RFPENDTC, ARM, ACTARM.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h6>Why Variable Order Matters</h6>
@@ -12146,7 +12159,7 @@ Safety Analysis Set</div>
                               <td>Reviewer can determine when the observation occurred and how it relates to the study timeline.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <p class="document-notes">
                         Programmer habit: when creating a final SDTM dataset, apply the approved
@@ -12241,7 +12254,7 @@ Safety Analysis Set</div>
                               <td>Study metadata and submission package.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <h6>Protocol-to-TDM Thinking</h6>
                       <p>
@@ -12308,7 +12321,7 @@ Safety Analysis Set</div>
                               <td>TS describes the trial as a whole, not individual observations.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <h6>TDM Vocabulary for Programmers</h6>
                       <div class="table-scroll">
@@ -12359,7 +12372,7 @@ Safety Analysis Set</div>
                               <td>Age at least 18 years; no prohibited prior therapy.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <h6>Domain-by-Domain Build Detail</h6>
                       <div class="table-scroll">
@@ -12410,7 +12423,7 @@ Safety Analysis Set</div>
                               <td>Use controlled terminology where required; do not invent parameter values casually.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <h6>Mini Example: Parallel Two-Arm Study</h6>
                       <p>
@@ -12455,7 +12468,7 @@ Safety Analysis Set</div>
                               <td>TS describes the study as submitted, using standard metadata values.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="Trial Design Model construction checklist">
@@ -12505,7 +12518,7 @@ Safety Analysis Set</div>
                               <td>TS is often built from protocol metadata and controlled terminology, not from eCRF rows.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <h6>Complex Designs: What Changes?</h6>
                       <p>
@@ -12598,7 +12611,7 @@ Safety Analysis Set</div>
                               <td>Do not silently overwrite old design assumptions. If the amendment changes metadata, specs, TV, TA, TI, and reviewer notes may all need updates.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <div class="table-scroll">
                         <table class="crf-table" aria-label="Trial Design Model mentor checklist">
@@ -12636,7 +12649,7 @@ Safety Analysis Set</div>
                               <td>TA/TE for plan; SE for actual element history.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <p class="document-notes">
                         Mentor warning: Trial Design domains are metadata about the planned trial,
@@ -12705,7 +12718,7 @@ Safety Analysis Set</div>
                               <td>Distinguish actual subject visits from planned TV metadata.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <h4>DM Domain Deep Dive: The Subject-Level Anchor</h4>
                       <p>
@@ -12787,7 +12800,7 @@ Safety Analysis Set</div>
                               </td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>RFPENDTC: End of Participation Is Not Always End of Treatment</h5>
@@ -12829,7 +12842,7 @@ Safety Analysis Set</div>
                               <td>Using it as the study participation end date when follow-up continues after last dose.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <p>
                         A useful rule of thumb is: RFXENDTC is about treatment exposure, while
@@ -12894,7 +12907,7 @@ Safety Analysis Set</div>
                               <td>Some ongoing subjects use cutoff date while others leave RFPENDTC missing without specification support.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>DM and DC: When One Person Participates More Than Once</h5>
@@ -12948,7 +12961,7 @@ Safety Analysis Set</div>
                               <td>DC is useful for cross-participation review, de-duplication logic, rollover interpretation, and reviewer explanation.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="xpt-compare-card" aria-label="DC and DM XPT example for rescreening">
@@ -13011,7 +13024,7 @@ Safety Analysis Set</div>
                                   <td></td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
 
@@ -13043,7 +13056,7 @@ Safety Analysis Set</div>
                                   <td></td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
 
@@ -13090,7 +13103,7 @@ Safety Analysis Set</div>
                                 <td>Do not merge both attempts into one DM row unless the protocol and SDTM specification explicitly require that structure.</td>
                               </tr>
                             </tbody>
-                          </table>
+                  </table>
                         </div>
                         <p>
                           The practical lesson is that a repeated person is not automatically a
@@ -13142,7 +13155,7 @@ Safety Analysis Set</div>
                               <td>A programmer tries to use patient name or full birth date as the linkage key in a deliverable dataset.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Common Raw Sources for DM</h5>
@@ -13187,7 +13200,7 @@ Safety Analysis Set</div>
                               <td>Use an approved lookup table for ISO country codes and reconcile site IDs before merge.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>How to Think About Key DM Derivations</h5>
@@ -13252,7 +13265,7 @@ Safety Analysis Set</div>
                               <td>Subject randomized to Active but EX shows placebo kit dispensed; ACTARM needs review.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h4>SE Domain Deep Dive: The Subject's Actual Path Through the Study</h4>
@@ -13307,7 +13320,7 @@ Safety Analysis Set</div>
                               <td>DM, DS, EX, SV, protocol deviations, and reviewer-guide explanations may all be needed.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Before Building SE: Read TE and TA First</h5>
@@ -13394,7 +13407,7 @@ Safety Analysis Set</div>
                                   <td>Final follow-up, withdrawal, death, or cutoff rule</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
 
@@ -13426,7 +13439,7 @@ Safety Analysis Set</div>
                                 <tr class="dm-row"><td>DUMMY-101</td><td>TA</td><td>SEQBA</td><td>Sequence BA</td><td>4</td><td>TRTA</td><td>Treatment A</td><td>TREATMENT 2</td></tr>
                                 <tr class="dm-row"><td>DUMMY-101</td><td>TA</td><td>SEQBA</td><td>Sequence BA</td><td>5</td><td>FU</td><td>Follow-up</td><td>FOLLOW-UP</td></tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
 
@@ -13486,7 +13499,7 @@ Safety Analysis Set</div>
                                   <td>2026-05-12</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
 
@@ -13547,7 +13560,7 @@ Safety Analysis Set</div>
                               <td>Hiding extension participation inside a single treatment element, making reviewer interpretation difficult.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Core SE Variables</h5>
@@ -13597,7 +13610,7 @@ Safety Analysis Set</div>
                               <td>Connects the actual SE record to the broader planned period. Must be consistent with TA/TE and downstream domain EPOCH derivations.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Common Raw Sources for SE</h5>
@@ -13647,7 +13660,7 @@ Safety Analysis Set</div>
                               <td>SE should represent the planned element framework; unusual actual behavior may also need DS, DV, or reviewer-guide explanation.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>How to Think About SE Derivations</h5>
@@ -13704,7 +13717,7 @@ Safety Analysis Set</div>
                               <td>A screen failure should not be forced into treatment elements just because the assigned arm has them.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="code-window" aria-label="SE derivation pseudocode">
@@ -13781,7 +13794,7 @@ run;</code></pre>
                               <td>Keep intermediate milestone datasets and document source priority in the SDTM specification and reviewer's guide when needed.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="workshop">
@@ -13844,7 +13857,7 @@ run;</code></pre>
                               <td>Subjects with missing last dose date receive arbitrary SEENDTC values not supported by the specification.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h4>Subject Visits in SDTM: Planned Visits vs. What Actually Happened</h4>
@@ -13898,7 +13911,7 @@ run;</code></pre>
                               <td>SVEPCHGI can indicate that the visit was impacted by an epidemic or pandemic-related public health emergency.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Core SV Variables</h5>
@@ -13963,7 +13976,7 @@ run;</code></pre>
                               <td>Use to flag visit deviations caused by public health emergencies, such as epidemic or pandemic-related changes to the planned visit conduct.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="xpt-compare-card" aria-label="SDTMIG-style SV example with supporting TV and DS domains">
@@ -14078,7 +14091,7 @@ run;</code></pre>
                                   <td>At Trial Exit</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
 
@@ -14195,7 +14208,7 @@ run;</code></pre>
                                   <td>26</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
 
@@ -14271,7 +14284,7 @@ run;</code></pre>
                                   <td>15</td><td>123456</td><td>SV</td><td>101</td><td>8</td><td>FOLLOW-UP</td><td>Y</td><td>Y</td><td></td><td>TELEPHONE CALL</td><td>Y</td><td></td><td>2020-03-16</td><td>2020-03-16</td><td>26</td><td>26</td><td></td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <p class="xpt-legend">
@@ -14328,7 +14341,7 @@ run;</code></pre>
                               <td>Showing planned visits as missed after death, withdrawal, or end of participation.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>SV QC Checks Programmers Should Run</h5>
@@ -14373,7 +14386,7 @@ run;</code></pre>
                               <td>SVSTDTC occurs after RFPENDTC without a defined follow-up or cutoff rule.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                   </div>
                 </article>
@@ -14475,7 +14488,7 @@ run;</code></pre>
                               <td>Organized by constant dosing intervals, collapsing continuous daily dosing into simplified date ranges.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Advanced Mapping Scenario 1: Constant Dosing Intervals in EX</h5>
@@ -14549,7 +14562,7 @@ run;</code></pre>
                                   <td></td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <div class="xpt-dataset">
@@ -14587,7 +14600,7 @@ run;</code></pre>
                                   <td>LNK002</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <p class="xpt-legend">
@@ -14727,7 +14740,7 @@ run;</code></pre>
                                   <td>LNK105</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <div class="xpt-dataset">
@@ -14798,7 +14811,7 @@ run;</code></pre>
                                   <td>LNK105</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <p class="xpt-legend">
@@ -14845,7 +14858,7 @@ run;</code></pre>
                               <td>The relationship is explicit, reviewable, and submission-ready.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Advanced Mapping Scenario 4: Missed Doses and Temporary Interruptions</h5>
@@ -14912,7 +14925,7 @@ run;</code></pre>
                               <td>If the planned dose did not occur, ECOCCUR must be "N" and ECSTAT must be "NOT DONE". If the dose occurred, ECOCCUR is "Y" and ECSTAT must remain blank.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="workshop">
@@ -15084,7 +15097,7 @@ run;</code></pre>
                               <td>Timing: AE end date/time in ISO 8601 character format; blank when the event is ongoing or the end date is not collected.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>Key Mapping Rules and Industry Practice</h5>
@@ -15119,7 +15132,7 @@ run;</code></pre>
                               <td>Do not force an end date from last visit, database lock, or treatment end unless the specification explicitly defines that transformation.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="example-box">
@@ -15159,7 +15172,7 @@ run;</code></pre>
                               <td>AETERM preserves the reported phrase. MedDRA coding may give AEDECOD = "Leg fracture" and AEBODSYS = "Injury, poisoning and procedural complications". Because the event caused hospitalization, AESER must be "Y" even though AEREL = "NOT RELATED". AEENDTC remains blank because the event is ongoing.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="xpt-compare-card" aria-label="AE dataset view example">
@@ -15217,7 +15230,7 @@ run;</code></pre>
                                   <td></td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <p class="xpt-legend">
@@ -15294,7 +15307,7 @@ run;</code></pre>
                               <td>Highest for safety Tables, Listings, and Figures (TFLs). TEAE summaries should use the ADaM analysis flag.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="example-box">
@@ -15345,7 +15358,7 @@ run;</code></pre>
                                   <td>2026-07</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <div class="xpt-dataset">
@@ -15378,7 +15391,7 @@ run;</code></pre>
                                   <td>CRF</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <div class="xpt-dataset">
@@ -15409,7 +15422,7 @@ run;</code></pre>
                                   <td>Y</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <p class="xpt-legend">
@@ -15450,7 +15463,7 @@ run;</code></pre>
                               <td>Final TEAE TFLs should use ADAE.TRTEMFL, not SUPPAE.AETRTEM.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="workshop">
@@ -15573,7 +15586,7 @@ run;</code></pre>
                               <td>IETESTCD = INC01; IEORRES = N for a criterion not met</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h4>Laboratory Test Results: LB and LC</h4>
@@ -15666,7 +15679,7 @@ run;</code></pre>
                                     <td>NEGATIVE</td>
                                   </tr>
                                 </tbody>
-                              </table>
+                  </table>
                             </div>
                             <p>
                               Regulatory implication: if <code>LBORRES</code> has been altered from the source
@@ -15730,7 +15743,7 @@ run;</code></pre>
                                     <td></td>
                                   </tr>
                                 </tbody>
-                              </table>
+                  </table>
                             </div>
                           </article>
 
@@ -15814,7 +15827,7 @@ run;</code></pre>
                                       <td>No conversion needed, but the unit still comes from governed metadata.</td>
                                     </tr>
                                   </tbody>
-                                </table>
+                  </table>
                               </div>
                             </div>
                             <p>
@@ -15898,7 +15911,7 @@ run;</code></pre>
                                     <td>Wrong: 5.27 is compared against 70 instead of the converted lower limit.</td>
                                   </tr>
                                 </tbody>
-                              </table>
+                  </table>
                             </div>
                             <p>
                               A glucose value of 5.27 mmol/L is within the expected normal range after
@@ -15944,7 +15957,7 @@ run;</code></pre>
                                     <td>NORMAL (correct)</td>
                                   </tr>
                                 </tbody>
-                              </table>
+                  </table>
                             </div>
                             <p>
                               Important: the value <code>5.27</code> is correct in both cases. The failure is
@@ -16010,7 +16023,7 @@ run;</code></pre>
                                     <td>Use sponsor-defined qualitative standardization and preserve traceability to the source value.</td>
                                   </tr>
                                 </tbody>
-                              </table>
+                  </table>
                             </div>
                           </article>
 
@@ -16118,7 +16131,7 @@ run;</code></pre>
                                       <td>2026-06-20</td>
                                     </tr>
                                   </tbody>
-                                </table>
+                  </table>
                               </div>
                             </div>
                             <p>
@@ -16206,7 +16219,7 @@ run;</code></pre>
                                     <td>Clearer reviewer navigation when planned and documented from the start.</td>
                                   </tr>
                                 </tbody>
-                              </table>
+                  </table>
                             </div>
                             <p>
                               Practical takeaway: do not treat alternate units as a programming cleanup item.
@@ -16274,7 +16287,7 @@ run;</code></pre>
                               <td>LBDTC is the specimen collection date/time, not necessarily the lab report date. LBDY is calculated against the subject reference start date.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>2. Modifier Variables That Change Lab Interpretation</h5>
@@ -16311,7 +16324,7 @@ run;</code></pre>
                               <td>A urine protein result from a dipstick method may not be directly comparable with a quantitative analyzer result.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>3. LB and LC: SI Units versus Conventional Units</h5>
@@ -16365,7 +16378,7 @@ run;</code></pre>
                               <td>Keep sort order and pairing stable so reviewers can compare LB and LC.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>4. Conversion Pipeline</h5>
@@ -16410,7 +16423,7 @@ run;</code></pre>
                               <td>One LBTESTCD should not have multiple LBSTRESU values unless the specification explicitly supports that design.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>5. Worked Example: Glucose Reported in mg/dL</h5>
@@ -16455,7 +16468,7 @@ run;</code></pre>
                                   <td>2026-03-15T08:20</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <div class="xpt-dataset">
@@ -16494,7 +16507,7 @@ run;</code></pre>
                                   <td>2026-03-15T08:20</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <div class="xpt-dataset">
@@ -16533,7 +16546,7 @@ run;</code></pre>
                                   <td>2026-03-15T08:20</td>
                                 </tr>
                               </tbody>
-                            </table>
+                  </table>
                           </div>
                         </div>
                         <p class="xpt-legend">
@@ -16585,7 +16598,7 @@ run;</code></pre>
                               <td>Mixed LBSTRESU values for the same LBTESTCD commonly cause validation and review problems.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>7. Central Lab, Local Lab, and Reference Ranges</h5>
@@ -16623,7 +16636,7 @@ run;</code></pre>
                               <td>If the source is unclear, reviewers cannot tell why two records with the same test have different ranges or methods.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <p>
                         Reference ranges are not decorative metadata. They drive abnormality
@@ -16668,7 +16681,7 @@ run;</code></pre>
                               <td>Creating a pseudo-result such as NOT DONE in LBORRES or zero in LBSTRESN.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>9. When SUPPLB or SUPPLC Is Needed</h5>
@@ -16703,7 +16716,7 @@ run;</code></pre>
                               <td>Use SUPP-- deliberately. If a standard LB variable fits, use the standard variable instead.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <h5>10. QC Checklist for LB and LC</h5>
@@ -16738,7 +16751,7 @@ run;</code></pre>
                               <td>LB and LC should remain reviewer-comparable when both are part of the submission package.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
 
                       <div class="lesson-popup-launch">
@@ -16851,7 +16864,7 @@ run;</code></pre>
                               <td>Forgetting unit conversion, such as lbs to kg or inches to cm.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                   </div>
                 </article>
@@ -16918,7 +16931,7 @@ run;</code></pre>
                               <td>Preserves a missing day. Do not impute the day in SDTM unless the standard or study rule explicitly requires it.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <div class="code-window" aria-label="SAS ISO 8601 DTC mapping template">
                         <div class="code-window-header">
@@ -16998,7 +17011,7 @@ run;</code></pre>
                               <td>Creating invalid strings such as 2026--12; the safer output is 2026.</td>
                             </tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                   </div>
                 </article>
@@ -17198,7 +17211,7 @@ run;</code></pre>
                           <td>Stores study-level design and submission parameters.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>3. SDTM TDM in a Crossover Trial</h4>
@@ -17337,7 +17350,7 @@ run;</code></pre>
                           <td>Defines broader phases and within-period subperiods.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>5. Case Study: TDM Examples</h4>
@@ -17376,7 +17389,7 @@ run;</code></pre>
                             <tr><td>TA</td><td>B-B</td><td>DrugB-DrugB</td><td>3</td><td class="etcd">B</td><td class="epoch">TREATMENT1</td></tr>
                             <tr><td>TA</td><td>B-B</td><td>DrugB-DrugB</td><td>4</td><td class="etcd">B</td><td class="epoch">TREATMENT2</td></tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <div>
                         <div class="tdm-panel-title te"><span class="tdm-dot"></span>TE (Elements)</div>
@@ -17390,7 +17403,7 @@ run;</code></pre>
                             <tr><td>TE</td><td>A</td><td>DrugA</td></tr>
                             <tr><td>TE</td><td>B</td><td>DrugB</td></tr>
                           </tbody>
-                        </table>
+                  </table>
                         <svg class="tdm-flow-svg" viewBox="0 0 520 270" role="img" aria-label="TDM Example 1 epoch flow">
                           <defs>
                             <marker id="flowArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
@@ -17464,7 +17477,7 @@ run;</code></pre>
                             <tr><td>TA</td><td>B</td><td>DrugB</td><td>3</td><td class="etcd">CA</td><td class="epoch">OPEN LABEL TREATMENT</td></tr>
                             <tr><td>TA</td><td>B</td><td>DrugB</td><td>4</td><td class="etcd">FU</td><td class="epoch">FOLLOW-UP</td></tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                       <div>
                         <div class="tdm-panel-title te"><span class="tdm-dot"></span>TE (Elements)</div>
@@ -17479,7 +17492,7 @@ run;</code></pre>
                             <tr><td>TE</td><td>CA</td><td>Open Label DrugA</td></tr>
                             <tr><td>TE</td><td>FU</td><td>Follow-up</td></tr>
                           </tbody>
-                        </table>
+                  </table>
                         <svg class="tdm-flow-svg" viewBox="0 0 520 270" role="img" aria-label="TDM Example 2 epoch flow">
                           <defs>
                             <marker id="flowArrow2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
@@ -17559,7 +17572,7 @@ run;</code></pre>
                           <tr><td>S003: BCAD</td><td>B</td><td>C</td><td>A</td><td>D</td><td>Used by ADAE, ADLB, and other BDS datasets</td></tr>
                           <tr><td>S004: DACB</td><td>D</td><td>A</td><td>C</td><td>B</td><td>Supports treatment attribution by period window</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <div class="case-grid">
                       <div class="case-card">
@@ -17694,7 +17707,7 @@ run;</code></pre>
                           <tr><td>Period</td><td>APERIOD, APERIODC</td><td>Assigns the ECG result to the correct treatment period.</td></tr>
                           <tr><td>Baseline</td><td>ABLFL, BASE, CHG</td><td>Supports period-specific baseline and change from baseline.</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                   </div>
                   <figure class="pdf-slide-figure">
@@ -17805,7 +17818,7 @@ run;</code></pre>
                           <td>Must be explained clearly in specifications, Define.xml, and the Analysis Data Reviewer's Guide (ADRG).</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>4. ADSL: The Subject-Level Anchor</h4>
@@ -17876,7 +17889,7 @@ run;</code></pre>
                             <td>F</td>
                           </tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="native-note">
                       Teaching point: ADSL separates planned treatment from actual treatment.
@@ -17934,7 +17947,7 @@ run;</code></pre>
                           <td>Make selected records and imputed or derived records visible to reviewers.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <div class="xpt-compare-card" aria-label="ADVS xpt example">
@@ -17997,7 +18010,7 @@ run;</code></pre>
                             <td>Y</td>
                           </tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="native-note">
                       Teaching point: the TFL program can summarize AVAL and CHG directly.
@@ -18073,7 +18086,7 @@ run;</code></pre>
                             <td>Y</td>
                           </tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <p class="native-note">
                       Teaching point: ADAE does not simply copy SDTM AE. It adds SAP-driven
@@ -18119,7 +18132,7 @@ run;</code></pre>
                           <td>ADSL -> SDTM EX/EC + randomization and exposure records.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>8. Common Beginner Mistakes</h4>
@@ -18199,7 +18212,7 @@ run;</code></pre>
                           <td>Use the same analysis dataset, population flag, visit windows, treatment grouping, and censoring or summary rules used by the matching tables.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>2. TLF Deliverables in the Reporting Package</h4>
@@ -18253,7 +18266,7 @@ run;</code></pre>
                           <td>Use the same population, censoring rules, visit windows, subgroup definitions, and treatment labels used in the matching tables.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>3. What a Shell Provides</h4>
@@ -18300,7 +18313,7 @@ run;</code></pre>
                           <td>Often determines real code logic. Footnotes must match SAP, ADaM specifications, and output programming specifications.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>4. Example Shell Reading</h4>
@@ -18348,7 +18361,7 @@ run;</code></pre>
                         <tr><td>Median</td><td>xx.x</td><td>xx.x</td><td>xx.x</td></tr>
                         <tr><td>Min, Max</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td><td>xx.x, xx.x</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                     <div class="shell-footnotes">
                       <div>Note: Percentages, if displayed, use the number of subjects in the treatment group as the denominator unless otherwise specified.</div>
                       <div>Baseline is defined as the last non-missing assessment before the first dose of study treatment.</div>
@@ -18419,7 +18432,7 @@ run;</code></pre>
                           <tr><td>Female</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
                           <tr><td>Male</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                       <div class="shell-footnotes">
                         <div>[1] Denominators are derived from ADSL where SAFFL = "Y", grouped by TRT01A.</div>
                         <div>Percentages are based on the number of subjects in each treatment group unless otherwise specified.</div>
@@ -18468,7 +18481,7 @@ run;</code></pre>
                           <tr><td class="indent">Visit Mean (SD)</td><td>xx.x (xx.xx)</td><td>xx.x (xx.xx)</td><td></td><td></td></tr>
                           <tr><td class="indent">LS Mean Change from Baseline (SE)</td><td>-x.x (x.xx)</td><td>-x.x (x.xx)</td><td>-x.x (-x.x, -x.x)</td><td>0.xxxx</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                       <div class="shell-footnotes">
                         <div>[1] Denominators are derived from ADSL where FASFL = "Y".</div>
                         <div>[2] Parameter is filtered using PARAMCD = "PAINVAS" from ADEFF.</div>
@@ -18518,7 +18531,7 @@ run;</code></pre>
                           <tr class="shell-section-row"><td colspan="4">GASTROINTESTINAL DISORDERS</td></tr>
                           <tr><td class="indent">Nausea</td><td>xx (xx.x)</td><td>xx (xx.x)</td><td>xx (xx.x)</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                       <div class="shell-footnotes">
                         <div>[1] Denominator is the number of subjects in the Safety Population: ADSL.SAFFL = "Y".</div>
                         <div>[2] Ordered alphabetically by AESOC and by AEDECOD within each System Organ Class unless the SAP specifies a severity or frequency order.</div>
@@ -18564,7 +18577,7 @@ run;</code></pre>
                           <tr><td>XX-XXX-XXXX</td><td>Placebo</td><td>xx / M</td><td>Headache</td><td>2026-XX-XX</td><td>Drug withdrawn</td></tr>
                           <tr><td>XX-XXX-XXXX</td><td>YGN-101 10 mg</td><td>xx / F</td><td>Nausea</td><td>2026-XX-XX</td><td>Drug withdrawn</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                       <div class="shell-footnotes">
                         <div>[1] ADSL.USUBJID. [2] ADSL.TRT01A. [3] ADSL.AGE and ADSL.SEX.</div>
                         <div>[4] ADAE.AEDECOD where ADAE.AEACN = "DRUG WITHDRAWN". [5] ADAE.ASTDT.</div>
@@ -18614,7 +18627,7 @@ run;</code></pre>
                             <tr><td>YGN-101-003</td><td>Y</td><td>YGN-101 50 mg</td><td>Placebo</td></tr>
                             <tr><td>YGN-101-004</td><td>N</td><td>Placebo</td><td></td></tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                     </div>
 
@@ -18642,7 +18655,7 @@ run;</code></pre>
                             <tr><td>YGN-101-002</td><td>YGN-101 50 mg</td><td></td><td>Nervous system disorders</td><td>Dizziness</td><td>MILD</td><td>N</td></tr>
                             <tr><td>YGN-101-003</td><td>Placebo</td><td>Y</td><td>Infections and infestations</td><td>Nasopharyngitis</td><td>MILD</td><td>N</td></tr>
                           </tbody>
-                        </table>
+                  </table>
                       </div>
                     </div>
                   </div>
@@ -18674,7 +18687,7 @@ run;</code></pre>
                         <tr class="shell-section-row"><td colspan="4">Nervous system disorders</td></tr>
                         <tr><td>&nbsp;&nbsp;Headache</td><td>1 (50.0)</td><td>0</td><td>1 (33.3)</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                     <div class="shell-footnotes">
                       <div>TEAE = treatment-emergent adverse event. Subjects are counted once per system organ class and preferred term.</div>
                       <div>Denominator is the number of subjects in the Safety Population by actual treatment received.</div>
@@ -18767,7 +18780,7 @@ run;</code></pre>
                           <td>Allows QC programmers and reviewers to follow each value back to approved inputs.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <h4>2. What QC Is Looking For</h4>
@@ -18811,7 +18824,7 @@ run;</code></pre>
                           <td>Documents updates made after review or specification changes.</td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
 
                   <div class="workshop">
@@ -18916,7 +18929,7 @@ run;</code></pre>
                       <td>Reviews Canadian submissions and expects clear evidence, data integrity, and traceable clinical and statistical interpretation.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
               <p>
                 The same trial may support submissions to more than one agency. That is why
@@ -18964,7 +18977,7 @@ run;</code></pre>
                       <td>FDA multiple-endpoints guidance, EMA missing-data guidance, or regional expectations for subgroup and population interpretation.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
 
               <h4>3. ICH Guidelines to Know First</h4>
@@ -19014,7 +19027,7 @@ run;</code></pre>
                       <td>Regional consistency, pooling strategy, sample allocation, and interpretation across populations.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
               <h4>4. ICH E3: CSR Structure and TFL Shell Numbering</h4>
               <p>
@@ -19065,7 +19078,7 @@ run;</code></pre>
                       <td>Often informs Listing 16.2.x-style numbering, especially for disposition, deviations, AE, deaths, labs, vital signs, ECG, and concomitant medications.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
               <p>
                 Sponsors may use different numbering conventions, so programmers should always
@@ -19458,7 +19471,7 @@ run;</code></pre>
                       <td>How the SAP, cardiac safety review package, and study report explain QTc risk in a way reviewers can trace.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
               <p>
                 In practice, ECG analysis often focuses on corrected QT intervals such as QTcF,
@@ -19542,7 +19555,7 @@ run;</code></pre>
                       <td>Relevant for interim monitoring plans, unblinded data access, stopping boundaries, safety review, and preserving trial integrity.</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
               <h4>8. How These Guidelines Show Up in Daily Work</h4>
               <div class="table-scroll">
@@ -19601,7 +19614,7 @@ run;</code></pre>
                       <td>Which covariates belong in the primary model, and were they chosen before seeing outcomes?</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
               </div>
 
               <div class="workshop">
@@ -20285,7 +20298,7 @@ run;</code></pre>
                           </td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
                   <ul>
                     <li><strong>Most common default:</strong> Use extra blocks and let the next subject take the next available randomization slot.</li>
@@ -20422,7 +20435,7 @@ run;</code></pre>
                         <tr><td>R02-001</td><td>2</td><td>Mild severity and age &gt;= 65</td><td>1</td><td>1</td><td>Active Study Drug</td></tr>
                         <tr><td>R02-002</td><td>2</td><td>Mild severity and age &gt;= 65</td><td>1</td><td>2</td><td>Matching Placebo</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
                 </div>
 
@@ -21193,7 +21206,7 @@ run;</code></pre>
         <tr><td>4. MAR sensitivity analysis</td><td>Do reasonable MAR variants support the same conclusion?</td><td>Sensitivity analyses test robustness without changing to MNAR.</td></tr>
         <tr><td>5. PROC MI implementation</td><td>How are imputed datasets created, analyzed, and combined?</td><td>MI is an implementation tool used after the analysis rule is defined.</td></tr>
       </tbody>
-    </table>
+                  </table>
   </div>
 </div>
 
@@ -21363,7 +21376,7 @@ run;</code></pre>
                           <td></td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
                   <p>
                     Teaching point: the missing Week 24 result is not replaced by Week 12. The MMRM
@@ -21391,7 +21404,7 @@ run;</code></pre>
                       </tr>
                       <tr>
                         <td>Fixed effects</td>
-                        <td>Treatment, visit, treatment-by-visit interaction, baseline value, baseline-by-visit interaction, and pre-specified stratification factors such as STRATA1 or region.</td>
+                        <td>Treatment, visit, treatment-by-visit interaction, baseline value, baseline-by-visit interaction, pre-specified stratification factors such as STRATA1 or region, and any additional SAP-specified covariates such as center or investigator.</td>
                       </tr>
                       <tr>
                         <td>Repeated subject</td>
@@ -21415,7 +21428,7 @@ run;</code></pre>
                 <div class="model-sketch-card" aria-label="MMRM formula and SAS variable mapping">
                   <h5>Model Sketch</h5>
                   <div class="model-formula math-equation" aria-label="MMRM mathematical model">
-                    <span class="math-term">Y<sub>ij</sub></span><span class="math-op">=</span><span class="math-term">&mu;</span><span class="math-op">+</span><span class="math-term">&tau;<sub>g_i</sub></span><span class="math-op">+</span><span class="math-term">&nu;<sub>j</sub></span><span class="math-op">+</span><span class="math-term">(&tau;&nu;)<sub>g_i j</sub></span><span class="math-op">+</span><span class="math-term">&beta;<sub>1</sub>BASE<sub>i</sub></span><span class="math-op">+</span><span class="math-term">&beta;<sub>2j</sub>(BASE<sub>i</sub> &times; &nu;<sub>j</sub>)</span><span class="math-op">+</span><span class="math-term">&gamma;STRATA<sub>i</sub></span><span class="math-op">+</span><span class="math-term">&epsilon;<sub>ij</sub></span>
+                    <span class="math-term">Y<sub>ij</sub></span><span class="math-op">=</span><span class="math-term">&mu;</span><span class="math-op">+</span><span class="math-term">&tau;<sub>g</sub></span><span class="math-op">+</span><span class="math-term">&nu;<sub>j</sub></span><span class="math-op">+</span><span class="math-term">(&tau;&nu;)<sub>gj</sub></span><span class="math-op">+</span><span class="math-term">&beta;<sub>j</sub>BASE<sub>i</sub></span><span class="math-op">+</span><span class="math-term">&gamma;STRATA<sub>i</sub></span><span class="math-op">+</span><span class="math-term">&epsilon;<sub>ij</sub></span>
                   </div>
                   <div class="model-primary-note">
                     <div><strong>Primary Comparison:</strong> The primary treatment effect is derived from the least-squares mean (LS Mean) difference at the primary visit, e.g., <strong>Week 24</strong>.</div>
@@ -21441,9 +21454,9 @@ run;</code></pre>
                         <td><strong>Intercept:</strong> The overall intercept of the model.</td>
                       </tr>
                       <tr>
-                        <td><span class="math-inline">&tau;<sub>g_i</sub></span></td>
+                        <td><span class="math-inline">&tau;<sub>g</sub></span></td>
                         <td><span class="sas-pill">TRT01P</span></td>
-                        <td><strong>Treatment Group:</strong> The planned treatment assigned to participant <em>i</em>.</td>
+                        <td><strong>Treatment Group:</strong> The effect for treatment group <em>g</em>. Participant <em>i</em> belongs to one treatment group, so the treatment effect changes by group, not by the subject index.</td>
                       </tr>
                       <tr>
                         <td><span class="math-inline">&nu;<sub>j</sub></span></td>
@@ -21451,19 +21464,14 @@ run;</code></pre>
                         <td><strong>Visit:</strong> The scheduled analysis visit, coded numerically.</td>
                       </tr>
                       <tr>
-                        <td><span class="math-inline">(&tau;&nu;)<sub>g_i j</sub></span></td>
+                        <td><span class="math-inline">(&tau;&nu;)<sub>gj</sub></span></td>
                         <td><span class="sas-pill">TRT01P * AVISITN</span></td>
-                        <td><strong>Treatment-by-Visit Interaction:</strong> Allows the treatment effect to vary at different time points.</td>
+                        <td><strong>Treatment-by-Visit Interaction:</strong> Allows the treatment-group effect to differ by scheduled visit.</td>
                       </tr>
                       <tr>
-                        <td><span class="math-inline">BASE<sub>i</sub></span></td>
-                        <td><span class="sas-pill">BASE</span></td>
-                        <td><strong>Baseline Adjustment:</strong> The participant's initial value before treatment.</td>
-                      </tr>
-                      <tr>
-                        <td><span class="math-inline">BASE<sub>i</sub> &times; &nu;<sub>j</sub></span></td>
-                        <td><span class="sas-pill">BASE * AVISITN</span></td>
-                        <td><strong>Baseline-by-Visit Interaction:</strong> Allows the impact of the baseline value to vary over time.</td>
+                        <td><span class="math-inline">&beta;<sub>j</sub>BASE<sub>i</sub></span></td>
+                        <td><span class="sas-pill">BASE</span> <span class="sas-pill">BASE * AVISITN</span></td>
+                        <td><strong>Visit-Specific Baseline Adjustment:</strong> The baseline slope can differ by visit. In SAS, <span class="sas-pill">base</span> plus <span class="sas-pill">base*avisitn</span> is a practical parameterization of the same idea when <span class="sas-pill">AVISITN</span> is a class effect.</td>
                       </tr>
                       <tr>
                         <td><span class="math-inline">STRATA<sub>i</sub></span></td>
@@ -21477,6 +21485,14 @@ run;</code></pre>
                       </tr>
                     </tbody>
                   </table>
+                  <div class="model-primary-note">
+                    <div><strong>Model specification checks:</strong></div>
+                    <ul class="compact-note-list">
+                      <li><strong>Treatment group effect:</strong> use <span class="math-inline">&tau;<sub>g</sub></span>, not <span class="math-inline">&tau;<sub>g_i</sub></span>. Participant <em>i</em> belongs to group <em>g</em>; the treatment effect is indexed by group.</li>
+                      <li><strong>Baseline-by-visit adjustment:</strong> <span class="math-inline">&beta;<sub>j</sub>BASE<sub>i</sub></span> means the baseline slope may differ by visit. In SAS this is commonly parameterized as <span class="sas-pill">base</span> plus <span class="sas-pill">base*avisitn</span> when <span class="sas-pill">AVISITN</span> is a class effect.</li>
+                      <li><strong>STRATA and extra covariates:</strong> stratification factors such as <span class="sas-pill">STRATA1</span> are fixed effects and should appear in both <span class="sas-pill">CLASS</span> and <span class="sas-pill">MODEL</span>. Check the SAP for sparse-strata handling and for additional covariates such as center or investigator.</li>
+                    </ul>
+                  </div>
                 </div>
 
                 <h4>5. SAS Template: MMRM Primary and MAR Sensitivity</h4>
@@ -21486,6 +21502,11 @@ run;</code></pre>
                     <span>.sas</span>
                   </div>
 <pre><code><span class="sas-comment">/* Training template only. Final model terms must follow the approved SAP. */</span>
+<span class="sas-comment">/* Primary MMRM:</span>
+<span class="sas-comment">   - trt01p*avisitn allows the treatment effect to differ by visit.</span>
+<span class="sas-comment">   - base adjusts for each participant's baseline value.</span>
+<span class="sas-comment">   - base + base*avisitn is the SAS parameterization for visit-specific baseline slopes.</span>
+<span class="sas-comment">*/</span>
 <span class="sas-proc">proc mixed</span> <span class="sas-option">data=</span><span class="sas-data">adhba1c</span> <span class="sas-option">method=</span><span class="sas-option">reml</span>;
   <span class="sas-keyword">class</span> <span class="sas-var">usubjid trt01p avisitn strata1</span>;
   <span class="sas-keyword">model</span> <span class="sas-var">chg</span> = <span class="sas-var">trt01p avisitn trt01p*avisitn base base*avisitn strata1</span>
@@ -21495,7 +21516,10 @@ run;</code></pre>
   <span class="sas-keyword">ods output</span> <span class="sas-output">diffs=mmrm_diffs</span> <span class="sas-output">lsmeans=mmrm_lsmeans</span>;
 <span class="sas-step">run</span>;
 
-<span class="sas-comment">/* Example MAR sensitivity: hypothetical strategy for post-rescue ICE. */</span>
+<span class="sas-comment">/* Example MAR sensitivity: hypothetical strategy for post-rescue ICE.</span>
+<span class="sas-comment">   The same fixed-effect structure is retained; only the analysis dataset</span>
+<span class="sas-comment">   changes according to the SAP-defined ICE/missing-data rule.</span>
+<span class="sas-comment">*/</span>
 <span class="sas-comment">/* Keep the same model, but analyze a SAP-defined dataset where values after rescue medication are excluded or set missing before imputation/modeling. */</span>
 <span class="sas-proc">data</span> <span class="sas-data">adhba1c_hyp</span>;
   <span class="sas-keyword">set</span> <span class="sas-data">adhba1c</span>;
@@ -21630,7 +21654,7 @@ run;</code></pre>
             <tr><td>002</td><td>16</td><td class="missing-cell">.</td><td></td></tr>
             <tr><td>002</td><td>28</td><td>-4.6</td><td></td></tr>
           </tbody>
-        </table>
+                  </table>
       </div>
       <span class="sas-footnote">Original analysis records</span>
     </div>
@@ -21653,7 +21677,7 @@ run;</code></pre>
               <tr><td>002</td><td>16</td><td class="missing-cell">5.15</td><td>100</td></tr>
               <tr><td>002</td><td>28</td><td>-4.6</td><td>100</td></tr>
             </tbody>
-          </table>
+                  </table>
         </div>
       </div>
       <span class="sas-footnote">888 x 100 = 88,800 records</span>
@@ -21672,7 +21696,7 @@ run;</code></pre>
               <tr><td>002</td><td>16</td><td class="mi-value">5.2</td><td class="mi-value">MI</td><td class="mi-impnum">1</td></tr>
               <tr><td>002</td><td>16</td><td class="mi-value">-4.9</td><td class="mi-value">MI</td><td class="mi-impnum">2</td></tr>
             </tbody>
-          </table>
+                  </table>
         </div>
         <span class="sas-footnote">Stacked imputation-ready data set</span>
       </div>
@@ -21698,7 +21722,7 @@ run;</code></pre>
         <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>16</td><td><span class="mi-value">5.15</span></td><td><span class="mi-value">MI</span></td><td class="mi-impnum">100</td></tr>
         <tr><td>1</td><td>002</td><td>PARAM1</td><td>Yes</td><td>&lt; 20%</td><td>28</td><td>-4.6</td><td></td><td class="mi-impnum">100</td></tr>
       </tbody>
-    </table>
+                  </table>
   </div>
   <p class="mi-note"><code>IMPNUM</code> is the imputation number created from <code>PROC MI</code>; in this training example it ranges from 1 to 100. Rows with <code>DTYPE = "MI"</code> show imputed values, while observed rows are repeated within each imputation copy so the analysis model can run on a complete dataset.</p>
 </div>
@@ -22400,7 +22424,7 @@ run;</code></pre>
                           <td><span class="details-link">4.2.8</span></td>
                         </tr>
                       </tbody>
-                    </table>
+                  </table>
                   </div>
                   <p class="sap-reference-line">
                     Reference: <a href="https://cdn.clinicaltrials.gov/large-docs/90/NCT05555290/SAP_001.pdf" target="_blank" rel="noopener">ClinicalTrials.gov SAP example, NCT05555290, SAP_001.pdf</a>.
@@ -22961,56 +22985,56 @@ run;</code></pre>
 
                 <h5>1. Structural Counterfactual Framework and the Causal Estimand</h5>
                 <p>
-                  In a randomized clinical trial with treatment crossover, let <span class="math-inline">A<sub>0</sub> âˆˆ {0, 1}</span> denote baseline treatment assignment. Patients in the control group (<span class="math-inline">A<sub>0</sub> = 0</span>) may switch to the experimental therapy (<span class="math-inline">A<sub>0</sub> = 1</span>) at time <span class="math-inline">T<sub>off,i</sub></span>, spending <span class="math-inline">T<sub>on,i</sub></span> time on the active treatment.
+                  In a randomized clinical trial with treatment crossover, let <span class="math-inline">A<sub>0</sub> ∈ {0, 1}</span> denote baseline treatment assignment. Patients in the control group (<span class="math-inline">A<sub>0</sub> = 0</span>) may switch to the experimental therapy (<span class="math-inline">A<sub>0</sub> = 1</span>) at time <span class="math-inline">T<sub>off,i</sub></span>, spending <span class="math-inline">T<sub>on,i</sub></span> time on the active treatment.
                 </p>
                 <p>
-                  Our objective is to estimate the <strong>causal acceleration factor</strong> <span class="math-inline">e<sup>Ïˆ</sup></span> and recover the <strong>counterfactual untreated survival time</strong> <span class="math-inline">U<sub>i</sub>(Ïˆ)</span>, representing the survival time a patient would have experienced had they never received the active treatment.
+                  Our objective is to estimate the <strong>causal acceleration factor</strong> <span class="math-inline">e<sup>ψ</sup></span> and recover the <strong>counterfactual untreated survival time</strong> <span class="math-inline">U<sub>i</sub>(ψ)</span>, representing the survival time a patient would have experienced had they never received the active treatment.
                 </p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM rank preservation assumption">
                   <h5>The Rank Preservation Assumption</h5>
-                  <p>Under the <strong>Rank Preservation Structural Assumption</strong>, the treatment multiplies the remaining survival time by a constant factor <span class="math-inline">e<sup>âˆ’Ïˆ</sup></span>:</p>
+                  <p>Under the <strong>Rank Preservation Structural Assumption</strong>, the treatment multiplies the remaining survival time by a constant factor <span class="math-inline">e<sup>−ψ</sup></span>:</p>
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM counterfactual untreated survival time">
                     <math display="block">
                       <mrow>
-                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>=</mo>
+                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
                         <msub><mi>T</mi><mrow><mi>off</mi><mo>,</mo><mi>i</mi></mrow></msub>
                         <mo>+</mo>
-                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>Â·</mo><mi>exp</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo>
+                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>·</mo><mi>exp</mi><mo>(</mo><mi>ψ</mi><mo>)</mo>
                       </mrow>
                     </math>
                   </div>
-                  <p>Where <span class="math-inline">T<sub>off,i</sub></span> is the time spent on control, <span class="math-inline">T<sub>on,i</sub></span> is the time spent on active treatment, and <span class="math-inline">U<sub>i</sub>(Ïˆ)</span> is the counterfactual untreated event time.</p>
+                  <p>Where <span class="math-inline">T<sub>off,i</sub></span> is the time spent on control, <span class="math-inline">T<sub>on,i</sub></span> is the time spent on active treatment, and <span class="math-inline">U<sub>i</sub>(ψ)</span> is the counterfactual untreated event time.</p>
                 </div>
 
                 <h5>2. Unconfoundedness and the Log-Rank Zero-Finding Derivation</h5>
                 <p>
-                  RPSFTM identifies the true parameter <span class="math-inline">Ïˆ<sup>*</sup></span> by exploiting randomized assignment: under randomization, the counterfactual distributions <span class="math-inline">U(Ïˆ<sup>*</sup>)</span> must be independent of baseline treatment <span class="math-inline">A<sub>0</sub></span>.
+                  RPSFTM identifies the true parameter <span class="math-inline">ψ<sup>*</sup></span> by exploiting randomized assignment: under randomization, the counterfactual distributions <span class="math-inline">U(ψ<sup>*</sup>)</span> must be independent of baseline treatment <span class="math-inline">A<sub>0</sub></span>.
                 </p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM zero finding criterion">
                   <h5>Mathematical Criterion for Zero-Finding</h5>
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM expected score criterion">
                     <math display="block">
                       <mrow>
-                        <mi>E</mi><mo>[</mo><mi>Z</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>|</mo><msub><mi>A</mi><mn>0</mn></msub><mo>]</mo><mo>=</mo><mn>0</mn>
-                        <mo>â‡’</mo>
-                        <mi>Z</mi><mo>(</mo><msup><mi>Ïˆ</mi><mo>*</mo></msup><mo>)</mo><mo>=</mo>
+                        <mi>E</mi><mo>[</mo><mi>Z</mi><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>|</mo><msub><mi>A</mi><mn>0</mn></msub><mo>]</mo><mo>=</mo><mn>0</mn>
+                        <mo>⇒</mo>
+                        <mi>Z</mi><mo>(</mo><msup><mi>ψ</mi><mo>*</mo></msup><mo>)</mo><mo>=</mo>
                         <mfrac>
                           <mrow>
-                            <msubsup><mo>âˆ‘</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup>
-                            <msubsup><mo>âˆ«</mo><mn>0</mn><mi>âˆž</mi></msubsup>
-                            <mo>[</mo><msub><mi>A</mi><mrow><mn>0</mn><mo>,</mo><mi>i</mi></mrow></msub><mo>âˆ’</mo><msub><mover><mi>A</mi><mo>Â¯</mo></mover><mn>0</mn></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>Ïˆ</mi><mo>)</mo><mo>]</mo>
-                            <mi>d</mi><msub><mi>M</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>Ïˆ</mi><mo>)</mo>
+                            <msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup>
+                            <msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup>
+                            <mo>[</mo><msub><mi>A</mi><mrow><mn>0</mn><mo>,</mo><mi>i</mi></mrow></msub><mo>−</mo><msub><mover><mi>A</mi><mo>¯</mo></mover><mn>0</mn></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>ψ</mi><mo>)</mo><mo>]</mo>
+                            <mi>d</mi><msub><mi>M</mi><mi>i</mi></msub><mo>(</mo><mi>t</mi><mo>;</mo><mi>ψ</mi><mo>)</mo>
                           </mrow>
-                          <mrow><msqrt><mrow><mi>Var</mi><mo>(</mo><mi>Z</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>)</mo></mrow></msqrt></mrow>
+                          <mrow><msqrt><mrow><mi>Var</mi><mo>(</mo><mi>Z</mi><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>)</mo></mrow></msqrt></mrow>
                         </mfrac>
                         <mo>=</mo><mn>0</mn>
                       </mrow>
                     </math>
                   </div>
                   <ul class="rpsft-formula-notes">
-                    <li><strong>Target score Z(Ïˆ):</strong> The standardized log-rank statistic comparing counterfactual untreated survival times <span class="math-inline">U<sub>i</sub>(Ïˆ)</span> between randomized arms <span class="math-inline">A<sub>0</sub>=1</span> and <span class="math-inline">A<sub>0</sub>=0</span>.</li>
-                    <li><strong>Grid search optimization:</strong> Since <span class="math-inline">Z(Ïˆ)</span> is a step function of <span class="math-inline">Ïˆ</span>, the SAS macro evaluates <span class="math-inline">Z(Ïˆ<sub>k</sub>)</span> across a defined grid and locates <span class="math-inline">ÏˆÌ‚</span> where <span class="math-inline">Z(Ïˆ)</span> crosses zero.</li>
-                    <li><strong>Recensoring adjustment:</strong> To prevent informative censoring induced by time transformation, actual censoring times are replaced by recensored values <span class="math-inline">D<sub>i</sub>(Ïˆ) = min(C<sub>i</sub>, C<sub>i</sub> exp(Ïˆ))</span>.</li>
+                    <li><strong>Target score Z(ψ):</strong> The standardized log-rank statistic comparing counterfactual untreated survival times <span class="math-inline">U<sub>i</sub>(ψ)</span> between randomized arms <span class="math-inline">A<sub>0</sub>=1</span> and <span class="math-inline">A<sub>0</sub>=0</span>.</li>
+                    <li><strong>Grid search optimization:</strong> Since <span class="math-inline">Z(ψ)</span> is a step function of <span class="math-inline">ψ</span>, the SAS macro evaluates <span class="math-inline">Z(ψ<sub>k</sub>)</span> across a defined grid and locates <span class="math-inline">ψ̂</span> where <span class="math-inline">Z(ψ)</span> crosses zero.</li>
+                    <li><strong>Recensoring adjustment:</strong> To prevent informative censoring induced by time transformation, actual censoring times are replaced by recensored values <span class="math-inline">D<sub>i</sub>(ψ) = min(C<sub>i</sub>, C<sub>i</sub> exp(ψ))</span>.</li>
                   </ul>
                 </div>
 
@@ -23026,12 +23050,12 @@ run;</code></pre>
                     </thead>
                     <tbody>
                       <tr><td class="step-purpose">1. Time Decomposition</td><td class="notation-cell">T<sub>i</sub> = T<sub>off,i</sub> + T<sub>on,i</sub></td><td class="sas-cell"><code>data _rpsftm_base;</code> <code>t_off = ...;</code> <code>t_on = ...;</code></td></tr>
-                      <tr><td class="step-purpose">2. Grid Generation</td><td class="notation-cell">Ïˆ<sup>(k)</sup> âˆˆ [Ïˆ<sub>min</sub>, Ïˆ<sub>max</sub>]</td><td class="sas-cell"><code>data _grid;</code> <code>do psi = &amp;psimin to &amp;psimax by &amp;psistep;</code></td></tr>
-                      <tr><td class="step-purpose">3. Counterfactual Transformation</td><td class="notation-cell">U<sub>i</sub>(Ïˆ) = T<sub>off,i</sub> + T<sub>on,i</sub> exp(Ïˆ)</td><td class="sas-cell"><code>data _cf;</code> <code>u_i = t_off + t_on * exp(psi);</code></td></tr>
-                      <tr><td class="step-purpose">4. Recensoring Logic</td><td class="notation-cell">D<sub>i</sub>(Ïˆ) = min(C<sub>i</sub>, C<sub>i</sub> exp(Ïˆ))</td><td class="sas-cell"><code>u_rec = min(u_i, c_i * exp(psi));</code></td></tr>
-                      <tr><td class="step-purpose">5. Log-Rank Evaluation</td><td class="notation-cell">Z(Ïˆ) âˆ¼ Log-Rank(U(Ïˆ) by A<sub>0</sub>)</td><td class="sas-cell"><code>PROC LIFETEST;</code> <code>time u_rec*censor(0);</code> <code>strata &amp;trt;</code></td></tr>
-                      <tr><td class="step-purpose">6. Zero-Crossing Interpolation</td><td class="notation-cell">Z(ÏˆÌ‚) = 0 â‡’ ÏˆÌ‚</td><td class="sas-cell"><code>data _estimate;</code> <code>if z_prev * z_curr &lt;= 0;</code></td></tr>
-                      <tr><td class="step-purpose">7. Causal Hazard Ratio Estimation</td><td class="notation-cell">HR<sub>causal</sub> = exp(âˆ’ÏˆÌ‚)</td><td class="sas-cell"><code>data _final_hr;</code> <code>hr_causal = exp(-psi_hat);</code></td></tr>
+                      <tr><td class="step-purpose">2. Grid Generation</td><td class="notation-cell">ψ<sup>(k)</sup> ∈ [ψ<sub>min</sub>, ψ<sub>max</sub>]</td><td class="sas-cell"><code>data _grid;</code> <code>do psi = &amp;psimin to &amp;psimax by &amp;psistep;</code></td></tr>
+                      <tr><td class="step-purpose">3. Counterfactual Transformation</td><td class="notation-cell">U<sub>i</sub>(ψ) = T<sub>off,i</sub> + T<sub>on,i</sub> exp(ψ)</td><td class="sas-cell"><code>data _cf;</code> <code>u_i = t_off + t_on * exp(psi);</code></td></tr>
+                      <tr><td class="step-purpose">4. Recensoring Logic</td><td class="notation-cell">D<sub>i</sub>(ψ) = min(C<sub>i</sub>, C<sub>i</sub> exp(ψ))</td><td class="sas-cell"><code>u_rec = min(u_i, c_i * exp(psi));</code></td></tr>
+                      <tr><td class="step-purpose">5. Log-Rank Evaluation</td><td class="notation-cell">Z(ψ) ∼ Log-Rank(U(ψ) by A<sub>0</sub>)</td><td class="sas-cell"><code>PROC LIFETEST;</code> <code>time u_rec*censor(0);</code> <code>strata &amp;trt;</code></td></tr>
+                      <tr><td class="step-purpose">6. Zero-Crossing Interpolation</td><td class="notation-cell">Z(ψ̂) = 0 ⇒ ψ̂</td><td class="sas-cell"><code>data _estimate;</code> <code>if z_prev * z_curr &lt;= 0;</code></td></tr>
+                      <tr><td class="step-purpose">7. Causal Hazard Ratio Estimation</td><td class="notation-cell">HR<sub>causal</sub> = exp(−ψ̂)</td><td class="sas-cell"><code>data _final_hr;</code> <code>hr_causal = exp(-psi_hat);</code></td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -23056,17 +23080,17 @@ run;</code></pre>
                 </div>
 
                 <h5>Steps 2 and 3. Grid Search Counterfactual Calculation and Log-Rank Scoring</h5>
-                <p>Under a candidate parameter <span class="math-inline">Ïˆ<sub>k</sub></span>, counterfactual event times and recensored times are evaluated.</p>
+                <p>Under a candidate parameter <span class="math-inline">ψ<sub>k</sub></span>, counterfactual event times and recensored times are evaluated.</p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM counterfactual and recensoring event formula">
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM transformed time and recensored event indicator">
                     <math display="block">
                       <mrow>
-                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>=</mo>
+                        <msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
                         <msub><mi>T</mi><mrow><mi>off</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>+</mo>
-                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mi>exp</mi><mo>(</mo><mi>Ïˆ</mi><mo>)</mo>
+                        <msub><mi>T</mi><mrow><mi>on</mi><mo>,</mo><mi>i</mi></mrow></msub><mi>exp</mi><mo>(</mo><mi>ψ</mi><mo>)</mo>
                         <mo>,</mo>
-                        <msub><mi>Î”</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>=</mo>
-                        <mi>I</mi><mo>(</mo><msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>â‰¤</mo><msub><mi>D</mi><mi>i</mi></msub><mo>(</mo><mi>Ïˆ</mi><mo>)</mo><mo>)</mo>
+                        <msub><mi>Δ</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>=</mo>
+                        <mi>I</mi><mo>(</mo><msub><mi>U</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>≤</mo><msub><mi>D</mi><mi>i</mi></msub><mo>(</mo><mi>ψ</mi><mo>)</mo><mo>)</mo>
                       </mrow>
                     </math>
                   </div>
@@ -23115,17 +23139,17 @@ run;</code></pre>
 %mend _rpsftm_grid_search;</code></pre>
                 </div>
 
-                <h5>Step 4. Linear Interpolation for ÏˆÌ‚ Zero-Crossing</h5>
-                <p>Find two adjacent grid points where the standardized log-rank statistic changes sign, then estimate <span class="math-inline">ÏˆÌ‚</span> via linear interpolation.</p>
+                <h5>Step 4. Linear Interpolation for ψ̂ Zero-Crossing</h5>
+                <p>Find two adjacent grid points where the standardized log-rank statistic changes sign, then estimate <span class="math-inline">ψ̂</span> via linear interpolation.</p>
                 <div class="rpsft-formula-card" aria-label="RPSFTM linear interpolation formula">
                   <div class="mathml-equation rpsftm-equation" aria-label="RPSFTM zero crossing interpolation formula">
                     <math display="block">
                       <mrow>
-                        <mover><mi>Ïˆ</mi><mo>^</mo></mover><mo>=</mo>
-                        <msub><mi>Ïˆ</mi><mi>k</mi></msub><mo>âˆ’</mo><mi>Z</mi><mo>(</mo><msub><mi>Ïˆ</mi><mi>k</mi></msub><mo>)</mo><mo>Â·</mo>
+                        <mover><mi>ψ</mi><mo>^</mo></mover><mo>=</mo>
+                        <msub><mi>ψ</mi><mi>k</mi></msub><mo>−</mo><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mi>k</mi></msub><mo>)</mo><mo>·</mo>
                         <mfrac>
-                          <mrow><msub><mi>Ïˆ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>âˆ’</mo><msub><mi>Ïˆ</mi><mi>k</mi></msub></mrow>
-                          <mrow><mi>Z</mi><mo>(</mo><msub><mi>Ïˆ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo><mo>âˆ’</mo><mi>Z</mi><mo>(</mo><msub><mi>Ïˆ</mi><mi>k</mi></msub><mo>)</mo></mrow>
+                          <mrow><msub><mi>ψ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>ψ</mi><mi>k</mi></msub></mrow>
+                          <mrow><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo><mo>−</mo><mi>Z</mi><mo>(</mo><msub><mi>ψ</mi><mi>k</mi></msub><mo>)</mo></mrow>
                         </mfrac>
                       </mrow>
                     </math>
@@ -23154,9 +23178,9 @@ run;</code></pre>
                 <div class="rpsft-interpretation">
                   <strong>How to Interpret RPSFTM Output</strong>
                   <ul>
-                    <li><strong>Point estimate:</strong> <span class="math-inline">Ïˆ</span> and <span class="math-inline">exp(Ïˆ)</span> describe the estimated acceleration factor.</li>
-                    <li><strong>Statistical significance:</strong> If the 95% confidence interval for <span class="math-inline">Ïˆ</span> includes 0, or the 95% confidence interval for <span class="math-inline">exp(Ïˆ)</span> includes 1, the adjusted analysis does not show clear statistical evidence of a treatment benefit.</li>
-                    <li><strong>Diagnostic plot:</strong> The optimal <span class="math-inline">Ïˆ</span> is the value where the standardized log-rank statistic crosses zero.</li>
+                    <li><strong>Point estimate:</strong> <span class="math-inline">ψ</span> and <span class="math-inline">exp(ψ)</span> describe the estimated acceleration factor.</li>
+                    <li><strong>Statistical significance:</strong> If the 95% confidence interval for <span class="math-inline">ψ</span> includes 0, or the 95% confidence interval for <span class="math-inline">exp(ψ)</span> includes 1, the adjusted analysis does not show clear statistical evidence of a treatment benefit.</li>
+                    <li><strong>Diagnostic plot:</strong> The optimal <span class="math-inline">ψ</span> is the value where the standardized log-rank statistic crosses zero.</li>
                   </ul>
                 </div>
                 <div class="sas-ods-example" aria-label="SAS ODS output example for RPSFTM">
@@ -23170,7 +23194,7 @@ run;</code></pre>
                         <tbody>
                           <tr><td class="obs">1</td><td>-0.245</td><td>-0.412</td><td>-0.081</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                     <div class="sas-ods-panel sas-ods-green">
                       <div class="sas-ods-title">95% Confidence Interval for Acceleration Factor exp(Psi)</div>
@@ -23181,7 +23205,7 @@ run;</code></pre>
                         <tbody>
                           <tr><td class="obs">1</td><td>0.78270</td><td>0.66232</td><td>0.92219</td></tr>
                         </tbody>
-                      </table>
+                  </table>
                     </div>
                   </div>
                   <div class="sas-ods-caption">Output 1. Point estimates and confidence intervals for Psi and the acceleration factor.</div>
@@ -23225,10 +23249,10 @@ run;</code></pre>
 
                 <h5>1. Counterfactual Framework and the Causal Estimand</h5>
                 <p>
-                  In a randomized clinical trial with treatment switching, let <span class="math-inline">A<sub>0</sub> âˆˆ {0, 1}</span> denote baseline treatment assignment. Let <span class="math-inline">C(t) âˆˆ {0, 1}</span> be the time-varying counting process for censoring due to crossover (<span class="math-inline">C(t) = 1</span> when a patient switches from control to experimental treatment).
+                  In a randomized clinical trial with treatment switching, let <span class="math-inline">A<sub>0</sub> ∈ {0, 1}</span> denote baseline treatment assignment. Let <span class="math-inline">C(t) ∈ {0, 1}</span> be the time-varying counting process for censoring due to crossover (<span class="math-inline">C(t) = 1</span> when a patient switches from control to experimental treatment).
                 </p>
                 <p>
-                  Our objective is to estimate the <strong>marginal counterfactual survival distribution</strong> <span class="math-inline">S<sup><span class="math-bar-sup"><span class="math-overbar">ð‘Ž</span>=0</span></sup>(t) = P(T<sup><span class="math-bar-sup"><span class="math-overbar">ð‘Ž</span>=0</span></sup> &gt; t)</span>, which represents survival under the hypothetical regime where no patient switches treatments (<span class="math-inline"><span class="math-overbar">ð‘Ž</span> = 0</span>).
+                  Our objective is to estimate the <strong>marginal counterfactual survival distribution</strong> <span class="math-inline">S<sup><span class="math-bar-sup"><span class="math-overbar">𝑎</span>=0</span></sup>(t) = P(T<sup><span class="math-bar-sup"><span class="math-overbar">𝑎</span>=0</span></sup> &gt; t)</span>, which represents survival under the hypothetical regime where no patient switches treatments (<span class="math-inline"><span class="math-overbar">𝑎</span> = 0</span>).
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW identifiability bridge formula">
                   <h5>The Identifiability Bridge</h5>
@@ -23244,7 +23268,7 @@ run;</code></pre>
                       </mrow>
                     </math>
                   </div>
-                  <p>Where <span class="math-inline">L&#772;(t)</span> is the history of both baseline (<span class="math-inline">L&#772;(0)</span>) and time-varying (<span class="math-inline">L&#772;(t)</span>) clinical predictors of crossover up to <span class="math-inline">t<sup>âˆ’</sup></span>.</p>
+                  <p>Where <span class="math-inline">L&#772;(t)</span> is the history of both baseline (<span class="math-inline">L&#772;(0)</span>) and time-varying (<span class="math-inline">L&#772;(t)</span>) clinical predictors of crossover up to <span class="math-inline">t<sup>−</sup></span>.</p>
                 </div>
 
                 <h5>2. Measure Transformation and Stabilized Weight Derivation</h5>
@@ -23285,37 +23309,37 @@ run;</code></pre>
                     <tbody>
                       <tr>
                         <td class="step-purpose">1. Data Subset</td>
-                        <td class="notation-cell">i âˆˆ {A<sub>0</sub> = 0}, C<sub>i</sub>(t) âˆˆ {0, 1}</td>
+                        <td class="notation-cell">i ∈ {A<sub>0</sub> = 0}, C<sub>i</sub>(t) ∈ {0, 1}</td>
                         <td class="sas-cell"><code>data _ipcw_base;</code> <code>if &amp;trt = &amp;ref;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">2. Numerator Model</td>
-                        <td class="notation-cell">Åœ<sub>num</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>)</td>
+                        <td class="notation-cell">Ŝ<sub>num</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>)</td>
                         <td class="sas-cell"><code>PROC PHREG;</code> <code>model ... = &amp;bl_ct &amp;bl_cl;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">3. Denominator Model</td>
-                        <td class="notation-cell">Åœ<sub>den</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>, L&#772;(t))</td>
+                        <td class="notation-cell">Ŝ<sub>den</sub>(t) = P(C(t) = 0 | L&#772;<sub>0</sub>, L&#772;(t))</td>
                         <td class="sas-cell"><code>PROC PHREG;</code> <code>model ... = &amp;bl_ct &amp;bl_cl &amp;tv_ct &amp;tv_cl;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">4. Stabilized Weight</td>
-                        <td class="notation-cell">SW<sub>i</sub>(t) = Åœ<sub>num</sub>(t<sub>i</sub>) / Åœ<sub>den</sub>(t<sub>i</sub>)</td>
+                        <td class="notation-cell">SW<sub>i</sub>(t) = Ŝ<sub>num</sub>(t<sub>i</sub>) / Ŝ<sub>den</sub>(t<sub>i</sub>)</td>
                         <td class="sas-cell"><code>data _weights;</code> <code>sw_t = _surv_num / _surv_den;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">5. Weight Truncation</td>
-                        <td class="notation-cell">SW<sub>i</sub><sup>*</sup>(t) = clip(SW<sub>i</sub>(t), Q<sub>Î±L</sub>, Q<sub>Î±U</sub>)</td>
+                        <td class="notation-cell">SW<sub>i</sub><sup>*</sup>(t) = clip(SW<sub>i</sub>(t), Q<sub>αL</sub>, Q<sub>αU</sub>)</td>
                         <td class="sas-cell"><code>PROC UNIVARIATE;</code> + truncation logic</td>
                       </tr>
                       <tr>
                         <td class="step-purpose">6. Merge &amp; Reset</td>
-                        <td class="notation-cell">SW<sub>i</sub>(t) = 1 &nbsp; âˆ€i âˆˆ {A<sub>0</sub> = 1}</td>
+                        <td class="notation-cell">SW<sub>i</sub>(t) = 1 &nbsp; ∀i ∈ {A<sub>0</sub> = 1}</td>
                         <td class="sas-cell"><code>data _surv_weighted;</code> <code>if &amp;trt ne &amp;ref then sw_t = 1;</code></td>
                       </tr>
                       <tr>
                         <td class="step-purpose">7. Weighted MSM Cox</td>
-                        <td class="notation-cell">Î»(t | A<sub>0</sub>) = Î»<sub>0</sub>(t) exp(Î²A<sub>0</sub>)</td>
+                        <td class="notation-cell">λ(t | A<sub>0</sub>) = λ<sub>0</sub>(t) exp(βA<sub>0</sub>)</td>
                         <td class="sas-cell"><code>PROC PHREG;</code> <code>WEIGHT sw_t / norm;</code> <code>ID &amp;subjid;</code></td>
                       </tr>
                     </tbody>
@@ -23384,7 +23408,7 @@ run;</code></pre>
 
                 <h5>Step 4. Constructing SW<sub>i</sub>(t)</h5>
                 <div class="rpsft-formula-card" aria-label="IPCW stabilized weight construction formula">
-                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = <span class="math-frac"><span class="math-num">SÌ‚<sub>num</sub>(t<sub>i</sub>)</span><span class="math-den">SÌ‚<sub>den</sub>(t<sub>i</sub>)</span></span></div>
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub>(t) = <span class="math-frac"><span class="math-num">Ŝ<sub>num</sub>(t<sub>i</sub>)</span><span class="math-den">Ŝ<sub>den</sub>(t<sub>i</sub>)</span></span></div>
                 </div>
                 <div class="code-window sas-syntax" aria-label="IPCW SAS stabilized weight construction">
                   <div class="code-window-header"><span>Step 4. Form Stabilized Weights</span><span>.sas</span></div>
@@ -23404,7 +23428,7 @@ run;</code></pre>
                   To satisfy the positivity assumption and prevent extreme variance inflation caused by near-zero denominators, stabilized weights are truncated at lower and upper percentiles.
                 </p>
                 <div class="rpsft-formula-card" aria-label="IPCW percentile truncation formula">
-                  <div class="rpsft-equation math-equation">SW<sub>i</sub><sup>*</sup>(t) = max(Q<sub>Î±L</sub>(SW), min(SW<sub>i</sub>(t), Q<sub>Î±U</sub>(SW)))</div>
+                  <div class="rpsft-equation math-equation">SW<sub>i</sub><sup>*</sup>(t) = max(Q<sub>αL</sub>(SW), min(SW<sub>i</sub>(t), Q<sub>αU</sub>(SW)))</div>
                 </div>
                 <div class="code-window sas-syntax" aria-label="IPCW SAS percentile truncation">
                   <div class="code-window-header"><span>Step 5. Percentile Truncation</span><span>.sas</span></div>
@@ -23512,7 +23536,7 @@ run;</code></pre>
                         <tr><td class="param-cell">tv1</td><td></td><td>1</td><td>-0.01370</td><td>0.00883</td><td>0.950</td><td>2.4075</td><td>0.1208</td><td>0.986</td><td>0.969 &nbsp;&nbsp; 1.004</td></tr>
                         <tr><td class="param-cell">tv2</td><td></td><td>1</td><td>-0.05942</td><td>0.09294</td><td>0.955</td><td>0.4087</td><td>0.5226</td><td>0.942</td><td>0.785 &nbsp;&nbsp; 1.131</td></tr>
                       </tbody>
-                    </table>
+                  </table>
                     <div class="sas-ods-caption">IPCW adjusted survival treatment effect from weighted PROC PHREG.</div>
                   </div>
                 </div>
@@ -24189,6 +24213,11 @@ run;</code></pre>
   </script>
 </body>
 </html>
+
+
+
+
+
 
 
 
